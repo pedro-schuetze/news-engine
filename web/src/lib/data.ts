@@ -1,72 +1,41 @@
 /**
- * Acesso a dados do dashboard — MVP: filesystem local (mesmos JSONs que o
- * pipeline Python escreve em ../data).
+ * Camada de dados do dashboard — fachada sobre duas fontes intercambiáveis:
  *
- * Futuro (deploy na Vercel): trocar esta camada por uma fonte remota — os
- * JSONs já são commitados no GitHub pelo Actions (raw + token) ou, na fase
- * seguinte, Supabase. Só este arquivo precisa mudar (docs/CONTEXT.md).
+ *   NEWS_DATA_SOURCE=fs      (default) filesystem local (../data), uso na máquina
+ *   NEWS_DATA_SOURCE=github  produção (Vercel): lê runs/reviews/config via
+ *                            GitHub Contents API e grava reviews como commits
+ *
+ * As páginas só conhecem esta fachada. Fase 2 (Supabase) = mais uma fonte aqui.
  */
 
-import fs from "node:fs/promises";
-import path from "node:path";
 import { parse as parseYaml } from "yaml";
+import * as fsSource from "./sources/fs";
+import * as ghSource from "./sources/github";
 import type { PipelineRun, Review, RunListItem, Story } from "./types";
 
-// web/ é o cwd do Next; os dados do pipeline ficam na raiz do repo
-const REPO_ROOT = path.resolve(process.cwd(), "..");
-const DATA_DIR = process.env.NEWS_DATA_DIR
-  ? path.resolve(process.env.NEWS_DATA_DIR)
-  : path.join(REPO_ROOT, "data");
-const RUNS_DIR = path.join(DATA_DIR, "runs");
-const REVIEWS_DIR = path.join(DATA_DIR, "reviews");
-const CONFIG_DIR = process.env.NEWS_CONFIG_DIR
-  ? path.resolve(process.env.NEWS_CONFIG_DIR)
-  : path.join(REPO_ROOT, "config");
+export const DATA_MODE: "fs" | "github" =
+  (process.env.NEWS_DATA_SOURCE ?? "fs").toLowerCase() === "github" ? "github" : "fs";
 
-const RUN_FILE_RE = /^[\w.-]+\.json$/;
+const src = DATA_MODE === "github" ? ghSource : fsSource;
 
-// cache por (arquivo, mtime): runs são imutáveis depois de escritos, mas o
-// latest.json muda — o mtime invalida sozinho
-const runCache = new Map<string, { mtime: number; run: PipelineRun }>();
-
-async function readRunFile(target: string): Promise<PipelineRun | null> {
-  try {
-    const stat = await fs.stat(target);
-    const cached = runCache.get(target);
-    if (cached && cached.mtime === stat.mtimeMs) return cached.run;
-    const raw = await fs.readFile(target, "utf-8");
-    const run = JSON.parse(raw) as PipelineRun;
-    runCache.set(target, { mtime: stat.mtimeMs, run });
-    return run;
-  } catch {
-    return null;
+/** Dica de diagnóstico para estados vazios (ex.: token faltando em produção). */
+export function dataHint(): string | null {
+  if (DATA_MODE !== "github") return null;
+  if (ghSource.lastError) return ghSource.lastError;
+  if (!process.env.GITHUB_TOKEN) {
+    return "NEWS_DATA_SOURCE=github sem GITHUB_TOKEN — configure o token nas env vars da Vercel.";
   }
+  return null;
 }
 
+// ── runs ─────────────────────────────────────────────────────────────
+
 export async function listRunFiles(limit = 30): Promise<RunListItem[]> {
-  let files: string[] = [];
-  try {
-    files = await fs.readdir(RUNS_DIR);
-  } catch {
-    return [];
-  }
-  return files
-    .filter((f) => RUN_FILE_RE.test(f) && f.endsWith(".json"))
-    .sort()
-    .reverse()
-    .slice(0, limit)
-    .map((f) => ({ file: f, label: f.replace(".json", "").replace("_", " ") }));
+  return src.listRunFiles(limit);
 }
 
 export async function loadRun(file?: string | null): Promise<PipelineRun | null> {
-  let target: string;
-  if (!file || file === "latest") {
-    target = path.join(DATA_DIR, "latest.json");
-  } else {
-    if (!RUN_FILE_RE.test(file)) return null; // bloqueia path traversal
-    target = path.join(RUNS_DIR, file);
-  }
-  return readRunFile(target);
+  return src.readRun(file);
 }
 
 export interface RunSummary {
@@ -83,11 +52,12 @@ export interface RunSummary {
 }
 
 export async function listRunSummaries(limit = 30): Promise<RunSummary[]> {
-  const files = await listRunFiles(limit);
+  const files = await src.listRunFiles(limit);
+  const runs = await Promise.all(files.map((f) => src.readRun(f.file)));
   const out: RunSummary[] = [];
-  for (const f of files) {
-    const run = await readRunFile(path.join(RUNS_DIR, f.file));
-    if (!run) continue;
+  files.forEach((f, i) => {
+    const run = runs[i];
+    if (!run) return;
     out.push({
       file: f.file,
       run_id: run.run_id,
@@ -102,7 +72,7 @@ export async function listRunSummaries(limit = 30): Promise<RunSummary[]> {
         Object.entries(run.verticals).map(([vid, vr]) => [vid, vr.stories.length]),
       ),
     });
-  }
+  });
   return out;
 }
 
@@ -115,58 +85,29 @@ export interface StoryEntry {
 
 /** Banco de stories: todas as selecionadas dos últimos runs, mais novas primeiro. */
 export async function loadAllStories(limitRuns = 30): Promise<StoryEntry[]> {
-  const files = await listRunFiles(limitRuns);
+  const files = await src.listRunFiles(limitRuns);
+  const runs = await Promise.all(files.map((f) => src.readRun(f.file)));
   const out: StoryEntry[] = [];
-  for (const f of files) {
-    const run = await readRunFile(path.join(RUNS_DIR, f.file));
-    if (!run) continue;
+  files.forEach((f, i) => {
+    const run = runs[i];
+    if (!run) return;
     for (const vr of Object.values(run.verticals)) {
       for (const story of vr.stories) {
-        out.push({
-          story,
-          runFile: f.file,
-          runStartedAt: run.started_at,
-          runMode: run.mode,
-        });
+        out.push({ story, runFile: f.file, runStartedAt: run.started_at, runMode: run.mode });
       }
     }
-  }
+  });
   return out;
 }
 
+// ── reviews ──────────────────────────────────────────────────────────
+
 export async function loadReviews(): Promise<Record<string, Review>> {
-  const out: Record<string, Review> = {};
-  let files: string[] = [];
-  try {
-    files = await fs.readdir(REVIEWS_DIR);
-  } catch {
-    return out;
-  }
-  await Promise.all(
-    files
-      .filter((f) => f.endsWith(".json"))
-      .map(async (f) => {
-        try {
-          const raw = await fs.readFile(path.join(REVIEWS_DIR, f), "utf-8");
-          const review = JSON.parse(raw) as Review;
-          if (review.story_id) out[review.story_id] = review;
-        } catch {
-          /* review ilegível: ignora */
-        }
-      }),
-  );
-  return out;
+  return src.listReviews();
 }
 
 export async function saveReview(review: Review): Promise<void> {
-  if (!/^[\w-]+$/.test(review.story_id)) {
-    throw new Error("story_id inválido");
-  }
-  await fs.mkdir(REVIEWS_DIR, { recursive: true });
-  const target = path.join(REVIEWS_DIR, `${review.story_id}.json`);
-  const tmp = `${target}.tmp`;
-  await fs.writeFile(tmp, JSON.stringify(review, null, 2), "utf-8");
-  await fs.rename(tmp, target);
+  return src.saveReview(review);
 }
 
 // ── configuração (somente leitura) ───────────────────────────────────
@@ -185,8 +126,9 @@ export interface VerticalConfigView {
 }
 
 export async function loadVerticalConfigs(): Promise<VerticalConfigView[]> {
+  const raw = await src.readTextFile("config/verticals.yaml");
+  if (!raw) return [];
   try {
-    const raw = await fs.readFile(path.join(CONFIG_DIR, "verticals.yaml"), "utf-8");
     const parsed = parseYaml(raw) as { verticals?: Partial<VerticalConfigView>[] };
     return (parsed.verticals ?? []).map((v) => ({
       id: v.id ?? "",
@@ -221,8 +163,9 @@ export interface SourceView {
 }
 
 export async function loadSourceConfigs(): Promise<SourceView[]> {
+  const raw = await src.readTextFile("config/sources.yaml");
+  if (!raw) return [];
   try {
-    const raw = await fs.readFile(path.join(CONFIG_DIR, "sources.yaml"), "utf-8");
     const parsed = parseYaml(raw) as { sources?: Partial<SourceView>[] };
     return (parsed.sources ?? []).map((s) => ({
       source_name: s.source_name ?? "",
@@ -239,46 +182,15 @@ export async function loadSourceConfigs(): Promise<SourceView[]> {
 }
 
 export async function loadRankingConfig(): Promise<Record<string, unknown> | null> {
+  const raw = await src.readTextFile("config/ranking.yaml");
+  if (!raw) return null;
   try {
-    const raw = await fs.readFile(path.join(CONFIG_DIR, "ranking.yaml"), "utf-8");
     return parseYaml(raw) as Record<string, unknown>;
   } catch {
     return null;
   }
 }
 
-/**
- * Valores NÃO-sensíveis do .env da raiz para exibição em /config.
- * Whitelist estrita — chaves de API nunca são lidas para a UI.
- */
-const ENV_WHITELIST = [
-  "LLM_PROVIDER",
-  "LLM_FALLBACK_PROVIDER",
-  "ANTHROPIC_MODEL",
-  "OPENAI_MODEL",
-  "OPENAI_REASONING_EFFORT",
-  "PIPELINE_MODE",
-  "NEWS_LOOKBACK_HOURS",
-  "MIN_STORIES_PER_VERTICAL",
-  "MAX_STORIES_PER_VERTICAL",
-  "TIMEZONE",
-  "DATA_DIR",
-] as const;
-
 export async function loadEnvView(): Promise<Record<string, string>> {
-  const out: Record<string, string> = {};
-  try {
-    const raw = await fs.readFile(path.join(REPO_ROOT, ".env"), "utf-8");
-    for (const line of raw.split(/\r?\n/)) {
-      const m = line.match(/^([A-Z_]+)\s*=\s*(.*)$/);
-      if (!m) continue;
-      const [, key, value] = m;
-      if ((ENV_WHITELIST as readonly string[]).includes(key) && value.trim()) {
-        out[key] = value.trim();
-      }
-    }
-  } catch {
-    /* sem .env: mostra só defaults */
-  }
-  return out;
+  return src.readEnvView();
 }

@@ -113,10 +113,37 @@ cd web && npm run dev   # http://localhost:3000
   por candidata e log de chamadas LLM.
 - Métrica de qualidade: approval rate por vertical e total.
 
-O dashboard é Next.js (pasta `web/`) preparado para deploy futuro na Vercel
-(root directory = `web`). Hoje ele lê `data/*.json` do filesystem — em produção
-será preciso trocar a fonte de dados (`web/src/lib/data.ts`); ver
-`docs/CONTEXT.md` → pendências.
+## Deploy na Vercel (dashboard)
+
+O dashboard tem **duas fontes de dados** intercambiáveis (`web/src/lib/data.ts`):
+
+| `NEWS_DATA_SOURCE` | Leitura | Reviews (aprovar/rejeitar) |
+|---|---|---|
+| `fs` (default, local) | `data/*.json` do filesystem | grava em `data/reviews/` |
+| `github` (produção) | GitHub Contents API (cache por ETag) | **commits no repo** via API |
+
+Passos (conta pessoal da Vercel, sem tocar no login do CLI de outra conta):
+
+1. **Token da Vercel** (conta pessoal): criar em vercel.com/account/settings/tokens
+   e colar no `.env` da raiz (`VERCEL_TOKEN=`). Todos os comandos usam `--token`,
+   então o `vercel login` global da máquina fica intocado.
+2. **Criar/linkar o projeto** (root = `web/`): `cd web && vercel link --yes --token $Env:VERCEL_TOKEN`
+   e depois `vercel deploy --prod --token $Env:VERCEL_TOKEN`.
+3. **Env vars na Vercel** (Project → Settings → Environment Variables):
+   - `NEWS_DATA_SOURCE=github`
+   - `NEWS_GITHUB_REPO=pedro-schuetze-artica/news-engine`
+   - `GITHUB_TOKEN=` *(fine-grained PAT: só este repo, permissão Contents
+     read/write — criar em github.com/settings/personal-access-tokens)*
+   - opcional: `NEWS_GITHUB_BRANCH=main`, `NEWS_GITHUB_MAX_RUNS=12`
+4. **Git integration (auto-deploy por push)**: no dashboard da Vercel,
+   Project → Settings → Git → conectar `pedro-schuetze-artica/news-engine`
+   (root directory `web`). Cada push — inclusive os commits diários de dados do
+   Actions — redeploya; como a leitura é via API, os dados ficam frescos mesmo
+   sem redeploy.
+
+Notas: reviews feitas em produção viram commits (`review: APPROVED …`) — rode
+`git pull` localmente para vê-las; o rate limit da API (5k/h) é folgado porque
+respostas 304 (ETag) não contam.
 
 ## Testes
 

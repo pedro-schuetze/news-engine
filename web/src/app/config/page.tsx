@@ -1,4 +1,5 @@
 import {
+  DATA_MODE,
   loadEnvView,
   loadRankingConfig,
   loadSourceConfigs,
@@ -74,6 +75,10 @@ export default async function ConfigPage() {
           />
           <KV k="timezone" v={envView.TIMEZONE ?? "America/Sao_Paulo"} />
           <KV k="modo" v={envView.PIPELINE_MODE ?? "live"} />
+          <KV
+            k="fonte de dados do dashboard"
+            v={DATA_MODE === "github" ? "GitHub API (produção)" : "filesystem local"}
+          />
           <p className="mt-3 text-[11.5px] text-ink-3">
             Chaves de API nunca são exibidas aqui. No CI, os valores vêm dos GitHub Secrets.
           </p>

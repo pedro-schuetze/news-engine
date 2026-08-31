@@ -3,6 +3,8 @@ import RunsTable from "@/components/RunsTable";
 import StatBlock from "@/components/StatBlock";
 import StoryRow from "@/components/StoryRow";
 import {
+  DATA_MODE,
+  dataHint,
   listRunSummaries,
   loadAllStories,
   loadReviews,
@@ -24,18 +26,33 @@ export default async function DashboardPage() {
   ]);
 
   if (!run) {
+    const hint = dataHint();
     return (
       <div className="mx-auto max-w-xl py-20 text-center">
         <p className="microlabel">news engine</p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-navy">
           Nenhum run encontrado ainda
         </h1>
-        <p className="mt-3 text-[14px] text-ink-2">
-          Rode o pipeline na raiz do repositório e recarregue esta página:
-        </p>
-        <pre className="mt-4 rounded-xl border border-line bg-panel p-4 text-left font-mono text-[12.5px] text-brand-ink">
-          {"python -m src.pipeline --mock   # teste sem custo\npython -m src.pipeline          # coleta real"}
-        </pre>
+        {hint && (
+          <p className="mt-4 rounded-xl border border-warn/30 bg-warn-soft p-3 text-left text-[13px] text-warn">
+            {hint}
+          </p>
+        )}
+        {DATA_MODE === "github" ? (
+          <p className="mt-3 text-[14px] text-ink-2">
+            Fonte de dados: repositório GitHub. Assim que o pipeline commitar um run
+            (Actions diário ou push manual de <code className="font-mono">data/</code>), ele aparece aqui.
+          </p>
+        ) : (
+          <>
+            <p className="mt-3 text-[14px] text-ink-2">
+              Rode o pipeline na raiz do repositório e recarregue esta página:
+            </p>
+            <pre className="mt-4 rounded-xl border border-line bg-panel p-4 text-left font-mono text-[12.5px] text-brand-ink">
+              {"python -m src.pipeline --mock   # teste sem custo\npython -m src.pipeline          # coleta real"}
+            </pre>
+          </>
+        )}
       </div>
     );
   }

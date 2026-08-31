@@ -1,5 +1,5 @@
 import RunView from "@/components/RunView";
-import { loadReviews, loadRun, loadVerticalNames } from "@/lib/data";
+import { DATA_MODE, dataHint, loadReviews, loadRun, loadVerticalNames } from "@/lib/data";
 import { fmtDayLong, fmtLocal, isSameLocalDay } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -18,13 +18,20 @@ export default async function HojePage({ searchParams }: { searchParams: SearchP
   ]);
 
   if (!run) {
+    const hint = dataHint();
     return (
       <div className="mx-auto max-w-xl py-20 text-center">
         <p className="microlabel">posts de hoje</p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-navy">Nenhum run ainda</h1>
+        {hint && (
+          <p className="mt-4 rounded-xl border border-warn/30 bg-warn-soft p-3 text-left text-[13px] text-warn">
+            {hint}
+          </p>
+        )}
         <p className="mt-3 text-[14px] text-ink-2">
-          Rode <code className="font-mono text-brand-ink">python -m src.pipeline</code> na raiz do
-          repositório para gerar as sugestões do dia.
+          {DATA_MODE === "github"
+            ? "Aguardando o primeiro run commitado no repositório."
+            : "Rode python -m src.pipeline na raiz do repositório para gerar as sugestões do dia."}
         </p>
       </div>
     );

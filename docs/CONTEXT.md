@@ -78,6 +78,13 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     Verticais com código de cor (laranja/azul/roxo); verde reservado para
     marca/aprovação. Debug acessível dentro da página de cada run. Tipografia:
     Inter + IBM Plex Mono (next/font). Tema claro único.
+11. **2026-08-31 — Vercel na conta PESSOAL do Pedro, isolada por projeto.**
+    Nunca usar `vercel login` nesta máquina (o login global é da conta
+    profissional dele): tudo via `VERCEL_TOKEN` do `.env` + `--token`, projeto
+    linkado em `web/.vercel/` (gitignored). Dados em produção: fonte `github`
+    (Contents API + ETag; reviews viram commits `review: STATUS id`). Git
+    integration para auto-deploy por push. Supabase segue como fase 2 — quando
+    entrar, vira uma terceira fonte em `web/src/lib/sources/`.
 
 ## Pendências / dívidas conhecidas
 
@@ -91,12 +98,14 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       por batch); a rede de segurança é a detecção no score editorial, que vê
       os 10 finalistas da vertical juntos. Se ainda escapar duplicata, unificar
       a classificação em 1 chamada maior.
-- [ ] **Reviews em produção:** o dashboard na Vercel não poderá gravar reviews
-      no filesystem. Caminhos: (a) commit via GitHub API, (b) Supabase (preferido,
-      já decidido para a fase 2). Local funciona 100%.
-- [ ] **Leitura de dados na Vercel:** `web/src/lib/data.ts` lê filesystem; para
-      produção, trocar por fetch dos JSONs no GitHub (raw + token) ou Supabase.
-      Só esse arquivo muda.
+- [x] ~~Reviews e leitura de dados na Vercel~~ — resolvido em 2026-08-31
+      (decisão 11): fonte dual `fs`/`github` em `web/src/lib/sources/`; produção
+      lê via GitHub Contents API (cache ETag) e grava reviews como commits.
+- [ ] **Deploy na Vercel pendente de 2 tokens do Pedro:** `VERCEL_TOKEN` no
+      `.env` local (linha já criada) para eu criar o projeto via CLI, e
+      `GITHUB_TOKEN` fine-grained (Contents read/write, só este repo) nas env
+      vars da Vercel. Depois: git integration no dashboard (cliques dele).
+      Passo a passo no README → "Deploy na Vercel".
 - [ ] **Feeds RSS desativados por incerteza de URL** (`enabled: false` em
       sources.yaml): Agência Câmara, Agência Senado, Omelete. Confirmar URLs e ligar.
 - [ ] **Links do Google News são redirects** (news.google.com/...): domínio real
