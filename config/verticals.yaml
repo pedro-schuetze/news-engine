@@ -1,0 +1,157 @@
+# Verticais editoriais do News Engine.
+#
+# Adicionar uma vertical = adicionar um bloco aqui (id, queries, critérios).
+# Nenhum código precisa mudar; o dashboard e o pipeline leem deste arquivo.
+# As descrições são usadas nos prompts do Editorial Router — escreva-as como
+# definição de escopo ("o que pertence aqui"), não como marketing.
+
+verticals:
+  # ── ENTERTAINMENT ──────────────────────────────────────────────────
+  - id: entertainment
+    display_name: Entretenimento
+    description: >-
+      Cinema, TV, séries, streaming, música, artistas, celebridades, cultura
+      pop, premiações, lançamentos, bilheteria e grandes acontecimentos do
+      entretenimento — Brasil E internacional. O objetivo é achar
+      acontecimentos com alto potencial de interesse e compartilhamento no
+      Instagram.
+    tone: >-
+      Leve, rápido e social — linguagem de quem entende de cultura pop, sem
+      ser fofoqueiro nem sensacionalista.
+    google_news_queries:
+      - { query: "famosos OR celebridades", hl: pt-BR, gl: BR }
+      - { query: "filme estreia OR bilheteria", hl: pt-BR, gl: BR }
+      - { query: "série OR streaming OR Netflix", hl: pt-BR, gl: BR }
+      - { query: "música show OR turnê cantor", hl: pt-BR, gl: BR }
+      - { query: "premiação OR festival cultura pop", hl: pt-BR, gl: BR }
+      - { query: "celebrity news", hl: en-US, gl: US }
+      - { query: "movie box office", hl: en-US, gl: US }
+      - { query: "TV series streaming premiere", hl: en-US, gl: US }
+      - { query: "music album release tour", hl: en-US, gl: US }
+    gdelt_queries:
+      - { query: '(celebrity OR "box office" OR streaming OR Grammy OR Oscar)', sourcelang: eng }
+    editorial_criteria:
+      - { name: importance, description: "relevância do acontecimento dentro do entretenimento" }
+      - { name: popularity, description: "tamanho e força do interesse do público no assunto/artista" }
+      - { name: shareability, description: "potencial de compartilhamento/salvamento no Instagram" }
+      - { name: novelty, description: "o quanto é novo/inesperado versus assunto requentado" }
+      - { name: audience_interest, description: "aderência ao público brasileiro de cultura pop" }
+      - { name: cultural_relevance, description: "peso cultural do momento (zeitgeist)" }
+    guidance:
+      value:
+        - acontecimentos reais e verificáveis (anúncios, estreias, recordes, aquisições, shows)
+        - histórias com nome forte (artista/franquia conhecida) e gancho visual claro
+        - cultura pop brasileira E internacional
+      avoid:
+        - fofoca sem fonte confiável ou rumor não confirmado tratado como fato
+        - conteúdo puramente promocional/press release sem acontecimento
+        - clickbait sem acontecimento real
+        - notícias irrelevantes sobre celebridades (rotina banal sem gancho)
+    official_domains: []
+    extra_rules:
+      - Se for rumor ou alegação, isso PRECISA estar explícito no texto (content_type RUMOR/CLAIM e atribuição clara).
+
+  # ── POLITICS ───────────────────────────────────────────────────────
+  - id: politics
+    display_name: Política
+    description: >-
+      Política BRASILEIRA, com atenção especial às eleições de 2026:
+      candidatos, pesquisas eleitorais, debates, campanhas, decisões do
+      TSE/TREs, alianças e apoios, Congresso, Executivo, STF, legislação
+      eleitoral, movimentos de partidos e fatos com impacto eleitoral.
+      Política internacional só entra se tiver impacto direto no Brasil.
+    tone: >-
+      Neutro, claro e factual — sem opinião, sem torcida, com atribuição
+      rigorosa de quem disse o quê.
+    google_news_queries:
+      - { query: "eleições 2026", hl: pt-BR, gl: BR }
+      - { query: "pesquisa eleitoral presidente", hl: pt-BR, gl: BR }
+      - { query: "TSE", hl: pt-BR, gl: BR }
+      - { query: "candidato presidência 2026", hl: pt-BR, gl: BR }
+      - { query: "Congresso Nacional votação", hl: pt-BR, gl: BR }
+      - { query: "governo federal decisão", hl: pt-BR, gl: BR }
+      - { query: "STF julgamento político", hl: pt-BR, gl: BR }
+      - { query: "partido campanha eleitoral", hl: pt-BR, gl: BR }
+    gdelt_queries:
+      - { query: "(eleicoes OR TSE OR eleitoral OR Congresso)", sourcelang: por, sourcecountry: BR }
+    editorial_criteria:
+      - { name: political_importance, description: "peso institucional/político do acontecimento" }
+      - { name: source_quality, description: "qualidade e independência das fontes que sustentam o fato" }
+      - { name: public_relevance, description: "impacto prático na vida do cidadão" }
+      - { name: election_relevance, description: "relevância direta para as eleições de 2026" }
+      - { name: verification_strength, description: "solidez da verificação (fonte primária/oficial, múltiplas fontes)" }
+      - { name: institutional_relevance, description: "envolvimento de instituições (TSE, Congresso, STF, Executivo)" }
+    guidance:
+      value:
+        - fatos com fonte oficial/primária (TSE, TREs, Congresso, Diário Oficial, decisões judiciais)
+        - pesquisas eleitorais de institutos registrados, com metadados (instituto, margem, amostra)
+        - acontecimentos com impacto eleitoral concreto em 2026
+      avoid:
+        - pura opinião ou coluna tratada como fato
+        - declaração de político apresentada como fato independente
+        - especulação eleitoral sem base factual
+        - pauta de brigas de bastidores sem consequência institucional
+    official_domains:
+      - jus.br      # TSE, TREs, STF, tribunais
+      - gov.br      # Executivo, Diário Oficial, IBGE
+      - leg.br      # Câmara, Senado, assembleias
+    extra_rules:
+      - Distinguir sempre FACT, CLAIM, OPINION, POLL e OFFICIAL_DECISION no content_type.
+      - "Pesquisa eleitoral: preservar instituto, contratante, período de campo, amostra, margem de erro e registro no TSE quando disponíveis; NUNCA transformar pesquisa em previsão de resultado."
+      - "Declaração de candidato/político é alegação: escrever 'Fulano afirmou que...', nunca como fato."
+      - Confiabilidade pesa MAIS que viralidade nesta vertical.
+      - "Direção visual: para pessoas reais, usar apenas AGENCY_PHOTO/PRESS_ASSET; NUNCA sugerir imagem gerada por IA retratando político real."
+
+  # ── FACTS ──────────────────────────────────────────────────────────
+  - id: facts
+    display_name: Fatos Interessantes
+    description: >-
+      Fatos interessantes, surpreendentes, educativos e altamente
+      compartilháveis: ciência, espaço/astronomia, animais, natureza,
+      história, arqueologia, geografia, tecnologia, comportamento,
+      estatísticas surpreendentes, descobertas e fenômenos naturais — do
+      Brasil e do mundo. Trending NÃO é critério necessário: uma história de
+      poucas fontes confiáveis pode ser excelente.
+    tone: >-
+      Curioso, explicativo e surpreendente — desperta o "uau, não sabia
+      disso" sem clickbait enganoso; linguagem simples para leigos.
+    google_news_queries:
+      - { query: "scientific discovery study", hl: en-US, gl: US }
+      - { query: "space astronomy discovery", hl: en-US, gl: US }
+      - { query: "archaeology ancient discovery", hl: en-US, gl: US }
+      - { query: "animal species research", hl: en-US, gl: US }
+      - { query: "history discovery revealed", hl: en-US, gl: US }
+      - { query: "descoberta científica", hl: pt-BR, gl: BR }
+      - { query: "estudo revela pesquisa", hl: pt-BR, gl: BR }
+      - { query: "arqueologia descoberta fóssil", hl: pt-BR, gl: BR }
+    gdelt_queries:
+      - { query: "(discovery OR archaeology OR astronomy OR species OR fossil)", sourcelang: eng }
+    editorial_criteria:
+      - { name: surprise, description: "fator 'uau' — o quanto o fato surpreende" }
+      - { name: novelty, description: "o quanto é novo/pouco conhecido do grande público" }
+      - { name: credibility, description: "solidez científica/factual (estudo, instituição, publicação)" }
+      - { name: shareability, description: "potencial de compartilhamento/salvamento no Instagram" }
+      - { name: explainability, description: "dá para explicar bem em 5 slides sem distorcer" }
+      - { name: educational_value, description: "o leitor sai sabendo algo útil/interessante" }
+    guidance:
+      value:
+        - descobertas e estudos com fonte original identificável (journal, universidade, agência)
+        - fatos verificáveis que rendem explicação visual clara
+        - histórias pouco cobertas mas de fonte confiável (trending não é obrigatório)
+      avoid:
+        - pseudociência e estudos fracos tratados como consenso
+        - correlação apresentada como causalidade
+        - fatos sem fonte original ou curiosidades não verificáveis
+        - conteúdo fabricado/viral sem lastro
+    official_domains:
+      - nasa.gov
+      - esa.int
+      - noaa.gov
+      - nature.com
+      - science.org
+      - pnas.org
+      - nih.gov
+      - ibge.gov.br
+    extra_rules:
+      - 'Sempre que possível, citar o estudo/instituição de origem nos fatos (ex.: "segundo estudo na Nature").'
+      - Explicar termos técnicos em linguagem simples; não exagerar conclusões além do que o estudo diz.

@@ -1,0 +1,74 @@
+# Run diário do News Engine.
+#
+# Horário: 06:00 America/Sao_Paulo. O cron do GitHub Actions só aceita UTC e
+# não tem suporte oficial a timezone; como o Brasil não adota horário de verão
+# desde 2019, 06:00 BRT == 09:00 UTC o ano inteiro (documentado no README).
+# O agendamento do Actions pode atrasar alguns minutos em horários de pico.
+
+name: daily-news
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # 09:00 UTC = 06:00 America/Sao_Paulo
+  workflow_dispatch:
+    inputs:
+      lookback_hours:
+        description: "Janela de coleta em horas"
+        required: false
+        default: "18"
+
+permissions:
+  contents: write # necessário para commitar os JSONs de data/
+
+concurrency:
+  group: daily-news
+  cancel-in-progress: false
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      TZ: America/Sao_Paulo
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Testes (mock, sem custo de API)
+        run: pytest
+
+      - name: Rodar pipeline
+        env:
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER || 'openai' }}
+          LLM_FALLBACK_PROVIDER: ${{ secrets.LLM_FALLBACK_PROVIDER || '' }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL || 'gpt-5-mini' }}
+          OPENAI_REASONING_EFFORT: ${{ secrets.OPENAI_REASONING_EFFORT || 'minimal' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL || 'claude-haiku-4-5' }}
+          NEWS_LOOKBACK_HOURS: ${{ github.event.inputs.lookback_hours || '18' }}
+          PIPELINE_MODE: live
+        run: python -m src.pipeline
+
+      - name: Commitar resultados (data/)
+        run: |
+          git config user.name "news-engine-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/latest.json data/runs
+          if git diff --cached --quiet; then
+            echo "Nada novo para commitar."
+          else
+            git commit -m "data: run $(date -u +'%Y-%m-%dT%H:%M')Z"
+            git pull --rebase origin ${{ github.ref_name }}
+            git push
+          fi

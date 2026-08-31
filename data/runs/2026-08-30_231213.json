@@ -1,0 +1,2895 @@
+{
+  "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+  "mode": "mock",
+  "started_at": "2026-08-31T02:12:13.359826Z",
+  "finished_at": "2026-08-31T02:12:13.461242Z",
+  "lookback_hours": 18,
+  "stats": {
+    "articles_collected": 27,
+    "articles_by_collector": {
+      "fixture": 27
+    },
+    "articles_after_dedupe": 26,
+    "duplicates_removed": 1,
+    "story_clusters": 18,
+    "clusters_classified": 18,
+    "clusters_discarded": 3,
+    "stories_selected": 9,
+    "llm_calls": 14,
+    "estimated_input_tokens": 15608,
+    "estimated_output_tokens": 7669,
+    "token_usage_source": "estimate",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0.1,
+    "errors": []
+  },
+  "verticals": {
+    "entertainment": {
+      "vertical": "entertainment",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 5,
+      "stories": [
+        {
+          "story_id": "8eea230f-3fa8-430e-a6b8-e6fc713dc28b",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "a2027ea4-bd7f-4f3b-a7d6-6ca158b081fe",
+          "vertical": "entertainment",
+          "title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 57.45,
+          "trend_signals": {
+            "source_diversity": 0.3333,
+            "recency": 0.8249,
+            "velocity": 1.0,
+            "authority": 0.85,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 86,
+          "editorial_sub_scores": {
+            "importance": 82,
+            "popularity": 86,
+            "shareability": 79,
+            "novelty": 85,
+            "audience_interest": 90,
+            "cultural_relevance": 83
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 73.15,
+          "final_score_notes": [
+            "final = 0.45*trend(57.5) + 0.55*editorial(86)"
+          ],
+          "classification": {
+            "cluster_id": "a2027ea4-bd7f-4f3b-a7d6-6ca158b081fe",
+            "primary_vertical": "entertainment",
+            "vertical_scores": {
+              "entertainment": 78,
+              "politics": 15,
+              "facts": 31
+            },
+            "classification_confidence": 0.83,
+            "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 2,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "bcae0a46-8ffa-4e83-85f9-1825c35bd657",
+              "name": "G1",
+              "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/08/30/indicados-oscar.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-08-30T23:12:13.359826Z",
+              "source_type": "agency_or_major",
+              "authority_score": 85
+            },
+            "supporting_sources": [
+              {
+                "article_id": "9a020507-c009-46ef-aeb1-5f74413afbbf",
+                "name": "Folha de S.Paulo",
+                "url": "https://www.folha.uol.com.br/ilustrada/2026/08/oscar-2027-indicados.shtml",
+                "source_domain": "folha.uol.com.br",
+                "published_at": "2026-08-30T23:42:13.359826Z",
+                "source_type": "agency_or_major",
+                "authority_score": 85
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "2 domínio(s) independente(s), 2 matéria(s); fonte oficial: não; autoridade máx.: 85. LLM: Mock: 2 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "1bbb6ede-b27c-43d7-b1fa-4c9ad9e8d4d0",
+            "story_id": "8eea230f-3fa8-430e-a6b8-e6fc713dc28b",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+            "instagram_headline": "Indicados ao Oscar 2027 são anunciados; Brasil concorre e...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Indicados ao Oscar 2027 são anunciados; Brasil concorre e...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#entretenimento",
+              "#cultura",
+              "#famosos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Indicados ao Oscar 2027 são anunciados; Brasil concorre e...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 2,
+          "earliest_published_at": "2026-08-30T23:12:13.359826Z",
+          "latest_published_at": "2026-08-30T23:42:13.359826Z",
+          "selection_rank": 1,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        },
+        {
+          "story_id": "9b34146c-123c-4199-b670-464908d136ec",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "ecb0b4f3-72ae-40d5-8e86-b098cb92abed",
+          "vertical": "entertainment",
+          "title": "Taylor Swift announces new world tour with three shows in Brazil",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 55.02,
+          "trend_signals": {
+            "source_diversity": 0.3333,
+            "recency": 0.7637,
+            "velocity": 1.0,
+            "authority": 0.79,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 68,
+          "editorial_sub_scores": {
+            "importance": 69,
+            "popularity": 68,
+            "shareability": 62,
+            "novelty": 75,
+            "audience_interest": 61,
+            "cultural_relevance": 69
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 62.16,
+          "final_score_notes": [
+            "final = 0.45*trend(55.0) + 0.55*editorial(68)"
+          ],
+          "classification": {
+            "cluster_id": "ecb0b4f3-72ae-40d5-8e86-b098cb92abed",
+            "primary_vertical": "entertainment",
+            "vertical_scores": {
+              "entertainment": 90,
+              "politics": 40,
+              "facts": 38
+            },
+            "classification_confidence": 0.93,
+            "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 2,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "0f32742f-be29-4f67-8c86-e801a5768f26",
+              "name": "Variety",
+              "url": "https://variety.com/2026/music/news/taylor-swift-world-tour-brazil",
+              "source_domain": "variety.com",
+              "published_at": "2026-08-30T22:12:13.359826Z",
+              "source_type": "media",
+              "authority_score": 80
+            },
+            "supporting_sources": [
+              {
+                "article_id": "2686b8b3-f412-4746-889f-d5020aee6b77",
+                "name": "Billboard",
+                "url": "https://www.billboard.com/music/pop/taylor-swift-tour-dates-2027",
+                "source_domain": "billboard.com",
+                "published_at": "2026-08-30T22:42:13.359826Z",
+                "source_type": "media",
+                "authority_score": 78
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "2 domínio(s) independente(s), 2 matéria(s); fonte oficial: não; autoridade máx.: 80. LLM: Mock: 2 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "fa4b91c3-7791-4704-8182-386024c5e81c",
+            "story_id": "9b34146c-123c-4199-b670-464908d136ec",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Taylor Swift announces new world tour with three shows in Brazil",
+            "instagram_headline": "Taylor Swift announces new world tour with three shows in...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Taylor Swift announces new world tour with three shows in Brazil.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Taylor Swift announces new world tour with three shows in...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#entretenimento",
+              "#cultura",
+              "#famosos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Taylor Swift announces new world tour with three shows in...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Taylor Swift announces new world tour with three shows in Brazil.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Taylor Swift announces new world tour with three shows in Brazil.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 2,
+          "earliest_published_at": "2026-08-30T22:12:13.359826Z",
+          "latest_published_at": "2026-08-30T22:42:13.359826Z",
+          "selection_rank": 2,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        },
+        {
+          "story_id": "e88039fc-1b05-4e0c-89fa-37e1872b169a",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "9afba664-bd0d-4cef-9b66-ba2bcf11cdae",
+          "vertical": "entertainment",
+          "title": "Netflix cancela série de sucesso após três temporadas e fãs reagem",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 46.47,
+          "trend_signals": {
+            "source_diversity": 0.3333,
+            "recency": 0.6804,
+            "velocity": 0.5,
+            "authority": 0.75,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 74,
+          "editorial_sub_scores": {
+            "importance": 71,
+            "popularity": 78,
+            "shareability": 67,
+            "novelty": 73,
+            "audience_interest": 70,
+            "cultural_relevance": 69
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 61.61,
+          "final_score_notes": [
+            "final = 0.45*trend(46.5) + 0.55*editorial(74)"
+          ],
+          "classification": {
+            "cluster_id": "9afba664-bd0d-4cef-9b66-ba2bcf11cdae",
+            "primary_vertical": "entertainment",
+            "vertical_scores": {
+              "entertainment": 80,
+              "politics": 38,
+              "facts": 35
+            },
+            "classification_confidence": 0.93,
+            "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 2,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "db045ef4-ba9f-435a-857f-d533355f6204",
+              "name": "G1",
+              "url": "https://g1.globo.com/pop-arte/noticia/2026/08/30/netflix-cancela-serie.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-08-30T20:12:13.359826Z",
+              "source_type": "agency_or_major",
+              "authority_score": 85
+            },
+            "supporting_sources": [
+              {
+                "article_id": "cbc6ec9a-e189-43a8-a341-59d00e83671c",
+                "name": "Omelete",
+                "url": "https://www.omelete.com.br/series-tv/netflix-cancelamento-temporada-final",
+                "source_domain": "omelete.com.br",
+                "published_at": "2026-08-30T21:12:13.359826Z",
+                "source_type": "media",
+                "authority_score": 65
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "2 domínio(s) independente(s), 2 matéria(s); fonte oficial: não; autoridade máx.: 85. LLM: Mock: 2 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "ee0e4d05-8cf0-4a65-89bc-a9326865aa73",
+            "story_id": "e88039fc-1b05-4e0c-89fa-37e1872b169a",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Netflix cancela série de sucesso após três temporadas e fãs reagem",
+            "instagram_headline": "Netflix cancela série de sucesso após três temporadas e f...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Netflix cancela série de sucesso após três temporadas e fãs reagem.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Netflix cancela série de sucesso após três temporadas e f...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#entretenimento",
+              "#cultura",
+              "#famosos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Netflix cancela série de sucesso após três temporadas e f...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Netflix cancela série de sucesso após três temporadas e fãs reagem.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Netflix cancela série de sucesso após três temporadas e fãs reagem.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 2,
+          "earliest_published_at": "2026-08-30T20:12:13.359826Z",
+          "latest_published_at": "2026-08-30T21:12:13.359826Z",
+          "selection_rank": 3,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        },
+        {
+          "story_id": "ef327655-074e-432b-b624-188b1b491a9d",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "f2bc1e4f-8c98-430f-926b-47d9254d825a",
+          "vertical": "entertainment",
+          "title": "Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 38.79,
+          "trend_signals": {
+            "source_diversity": 0.1667,
+            "recency": 0.8572,
+            "velocity": 0.0,
+            "authority": 0.7,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 82,
+          "editorial_sub_scores": {
+            "importance": 80,
+            "popularity": 83,
+            "shareability": 76,
+            "novelty": 77,
+            "audience_interest": 78,
+            "cultural_relevance": 80
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 58.56,
+          "final_score_notes": [
+            "final = 0.45*trend(38.8) + 0.55*editorial(82)",
+            "-4 no score final por PARTIALLY_VERIFIED"
+          ],
+          "classification": {
+            "cluster_id": "f2bc1e4f-8c98-430f-926b-47d9254d825a",
+            "primary_vertical": "entertainment",
+            "vertical_scores": {
+              "entertainment": 80,
+              "politics": 31,
+              "facts": 26
+            },
+            "classification_confidence": 0.65,
+            "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 1,
+            "independent_source_count": 1,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "f759b514-1fbd-4d3f-b240-a735fadded16",
+              "name": "Rolling Stone Brasil",
+              "url": "https://rollingstone.com.br/cinema/filme-brasileiro-oscar-2027",
+              "source_domain": "rollingstone.com.br",
+              "published_at": "2026-08-31T00:12:13.359826Z",
+              "source_type": "media",
+              "authority_score": 70
+            },
+            "supporting_sources": [],
+            "contradictions_found": [],
+            "verification_notes": "1 domínio(s) independente(s), 1 matéria(s); fonte oficial: não; autoridade máx.: 70. LLM: Mock: 1 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "8ff621fd-e0d3-410c-b69b-f28b7f3b3e19",
+            "story_id": "ef327655-074e-432b-b624-188b1b491a9d",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional",
+            "instagram_headline": "Filme brasileiro é indicado ao Oscar e eleva expectativa...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Filme brasileiro é indicado ao Oscar e eleva expectativa...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#entretenimento",
+              "#cultura",
+              "#famosos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Filme brasileiro é indicado ao Oscar e eleva expectativa...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 1,
+          "earliest_published_at": "2026-08-31T00:12:13.359826Z",
+          "latest_published_at": "2026-08-31T00:12:13.359826Z",
+          "selection_rank": 4,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        }
+      ]
+    },
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": true,
+      "candidates_considered": 6,
+      "stories": [
+        {
+          "story_id": "00e8345c-1ad7-47a6-ad4d-afcd35ccec72",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "3fd7fd87-6722-4c3b-bed3-7100cedf2e54",
+          "vertical": "politics",
+          "title": "Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 43.0,
+          "trend_signals": {
+            "source_diversity": 0.3333,
+            "recency": 0.4286,
+            "velocity": 0.5,
+            "authority": 0.865,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 82,
+          "editorial_sub_scores": {
+            "political_importance": 76,
+            "source_quality": 87,
+            "public_relevance": 85,
+            "election_relevance": 83,
+            "verification_strength": 82,
+            "institutional_relevance": 81
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 70.3,
+          "final_score_notes": [
+            "final = 0.30*trend(43.0) + 0.70*editorial(82)"
+          ],
+          "classification": {
+            "cluster_id": "3fd7fd87-6722-4c3b-bed3-7100cedf2e54",
+            "primary_vertical": "politics",
+            "vertical_scores": {
+              "entertainment": 36,
+              "politics": 78,
+              "facts": 21
+            },
+            "classification_confidence": 0.69,
+            "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+            "content_type": "OFFICIAL_DECISION",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 2,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "d0dcc051-d86a-4aee-aaa2-e9cf01db1377",
+              "name": "Agência Brasil",
+              "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/congresso-aprova-pec-emendas",
+              "source_domain": "agenciabrasil.ebc.com.br",
+              "published_at": "2026-08-30T14:12:13.359826Z",
+              "source_type": "agency_or_major",
+              "authority_score": 88
+            },
+            "supporting_sources": [
+              {
+                "article_id": "3811d434-f196-4ab6-b492-0603a3d45511",
+                "name": "G1",
+                "url": "https://g1.globo.com/politica/noticia/2026/08/30/camara-pec-emendas.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-08-30T15:12:13.359826Z",
+                "source_type": "agency_or_major",
+                "authority_score": 85
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "2 domínio(s) independente(s), 2 matéria(s); fonte oficial: não; autoridade máx.: 88. LLM: Mock: 2 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "2b8e2fc2-40d8-4a24-88ff-ba5167a0f567",
+            "story_id": "00e8345c-1ad7-47a6-ad4d-afcd35ccec72",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares",
+            "instagram_headline": "Congresso aprova em segundo turno PEC que muda regras de...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Congresso aprova em segundo turno PEC que muda regras de...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#politica",
+              "#eleicoes2026",
+              "#brasil"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Congresso aprova em segundo turno PEC que muda regras de...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 2,
+          "earliest_published_at": "2026-08-30T14:12:13.359826Z",
+          "latest_published_at": "2026-08-30T15:12:13.359826Z",
+          "selection_rank": 1,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        },
+        {
+          "story_id": "e2d644e6-b69f-4cf5-bf03-9d39622ec03e",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "f491084f-64fd-464b-ae57-149585788373",
+          "vertical": "politics",
+          "title": "TSE aprova resolução que endurece regras para propaganda eleitoral em 2026",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 62.56,
+          "trend_signals": {
+            "source_diversity": 0.5,
+            "recency": 0.7349,
+            "velocity": 1.0,
+            "authority": 0.8367,
+            "query_spread": 0.6667,
+            "novelty": 0.0
+          },
+          "editorial_score": 66,
+          "editorial_sub_scores": {
+            "political_importance": 61,
+            "source_quality": 64,
+            "public_relevance": 59,
+            "election_relevance": 64,
+            "verification_strength": 63,
+            "institutional_relevance": 72
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 64.97,
+          "final_score_notes": [
+            "final = 0.30*trend(62.6) + 0.70*editorial(66)"
+          ],
+          "classification": {
+            "cluster_id": "f491084f-64fd-464b-ae57-149585788373",
+            "primary_vertical": "politics",
+            "vertical_scores": {
+              "entertainment": 25,
+              "politics": 90,
+              "facts": 23
+            },
+            "classification_confidence": 0.67,
+            "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+            "content_type": "OFFICIAL_DECISION",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "3a2ad2ca-a56a-4fbc-bf92-529267c99bc5",
+              "name": "Agência Brasil",
+              "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-08/tse-aprova-resolucao-propaganda",
+              "source_domain": "agenciabrasil.ebc.com.br",
+              "published_at": "2026-08-30T21:12:13.359826Z",
+              "source_type": "agency_or_major",
+              "authority_score": 88
+            },
+            "supporting_sources": [
+              {
+                "article_id": "74ebf74b-2162-41e2-866b-eeb876daa132",
+                "name": "G1",
+                "url": "https://g1.globo.com/politica/noticia/2026/08/30/tse-regras-propaganda-2026.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-08-30T21:42:13.359826Z",
+                "source_type": "agency_or_major",
+                "authority_score": 85
+              },
+              {
+                "article_id": "bf5eea62-87e2-4006-b028-bf31e8ef2c2c",
+                "name": "Poder360",
+                "url": "https://www.poder360.com.br/eleicoes/tse-regras-propaganda-2026",
+                "source_domain": "poder360.com.br",
+                "published_at": "2026-08-30T22:12:13.359826Z",
+                "source_type": "media",
+                "authority_score": 78
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "3 domínio(s) independente(s), 3 matéria(s); fonte oficial: não; autoridade máx.: 88. LLM: Mock: 3 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "6e2d0b61-a6d5-49c7-bd1e-e56cba7181d8",
+            "story_id": "e2d644e6-b69f-4cf5-bf03-9d39622ec03e",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "TSE aprova resolução que endurece regras para propaganda eleitoral em 2026",
+            "instagram_headline": "TSE aprova resolução que endurece regras para propaganda...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: TSE aprova resolução que endurece regras para propaganda eleitoral em 2026.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "TSE aprova resolução que endurece regras para propaganda...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#politica",
+              "#eleicoes2026",
+              "#brasil"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "TSE aprova resolução que endurece regras para propaganda...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: TSE aprova resolução que endurece regras para propaganda eleitoral em 2026.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: TSE aprova resolução que endurece regras para propaganda eleitoral em 2026.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 3,
+          "earliest_published_at": "2026-08-30T21:12:13.359826Z",
+          "latest_published_at": "2026-08-30T22:12:13.359826Z",
+          "selection_rank": 2,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        }
+      ]
+    },
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 4,
+      "stories": [
+        {
+          "story_id": "ac806149-310e-4c64-9e6a-2697107f59cd",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "f5095006-16a5-44a4-9f70-32cad9223369",
+          "vertical": "facts",
+          "title": "Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 28.02,
+          "trend_signals": {
+            "source_diversity": 0.1667,
+            "recency": 0.3674,
+            "velocity": 0.0,
+            "authority": 0.7,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 88,
+          "editorial_sub_scores": {
+            "surprise": 93,
+            "novelty": 86,
+            "credibility": 81,
+            "shareability": 93,
+            "explainability": 93,
+            "educational_value": 91
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 73.0,
+          "final_score_notes": [
+            "final = 0.20*trend(28.0) + 0.80*editorial(88)",
+            "-3 no score final por PARTIALLY_VERIFIED"
+          ],
+          "classification": {
+            "cluster_id": "f5095006-16a5-44a4-9f70-32cad9223369",
+            "primary_vertical": "facts",
+            "vertical_scores": {
+              "entertainment": 26,
+              "politics": 34,
+              "facts": 84
+            },
+            "classification_confidence": 0.75,
+            "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 1,
+            "independent_source_count": 1,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "04f3f600-c0c0-4293-ac8e-b99a5b107d78",
+              "name": "Superinteressante",
+              "url": "https://super.abril.com.br/historia/cidade-perdida-amazonia-arqueologia",
+              "source_domain": "super.abril.com.br",
+              "published_at": "2026-08-30T13:12:13.359826Z",
+              "source_type": "media",
+              "authority_score": 70
+            },
+            "supporting_sources": [],
+            "contradictions_found": [],
+            "verification_notes": "1 domínio(s) independente(s), 1 matéria(s); fonte oficial: não; autoridade máx.: 70. LLM: Mock: 1 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "2b0f82eb-c0dc-40a8-8606-68351af7a6f5",
+            "story_id": "ac806149-310e-4c64-9e6a-2697107f59cd",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia",
+            "instagram_headline": "Arqueólogos encontram cidade perdida de 3.000 anos sob fl...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Arqueólogos encontram cidade perdida de 3.000 anos sob fl...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#curiosidades",
+              "#ciencia",
+              "#vocesabia"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Arqueólogos encontram cidade perdida de 3.000 anos sob fl...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 1,
+          "earliest_published_at": "2026-08-30T13:12:13.359826Z",
+          "latest_published_at": "2026-08-30T13:12:13.359826Z",
+          "selection_rank": 1,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        },
+        {
+          "story_id": "3de2f4bc-942a-4579-9726-02fcf1e518b3",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "3d16770c-336a-4ad1-8838-30935b3e3fbb",
+          "vertical": "facts",
+          "title": "Ancient lost city discovered beneath Amazon rainforest, researchers say",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 28.7,
+          "trend_signals": {
+            "source_diversity": 0.1667,
+            "recency": 0.3819,
+            "velocity": 0.0,
+            "authority": 0.72,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 77,
+          "editorial_sub_scores": {
+            "surprise": 80,
+            "novelty": 78,
+            "credibility": 82,
+            "shareability": 82,
+            "explainability": 81,
+            "educational_value": 71
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 64.34,
+          "final_score_notes": [
+            "final = 0.20*trend(28.7) + 0.80*editorial(77)",
+            "-3 no score final por PARTIALLY_VERIFIED"
+          ],
+          "classification": {
+            "cluster_id": "3d16770c-336a-4ad1-8838-30935b3e3fbb",
+            "primary_vertical": "facts",
+            "vertical_scores": {
+              "entertainment": 43,
+              "politics": 33,
+              "facts": 81
+            },
+            "classification_confidence": 0.78,
+            "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 1,
+            "independent_source_count": 1,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "48295e8a-7c5c-4980-b008-eea88376b3d4",
+              "name": "Live Science",
+              "url": "https://www.livescience.com/archaeology/lost-city-amazon-lidar",
+              "source_domain": "livescience.com",
+              "published_at": "2026-08-30T13:42:13.359826Z",
+              "source_type": "media",
+              "authority_score": 72
+            },
+            "supporting_sources": [],
+            "contradictions_found": [],
+            "verification_notes": "1 domínio(s) independente(s), 1 matéria(s); fonte oficial: não; autoridade máx.: 72. LLM: Mock: 1 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "a8bf5c29-0918-4a41-b655-9d0c24f7d7a8",
+            "story_id": "3de2f4bc-942a-4579-9726-02fcf1e518b3",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Ancient lost city discovered beneath Amazon rainforest, researchers say",
+            "instagram_headline": "Ancient lost city discovered beneath Amazon rainforest, r...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: Ancient lost city discovered beneath Amazon rainforest, researchers say.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "Ancient lost city discovered beneath Amazon rainforest, r...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#curiosidades",
+              "#ciencia",
+              "#vocesabia"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Ancient lost city discovered beneath Amazon rainforest, r...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: Ancient lost city discovered beneath Amazon rainforest, researchers say.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: Ancient lost city discovered beneath Amazon rainforest, researchers say.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 1,
+          "earliest_published_at": "2026-08-30T13:42:13.359826Z",
+          "latest_published_at": "2026-08-30T13:42:13.359826Z",
+          "selection_rank": 2,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        },
+        {
+          "story_id": "0d8177d3-d211-41d7-9b27-dc0d2062113d",
+          "run_id": "6ce33ad1-0c6d-4862-a3d1-c2e53faa2146",
+          "cluster_id": "22841618-f121-4bb8-905e-effd50a6ab13",
+          "vertical": "facts",
+          "title": "James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 44.75,
+          "trend_signals": {
+            "source_diversity": 0.3333,
+            "recency": 0.5,
+            "velocity": 0.5,
+            "authority": 0.875,
+            "query_spread": 0.3333,
+            "novelty": 0.0
+          },
+          "editorial_score": 68,
+          "editorial_sub_scores": {
+            "surprise": 72,
+            "novelty": 63,
+            "credibility": 73,
+            "shareability": 62,
+            "explainability": 69,
+            "educational_value": 62
+          },
+          "editorial_reason": "Mock: avaliação determinística simulada (hash do título).",
+          "red_flags": [],
+          "final_score": 63.35,
+          "final_score_notes": [
+            "final = 0.20*trend(44.8) + 0.80*editorial(68)"
+          ],
+          "classification": {
+            "cluster_id": "22841618-f121-4bb8-905e-effd50a6ab13",
+            "primary_vertical": "facts",
+            "vertical_scores": {
+              "entertainment": 30,
+              "politics": 37,
+              "facts": 82
+            },
+            "classification_confidence": 0.73,
+            "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+            "content_type": "FACT",
+            "assigned_by": "llm"
+          },
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 2,
+            "has_primary_source": true,
+            "primary_source": {
+              "article_id": "1679cf5d-fa73-4e24-9428-fc776ed9be7f",
+              "name": "NASA",
+              "url": "https://www.nasa.gov/missions/webb/webb-rocky-exoplanet-atmosphere",
+              "source_domain": "nasa.gov",
+              "published_at": "2026-08-30T16:12:13.359826Z",
+              "source_type": "official",
+              "authority_score": 95
+            },
+            "supporting_sources": [
+              {
+                "article_id": "9ad8c479-067d-4b83-9cfd-1635f467e8c7",
+                "name": "ScienceDaily",
+                "url": "https://www.sciencedaily.com/releases/2026/08/webb-exoplanet-atmosphere.htm",
+                "source_domain": "sciencedaily.com",
+                "published_at": "2026-08-30T17:12:13.359826Z",
+                "source_type": "media",
+                "authority_score": 80
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "2 domínio(s) independente(s), 2 matéria(s); fonte oficial: sim; autoridade máx.: 95. LLM: Mock: 2 domínio(s) independente(s) no cluster."
+          },
+          "draft": {
+            "draft_id": "26e21ad3-354e-4792-a88c-e50e805ba71e",
+            "story_id": "0d8177d3-d211-41d7-9b27-dc0d2062113d",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+            "instagram_headline": "James Webb telescope finds strongest evidence yet of atmo...",
+            "short_summary": "[MOCK] Resumo em 2 frases de: James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet.",
+            "why_it_matters": "[MOCK] Por que este acontecimento é relevante para a audiência.",
+            "key_facts": [
+              "[MOCK] Fato-chave 1",
+              "[MOCK] Fato-chave 2",
+              "[MOCK] Fato-chave 3"
+            ],
+            "caption": "James Webb telescope finds strongest evidence yet of atmo...\n\n[MOCK] Caption simulada com 2-3 frases sobre o acontecimento. Siga para mais notícias como essa.",
+            "hashtags": [
+              "#curiosidades",
+              "#ciencia",
+              "#vocesabia"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "James Webb telescope finds strongest evidence yet of atmo...",
+                "body": "Entenda em 5 slides o que aconteceu e por que importa.",
+                "image_direction": "Imagem forte e direta relacionada a: James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "[MOCK] Contexto resumido do acontecimento: James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet.",
+                "image_direction": "Foto de contexto do assunto, plano aberto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O que se sabe",
+                "body": "[MOCK] Fato 1; fato 2; fato 3 — extraídos das fontes do cluster.",
+                "image_direction": "Foto/desdobramento principal citado nas fontes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "[MOCK] O impacto prático disso para o público da vertical.",
+                "image_direction": "Ilustração conceitual do impacto (arte limpa).",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "[MOCK] Próximos passos esperados. Siga para acompanhar.",
+                "image_direction": "Imagem de fechamento coerente com o tema.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-08-31T02:12:13.461242Z"
+          },
+          "article_count": 2,
+          "earliest_published_at": "2026-08-30T16:12:13.359826Z",
+          "latest_published_at": "2026-08-30T17:12:13.359826Z",
+          "selection_rank": 3,
+          "created_at": "2026-08-31T02:12:13.461242Z"
+        }
+      ]
+    }
+  },
+  "debug": {
+    "articles": [
+      {
+        "article_id": "bcae0a46-8ffa-4e83-85f9-1825c35bd657",
+        "title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+        "normalized_title": "indicados ao oscar 2027 são anunciados brasil concorre em duas categorias",
+        "description": "Academia divulgou a lista completa de indicados; produção brasileira disputa melhor filme internacional e documentário.",
+        "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/08/30/indicados-oscar.ghtml",
+        "canonical_url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/08/30/indicados-oscar.ghtml",
+        "source_name": "G1",
+        "source_domain": "g1.globo.com",
+        "published_at": "2026-08-30T23:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "premiação OR festival cultura pop",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 85
+      },
+      {
+        "article_id": "9a020507-c009-46ef-aeb1-5f74413afbbf",
+        "title": "Oscar 2027: veja a lista completa de indicados ao prêmio da Academia",
+        "normalized_title": "oscar 2027 veja a lista completa de indicados ao prêmio da academia",
+        "description": "Anúncio dos indicados aconteceu na manhã desta sexta; filme brasileiro está entre os concorrentes.",
+        "url": "https://www.folha.uol.com.br/ilustrada/2026/08/oscar-2027-indicados.shtml",
+        "canonical_url": "https://www.folha.uol.com.br/ilustrada/2026/08/oscar-2027-indicados.shtml",
+        "source_name": "Folha de S.Paulo",
+        "source_domain": "folha.uol.com.br",
+        "published_at": "2026-08-30T23:42:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "premiação OR festival cultura pop",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 85
+      },
+      {
+        "article_id": "f759b514-1fbd-4d3f-b240-a735fadded16",
+        "title": "Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional",
+        "normalized_title": "filme brasileiro é indicado ao oscar e eleva expectativa no cinema nacional",
+        "description": "Indicação anunciada pela Academia coloca produção nacional na disputa da estatueta.",
+        "url": "https://rollingstone.com.br/cinema/filme-brasileiro-oscar-2027",
+        "canonical_url": "https://rollingstone.com.br/cinema/filme-brasileiro-oscar-2027",
+        "source_name": "Rolling Stone Brasil",
+        "source_domain": "rollingstone.com.br",
+        "published_at": "2026-08-31T00:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "filme estreia OR bilheteria",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 70
+      },
+      {
+        "article_id": "db045ef4-ba9f-435a-857f-d533355f6204",
+        "title": "Netflix cancela série de sucesso após três temporadas e fãs reagem",
+        "normalized_title": "netflix cancela série de sucesso após três temporadas e fãs reagem",
+        "description": "Streaming confirmou o cancelamento em nota; última temporada estreia em 2027.",
+        "url": "https://g1.globo.com/pop-arte/noticia/2026/08/30/netflix-cancela-serie.ghtml",
+        "canonical_url": "https://g1.globo.com/pop-arte/noticia/2026/08/30/netflix-cancela-serie.ghtml",
+        "source_name": "G1",
+        "source_domain": "g1.globo.com",
+        "published_at": "2026-08-30T20:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "série OR streaming OR Netflix",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 85
+      },
+      {
+        "article_id": "cbc6ec9a-e189-43a8-a341-59d00e83671c",
+        "title": "Netflix cancela série aclamada e anuncia temporada final para 2027",
+        "normalized_title": "netflix cancela série aclamada e anuncia temporada final para 2027",
+        "description": "Decisão foi comunicada aos fãs nesta quinta-feira pela plataforma.",
+        "url": "https://www.omelete.com.br/series-tv/netflix-cancelamento-temporada-final",
+        "canonical_url": "https://www.omelete.com.br/series-tv/netflix-cancelamento-temporada-final",
+        "source_name": "Omelete",
+        "source_domain": "omelete.com.br",
+        "published_at": "2026-08-30T21:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "série OR streaming OR Netflix",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 65
+      },
+      {
+        "article_id": "0f32742f-be29-4f67-8c86-e801a5768f26",
+        "title": "Taylor Swift announces new world tour with three shows in Brazil",
+        "normalized_title": "taylor swift announces new world tour with three shows in brazil",
+        "description": "The singer confirmed 2027 tour dates including São Paulo and Rio de Janeiro stops.",
+        "url": "https://variety.com/2026/music/news/taylor-swift-world-tour-brazil",
+        "canonical_url": "https://variety.com/2026/music/news/taylor-swift-world-tour-brazil",
+        "source_name": "Variety",
+        "source_domain": "variety.com",
+        "published_at": "2026-08-30T22:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "music album release tour",
+        "collector": "fixture",
+        "language": "en",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 80
+      },
+      {
+        "article_id": "2686b8b3-f412-4746-889f-d5020aee6b77",
+        "title": "Taylor Swift reveals world tour dates, Brazil included",
+        "normalized_title": "taylor swift reveals world tour dates brazil included",
+        "description": "Pop star announces stadium tour for 2027 with Latin America leg.",
+        "url": "https://www.billboard.com/music/pop/taylor-swift-tour-dates-2027",
+        "canonical_url": "https://www.billboard.com/music/pop/taylor-swift-tour-dates-2027",
+        "source_name": "Billboard",
+        "source_domain": "billboard.com",
+        "published_at": "2026-08-30T22:42:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "music album release tour",
+        "collector": "fixture",
+        "language": "en",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 78
+      },
+      {
+        "article_id": "7ada9ec5-1fe6-468f-a4e3-b32861b66b50",
+        "title": "Suposto affair de atriz famosa com jogador estaria abalando bastidores de novela",
+        "normalized_title": "suposto affair de atriz famosa com jogador estaria abalando bastidores de novela",
+        "description": "Rumor circula em perfis de fofoca; nenhuma das partes confirmou.",
+        "url": "https://portalfofoca.com.br/famosos/affair-atriz-jogador",
+        "canonical_url": "https://portalfofoca.com.br/famosos/affair-atriz-jogador",
+        "source_name": "Portal Fofoca",
+        "source_domain": "portalfofoca.com.br",
+        "published_at": "2026-08-30T19:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "famosos OR celebridades",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 30
+      },
+      {
+        "article_id": "3a2ad2ca-a56a-4fbc-bf92-529267c99bc5",
+        "title": "TSE aprova resolução que endurece regras para propaganda eleitoral em 2026",
+        "normalized_title": "tse aprova resolução que endurece regras para propaganda eleitoral em 2026",
+        "description": "Plenário do tribunal aprovou por unanimidade novas regras para impulsionamento de conteúdo e uso de IA nas campanhas.",
+        "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-08/tse-aprova-resolucao-propaganda",
+        "canonical_url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-08/tse-aprova-resolucao-propaganda",
+        "source_name": "Agência Brasil",
+        "source_domain": "agenciabrasil.ebc.com.br",
+        "published_at": "2026-08-30T21:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "TSE",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 88
+      },
+      {
+        "article_id": "74ebf74b-2162-41e2-866b-eeb876daa132",
+        "title": "TSE endurece regras de propaganda eleitoral e uso de IA para eleições de 2026",
+        "normalized_title": "tse endurece regras de propaganda eleitoral e uso de ia para eleições de 2026",
+        "description": "Resolução aprovada nesta quinta define limites para conteúdo impulsionado e peças geradas por inteligência artificial.",
+        "url": "https://g1.globo.com/politica/noticia/2026/08/30/tse-regras-propaganda-2026.ghtml",
+        "canonical_url": "https://g1.globo.com/politica/noticia/2026/08/30/tse-regras-propaganda-2026.ghtml",
+        "source_name": "G1",
+        "source_domain": "g1.globo.com",
+        "published_at": "2026-08-30T21:42:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "TSE",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 85
+      },
+      {
+        "article_id": "bf5eea62-87e2-4006-b028-bf31e8ef2c2c",
+        "title": "Novas regras do TSE para propaganda em 2026: o que muda na prática",
+        "normalized_title": "novas regras do tse para propaganda em 2026 o que muda na prática",
+        "description": "Tribunal aprovou resolução sobre propaganda eleitoral; especialistas apontam impacto no uso de redes sociais.",
+        "url": "https://www.poder360.com.br/eleicoes/tse-regras-propaganda-2026",
+        "canonical_url": "https://www.poder360.com.br/eleicoes/tse-regras-propaganda-2026",
+        "source_name": "Poder360",
+        "source_domain": "poder360.com.br",
+        "published_at": "2026-08-30T22:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "eleições 2026",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 78
+      },
+      {
+        "article_id": "33de547f-dc16-4040-81ab-8fddf0c60bd6",
+        "title": "Pesquisa eleitoral mostra empate técnico na disputa presidencial de 2026",
+        "normalized_title": "pesquisa eleitoral mostra empate técnico na disputa presidencial de 2026",
+        "description": "Levantamento do instituto Quaest, contratado pela Genial, ouviu 2.000 eleitores entre 25 e 28/08; margem de erro de 2 pontos.",
+        "url": "https://www.poder360.com.br/eleicoes/pesquisa-quaest-empate-tecnico",
+        "canonical_url": "https://www.poder360.com.br/eleicoes/pesquisa-quaest-empate-tecnico",
+        "source_name": "Poder360",
+        "source_domain": "poder360.com.br",
+        "published_at": "2026-08-30T18:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "pesquisa eleitoral presidente",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 78
+      },
+      {
+        "article_id": "f6679dfc-4e02-4975-acb1-52eb800d65ee",
+        "title": "Quaest: cenário presidencial de 2026 tem empate técnico entre principais nomes",
+        "normalized_title": "quaest cenário presidencial de 2026 tem empate técnico entre principais nomes",
+        "description": "Pesquisa registrada no TSE aponta cenário embolado a 14 meses da eleição; margem de erro é de dois pontos.",
+        "url": "https://www.folha.uol.com.br/poder/2026/08/pesquisa-quaest-presidencial.shtml",
+        "canonical_url": "https://www.folha.uol.com.br/poder/2026/08/pesquisa-quaest-presidencial.shtml",
+        "source_name": "Folha de S.Paulo",
+        "source_domain": "folha.uol.com.br",
+        "published_at": "2026-08-30T18:42:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "pesquisa eleitoral presidente",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 85
+      },
+      {
+        "article_id": "0bcb49a3-d7cd-4c05-9ca7-be298e81c8d4",
+        "title": "Candidato afirma que vai zerar imposto de renda para quem ganha até R$ 10 mil",
+        "normalized_title": "candidato afirma que vai zerar imposto de renda para quem ganha até r 10 mil",
+        "description": "Declaração foi dada em evento de pré-campanha; equipe econômica do candidato não detalhou como compensar a perda de receita.",
+        "url": "https://www.poder360.com.br/eleicoes/candidato-promete-zerar-ir",
+        "canonical_url": "https://www.poder360.com.br/eleicoes/candidato-promete-zerar-ir",
+        "source_name": "Poder360",
+        "source_domain": "poder360.com.br",
+        "published_at": "2026-08-30T17:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "candidato presidência 2026",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 78
+      },
+      {
+        "article_id": "d0dcc051-d86a-4aee-aaa2-e9cf01db1377",
+        "title": "Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares",
+        "normalized_title": "congresso aprova em segundo turno pec que muda regras de emendas parlamentares",
+        "description": "Texto aprovado por 312 votos segue para promulgação; mudança afeta execução orçamentária a partir de 2027.",
+        "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/congresso-aprova-pec-emendas",
+        "canonical_url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/congresso-aprova-pec-emendas",
+        "source_name": "Agência Brasil",
+        "source_domain": "agenciabrasil.ebc.com.br",
+        "published_at": "2026-08-30T14:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "Congresso Nacional votação",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 88
+      },
+      {
+        "article_id": "3811d434-f196-4ab6-b492-0603a3d45511",
+        "title": "Câmara conclui votação de PEC das emendas e texto vai à promulgação",
+        "normalized_title": "câmara conclui votação de pec das emendas e texto vai à promulgação",
+        "description": "Deputados aprovaram em segundo turno a proposta que altera regras de execução de emendas.",
+        "url": "https://g1.globo.com/politica/noticia/2026/08/30/camara-pec-emendas.ghtml",
+        "canonical_url": "https://g1.globo.com/politica/noticia/2026/08/30/camara-pec-emendas.ghtml",
+        "source_name": "G1",
+        "source_domain": "g1.globo.com",
+        "published_at": "2026-08-30T15:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "Congresso Nacional votação",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 85
+      },
+      {
+        "article_id": "1679cf5d-fa73-4e24-9428-fc776ed9be7f",
+        "title": "James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+        "normalized_title": "james webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+        "description": "NASA announced the telescope detected signs of a carbon-dioxide atmosphere on a rocky world 40 light-years away, a first for planetary science.",
+        "url": "https://www.nasa.gov/missions/webb/webb-rocky-exoplanet-atmosphere",
+        "canonical_url": "https://www.nasa.gov/missions/webb/webb-rocky-exoplanet-atmosphere",
+        "source_name": "NASA",
+        "source_domain": "nasa.gov",
+        "published_at": "2026-08-30T16:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "space astronomy discovery",
+        "collector": "fixture",
+        "language": "en",
+        "country": "",
+        "possible_vertical": "facts",
+        "authority_score": 95
+      },
+      {
+        "article_id": "9ad8c479-067d-4b83-9cfd-1635f467e8c7",
+        "title": "Webb detects possible atmosphere around rocky exoplanet for the first time",
+        "normalized_title": "webb detects possible atmosphere around rocky exoplanet for the first time",
+        "description": "Astronomers report carbon dioxide signatures on a rocky planet orbiting a nearby star, according to a study in Nature.",
+        "url": "https://www.sciencedaily.com/releases/2026/08/webb-exoplanet-atmosphere.htm",
+        "canonical_url": "https://www.sciencedaily.com/releases/2026/08/webb-exoplanet-atmosphere.htm",
+        "source_name": "ScienceDaily",
+        "source_domain": "sciencedaily.com",
+        "published_at": "2026-08-30T17:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "space astronomy discovery",
+        "collector": "fixture",
+        "language": "en",
+        "country": "",
+        "possible_vertical": "facts",
+        "authority_score": 80
+      },
+      {
+        "article_id": "04f3f600-c0c0-4293-ac8e-b99a5b107d78",
+        "title": "Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia",
+        "normalized_title": "arqueólogos encontram cidade perdida de 3 000 anos sob floresta na amazônia",
+        "description": "Escavação liderada por universidade brasileira revelou estruturas urbanas conectadas por estradas; achado foi publicado na Science.",
+        "url": "https://super.abril.com.br/historia/cidade-perdida-amazonia-arqueologia",
+        "canonical_url": "https://super.abril.com.br/historia/cidade-perdida-amazonia-arqueologia",
+        "source_name": "Superinteressante",
+        "source_domain": "super.abril.com.br",
+        "published_at": "2026-08-30T13:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "arqueologia descoberta fóssil",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "facts",
+        "authority_score": 70
+      },
+      {
+        "article_id": "48295e8a-7c5c-4980-b008-eea88376b3d4",
+        "title": "Ancient lost city discovered beneath Amazon rainforest, researchers say",
+        "normalized_title": "ancient lost city discovered beneath amazon rainforest researchers say",
+        "description": "Lidar mapping revealed a 3,000-year-old urban network in the Amazon basin, published in Science.",
+        "url": "https://www.livescience.com/archaeology/lost-city-amazon-lidar",
+        "canonical_url": "https://www.livescience.com/archaeology/lost-city-amazon-lidar",
+        "source_name": "Live Science",
+        "source_domain": "livescience.com",
+        "published_at": "2026-08-30T13:42:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "archaeology ancient discovery",
+        "collector": "fixture",
+        "language": "en",
+        "country": "",
+        "possible_vertical": "facts",
+        "authority_score": 72
+      },
+      {
+        "article_id": "7cec63b6-1452-4ff3-8d16-5addd9ffacff",
+        "title": "Estudo revela que polvos sonham e mudam de cor enquanto dormem",
+        "normalized_title": "estudo revela que polvos sonham e mudam de cor enquanto dormem",
+        "description": "Pesquisadores da Universidade Federal do Rio Grande do Norte documentaram ciclos de sono ativo em polvos, com mudanças de cor e textura.",
+        "url": "https://www.smithsonianmag.com/smart-news/octopus-dreams-color-study",
+        "canonical_url": "https://www.smithsonianmag.com/smart-news/octopus-dreams-color-study",
+        "source_name": "Smithsonian Magazine",
+        "source_domain": "smithsonianmag.com",
+        "published_at": "2026-08-30T12:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "animal species research",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "facts",
+        "authority_score": 80
+      },
+      {
+        "article_id": "bca112b0-a084-4d76-b6f1-b74151f8ac53",
+        "title": "Horóscopo do dia: veja as previsões para seu signo nesta sexta-feira",
+        "normalized_title": "horóscopo do dia veja as previsões para seu signo nesta sexta feira",
+        "description": "Confira o que os astros reservam para você hoje.",
+        "url": "https://portalastral.com.br/horoscopo-do-dia-30-08",
+        "canonical_url": "https://portalastral.com.br/horoscopo-do-dia-30-08",
+        "source_name": "Portal Astral",
+        "source_domain": "portalastral.com.br",
+        "published_at": "2026-08-31T00:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "famosos OR celebridades",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 20
+      },
+      {
+        "article_id": "dc382b08-df8e-4c9a-980a-a4938745684d",
+        "title": "Promoção: assine o plano anual com 60% de desconto por tempo limitado",
+        "normalized_title": "promoção assine o plano anual com 60 de desconto por tempo limitado",
+        "description": "Oferta válida até domingo; aproveite o cupom NEWS60.",
+        "url": "https://ofertas.example-news.com.br/assinatura-desconto",
+        "canonical_url": "https://ofertas.example-news.com.br/assinatura-desconto",
+        "source_name": "Ofertas News",
+        "source_domain": "ofertas.example-news.com.br",
+        "published_at": "2026-08-31T01:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "rss:Ofertas",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": null,
+        "authority_score": 10
+      },
+      {
+        "article_id": "b35521a0-203b-4e69-8c73-ce8386b20b6c",
+        "title": "Opinião: por que o governo erra ao apostar tudo na agenda econômica",
+        "normalized_title": "opinião por que o governo erra ao apostar tudo na agenda econômica",
+        "description": "Artigo de opinião analisa as escolhas recentes do Executivo.",
+        "url": "https://www.estadao.com.br/opiniao/governo-agenda-economica",
+        "canonical_url": "https://www.estadao.com.br/opiniao/governo-agenda-economica",
+        "source_name": "Estadão",
+        "source_domain": "estadao.com.br",
+        "published_at": "2026-08-30T20:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "governo federal decisão",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 82
+      },
+      {
+        "article_id": "61119176-6fe5-4bc1-9dc6-4d1ee5dc03ff",
+        "title": "Lula viaja à Argentina para cúpula do Mercosul na próxima semana",
+        "normalized_title": "lula viaja à argentina para cúpula do mercosul na próxima semana",
+        "description": "Presidente participa de reunião do bloco em Buenos Aires com pauta comercial.",
+        "url": "https://g1.globo.com/politica/noticia/2026/08/30/lula-argentina-mercosul.ghtml",
+        "canonical_url": "https://g1.globo.com/politica/noticia/2026/08/30/lula-argentina-mercosul.ghtml",
+        "source_name": "G1",
+        "source_domain": "g1.globo.com",
+        "published_at": "2026-08-30T11:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "governo federal decisão",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 85
+      },
+      {
+        "article_id": "3e87c09d-60b1-423a-9738-06b8044a3865",
+        "title": "Lula viaja a Angola em visita oficial para acordos de cooperação",
+        "normalized_title": "lula viaja a angola em visita oficial para acordos de cooperação",
+        "description": "Presidente cumpre agenda bilateral em Luanda com foco em energia e educação.",
+        "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/lula-angola-visita",
+        "canonical_url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/lula-angola-visita",
+        "source_name": "Agência Brasil",
+        "source_domain": "agenciabrasil.ebc.com.br",
+        "published_at": "2026-08-30T10:12:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "governo federal decisão",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "politics",
+        "authority_score": 88
+      },
+      {
+        "article_id": "d64256e8-edd9-4809-8255-9f92f3181b94",
+        "title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+        "normalized_title": "indicados ao oscar 2027 são anunciados brasil concorre em duas categorias",
+        "description": "Academia divulgou a lista completa de indicados; produção brasileira disputa melhor filme internacional e documentário.",
+        "url": "https://www.uol.com.br/splash/noticias/2026/08/30/oscar-indicados-brasil.htm",
+        "canonical_url": "https://www.uol.com.br/splash/noticias/2026/08/30/oscar-indicados-brasil.htm",
+        "source_name": "UOL",
+        "source_domain": "uol.com.br",
+        "published_at": "2026-08-30T23:24:13.359826Z",
+        "collected_at": "2026-08-31T02:12:13.359826Z",
+        "original_query": "premiação OR festival cultura pop",
+        "collector": "fixture",
+        "language": "pt",
+        "country": "",
+        "possible_vertical": "entertainment",
+        "authority_score": 75
+      }
+    ],
+    "dedup_removals": [
+      {
+        "article_id": "d64256e8-edd9-4809-8255-9f92f3181b94",
+        "title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+        "url": "https://www.uol.com.br/splash/noticias/2026/08/30/oscar-indicados-brasil.htm",
+        "source_domain": "uol.com.br",
+        "reason": "syndication_titulo_identico",
+        "kept_article_id": "bcae0a46-8ffa-4e83-85f9-1825c35bd657",
+        "similarity": 100.0
+      }
+    ],
+    "clusters": [
+      {
+        "cluster_id": "f491084f-64fd-464b-ae57-149585788373",
+        "canonical_title": "TSE aprova resolução que endurece regras para propaganda eleitoral em 2026",
+        "size": 3,
+        "domains": [
+          "agenciabrasil.ebc.com.br",
+          "g1.globo.com",
+          "poder360.com.br"
+        ],
+        "languages": {
+          "pt": 3
+        },
+        "queries": [
+          "TSE",
+          "eleições 2026"
+        ],
+        "trend_score": 62.56,
+        "trend_signals": {
+          "source_diversity": 0.5,
+          "recency": 0.7349,
+          "velocity": 1.0,
+          "authority": 0.8367,
+          "query_spread": 0.6667,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "TSE aprova resolução que endurece regras para propaganda eleitoral em 2026",
+          "TSE endurece regras de propaganda eleitoral e uso de IA para eleições de 2026",
+          "Novas regras do TSE para propaganda em 2026: o que muda na prática"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "a2027ea4-bd7f-4f3b-a7d6-6ca158b081fe",
+        "canonical_title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+        "size": 2,
+        "domains": [
+          "folha.uol.com.br",
+          "g1.globo.com"
+        ],
+        "languages": {
+          "pt": 2
+        },
+        "queries": [
+          "premiação OR festival cultura pop"
+        ],
+        "trend_score": 57.45,
+        "trend_signals": {
+          "source_diversity": 0.3333,
+          "recency": 0.8249,
+          "velocity": 1.0,
+          "authority": 0.85,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+          "Oscar 2027: veja a lista completa de indicados ao prêmio da Academia"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "ecb0b4f3-72ae-40d5-8e86-b098cb92abed",
+        "canonical_title": "Taylor Swift announces new world tour with three shows in Brazil",
+        "size": 2,
+        "domains": [
+          "billboard.com",
+          "variety.com"
+        ],
+        "languages": {
+          "en": 2
+        },
+        "queries": [
+          "music album release tour"
+        ],
+        "trend_score": 55.02,
+        "trend_signals": {
+          "source_diversity": 0.3333,
+          "recency": 0.7637,
+          "velocity": 1.0,
+          "authority": 0.79,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Taylor Swift announces new world tour with three shows in Brazil",
+          "Taylor Swift reveals world tour dates, Brazil included"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "6d4c4163-66d0-4cae-b575-3424e86706c4",
+        "canonical_title": "Quaest: cenário presidencial de 2026 tem empate técnico entre principais nomes",
+        "size": 2,
+        "domains": [
+          "folha.uol.com.br",
+          "poder360.com.br"
+        ],
+        "languages": {
+          "pt": 2
+        },
+        "queries": [
+          "pesquisa eleitoral presidente"
+        ],
+        "trend_score": 51.02,
+        "trend_signals": {
+          "source_diversity": 0.3333,
+          "recency": 0.5612,
+          "velocity": 1.0,
+          "authority": 0.815,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Pesquisa eleitoral mostra empate técnico na disputa presidencial de 2026",
+          "Quaest: cenário presidencial de 2026 tem empate técnico entre principais nomes"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "72e89297-b6d0-4ee3-9ea7-99b88b48495b",
+        "canonical_title": "Promoção: assine o plano anual com 60% de desconto por tempo limitado",
+        "size": 1,
+        "domains": [
+          "ofertas.example-news.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "rss:Ofertas"
+        ],
+        "trend_score": 48.7,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.9259,
+          "velocity": 0.0,
+          "authority": 0.5,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Promoção: assine o plano anual com 60% de desconto por tempo limitado"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "34859415-6d75-4f8e-98f6-0ae008364420",
+        "canonical_title": "Opinião: por que o governo erra ao apostar tudo na agenda econômica",
+        "size": 1,
+        "domains": [
+          "estadao.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "governo federal decisão"
+        ],
+        "trend_score": 47.95,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.63,
+          "velocity": 0.0,
+          "authority": 0.82,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Opinião: por que o governo erra ao apostar tudo na agenda econômica"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "acc19cc9-c471-47c2-886b-96a966732bf2",
+        "canonical_title": "Horóscopo do dia: veja as previsões para seu signo nesta sexta-feira",
+        "size": 1,
+        "domains": [
+          "portalastral.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "famosos OR celebridades"
+        ],
+        "trend_score": 47.19,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.8572,
+          "velocity": 0.0,
+          "authority": 0.5,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Horóscopo do dia: veja as previsões para seu signo nesta sexta-feira"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "9afba664-bd0d-4cef-9b66-ba2bcf11cdae",
+        "canonical_title": "Netflix cancela série de sucesso após três temporadas e fãs reagem",
+        "size": 2,
+        "domains": [
+          "g1.globo.com",
+          "omelete.com.br"
+        ],
+        "languages": {
+          "pt": 2
+        },
+        "queries": [
+          "série OR streaming OR Netflix"
+        ],
+        "trend_score": 46.47,
+        "trend_signals": {
+          "source_diversity": 0.3333,
+          "recency": 0.6804,
+          "velocity": 0.5,
+          "authority": 0.75,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Netflix cancela série de sucesso após três temporadas e fãs reagem",
+          "Netflix cancela série aclamada e anuncia temporada final para 2027"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "22841618-f121-4bb8-905e-effd50a6ab13",
+        "canonical_title": "James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+        "size": 2,
+        "domains": [
+          "nasa.gov",
+          "sciencedaily.com"
+        ],
+        "languages": {
+          "en": 2
+        },
+        "queries": [
+          "space astronomy discovery"
+        ],
+        "trend_score": 44.75,
+        "trend_signals": {
+          "source_diversity": 0.3333,
+          "recency": 0.5,
+          "velocity": 0.5,
+          "authority": 0.875,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+          "Webb detects possible atmosphere around rocky exoplanet for the first time"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "d49868b9-bbf7-4e8c-9e1f-81b8bc04e50a",
+        "canonical_title": "Candidato afirma que vai zerar imposto de renda para quem ganha até R$ 10 mil",
+        "size": 1,
+        "domains": [
+          "poder360.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "candidato presidência 2026"
+        ],
+        "trend_score": 44.37,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.5,
+          "velocity": 0.0,
+          "authority": 0.78,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Candidato afirma que vai zerar imposto de renda para quem ganha até R$ 10 mil"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "3fd7fd87-6722-4c3b-bed3-7100cedf2e54",
+        "canonical_title": "Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares",
+        "size": 2,
+        "domains": [
+          "agenciabrasil.ebc.com.br",
+          "g1.globo.com"
+        ],
+        "languages": {
+          "pt": 2
+        },
+        "queries": [
+          "Congresso Nacional votação"
+        ],
+        "trend_score": 43.0,
+        "trend_signals": {
+          "source_diversity": 0.3333,
+          "recency": 0.4286,
+          "velocity": 0.5,
+          "authority": 0.865,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares",
+          "Câmara conclui votação de PEC das emendas e texto vai à promulgação"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "9d303c45-d918-4070-8045-225e58060656",
+        "canonical_title": "Lula viaja à Argentina para cúpula do Mercosul na próxima semana",
+        "size": 1,
+        "domains": [
+          "g1.globo.com"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "governo federal decisão"
+        ],
+        "trend_score": 41.56,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.315,
+          "velocity": 0.0,
+          "authority": 0.85,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Lula viaja à Argentina para cúpula do Mercosul na próxima semana"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "16c06083-c184-4eb0-b541-93efbf37cd68",
+        "canonical_title": "Estudo revela que polvos sonham e mudam de cor enquanto dormem",
+        "size": 1,
+        "domains": [
+          "smithsonianmag.com"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "animal species research"
+        ],
+        "trend_score": 41.22,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.3402,
+          "velocity": 0.0,
+          "authority": 0.8,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Estudo revela que polvos sonham e mudam de cor enquanto dormem"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "90a71f37-c194-4f30-b50a-380bf2446f2b",
+        "canonical_title": "Suposto affair de atriz famosa com jogador estaria abalando bastidores de novela",
+        "size": 1,
+        "domains": [
+          "portalfofoca.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "famosos OR celebridades"
+        ],
+        "trend_score": 41.17,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.5833,
+          "velocity": 0.0,
+          "authority": 0.5,
+          "query_spread": 0.3333,
+          "novelty": 1.0
+        },
+        "article_titles": [
+          "Suposto affair de atriz famosa com jogador estaria abalando bastidores de novela"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "f2bc1e4f-8c98-430f-926b-47d9254d825a",
+        "canonical_title": "Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional",
+        "size": 1,
+        "domains": [
+          "rollingstone.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "filme estreia OR bilheteria"
+        ],
+        "trend_score": 38.79,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.8572,
+          "velocity": 0.0,
+          "authority": 0.7,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "3fe49e54-41a4-4cd5-a919-f617aae7c81c",
+        "canonical_title": "Lula viaja a Angola em visita oficial para acordos de cooperação",
+        "size": 1,
+        "domains": [
+          "agenciabrasil.ebc.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "governo federal decisão"
+        ],
+        "trend_score": 29.59,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.2916,
+          "velocity": 0.0,
+          "authority": 0.88,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Lula viaja a Angola em visita oficial para acordos de cooperação"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "3d16770c-336a-4ad1-8838-30935b3e3fbb",
+        "canonical_title": "Ancient lost city discovered beneath Amazon rainforest, researchers say",
+        "size": 1,
+        "domains": [
+          "livescience.com"
+        ],
+        "languages": {
+          "en": 1
+        },
+        "queries": [
+          "archaeology ancient discovery"
+        ],
+        "trend_score": 28.7,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.3819,
+          "velocity": 0.0,
+          "authority": 0.72,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Ancient lost city discovered beneath Amazon rainforest, researchers say"
+        ],
+        "sent_to_classification": true
+      },
+      {
+        "cluster_id": "f5095006-16a5-44a4-9f70-32cad9223369",
+        "canonical_title": "Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia",
+        "size": 1,
+        "domains": [
+          "super.abril.com.br"
+        ],
+        "languages": {
+          "pt": 1
+        },
+        "queries": [
+          "arqueologia descoberta fóssil"
+        ],
+        "trend_score": 28.02,
+        "trend_signals": {
+          "source_diversity": 0.1667,
+          "recency": 0.3674,
+          "velocity": 0.0,
+          "authority": 0.7,
+          "query_spread": 0.3333,
+          "novelty": 0.0
+        },
+        "article_titles": [
+          "Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia"
+        ],
+        "sent_to_classification": true
+      }
+    ],
+    "classifications": [
+      {
+        "cluster_id": "a2027ea4-bd7f-4f3b-a7d6-6ca158b081fe",
+        "primary_vertical": "entertainment",
+        "vertical_scores": {
+          "entertainment": 78,
+          "politics": 15,
+          "facts": 31
+        },
+        "classification_confidence": 0.83,
+        "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "ecb0b4f3-72ae-40d5-8e86-b098cb92abed",
+        "primary_vertical": "entertainment",
+        "vertical_scores": {
+          "entertainment": 90,
+          "politics": 40,
+          "facts": 38
+        },
+        "classification_confidence": 0.93,
+        "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "acc19cc9-c471-47c2-886b-96a966732bf2",
+        "primary_vertical": "discard",
+        "vertical_scores": {
+          "entertainment": 18,
+          "politics": 43,
+          "facts": 30
+        },
+        "classification_confidence": 0.69,
+        "classification_reason": "Mock: descartado por heurística de palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "9afba664-bd0d-4cef-9b66-ba2bcf11cdae",
+        "primary_vertical": "entertainment",
+        "vertical_scores": {
+          "entertainment": 80,
+          "politics": 38,
+          "facts": 35
+        },
+        "classification_confidence": 0.93,
+        "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "90a71f37-c194-4f30-b50a-380bf2446f2b",
+        "primary_vertical": "entertainment",
+        "vertical_scores": {
+          "entertainment": 91,
+          "politics": 43,
+          "facts": 28
+        },
+        "classification_confidence": 0.74,
+        "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+        "content_type": "RUMOR",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "f2bc1e4f-8c98-430f-926b-47d9254d825a",
+        "primary_vertical": "entertainment",
+        "vertical_scores": {
+          "entertainment": 80,
+          "politics": 31,
+          "facts": 26
+        },
+        "classification_confidence": 0.65,
+        "classification_reason": "Mock: classificado como entertainment por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "f491084f-64fd-464b-ae57-149585788373",
+        "primary_vertical": "politics",
+        "vertical_scores": {
+          "entertainment": 25,
+          "politics": 90,
+          "facts": 23
+        },
+        "classification_confidence": 0.67,
+        "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+        "content_type": "OFFICIAL_DECISION",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "6d4c4163-66d0-4cae-b575-3424e86706c4",
+        "primary_vertical": "politics",
+        "vertical_scores": {
+          "entertainment": 41,
+          "politics": 88,
+          "facts": 31
+        },
+        "classification_confidence": 0.85,
+        "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "34859415-6d75-4f8e-98f6-0ae008364420",
+        "primary_vertical": "discard",
+        "vertical_scores": {
+          "entertainment": 37,
+          "politics": 36,
+          "facts": 33
+        },
+        "classification_confidence": 0.84,
+        "classification_reason": "Mock: descartado por heurística de palavras-chave.",
+        "content_type": "OPINION",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "d49868b9-bbf7-4e8c-9e1f-81b8bc04e50a",
+        "primary_vertical": "politics",
+        "vertical_scores": {
+          "entertainment": 17,
+          "politics": 81,
+          "facts": 19
+        },
+        "classification_confidence": 0.72,
+        "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+        "content_type": "CLAIM",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "3fd7fd87-6722-4c3b-bed3-7100cedf2e54",
+        "primary_vertical": "politics",
+        "vertical_scores": {
+          "entertainment": 36,
+          "politics": 78,
+          "facts": 21
+        },
+        "classification_confidence": 0.69,
+        "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+        "content_type": "OFFICIAL_DECISION",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "9d303c45-d918-4070-8045-225e58060656",
+        "primary_vertical": "politics",
+        "vertical_scores": {
+          "entertainment": 43,
+          "politics": 80,
+          "facts": 40
+        },
+        "classification_confidence": 0.63,
+        "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "3fe49e54-41a4-4cd5-a919-f617aae7c81c",
+        "primary_vertical": "politics",
+        "vertical_scores": {
+          "entertainment": 37,
+          "politics": 78,
+          "facts": 40
+        },
+        "classification_confidence": 0.89,
+        "classification_reason": "Mock: classificado como politics por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "22841618-f121-4bb8-905e-effd50a6ab13",
+        "primary_vertical": "facts",
+        "vertical_scores": {
+          "entertainment": 30,
+          "politics": 37,
+          "facts": 82
+        },
+        "classification_confidence": 0.73,
+        "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "16c06083-c184-4eb0-b541-93efbf37cd68",
+        "primary_vertical": "facts",
+        "vertical_scores": {
+          "entertainment": 18,
+          "politics": 38,
+          "facts": 83
+        },
+        "classification_confidence": 0.78,
+        "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "3d16770c-336a-4ad1-8838-30935b3e3fbb",
+        "primary_vertical": "facts",
+        "vertical_scores": {
+          "entertainment": 43,
+          "politics": 33,
+          "facts": 81
+        },
+        "classification_confidence": 0.78,
+        "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "f5095006-16a5-44a4-9f70-32cad9223369",
+        "primary_vertical": "facts",
+        "vertical_scores": {
+          "entertainment": 26,
+          "politics": 34,
+          "facts": 84
+        },
+        "classification_confidence": 0.75,
+        "classification_reason": "Mock: classificado como facts por hint/palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      },
+      {
+        "cluster_id": "72e89297-b6d0-4ee3-9ea7-99b88b48495b",
+        "primary_vertical": "discard",
+        "vertical_scores": {
+          "entertainment": 21,
+          "politics": 17,
+          "facts": 21
+        },
+        "classification_confidence": 0.89,
+        "classification_reason": "Mock: descartado por heurística de palavras-chave.",
+        "content_type": "FACT",
+        "assigned_by": "llm"
+      }
+    ],
+    "unclassified_cluster_ids": [],
+    "candidates": [
+      {
+        "cluster_id": "a2027ea4-bd7f-4f3b-a7d6-6ca158b081fe",
+        "vertical": "entertainment",
+        "canonical_title": "Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias",
+        "trend_score": 57.45,
+        "editorial_score": 86,
+        "final_score": 73.15,
+        "verification_status": "VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 1)"
+      },
+      {
+        "cluster_id": "ecb0b4f3-72ae-40d5-8e86-b098cb92abed",
+        "vertical": "entertainment",
+        "canonical_title": "Taylor Swift announces new world tour with three shows in Brazil",
+        "trend_score": 55.02,
+        "editorial_score": 68,
+        "final_score": 62.16,
+        "verification_status": "VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 2)"
+      },
+      {
+        "cluster_id": "9afba664-bd0d-4cef-9b66-ba2bcf11cdae",
+        "vertical": "entertainment",
+        "canonical_title": "Netflix cancela série de sucesso após três temporadas e fãs reagem",
+        "trend_score": 46.47,
+        "editorial_score": 74,
+        "final_score": 61.61,
+        "verification_status": "VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 3)"
+      },
+      {
+        "cluster_id": "90a71f37-c194-4f30-b50a-380bf2446f2b",
+        "vertical": "entertainment",
+        "canonical_title": "Suposto affair de atriz famosa com jogador estaria abalando bastidores de novela",
+        "trend_score": 41.17,
+        "editorial_score": 77,
+        "final_score": 48.88,
+        "verification_status": "UNVERIFIED",
+        "selected": false,
+        "decision": "abaixo do threshold (55)"
+      },
+      {
+        "cluster_id": "f2bc1e4f-8c98-430f-926b-47d9254d825a",
+        "vertical": "entertainment",
+        "canonical_title": "Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional",
+        "trend_score": 38.79,
+        "editorial_score": 82,
+        "final_score": 58.56,
+        "verification_status": "PARTIALLY_VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 4)"
+      },
+      {
+        "cluster_id": "d49868b9-bbf7-4e8c-9e1f-81b8bc04e50a",
+        "vertical": "politics",
+        "canonical_title": "Candidato afirma que vai zerar imposto de renda para quem ganha até R$ 10 mil",
+        "trend_score": 44.37,
+        "editorial_score": 63,
+        "final_score": 57.41,
+        "verification_status": "UNVERIFIED",
+        "selected": false,
+        "decision": "excluída da seleção: verificação insuficiente nesta vertical"
+      },
+      {
+        "cluster_id": "f491084f-64fd-464b-ae57-149585788373",
+        "vertical": "politics",
+        "canonical_title": "TSE aprova resolução que endurece regras para propaganda eleitoral em 2026",
+        "trend_score": 62.56,
+        "editorial_score": 66,
+        "final_score": 64.97,
+        "verification_status": "VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 2)"
+      },
+      {
+        "cluster_id": "6d4c4163-66d0-4cae-b575-3424e86706c4",
+        "vertical": "politics",
+        "canonical_title": "Quaest: cenário presidencial de 2026 tem empate técnico entre principais nomes",
+        "trend_score": 51.02,
+        "editorial_score": 54,
+        "final_score": 53.11,
+        "verification_status": "VERIFIED",
+        "selected": false,
+        "decision": "abaixo do threshold (55)"
+      },
+      {
+        "cluster_id": "3fd7fd87-6722-4c3b-bed3-7100cedf2e54",
+        "vertical": "politics",
+        "canonical_title": "Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares",
+        "trend_score": 43.0,
+        "editorial_score": 82,
+        "final_score": 70.3,
+        "verification_status": "VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 1)"
+      },
+      {
+        "cluster_id": "9d303c45-d918-4070-8045-225e58060656",
+        "vertical": "politics",
+        "canonical_title": "Lula viaja à Argentina para cúpula do Mercosul na próxima semana",
+        "trend_score": 41.56,
+        "editorial_score": 70,
+        "final_score": 53.47,
+        "verification_status": "PARTIALLY_VERIFIED",
+        "selected": false,
+        "decision": "abaixo do threshold (55)"
+      },
+      {
+        "cluster_id": "3fe49e54-41a4-4cd5-a919-f617aae7c81c",
+        "vertical": "politics",
+        "canonical_title": "Lula viaja a Angola em visita oficial para acordos de cooperação",
+        "trend_score": 29.59,
+        "editorial_score": 76,
+        "final_score": 54.08,
+        "verification_status": "PARTIALLY_VERIFIED",
+        "selected": false,
+        "decision": "abaixo do threshold (55)"
+      },
+      {
+        "cluster_id": "22841618-f121-4bb8-905e-effd50a6ab13",
+        "vertical": "facts",
+        "canonical_title": "James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet",
+        "trend_score": 44.75,
+        "editorial_score": 68,
+        "final_score": 63.35,
+        "verification_status": "VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 3)"
+      },
+      {
+        "cluster_id": "16c06083-c184-4eb0-b541-93efbf37cd68",
+        "vertical": "facts",
+        "canonical_title": "Estudo revela que polvos sonham e mudam de cor enquanto dormem",
+        "trend_score": 41.22,
+        "editorial_score": 55,
+        "final_score": 49.24,
+        "verification_status": "PARTIALLY_VERIFIED",
+        "selected": false,
+        "decision": "abaixo do threshold (52)"
+      },
+      {
+        "cluster_id": "3d16770c-336a-4ad1-8838-30935b3e3fbb",
+        "vertical": "facts",
+        "canonical_title": "Ancient lost city discovered beneath Amazon rainforest, researchers say",
+        "trend_score": 28.7,
+        "editorial_score": 77,
+        "final_score": 64.34,
+        "verification_status": "PARTIALLY_VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 2)"
+      },
+      {
+        "cluster_id": "f5095006-16a5-44a4-9f70-32cad9223369",
+        "vertical": "facts",
+        "canonical_title": "Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia",
+        "trend_score": 28.02,
+        "editorial_score": 88,
+        "final_score": 73.0,
+        "verification_status": "PARTIALLY_VERIFIED",
+        "selected": true,
+        "decision": "selecionada (rank 1)"
+      }
+    ],
+    "llm_log": [
+      {
+        "purpose": "classification/batch1",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 1878,
+        "output_tokens": 994,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "classification/batch2",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 828,
+        "output_tokens": 195,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "editorial_score/entertainment",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 1347,
+        "output_tokens": 562,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/entertainment",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 938,
+        "output_tokens": 530,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/entertainment",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 909,
+        "output_tokens": 520,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/entertainment",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 913,
+        "output_tokens": 522,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/entertainment",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 881,
+        "output_tokens": 530,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "editorial_score/politics",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 1704,
+        "output_tokens": 727,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/politics",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 1046,
+        "output_tokens": 533,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/politics",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 1111,
+        "output_tokens": 529,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "editorial_score/facts",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 1243,
+        "output_tokens": 431,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/facts",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 920,
+        "output_tokens": 531,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/facts",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 907,
+        "output_tokens": 527,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      },
+      {
+        "purpose": "draft/facts",
+        "provider": "mock",
+        "model": "mock-editor-v1",
+        "input_tokens": 983,
+        "output_tokens": 538,
+        "duration_seconds": 0.0,
+        "attempts": 1,
+        "ok": true
+      }
+    ],
+    "notes": [
+      "[entertainment] SELECIONADA #1: Indicados ao Oscar 2027 são anunciados; Brasil concorre em duas categorias [73.2]",
+      "[entertainment] SELECIONADA #2: Taylor Swift announces new world tour with three shows in Brazil [62.2]",
+      "[entertainment] SELECIONADA #3: Netflix cancela série de sucesso após três temporadas e fãs reagem [61.6]",
+      "[entertainment] SELECIONADA #4: Filme brasileiro é indicado ao Oscar e eleva expectativa no cinema nacional [58.6]",
+      "[entertainment] NÃO selecionada (abaixo do threshold 55): Suposto affair de atriz famosa com jogador estaria abalando bastidores de novela [48.9]",
+      "[politics] SELECIONADA #1: Congresso aprova em segundo turno PEC que muda regras de emendas parlamentares [70.3]",
+      "[politics] SELECIONADA #2: TSE aprova resolução que endurece regras para propaganda eleitoral em 2026 [65.0]",
+      "[politics] NÃO selecionada (abaixo do threshold 55): Lula viaja a Angola em visita oficial para acordos de cooperação [54.1]",
+      "[politics] NÃO selecionada (abaixo do threshold 55): Lula viaja à Argentina para cúpula do Mercosul na próxima semana [53.5]",
+      "[politics] NÃO selecionada (abaixo do threshold 55): Quaest: cenário presidencial de 2026 tem empate técnico entre principais nomes [53.1]",
+      "[facts] SELECIONADA #1: Arqueólogos encontram cidade perdida de 3.000 anos sob floresta na Amazônia [73.0]",
+      "[facts] SELECIONADA #2: Ancient lost city discovered beneath Amazon rainforest, researchers say [64.3]",
+      "[facts] SELECIONADA #3: James Webb telescope finds strongest evidence yet of atmosphere on rocky exoplanet [63.4]",
+      "[facts] NÃO selecionada (abaixo do threshold 52): Estudo revela que polvos sonham e mudam de cor enquanto dormem [49.2]"
+    ]
+  }
+}

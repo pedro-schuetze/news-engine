@@ -1,0 +1,26 @@
+# Ambiente
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Segredos — nunca commitar
+.env
+
+# Dashboard web (Next.js)
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/next-env.d.ts
+web/*.tsbuildinfo
+
+# Mídia local (binários ficam fora do git; o modelo MediaAsset guarda o caminho)
+data/media/*
+!data/media/.gitkeep
+
+# SO
+.DS_Store
+Thumbs.db

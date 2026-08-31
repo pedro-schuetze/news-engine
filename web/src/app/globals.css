@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-200 antialiased;
+}
+
+details > summary {
+  @apply cursor-pointer select-none text-sm font-medium text-zinc-400 hover:text-zinc-200;
+}
+
+.tbl {
+  @apply w-full border-collapse text-xs;
+}
+.tbl th {
+  @apply border-b border-zinc-800 px-2 py-1.5 text-left font-semibold text-zinc-400 whitespace-nowrap;
+}
+.tbl td {
+  @apply border-b border-zinc-900 px-2 py-1.5 align-top text-zinc-300;
+}

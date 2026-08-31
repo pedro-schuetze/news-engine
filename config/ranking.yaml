@@ -1,0 +1,72 @@
+# Pesos e thresholds do ranking — TODA fórmula de score é configurada aqui.
+#
+# trend_score = 100 * soma(peso_sinal * valor_sinal)     [0-100, determinístico]
+# final_score = blend.trend * trend + blend.editorial * editorial - penalidade_verificação
+#
+# Implementação (explícita e testada): src/processing/ranking.py
+
+cluster:
+  # similaridade = max(s1, s2), onde
+  #   s1 = title_weight * token_set_ratio + entity_weight * 100 * jaccard(entidades)
+  #   s2 = token_set_ratio só de palavras de conteúdo (sem stopwords pt/en)
+  # calibrado com pares rotulados: MERGE mínimos ~62; APART máximos ~53
+  similarity_threshold: 58.0
+  title_weight: 0.65
+  entity_weight: 0.35
+  max_members_compared: 5
+
+trend:
+  weights:                      # normalizados para somar 1.0 no load
+    source_diversity: 0.28      # nº de domínios únicos (satura em diversity_cap)
+    recency: 0.22               # decaimento exponencial da última publicação
+    velocity: 0.12              # matérias novas por hora dentro do cluster
+    authority: 0.18             # média das 3 maiores autoridades de domínio
+    query_spread: 0.08          # nº de buscas distintas que acharam o evento
+    novelty: 0.12               # penaliza repetição vs. runs anteriores
+  recency_half_life_hours: 9.0
+  diversity_cap: 6
+  velocity_norm_per_hour: 2.0
+  authority_default: 50
+  novelty_neutral: 0.75         # valor usado quando não há histórico de runs
+  novelty_lookback_runs: 3
+
+final_blend_default: { trend: 0.40, editorial: 0.60 }
+final_blend_per_vertical:
+  entertainment: { trend: 0.45, editorial: 0.55 }
+  politics: { trend: 0.30, editorial: 0.70 }      # confiabilidade > viralidade
+  facts: { trend: 0.20, editorial: 0.80 }         # trending não manda em FACTS
+
+min_final_score_default: 55.0
+min_final_score_per_vertical:
+  facts: 52.0
+
+verification_default:
+  verified_min_independent: 2
+  single_source_authority_min: 70
+  official_counts_as_verified: false
+  unverified_action: penalty        # penalty | exclude
+  unverified_penalty: 12.0
+  partially_verified_penalty: 4.0
+
+verification_per_vertical:
+  politics:                          # regras mais rigorosas (spec §21)
+    verified_min_independent: 2
+    single_source_authority_min: 80
+    official_counts_as_verified: true
+    unverified_action: exclude       # política UNVERIFIED nem entra na seleção
+    unverified_penalty: 0.0
+    partially_verified_penalty: 8.0
+  facts:
+    verified_min_independent: 2
+    single_source_authority_min: 70
+    official_counts_as_verified: true
+    unverified_action: penalty
+    unverified_penalty: 15.0
+    partially_verified_penalty: 3.0
+
+llm_budget:                          # controle de custo (spec §25)
+  max_clusters_to_classify: 60       # teto de clusters enviados ao router LLM
+  per_vertical_hint_pool: 18         # vaga garantida por vertical (por hint)
+  open_pool: 12                      # melhores sem hint / excedentes por trend
+  classification_batch_size: 15      # clusters por chamada de classificação
+  editorial_candidates_per_vertical: 10

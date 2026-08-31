@@ -1,0 +1,263 @@
+# Feeds RSS curados + tabela de autoridade por domínio.
+#
+# Adicionar/remover fonte = editar aqui, sem tocar em código.
+# - authority_score (0-100): peso da fonte no trend score e na verificação.
+# - domain: domínio onde as MATÉRIAS vivem (nem sempre o host do feed).
+# - vertical_hint: sugere vertical ao router (opcional; categoria já mapeia
+#   entertainment->entertainment, politics->politics, science/technology->facts).
+# - enabled: false desliga a fonte sem apagar a configuração.
+
+sources:
+  # ── Brasil: geral ────────────────────────────────────────────────
+  - source_name: G1
+    url: https://g1.globo.com/rss/g1/
+    domain: g1.globo.com
+    category: general
+    authority_score: 85
+    language: pt
+    country: BR
+    enabled: true
+
+  - source_name: Agência Brasil
+    url: https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml
+    domain: agenciabrasil.ebc.com.br
+    category: general
+    authority_score: 88
+    language: pt
+    country: BR
+    enabled: true
+
+  - source_name: Folha de S.Paulo
+    url: https://feeds.folha.uol.com.br/emcimadahora/rss091.xml
+    domain: folha.uol.com.br
+    category: general
+    authority_score: 85
+    language: pt
+    country: BR
+    enabled: true
+
+  - source_name: BBC News Brasil
+    url: https://feeds.bbci.co.uk/portuguese/rss.xml
+    domain: bbc.com
+    category: general
+    authority_score: 86
+    language: pt
+    country: BR
+    enabled: true
+
+  # ── Brasil: política ─────────────────────────────────────────────
+  - source_name: Poder360
+    url: https://www.poder360.com.br/feed/
+    domain: poder360.com.br
+    category: politics
+    authority_score: 78
+    language: pt
+    country: BR
+    enabled: true
+
+  - source_name: Agência Câmara
+    url: https://www.camara.leg.br/noticias/rss
+    domain: camara.leg.br
+    category: official
+    authority_score: 95
+    language: pt
+    country: BR
+    vertical_hint: politics
+    enabled: false   # TODO: confirmar URL exata do feed antes de ligar
+
+  - source_name: Agência Senado
+    url: https://www12.senado.leg.br/noticias/feed
+    domain: senado.leg.br
+    category: official
+    authority_score: 95
+    language: pt
+    country: BR
+    vertical_hint: politics
+    enabled: false   # TODO: confirmar URL exata do feed antes de ligar
+
+  # ── Entretenimento ───────────────────────────────────────────────
+  - source_name: Variety
+    url: https://variety.com/feed/
+    domain: variety.com
+    category: entertainment
+    authority_score: 80
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: The Hollywood Reporter
+    url: https://www.hollywoodreporter.com/feed/
+    domain: hollywoodreporter.com
+    category: entertainment
+    authority_score: 80
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Billboard
+    url: https://www.billboard.com/feed/
+    domain: billboard.com
+    category: entertainment
+    authority_score: 78
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Deadline
+    url: https://deadline.com/feed/
+    domain: deadline.com
+    category: entertainment
+    authority_score: 78
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Rolling Stone Brasil
+    url: https://rollingstone.com.br/feed/
+    domain: rollingstone.com.br
+    category: entertainment
+    authority_score: 70
+    language: pt
+    country: BR
+    enabled: true
+
+  - source_name: Omelete
+    url: https://www.omelete.com.br/rss
+    domain: omelete.com.br
+    category: entertainment
+    authority_score: 65
+    language: pt
+    country: BR
+    enabled: false   # TODO: confirmar URL exata do feed antes de ligar
+
+  # ── Ciência / Fatos ──────────────────────────────────────────────
+  - source_name: NASA Breaking News
+    url: https://www.nasa.gov/rss/dyn/breaking_news.rss
+    domain: nasa.gov
+    category: official
+    authority_score: 95
+    language: en
+    country: US
+    vertical_hint: facts
+    enabled: true
+
+  - source_name: ScienceDaily
+    url: https://www.sciencedaily.com/rss/all.xml
+    domain: sciencedaily.com
+    category: science
+    authority_score: 80
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Phys.org
+    url: https://phys.org/rss-feed/
+    domain: phys.org
+    category: science
+    authority_score: 78
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Live Science
+    url: https://www.livescience.com/feeds/all
+    domain: livescience.com
+    category: science
+    authority_score: 72
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Smithsonian Magazine
+    url: https://www.smithsonianmag.com/rss/latest_articles/
+    domain: smithsonianmag.com
+    category: science
+    authority_score: 80
+    language: en
+    country: US
+    enabled: true
+
+  - source_name: Superinteressante
+    url: https://super.abril.com.br/feed/
+    domain: super.abril.com.br
+    category: science
+    authority_score: 70
+    language: pt
+    country: BR
+    enabled: true
+
+# ── Autoridade por domínio ─────────────────────────────────────────
+# Usada para artigos que chegam via Google News/GDELT de veículos que não
+# estão na lista de feeds acima. Domínio ausente recebe o default (50).
+domain_authority:
+  # agências e imprensa internacional
+  apnews.com: 92
+  reuters.com: 92
+  afp.com: 90
+  bloomberg.com: 88
+  bbc.com: 88
+  nytimes.com: 88
+  theguardian.com: 85
+  washingtonpost.com: 85
+  wsj.com: 85
+  ft.com: 85
+  cnn.com: 78
+  # Brasil — imprensa
+  g1.globo.com: 85
+  oglobo.globo.com: 82
+  folha.uol.com.br: 85
+  estadao.com.br: 82
+  valor.globo.com: 82
+  cnnbrasil.com.br: 78
+  uol.com.br: 75
+  nexojornal.com.br: 75
+  poder360.com.br: 78
+  metropoles.com: 72
+  veja.abril.com.br: 72
+  correiobraziliense.com.br: 70
+  gazetadopovo.com.br: 65
+  cartacapital.com.br: 62
+  terra.com.br: 60
+  r7.com: 58
+  ig.com.br: 55
+  agenciabrasil.ebc.com.br: 88
+  # Brasil — oficiais
+  tse.jus.br: 98
+  stf.jus.br: 96
+  camara.leg.br: 95
+  senado.leg.br: 95
+  planalto.gov.br: 95
+  gov.br: 92
+  ibge.gov.br: 92
+  # institutos de pesquisa
+  quaest.com.br: 75
+  ipec-inteligencia.com.br: 75
+  atlasintel.org: 70
+  # entretenimento
+  variety.com: 80
+  hollywoodreporter.com: 80
+  billboard.com: 78
+  deadline.com: 78
+  rollingstone.com: 75
+  ew.com: 70
+  people.com: 60
+  omelete.com.br: 65
+  adorocinema.com: 60
+  papelpop.com: 55
+  tmz.com: 45
+  pagesix.com: 40
+  # ciência
+  nature.com: 95
+  science.org: 95
+  nasa.gov: 95
+  esa.int: 92
+  scientificamerican.com: 82
+  nationalgeographic.com: 82
+  sciencedaily.com: 80
+  smithsonianmag.com: 80
+  phys.org: 78
+  newscientist.com: 78
+  livescience.com: 72
+  iflscience.com: 55
+  super.abril.com.br: 70
+  revistagalileu.globo.com: 68
