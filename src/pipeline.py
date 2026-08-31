@@ -107,7 +107,7 @@ def _process_vertical(
     notes: list[str],
 ) -> VerticalResult:
     vid = vertical.id
-    editorial_scores, sc_errors = score_vertical_candidates(
+    editorial_scores, dup_dropped, sc_errors = score_vertical_candidates(
         vertical, [(c, t) for c, t, _ in candidates], llm, ranking_cfg.llm_budget
     )
     errors.extend(sc_errors)
@@ -115,8 +115,21 @@ def _process_vertical(
     rules = ranking_cfg.verification_rules(vid)
     stories: list[Story] = []
     cluster_by_story: dict[str, StoryCluster] = {}
+    title_by_cluster = {c.cluster_id: c.canonical_title for c, _t, _a in candidates}
 
     for cluster, trend, assignment in candidates:
+        if cluster.cluster_id in dup_dropped:
+            kept_title = title_by_cluster.get(dup_dropped[cluster.cluster_id], "outro item")
+            candidates_debug.append(
+                CandidateDebug(
+                    cluster_id=cluster.cluster_id,
+                    vertical=vid,
+                    canonical_title=cluster.canonical_title,
+                    trend_score=trend.score,
+                    decision=f"duplicata semântica de '{kept_title}' (detectada no score editorial)",
+                )
+            )
+            continue
         item = editorial_scores.get(cluster.cluster_id)
         if item is None:
             candidates_debug.append(
@@ -414,6 +427,8 @@ def main(argv: list[str] | None = None) -> int:
         format="%(asctime)s %(message)s",
         datefmt="%H:%M:%S",
     )
+    # 1 linha por request HTTP polui o log do run; warnings continuam visíveis
+    logging.getLogger("httpx").setLevel(logging.WARNING)
 
     mock: bool | None = None
     if args.mock:

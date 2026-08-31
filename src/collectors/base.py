@@ -18,7 +18,8 @@ from src.models import Article
 
 log = logging.getLogger("news_engine.collect")
 
-USER_AGENT = "news-engine/0.1 (MVP pessoal; contato via repositório)"
+# headers HTTP precisam ser ASCII (httpx rejeita não-ASCII antes de enviar)
+USER_AGENT = "news-engine/0.1 (+https://github.com/pedro-schuetze-artica/news-engine)"
 
 
 class CollectorFetchError(Exception):
@@ -39,7 +40,8 @@ def http_get(url: str, *, params: dict | None = None, timeout: float = 20.0, ret
             )
             resp.raise_for_status()
             return resp
-        except httpx.HTTPError as e:
+        except (httpx.HTTPError, UnicodeError) as e:
+            # UnicodeError: header/URL com caractere inválido não pode derrubar o collector
             last = e
             if attempt < retries:
                 time.sleep(1.5 * (attempt + 1))

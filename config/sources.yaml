@@ -132,7 +132,7 @@ sources:
 
   # ── Ciência / Fatos ──────────────────────────────────────────────
   - source_name: NASA Breaking News
-    url: https://www.nasa.gov/rss/dyn/breaking_news.rss
+    url: https://www.nasa.gov/news-release/feed/   # URL antiga (rss/dyn/breaking_news.rss) virou redirect
     domain: nasa.gov
     category: official
     authority_score: 95

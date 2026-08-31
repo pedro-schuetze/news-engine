@@ -472,6 +472,9 @@ class EditorialItem(BaseModel):
     verification_notes: str = ""
     contradictions: list[str] = Field(default_factory=list)
     content_type: MaybeContentType = None
+    # mesmo acontecimento que outro item do batch (clusters que o clustering
+    # lexical não uniu — ex.: manchetes muito diferentes ou idiomas distintos)
+    duplicate_of_index: Optional[int] = None
 
 
 class EditorialBatch(BaseModel):

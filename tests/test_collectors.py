@@ -35,6 +35,13 @@ RSS_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
 </channel></rss>"""
 
 
+def test_user_agent_is_ascii():
+    """Headers HTTP são ASCII; um acento no UA derruba TODOS os collectors."""
+    from src.collectors.base import USER_AGENT
+
+    assert USER_AGENT.isascii()
+
+
 class TestGoogleNews:
     def test_query_url(self):
         url = build_query_url(GoogleNewsQuery(query="eleições 2026", hl="pt-BR", gl="BR"), 18)

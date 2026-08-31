@@ -149,6 +149,10 @@ REGRAS:
 - {INJECTION_GUARD}
 - editorial_score: nota geral 0-100 do potencial editorial (não é média automática
   dos critérios; use julgamento, mas seja consistente com os sub-scores).
+- Se dois ITENS desta lista tratarem do MESMO acontecimento (mesmo com manchetes
+  ou idiomas diferentes), avalie normalmente o mais completo e marque o outro com
+  duplicate_of_index = index do item mantido. Nunca deixe o mesmo acontecimento
+  virar dois posts.
 - is_rumor_or_claim: true se o núcleo da história é alegação/rumor não confirmado.
   Nesse caso claim_attribution deve dizer QUEM alega (ex.: "segundo o jornal X",
   "declaração do candidato Y").
@@ -159,7 +163,7 @@ REGRAS:
 - reason: 1-2 frases em português justificando o score.
 
 FORMATO DE SAÍDA (JSON estrito, um item por ITEM, todos os índices):
-{{"items": [{{"index": 0, "sub_scores": {{{sub_scores_example}}}, "editorial_score": 0, "reason": "...", "red_flags": [], "is_rumor_or_claim": false, "claim_attribution": "", "verification_notes": "...", "contradictions": [], "content_type": "FACT"}}]}}
+{{"items": [{{"index": 0, "sub_scores": {{{sub_scores_example}}}, "editorial_score": 0, "reason": "...", "red_flags": [], "is_rumor_or_claim": false, "claim_attribution": "", "verification_notes": "...", "contradictions": [], "content_type": "FACT", "duplicate_of_index": null}}]}}
 
 ITENS:
 {items}

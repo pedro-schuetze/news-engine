@@ -23,10 +23,17 @@ def score_vertical_candidates(
     candidates: list[tuple[StoryCluster, TrendScore]],
     llm: LLMClient,
     budget: LLMBudget,
-) -> tuple[dict[str, EditorialItem], list[str]]:
-    """Retorna (cluster_id -> EditorialItem, erros). Falha aqui não derruba o run."""
+) -> tuple[dict[str, EditorialItem], dict[str, str], list[str]]:
+    """Avalia os top candidatos da vertical em UMA chamada.
+
+    Retorna (cluster_id -> EditorialItem, duplicatas_derrubadas, erros), onde
+    duplicatas_derrubadas mapeia cluster_id -> cluster_id do item mantido —
+    o LLM vê todos os candidatos juntos e marca acontecimentos repetidos que
+    o clustering lexical não uniu (duplicate_of_index).
+    Falha aqui não derruba o run.
+    """
     if not candidates:
-        return {}, []
+        return {}, {}, []
 
     top = sorted(candidates, key=lambda ct: ct[1].score, reverse=True)
     top = top[: budget.editorial_candidates_per_vertical]
@@ -61,4 +68,16 @@ def score_vertical_candidates(
         errors.append(
             f"{vertical.id}: '{cluster.canonical_title}' ficou sem score editorial (LLM)"
         )
-    return scores, errors
+
+    # aplica duplicate_of_index: derruba o marcado, mantém o apontado
+    dropped: dict[str, str] = {}
+    index_to_cluster = {i: cluster for i, (cluster, _t) in enumerate(top)}
+    for cluster_id, item in list(scores.items()):
+        if item.duplicate_of_index is None:
+            continue
+        target = index_to_cluster.get(item.duplicate_of_index)
+        if target is None or target.cluster_id == cluster_id:
+            continue  # índice inválido ou auto-referência: ignora a marcação
+        dropped[cluster_id] = target.cluster_id
+        scores.pop(cluster_id)
+    return scores, dropped, errors

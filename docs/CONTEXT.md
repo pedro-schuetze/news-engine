@@ -28,6 +28,14 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 - Testes pytest (unidade + integração mock).
 - Repo: `pedro-schuetze-artica/news-engine` (privado, namespace pessoal da
   conta de trabalho, FORA da organização artica-capital — pedido do Pedro).
+- **Primeiro run real executado em 2026-08-30 ~23:28 BRT:** 1.438 artigos
+  coletados (GN 1.182 / GDELT 60 / RSS 196) → 1.307 pós-dedupe → 697 clusters
+  → 60 no pool LLM → 15 stories (5/5/5), 23 chamadas, US$ 0,058, ~9 min.
+  Bugs corrigidos na sequência: User-Agent com acento derrubava TODO collector
+  (headers HTTP são ASCII — teste de regressão adicionado) e o mesmo
+  acontecimento podia virar 2 stories na mesma vertical (caso real: telescópio
+  Roman em facts #1 e #2) — resolvido com detecção de duplicata na chamada de
+  score editorial (`duplicate_of_index`, custo zero).
 
 ## Decisões tomadas (com data e porquê)
 
@@ -61,8 +69,16 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
-- [ ] **OPENAI_API_KEY não configurada ainda** — Pedro vai colar no `.env`
-      (local) e em Settings → Secrets → Actions (GitHub) para o cron funcionar.
+- [x] ~~OPENAI_API_KEY no `.env` local~~ — configurada em 2026-08-30.
+- [ ] **Secret `OPENAI_API_KEY` no GitHub Actions ainda falta** — sem ele o cron
+      diário (06:00 BRT) falha. `gh secret set OPENAI_API_KEY --repo pedro-schuetze-artica/news-engine`.
+- [ ] **GDELT instável:** 2 de 3 queries deram timeout no primeiro run real
+      (pipeline seguiu normalmente). Observar; se persistir, aumentar timeout
+      só do GDELT ou reduzir a 1 query por vertical.
+- [ ] **Router não vê duplicatas entre batches diferentes** (60 clusters ÷ 15
+      por batch); a rede de segurança é a detecção no score editorial, que vê
+      os 10 finalistas da vertical juntos. Se ainda escapar duplicata, unificar
+      a classificação em 1 chamada maior.
 - [ ] **Reviews em produção:** o dashboard na Vercel não poderá gravar reviews
       no filesystem. Caminhos: (a) commit via GitHub API, (b) Supabase (preferido,
       já decidido para a fase 2). Local funciona 100%.
@@ -85,12 +101,14 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 ## Próximos passos
 
 ### Imediatos (esta semana)
-1. Pedro: colar `OPENAI_API_KEY` no `.env` → rodar `python -m src.pipeline` →
-   abrir dashboard (`cd web && npm run dev`) → revisar as stories do primeiro run real.
+1. Pedro: revisar as 15 stories do primeiro run real no dashboard
+   (`cd web && npm run dev`) — approve/reject alimenta o approval rate.
 2. Configurar secret `OPENAI_API_KEY` no GitHub e disparar o workflow manualmente
    (Actions → daily-news → Run workflow) para validar o cron de ponta a ponta.
 3. Usar o dashboard por alguns dias e ajustar queries/thresholds com base no que
    aparecer de ruim (o modo debug mostra por que cada decisão foi tomada).
+   Atenção: a partir do 2º run, o sinal de **novelty** penaliza stories já
+   selecionadas em runs anteriores — repetição cai de ranking por design.
 
 ### Curto prazo (2-6 semanas)
 - Calibração de ranking com o approval rate acumulado (meta: >70% por vertical).
