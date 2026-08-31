@@ -1,23 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  color-scheme: dark;
+/*
+ * Design system — inspirado em column.com (paleta/grade de hairlines/mono
+ * labels) com a suavidade de cantos do runey.app. Tema claro único.
+ */
+@theme {
+  --color-paper: #f7f7f5; /* fundo da página */
+  --color-panel: #ffffff; /* cards/painéis */
+  --color-panel-2: #f1f1ef; /* chips, hover, zebra */
+  --color-line: #e3e4e8; /* hairlines (assinatura Column) */
+  --color-ink: #12161e; /* texto primário */
+  --color-ink-2: #5d616b; /* texto secundário */
+  --color-ink-3: #9a9da6; /* metadados/placeholders */
+  --color-navy: #111a4a; /* títulos display */
+  --color-brand: #167e6c; /* verde primário (ações/aprovado) */
+  --color-brand-ink: #0f5c4f;
+  --color-brand-soft: #e6f2ef;
+  --color-mint: #44b48b;
+  --color-ent: #ec652b; /* vertical: entretenimento */
+  --color-ent-soft: #fdeee4;
+  --color-pol: #1e4199; /* vertical: política */
+  --color-pol-soft: #e8edf9;
+  --color-fact: #7a5af8; /* vertical: fatos */
+  --color-fact-soft: #efeafe;
+  --color-warn: #9a6a10;
+  --color-warn-soft: #faf1dd;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbeae8;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 body {
-  @apply bg-zinc-950 text-zinc-200 antialiased;
+  @apply bg-paper text-ink antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+/* microlabel monospace maiúsculo — assinatura visual do sistema */
+@utility microlabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-3);
 }
 
 details > summary {
-  @apply cursor-pointer select-none text-sm font-medium text-zinc-400 hover:text-zinc-200;
+  @apply cursor-pointer select-none list-none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* expander de card: label mono com +/− */
+details.xp > summary {
+  @apply microlabel py-1 text-ink-2 hover:text-ink;
+}
+details.xp > summary::before {
+  content: "+";
+  @apply mr-2 inline-block font-mono text-ink-3;
+}
+details.xp[open] > summary::before {
+  content: "−";
 }
 
 .tbl {
-  @apply w-full border-collapse text-xs;
+  @apply w-full border-collapse text-[13px];
 }
 .tbl th {
-  @apply border-b border-zinc-800 px-2 py-1.5 text-left font-semibold text-zinc-400 whitespace-nowrap;
+  @apply microlabel border-b border-line px-3 py-2 text-left whitespace-nowrap;
 }
 .tbl td {
-  @apply border-b border-zinc-900 px-2 py-1.5 align-top text-zinc-300;
+  @apply border-b border-line/70 px-3 py-2 align-top text-ink-2;
+}
+.tbl tr:hover td {
+  @apply bg-panel-2/60;
 }

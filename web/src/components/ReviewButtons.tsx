@@ -24,12 +24,7 @@ export default function ReviewButtons({
     const res = await fetch("/api/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        story_id: storyId,
-        run_id: runId,
-        vertical,
-        review_status: status,
-      }),
+      body: JSON.stringify({ story_id: storyId, run_id: runId, vertical, review_status: status }),
     });
     if (!res.ok) {
       setError("Falha ao salvar review");
@@ -39,16 +34,16 @@ export default function ReviewButtons({
   }
 
   const base =
-    "rounded-md px-3 py-1.5 text-sm font-medium transition-colors disabled:opacity-50";
+    "rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors disabled:opacity-50";
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <button
         disabled={pending}
         onClick={() => setStatus("APPROVED")}
         className={`${base} ${
           current === "APPROVED"
-            ? "bg-emerald-600 text-white"
-            : "border border-emerald-700/60 text-emerald-400 hover:bg-emerald-950"
+            ? "bg-brand text-white"
+            : "border border-line bg-panel text-brand-ink hover:border-brand hover:bg-brand-soft"
         }`}
       >
         ✓ Aprovar
@@ -58,8 +53,8 @@ export default function ReviewButtons({
         onClick={() => setStatus("REJECTED")}
         className={`${base} ${
           current === "REJECTED"
-            ? "bg-red-600 text-white"
-            : "border border-red-800/60 text-red-400 hover:bg-red-950"
+            ? "bg-danger text-white"
+            : "border border-line bg-panel text-danger hover:border-danger hover:bg-danger-soft"
         }`}
       >
         ✕ Rejeitar
@@ -67,11 +62,12 @@ export default function ReviewButtons({
       <button
         disabled={pending}
         onClick={() => setStatus("PENDING")}
-        className={`${base} border border-zinc-700 text-zinc-400 hover:bg-zinc-800`}
+        className={`${base} border border-transparent text-ink-3 hover:bg-panel-2 hover:text-ink-2`}
       >
         ↺ Pendente
       </button>
-      {error && <span className="text-xs text-red-400">{error}</span>}
+      {pending && <span className="font-mono text-[11px] text-ink-3">salvando…</span>}
+      {error && <span className="text-xs text-danger">{error}</span>}
     </div>
   );
 }

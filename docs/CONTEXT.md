@@ -21,9 +21,10 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
   normalize → dedupe → cluster → trend score → router LLM → score editorial →
   verificação → seleção → drafts → JSON.
 - Modo mock de primeira classe (`--mock`): fixtures + LLM simulado, custo zero.
-- Dashboard **Next.js** em `web/` (não Streamlit — ver decisão 2): tabs por
-  vertical, cards com fontes/carrossel/racional, approve/reject, modo debug,
-  métrica de approval rate.
+- Dashboard **Next.js** em `web/` (não Streamlit — ver decisão 2), redesenhado
+  em 2026-08-31 (decisão 10): sidebar com Dashboard / Posts de hoje / Histórico
+  / Configurações; cards com fontes/carrossel/racional, approve/reject com
+  copiar-caption, filtros no histórico, modo debug por run, approval rate.
 - GitHub Actions diário (09:00 UTC = 06:00 BRT) com commit dos JSONs.
 - Testes pytest (unidade + integração mock).
 - Repo: `pedro-schuetze-artica/news-engine` (privado, namespace pessoal da
@@ -66,6 +67,17 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
    código compatível com ambos).
 9. **2026-08-30 — Runs com timestamp no nome** (preparação para múltiplos
    runs/dia — breaking news futuro).
+10. **2026-08-31 — Redesign UX/UI do dashboard** (pedido do Pedro, foco em
+    usabilidade). Referências: **column.com** (refero 509 — paleta favorita:
+    branco/papel, hairlines #E3E4E8, tinta #12161E, navy #111A4A em títulos,
+    verde #167E6C primário, microlabels monospace) + runey.app (refero 883 —
+    cantos arredondados, chips pill). Arquitetura: **sidebar** com 4 páginas —
+    Dashboard (visão geral + approval rate), Posts de hoje (fluxo de revisão),
+    Histórico (banco de stories com filtros status/vertical/busca + lista de
+    runs com detalhe) e Configurações (leitura de .env não-sensível + YAMLs).
+    Verticais com código de cor (laranja/azul/roxo); verde reservado para
+    marca/aprovação. Debug acessível dentro da página de cada run. Tipografia:
+    Inter + IBM Plex Mono (next/font). Tema claro único.
 
 ## Pendências / dívidas conhecidas
 
