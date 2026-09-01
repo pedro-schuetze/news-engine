@@ -16,11 +16,12 @@ import type { PipelineRun, Review, RunListItem } from "../types";
 import { RUN_FILE_RE, STORY_ID_RE } from "./common";
 
 const API = "https://api.github.com";
-const REPO = process.env.NEWS_GITHUB_REPO ?? "pedro-schuetze-artica/news-engine";
-const BRANCH = process.env.NEWS_GITHUB_BRANCH ?? "main";
-const TOKEN = process.env.GITHUB_TOKEN ?? "";
+// trim em tudo: env vars podem chegar com "\r"/espaços (CLI no Windows)
+const REPO = (process.env.NEWS_GITHUB_REPO ?? "pedro-schuetze-artica/news-engine").trim();
+const BRANCH = (process.env.NEWS_GITHUB_BRANCH ?? "main").trim();
+const TOKEN = (process.env.GITHUB_TOKEN ?? "").trim();
 // teto de runs lidos remotamente por página (cold start amigável)
-const MAX_RUNS = Number.parseInt(process.env.NEWS_GITHUB_MAX_RUNS ?? "12", 10);
+const MAX_RUNS = Number.parseInt((process.env.NEWS_GITHUB_MAX_RUNS ?? "12").trim(), 10);
 
 interface CacheEntry {
   etag: string;

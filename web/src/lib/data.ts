@@ -13,8 +13,9 @@ import * as fsSource from "./sources/fs";
 import * as ghSource from "./sources/github";
 import type { PipelineRun, Review, RunListItem, Story } from "./types";
 
+// trim: valores de env criados via CLI no Windows podem carregar "\r"
 export const DATA_MODE: "fs" | "github" =
-  (process.env.NEWS_DATA_SOURCE ?? "fs").toLowerCase() === "github" ? "github" : "fs";
+  (process.env.NEWS_DATA_SOURCE ?? "fs").trim().toLowerCase() === "github" ? "github" : "fs";
 
 const src = DATA_MODE === "github" ? ghSource : fsSource;
 
