@@ -3010,6 +3010,28 @@
               "text_align": "center",
               "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "f55c93d6-s5",
+              "story_id": "f55c93d6-52b5-4822-90ae-ac4009f47182",
+              "slide_number": 5,
+              "type": "image",
+              "local_path": "data/media/f55c93d6-52b5-4822-90ae-ac4009f47182/slide_5.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "TOP",
+              "text_align": "center",
+              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
+              "estimated_cost_usd": null
             }
           ]
         },
