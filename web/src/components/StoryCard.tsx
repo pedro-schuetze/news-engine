@@ -2,7 +2,8 @@ import type { Review, Story } from "@/lib/types";
 import { fmtLocal, recency } from "@/lib/format";
 import { CONTENT_TYPE_LABEL, REVIEW_UI, VERIFICATION_UI, verticalStyle } from "@/lib/ui";
 import CopyButton from "./CopyButton";
-import GenerateImagesButton from "./GenerateImagesButton";
+import ImageActions from "./ImageActions";
+import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
 
 function Chip({ className = "", children }: { className?: string; children: React.ReactNode }) {
@@ -197,11 +198,12 @@ export default function StoryCard({
                   ? `${story.slide_media?.length ?? 0} imagens geradas (uma por slide)`
                   : "fundo gráfico: gere as imagens para ver o post final"}
               </p>
-              <GenerateImagesButton
+              <ImageActions
                 storyId={story.story_id}
                 runFile={runFile}
                 slideCount={draft.slides.length}
                 hasImages={hasImages}
+                briefing={buildChatGptBriefing(story)}
               />
             </div>
           </details>

@@ -270,9 +270,30 @@ prontos, ponto a ponto:
 Run de validação (2026-09-01 15:20): 1.679 artigos → 15 posts, US$ 0,068 de
 LLM + US$ 0,618 de imagens = US$ 0,69.
 
+**Fase 4 ENTREGUE (2026-09-01)** — imagens SOB DEMANDA, a pedido do Pedro:
+- O run automático gera só texto. Nenhuma imagem é produzida para post que
+  pode ser rejeitado (`GENERATE_ILLUSTRATIONS=false`; o passo no pipeline saiu).
+- Cada slide tem imagem PRÓPRIA (antes era a mesma arte com zoom variado, que
+  era exatamente o que ele não queria): `Story.slide_media` é uma lista, uma
+  entrada por slide.
+- Dois caminhos no card do post (`web/src/components/ImageActions.tsx`):
+  (1) **API** — `POST /api/media/{story}` busca no banco e usa IA só no que
+  falta, em paralelo; (2) **ChatGPT** — "copiar prompt" monta um briefing com a
+  direção visual de cada slide (`lib/media/briefing.ts`) para usar com a skill
+  `skills/news-engine-carousel` (zip pronto para instalar), e
+  `POST /api/media/{story}/upload` traz as imagens de volta.
+- Persistência: filesystem em dev; em produção um COMMIT ÚNICO via Git Trees
+  API (`lib/media/persist.ts`) — 5 PUTs isolados gerariam 5 commits.
+- Análise de contraste portada para TS (`jpeg-js`), aplicada nos dois caminhos.
+- BUG IMPORTANTE corrigido: o extrator de entidades ignorava a primeira palavra
+  do título, então "Lionel Richie volta a passar mal" virava só "Richie" e
+  trouxe a foto de Richie McCaw. Agora a primeira palavra entra, o nome
+  composto é exigido e entidades de uma palavra passam por lista de termos
+  genéricos de manchete.
+
 Próximos passos da etapa 2:
-1. Pedido em aberto do Pedro: no dashboard, poder **regerar a ilustração** de um
-   post específico (quando a arte não convencer) sem rodar o pipeline todo.
+1. Instalar a skill `news-engine-carousel` no ChatGPT e validar o caminho
+   manual de ponta a ponta (gerar lá, subir aqui).
 2. Writer v2: `cover_highlight` (destaque colorido na manchete, estilo the news).
 3. Sourcing extra (opcional): Unsplash/Pexels para conceitos.
 4. Observar: no run de validação o router descartou 0 de 60 clusters (antes

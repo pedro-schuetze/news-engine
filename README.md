@@ -145,6 +145,27 @@ Notas: reviews feitas em produção viram commits (`review: APPROVED …`) — r
 `git pull` localmente para vê-las; o rate limit da API (5k/h) é folgado porque
 respostas 304 (ETag) não contam.
 
+## Imagens dos posts (etapa 2)
+
+O run diário gera **apenas texto**. As imagens de um post saem quando você
+decide, no card do post em "Posts de hoje", por um de dois caminhos:
+
+**1. Pela API (um clique).** "✦ Gerar 5 imagens" busca foto com licença limpa
+no banco (Wikimedia/Openverse, exigindo o nome completo da entidade no título
+do arquivo) e usa `gpt-image-2` só nos slides que sobrarem, com o prompt vindo
+da direção visual daquele slide. As cinco rodam em paralelo (~40s). Custo: zero
+quando o banco resolve, até ~US$ 0,20 no post inteiro quando tudo vem de IA.
+
+**2. Pelo ChatGPT (mais controle).** "⧉ Copiar prompt do ChatGPT" copia um
+briefing com o acontecimento e a direção visual de cada slide. Cole no ChatGPT
+com a skill `news-engine-carousel` instalada (arquivo em
+`skills/news-engine-carousel-1.0.0.zip`), baixe as 5 imagens e volte ao card em
+"↑ Subir imagens do ChatGPT", selecionando os arquivos **na ordem dos slides**.
+
+Nos dois caminhos a imagem passa pela mesma análise de contraste (qual faixa e
+qual terço do quadro têm mais espaço escuro e uniforme) e o renderizador
+posiciona o texto ali. Sem imagens, o slide usa o fundo gráfico da marca.
+
 ## Testes
 
 ```bash
