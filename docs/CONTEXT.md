@@ -291,9 +291,27 @@ LLM + US$ 0,618 de imagens = US$ 0,69.
   composto é exigido e entidades de uma palavra passam por lista de termos
   genéricos de manchete.
 
-Próximos passos da etapa 2:
+**Fase 5 ENTREGUE (2026-09-01)** — composição manual e ajustes:
+- `prompts/*.md`: regras editoriais (headline, humanize, slides, caption) saíram
+  do código e agora são lidas pelo pipeline Python E pelo dashboard. Fonte única.
+- **Gerar post de link** (`/gerar` + `POST /api/compose`): extrai og:tags/título/
+  parágrafos da matéria, o LLM escolhe a vertical (o editor pode trocar) e o
+  resultado é salvo como run `manual_*.json` — assim aparece em Prontos,
+  Histórico e export sem código novo. `DELETE /api/compose?run=` descarta.
+- **Pedir ajustes** (`POST /api/adjust/{story}`): direcionamento curto reescreve
+  o texto; imagens são PRESERVADAS (decisão do Pedro). Checkbox "aprender para
+  os próximos" grava em `data/learned.json`, injetado nos prompts por vertical.
+- `lib/compose/persistRun.ts` centraliza a gravação do run (latest + arquivo do
+  histórico) para ajuste, composição e descarte.
+- Validado: ajuste reescreveu com atribuição explícita e manteve as 5 imagens;
+  composição de um link da Billboard classificou como entertainment com 5 slides
+  e legenda de 153 palavras; descarte removeu o run.
+
+Próximos passos:
 1. Instalar a skill `news-engine-carousel` no ChatGPT e validar o caminho
    manual de ponta a ponta (gerar lá, subir aqui).
+2. Observar se os direcionamentos aprendidos (`data/learned.json`) melhoram os
+   runs seguintes; hoje eles entram no prompt do writer (não na seleção).
 2. Writer v2: `cover_highlight` (destaque colorido na manchete, estilo the news).
 3. Sourcing extra (opcional): Unsplash/Pexels para conceitos.
 4. Observar: no run de validação o router descartou 0 de 60 clusters (antes

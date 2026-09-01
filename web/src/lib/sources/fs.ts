@@ -104,6 +104,24 @@ export async function readMediaFile(relPath: string): Promise<string | null> {
   }
 }
 
+/** Apaga um arquivo relativo à raiz do repo (ignora se não existir). */
+export async function deleteFile(relPath: string): Promise<void> {
+  try {
+    await fs.unlink(path.join(REPO_ROOT, relPath));
+  } catch {
+    /* já não existe */
+  }
+}
+
+/** Grava um arquivo de texto relativo à raiz do repo (cria diretórios). */
+export async function writeTextFile(relPath: string, content: string): Promise<void> {
+  const target = path.join(REPO_ROOT, relPath);
+  await fs.mkdir(path.dirname(target), { recursive: true });
+  const tmp = `${target}.tmp`;
+  await fs.writeFile(tmp, content, "utf-8");
+  await fs.rename(tmp, target);
+}
+
 /** Lê um arquivo de texto relativo à raiz do repo (ex.: config/verticals.yaml). */
 export async function readTextFile(relPath: string): Promise<string | null> {
   try {

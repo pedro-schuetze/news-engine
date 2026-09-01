@@ -12,9 +12,26 @@ essa diretriz explícita (mitigação de prompt injection em títulos).
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import lru_cache
+from pathlib import Path
 
 from src.config import VerticalConfig
 from src.models import DISCARD
+
+# Regras editoriais vivem em prompts/*.md para que o pipeline (Python) e o
+# dashboard (TypeScript, ao gerar post de um link ou ao aplicar um ajuste)
+# usem exatamente o MESMO texto. Editar o .md muda os dois.
+PROMPTS_DIR = Path(__file__).resolve().parents[2] / "prompts"
+
+
+@lru_cache(maxsize=8)
+def rule(name: str) -> str:
+    """Conteúdo de prompts/<name>.md (vazio se o arquivo não existir)."""
+    path = PROMPTS_DIR / f"{name}.md"
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
 
 SYSTEM_PROMPT = (
     "Você é o editor-chefe de uma redação digital brasileira que publica notícias "
@@ -172,104 +189,25 @@ ITENS:
 
 # ── geração de draft (Instagram) ─────────────────────────────────────
 
-# Diretrizes de humanização, adaptadas da skill `humanizer` do Pedro
-# (baseada em "Wikipedia:Signs of AI writing") para PT-BR editorial.
-HUMANIZE_RULES = """COMO ESCREVER (soar humano, não gerado por máquina):
-- PROIBIDO travessão (— ou –). Use ponto, vírgula, dois-pontos ou parênteses.
-- Varie o tamanho das frases. Texto todo no mesmo comprimento soa robótico.
-- Prefira verbos simples: "é", "tem", "faz". Evite "constitui", "representa",
-  "configura-se como", "serve como", "apresenta-se".
-- Evite o vocabulário-clichê de IA: crucial, fundamental, robusto, significativo,
-  notável, cenário, panorama, contexto mais amplo, marco, destacar, ressaltar,
-  evidenciar, impulsionar, aprimorar, consolidar, reforçar, ecossistema, jornada,
-  tapeçaria, vibrante, rico (figurado), profundo (figurado).
-- Corte gerúndios de análise falsa: "destacando a importância", "reforçando o
-  compromisso", "evidenciando como", "consolidando sua posição".
-- Nada de inflar significado: "marca um momento decisivo", "reflete uma tendência
-  mais ampla", "deixa uma marca indelével", "abre caminho para uma nova era".
-- Nada de paralelismo negativo: "não é apenas X, é Y" / "mais do que X, é Y".
-- Não force grupos de três ("agilidade, inovação e eficiência").
-- Não termine com conclusão motivacional vazia ("o futuro é promissor", "só o
-  tempo dirá", "uma coisa é certa"). Termine no último fato concreto.
-- Não abra com hook teatral ("Olha", "A real é que", "Vamos ser sinceros").
-- Evite frases feitas de efeito ("X é a nova moeda de Y", "no fim do dia").
-- Sem emoji. Sem aspas curvas: use aspas retas (").
-- Não repita o mesmo dado em dois slides com sinônimos diferentes.
-- Atribua o que é atribuível ("segundo o TSE", "de acordo com a Folha") em vez de
-  "especialistas afirmam" ou "fontes indicam"."""
-
-# Regras de construção de manchete: frase completa, com elementos gramaticais.
-HEADLINE_RULES = """COMO ESCREVER A MANCHETE (instagram_headline e headline do slide 1):
-- Frase PORTUGUESA COMPLETA, com artigos e preposições no lugar. Não escreva em
-  estilo telegrama. Errado: "Cérebro sincroniza com sua respiração".
-  Certo: "Estudo mostra que o cérebro sincroniza com a respiração".
-- Quando o fato vem de estudo, pesquisa, decisão ou relato, diga a origem na
-  própria manchete: "Estudo mostra que...", "TSE decide que...", "Pesquisa
-  aponta...", "Site afirma que...".
-- Pode ser pergunta, se a pergunta for respondida nos slides seguintes.
-- Até 9 palavras. Se não couber com gramática correta, corte informação, nunca
-  os artigos.
-- Não use dois-pontos para simular manchete de jornal ("Eleições 2026: o que
-  muda")."""
-
-DRAFT_STRUCTURE = """Estrutura do carrossel (5 slides, nesta ordem de roles):
-1. HOOK           — manchete forte e honesta que para o scroll (sem clickbait vazio)
-2. CONTEXT        — o contexto mínimo para entender o acontecimento
-3. FACTS          — os fatos principais, direto ao ponto
-4. WHY_IT_MATTERS — por que isso importa / o ângulo mais interessante
-5. CONCLUSION     — desfecho: o que acontece agora / síntese final
-
-O TEXTO É IMPRESSO NA PRÓPRIA IMAGEM — a maioria das pessoas não abre a
-legenda. Por isso ele precisa ser curto, direto e legível em telas pequenas:
-- slide 1 (HOOK): headline = a manchete do post, no máximo 8 palavras, com
-  força de capa (pode ser pergunta); body = 1 frase de até 20 palavras.
-- slides 2 a 5: headline = rótulo curto de 2-4 palavras (ex.: "O QUE MUDA");
-  body = no máximo 30 palavras, 1 ideia só, frases curtas.
-- destaque os dados essenciais com **negrito** no body (ex.: "**34 fontes**",
-  "**margem de 2 pontos**"). Use no máximo 2 destaques por slide.
-- nunca corte a frase no meio; cada slide se sustenta sozinho.
-
-image_direction: descreva objetivamente a imagem ideal do slide (o que mostra,
-enquadramento, clima). A imagem deve ser factualmente possível — nunca sugira
-cena que não aconteceu como se fosse real.
-image_source_type: AGENCY_PHOTO | PRESS_ASSET | AI_GENERATED | ILLUSTRATION |
-SCREENSHOT | PUBLIC_DOMAIN. Use AI_GENERATED apenas para arte conceitual
-claramente ilustrativa — NUNCA para retratar pessoas reais em situações reais."""
-
-DRAFT_CAPTION_RULES = """Caption do Instagram (é a camada de APROFUNDAMENTO):
-Os slides dão o essencial em poucas palavras; a caption é para quem quer
-entender de verdade. Ela deve ser LONGA e substanciosa — 3 a 5 parágrafos,
-entre 150 e 280 palavras no total.
-
-- 1ª linha: gancho forte e autônomo (é o único trecho visível antes do "mais");
-- depois, uma linha em branco e o corpo em parágrafos curtos (2-4 frases cada),
-  separados por linha em branco;
-- TRAGA INFORMAÇÃO NOVA que não coube nos slides: contexto histórico, números,
-  quem são os envolvidos, como se chegou até aqui, o que ainda não se sabe,
-  próximos passos e prazos;
-- atribua os fatos às fontes quando relevante ("segundo o TSE", "de acordo com
-  o estudo publicado na Nature");
-- último parágrafo: fecho com CTA curto (ex.: "Siga para acompanhar.");
-- não repita as frases dos slides — complemente;
-- hashtags NÃO vão na caption — vão no campo hashtags (3 a 5, em português,
-  específicas do assunto + 1 da vertical)."""
+HUMANIZE_RULES = rule("humanize")
+HEADLINE_RULES = rule("headline")
+DRAFT_STRUCTURE = rule("slides")
+DRAFT_CAPTION_RULES = rule("caption")
 
 DRAFT_RULES = f"""REGRAS EDITORIAIS:
 {HEADLINE_RULES}
 
 {HUMANIZE_RULES}
 
-- Português brasileiro natural; frases curtas; voz ativa.
 - {INJECTION_GUARD}
 - Use APENAS informações presentes nas fontes fornecidas. Não invente números,
   datas, nomes ou citações. Se um dado não estiver nas fontes, não o afirme.
 - Não copie frases inteiras das fontes; reescreva com texto original.
-- Proibido: "Você não vai acreditar", "Isso mudou tudo", "Internet está em
-  choque" e variações — a não ser que haja justificativa factual explícita.
 - Se a história é alegação/rumor: deixe claro no texto ("segundo...", "afirma...")
   em TODOS os slides relevantes e na caption. Nunca apresente alegação como fato.
 - Pesquisa eleitoral: cite instituto e, se disponível, margem de erro; nunca
   transforme pesquisa em previsão de resultado.
+
 {DRAFT_STRUCTURE}
 
 {DRAFT_CAPTION_RULES}"""

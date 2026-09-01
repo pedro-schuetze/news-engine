@@ -2,6 +2,7 @@ import type { Review, Story } from "@/lib/types";
 import { fmtLocal, recency } from "@/lib/format";
 import { CONTENT_TYPE_LABEL, REVIEW_UI, VERIFICATION_UI, verticalStyle } from "@/lib/ui";
 import CopyButton from "./CopyButton";
+import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
@@ -285,7 +286,16 @@ export default function StoryCard({
       </div>
 
       {/* ações */}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
+      <div className="mt-4 space-y-3 border-t border-line pt-4">
+        <AdjustButton
+          storyId={story.story_id}
+          runFile={runFile}
+          vertical={verticalName ?? story.vertical}
+          hasImages={hasImages}
+        />
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
         <ReviewButtons
           storyId={story.story_id}
           runId={story.run_id}

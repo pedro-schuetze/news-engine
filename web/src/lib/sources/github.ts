@@ -201,6 +201,53 @@ export async function readMediaFile(relPath: string): Promise<string | null> {
   }
 }
 
+/** Apaga um arquivo do repo (commit de remoção). */
+export async function deleteFile(relPath: string, message = `chore: remove ${relPath}`): Promise<void> {
+  if (!TOKEN) throw new Error("GITHUB_TOKEN ausente");
+  const sha = await fileSha(relPath);
+  if (!sha) return; // já não existe
+  const res = await fetch(contentsUrl(relPath), {
+    method: "DELETE",
+    headers: headers(),
+    cache: "no-store",
+    body: JSON.stringify({ message, sha, branch: BRANCH }),
+  });
+  if (!res.ok) throw new Error(`GitHub API ${res.status} ao remover ${relPath}`);
+  invalidate(relPath);
+}
+
+/** Grava um arquivo de texto no repo (commit direto via Contents API). */
+export async function writeTextFile(
+  relPath: string,
+  content: string,
+  message = `chore: atualiza ${relPath}`,
+): Promise<void> {
+  if (!TOKEN) throw new Error("GITHUB_TOKEN ausente: não é possível gravar em produção");
+  const body = {
+    message,
+    content: Buffer.from(content, "utf-8").toString("base64"),
+    branch: BRANCH,
+  };
+  let sha = await fileSha(relPath);
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const res = await fetch(contentsUrl(relPath), {
+      method: "PUT",
+      headers: headers(),
+      cache: "no-store",
+      body: JSON.stringify({ ...body, ...(sha ? { sha } : {}) }),
+    });
+    if (res.ok) {
+      invalidate(relPath);
+      return;
+    }
+    if ((res.status === 409 || res.status === 422) && attempt === 1) {
+      sha = await fileSha(relPath);
+      continue;
+    }
+    throw new Error(`GitHub API ${res.status} ao gravar ${relPath}`);
+  }
+}
+
 export async function readTextFile(relPath: string): Promise<string | null> {
   const text = await ghGet(relPath, true);
   return typeof text === "string" ? text : null;

@@ -213,6 +213,42 @@ export async function loadMedia(relPath: string): Promise<string | null> {
   return src.readMediaFile(relPath);
 }
 
+/** Regra editorial compartilhada com o pipeline (prompts/<name>.md). */
+export async function readPromptRule(name: string): Promise<string> {
+  if (!/^[a-z_]+$/.test(name)) return "";
+  return (await src.readTextFile(`prompts/${name}.md`))?.trim() ?? "";
+}
+
+/**
+ * Direcionamentos que o Pedro marcou como "aprender para os próximos posts".
+ * Chave "all" vale para todas as verticais; as outras são por vertical.
+ */
+export type LearnedDirectives = Record<string, string[]>;
+
+export async function loadLearnedDirectives(): Promise<LearnedDirectives> {
+  const raw = await src.readTextFile("data/learned.json");
+  if (!raw) return {};
+  try {
+    const parsed = JSON.parse(raw) as LearnedDirectives;
+    return typeof parsed === "object" && parsed ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+export async function addLearnedDirective(scope: string, directive: string): Promise<void> {
+  const current = await loadLearnedDirectives();
+  const key = scope || "all";
+  const list = current[key] ?? [];
+  if (!list.includes(directive)) list.push(directive);
+  current[key] = list.slice(-12); // mantém os mais recentes
+  await src.writeTextFile(
+    "data/learned.json",
+    JSON.stringify(current, null, 2) + "\n",
+    `learn: direcionamento em ${key}`,
+  );
+}
+
 export async function loadEnvView(): Promise<Record<string, string>> {
   return src.readEnvView();
 }

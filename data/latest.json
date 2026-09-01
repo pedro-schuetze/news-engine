@@ -174,70 +174,72 @@
             "verification_notes": "29 domínio(s) independente(s), 29 matéria(s); fonte oficial: não; autoridade máx.: 82. LLM: Reportagem de veículos nacionais (Estadão, Omelete, Terra) indica cobertura ampla; falta ainda comunicação oficial do hospital ou equipe do artista na amostra fornecida — notícia verificável porém precisa de fonte primária."
           },
           "draft": {
-            "draft_id": "0489ec32-5acd-4162-8d2e-cd026bf27c66",
+            "draft_id": "70c1762d-mtj6nkg0",
             "story_id": "70c1762d-6eba-4c2f-b07c-c8dbecababb2",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Lionel Richie volta a passar mal e está internado na UTI",
-            "instagram_headline": "Lionel Richie é internado na UTI",
-            "short_summary": "O cantor Lionel Richie foi internado em uma UTI após passar mal durante um show nos Estados Unidos. A informação foi divulgada por diversos veículos brasileiros que acompanharam a notícia.",
-            "why_it_matters": "Richie é uma figura pública com agenda de shows; a internação pode afetar apresentações e gerar atualizações sobre seu estado de saúde.",
+            "instagram_headline": "Lionel Richie volta a passar mal e é internado na UTI",
+            "short_summary": "O cantor Lionel Richie foi internado em uma UTI após passar mal durante um show nos Estados Unidos, segundo a imprensa. Relatos foram publicados por veículos como Estadão, Omelete e Terra; ainda não há nota oficial da equipe.",
+            "why_it_matters": "É uma notícia sobre a saúde de um artista em turnê e pode afetar datas e logística de apresentações. A cobertura da imprensa reúne várias fontes e aguarda confirmação oficial.",
             "key_facts": [
-              "Vários veículos noticiaram a internação após ele passar mal durante um show nos EUA",
-              "A ocorrência foi reportada por **29 fontes** independentes segundo verificação",
-              "O caso está classificado como FACT e verificado por essas fontes",
-              "Não há, entre as fontes listadas, um comunicado oficial da equipe do artista"
+              "O episódio ocorreu durante um show nos Estados Unidos, segundo a imprensa.",
+              "Richie foi levado a uma unidade de terapia intensiva (UTI).",
+              "Reportagens consultadas somam **29 fontes** independentes.",
+              "Não há diagnóstico público nem previsão de alta nas matérias verificadas.",
+              "Ainda não foi divulgada nota oficial da equipe do cantor."
             ],
-            "caption": "Lionel Richie foi internado na UTI após passar mal durante um show nos Estados Unidos.\n\nRelatos de veículos brasileiros como Estadão, Omelete e Terra informam a internação e descrevem que o episódio ocorreu após uma apresentação. As reportagens consultadas somam dezenas de referências locais que cobriram o caso.\n\nAté agora não há comunicados oficiais da equipe do cantor entre as fontes verificadas. As publicações citadas trazem o relato do episódio e a informação de internação em UTI, mas não detalham o diagnóstico nem previsão de alta.\n\nVamos acompanhar por atualizações oficiais e reportagens confiáveis. Siga para acompanhar novas informações.",
+            "caption": "Lionel Richie foi internado na UTI após passar mal durante um show, segundo a imprensa.\n\nRelatos do Estadão, Omelete, Terra e outros veículos indicam que o episódio aconteceu durante uma apresentação nos Estados Unidos e que o cantor foi levado a uma unidade de terapia intensiva. As apurações que consultamos somam **29 fontes** independentes.\n\nAs matérias publicadas até agora não trazem um diagnóstico confirmado nem previsão de alta. Entre as fontes verificadas ainda não há um comunicado oficial da equipe de Lionel Richie; as informações vêm da cobertura da imprensa citada acima.\n\nA situação pode interferir em datas e logística de shows, e por enquanto a prioridade é aguardar confirmação médica e um posicionamento formal. Vamos atualizar este post assim que houver nota oficial ou informações adicionais das publicações citadas.\n\nSiga para acompanhar.",
             "hashtags": [
               "#LionelRichie",
-              "#Música",
-              "#Entretenimento",
-              "#Notícias"
+              "#UTI",
+              "#música",
+              "#entretenimento",
+              "#entertainment"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Lionel Richie é internado na UTI",
-                "body": "Cantor passou mal durante show nos Estados Unidos e foi levado para a UTI, segundo reportagens.",
-                "image_direction": "Foto de Lionel Richie durante um show, plano médio, luz de palco, expressão séria; foco no artista, fundo desfocado com público. Clima de preocupação, sem cena médica.",
+                "headline": "Lionel Richie volta a passar mal",
+                "body": "O cantor foi internado em **UTI** após passar mal durante um show nos Estados Unidos, diz a imprensa.",
+                "image_direction": "Foto de Lionel Richie em apresentação recente, enquadramento médio, luzes de palco ao fundo, expressão séria ou cansada. Foto usada como registro do artista em show, sem simular hospitalização.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "O que aconteceu",
-                "body": "Durante uma apresentação nos EUA, Lionel Richie teria sentido indisposição e sido levado ao hospital, segundo reportagens. **29 fontes** relataram a internação.",
-                "image_direction": "Imagem objetiva do local do show (fachada do palco ou arena) com cenas de público saindo; sem mostrar atendimento médico.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "Contexto",
+                "body": "Segundo Estadão, Omelete e Terra, o episódio ocorreu durante um show nos EUA. Reportagens consultadas somam **29 fontes**.",
+                "image_direction": "Ilustração limpa mostrando um mapa dos Estados Unidos com um ícone de palco, indicando que o fato ocorreu durante uma apresentação; cores sóbrias.",
+                "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Os fatos",
-                "body": "Veículos como Estadão, Omelete e Terra reportaram a internação em UTI. Não há comunicado oficial citado pelas fontes consultadas.",
-                "image_direction": "Montagem simples com capas ou logos dos veículos citados organizados em coluna, fundo neutro.",
+                "headline": "Principais fatos",
+                "body": "Richie foi levado a **UTI** após passar mal no palco. Não há diagnóstico público nem previsão de alta, segundo a imprensa.",
+                "image_direction": "Ilustração com um bloco de notas e linhas de texto curtas listando os fatos; estilo editorial, legível em tela pequena.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
                 "headline": "Por que importa",
-                "body": "A internação pode afetar a agenda de shows e gera demanda por informações oficiais sobre o estado de saúde do artista.",
-                "image_direction": "Foto de um palco vazio com iluminação apagando aos poucos, simbolizando shows em suspense; clima de espera.",
-                "image_source_type": "AI_GENERATED"
+                "body": "Notícia envolve saúde de um artista em turnê e pode afetar datas e logística. Aguardam-se **atualizações oficiais**.",
+                "image_direction": "Ilustração mostrando um calendário e um ícone de alerta moderado, sugerindo impacto em agenda de shows.",
+                "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "O que vem agora",
-                "body": "Aguarda-se um comunicado oficial da equipe do artista. Mais atualizações devem sair pelas redações e assessoria médica.",
-                "image_direction": "Imagem neutra de um boletim médico fictício fechado sobre uma mesa, sem nomes ou dados sensíveis, transmitindo aguardo por informações.",
+                "headline": "Próximos passos",
+                "body": "A imprensa vai acompanhar a evolução do caso; procuramos nota da equipe do cantor e atualizaremos quando houver **comunicado oficial**.",
+                "image_direction": "Ilustração de uma lupa sobre um documento em branco, sugerindo investigação e espera por comunicado oficial.",
                 "image_source_type": "ILLUSTRATION"
               }
             ],
-            "created_at": "2026-09-01T15:26:54.995097Z"
+            "created_at": "2026-09-01T21:32:12.480Z"
           },
           "article_count": 29,
           "earliest_published_at": "2026-08-31T21:22:00Z",

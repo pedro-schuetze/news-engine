@@ -27,6 +27,16 @@ const NAV = [
     ),
   },
   {
+    href: "/gerar",
+    label: "Gerar post",
+    icon: (
+      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
+        <path d="M8 3.5v9M3.5 8h9" />
+        <circle cx="8" cy="8" r="6.2" />
+      </svg>
+    ),
+  },
+  {
     href: "/prontos",
     label: "Prontos",
     icon: (

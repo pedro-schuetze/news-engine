@@ -145,6 +145,25 @@ Notas: reviews feitas em produção viram commits (`review: APPROVED …`) — r
 `git pull` localmente para vê-las; o rate limit da API (5k/h) é folgado porque
 respostas 304 (ETag) não contam.
 
+## Gerar post de um link e pedir ajustes
+
+**Gerar post** (`/gerar`): cole o link de uma notícia (ou vários links do mesmo
+acontecimento, um por linha), opcionalmente escolha a vertical e escreva um
+direcionamento. O sistema lê as matérias, escreve o pacote editorial com as
+MESMAS regras do pipeline e salva como um run manual
+(`data/runs/manual_*.json`). O resultado aparece com os mesmos botões dos posts
+automáticos (gerar imagens, pedir ajustes, aprovar). "Descartar" apaga o run.
+
+**Pedir ajustes** (em qualquer post): um direcionamento curto — "tom mais
+leve", "foca no impacto para o eleitor", "corta o jargão" — reescreve o texto.
+As imagens já geradas são preservadas. Marcando *"aprender para os próximos
+posts"*, a instrução vai para `data/learned.json` e passa a valer nos próximos
+runs daquela vertical (o pipeline e o dashboard leem o mesmo arquivo).
+
+As regras editoriais vivem em `prompts/*.md` e são lidas pelos dois lados
+(Python em `src/llm/prompts.py`, dashboard em `web/src/lib/compose/draft.ts`):
+editar o markdown muda o comportamento nos dois.
+
 ## Imagens dos posts (etapa 2)
 
 O run diário gera **apenas texto**. As imagens de um post saem quando você
