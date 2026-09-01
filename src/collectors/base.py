@@ -19,7 +19,7 @@ from src.models import Article
 log = logging.getLogger("news_engine.collect")
 
 # headers HTTP precisam ser ASCII (httpx rejeita não-ASCII antes de enviar)
-USER_AGENT = "news-engine/0.1 (+https://github.com/pedro-schuetze-artica/news-engine)"
+USER_AGENT = "news-engine/0.1 (+https://github.com/pedro-schuetze/news-engine)"
 
 
 class CollectorFetchError(Exception):

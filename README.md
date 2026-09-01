@@ -131,12 +131,12 @@ Passos (conta pessoal da Vercel, sem tocar no login do CLI de outra conta):
    e depois `vercel deploy --prod --token $Env:VERCEL_TOKEN`.
 3. **Env vars na Vercel** (Project → Settings → Environment Variables):
    - `NEWS_DATA_SOURCE=github`
-   - `NEWS_GITHUB_REPO=pedro-schuetze-artica/news-engine`
+   - `NEWS_GITHUB_REPO=pedro-schuetze/news-engine`
    - `GITHUB_TOKEN=` *(fine-grained PAT: só este repo, permissão Contents
      read/write — criar em github.com/settings/personal-access-tokens)*
    - opcional: `NEWS_GITHUB_BRANCH=main`, `NEWS_GITHUB_MAX_RUNS=12`
 4. **Git integration (auto-deploy por push)**: no dashboard da Vercel,
-   Project → Settings → Git → conectar `pedro-schuetze-artica/news-engine`
+   Project → Settings → Git → conectar `pedro-schuetze/news-engine`
    (root directory `web`). Cada push — inclusive os commits diários de dados do
    Actions — redeploya; como a leitura é via API, os dados ficam frescos mesmo
    sem redeploy.

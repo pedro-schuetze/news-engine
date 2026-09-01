@@ -111,10 +111,9 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       (=pedro-schuetze-artica/news-engine enquanto o repo não for
       transferido), NEWS_GITHUB_BRANCH=main.
 - [ ] **GITHUB_TOKEN nas envs da Vercel (Pedro):** fine-grained PAT criado na
-      conta DONA do repo (hoje `pedro-schuetze-artica`), acesso só a este
-      repo, permissão Contents read/write — sem ele o site mostra o hint de
-      configuração. Se o repo for transferido depois, recriar o PAT na conta
-      pessoal e eu troco `NEWS_GITHUB_REPO`.
+      conta **pessoal `pedro-schuetze`** (dona do repo desde a transferência),
+      acesso só a este repo, permissão Contents read/write — sem ele o site
+      mostra o hint de configuração.
 - [x] ~~Primeiro deploy em produção~~ — **https://news-engine-six.vercel.app**
       (2026-08-31, projeto artica1/news-engine, READY, modo github ativo).
       Dois obstáculos resolvidos no caminho: (1) env vars criadas via
@@ -132,13 +131,17 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       key local, OU liberar o modelo para o projeto no console da OpenAI, OU
       setar secret `OPENAI_MODEL` para um modelo acessível. Coleta no CI
       funcionou (1.367 artigos); o abort foi limpo, sem commit de lixo.
-- [ ] **Transferir o repo para o GitHub pessoal (`pedro-schuetze`) — opcional,
-      necessário apenas para a git integration da Vercel** (auto-deploy por
-      push; o Vercel pessoal integra só com o GitHub pessoal). Deploy manual
-      via CLI já funciona sem isso. Após transferir: atualizar remote local
-      (URL com username p/ credencial separada no GCM), `NEWS_GITHUB_REPO`
-      (env da Vercel + default no código), User-Agent do collector, links em
-      docs, e recriar o secret `OPENAI_API_KEY` no repo (secrets não migram).
+- [x] ~~Transferir o repo para o GitHub pessoal~~ — feito pelo Pedro em
+      2026-08-31: agora é **`pedro-schuetze/news-engine`**. A transferência
+      preservou o secret `OPENAI_API_KEY` e o workflow (ativo), e deixou a
+      conta `pedro-schuetze-artica` como collaborator com push — o git local
+      continua autenticando com a credencial existente, sem popup. Remote,
+      default `NEWS_GITHUB_REPO` no código, User-Agent do collector, README e
+      env da Vercel atualizados para o novo caminho.
+- [ ] **Git integration na Vercel (Pedro, opcional):** agora possível —
+      dashboard da Vercel → projeto news-engine → Settings → Git → conectar
+      `pedro-schuetze/news-engine` (root directory `web`) para auto-deploy
+      por push.
 - [ ] **Feeds RSS desativados por incerteza de URL** (`enabled: false` em
       sources.yaml): Agência Câmara, Agência Senado, Omelete. Confirmar URLs e ligar.
 - [ ] **Links do Google News são redirects** (news.google.com/...): domínio real

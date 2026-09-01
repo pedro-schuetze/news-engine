@@ -17,7 +17,7 @@ import { RUN_FILE_RE, STORY_ID_RE } from "./common";
 
 const API = "https://api.github.com";
 // trim em tudo: env vars podem chegar com "\r"/espaços (CLI no Windows)
-const REPO = (process.env.NEWS_GITHUB_REPO ?? "pedro-schuetze-artica/news-engine").trim();
+const REPO = (process.env.NEWS_GITHUB_REPO ?? "pedro-schuetze/news-engine").trim();
 const BRANCH = (process.env.NEWS_GITHUB_BRANCH ?? "main").trim();
 const TOKEN = (process.env.GITHUB_TOKEN ?? "").trim();
 // teto de runs lidos remotamente por página (cold start amigável)
