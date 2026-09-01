@@ -174,10 +174,10 @@ export default async function DashboardPage() {
           <div className="mb-2.5 flex items-baseline justify-between">
             <p className="microlabel">posts aprovados recentes</p>
             <Link
-              href="/historico?status=APPROVED"
+              href="/prontos"
               className="font-mono text-[11.5px] font-medium text-brand-ink hover:underline"
             >
-              ver todos →
+              ver o feed pronto →
             </Link>
           </div>
           {recentApproved.length === 0 ? (

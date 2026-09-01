@@ -27,6 +27,18 @@ const NAV = [
     ),
   },
   {
+    href: "/prontos",
+    label: "Prontos",
+    icon: (
+      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
+        <rect x="2" y="2" width="5" height="5" rx="1" />
+        <rect x="9" y="2" width="5" height="5" rx="1" />
+        <rect x="2" y="9" width="5" height="5" rx="1" />
+        <path d="M9.5 11.5l1.5 1.5 3-3" />
+      </svg>
+    ),
+  },
+  {
     href: "/historico",
     label: "Histórico",
     icon: (

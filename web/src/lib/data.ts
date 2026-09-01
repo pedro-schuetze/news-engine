@@ -39,6 +39,22 @@ export async function loadRun(file?: string | null): Promise<PipelineRun | null>
   return src.readRun(file);
 }
 
+/**
+ * Nome do arquivo em data/runs/ que corresponde a um run_id.
+ *
+ * Necessário porque o dashboard costuma abrir o run como "latest": gravar só
+ * o latest.json deixava data/runs/ sem as imagens, e as páginas Prontos e
+ * Histórico (que leem os arquivos de run) mostravam post sem imagem.
+ */
+export async function findRunFile(runId: string): Promise<string | null> {
+  const files = await src.listRunFiles(30);
+  for (const f of files) {
+    const run = await src.readRun(f.file);
+    if (run?.run_id === runId) return f.file;
+  }
+  return null;
+}
+
 export interface RunSummary {
   file: string;
   run_id: string;

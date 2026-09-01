@@ -7,7 +7,7 @@
  *               e o JSON atualizado — 5 PUTs separados gerariam 5 commits.
  */
 
-import { DATA_MODE } from "../data";
+import { DATA_MODE, findRunFile } from "../data";
 import type { MediaAsset, PipelineRun } from "../types";
 import type { GeneratedAsset } from "./generate";
 
@@ -64,6 +64,18 @@ export function applyAssets(run: PipelineRun, storyId: string, assets: MediaAsse
   return false;
 }
 
+/**
+ * Onde o JSON do run precisa ser gravado: sempre o latest.json E o arquivo do
+ * histórico daquele run — as páginas Prontos e Histórico leem data/runs/.
+ */
+async function runTargets(runId: string, runFile: string): Promise<string[]> {
+  const targets = ["data/latest.json"];
+  const historyFile =
+    runFile && runFile !== "latest" ? runFile : await findRunFile(runId);
+  if (historyFile) targets.push(`data/runs/${historyFile}`);
+  return targets;
+}
+
 // ── filesystem (dev) ─────────────────────────────────────────────────
 
 async function persistFs(
@@ -88,13 +100,9 @@ async function persistFs(
 
   applyAssets(run, storyId, assets);
   const payload = JSON.stringify(run, null, 2);
-  const targets = [path.join(repoRoot, "data", "latest.json")];
-  if (runFile && runFile !== "latest") {
-    targets.push(path.join(repoRoot, "data", "runs", runFile));
-  }
-  for (const t of targets) {
+  for (const rel of await runTargets(run.run_id, runFile)) {
     try {
-      await fs.writeFile(t, payload, "utf-8");
+      await fs.writeFile(path.join(repoRoot, rel), payload, "utf-8");
     } catch {
       /* arquivo do histórico pode não existir; latest é o que importa */
     }
@@ -153,7 +161,7 @@ async function persistGithub(
     });
     files.push({ path: assets[i].local_path, sha: blob.sha });
   }
-  for (const target of ["data/latest.json", ...(runFile && runFile !== "latest" ? [`data/runs/${runFile}`] : [])]) {
+  for (const target of await runTargets(run.run_id, runFile)) {
     const blob = await gh<{ sha: string }>(`/repos/${REPO}/git/blobs`, {
       method: "POST",
       body: JSON.stringify({ content: Buffer.from(runJson, "utf-8").toString("base64"), encoding: "base64" }),

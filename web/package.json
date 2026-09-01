@@ -8,8 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/pngjs": "^6.0.5",
     "jpeg-js": "^0.4.4",
     "next": "^15.3.2",
+    "pngjs": "^7.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "yaml": "^2.7.0"
