@@ -101,26 +101,34 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 - [x] ~~Reviews e leitura de dados na Vercel~~ — resolvido em 2026-08-31
       (decisão 11): fonte dual `fs`/`github` em `web/src/lib/sources/`; produção
       lê via GitHub Contents API (cache ETag) e grava reviews como commits.
-- [ ] **Deploy na Vercel — bloqueado na criação do time Hobby pessoal.**
-      Fatos (corrigidos pelo Pedro em 2026-08-31): ele tem DUAS contas Vercel —
-      pessoal (`pedro-schuetze`, GitHub pessoal) e profissional (GitHub
-      `pedro-schuetze-artica`) — NUNCA MISTURAR. O token do `.env` é da conta
-      PESSOAL; pegadinha: essa conta pessoal é membro do time de trabalho
-      `artica1` e o tem como DEFAULT TEAM, então `vercel link` sem scope criou
-      o projeto no artica1 por engano — DELETADO em seguida; a conta
-      profissional nunca foi tocada. Falta: (1) Pedro criar um time Hobby na
-      conta pessoal pela UI (criação via API tem risco de billing/trial) e
-      informar o slug; (2) eu linkar/enviar envs/deployar com `--scope <slug>`
-      explícito em TODO comando; (3) `GITHUB_TOKEN` fine-grained da conta
-      GitHub PESSOAL nas envs da Vercel; (4) git integration após transferir o
-      repo (abaixo). Sugestão dada ao Pedro: trocar o default team da conta
-      pessoal para o time Hobby novo.
-- [ ] **Transferir o repo para o GitHub pessoal (`pedro-schuetze`)** — o
-      Vercel dele integra só com o GitHub pessoal. Após a transferência:
-      atualizar remote local (URL com username p/ credencial separada no GCM),
-      defaults `NEWS_GITHUB_REPO` no código/env, User-Agent do collector,
-      links em docs, e recriar o secret `OPENAI_API_KEY` no repo novo
-      (secrets não migram na transferência).
+- [x] ~~Deploy na Vercel~~ — projeto `news-engine` criado no time
+      **`artica1`**, que — APESAR DO NOME "Artica123" — é o **time Hobby
+      PESSOAL** do Pedro (confirmado por ele em 2026-08-31; a conta
+      profissional é OUTRA conta Vercel, linkada ao GitHub
+      pedro-schuetze-artica, nunca tocada por aqui). Operação sempre via
+      `VERCEL_TOKEN` do `.env` + `--scope artica1`; nunca `vercel login`.
+      Envs de produção: NEWS_DATA_SOURCE=github, NEWS_GITHUB_REPO
+      (=pedro-schuetze-artica/news-engine enquanto o repo não for
+      transferido), NEWS_GITHUB_BRANCH=main.
+- [ ] **GITHUB_TOKEN nas envs da Vercel (Pedro):** fine-grained PAT criado na
+      conta DONA do repo (hoje `pedro-schuetze-artica`), acesso só a este
+      repo, permissão Contents read/write — sem ele o site mostra o hint de
+      configuração. Se o repo for transferido depois, recriar o PAT na conta
+      pessoal e eu troco `NEWS_GITHUB_REPO`.
+- [ ] **Cron de 2026-08-31 06:03 falhou: a key do secret `OPENAI_API_KEY` do
+      GitHub é de um projeto OpenAI SEM acesso ao gpt-5-mini** (403
+      model_not_found; a key local — env var de usuário do Windows, não no
+      .env — é outra e funciona). Fix: Pedro atualizar o secret com a mesma
+      key local, OU liberar o modelo para o projeto no console da OpenAI, OU
+      setar secret `OPENAI_MODEL` para um modelo acessível. Coleta no CI
+      funcionou (1.367 artigos); o abort foi limpo, sem commit de lixo.
+- [ ] **Transferir o repo para o GitHub pessoal (`pedro-schuetze`) — opcional,
+      necessário apenas para a git integration da Vercel** (auto-deploy por
+      push; o Vercel pessoal integra só com o GitHub pessoal). Deploy manual
+      via CLI já funciona sem isso. Após transferir: atualizar remote local
+      (URL com username p/ credencial separada no GCM), `NEWS_GITHUB_REPO`
+      (env da Vercel + default no código), User-Agent do collector, links em
+      docs, e recriar o secret `OPENAI_API_KEY` no repo (secrets não migram).
 - [ ] **Feeds RSS desativados por incerteza de URL** (`enabled: false` em
       sources.yaml): Agência Câmara, Agência Senado, Omelete. Confirmar URLs e ligar.
 - [ ] **Links do Google News são redirects** (news.google.com/...): domínio real
