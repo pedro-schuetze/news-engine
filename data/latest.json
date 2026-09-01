@@ -280,12 +280,12 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Australian News and Information Bureau · Public domain · Wikimedia",
+                "license": "Shawn Miller/Library of Congress · CC0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Australian News and Information Bureau · Public domain · Wikimedia"
+                "attribution_text": "Shawn Miller/Library of Congress · CC0 · Wikimedia"
               },
-              "text_placement": "BOTTOM",
-              "text_align": "right",
+              "text_placement": "TOP",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
             },
@@ -302,12 +302,12 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Ann Woolliams · CC BY-SA 4.0 · Wikimedia",
+                "license": "U.S. State Department · Public domain · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Ann Woolliams · CC BY-SA 4.0 · Wikimedia"
+                "attribution_text": "U.S. State Department · Public domain · Wikimedia"
               },
               "text_placement": "BOTTOM",
-              "text_align": "center",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
             },
@@ -317,6 +317,28 @@
               "slide_number": 4,
               "type": "image",
               "local_path": "data/media/70c1762d-6eba-4c2f-b07c-c8dbecababb2/slide_4.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "prompt": "Editorial illustration for slide 4 of a news carousel about: \"Lionel Richie volta a passar mal e está internado na UTI\". This slide must show: Foto de um palco vazio com iluminação apagando aos poucos, simbolizando shows em suspense; clima de espera. Each slide of the carousel shows a DIFFERENT scene — make this one visually distinct from a generic establishing shot. Visual direction: cinematic pop-culture atmosphere: stage lights, film reels, concert haze; saturated color, dramatic contrast. Style: editorial photography, cinematic, atmospheric, shallow depth of field, dramatic directional light, rich shadows. Keep one third of the frame visually calm and dark for text overlay. STRICT: no text, no letters, no numbers, no logos, no watermarks. STRICT: no recognizable real person, no identifiable face, no portrait, no celebrity likeness. Use objects, environments, silhouettes or symbols.",
+              "estimated_cost_usd": 0.04116
+            },
+            {
+              "asset_id": "70c1762d-s5",
+              "story_id": "70c1762d-6eba-4c2f-b07c-c8dbecababb2",
+              "slide_number": 5,
+              "type": "image",
+              "local_path": "data/media/70c1762d-6eba-4c2f-b07c-c8dbecababb2/slide_5.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -332,28 +354,6 @@
               "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null
-            },
-            {
-              "asset_id": "70c1762d-s5",
-              "story_id": "70c1762d-6eba-4c2f-b07c-c8dbecababb2",
-              "slide_number": 5,
-              "type": "image",
-              "local_path": "data/media/70c1762d-6eba-4c2f-b07c-c8dbecababb2/slide_5.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": null,
-              "height": null,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "left",
-              "prompt": "Editorial illustration for slide 5 of a news carousel about: \"Lionel Richie volta a passar mal e está internado na UTI\". This slide must show: Imagem neutra de um boletim médico fictício fechado sobre uma mesa, sem nomes ou dados sensíveis, transmitindo aguardo por informações. Each slide of the carousel shows a DIFFERENT scene — make this one visually distinct from a generic establishing shot. Visual direction: cinematic pop-culture atmosphere: stage lights, film reels, concert haze; saturated color, dramatic contrast. Style: editorial photography, cinematic, atmospheric, shallow depth of field, dramatic directional light, rich shadows. Keep one third of the frame visually calm and dark for text overlay. STRICT: no text, no letters, no numbers, no logos, no watermarks. STRICT: no recognizable real person, no identifiable face, no portrait, no celebrity likeness. Use objects, environments, silhouettes or symbols.",
-              "estimated_cost_usd": 0.04116
             }
           ]
         },

@@ -87,27 +87,51 @@ export function normalizeToken(t: string): string {
     .replace(/[̀-ͯ]/g, "");
 }
 
-/** Entidades fortes do título: nomes próprios (inclusive compostos) e siglas. */
+// Palavras que abrem manchete e NÃO identificam ninguém. Sem esta lista, uma
+// entidade de uma palavra como "Estudo" casaria com qualquer arquivo.
+const GENERIC_HEAD = new Set(
+  `estudo estudos pesquisa pesquisas pesquisadores cientistas novo nova novos novas
+   como veja entenda apos após governo justica justiça policia polícia ministro
+   ministra presidente candidato deputado senador the this what why how new
+   scientists study research researchers report reportagem video vídeo`
+    .split(/\s+/)
+    .filter(Boolean),
+);
+
+/**
+ * Entidades fortes do título: nomes próprios (inclusive compostos) e siglas.
+ *
+ * A primeira palavra ENTRA na análise: manchete costuma abrir com o nome da
+ * pessoa ("Lionel Richie volta a..."), e ignorá-la fazia a entidade virar só
+ * "Richie" — que casou com a foto de Richie McCaw num post do Lionel Richie
+ * (bug visto em 2026-09-01). Entidades de uma palavra passam por GENERIC_HEAD.
+ */
 export function strongEntities(title: string): string[] {
   const tokens = title.match(/[\p{L}\d]+/gu) ?? [];
   const out: string[] = [];
   let run: string[] = [];
-  tokens.forEach((t, i) => {
+  const flush = () => {
+    if (run.length === 0) return;
+    const joined = run.join(" ");
+    // uma palavra só: precisa ser distintiva
+    if (run.length > 1 || !GENERIC_HEAD.has(normalizeToken(joined))) out.push(joined);
+    run = [];
+  };
+  tokens.forEach((t) => {
     const isAcronym = t.length >= 2 && t === t.toUpperCase() && /\p{L}/u.test(t);
-    const isProper = i > 0 && /^\p{Lu}/u.test(t) && t.length >= 3;
+    const isProper = /^\p{Lu}/u.test(t) && t.length >= 3 && t !== t.toUpperCase();
     if (isAcronym) {
+      flush();
       out.push(t);
-      run = [];
       return;
     }
     if (isProper) {
       run.push(t);
     } else {
-      if (run.length) out.push(run.join(" "));
-      run = [];
+      flush();
     }
   });
-  if (run.length) out.push(run.join(" "));
+  flush();
   // nomes compostos primeiro (mais específicos)
   return [...new Set(out)].sort((a, b) => b.length - a.length).slice(0, 6);
 }
