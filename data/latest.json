@@ -2426,15 +2426,15 @@
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "NASA/Apollo 17 crew; taken by either Har · Public domain · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "NASA/Apollo 17 crew; taken by either Har · Public domain · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "TOP",
-              "text_align": "right",
-              "prompt": "",
+              "text_placement": "CENTER",
+              "text_align": "center",
+              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
             },
             {
@@ -2448,15 +2448,15 @@
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "Craig Mayhew and Robert Simmon/NASA GSFC · Public domain · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "Craig Mayhew and Robert Simmon/NASA GSFC · Public domain · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
               "text_placement": "BOTTOM",
-              "text_align": "center",
-              "prompt": "",
+              "text_align": "left",
+              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
             },
             {
@@ -2470,15 +2470,15 @@
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "NASA/Bill Anders · Public domain · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "NASA/Bill Anders · Public domain · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "TOP",
-              "text_align": "center",
-              "prompt": "",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
             },
             {
@@ -2492,15 +2492,15 @@
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "NASA / Apollo 11 · Public domain · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "NASA / Apollo 11 · Public domain · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "TOP",
-              "text_align": "center",
-              "prompt": "",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
             },
             {
@@ -2514,15 +2514,15 @@
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "NASA · Public domain · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "NASA · Public domain · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
               "text_placement": "TOP",
-              "text_align": "center",
-              "prompt": "",
+              "text_align": "left",
+              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
             }
           ]
