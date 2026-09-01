@@ -101,11 +101,21 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 - [x] ~~Reviews e leitura de dados na Vercel~~ — resolvido em 2026-08-31
       (decisão 11): fonte dual `fs`/`github` em `web/src/lib/sources/`; produção
       lê via GitHub Contents API (cache ETag) e grava reviews como commits.
-- [ ] **Deploy na Vercel pendente de 2 tokens do Pedro:** `VERCEL_TOKEN` no
-      `.env` local (linha já criada) para eu criar o projeto via CLI, e
-      `GITHUB_TOKEN` fine-grained (Contents read/write, só este repo) nas env
-      vars da Vercel. Depois: git integration no dashboard (cliques dele).
-      Passo a passo no README → "Deploy na Vercel".
+- [ ] **Deploy na Vercel — bloqueado na criação do time Hobby pessoal.**
+      Descoberta de 2026-08-31: o Pedro tem UMA conta Vercel (login GitHub
+      pessoal, northstar) que é membro do time de trabalho `artica1` (default
+      team). `vercel link` sem scope criou o projeto no artica1 por engano —
+      DELETADO em seguida. Falta: (1) Pedro criar um time Hobby pessoal pela
+      UI da Vercel (criação via API tem risco de billing/trial) e informar o
+      slug; (2) eu linkar/enviar envs/deployar com `--scope <slug>` explícito;
+      (3) `GITHUB_TOKEN` fine-grained da conta GitHub PESSOAL nas envs da
+      Vercel; (4) git integration após transferir o repo (abaixo).
+- [ ] **Transferir o repo para o GitHub pessoal (`pedro-schuetze`)** — o
+      Vercel dele integra só com o GitHub pessoal. Após a transferência:
+      atualizar remote local (URL com username p/ credencial separada no GCM),
+      defaults `NEWS_GITHUB_REPO` no código/env, User-Agent do collector,
+      links em docs, e recriar o secret `OPENAI_API_KEY` no repo novo
+      (secrets não migram na transferência).
 - [ ] **Feeds RSS desativados por incerteza de URL** (`enabled: false` em
       sources.yaml): Agência Câmara, Agência Senado, Omelete. Confirmar URLs e ligar.
 - [ ] **Links do Google News são redirects** (news.google.com/...): domínio real
