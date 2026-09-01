@@ -206,10 +206,25 @@ Decidido com o Pedro:
   aguardando o Pedro colar prints de 2-3 posts ideais de cada — templates e
   ajuste fino do storyline só depois disso (não repetir o erro do refero).
 
-Ordem de construção quando os prints chegarem: (1) templates satori +
-preview no dashboard com stories reais; (2) ajuste do writer (textos de
-imagem + image queries); (3) sourcing de imagem com provenance; (4) fase 3 =
-publicação IG.
+**Fase 1 ENTREGUE (2026-09-01):** prints recebidos (bating = capa
+manchete-caps + internos serifados c/ negrito; the news = highlight colorido;
+curioso = sobriedade serif, menos texto que o exemplo). Renderer no ar:
+`GET /api/slide/{story}/{n}?run=` → PNG 1080x1350 (satori/next-og, fontes
+Archivo Black + Lora + Plex Mono vendoradas), templates capa/interno/fecho
+com marca, tag colorida por vertical, paginação, CTA e crédito; sourcing
+keyless Wikimedia→Openverse com cascata de queries (entidades → nome →
+contexto da vertical — post é SEMPRE visual) e provenance/crédito
+sanitizado; preview renderizado no StoryCard; validado em produção.
+
+Próximos passos da etapa 2:
+1. Feedback visual do Pedro sobre as primeiras amostras → iterar templates.
+2. Writer v2: campos para o renderer (cover_highlight p/ destaque colorido
+   na manchete, corpo com **negritos**, textos mais curtos ≤25 palavras,
+   image_query por slide) + re-run para calibrar.
+3. Sourcing fase 2 com keys do Pedro: Unsplash/Pexels (conceitos) e geração
+   IA (ilustração; nunca pessoa real). Persistir MediaAsset ao aprovar.
+4. Fase 3: publicação — a Graph API do Instagram consome exatamente as URLs
+   de /api/slide já existentes.
 
 ### Médio/longo prazo (fase 2+)
 - **Supabase**: implementar `SupabaseNewsRepository` (dupla escrita JSON+DB na
