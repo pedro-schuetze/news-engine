@@ -2303,7 +2303,118 @@
           "latest_published_at": "2026-09-01T13:46:40Z",
           "selection_rank": 1,
           "created_at": "2026-09-01T15:35:21.078770Z",
-          "slide_media": []
+          "slide_media": [
+            {
+              "asset_id": "6c149142-s1",
+              "story_id": "6c149142-538a-4649-85e1-6863d47cb38f",
+              "slide_number": 1,
+              "type": "image",
+              "local_path": "data/media/6c149142-538a-4649-85e1-6863d47cb38f/slide_1.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "NASA/Apollo 17 crew; taken by either Har · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "NASA/Apollo 17 crew; taken by either Har · Public domain · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "right",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "6c149142-s2",
+              "story_id": "6c149142-538a-4649-85e1-6863d47cb38f",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/6c149142-538a-4649-85e1-6863d47cb38f/slide_2.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Craig Mayhew and Robert Simmon/NASA GSFC · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Craig Mayhew and Robert Simmon/NASA GSFC · Public domain · Wikimedia"
+              },
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "6c149142-s3",
+              "story_id": "6c149142-538a-4649-85e1-6863d47cb38f",
+              "slide_number": 3,
+              "type": "image",
+              "local_path": "data/media/6c149142-538a-4649-85e1-6863d47cb38f/slide_3.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "NASA/Bill Anders · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "NASA/Bill Anders · Public domain · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "6c149142-s4",
+              "story_id": "6c149142-538a-4649-85e1-6863d47cb38f",
+              "slide_number": 4,
+              "type": "image",
+              "local_path": "data/media/6c149142-538a-4649-85e1-6863d47cb38f/slide_4.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "NASA / Apollo 11 · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "NASA / Apollo 11 · Public domain · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "6c149142-s5",
+              "story_id": "6c149142-538a-4649-85e1-6863d47cb38f",
+              "slide_number": 5,
+              "type": "image",
+              "local_path": "data/media/6c149142-538a-4649-85e1-6863d47cb38f/slide_5.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "NASA · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "NASA · Public domain · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null
+            }
+          ]
         },
         {
           "story_id": "9361ed1b-96f4-4932-87e7-978c4f7acfb7",
