@@ -161,6 +161,9 @@ briefing com o acontecimento e a direção visual de cada slide. Cole no ChatGPT
 com a skill `news-engine-carousel` instalada (arquivo em
 `skills/news-engine-carousel-1.0.0.zip`), baixe as 5 imagens e volte ao card em
 "↑ Subir imagens do ChatGPT", selecionando os arquivos **na ordem dos slides**.
+Os PNG do ChatGPT (1,5-5MB cada) são convertidos no próprio navegador para JPEG
+1080x1350 antes do envio — sem isso o conjunto estoura o limite de corpo da
+requisição.
 
 Nos dois caminhos a imagem passa pela mesma análise de contraste (qual faixa e
 qual terço do quadro têm mais espaço escuro e uniforme) e o renderizador

@@ -2,6 +2,7 @@
 
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { prepareForUpload } from "@/lib/media/clientImage";
 
 interface ApiResult {
   slides: number;
@@ -18,6 +19,20 @@ interface ApiResult {
  *   2. copiando o briefing para o ChatGPT (skill news-engine-carousel) e
  *      subindo os arquivos de volta.
  */
+/** O runtime pode responder texto puro (413, 504) — não assuma JSON. */
+async function readResponse(res: Response): Promise<{ ok: boolean; body: ApiResult & { error?: string; problems?: string[] } }> {
+  const raw = await res.text();
+  try {
+    return { ok: res.ok, body: JSON.parse(raw) };
+  } catch {
+    const hint =
+      res.status === 413
+        ? "as imagens ficaram grandes demais para o envio"
+        : `${res.status} ${res.statusText || "erro no servidor"}`;
+    return { ok: false, body: { slides: 0, error: hint } as never };
+  }
+}
+
 export default function ImageActions({
   storyId,
   runFile,
@@ -37,6 +52,7 @@ export default function ImageActions({
   const [copied, setCopied] = useState(false);
   const [result, setResult] = useState<ApiResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [prep, setPrep] = useState<string | null>(null);
   const [refreshing, startTransition] = useTransition();
 
   const runQs = `run=${encodeURIComponent(runFile)}`;
@@ -47,12 +63,12 @@ export default function ImageActions({
     setResult(null);
     try {
       const res = await fetch(`/api/media/${storyId}?${runQs}`, { method: "POST" });
-      const body = await res.json();
-      if (!res.ok) {
+      const { ok, body } = await readResponse(res);
+      if (!ok) {
         setError(body.error ?? `falha (HTTP ${res.status})`);
         return;
       }
-      setResult(body as ApiResult);
+      setResult(body);
       startTransition(() => router.refresh());
     } catch (e) {
       setError(String(e).slice(0, 160));
@@ -75,27 +91,33 @@ export default function ImageActions({
     setBusy("upload");
     setError(null);
     setResult(null);
-    const form = new FormData();
-    // ordem dos arquivos = ordem dos slides
-    Array.from(files)
-      .slice(0, slideCount)
-      .forEach((file, i) => form.append(`slide_${i + 1}`, file));
+    setPrep(null);
+    const chosen = Array.from(files).slice(0, slideCount);
     try {
+      // PNG do ChatGPT tem 1,5-3MB; convertido para JPEG 1080x1350 cabe no envio
+      setPrep(`convertendo ${chosen.length} imagens…`);
+      const prepared = await Promise.all(chosen.map((f) => prepareForUpload(f)));
+      const totalOriginal = prepared.reduce((s, p) => s + p.originalKB, 0);
+      const totalFinal = prepared.reduce((s, p) => s + p.finalKB, 0);
+      setPrep(`${Math.round(totalOriginal / 1024)}MB → ${Math.round(totalFinal / 1024 * 10) / 10}MB`);
+
+      const form = new FormData();
+      // ordem dos arquivos = ordem dos slides
+      prepared.forEach((p, i) => form.append(`slide_${i + 1}`, p.file));
+
       const res = await fetch(`/api/media/${storyId}/upload?${runQs}`, {
         method: "POST",
         body: form,
       });
-      const body = await res.json();
-      if (!res.ok) {
-        setError(
-          [body.error, ...(body.problems ?? [])].filter(Boolean).join(" · ").slice(0, 240),
-        );
+      const { ok, body } = await readResponse(res);
+      if (!ok) {
+        setError([body.error, ...(body.problems ?? [])].filter(Boolean).join(" · ").slice(0, 240));
         return;
       }
-      setResult(body as ApiResult);
+      setResult(body);
       startTransition(() => router.refresh());
     } catch (e) {
-      setError(String(e).slice(0, 160));
+      setError(String(e).slice(0, 200));
     } finally {
       setBusy(null);
       if (fileInput.current) fileInput.current.value = "";
@@ -142,7 +164,7 @@ export default function ImageActions({
           className={`${pill} border border-line bg-panel text-ink-2 hover:border-ink-3 hover:text-ink`}
           title={`Selecione as ${slideCount} imagens na ordem dos slides`}
         >
-          {busy === "upload" ? "enviando…" : "↑ Subir imagens do ChatGPT"}
+          {busy === "upload" ? "convertendo e enviando…" : "↑ Subir imagens do ChatGPT"}
         </button>
 
         <input
@@ -161,6 +183,7 @@ export default function ImageActions({
         {busy === "api" && (
           <span className="text-ink-3">leva ~40s (as {slideCount} rodam em paralelo)</span>
         )}
+        {prep && <span className="text-ink-3">{prep}</span>}
         {refreshing && busy === null && <span className="text-ink-3">atualizando prévia…</span>}
         {result && busy === null && (
           <span className="text-brand-ink">
