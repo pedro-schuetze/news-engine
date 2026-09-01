@@ -115,6 +115,16 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       repo, permissão Contents read/write — sem ele o site mostra o hint de
       configuração. Se o repo for transferido depois, recriar o PAT na conta
       pessoal e eu troco `NEWS_GITHUB_REPO`.
+- [x] ~~Primeiro deploy em produção~~ — **https://news-engine-six.vercel.app**
+      (2026-08-31, projeto artica1/news-engine, READY, modo github ativo).
+      Dois obstáculos resolvidos no caminho: (1) env vars criadas via
+      `vercel env add` com pipe do PowerShell carregavam `\r` no valor,
+      quebrando `NEWS_DATA_SOURCE === "github"` — recriadas via API REST +
+      `.trim()` defensivo no código; (2) deploy BLOCKED por
+      TEAM_ACCESS_REQUIRED (autor dos commits era o e-mail de TRABALHO,
+      `pedro.andrade@artica.capital`) — o repo agora tem git config LOCAL com
+      a identidade pessoal (`pedro-schuetze@users.noreply.github.com`), que a
+      Vercel aceita; o git config global (trabalho) segue intocado.
 - [ ] **Cron de 2026-08-31 06:03 falhou: a key do secret `OPENAI_API_KEY` do
       GitHub é de um projeto OpenAI SEM acesso ao gpt-5-mini** (403
       model_not_found; a key local — env var de usuário do Windows, não no
