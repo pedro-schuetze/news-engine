@@ -230,9 +230,15 @@ function Background({
 }
 
 /**
- * Escurecimento em duas camadas: um véu uniforme (garante legibilidade mesmo
- * em foto clara) + gradiente pesado na faixa do texto. Sem isso, manchete
- * branca sobre foto clara some — problema visto nas primeiras amostras.
+ * Escurecimento em três peças, para a foto continuar visível:
+ *
+ *  1. véu leve e uniforme (dá coesão e tira o excesso de luz);
+ *  2. faixa escura LOCAL, só na altura onde o texto fica;
+ *  3. barras discretas no topo e no rodapé, para marca, paginação e crédito.
+ *
+ * A versão anterior somava véu de 50% com faixa de 90% no quadro inteiro e a
+ * imagem sumia. Aqui o miolo da foto fica quase limpo, e a legibilidade vem da
+ * faixa local somada às sombras do texto.
  */
 function Scrim({
   kind,
@@ -243,19 +249,37 @@ function Scrim({
   hasPhoto: boolean;
   placement: TextPlacement;
 }) {
-  // satori não renderiza Fragment com múltiplos filhos absolutos: as duas
-  // camadas (véu uniforme + faixa pesada) vão como gradientes empilhados
-  // num único elemento. A faixa acompanha a região onde o texto vai ficar.
-  const veil = hasPhoto ? (kind === "cover" ? 0.5 : 0.44) : 0.1;
+  if (!hasPhoto) {
+    // fundo gráfico já é escuro: só um véu mínimo
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          backgroundImage:
+            "linear-gradient(180deg, rgba(5,7,12,0.35) 0%, rgba(5,7,12,0.05) 30%, rgba(5,7,12,0.05) 70%, rgba(5,7,12,0.45) 100%)",
+        }}
+      />
+    );
+  }
+
+  const veil = kind === "cover" ? 0.2 : 0.16;
+  // faixa local: transparente fora da área de texto, densa dentro dela
   const BANDS: Record<TextPlacement, string> = {
-    TOP: "linear-gradient(180deg, rgba(5,7,12,0.94) 0%, rgba(5,7,12,0.9) 42%, rgba(5,7,12,0.5) 62%, rgba(5,7,12,0.86) 100%)",
+    TOP: "linear-gradient(180deg, rgba(5,7,12,0.9) 0%, rgba(5,7,12,0.88) 34%, rgba(5,7,12,0.45) 46%, rgba(5,7,12,0) 58%, rgba(5,7,12,0) 100%)",
     CENTER:
-      "linear-gradient(180deg, rgba(5,7,12,0.84) 0%, rgba(5,7,12,0.34) 16%, rgba(5,7,12,0.9) 34%, rgba(5,7,12,0.9) 68%, rgba(5,7,12,0.5) 82%, rgba(5,7,12,0.9) 100%)",
+      "linear-gradient(180deg, rgba(5,7,12,0) 8%, rgba(5,7,12,0.5) 26%, rgba(5,7,12,0.86) 38%, rgba(5,7,12,0.86) 66%, rgba(5,7,12,0.45) 76%, rgba(5,7,12,0) 88%)",
     BOTTOM:
-      "linear-gradient(180deg, rgba(5,7,12,0.9) 0%, rgba(5,7,12,0.35) 20%, rgba(5,7,12,0.12) 40%, rgba(5,7,12,0.74) 60%, rgba(5,7,12,0.95) 80%, rgba(5,7,12,0.98) 100%)",
+      "linear-gradient(180deg, rgba(5,7,12,0) 20%, rgba(5,7,12,0.45) 44%, rgba(5,7,12,0.84) 60%, rgba(5,7,12,0.9) 100%)",
   };
-  const band = BANDS[placement] ?? BANDS.BOTTOM;
+  const chrome =
+    "linear-gradient(180deg, rgba(5,7,12,0.62) 0%, rgba(5,7,12,0) 12%, rgba(5,7,12,0) 86%, rgba(5,7,12,0.72) 100%)";
   const veilLayer = `linear-gradient(180deg, rgba(5,7,12,${veil}) 0%, rgba(5,7,12,${veil}) 100%)`;
+
   return (
     <div
       style={{
@@ -265,7 +289,7 @@ function Scrim({
         width: "100%",
         height: "100%",
         display: "flex",
-        backgroundImage: `${band}, ${veilLayer}`,
+        backgroundImage: `${BANDS[placement] ?? BANDS.BOTTOM}, ${chrome}, ${veilLayer}`,
       }}
     />
   );
