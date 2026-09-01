@@ -17,6 +17,7 @@ export default function RunView({
   tab,
   debug,
   minStories = 3,
+  runFile = "latest",
 }: {
   run: PipelineRun;
   reviews: Record<string, Review>;
@@ -25,6 +26,7 @@ export default function RunView({
   tab: string;
   debug: boolean;
   minStories?: number;
+  runFile?: string;
 }) {
   const verticalIds = Object.keys(run.verticals);
   const activeTab =
@@ -118,6 +120,7 @@ export default function RunView({
                   story={story}
                   review={reviews[story.story_id] ?? null}
                   verticalName={names[story.vertical] ?? story.vertical}
+                  runFile={runFile}
                 />
               ))}
           </>

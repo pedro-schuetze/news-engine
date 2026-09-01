@@ -61,6 +61,7 @@ export default async function RunDetailPage({
           basePath={`/historico/${encodeURIComponent(runFile)}`}
           tab={tab}
           debug={debug}
+          runFile={runFile}
         />
       </div>
     </div>

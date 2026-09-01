@@ -18,10 +18,12 @@ export default function StoryCard({
   story,
   review,
   verticalName,
+  runFile = "latest",
 }: {
   story: Story;
   review: Review | null;
   verticalName?: string;
+  runFile?: string;
 }) {
   const draft = story.draft;
   const reviewStatus = review?.review_status ?? "PENDING";
@@ -170,7 +172,30 @@ export default function StoryCard({
 
         {draft && draft.slides.length > 0 && (
           <details className="xp">
-            <summary>Carrossel ({draft.slides.length} slides)</summary>
+            <summary>Post renderizado ({draft.slides.length} slides)</summary>
+            <div className="mt-2 grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-5">
+              {draft.slides.map((s) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={s.slide_number}
+                  src={`/api/slide/${story.story_id}/${s.slide_number}?run=${encodeURIComponent(runFile)}`}
+                  alt={`Slide ${s.slide_number}`}
+                  loading="lazy"
+                  className="w-full rounded-lg border border-line bg-panel-2"
+                  style={{ aspectRatio: "1080 / 1350" }}
+                />
+              ))}
+            </div>
+            <p className="mt-2 font-mono text-[11px] text-ink-3">
+              1080×1350 · renderizado ao vivo (fotos: Wikimedia/Openverse com crédito) — é a
+              prévia real do que a fase de publicação enviará ao Instagram.
+            </p>
+          </details>
+        )}
+
+        {draft && draft.slides.length > 0 && (
+          <details className="xp">
+            <summary>Textos e direções dos slides</summary>
             <div className="mt-2 grid gap-2.5 md:grid-cols-2 xl:grid-cols-3">
               {draft.slides.map((s) => (
                 <div key={s.slide_number} className="rounded-xl border border-line bg-panel-2/50 p-3.5">
