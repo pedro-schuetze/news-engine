@@ -102,14 +102,19 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       (decisão 11): fonte dual `fs`/`github` em `web/src/lib/sources/`; produção
       lê via GitHub Contents API (cache ETag) e grava reviews como commits.
 - [ ] **Deploy na Vercel — bloqueado na criação do time Hobby pessoal.**
-      Descoberta de 2026-08-31: o Pedro tem UMA conta Vercel (login GitHub
-      pessoal, northstar) que é membro do time de trabalho `artica1` (default
-      team). `vercel link` sem scope criou o projeto no artica1 por engano —
-      DELETADO em seguida. Falta: (1) Pedro criar um time Hobby pessoal pela
-      UI da Vercel (criação via API tem risco de billing/trial) e informar o
-      slug; (2) eu linkar/enviar envs/deployar com `--scope <slug>` explícito;
-      (3) `GITHUB_TOKEN` fine-grained da conta GitHub PESSOAL nas envs da
-      Vercel; (4) git integration após transferir o repo (abaixo).
+      Fatos (corrigidos pelo Pedro em 2026-08-31): ele tem DUAS contas Vercel —
+      pessoal (`pedro-schuetze`, GitHub pessoal) e profissional (GitHub
+      `pedro-schuetze-artica`) — NUNCA MISTURAR. O token do `.env` é da conta
+      PESSOAL; pegadinha: essa conta pessoal é membro do time de trabalho
+      `artica1` e o tem como DEFAULT TEAM, então `vercel link` sem scope criou
+      o projeto no artica1 por engano — DELETADO em seguida; a conta
+      profissional nunca foi tocada. Falta: (1) Pedro criar um time Hobby na
+      conta pessoal pela UI (criação via API tem risco de billing/trial) e
+      informar o slug; (2) eu linkar/enviar envs/deployar com `--scope <slug>`
+      explícito em TODO comando; (3) `GITHUB_TOKEN` fine-grained da conta
+      GitHub PESSOAL nas envs da Vercel; (4) git integration após transferir o
+      repo (abaixo). Sugestão dada ao Pedro: trocar o default team da conta
+      pessoal para o time Hobby novo.
 - [ ] **Transferir o repo para o GitHub pessoal (`pedro-schuetze`)** — o
       Vercel dele integra só com o GitHub pessoal. Após a transferência:
       atualizar remote local (URL com username p/ credencial separada no GCM),
