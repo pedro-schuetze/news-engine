@@ -240,14 +240,44 @@ sanitizado; preview renderizado no StoryCard; validado em produção.
 - Envs de produção na Vercel: OPENAI_API_KEY, OPENAI_IMAGE_MODEL=gpt-image-2,
   OPENAI_IMAGE_QUALITY=medium (configuradas via API com o VERCEL_TOKEN).
 
+**Fase 3 ENTREGUE (2026-09-01)** — feedback do Pedro sobre os carrosséis
+prontos, ponto a ponto:
+- **Imagens iguais nos 5 slides** (consequência da decisão "1 imagem por
+  story"): relevância agora exige o nome COMPOSTO ("Lionel Richie", não
+  "Richie" — que trouxe outra pessoa), então o banco pode devolver várias
+  fotos do mesmo assunto; e com uma imagem só, cada slide tem enquadramento
+  próprio (zoom + ponto de interesse em `FRAMINGS`, render.tsx).
+- **Ilustração PRÉ-GERADA no run** (`src/media/illustrator.py`): gera, comprime
+  para JPEG (~70-185KB em vez de ~1MB), analisa e salva em `data/media/`
+  (versionado no git; o dashboard lê por fs local ou GitHub API). Dashboard não
+  espera geração e o custo fica travado em 1 imagem por post. Stats novos:
+  `illustrations_generated`, `estimated_image_cost_usd`.
+- **Posição do texto por análise de imagem** (o "sonho" do Pedro): Pillow mede
+  luminância e desvio em 3 faixas x 3 terços e escolhe a região mais escura e
+  uniforme; grava `text_placement` (TOP/CENTER/BOTTOM) e `text_align`
+  (left/center/right) no MediaAsset. O renderer move o texto E a faixa escura
+  para lá; mantém centralizado quando o ganho não é claro. No run de validação
+  a escolha variou de verdade (bottom/left, top/center, center/left...).
+- **Escrita humanizada**: regras da skill `humanizer` (Wikipedia "Signs of AI
+  writing") traduzidas para PT-BR editorial no prompt do writer. Travessão
+  proibido, lista de vocabulário-clichê, sem gerúndio de análise falsa, sem
+  paralelismo negativo, sem regra de três, sem conclusão motivacional. Run de
+  validação: ZERO tells nas 15 legendas, média de 138 palavras.
+- **Manchete com gramática completa**: regra explícita usando o caso apontado
+  pelo Pedro ("Cérebro sincroniza com sua respiração" -> "Estudo mostra que o
+  cérebro sincroniza com a respiração"), com origem do fato na manchete.
+
+Run de validação (2026-09-01 15:20): 1.679 artigos → 15 posts, US$ 0,068 de
+LLM + US$ 0,618 de imagens = US$ 0,69.
+
 Próximos passos da etapa 2:
-1. **Pré-gerar imagens no fim do run** e persistir via `MediaStorage`: hoje a
-   1ª renderização de um slide com IA leva 40-60s (depois o CDN cobre por
-   10min). Pré-gerar deixa o dashboard instantâneo e trava o custo.
-2. Writer v2: `cover_highlight` (destaque colorido na manchete, estilo the
-   news) e `image_query` por story para guiar melhor banco e prompt de IA.
+1. Pedido em aberto do Pedro: no dashboard, poder **regerar a ilustração** de um
+   post específico (quando a arte não convencer) sem rodar o pipeline todo.
+2. Writer v2: `cover_highlight` (destaque colorido na manchete, estilo the news).
 3. Sourcing extra (opcional): Unsplash/Pexels para conceitos.
-4. Fase 3: publicação — a Graph API do Instagram consome exatamente as URLs
+4. Observar: no run de validação o router descartou 0 de 60 clusters (antes
+   descartava 2-3). Vale checar se o prompt de classificação ficou permissivo.
+5. Fase 3: publicação — a Graph API do Instagram consome exatamente as URLs
    de /api/slide já existentes.
 
 ### Médio/longo prazo (fase 2+)
