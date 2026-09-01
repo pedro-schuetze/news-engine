@@ -61,9 +61,11 @@ jobs:
         run: python -m src.pipeline
 
       - name: Commitar resultados (data/)
+        # identidade pessoal do dono: o auto-deploy da Vercel (git integration)
+        # bloqueia commits de autores que não são membros do time (TEAM_ACCESS_REQUIRED)
         run: |
-          git config user.name "news-engine-bot"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "Pedro Schuetze"
+          git config user.email "pedro-schuetze@users.noreply.github.com"
           git add data/latest.json data/runs
           if git diff --cached --quiet; then
             echo "Nada novo para commitar."
