@@ -113,10 +113,9 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 - [x] ~~GITHUB_TOKEN nas envs da Vercel~~ — configurado pelo Pedro em
       2026-08-31; LEITURA funcionando em produção (site carrega runs do repo
       em tempo real, sem redeploy).
-- [ ] **Token ainda é Contents: Read-only** — o POST de review em produção
-      retorna "GitHub API 403 ao gravar". Fix (Pedro, sem trocar o valor nem
-      redeploy): github.com/settings/personal-access-tokens → editar o token →
-      Contents: Read and write → Update.
+- [x] ~~Token Contents: Read-only~~ — Pedro ajustou para Read and write em
+      2026-08-31; write validado EM PRODUÇÃO com reviews reais (commits
+      `review: APPROVED/REJECTED ...` no repo). Sistema 100% operacional.
 - [x] ~~Validação ponta a ponta do fluxo automático~~ (2026-08-31 noite):
       secret OPENAI_API_KEY corrigido → run manual do Actions 100% verde
       (pipeline live + commit de dados) → site refletiu o run novo na hora
