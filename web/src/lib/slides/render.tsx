@@ -66,13 +66,24 @@ function plainText(text: string): string {
   return text.replace(/\*\*/g, "");
 }
 
-/** Divide texto com **negrito** em palavras marcadas (satori não tem inline flow). */
+/**
+ * Divide texto com **negrito** em palavras marcadas (satori não tem fluxo
+ * inline: cada palavra é um span num flex-wrap). A pontuação que segue um
+ * trecho em negrito cola na palavra anterior; sem isso o texto saía como
+ * "chuvas extraordinárias ." com o ponto solto.
+ */
 function richWords(text: string): { word: string; bold: boolean }[] {
   const out: { word: string; bold: boolean }[] = [];
-  const parts = text.split("**");
-  parts.forEach((part, i) => {
+  text.split("**").forEach((part, i) => {
     const bold = i % 2 === 1;
-    for (const word of part.split(/\s+/)) {
+    let rest = part;
+    // pontuação no início da parte pertence à palavra anterior
+    const lead = rest.match(/^[.,;:!?)\]}%”"']+/);
+    if (lead && out.length > 0) {
+      out[out.length - 1].word += lead[0];
+      rest = rest.slice(lead[0].length);
+    }
+    for (const word of rest.split(/\s+/)) {
       if (word) out.push({ word, bold });
     }
   });
