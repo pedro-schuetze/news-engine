@@ -186,6 +186,32 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
   até o Supabase.
 - Avaliar segundo run diário (ex.: 15:00) antes de investir em breaking news.
 
+### Etapa 2 — geração automática dos posts (decisões de 2026-08-31, aguardando prints)
+
+Decidido com o Pedro:
+- **Visual text-first COM imagem obrigatória**: tipografia grande domina a
+  hierarquia (referência: the news), mas TODO slide tem zona visual — foto de
+  fonte limpa ou ilustração. Fallback garantido: se não houver foto limpa,
+  ilustração por IA (nunca pessoa real) — a automação nunca trava sem imagem.
+- **Fontes de imagem**: Wikimedia Commons (pessoas públicas, com atribuição),
+  Unsplash/Pexels via API (conceitos), IA para ilustração. Provenance no
+  MediaAsset. og:image de matéria NÃO entra (nem como candidata).
+- **Renderer**: satori/@vercel/og no web app — templates JSX determinísticos
+  → PNG 1080x1350 on-demand, preview renderizado no dashboard, URL pública
+  por slide (pronta para a Graph API do Instagram na fase 3).
+- **Storyline 5 slides por vertical** (gancho → contexto → fato central →
+  consequência → fecho+CTA), texto NA imagem curto (slide 1 = manchete;
+  demais ≤ ~25 palavras); a legenda complementa/aprofunda — o post precisa
+  se sustentar sozinho nas imagens.
+- **Contas-modelo**: the news, curioso mercado, the bating. BLOQUEADO
+  aguardando o Pedro colar prints de 2-3 posts ideais de cada — templates e
+  ajuste fino do storyline só depois disso (não repetir o erro do refero).
+
+Ordem de construção quando os prints chegarem: (1) templates satori +
+preview no dashboard com stories reais; (2) ajuste do writer (textos de
+imagem + image queries); (3) sourcing de imagem com provenance; (4) fase 3 =
+publicação IG.
+
 ### Médio/longo prazo (fase 2+)
 - **Supabase**: implementar `SupabaseNewsRepository` (dupla escrita JSON+DB na
   transição) + reviews via dashboard em produção.
