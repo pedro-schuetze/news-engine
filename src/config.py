@@ -17,7 +17,11 @@ from typing import Optional
 
 import yaml
 from pydantic import BaseModel, Field, field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import (
+    BaseSettings,
+    PydanticBaseSettingsSource,
+    SettingsConfigDict,
+)
 
 
 class Settings(BaseSettings):
@@ -45,6 +49,49 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
+
+    @classmethod
+    def settings_customise_sources(
+        cls,
+        settings_cls: type[BaseSettings],
+        init_settings: PydanticBaseSettingsSource,
+        env_settings: PydanticBaseSettingsSource,
+        dotenv_settings: PydanticBaseSettingsSource,
+        file_secret_settings: PydanticBaseSettingsSource,
+    ) -> tuple[PydanticBaseSettingsSource, ...]:
+        """O .env do projeto vence env vars do sistema.
+
+        Motivo (2026-09-01): uma OPENAI_API_KEY antiga numa env var de usuário
+        do Windows sobrepunha silenciosamente a key do .env — difícil de
+        diagnosticar. Só valores NÃO-VAZIOS do .env têm precedência, então
+        deixar uma linha em branco no .env não apaga a env var. No CI não
+        existe .env, logo o comportamento lá é inalterado.
+        """
+        return (
+            init_settings,
+            _NonEmptyDotEnv(dotenv_settings),
+            env_settings,
+            dotenv_settings,
+            file_secret_settings,
+        )
+
+
+class _NonEmptyDotEnv(PydanticBaseSettingsSource):
+    """Wrapper que expõe apenas as chaves preenchidas do .env."""
+
+    def __init__(self, inner: PydanticBaseSettingsSource):
+        self._inner = inner
+        super().__init__(inner.settings_cls)
+
+    def get_field_value(self, field, field_name):  # pragma: no cover - interface
+        raise NotImplementedError
+
+    def __call__(self) -> dict[str, object]:
+        return {
+            k: v
+            for k, v in self._inner().items()
+            if not (isinstance(v, str) and v.strip() == "")
+        }
 
 
 # ── preços por 1M tokens (input, output), para ESTIMATIVA de custo ───
