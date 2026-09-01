@@ -183,6 +183,24 @@ export async function saveReview(review: Review): Promise<void> {
   }
 }
 
+/** Arquivo binário (imagem) do repo, como data URL. Usa a API raw. */
+export async function readMediaFile(relPath: string): Promise<string | null> {
+  const url = `${contentsUrl(relPath)}?ref=${encodeURIComponent(BRANCH)}`;
+  try {
+    const res = await fetch(url, {
+      headers: headers({ Accept: "application/vnd.github.raw" }),
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    const ext = relPath.toLowerCase().split(".").pop();
+    const mime = ext === "png" ? "image/png" : ext === "webp" ? "image/webp" : "image/jpeg";
+    return `data:${mime};base64,${buf.toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
 export async function readTextFile(relPath: string): Promise<string | null> {
   const text = await ghGet(relPath, true);
   return typeof text === "string" ? text : null;

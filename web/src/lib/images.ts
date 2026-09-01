@@ -112,13 +112,19 @@ export function strongEntities(title: string): string[] {
   return [...new Set(out)].sort((a, b) => b.length - a.length).slice(0, 6);
 }
 
-/** A imagem só passa se o título dela contiver uma entidade forte da story. */
+/**
+ * A imagem só passa se o título dela casar com uma entidade forte da story.
+ * Quando a story tem nome COMPOSTO ("Lionel Richie"), só o nome composto vale:
+ * exigir apenas "Richie" trouxe a foto de outra pessoa no run de 2026-09-01.
+ */
 function isRelevant(imageTitle: string, entities: string[]): boolean {
-  const hay = normalizeToken(imageTitle);
   if (BAD_TITLE.test(imageTitle)) return false;
-  return entities.some((e) => {
+  const hay = normalizeToken(imageTitle);
+  const compound = entities.filter((e) => e.includes(" "));
+  const required = compound.length > 0 ? compound : entities;
+  return required.some((e) => {
     const needle = normalizeToken(e);
-    if (needle.length < 4) return false; // siglas curtas dão falso positivo
+    if (needle.length < 5) return false; // termo curto casa com qualquer coisa
     return hay.includes(needle);
   });
 }

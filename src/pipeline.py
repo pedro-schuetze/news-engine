@@ -60,6 +60,8 @@ from src.processing.cluster import build_clusters
 from src.processing.deduplicate import deduplicate
 from src.processing.normalize import normalize_articles
 from src.processing.ranking import compute_final_score, compute_trend_score, select_stories
+from src.media.illustrator import generate_illustration
+from src.media.local_storage import LocalMediaStorage
 from src.processing.verify import build_verification
 from src.repositories.base import NewsRepository
 from src.repositories.json_repository import JsonNewsRepository
@@ -105,6 +107,7 @@ def _process_vertical(
     errors: list[str],
     candidates_debug: list[CandidateDebug],
     notes: list[str],
+    storage: LocalMediaStorage | None = None,
 ) -> VerticalResult:
     vid = vertical.id
     editorial_scores, dup_dropped, sc_errors = score_vertical_candidates(
@@ -226,6 +229,14 @@ def _process_vertical(
             errors.append(msg)
             log.warning("[draft] %s", msg)
 
+    # ilustração de cada post selecionado (1 imagem por post, gerada agora para
+    # o dashboard abrir instantâneo e o custo ficar previsível)
+    if storage is not None:
+        for story in selected:
+            story.media = generate_illustration(story, settings, storage)
+            if story.media is None:
+                errors.append(f"ilustração não gerada para '{story.title}' ({vid})")
+
     if insufficient:
         log.info(
             "[rank] %s: apenas %d de %d stories com qualidade suficiente "
@@ -259,6 +270,7 @@ def run_pipeline(
     ranking_cfg = load_ranking(settings.config_dir)
     authority_map = source_authority_map(sources, load_domain_authority(settings.config_dir))
     repo = repository or JsonNewsRepository(settings.data_dir, settings.timezone)
+    storage = LocalMediaStorage(f"{settings.data_dir}/media")
     llm = build_llm_client(settings, mock=is_mock)
 
     run = PipelineRun(mode=mode, started_at=now, lookback_hours=settings.news_lookback_hours)
@@ -345,6 +357,11 @@ def run_pipeline(
             errors=errors,
             candidates_debug=candidates_debug,
             notes=notes,
+            storage=(
+                storage
+                if (settings.generate_illustrations and not is_mock)
+                else None
+            ),
         )
         vertical_results[vid] = result
         log.info("[rank] %s selected: %d", vid, len(result.stories))
@@ -367,6 +384,19 @@ def run_pipeline(
         estimated_output_tokens=llm.total_output_tokens,
         token_usage_source="estimate" if is_mock else "api",
         estimated_llm_cost_usd=llm.estimated_cost_usd(),
+        estimated_image_cost_usd=round(
+            sum(
+                s_.media.estimated_cost_usd or 0.0
+                for v in vertical_results.values()
+                for s_ in v.stories
+                if s_.media
+            ),
+            4,
+        )
+        or None,
+        illustrations_generated=sum(
+            1 for v in vertical_results.values() for s_ in v.stories if s_.media
+        ),
         duration_seconds=round(time.monotonic() - started, 1),
         errors=errors,
     )

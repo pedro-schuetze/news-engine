@@ -92,6 +92,18 @@ export async function saveReview(review: Review): Promise<void> {
   await fs.rename(tmp, target);
 }
 
+/** Arquivo binário (imagem) relativo à raiz do repo, como data URL. */
+export async function readMediaFile(relPath: string): Promise<string | null> {
+  try {
+    const buf = await fs.readFile(path.join(REPO_ROOT, relPath));
+    const ext = path.extname(relPath).toLowerCase();
+    const mime = ext === ".png" ? "image/png" : ext === ".webp" ? "image/webp" : "image/jpeg";
+    return `data:${mime};base64,${buf.toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
 /** Lê um arquivo de texto relativo à raiz do repo (ex.: config/verticals.yaml). */
 export async function readTextFile(relPath: string): Promise<string | null> {
   try {

@@ -172,6 +172,46 @@ ITENS:
 
 # ── geração de draft (Instagram) ─────────────────────────────────────
 
+# Diretrizes de humanização, adaptadas da skill `humanizer` do Pedro
+# (baseada em "Wikipedia:Signs of AI writing") para PT-BR editorial.
+HUMANIZE_RULES = """COMO ESCREVER (soar humano, não gerado por máquina):
+- PROIBIDO travessão (— ou –). Use ponto, vírgula, dois-pontos ou parênteses.
+- Varie o tamanho das frases. Texto todo no mesmo comprimento soa robótico.
+- Prefira verbos simples: "é", "tem", "faz". Evite "constitui", "representa",
+  "configura-se como", "serve como", "apresenta-se".
+- Evite o vocabulário-clichê de IA: crucial, fundamental, robusto, significativo,
+  notável, cenário, panorama, contexto mais amplo, marco, destacar, ressaltar,
+  evidenciar, impulsionar, aprimorar, consolidar, reforçar, ecossistema, jornada,
+  tapeçaria, vibrante, rico (figurado), profundo (figurado).
+- Corte gerúndios de análise falsa: "destacando a importância", "reforçando o
+  compromisso", "evidenciando como", "consolidando sua posição".
+- Nada de inflar significado: "marca um momento decisivo", "reflete uma tendência
+  mais ampla", "deixa uma marca indelével", "abre caminho para uma nova era".
+- Nada de paralelismo negativo: "não é apenas X, é Y" / "mais do que X, é Y".
+- Não force grupos de três ("agilidade, inovação e eficiência").
+- Não termine com conclusão motivacional vazia ("o futuro é promissor", "só o
+  tempo dirá", "uma coisa é certa"). Termine no último fato concreto.
+- Não abra com hook teatral ("Olha", "A real é que", "Vamos ser sinceros").
+- Evite frases feitas de efeito ("X é a nova moeda de Y", "no fim do dia").
+- Sem emoji. Sem aspas curvas: use aspas retas (").
+- Não repita o mesmo dado em dois slides com sinônimos diferentes.
+- Atribua o que é atribuível ("segundo o TSE", "de acordo com a Folha") em vez de
+  "especialistas afirmam" ou "fontes indicam"."""
+
+# Regras de construção de manchete: frase completa, com elementos gramaticais.
+HEADLINE_RULES = """COMO ESCREVER A MANCHETE (instagram_headline e headline do slide 1):
+- Frase PORTUGUESA COMPLETA, com artigos e preposições no lugar. Não escreva em
+  estilo telegrama. Errado: "Cérebro sincroniza com sua respiração".
+  Certo: "Estudo mostra que o cérebro sincroniza com a respiração".
+- Quando o fato vem de estudo, pesquisa, decisão ou relato, diga a origem na
+  própria manchete: "Estudo mostra que...", "TSE decide que...", "Pesquisa
+  aponta...", "Site afirma que...".
+- Pode ser pergunta, se a pergunta for respondida nos slides seguintes.
+- Até 9 palavras. Se não couber com gramática correta, corte informação, nunca
+  os artigos.
+- Não use dois-pontos para simular manchete de jornal ("Eleições 2026: o que
+  muda")."""
+
 DRAFT_STRUCTURE = """Estrutura do carrossel (5 slides, nesta ordem de roles):
 1. HOOK           — manchete forte e honesta que para o scroll (sem clickbait vazio)
 2. CONTEXT        — o contexto mínimo para entender o acontecimento
@@ -215,6 +255,10 @@ entre 150 e 280 palavras no total.
   específicas do assunto + 1 da vertical)."""
 
 DRAFT_RULES = f"""REGRAS EDITORIAIS:
+{HEADLINE_RULES}
+
+{HUMANIZE_RULES}
+
 - Português brasileiro natural; frases curtas; voz ativa.
 - {INJECTION_GUARD}
 - Use APENAS informações presentes nas fontes fornecidas. Não invente números,

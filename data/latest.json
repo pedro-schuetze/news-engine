@@ -22,6 +22,8 @@
     "estimated_output_tokens": 24723,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": 0.0603,
+    "illustrations_generated": 0,
+    "estimated_image_cost_usd": null,
     "duration_seconds": 422.1,
     "errors": []
   },
@@ -216,6 +218,7 @@
             ],
             "created_at": "2026-09-01T09:11:10.068975Z"
           },
+          "media": null,
           "article_count": 7,
           "earliest_published_at": "2026-08-31T19:56:59Z",
           "latest_published_at": "2026-09-01T08:38:34Z",
@@ -426,6 +429,7 @@
             ],
             "created_at": "2026-09-01T09:11:17.929761Z"
           },
+          "media": null,
           "article_count": 16,
           "earliest_published_at": "2026-08-31T15:30:00Z",
           "latest_published_at": "2026-09-01T07:20:24Z",
@@ -609,6 +613,7 @@
             ],
             "created_at": "2026-09-01T09:11:26.486061Z"
           },
+          "media": null,
           "article_count": 6,
           "earliest_published_at": "2026-08-31T18:32:00Z",
           "latest_published_at": "2026-09-01T08:04:39Z",
@@ -801,6 +806,7 @@
             ],
             "created_at": "2026-09-01T09:11:34.681999Z"
           },
+          "media": null,
           "article_count": 7,
           "earliest_published_at": "2026-08-31T21:30:00Z",
           "latest_published_at": "2026-09-01T08:39:41Z",
@@ -984,6 +990,7 @@
             ],
             "created_at": "2026-09-01T09:11:43.536661Z"
           },
+          "media": null,
           "article_count": 6,
           "earliest_published_at": "2026-08-31T15:19:00Z",
           "latest_published_at": "2026-09-01T06:52:46Z",
@@ -1201,6 +1208,7 @@
             ],
             "created_at": "2026-09-01T09:12:02.201457Z"
           },
+          "media": null,
           "article_count": 66,
           "earliest_published_at": "2026-08-31T17:23:00Z",
           "latest_published_at": "2026-09-01T08:37:42Z",
@@ -1378,6 +1386,7 @@
             ],
             "created_at": "2026-09-01T09:12:09.018661Z"
           },
+          "media": null,
           "article_count": 5,
           "earliest_published_at": "2026-09-01T03:00:42Z",
           "latest_published_at": "2026-09-01T09:00:50Z",
@@ -1587,6 +1596,7 @@
             ],
             "created_at": "2026-09-01T09:12:16.301662Z"
           },
+          "media": null,
           "article_count": 60,
           "earliest_published_at": "2026-08-31T15:10:58Z",
           "latest_published_at": "2026-09-01T08:00:00Z",
@@ -1796,6 +1806,7 @@
             ],
             "created_at": "2026-09-01T09:12:22.752248Z"
           },
+          "media": null,
           "article_count": 32,
           "earliest_published_at": "2026-08-31T15:39:51Z",
           "latest_published_at": "2026-09-01T09:00:44Z",
@@ -2005,6 +2016,7 @@
             ],
             "created_at": "2026-09-01T09:12:30.335552Z"
           },
+          "media": null,
           "article_count": 16,
           "earliest_published_at": "2026-08-31T19:03:55Z",
           "latest_published_at": "2026-09-01T09:02:47Z",
@@ -2222,6 +2234,7 @@
             ],
             "created_at": "2026-09-01T09:13:03.720984Z"
           },
+          "media": null,
           "article_count": 10,
           "earliest_published_at": "2026-08-31T15:50:00Z",
           "latest_published_at": "2026-09-01T06:35:36Z",
@@ -2379,6 +2392,7 @@
             ],
             "created_at": "2026-09-01T09:13:13.574527Z"
           },
+          "media": null,
           "article_count": 3,
           "earliest_published_at": "2026-09-01T01:45:00Z",
           "latest_published_at": "2026-09-01T09:00:00Z",
@@ -2535,6 +2549,32 @@
               }
             ],
             "created_at": "2026-09-01T09:13:23.197641Z"
+          },
+          "media": {
+            "asset_id": "20e519c1-4292-4d3c-9e48-f08e5fef1564",
+            "story_id": "a5744bea-f964-4f64-b333-cec0bd02ed93",
+            "draft_id": "247f5ad5-79a7-4f9c-8828-08ecff50f527",
+            "type": "image",
+            "provider": "local",
+            "local_path": "data\\media\\a5744bea-f964-4f64-b333-cec0bd02ed93\\20e519c1_facts.jpg",
+            "remote_url": null,
+            "mime_type": "image/jpeg",
+            "width": 1024,
+            "height": 1536,
+            "file_size": 118264,
+            "provenance": {
+              "source_type": "GENERATED",
+              "source_url": "",
+              "source_name": "gpt-image-2",
+              "license": "gerada por IA para uso editorial próprio",
+              "attribution_required": true,
+              "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+            },
+            "created_at": "2026-09-01T15:14:49.158417Z",
+            "text_placement": "BOTTOM",
+            "text_align": "right",
+            "prompt": "Editorial illustration for a news carousel about: \"Cérebro acompanha formato de cada respiração, revela estudo\". Visual direction: scientific wonder: macro textures, cosmic or natural phenomena, laboratory glass, deep space, microscopic detail; deep blues and violets. Scene hint (do not include people): Close-up ilustrativo de um cérebro em tons azuis com linhas sutis indicando movimento de ar sobreposto; estilo limpo e informativo, sem pessoas. Fundo claro, alto contraste entre cérebro e linhas. Style: editorial photography, cinematic, atmospheric, slightly abstract, shallow depth of field, dramatic directional light, rich shadows. Composition: keep the top and bottom thirds visually calm and dark so large text can be overlaid. STRICT: no text, no letters, no numbers, no logos, no watermarks, no signage. STRICT: no recognizable real person, no identifiable face, no portrait, no celebrity likeness. Use objects, environments, silhouettes or symbols instead.",
+            "estimated_cost_usd": 0.0412
           },
           "article_count": 3,
           "earliest_published_at": "2026-08-31T18:03:57Z",
@@ -2748,6 +2788,7 @@
             ],
             "created_at": "2026-09-01T09:13:29.880668Z"
           },
+          "media": null,
           "article_count": 15,
           "earliest_published_at": "2026-08-31T17:14:00Z",
           "latest_published_at": "2026-09-01T09:00:00Z",
@@ -2894,6 +2935,7 @@
             ],
             "created_at": "2026-09-01T09:13:37.219737Z"
           },
+          "media": null,
           "article_count": 2,
           "earliest_published_at": "2026-08-31T20:39:43Z",
           "latest_published_at": "2026-09-01T08:17:52Z",

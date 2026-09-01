@@ -16,7 +16,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
 import { toDataUrl } from "../images";
-import type { SlideKind, SlideSpec } from "./spec";
+import type { SlideKind, SlideSpec, TextPlacement } from "./spec";
 
 export const SLIDE_W = 1080;
 export const SLIDE_H = 1350;
@@ -79,6 +79,12 @@ function richWords(text: string): { word: string; bold: boolean }[] {
   return out;
 }
 
+const FLEX_ALIGN: Record<string, string> = {
+  left: "flex-start",
+  center: "center",
+  right: "flex-end",
+};
+
 function RichText({
   text,
   size,
@@ -86,7 +92,7 @@ function RichText({
 }: {
   text: string;
   size: number;
-  align?: "center" | "flex-start";
+  align?: "left" | "center" | "right";
 }) {
   const words = richWords(text);
   return (
@@ -94,7 +100,7 @@ function RichText({
       style={{
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: align,
+        justifyContent: FLEX_ALIGN[align] ?? "center",
         columnGap: size * 0.26,
         rowGap: size * 0.34,
       }}
@@ -153,8 +159,33 @@ function GraphicBackground({ color }: { color: string }) {
   );
 }
 
-function Background({ imageData, color }: { imageData: string | null; color: string }) {
+/**
+ * Enquadramentos por posição no carrossel. Quando a story tem uma única imagem
+ * (ilustração por IA, 1 por post), cada slide mostra um recorte diferente —
+ * sem isso os 5 slides saem idênticos, como aconteceu no run de 2026-09-01.
+ * zoom = escala sobre o quadro; fx/fy = ponto de interesse (0 = topo/esquerda).
+ */
+const FRAMINGS: { zoom: number; fx: number; fy: number }[] = [
+  { zoom: 1.0, fx: 0.5, fy: 0.45 },
+  { zoom: 1.3, fx: 0.32, fy: 0.35 },
+  { zoom: 1.16, fx: 0.72, fy: 0.5 },
+  { zoom: 1.42, fx: 0.5, fy: 0.72 },
+  { zoom: 1.22, fx: 0.28, fy: 0.62 },
+];
+
+function Background({
+  imageData,
+  color,
+  pageIndex,
+}: {
+  imageData: string | null;
+  color: string;
+  pageIndex: number;
+}) {
   if (!imageData) return <GraphicBackground color={color} />;
+  const f = FRAMINGS[(pageIndex - 1) % FRAMINGS.length];
+  const w = Math.round(SLIDE_W * f.zoom);
+  const h = Math.round(SLIDE_H * f.zoom);
   return (
     <div
       style={{
@@ -164,6 +195,7 @@ function Background({ imageData, color }: { imageData: string | null; color: str
         width: "100%",
         height: "100%",
         display: "flex",
+        overflow: "hidden",
         backgroundColor: INK_DARK,
       }}
     >
@@ -171,9 +203,16 @@ function Background({ imageData, color }: { imageData: string | null; color: str
       <img
         src={imageData}
         alt=""
-        width={SLIDE_W}
-        height={SLIDE_H}
-        style={{ objectFit: "cover", width: "100%", height: "100%" }}
+        width={w}
+        height={h}
+        style={{
+          position: "absolute",
+          left: Math.round(-(w - SLIDE_W) * f.fx),
+          top: Math.round(-(h - SLIDE_H) * f.fy),
+          width: w,
+          height: h,
+          objectFit: "cover",
+        }}
       />
     </div>
   );
@@ -184,16 +223,27 @@ function Background({ imageData, color }: { imageData: string | null; color: str
  * em foto clara) + gradiente pesado na faixa do texto. Sem isso, manchete
  * branca sobre foto clara some — problema visto nas primeiras amostras.
  */
-function Scrim({ kind, hasPhoto }: { kind: SlideKind; hasPhoto: boolean }) {
+function Scrim({
+  kind,
+  hasPhoto,
+  placement,
+}: {
+  kind: SlideKind;
+  hasPhoto: boolean;
+  placement: TextPlacement;
+}) {
   // satori não renderiza Fragment com múltiplos filhos absolutos: as duas
   // camadas (véu uniforme + faixa pesada) vão como gradientes empilhados
-  // num único elemento.
+  // num único elemento. A faixa acompanha a região onde o texto vai ficar.
   const veil = hasPhoto ? (kind === "cover" ? 0.5 : 0.44) : 0.1;
-  const band =
-    kind === "cover"
-      ? "linear-gradient(180deg, rgba(5,7,12,0.9) 0%, rgba(5,7,12,0.35) 20%, rgba(5,7,12,0.12) 34%, rgba(5,7,12,0.72) 56%, rgba(5,7,12,0.94) 78%, rgba(5,7,12,0.98) 100%)"
-      : // internos: faixa escura só onde o texto vive (35-70%), preservando a foto
-        "linear-gradient(180deg, rgba(5,7,12,0.82) 0%, rgba(5,7,12,0.30) 18%, rgba(5,7,12,0.88) 36%, rgba(5,7,12,0.90) 66%, rgba(5,7,12,0.55) 80%, rgba(5,7,12,0.92) 100%)";
+  const BANDS: Record<TextPlacement, string> = {
+    TOP: "linear-gradient(180deg, rgba(5,7,12,0.94) 0%, rgba(5,7,12,0.9) 42%, rgba(5,7,12,0.5) 62%, rgba(5,7,12,0.86) 100%)",
+    CENTER:
+      "linear-gradient(180deg, rgba(5,7,12,0.84) 0%, rgba(5,7,12,0.34) 16%, rgba(5,7,12,0.9) 34%, rgba(5,7,12,0.9) 68%, rgba(5,7,12,0.5) 82%, rgba(5,7,12,0.9) 100%)",
+    BOTTOM:
+      "linear-gradient(180deg, rgba(5,7,12,0.9) 0%, rgba(5,7,12,0.35) 20%, rgba(5,7,12,0.12) 40%, rgba(5,7,12,0.74) 60%, rgba(5,7,12,0.95) 80%, rgba(5,7,12,0.98) 100%)",
+  };
+  const band = BANDS[placement] ?? BANDS.BOTTOM;
   const veilLayer = `linear-gradient(180deg, rgba(5,7,12,${veil}) 0%, rgba(5,7,12,${veil}) 100%)`;
   return (
     <div
@@ -309,8 +359,8 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
   const ui = VERTICAL_UI[spec.vertical] ?? { label: spec.vertical.toUpperCase(), color: "#FFD666" };
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
-      <Background imageData={imageData} color={ui.color} />
-      <Scrim kind="cover" hasPhoto={Boolean(imageData)} />
+      <Background imageData={imageData} color={ui.color} pageIndex={spec.pageIndex} />
+      <Scrim kind="cover" hasPhoto={Boolean(imageData)} placement={spec.placement} />
       <div
         style={{
           position: "absolute",
@@ -352,7 +402,7 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
           </div>
           {spec.body && (
             <div style={{ display: "flex", maxWidth: 880 }}>
-              <RichText text={spec.body} size={35} />
+              <RichText text={spec.body} size={35} align={spec.align} />
             </div>
           )}
           <div style={{ display: "flex", width: 76, height: 7, backgroundColor: ui.color, borderRadius: 4 }} />
@@ -368,8 +418,8 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
   const isFinal = spec.kind === "final";
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
-      <Background imageData={imageData} color={ui.color} />
-      <Scrim kind={spec.kind} hasPhoto={Boolean(imageData)} />
+      <Background imageData={imageData} color={ui.color} pageIndex={spec.pageIndex} />
+      <Scrim kind={spec.kind} hasPhoto={Boolean(imageData)} placement={spec.placement} />
       <div
         style={{
           position: "absolute",
@@ -419,7 +469,7 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
               {plainText(spec.headline)}
             </span>
           )}
-          <RichText text={spec.body} size={44} />
+          <RichText text={spec.body} size={44} align={spec.align} />
           {isFinal && (
             <div
               style={{

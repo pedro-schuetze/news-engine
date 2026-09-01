@@ -35,6 +35,13 @@ class Settings(BaseSettings):
     openai_reasoning_effort: str = ""
     llm_max_output_tokens: int = 8192
 
+    # ilustração dos posts (etapa 2). Ver docs/CONTEXT.md para a comparação
+    # de custo/qualidade entre gpt-image-2 e gpt-image-1-mini.
+    generate_illustrations: bool = True
+    openai_image_model: str = "gpt-image-2"
+    openai_image_quality: str = "medium"
+    openai_image_size: str = "1024x1536"
+
     # Pipeline
     pipeline_mode: str = "live"  # live | mock
     news_lookback_hours: int = 18
@@ -108,6 +115,22 @@ PRICE_TABLE_USD_PER_MTOK: dict[str, tuple[float, float]] = {
     "gpt-4.1": (2.00, 8.00),
     "gpt-4o-mini": (0.15, 0.60),
 }
+
+
+IMAGE_PRICE_USD_PER_MTOK_OUT: dict[str, float] = {
+    "gpt-image-2": 30.0,
+    "gpt-image-1-mini": 8.0,
+    "gpt-image-1": 40.0,
+}
+
+
+def estimate_image_cost_usd(model: str, output_tokens: int) -> Optional[float]:
+    for prefix, price in sorted(
+        IMAGE_PRICE_USD_PER_MTOK_OUT.items(), key=lambda kv: -len(kv[0])
+    ):
+        if model.startswith(prefix):
+            return output_tokens * price / 1_000_000
+    return None
 
 
 def estimate_cost_usd(model: str, input_tokens: int, output_tokens: int) -> Optional[float]:

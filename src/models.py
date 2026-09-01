@@ -293,6 +293,9 @@ class Story(BaseModel):
     classification: Optional[VerticalAssignment] = None
     verification: Verification = Field(default_factory=Verification)
     draft: Optional[EditorialDraft] = None
+    # ilustração pré-gerada no fim do run (dashboard abre instantâneo e o custo
+    # de imagem fica travado em 1 por post)
+    media: Optional["MediaAsset"] = None
     article_count: int = 0
     earliest_published_at: Optional[datetime] = None
     latest_published_at: Optional[datetime] = None
@@ -321,6 +324,14 @@ class MediaProvenance(BaseModel):
     attribution_text: str = ""
 
 
+class TextPlacement(str, Enum):
+    """Onde o texto do slide cabe com mais contraste nesta imagem."""
+
+    BOTTOM = "BOTTOM"
+    TOP = "TOP"
+    CENTER = "CENTER"
+
+
 class MediaAsset(BaseModel):
     asset_id: str = Field(default_factory=new_id)
     story_id: str = ""
@@ -335,6 +346,12 @@ class MediaAsset(BaseModel):
     file_size: Optional[int] = None
     provenance: MediaProvenance = Field(default_factory=MediaProvenance)
     created_at: datetime = Field(default_factory=utcnow)
+    # análise de luminância (Pillow) usada pelo renderer para posicionar o texto
+    # na área de maior contraste, em vez de sempre no mesmo lugar
+    text_placement: TextPlacement = TextPlacement.BOTTOM
+    text_align: str = "center"  # center | left | right
+    prompt: str = ""  # prompt usado, quando gerada por IA
+    estimated_cost_usd: Optional[float] = None
 
 
 class Publication(BaseModel):
@@ -370,6 +387,8 @@ class RunStats(BaseModel):
     estimated_output_tokens: int = 0
     token_usage_source: str = "api"  # api | estimate | mixed
     estimated_llm_cost_usd: Optional[float] = None
+    illustrations_generated: int = 0
+    estimated_image_cost_usd: Optional[float] = None
     duration_seconds: float = 0.0
     errors: list[str] = Field(default_factory=list)
 
@@ -543,3 +562,7 @@ class DraftOutput(BaseModel):
             hashtags=self.hashtags,
             slides=slides,
         )
+
+
+# Story referencia MediaAsset, declarado depois — resolve a forward ref
+Story.model_rebuild()

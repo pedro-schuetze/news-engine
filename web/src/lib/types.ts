@@ -91,6 +91,28 @@ export interface EditorialDraft {
   created_at: string;
 }
 
+export interface MediaAsset {
+  asset_id: string;
+  story_id: string;
+  type: string;
+  local_path: string;
+  remote_url: string | null;
+  mime_type: string;
+  width: number | null;
+  height: number | null;
+  provenance: {
+    source_type: string;
+    source_name: string;
+    license: string;
+    attribution_required: boolean;
+    attribution_text: string;
+  };
+  text_placement: "TOP" | "CENTER" | "BOTTOM";
+  text_align: "left" | "center" | "right";
+  prompt: string;
+  estimated_cost_usd: number | null;
+}
+
 export interface Story {
   story_id: string;
   run_id: string;
@@ -111,6 +133,7 @@ export interface Story {
   classification: VerticalAssignment | null;
   verification: Verification;
   draft: EditorialDraft | null;
+  media?: MediaAsset | null;
   article_count: number;
   earliest_published_at: string | null;
   latest_published_at: string | null;
@@ -141,6 +164,8 @@ export interface RunStats {
   estimated_output_tokens: number;
   token_usage_source: string;
   estimated_llm_cost_usd: number | null;
+  illustrations_generated?: number;
+  estimated_image_cost_usd?: number | null;
   duration_seconds: number;
   errors: string[];
 }

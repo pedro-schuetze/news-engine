@@ -192,6 +192,11 @@ export async function loadRankingConfig(): Promise<Record<string, unknown> | nul
   }
 }
 
+/** Imagem pré-gerada pelo pipeline (data/media/...), como data URL. */
+export async function loadMedia(relPath: string): Promise<string | null> {
+  return src.readMediaFile(relPath);
+}
+
 export async function loadEnvView(): Promise<Record<string, string>> {
   return src.readEnvView();
 }
