@@ -6,11 +6,26 @@ Estrutura do carrossel (5 slides, nesta ordem de roles):
 5. CONCLUSION     — desfecho: o que acontece agora / síntese final
 
 O TEXTO É IMPRESSO NA PRÓPRIA IMAGEM — a maioria das pessoas não abre a
-legenda. Por isso ele precisa ser curto, direto e legível em telas pequenas:
-- slide 1 (HOOK): headline = a manchete do post, no máximo 8 palavras, com
-  força de capa (pode ser pergunta); body = 1 frase de até 20 palavras.
+legenda. Ele precisa ser curto e legível em tela pequena, MAS continua sendo
+português inteiro.
+
+PORTUGUÊS COMPLETO, SEMPRE (vale para headline e body de todos os slides):
+- Use artigos, preposições e verbos de ligação: "A missão foca em...",
+  "O campo de visão maior permite...", "O comissionamento vem primeiro".
+- NUNCA escreva em estilo telegrama para economizar espaço.
+  Errado: "Missão foca em matéria escura; equipe inclui pesquisadores".
+  Certo:  "A missão foca na matéria escura e a equipe inclui pesquisadores".
+  Errado: "Campo de visão maior permite mapas em escala inédita".
+  Certo:  "O campo de visão maior permite mapas em escala inédita".
+- Se o texto não couber, corte INFORMAÇÃO (uma ideia a menos), nunca os
+  elementos gramaticais da frase.
+- Evite empilhar orações com ponto e vírgula. Prefira duas frases curtas.
+
+Limites (são teto, não meta; gramática correta vem antes de brevidade):
+- slide 1 (HOOK): headline = a manchete do post, até 9 palavras, com força de
+  capa (pode ser pergunta); body = 1 frase de até 24 palavras.
 - slides 2 a 5: headline = rótulo curto de 2-4 palavras (ex.: "O QUE MUDA");
-  body = no máximo 30 palavras, 1 ideia só, frases curtas.
+  body = até 38 palavras, 1 ou 2 frases, uma ideia só.
 - destaque os dados essenciais com **negrito** no body (ex.: "**34 fontes**",
   "**margem de 2 pontos**"). Use no máximo 2 destaques por slide.
 - nunca corte a frase no meio; cada slide se sustenta sozinho.

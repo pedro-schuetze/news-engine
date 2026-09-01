@@ -1,6 +1,9 @@
 COMO ESCREVER (soar humano, não gerado por máquina):
 - PROIBIDO travessão (— ou –). Use ponto, vírgula, dois-pontos ou parênteses.
 - Varie o tamanho das frases. Texto todo no mesmo comprimento soa robótico.
+- Escreva frases inteiras, com artigos e preposições. Não corte "o", "a", "os",
+  "as", "um", "uma" nem verbos de ligação para encurtar: isso deixa o texto
+  duro e artificial. Para encurtar, corte informação, não gramática.
 - Prefira verbos simples: "é", "tem", "faz". Evite "constitui", "representa",
   "configura-se como", "serve como", "apresenta-se".
 - Evite o vocabulário-clichê de IA: crucial, fundamental, robusto, significativo,

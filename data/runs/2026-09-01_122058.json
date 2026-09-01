@@ -2852,72 +2852,70 @@
             "verification_notes": "6 domínio(s) independente(s), 6 matéria(s); fonte oficial: não; autoridade máx.: 50. LLM: Cobertura por veículos internacionais e especializados; origem NASA/mission page deve ser citada no post para maior credibilidade."
           },
           "draft": {
-            "draft_id": "ae0ed899-3944-4318-b572-1c1525563c89",
+            "draft_id": "f55c93d6-mtjbj0sg",
             "story_id": "f55c93d6-52b5-4822-90ae-ac4009f47182",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "NASA’s Dark Universe-Seeking Nancy Grace Roman Space Telescope Launches",
-            "instagram_headline": "Telescópio Roman da NASA é lançado",
-            "short_summary": "A NASA lançou o Nancy Grace Roman Space Telescope, projetado para mapear o universo escuro e procurar exoplanetas. A missão reúne equipes internacionais e tecnologia para imagens de grande campo.",
-            "why_it_matters": "O telescópio deve expandir nosso mapa do cosmos e melhorar a busca por planetas fora do Sistema Solar, oferecendo dados em escala e qualidade inéditas.",
+            "instagram_headline": "Telescópio Nancy Grace Roman vai mapear o universo escuro",
+            "short_summary": "A NASA lançou o telescópio espacial Nancy Grace Roman, projetado para mapear a matéria escura e ampliar a busca por exoplanetas. A missão usa um projeto de campo de visão amplo e reúne equipes internacionais.",
+            "why_it_matters": "Os dados sobre a distribuição da matéria escura vão ajudar a entender como a matéria visível se organiza no universo. A busca por exoplanetas amplia nosso conhecimento sobre a diversidade de sistemas planetários.",
             "key_facts": [
-              "Lançamento confirmado segundo reportagens independentes de 2026",
-              "Missão foca em mapear matéria escura e observar exoplanetas",
-              "Projeto envolve cientistas do Reino Unido e outras instituições",
-              "Instrumento tem campo de visão grande para capturar áreas extensas do céu",
-              "Nome homenageia a astrônoma Nancy Grace Roman, pioneira na astronomia espacial"
+              "Telescópio lançado pela NASA para a missão Nancy Grace Roman.",
+              "Projeto prioriza um **campo de visão amplo** para estudar matéria escura (segundo a Forbes).",
+              "A missão vai observar e catalogar **milhões de galáxias** e procurar exoplanetas.",
+              "Equipe internacional inclui contribuições do Reino Unido, segundo reportagens."
             ],
-            "caption": "O telescópio espacial Nancy Grace Roman saiu do chão e já começa a observação do chamado \"universo escuro\".\n\nO Roman foi lançado para mapear matéria escura e ampliar a busca por exoplanetas, segundo reportagens de veículos internacionais que acompanharam o evento. A missão usa um projeto que privilegia um campo de visão amplo, diferente de telescópios muito focados em uma pequena área do céu.\n\nEquipes de diversos países participam do programa; uma reportagem destaca a contribuição de um astrônomo de Manchester na liderança científica. O nome do telescópio homenageia Nancy Grace Roman, uma das primeiras líderes da astronomia espacial, conforme perfis publicados sobre ela.\n\nFontes que acompanharam o lançamento e a missão descrevem os objetivos científicos e as capacidades técnicas do Roman, mas detalhes operacionais e os primeiros dados científicos ainda serão divulgados conforme a missão avança. Acompanhe as próximas semanas para os primeiros mapas e descobertas.\n\nSiga para acompanhar.",
+            "caption": "NASA lançou o telescópio espacial Nancy Grace Roman.\n\nO instrumento foi colocado em órbita pela NASA para mapear a matéria escura e ampliar a busca por exoplanetas, segundo reportagens da Forbes e da Southern Maryland News Net que cobriram o evento. O projeto usa um sistema de imageamento de grande campo pensado para observar grandes regiões do céu em menos tempo que telescópios mais estreitos.\n\nA missão reúne equipes de vários países; reportagens destacam a participação científica de pesquisadores do Reino Unido e de outras instituições internacionais, segundo AboutManchester e outras fontes. O nome homenageia Nancy Grace Roman, uma das primeiras líderes da astronomia espacial, conforme perfis publicados.\n\nNas próximas semanas vem o comissionamento e a calibração dos instrumentos; depois, a fase de operações científicas deve começar nos meses seguintes, quando as equipes vão analisar os primeiros conjuntos de dados, segundo as reportagens. Ainda não se sabe quais descobertas concretas virão, mas os dados prometem melhorar medidas da estrutura cósmica e aumentar o catálogo de exoplanetas.\n\nSiga para acompanhar a análise dos primeiros dados e as atualizações de missão.",
             "hashtags": [
               "#TelescópioRoman",
-              "#Astronomia",
               "#MatériaEscura",
               "#Exoplanetas",
-              "#FatosInteressantes"
+              "#facts"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Telescópio Roman lançado",
-                "body": "NASA lança o Nancy Grace Roman para mapear o universo escuro e caçar exoplanetas.",
-                "image_direction": "Imagem do foguete ou do veículo de lançamento no momento da decolagem, enquadramento amplo que mostre a plataforma e a coluna de fumaça; céu claro, fotografado por agência durante o lançamento real.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "NASA lança telescópio Nancy Grace Roman",
+                "body": "A missão vai mapear a matéria escura e ampliar a busca por exoplanetas com imagens de grande campo.",
+                "image_direction": "Foto de lançamento mostrando o foguete no momento da decolagem, fumaça e chama visíveis, plataforma de lançamento ao fundo; atmosfera dramática e foco no veículo que carrega o telescópio.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "Por que existe",
-                "body": "O Roman foi feito para mapear grandes áreas do céu e estudar a distribuição da matéria escura.",
-                "image_direction": "Ilustração técnica do telescópio em órbita mostrando o campo de visão amplo apontando para uma faixa do céu estrelado.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "O que é",
+                "body": "O telescópio da NASA tem um **campo de visão muito maior** que o Hubble e foi projetado para estudar a distribuição da matéria escura e detectar exoplanetas por micro-lente gravitacional, segundo a Forbes.",
+                "image_direction": "Imagem institucional do telescópio em órbita, render mostrando o instrumento apontando para o espaço com a Terra ao fundo, destacando o amplo campo de visão.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Fatos principais",
-                "body": "Missão foca em **matéria escura** e **exoplanetas**; equipe inclui pesquisadores do Reino Unido; primeiro conjunto de dados vem após comissionamento.",
-                "image_direction": "Foto de equipe científica em controle de missão ou pesquisadores trabalhando em laboratório com mockups do telescópio; ambiente de trabalho realista.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "Fatos",
+                "body": "O instrumento vai mapear a matéria escura, observar **milhões de galáxias** e procurar exoplanetas; a missão reúne equipes internacionais, segundo reportagens.",
+                "image_direction": "Composição gráfica mostrando um mapa estilizado de galáxias e linhas que representam mapeamento, com legendas simples indicando 'matéria escura' e 'exoplanetas'.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "O que muda",
-                "body": "Campo de visão maior permite mapas em escala inédita, ajudando a entender como a matéria escura está distribuída no universo.",
-                "image_direction": "Gráfico simplificado mostrando a diferença entre campo de visão do Roman e de um telescópio típico, sobre fundo escuro com estrelas pontuais.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "Por que importa",
+                "body": "Mapear a **matéria escura** ajuda a entender como a matéria visível se organiza no universo e amplia o conhecimento sobre sistemas planetários.",
+                "image_direction": "Ilustração conceitual da distribuição de matéria escura em uma região cósmica, com galáxias visíveis sobrepostas para mostrar relação entre as duas.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
                 "headline": "Próximos passos",
-                "body": "Comissionamento e calibração chegam primeiro; depois virão os primeiros mapas e catálogos de planetas candidatos.",
-                "image_direction": "Imagem conceitual do telescópio em órbita apontando para o espaço profundo, com Terra ao fundo; estilo realista e informativo.",
-                "image_source_type": "AI_GENERATED"
+                "body": "Nas próximas semanas vem o **comissionamento** e a calibração dos instrumentos; depois, as operações científicas devem começar nos meses seguintes enquanto as equipes analisam os primeiros dados.",
+                "image_direction": "Foto de sala de controle ou equipe da missão monitorando telas, com foco em técnicos analisando telemetria e imagens iniciais; tom de trabalho em andamento.",
+                "image_source_type": "AGENCY_PHOTO"
               }
             ],
-            "created_at": "2026-09-01T15:35:52.943404Z"
+            "created_at": "2026-09-01T23:48:38.464Z"
           },
           "article_count": 6,
           "earliest_published_at": "2026-08-31T21:40:38Z",
