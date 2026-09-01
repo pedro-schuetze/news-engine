@@ -216,13 +216,37 @@ keyless Wikimedia→Openverse com cascata de queries (entidades → nome →
 contexto da vertical — post é SEMPRE visual) e provenance/crédito
 sanitizado; preview renderizado no StoryCard; validado em produção.
 
+**Fase 2 ENTREGUE (2026-09-01)** — feedback do Pedro nas primeiras amostras
+(imagem irrelevante, texto sem contraste, legenda curta) endereçado:
+- **Relevância de imagem**: banco só entrega foto se uma ENTIDADE FORTE da
+  story aparecer no título do arquivo + blacklist de gráfico/mapa/logo. Antes
+  vinha gráfico de pizza em post de cantor.
+- **Ilustração por IA** quando o banco não tem match: `gpt-image-2` medium
+  (default; env `OPENAI_IMAGE_MODEL`/`OPENAI_IMAGE_QUALITY`). Medido contra
+  gpt-image-1-mini na mesma cena: mini saiu escuro/vazio e sumia sob o scrim;
+  image-2 ~US$ 0,041/imagem (vs 0,013) e mais rápido. É 1 imagem por POST
+  (não por slide) e só quando falta foto → teto ~US$ 18/mês.
+  Prompt proíbe texto, logos e pessoa real identificável.
+- **Contraste**: scrim de duas camadas (véu + faixa) num único elemento —
+  satori NÃO renderiza Fragment com filhos absolutos, era por isso que o
+  escurecimento não aplicava. Sombras reforçadas.
+- **Uma imagem por story** em todos os slides (evita foto de pessoa errada no
+  interno, dá coerência de post, corta custo de IA em 5x).
+- **Legenda longa**: 3-5 parágrafos, 150-280 palavras, com informação NOVA e
+  atribuição às fontes; slides ficaram curtos com **negrito** nos dados.
+- **Precedência de key**: `.env` da raiz vence env var do processo TAMBÉM no
+  web (`images.ts`) — a env var antiga do Windows apontava para projeto
+  OpenAI sem acesso a imagem e mascarava a key correta (mesmo bug do Python).
+- Envs de produção na Vercel: OPENAI_API_KEY, OPENAI_IMAGE_MODEL=gpt-image-2,
+  OPENAI_IMAGE_QUALITY=medium (configuradas via API com o VERCEL_TOKEN).
+
 Próximos passos da etapa 2:
-1. Feedback visual do Pedro sobre as primeiras amostras → iterar templates.
-2. Writer v2: campos para o renderer (cover_highlight p/ destaque colorido
-   na manchete, corpo com **negritos**, textos mais curtos ≤25 palavras,
-   image_query por slide) + re-run para calibrar.
-3. Sourcing fase 2 com keys do Pedro: Unsplash/Pexels (conceitos) e geração
-   IA (ilustração; nunca pessoa real). Persistir MediaAsset ao aprovar.
+1. **Pré-gerar imagens no fim do run** e persistir via `MediaStorage`: hoje a
+   1ª renderização de um slide com IA leva 40-60s (depois o CDN cobre por
+   10min). Pré-gerar deixa o dashboard instantâneo e trava o custo.
+2. Writer v2: `cover_highlight` (destaque colorido na manchete, estilo the
+   news) e `image_query` por story para guiar melhor banco e prompt de IA.
+3. Sourcing extra (opcional): Unsplash/Pexels para conceitos.
 4. Fase 3: publicação — a Graph API do Instagram consome exatamente as URLs
    de /api/slide já existentes.
 
