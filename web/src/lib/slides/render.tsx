@@ -61,6 +61,11 @@ async function loadFonts() {
   return fontsPromise;
 }
 
+/** Remove marcação de negrito (títulos e rótulos não a renderizam). */
+function plainText(text: string): string {
+  return text.replace(/\*\*/g, "");
+}
+
 /** Divide texto com **negrito** em palavras marcadas (satori não tem inline flow). */
 function richWords(text: string): { word: string; bold: boolean }[] {
   const out: { word: string; bold: boolean }[] = [];
@@ -343,22 +348,11 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
               textShadow: "0 4px 24px rgba(0,0,0,0.98), 0 0 60px rgba(0,0,0,0.85)",
             }}
           >
-            {spec.headline}
+            {plainText(spec.headline)}
           </div>
           {spec.body && (
-            <div
-              style={{
-                display: "flex",
-                fontFamily: "Lora",
-                fontSize: 35,
-                color: "rgba(255,255,255,0.94)",
-                textAlign: "center",
-                lineHeight: 1.3,
-                maxWidth: 880,
-                textShadow: "0 2px 16px rgba(0,0,0,0.95), 0 0 36px rgba(0,0,0,0.7)",
-              }}
-            >
-              {spec.body}
+            <div style={{ display: "flex", maxWidth: 880 }}>
+              <RichText text={spec.body} size={35} />
             </div>
           )}
           <div style={{ display: "flex", width: 76, height: 7, backgroundColor: ui.color, borderRadius: 4 }} />
@@ -422,7 +416,7 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
                 textAlign: "center",
               }}
             >
-              {spec.headline}
+              {plainText(spec.headline)}
             </span>
           )}
           <RichText text={spec.body} size={44} />
