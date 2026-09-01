@@ -16,7 +16,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
 import { toDataUrl } from "../images";
-import type { SlideSpec } from "./spec";
+import type { SlideKind, SlideSpec } from "./spec";
 
 export const SLIDE_W = 1080;
 export const SLIDE_H = 1350;
@@ -103,7 +103,7 @@ function RichText({
             fontSize: size,
             color: "#FFFFFF",
             lineHeight: 1,
-            textShadow: "0 2px 14px rgba(0,0,0,0.55)",
+            textShadow: "0 2px 18px rgba(0,0,0,0.95), 0 0 42px rgba(0,0,0,0.7)",
           }}
         >
           {w.word}
@@ -113,7 +113,8 @@ function RichText({
   );
 }
 
-function Background({ imageData }: { imageData: string | null }) {
+/** Fundo gráfico da marca — usado quando não há foto relevante nem IA. */
+function GraphicBackground({ color }: { color: string }) {
   return (
     <div
       style={{
@@ -124,27 +125,31 @@ function Background({ imageData }: { imageData: string | null }) {
         height: "100%",
         display: "flex",
         backgroundColor: INK_DARK,
-        // satori quebra com propriedades undefined — só inclui quando existe
-        ...(imageData
-          ? {}
-          : { backgroundImage: `linear-gradient(160deg, #10141F 0%, ${INK_DARK} 55%, #0E2B24 100%)` }),
+        backgroundImage: `radial-gradient(circle at 22% 18%, ${color}42 0%, transparent 46%), radial-gradient(circle at 82% 78%, ${color}30 0%, transparent 52%), linear-gradient(170deg, #141A26 0%, ${INK_DARK} 62%, #070A10 100%)`,
       }}
     >
-      {imageData && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={imageData}
-          alt=""
-          width={SLIDE_W}
-          height={SLIDE_H}
-          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      {/* anéis concêntricos discretos: textura sem competir com o texto */}
+      {[760, 560, 380].map((size, i) => (
+        <div
+          key={size}
+          style={{
+            position: "absolute",
+            top: 250 - size / 2 + i * 8,
+            left: SLIDE_W - 190 - size / 2,
+            width: size,
+            height: size,
+            display: "flex",
+            borderRadius: size,
+            border: `2px solid ${color}${i === 0 ? "26" : "18"}`,
+          }}
         />
-      )}
+      ))}
     </div>
   );
 }
 
-function Scrim({ heavy }: { heavy: boolean }) {
+function Background({ imageData, color }: { imageData: string | null; color: string }) {
+  if (!imageData) return <GraphicBackground color={color} />;
   return (
     <div
       style={{
@@ -154,9 +159,47 @@ function Scrim({ heavy }: { heavy: boolean }) {
         width: "100%",
         height: "100%",
         display: "flex",
-        backgroundImage: heavy
-          ? "linear-gradient(180deg, rgba(11,14,20,0.42) 0%, rgba(11,14,20,0.28) 40%, rgba(11,14,20,0.62) 68%, rgba(11,14,20,0.92) 100%)"
-          : "linear-gradient(180deg, rgba(11,14,20,0.55) 0%, rgba(11,14,20,0.10) 35%, rgba(11,14,20,0.80) 82%, rgba(11,14,20,0.95) 100%)",
+        backgroundColor: INK_DARK,
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={imageData}
+        alt=""
+        width={SLIDE_W}
+        height={SLIDE_H}
+        style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      />
+    </div>
+  );
+}
+
+/**
+ * Escurecimento em duas camadas: um véu uniforme (garante legibilidade mesmo
+ * em foto clara) + gradiente pesado na faixa do texto. Sem isso, manchete
+ * branca sobre foto clara some — problema visto nas primeiras amostras.
+ */
+function Scrim({ kind, hasPhoto }: { kind: SlideKind; hasPhoto: boolean }) {
+  // satori não renderiza Fragment com múltiplos filhos absolutos: as duas
+  // camadas (véu uniforme + faixa pesada) vão como gradientes empilhados
+  // num único elemento.
+  const veil = hasPhoto ? (kind === "cover" ? 0.5 : 0.44) : 0.1;
+  const band =
+    kind === "cover"
+      ? "linear-gradient(180deg, rgba(5,7,12,0.9) 0%, rgba(5,7,12,0.35) 20%, rgba(5,7,12,0.12) 34%, rgba(5,7,12,0.72) 56%, rgba(5,7,12,0.94) 78%, rgba(5,7,12,0.98) 100%)"
+      : // internos: faixa escura só onde o texto vive (35-70%), preservando a foto
+        "linear-gradient(180deg, rgba(5,7,12,0.82) 0%, rgba(5,7,12,0.30) 18%, rgba(5,7,12,0.88) 36%, rgba(5,7,12,0.90) 66%, rgba(5,7,12,0.55) 80%, rgba(5,7,12,0.92) 100%)";
+  const veilLayer = `linear-gradient(180deg, rgba(5,7,12,${veil}) 0%, rgba(5,7,12,${veil}) 100%)`;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        backgroundImage: `${band}, ${veilLayer}`,
       }}
     />
   );
@@ -261,8 +304,8 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
   const ui = VERTICAL_UI[spec.vertical] ?? { label: spec.vertical.toUpperCase(), color: "#FFD666" };
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
-      <Background imageData={imageData} />
-      <Scrim heavy={false} />
+      <Background imageData={imageData} color={ui.color} />
+      <Scrim kind="cover" hasPhoto={Boolean(imageData)} />
       <div
         style={{
           position: "absolute",
@@ -297,7 +340,7 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
               textTransform: "uppercase",
               textAlign: "center",
               lineHeight: 1.04,
-              textShadow: "0 4px 26px rgba(0,0,0,0.65)",
+              textShadow: "0 4px 24px rgba(0,0,0,0.98), 0 0 60px rgba(0,0,0,0.85)",
             }}
           >
             {spec.headline}
@@ -312,7 +355,7 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
                 textAlign: "center",
                 lineHeight: 1.3,
                 maxWidth: 880,
-                textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+                textShadow: "0 2px 16px rgba(0,0,0,0.95), 0 0 36px rgba(0,0,0,0.7)",
               }}
             >
               {spec.body}
@@ -331,8 +374,8 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
   const isFinal = spec.kind === "final";
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
-      <Background imageData={imageData} />
-      <Scrim heavy />
+      <Background imageData={imageData} color={ui.color} />
+      <Scrim kind={spec.kind} hasPhoto={Boolean(imageData)} />
       <div
         style={{
           position: "absolute",

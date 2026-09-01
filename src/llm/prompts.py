@@ -179,7 +179,16 @@ DRAFT_STRUCTURE = """Estrutura do carrossel (5 slides, nesta ordem de roles):
 4. WHY_IT_MATTERS — por que isso importa / o ângulo mais interessante
 5. CONCLUSION     — desfecho: o que acontece agora / síntese final
 
-Limites por slide: headline com até 10 palavras; body com até 45 palavras.
+O TEXTO É IMPRESSO NA PRÓPRIA IMAGEM — a maioria das pessoas não abre a
+legenda. Por isso ele precisa ser curto, direto e legível em telas pequenas:
+- slide 1 (HOOK): headline = a manchete do post, no máximo 8 palavras, com
+  força de capa (pode ser pergunta); body = 1 frase de até 20 palavras.
+- slides 2 a 5: headline = rótulo curto de 2-4 palavras (ex.: "O QUE MUDA");
+  body = no máximo 30 palavras, 1 ideia só, frases curtas.
+- destaque os dados essenciais com **negrito** no body (ex.: "**34 fontes**",
+  "**margem de 2 pontos**"). Use no máximo 2 destaques por slide.
+- nunca corte a frase no meio; cada slide se sustenta sozinho.
+
 image_direction: descreva objetivamente a imagem ideal do slide (o que mostra,
 enquadramento, clima). A imagem deve ser factualmente possível — nunca sugira
 cena que não aconteceu como se fosse real.
@@ -187,10 +196,21 @@ image_source_type: AGENCY_PHOTO | PRESS_ASSET | AI_GENERATED | ILLUSTRATION |
 SCREENSHOT | PUBLIC_DOMAIN. Use AI_GENERATED apenas para arte conceitual
 claramente ilustrativa — NUNCA para retratar pessoas reais em situações reais."""
 
-DRAFT_CAPTION_RULES = """Caption do Instagram:
-- 1ª linha forte (é o que aparece antes do "mais");
-- 2 a 4 frases curtas complementando (não repetindo) os slides;
-- termina com CTA curto (ex.: "Siga para mais notícias como essa.");
+DRAFT_CAPTION_RULES = """Caption do Instagram (é a camada de APROFUNDAMENTO):
+Os slides dão o essencial em poucas palavras; a caption é para quem quer
+entender de verdade. Ela deve ser LONGA e substanciosa — 3 a 5 parágrafos,
+entre 150 e 280 palavras no total.
+
+- 1ª linha: gancho forte e autônomo (é o único trecho visível antes do "mais");
+- depois, uma linha em branco e o corpo em parágrafos curtos (2-4 frases cada),
+  separados por linha em branco;
+- TRAGA INFORMAÇÃO NOVA que não coube nos slides: contexto histórico, números,
+  quem são os envolvidos, como se chegou até aqui, o que ainda não se sabe,
+  próximos passos e prazos;
+- atribua os fatos às fontes quando relevante ("segundo o TSE", "de acordo com
+  o estudo publicado na Nature");
+- último parágrafo: fecho com CTA curto (ex.: "Siga para acompanhar.");
+- não repita as frases dos slides — complemente;
 - hashtags NÃO vão na caption — vão no campo hashtags (3 a 5, em português,
   específicas do assunto + 1 da vertical)."""
 

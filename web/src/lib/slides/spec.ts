@@ -5,7 +5,7 @@
  */
 
 import type { Story } from "../types";
-import { findImagesCascade, type SourcedImage } from "../images";
+import { imagesForStory, type SourcedImage } from "../images";
 
 export type SlideKind = "cover" | "body" | "final";
 
@@ -25,16 +25,20 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
   const slides = draft?.slides ?? [];
   const count = Math.max(slides.length, 1);
 
-  const images = await findImagesCascade(story.title, story.vertical, Math.min(count + 1, 6));
-  const pick = (i: number): SourcedImage | null =>
-    images.length === 0 ? null : images[i % images.length];
+  // UMA imagem por story, repetida nos slides (tratamento visual varia por
+  // tipo). Motivos: (a) buscas por slide traziam a pessoa errada; (b) o
+  // carrossel fica coerente, como um post só; (c) com IA, 1 imagem por post
+  // em vez de 5 — custo cinco vezes menor.
+  const images = await imagesForStory(story.title, story.vertical, 1);
+  const hero: SourcedImage | null = images[0] ?? null;
+  const pick = (): SourcedImage | null => hero;
 
   const specs: SlideSpec[] = [];
   for (let i = 0; i < count; i++) {
     const slide = slides[i];
     const isFirst = i === 0;
     const isLast = i === count - 1;
-    const image = pick(i);
+    const image = pick();
     specs.push({
       kind: isFirst ? "cover" : isLast ? "final" : "body",
       vertical: story.vertical,
