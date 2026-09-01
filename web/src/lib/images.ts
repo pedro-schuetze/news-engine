@@ -21,7 +21,7 @@ import path from "node:path";
  * duplicar credencial em web/.env.local.
  */
 let cachedKey: string | null = null;
-function openaiKey(): string {
+export function openaiKey(): string {
   if (cachedKey !== null) return cachedKey;
   // O .env da raiz vence a env var do processo: no Windows do Pedro existe uma
   // OPENAI_API_KEY antiga de outro projeto OpenAI que mascarava a key correta
@@ -137,7 +137,7 @@ async function searchWikimedia(
   const url =
     "https://commons.wikimedia.org/w/api.php?action=query&generator=search" +
     `&gsrsearch=${encodeURIComponent(query)}&gsrnamespace=6&gsrlimit=${limit + 10}` +
-    "&prop=imageinfo&iiprop=url%7Cmime%7Cextmetadata&iiurlwidth=1400&format=json&origin=*";
+    "&prop=imageinfo&iiprop=url%7Cmime%7Cextmetadata&iiurlwidth=1080&format=json&origin=*";
   const data = (await fetchJson(url)) as {
     query?: { pages?: Record<string, {
       index?: number;
@@ -277,6 +277,11 @@ export async function generateIllustration(
 }
 
 // ── orquestração ─────────────────────────────────────────────────────
+
+/** Busca pública no banco (usada pela geração por slide). */
+export async function searchBankImages(title: string, limit: number): Promise<SourcedImage[]> {
+  return searchBanks(title, limit);
+}
 
 async function searchBanks(title: string, limit: number): Promise<SourcedImage[]> {
   const entities = strongEntities(title);

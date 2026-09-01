@@ -35,9 +35,9 @@ class Settings(BaseSettings):
     openai_reasoning_effort: str = ""
     llm_max_output_tokens: int = 8192
 
-    # ilustração dos posts (etapa 2). Ver docs/CONTEXT.md para a comparação
-    # de custo/qualidade entre gpt-image-2 e gpt-image-1-mini.
-    generate_illustrations: bool = True
+    # Imagens são geradas SOB DEMANDA pelo dashboard, não no run automático
+    # (decisão de 2026-09-01). Ver docs/CONTEXT.md.
+    generate_illustrations: bool = False
     openai_image_model: str = "gpt-image-2"
     openai_image_quality: str = "medium"
     openai_image_size: str = "1024x1536"

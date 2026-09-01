@@ -1,11 +1,11 @@
 /**
  * SlideSpec: a ponte entre o EditorialDraft (pipeline) e o renderer visual.
- * Mapeia o draft existente para os 3 layouts (capa / interno / fecho) e
- * anexa imagens com licença limpa + crédito (lib/images).
+ * Mapeia o draft para os 3 layouts (capa / interno / fecho) e anexa a imagem
+ * JÁ GERADA daquele slide (lib/media/generate cuida da geração sob demanda).
  */
 
 import type { Story } from "../types";
-import { imagesForStory, type SourcedImage } from "../images";
+import type { SourcedImage } from "../images";
 import { loadMedia } from "../data";
 
 export type SlideKind = "cover" | "body" | "final";
@@ -31,44 +31,46 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
   const slides = draft?.slides ?? [];
   const count = Math.max(slides.length, 1);
 
-  // 1º) ilustração PRÉ-GERADA pelo pipeline (dashboard instantâneo, custo
-  // travado, e vem com a análise de contraste para posicionar o texto).
-  // 2º) fotos do banco com relevância comprovada. 3º) geração na hora.
-  let placement: TextPlacement = "BOTTOM";
-  let align: "left" | "center" | "right" = "center";
-  let images: SourcedImage[] = [];
+  // Imagens ficam prontas quando o Pedro clica em "gerar imagens" (uma por
+  // slide, cenas diferentes). Sem elas, o slide usa o fundo gráfico da marca —
+  // o renderer NUNCA gera imagem na hora, para a prévia abrir instantânea.
+  const bySlide = new Map<number, NonNullable<Story["slide_media"]>[number]>();
+  for (const asset of story.slide_media ?? []) {
+    if (asset?.local_path) bySlide.set(asset.slide_number, asset);
+  }
 
-  if (story.media?.local_path) {
-    const rel = story.media.local_path.split("\\").join("/");
-    const dataUrl = await loadMedia(rel);
+  const mediaCache = new Map<string, string | null>();
+  async function imageFor(slideNumber: number): Promise<{
+    image: SourcedImage | null;
+    placement: TextPlacement;
+    align: "left" | "center" | "right";
+  }> {
+    const asset = bySlide.get(slideNumber);
+    if (!asset) return { image: null, placement: "BOTTOM", align: "center" };
+    const rel = asset.local_path.split("\\").join("/");
+    if (!mediaCache.has(rel)) mediaCache.set(rel, await loadMedia(rel));
+    const dataUrl = mediaCache.get(rel) ?? null;
     if (!dataUrl) {
-      console.warn(`[slides] ilustração pré-gerada não encontrada: ${rel}`);
+      console.warn(`[slides] imagem do slide ${slideNumber} não encontrada: ${rel}`);
+      return { image: null, placement: "BOTTOM", align: "center" };
     }
-    if (dataUrl) {
-      images = [
-        {
-          url: dataUrl,
-          credit: story.media.provenance?.attribution_text || "ILUSTRAÇÃO GERADA POR IA",
-          source: "ai",
-        },
-      ];
-      placement = story.media.text_placement ?? "BOTTOM";
-      align = story.media.text_align ?? "center";
-      console.info(`[slides] usando ilustração pré-gerada (${placement}/${align}): ${rel}`);
-    }
+    return {
+      image: {
+        url: dataUrl,
+        credit: asset.provenance?.attribution_text || "",
+        source: asset.provenance?.source_type === "GENERATED" ? "ai" : "wikimedia",
+      },
+      placement: asset.text_placement ?? "BOTTOM",
+      align: asset.text_align ?? "center",
+    };
   }
-  if (images.length === 0) {
-    images = await imagesForStory(story.title, story.vertical, Math.min(count, 5));
-  }
-  const pick = (i: number): SourcedImage | null =>
-    images.length === 0 ? null : images[i % images.length];
 
   const specs: SlideSpec[] = [];
   for (let i = 0; i < count; i++) {
     const slide = slides[i];
     const isFirst = i === 0;
     const isLast = i === count - 1;
-    const image = pick(i);
+    const { image, placement, align } = await imageFor(slide?.slide_number || i + 1);
     specs.push({
       kind: isFirst ? "cover" : isLast ? "final" : "body",
       vertical: story.vertical,

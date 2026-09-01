@@ -2,6 +2,7 @@ import type { Review, Story } from "@/lib/types";
 import { fmtLocal, recency } from "@/lib/format";
 import { CONTENT_TYPE_LABEL, REVIEW_UI, VERIFICATION_UI, verticalStyle } from "@/lib/ui";
 import CopyButton from "./CopyButton";
+import GenerateImagesButton from "./GenerateImagesButton";
 import ReviewButtons from "./ReviewButtons";
 
 function Chip({ className = "", children }: { className?: string; children: React.ReactNode }) {
@@ -34,6 +35,7 @@ export default function StoryCard({
   const sourceCount =
     (story.verification.primary_source ? 1 : 0) + story.verification.supporting_sources.length;
   const captionFull = draft ? `${draft.caption}\n\n${draft.hashtags.join(" ")}` : "";
+  const hasImages = (story.slide_media?.length ?? 0) > 0;
 
   return (
     <article
@@ -171,8 +173,11 @@ export default function StoryCard({
         </details>
 
         {draft && draft.slides.length > 0 && (
-          <details className="xp">
-            <summary>Post renderizado ({draft.slides.length} slides)</summary>
+          <details className="xp" open={hasImages}>
+            <summary>
+              Post renderizado ({draft.slides.length} slides)
+              {!hasImages && " — sem imagens ainda"}
+            </summary>
             <div className="mt-2 grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-5">
               {draft.slides.map((s) => (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -186,10 +191,19 @@ export default function StoryCard({
                 />
               ))}
             </div>
-            <p className="mt-2 font-mono text-[11px] text-ink-3">
-              1080×1350 · renderizado ao vivo (fotos: Wikimedia/Openverse com crédito) — é a
-              prévia real do que a fase de publicação enviará ao Instagram.
-            </p>
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+              <p className="font-mono text-[11px] text-ink-3">
+                1080×1350 · {hasImages
+                  ? `${story.slide_media?.length ?? 0} imagens geradas (uma por slide)`
+                  : "fundo gráfico: gere as imagens para ver o post final"}
+              </p>
+              <GenerateImagesButton
+                storyId={story.story_id}
+                runFile={runFile}
+                slideCount={draft.slides.length}
+                hasImages={hasImages}
+              />
+            </div>
           </details>
         )}
 

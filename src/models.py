@@ -293,9 +293,10 @@ class Story(BaseModel):
     classification: Optional[VerticalAssignment] = None
     verification: Verification = Field(default_factory=Verification)
     draft: Optional[EditorialDraft] = None
-    # ilustração pré-gerada no fim do run (dashboard abre instantâneo e o custo
-    # de imagem fica travado em 1 por post)
-    media: Optional["MediaAsset"] = None
+    # imagens do carrossel, UMA POR SLIDE, geradas sob demanda quando o Pedro
+    # clica em "gerar imagens" no dashboard (decisão de 2026-09-01: o run
+    # automático produz só texto, para não gastar imagem em post rejeitado)
+    slide_media: list["MediaAsset"] = Field(default_factory=list)
     article_count: int = 0
     earliest_published_at: Optional[datetime] = None
     latest_published_at: Optional[datetime] = None
@@ -336,6 +337,8 @@ class MediaAsset(BaseModel):
     asset_id: str = Field(default_factory=new_id)
     story_id: str = ""
     draft_id: Optional[str] = None
+    # a qual slide do carrossel este asset pertence (1-based; 0 = não atribuído)
+    slide_number: int = 0
     type: str = "image"
     provider: str = "local"
     local_path: str = ""

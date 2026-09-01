@@ -60,7 +60,6 @@ from src.processing.cluster import build_clusters
 from src.processing.deduplicate import deduplicate
 from src.processing.normalize import normalize_articles
 from src.processing.ranking import compute_final_score, compute_trend_score, select_stories
-from src.media.illustrator import generate_illustration
 from src.media.local_storage import LocalMediaStorage
 from src.processing.verify import build_verification
 from src.repositories.base import NewsRepository
@@ -229,13 +228,10 @@ def _process_vertical(
             errors.append(msg)
             log.warning("[draft] %s", msg)
 
-    # ilustração de cada post selecionado (1 imagem por post, gerada agora para
-    # o dashboard abrir instantâneo e o custo ficar previsível)
-    if storage is not None:
-        for story in selected:
-            story.media = generate_illustration(story, settings, storage)
-            if story.media is None:
-                errors.append(f"ilustração não gerada para '{story.title}' ({vid})")
+    # NÃO geramos imagem aqui: o run automático produz só texto. As 5 imagens
+    # de um post são geradas quando o Pedro clica em "gerar imagens" no
+    # dashboard (POST /api/media/{story_id}), para não gastar geração em post
+    # que será rejeitado e para permitir cuidado caso a caso.
 
     if insufficient:
         log.info(
@@ -386,16 +382,16 @@ def run_pipeline(
         estimated_llm_cost_usd=llm.estimated_cost_usd(),
         estimated_image_cost_usd=round(
             sum(
-                s_.media.estimated_cost_usd or 0.0
+                a.estimated_cost_usd or 0.0
                 for v in vertical_results.values()
                 for s_ in v.stories
-                if s_.media
+                for a in s_.slide_media
             ),
             4,
         )
         or None,
         illustrations_generated=sum(
-            1 for v in vertical_results.values() for s_ in v.stories if s_.media
+            len(s_.slide_media) for v in vertical_results.values() for s_ in v.stories
         ),
         duration_seconds=round(time.monotonic() - started, 1),
         errors=errors,
