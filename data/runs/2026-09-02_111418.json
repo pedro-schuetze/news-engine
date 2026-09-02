@@ -1850,6 +1850,71 @@
               "score": 55,
               "score_notes": "relevância 40 · texto 42 · nitidez 99",
               "added_at": "2026-09-02T20:01:14.669Z"
+            },
+            {
+              "id": "umtkmbgus-1",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-1.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 78,
+              "score_notes": "relevância 85 · texto 72 · nitidez 77",
+              "added_at": "2026-09-02T21:38:28.686Z"
+            },
+            {
+              "id": "umtkmbgus-2",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-2.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "CENTER",
+              "text_align": "center",
+              "score": 71,
+              "score_notes": "relevância 85 · texto 50 · nitidez 76",
+              "added_at": "2026-09-02T21:38:29.209Z"
+            },
+            {
+              "id": "umtkmbgus-3",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-3.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "score": 67,
+              "score_notes": "relevância 85 · texto 34 · nitidez 83",
+              "added_at": "2026-09-02T21:38:29.769Z"
+            },
+            {
+              "id": "umtkmbgus-4",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-4.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "score": 79,
+              "score_notes": "relevância 85 · texto 69 · nitidez 83",
+              "added_at": "2026-09-02T21:38:30.196Z"
+            },
+            {
+              "id": "umtkmbgus-5",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-5.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "CENTER",
+              "text_align": "right",
+              "score": 80,
+              "score_notes": "relevância 85 · texto 84 · nitidez 66",
+              "added_at": "2026-09-02T21:38:30.633Z"
             }
           ]
         },
