@@ -51,6 +51,16 @@ class TestDraftOutput:
             DraftOutput(slides=self._slides(2))
         assert len(DraftOutput(slides=self._slides(5)).slides) == 5
 
+    def test_headline_truncada_rejeitada(self):
+        # caso real de produção (2026-09-02): a manchete veio só "EUA prometem"
+        with pytest.raises(ValidationError):
+            DraftOutput(slides=self._slides(5), instagram_headline="EUA prometem")
+        ok = DraftOutput(
+            slides=self._slides(5),
+            instagram_headline='EUA prometem "atingir o Irã com força", diz Trump',
+        )
+        assert ok.instagram_headline.endswith("Trump")
+
     def test_hashtags_normalized(self):
         d = DraftOutput(slides=self._slides(5), hashtags=["politica", "#brasil", " eleições "])
         assert d.hashtags == ["#politica", "#brasil", "#eleições"]

@@ -529,6 +529,22 @@ class DraftOutput(BaseModel):
             raise ValueError(f"carrossel deve ter entre 3 e 7 slides, veio {len(v)}")
         return v
 
+    @field_validator("instagram_headline")
+    @classmethod
+    def _headline_completa(cls, v: str) -> str:
+        # Guarda contra truncamento visto em produção (2026-09-02: a manchete
+        # veio só "EUA prometem"). Roda dentro do retry do LLMClient.generate,
+        # então a mensagem abaixo volta ao modelo na retentativa. Só valida o
+        # campo quando ele vem na resposta (default vazio não passa por aqui).
+        v = v.strip()
+        if v and (len(v) < 18 or len(v.split()) < 3):
+            raise ValueError(
+                f"instagram_headline incompleta ou truncada: {v!r} — escreva a "
+                "manchete inteira (3+ palavras, frase com sentido completo, até "
+                "~60 caracteres)"
+            )
+        return v
+
     @field_validator("hashtags", mode="before")
     @classmethod
     def _norm_tags(cls, v: Any) -> Any:

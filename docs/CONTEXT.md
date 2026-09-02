@@ -150,13 +150,13 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
-- [ ] **Writer: 2 defeitos observados no run de validação de 2026-09-02**
-  (corrigidos à mão nesse run): (1) `instagram_headline` veio truncada ("EUA
-  prometem"); candidato a guard = tamanho mínimo na validação do draft, MAS
-  atenção: validação nova em `models.py` pode quebrar a releitura de runs
-  antigos — verificar antes. (2) modelo escreveu "ex-presidente Trump"
-  (conhecimento interno desatualizado, não estava nas fontes); candidato a
-  regra nos prompts = "cargos/estados atuais só conforme as fontes".
+- [x] ~~Writer: 2 defeitos do run de 2026-09-02~~ — guards implementados em
+  2026-09-02: (1) validador `_headline_completa` no `DraftOutput` (modelo de
+  SAÍDA do LLM: roda dentro do retry do `LLMClient.generate` e a mensagem
+  volta ao modelo; `EditorialDraft` persistido ficou intocado, então a
+  releitura de runs antigos não é afetada) + mesmo guard no `parseDraft` do
+  dashboard; (2) regra de fidelidade às fontes em `prompts/humanize.md`
+  (cargos/situações atuais NUNCA vêm do conhecimento prévio do modelo).
 - [ ] **`CRON_SECRET` ainda não está nas env vars da Vercel** — enquanto não
   estiver, `/api/cron/run` responde 401 e quem entrega o run é a rede de
   segurança do GitHub às 11:00 UTC. Criar em Settings > Environment Variables

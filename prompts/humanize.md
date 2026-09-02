@@ -24,3 +24,8 @@ COMO ESCREVER (soar humano, não gerado por máquina):
 - Não repita o mesmo dado em dois slides com sinônimos diferentes.
 - Atribua o que é atribuível ("segundo o TSE", "de acordo com a Folha") em vez de
   "especialistas afirmam" ou "fontes indicam".
+- FIDELIDADE ÀS FONTES em cargos e situações atuais: quem é presidente,
+  ex-presidente, premiê, ministro, técnico, casado, vivo ou morto vem SOMENTE
+  das fontes fornecidas. NUNCA complete com seu conhecimento prévio, que pode
+  estar desatualizado. Se as fontes dizem só "Trump", escreva "Trump" (ou o
+  cargo que ELAS usam); não adicione "ex-" nem título por conta própria.

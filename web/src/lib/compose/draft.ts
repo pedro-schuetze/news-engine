@@ -108,6 +108,15 @@ function parseDraft(raw: string, storyId: string, fallbackTitle: string): { draf
   }));
   if (slides.length < 3) throw new Error(`o modelo devolveu ${slides.length} slides (mínimo 3)`);
 
+  // guarda contra manchete truncada (visto em produção em 2026-09-02: veio só
+  // "EUA prometem"); o throw aciona a 2ª tentativa com a mensagem de erro
+  const headline = (parsed.instagram_headline ?? "").trim();
+  if (headline && (headline.length < 18 || headline.split(/\s+/).length < 3)) {
+    throw new Error(
+      `instagram_headline incompleta ou truncada: "${headline}" — escreva a manchete inteira (3+ palavras)`,
+    );
+  }
+
   return {
     vertical: parsed.vertical?.trim().toLowerCase(),
     draft: {
