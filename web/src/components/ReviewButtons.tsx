@@ -9,11 +9,14 @@ export default function ReviewButtons({
   runId,
   vertical,
   current,
+  canApprove = true,
 }: {
   storyId: string;
   runId: string;
   vertical: string;
   current: ReviewStatus;
+  /** false = post ainda sem todas as imagens; aprovar fica bloqueado */
+  canApprove?: boolean;
 }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -27,7 +30,8 @@ export default function ReviewButtons({
       body: JSON.stringify({ story_id: storyId, run_id: runId, vertical, review_status: status }),
     });
     if (!res.ok) {
-      setError("Falha ao salvar review");
+      const body = (await res.json().catch(() => ({}))) as { error?: string };
+      setError(body.error ?? "Falha ao salvar review");
       return;
     }
     startTransition(() => router.refresh());
@@ -38,8 +42,13 @@ export default function ReviewButtons({
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
-        disabled={pending}
+        disabled={pending || (!canApprove && current !== "APPROVED")}
         onClick={() => setStatus("APPROVED")}
+        title={
+          !canApprove && current !== "APPROVED"
+            ? "suba ou busque as imagens de todos os slides antes de aprovar"
+            : undefined
+        }
         className={`${base} ${
           current === "APPROVED"
             ? "bg-brand text-white"
@@ -48,6 +57,11 @@ export default function ReviewButtons({
       >
         ✓ Aprovar
       </button>
+      {!canApprove && current !== "APPROVED" && (
+        <span className="font-mono text-[10.5px] text-ink-3">
+          aprova só com as imagens completas
+        </span>
+      )}
       <button
         disabled={pending}
         onClick={() => setStatus("REJECTED")}

@@ -38,6 +38,10 @@ export default function StoryCard({
     (story.verification.primary_source ? 1 : 0) + story.verification.supporting_sources.length;
   const captionFull = draft ? `${draft.caption}\n\n${draft.hashtags.join(" ")}` : "";
   const hasImages = (story.slide_media?.length ?? 0) > 0;
+  // aprovar exige UMA imagem POR SLIDE (o post sai pronto do Prontos)
+  const slideTotal = draft?.slides?.length ?? 0;
+  const mediaSlides = new Set((story.slide_media ?? []).map((m) => m.slide_number)).size;
+  const imagesComplete = slideTotal > 0 && mediaSlides >= slideTotal;
 
   return (
     <article
@@ -301,6 +305,7 @@ export default function StoryCard({
           runId={story.run_id}
           vertical={story.vertical}
           current={reviewStatus}
+          canApprove={imagesComplete}
         />
         {review?.reviewed_at && (
           <span className="font-mono text-[11px] text-ink-3">

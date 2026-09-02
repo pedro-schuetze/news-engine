@@ -174,6 +174,23 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     no pipeline automático depois de um A/B próprio (atenção: benchmark
     aponta luna fraco em long-context).
 
+15. **2026-09-02 — Geração de imagem por IA via API removida; aprovação
+    exige imagem em todo slide.** Pedro: "não deu certo e ficou bem ruim".
+    Caminhos que ficam: busca no banco (Wikimedia/Openverse, uma foto
+    distinta por slide, sem custo) e upload das imagens geradas no ChatGPT
+    (skill news-engine-carousel). O botão virou "Buscar fotos no banco" e a
+    resposta lista os slides SEM foto ("missing") para completar pelo upload.
+    Código removido: generateWithAI/slidePrompt/VERTICAL_MOOD em
+    media/generate.ts e a camada 2 inteira de images.ts
+    (generateIllustration/buildIllustrationPrompt/imagesForStory, que já
+    estava órfã). illustrator.py (caminho Python, desligado por default)
+    ficou como está.
+    Gate de aprovação: UI desabilita "Aprovar" sem uma imagem POR SLIDE e o
+    servidor valida de novo (/api/reviews devolve 409) — aprovado significa
+    "pronto para exportar do Prontos". Se o run não estiver na janela do
+    histórico, a aprovação passa (guarda de fluxo, não segurança). Validado
+    local: 409 sem imagens; busca banco-only 11s, "missing" correto.
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~CRON_SECRET nas env vars da Vercel~~ — criada pelo Pedro em

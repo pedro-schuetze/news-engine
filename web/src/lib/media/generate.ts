@@ -1,30 +1,20 @@
 /**
- * Geração das imagens de um post, SOB DEMANDA (botão no dashboard).
+ * Imagens de um post, SOB DEMANDA (botão no dashboard).
  *
- * Decisão de 2026-09-01: o run automático produz só texto. As imagens saem
- * quando o Pedro escolhe um post, para (a) não gastar geração em post que
- * será rejeitado e (b) permitir cuidado caso a caso.
- *
- * Cada slide recebe uma imagem PRÓPRIA — cinco cenas diferentes sobre o mesmo
- * tema, não a mesma arte com zoom variado. A ordem por slide é:
- *   1. banco com licença limpa (Wikimedia/Openverse), imagem ainda não usada
- *      em outro slide deste post;
- *   2. ilustração por IA a partir da `image_direction` daquele slide.
+ * Decisão de 2026-09-01: o run automático produz só texto; imagens saem
+ * quando o Pedro escolhe um post. Decisão de 2026-09-02: a geração por IA
+ * via API foi REMOVIDA ("não deu certo e ficou bem ruim") — os caminhos são:
+ *   1. banco com licença limpa (Wikimedia/Openverse), uma foto DIFERENTE por
+ *      slide, sem repetir dentro do post;
+ *   2. imagens geradas fora (ChatGPT + skill news-engine-carousel) e subidas
+ *      pelo upload — que passa pela mesma análise de contraste.
+ * Slide sem foto de banco fica sem imagem até o upload (o renderer usa o
+ * fundo gráfico na prévia).
  */
 
 import jpeg from "jpeg-js";
-import { openaiKey, searchBankImages, type SourcedImage } from "../images";
+import { searchBankImages } from "../images";
 import type { Story } from "../types";
-
-const AI_TIMEOUT_MS = 120_000;
-const AI_MODEL = (process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-2").trim();
-const AI_QUALITY = (process.env.OPENAI_IMAGE_QUALITY ?? "medium").trim();
-const AI_SIZE = (process.env.OPENAI_IMAGE_SIZE ?? "1024x1536").trim();
-const PRICE_PER_MTOK_OUT: Record<string, number> = {
-  "gpt-image-2": 30,
-  "gpt-image-1-mini": 8,
-  "gpt-image-1": 40,
-};
 
 export type TextPlacement = "TOP" | "CENTER" | "BOTTOM";
 
@@ -40,35 +30,6 @@ export interface GeneratedAsset {
   estimated_cost_usd: number | null;
 }
 
-const VERTICAL_MOOD: Record<string, string> = {
-  politics:
-    "sober photojournalistic still life about global affairs and diplomacy; muted blues and deep neutrals",
-  entertainment:
-    "cinematic pop-culture atmosphere: stage lights, film reels, concert haze; saturated color, dramatic contrast",
-  facts:
-    "scientific wonder: macro textures, cosmic or natural phenomena, laboratory light; deep blues and violets",
-};
-
-/** Prompt de UM slide: a cena vem da direção visual daquele slide. */
-export function slidePrompt(story: Story, slideIndex: number): string {
-  const slide = story.draft?.slides?.[slideIndex];
-  const direction = (slide?.image_direction ?? "").trim();
-  const role = (slide?.role ?? "").toLowerCase().replace(/_/g, " ");
-  const mood = VERTICAL_MOOD[story.vertical] ?? "documentary photography, neutral tones";
-  return [
-    `Editorial illustration for slide ${slideIndex + 1} of a news carousel about: "${story.title}".`,
-    direction
-      ? `This slide must show: ${direction}`
-      : `This slide covers the "${role}" part of the story.`,
-    `Each slide of the carousel shows a DIFFERENT scene — make this one visually distinct from a generic establishing shot.`,
-    `Visual direction: ${mood}.`,
-    "Style: editorial photography, cinematic, atmospheric, shallow depth of field, dramatic directional light, rich shadows. Keep one third of the frame visually calm and dark for text overlay.",
-    "STRICT: no text, no letters, no numbers, no logos, no watermarks.",
-    "STRICT: no recognizable real person, no identifiable face, no portrait, no celebrity likeness. Use objects, environments, silhouettes or symbols.",
-  ].join(" ");
-}
-
-/** Onde o texto branco tem mais contraste (faixa + terço mais escuro e uniforme). */
 export function analyzePlacement(
   jpegBytes: Buffer,
 ): { placement: TextPlacement; align: "left" | "center" | "right" } {
@@ -142,97 +103,35 @@ async function fetchBytes(url: string): Promise<Buffer | null> {
   }
 }
 
-async function generateWithAI(
-  prompt: string,
-): Promise<{ bytes: Buffer; cost: number | null } | null> {
-  // openaiKey() dá precedência ao .env da raiz: a env var do Windows aponta
-  // para um projeto OpenAI sem acesso a modelos de imagem (403).
-  const key = openaiKey();
-  if (!key) return null;
-  try {
-    const res = await fetch("https://api.openai.com/v1/images/generations", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: AI_MODEL,
-        prompt,
-        size: AI_SIZE,
-        quality: AI_QUALITY,
-        n: 1,
-        // JPEG direto da API: evita converter/comprimir depois (sem sharp/Pillow)
-        output_format: "jpeg",
-        output_compression: 80,
-      }),
-      signal: AbortSignal.timeout(AI_TIMEOUT_MS),
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      console.warn(`[media] IA falhou (HTTP ${res.status}): ${(await res.text()).slice(0, 180)}`);
-      return null;
-    }
-    const body = (await res.json()) as {
-      data?: { b64_json?: string }[];
-      usage?: { output_tokens?: number };
-    };
-    const b64 = body.data?.[0]?.b64_json;
-    if (!b64) return null;
-    const outTokens = body.usage?.output_tokens ?? 0;
-    const price = Object.entries(PRICE_PER_MTOK_OUT).find(([m]) => AI_MODEL.startsWith(m))?.[1];
-    return {
-      bytes: Buffer.from(b64, "base64"),
-      cost: price ? (outTokens * price) / 1_000_000 : null,
-    };
-  } catch (e) {
-    console.warn(`[media] IA abortada: ${String(e).slice(0, 140)}`);
-    return null;
-  }
-}
-
 /**
- * Gera as imagens de TODOS os slides do post, em paralelo.
- * Banco primeiro (imagens distintas entre slides), IA no que sobrar.
+ * Busca as imagens do post no banco (uma foto distinta por slide) e devolve
+ * o que encontrou. Slides sem correspondente relevante ficam de fora — o
+ * editor completa pelo upload (ChatGPT).
  */
 export async function generateStoryImages(story: Story): Promise<GeneratedAsset[]> {
   const slides = story.draft?.slides ?? [];
   if (slides.length === 0) return [];
 
-  // uma busca no banco para todo o post: as fotos relevantes são distribuídas,
-  // uma por slide, sem repetir (foi assim que o post do Tupac ficou bom)
+  // uma busca para todo o post: as fotos relevantes são distribuídas, uma
+  // por slide, sem repetir (foi assim que o post do Tupac ficou bom)
   const banked = await searchBankImages(story.title, slides.length);
 
   const jobs = slides.map(async (slide, i): Promise<GeneratedAsset | null> => {
-    const fromBank: SourcedImage | undefined = banked[i];
-    if (fromBank) {
-      const bytes = await fetchBytes(fromBank.url);
-      if (bytes) {
-        const { placement, align } = analyzePlacement(bytes);
-        return {
-          slide_number: slide.slide_number || i + 1,
-          bytes,
-          mime_type: fromBank.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg",
-          credit: fromBank.credit,
-          source: fromBank.source === "ai" ? "ai" : fromBank.source,
-          text_placement: placement,
-          text_align: align,
-          prompt: "",
-          estimated_cost_usd: null,
-        };
-      }
-    }
-    const prompt = slidePrompt(story, i);
-    const ai = await generateWithAI(prompt);
-    if (!ai) return null;
-    const { placement, align } = analyzePlacement(ai.bytes);
+    const fromBank = banked[i];
+    if (!fromBank) return null;
+    const bytes = await fetchBytes(fromBank.url);
+    if (!bytes) return null;
+    const { placement, align } = analyzePlacement(bytes);
     return {
       slide_number: slide.slide_number || i + 1,
-      bytes: ai.bytes,
-      mime_type: "image/jpeg",
-      credit: "ILUSTRAÇÃO GERADA POR IA",
-      source: "ai",
+      bytes,
+      mime_type: fromBank.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg",
+      credit: fromBank.credit,
+      source: fromBank.source === "ai" ? "ai" : fromBank.source,
       text_placement: placement,
       text_align: align,
-      prompt,
-      estimated_cost_usd: ai.cost,
+      prompt: "",
+      estimated_cost_usd: null,
     };
   });
 

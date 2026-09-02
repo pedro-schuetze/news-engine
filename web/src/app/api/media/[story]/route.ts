@@ -1,10 +1,9 @@
 /**
  * POST /api/media/{story_id}?run={file|latest}
- * Gera as imagens do post (uma por slide) e persiste. É o que o botão
- * "gerar imagens" do dashboard chama.
- *
- * As gerações rodam em paralelo, então 5 slides levam o tempo de ~1 imagem
- * (~40s) em vez de 5x isso.
+ * Busca as imagens do post no banco (uma foto distinta por slide) e
+ * persiste. É o que o botão "buscar fotos no banco" do dashboard chama.
+ * Slides sem foto relevante ficam sem imagem: o editor completa subindo as
+ * imagens do ChatGPT (a geração por IA via API foi removida em 2026-09-02).
  */
 
 import { NextResponse } from "next/server";
@@ -14,8 +13,8 @@ import { persistAssets } from "@/lib/media/persist";
 import type { Story } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
-// geração de imagem é lenta; o teto da Vercel para este projeto é 300s
-export const maxDuration = 300;
+// busca + download do banco; folga para redes lentas
+export const maxDuration = 120;
 
 export async function POST(
   request: Request,
@@ -47,10 +46,17 @@ export async function POST(
 
   const started = Date.now();
   const generated = await generateStoryImages(story);
+  const covered = new Set(generated.map((g) => g.slide_number));
+  const missing = story.draft.slides
+    .map((s) => s.slide_number)
+    .filter((n) => !covered.has(n));
   if (generated.length === 0) {
     return NextResponse.json(
-      { error: "nenhuma imagem pôde ser obtida (banco vazio e IA indisponível)" },
-      { status: 502 },
+      {
+        error:
+          "o banco não tem foto relevante para este assunto — use o prompt do ChatGPT e suba as imagens",
+      },
+      { status: 404 },
     );
   }
 
@@ -62,13 +68,11 @@ export async function POST(
       run,
       runFile,
     );
-    const cost = assets.reduce((sum, a) => sum + (a.estimated_cost_usd ?? 0), 0);
     return NextResponse.json({
       ok: true,
       slides: assets.length,
-      from_bank: generated.filter((g) => g.source !== "ai").length,
-      from_ai: generated.filter((g) => g.source === "ai").length,
-      estimated_cost_usd: Math.round(cost * 10000) / 10000,
+      from_bank: assets.length,
+      missing,
       seconds: Math.round((Date.now() - started) / 1000),
       persisted_to: where,
     });

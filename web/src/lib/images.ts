@@ -50,7 +50,6 @@ export interface SourcedImage {
 const FETCH_TIMEOUT_MS = 6000;
 const AI_TIMEOUT_MS = 60_000;
 const cache = new Map<string, SourcedImage[]>();
-const aiCache = new Map<string, SourcedImage | null>();
 
 // tipos de arquivo que nunca servem como foto editorial
 const BAD_TITLE = /(diagram|chart|graph|plot|map\b|logo|icon|coat of arms|flag of|seal of|svg|screenshot|table|infographic|scheme|schéma|blueprint|timeline|font|typeface)/i;
@@ -217,89 +216,6 @@ async function searchOpenverse(
   return out;
 }
 
-// ── camada 2: ilustração por IA ──────────────────────────────────────
-
-// Escolha medida em 2026-09-01 gerando a mesma cena nos dois modelos:
-// gpt-image-2/medium custa ~US$ 0,041 por imagem 1024x1536 (output $30/1M x
-// ~1372 tokens) contra ~US$ 0,013 do gpt-image-1-mini, mas entrega
-// profundidade e luz que sobrevivem ao scrim de 45-50% — o mini saiu escuro e
-// vazio. Como é 1 imagem por POST (não por slide) e só quando o banco não tem
-// foto relevante, o teto fica em ~US$ 18/mês. Trocável por env var.
-const AI_MODEL = (process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-2").trim();
-const AI_QUALITY = (process.env.OPENAI_IMAGE_QUALITY ?? "medium").trim();
-
-export function buildIllustrationPrompt(title: string, vertical: string): string {
-  const mood: Record<string, string> = {
-    politics:
-      "sober photojournalistic still life about global affairs and diplomacy: summit table with national flags, world map, globe, official documents; muted blues and deep neutrals",
-    entertainment:
-      "cinematic pop-culture atmosphere: stage lights, film reels, concert haze, bold saturated color, dramatic contrast",
-    facts:
-      "scientific wonder: macro textures, cosmic or natural phenomena, laboratory light, deep blues and violets",
-  };
-  return [
-    `Editorial illustration for a news carousel slide about: "${title}".`,
-    `Visual direction: ${mood[vertical] ?? "documentary photography, neutral tones"}.`,
-    "Style: cinematic, atmospheric, slightly abstract, shallow depth of field, dramatic lighting, high contrast, dark areas at the top and bottom for text overlay.",
-    "STRICT: no text, no letters, no numbers, no logos, no watermarks.",
-    "STRICT: no recognizable real person, no identifiable faces, no portraits — use objects, environments, symbols or silhouettes instead.",
-  ].join(" ");
-}
-
-/** Ilustração por IA; null se a key não tiver acesso (o render usa o fundo gráfico). */
-export async function generateIllustration(
-  title: string,
-  vertical: string,
-): Promise<SourcedImage | null> {
-  const key = openaiKey();
-  if (!key) {
-    console.warn("[slides] ilustração por IA indisponível: OPENAI_API_KEY não encontrada");
-    return null;
-  }
-  const cacheKey = `${vertical}::${title}`;
-  if (aiCache.has(cacheKey)) return aiCache.get(cacheKey)!;
-
-  try {
-    const res = await fetch("https://api.openai.com/v1/images/generations", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: AI_MODEL,
-        prompt: buildIllustrationPrompt(title, vertical),
-        size: "1024x1536",
-        quality: AI_QUALITY,
-        n: 1,
-      }),
-      signal: AbortSignal.timeout(AI_TIMEOUT_MS),
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      console.warn(
-        `[slides] geração de imagem falhou (${AI_MODEL}/${AI_QUALITY}, HTTP ${res.status}): ` +
-          detail.slice(0, 200),
-      );
-      aiCache.set(cacheKey, null); // 403 de projeto sem acesso: não insiste
-      return null;
-    }
-    const body = (await res.json()) as { data?: { b64_json?: string; url?: string }[] };
-    const item = body.data?.[0];
-    const url = item?.b64_json ? `data:image/png;base64,${item.b64_json}` : item?.url;
-    if (!url) {
-      aiCache.set(cacheKey, null);
-      return null;
-    }
-    const image: SourcedImage = { url, credit: "ILUSTRAÇÃO GERADA POR IA", source: "ai" };
-    aiCache.set(cacheKey, image);
-    console.info(`[slides] ilustração gerada (${AI_MODEL}/${AI_QUALITY}) para: ${title.slice(0, 60)}`);
-    return image;
-  } catch (e) {
-    console.warn(`[slides] geração de imagem abortada: ${String(e).slice(0, 160)}`);
-    aiCache.set(cacheKey, null);
-    return null;
-  }
-}
-
 // ── orquestração ─────────────────────────────────────────────────────
 
 /** Busca pública no banco (usada pela geração por slide). */
@@ -324,21 +240,6 @@ async function searchBanks(title: string, limit: number): Promise<SourcedImage[]
   }
   cache.set(key, images);
   return images;
-}
-
-/**
- * Imagens para os slides de uma story: banco relevante → IA → [] (fundo gráfico).
- * Nunca lança.
- */
-export async function imagesForStory(
-  title: string,
-  vertical: string,
-  limit = 5,
-): Promise<SourcedImage[]> {
-  const banked = await searchBanks(title, limit);
-  if (banked.length > 0) return banked;
-  const ai = await generateIllustration(title, vertical);
-  return ai ? [ai] : [];
 }
 
 /** Baixa a imagem e devolve data URL (satori não espera hosts lentos). */

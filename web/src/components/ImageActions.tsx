@@ -7,17 +7,17 @@ import { prepareForUpload } from "@/lib/media/clientImage";
 interface ApiResult {
   slides: number;
   from_bank?: number;
-  from_ai?: number;
-  estimated_cost_usd?: number;
+  missing?: number[];
   seconds?: number;
   problems?: string[];
 }
 
 /**
- * Duas formas de conseguir as imagens de um post:
- *   1. pela API (banco + IA), no clique;
- *   2. copiando o briefing para o ChatGPT (skill news-engine-carousel) e
- *      subindo os arquivos de volta.
+ * Duas formas de conseguir as imagens de um post (a geração por IA via API
+ * foi removida em 2026-09-02 — "não deu certo e ficou bem ruim"):
+ *   1. busca no banco (Wikimedia/Openverse), uma foto distinta por slide;
+ *   2. briefing copiado para o ChatGPT (skill news-engine-carousel) e
+ *      upload dos arquivos de volta.
  */
 /** O runtime pode responder texto puro (413, 504) — não assuma JSON. */
 async function readResponse(res: Response): Promise<{ ok: boolean; body: ApiResult & { error?: string; problems?: string[] } }> {
@@ -139,10 +139,10 @@ export default function ImageActions({
           }`}
         >
           {busy === "api"
-            ? `gerando ${slideCount} imagens…`
+            ? "buscando no banco…"
             : hasImages
-              ? "↻ Regerar via API"
-              : `✦ Gerar ${slideCount} imagens (API)`}
+              ? "↻ Buscar de novo no banco"
+              : "🔎 Buscar fotos no banco"}
         </button>
 
         <button
@@ -180,19 +180,16 @@ export default function ImageActions({
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px]">
-        {busy === "api" && (
-          <span className="text-ink-3">leva ~40s (as {slideCount} rodam em paralelo)</span>
-        )}
+        {busy === "api" && <span className="text-ink-3">leva ~10-20s (sem custo de API)</span>}
         {prep && <span className="text-ink-3">{prep}</span>}
         {refreshing && busy === null && <span className="text-ink-3">atualizando prévia…</span>}
         {result && busy === null && (
           <span className="text-brand-ink">
-            {result.slides} imagens
-            {result.from_bank !== undefined && ` · ${result.from_bank} do banco`}
-            {result.from_ai !== undefined && ` · ${result.from_ai} por IA`}
-            {result.estimated_cost_usd !== undefined &&
-              ` · US$ ${result.estimated_cost_usd.toFixed(3)}`}
+            {result.slides} de {slideCount} slides com imagem
             {result.seconds !== undefined && ` · ${result.seconds}s`}
+            {result.missing?.length
+              ? ` · sem foto no banco: slide ${result.missing.join(", ")} — complete pelo ChatGPT`
+              : ""}
           </span>
         )}
         {copied && (
