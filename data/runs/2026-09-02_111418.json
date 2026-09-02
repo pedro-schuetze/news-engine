@@ -1635,20 +1635,20 @@
               "story_id": "f7ff5458-2c70-43e6-a0cc-9d9df9af4091",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-1.jpg",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/b0986cfd769.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Daniel Torok · Public domain · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+                "attribution_text": "Daniel Torok · Public domain · Wikimedia"
               },
               "text_placement": "BOTTOM",
-              "text_align": "center",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
             },
