@@ -56,9 +56,10 @@ export function buildChatGptBriefing(story: Story): string {
     "",
     ...lines,
     "",
-    `Gere ${slides.length} imagens em 2:3 (1024x1536), uma por slide, cada uma uma cena DIFERENTE.`,
-    "Sem texto, sem letras, sem logos. Sem rosto de pessoa real identificável.",
-    "Deixe um terço do quadro escuro e calmo para a tipografia entrar depois.",
+    `Gere ${slides.length} IMAGENS SEPARADAS em 2:3 (1024x1536) — um arquivo por slide, cada um uma cena DIFERENTE.`,
+    "NUNCA monte grade, colagem ou mosaico com várias cenas na mesma imagem. Se a ferramenta só gerar uma imagem por resposta, gere uma por resposta, na ordem dos slides.",
+    "Sem texto, sem letras, sem logos. Sem rosto de pessoa real identificável — se a direção de um slide citar alguém, mostre o entorno (púlpito vazio, bandeiras, silhueta de costas), nunca a pessoa.",
+    "NÃO escureça a imagem nem pinte vinheta, degradê ou faixa escura para o texto: o sombreamento e a tipografia são aplicados DEPOIS pelo sistema, que analisa cada imagem. Entregue exposição natural; apenas componha com uma região de menos detalhe.",
   ]
     .filter((l) => l !== null)
     .join("\n");

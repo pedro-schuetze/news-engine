@@ -221,6 +221,15 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] ~~Prompt do ChatGPT gerava colagem com sombra embutida~~ — corrigido em
+  2026-09-02 (briefing.ts + SKILL.md v1.1.0): o prompt PEDIA "um terço do
+  quadro escuro", e o gerador pintava vinheta artificial que somava com o
+  scrim do renderer; e "gere as 5 imagens" sem proibir grade virava colagem
+  2x3. Agora: arquivos SEPARADOS obrigatórios (nunca grade/colagem; uma por
+  resposta se preciso), exposição natural SEM escurecimento (o sistema aplica
+  o sombreamento depois), e reforço de pessoa-real no briefing (direção que
+  cita alguém vira entorno). **Pedro precisa reinstalar a skill no ChatGPT
+  (zip 1.1.0)** — o prompt copiável já sai corrigido do dashboard.
 - [x] ~~CRON_SECRET nas env vars da Vercel~~ — criada pelo Pedro em
   2026-09-02 e validada (rota autenticou e respondeu "skipped: já existe run
   de hoje"). **Restava o GITHUB_TOKEN sem `Actions: Read and write`** (o

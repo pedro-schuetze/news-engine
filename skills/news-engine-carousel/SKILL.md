@@ -6,11 +6,12 @@ description: |
   quando receber um briefing do News Engine pedindo as imagens de um post,
   ou quando o usuário colar um prompt que mencione "News Engine" e slides
   com direção visual. Produz cinco cenas DIFERENTES sobre o mesmo
-  acontecimento, em 2:3, sem texto e sem rosto de pessoa real, com áreas
-  escuras reservadas para a tipografia que o sistema aplica depois.
+  acontecimento, em ARQUIVOS SEPARADOS (nunca colagem), em 2:3, sem texto e
+  sem rosto de pessoa real, com exposição natural — o sombreamento e a
+  tipografia são aplicados depois, pelo sistema.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   project: news-engine
 ---
 
@@ -25,7 +26,11 @@ depois. Sua responsabilidade é a fotografia editorial.
 O briefing traz o acontecimento, a vertical e a direção visual de cada um dos
 cinco slides. Ao recebê-lo:
 
-1. Gere **cinco imagens, uma por slide**, na ordem dos slides.
+1. Gere **uma imagem POR SLIDE, em arquivos separados**, na ordem dos
+   slides. **NUNCA** monte grade, colagem, mosaico ou "contact sheet" com
+   várias cenas na mesma imagem — cada slide é um arquivo independente. Se a
+   ferramenta só gerar uma imagem por resposta, gere uma por resposta,
+   consecutivamente, na ordem.
 2. Cada imagem é uma **cena diferente**. Não repita o mesmo enquadramento com
    zoom diferente, não devolva variações da mesma composição.
 3. Formato **2:3 retrato** (1024x1536). O sistema recorta para 1080x1350.
@@ -66,14 +71,18 @@ Clima por vertical:
 | Entretenimento | atmosfera pop cinematográfica: luz de palco, cortina, rolo de filme, vinil, névoa de show, camarim; cor saturada e contraste forte |
 | Fatos | deslumbramento científico: macro de textura, fenômeno natural, céu profundo, vidraria de laboratório, detalhe microscópico; azuis e violetas |
 
-## Composição obrigatória para o texto
+## Composição (o texto e o sombreamento entram DEPOIS)
 
-A tipografia entra por cima, então **reserve espaço**:
+O sistema analisa cada imagem, escolhe onde o texto cai e aplica o
+sombreamento sozinho. Por isso:
 
-- mantenha **um terço do quadro visualmente calmo e escuro** (topo, centro ou
-  base) — sem detalhe competindo, sem rosto, sem elemento gráfico forte;
-- concentre o assunto no terço oposto;
-- evite pontos de luz estourados perto da área calma.
+- **NÃO escureça a imagem**: nada de vinheta, degradê, faixa preta, canto
+  apagado ou "espaço para texto" pintado. Exposição natural e uniforme, como
+  uma fotografia real.
+- Componha com **uma região de menos detalhe** (topo, centro ou base): sem
+  rosto, sem elemento gráfico forte competindo — mas na luz natural da cena,
+  sem escurecer.
+- Evite pontos de luz estourados espalhados pelo quadro inteiro.
 
 ## Papel de cada slide
 
@@ -87,7 +96,7 @@ A tipografia entra por cima, então **reserve espaço**:
 
 ## Formato da resposta
 
-Gere as cinco imagens e depois escreva:
+Gere as imagens (um arquivo por slide) e depois escreva:
 
 ```
 slide 1 — <o que a imagem mostra>
