@@ -1,25 +1,48 @@
 # Run diário do News Engine.
 #
-# Horário: 06:00 America/Sao_Paulo. O cron do GitHub Actions só aceita UTC e
-# não tem suporte oficial a timezone; como o Brasil não adota horário de verão
-# desde 2019, 06:00 BRT == 09:00 UTC o ano inteiro (documentado no README).
-# O agendamento do Actions pode atrasar alguns minutos em horários de pico.
+# GATILHO PRINCIPAL: cron da Vercel às 09:00 UTC chamando /api/cron/run, que
+# faz workflow_dispatch aqui. Ver web/src/app/api/cron/run/route.ts.
+#
+# POR QUE não é o `schedule:` daqui. O evento `schedule` do Actions é
+# best-effort: em 02/09/2026 o run das 09:00 UTC não foi criado — sem erro,
+# sem fila, sem registro. Em outro projeto com o mesmo desenho o sintoma foi
+# medido por quatro meses (atraso de 24 a 740 min na CRIAÇÃO do run, piores
+# nas segundas, com o job sempre terminando em 12-16 min): é prioridade de fila,
+# não código. Evento vindo da API entra na mesma fila de um `push` e sobe em
+# segundos. O executor não muda de lugar — só o gatilho.
 
 name: daily-news
 
 on:
-  schedule:
-    - cron: "0 9 * * *" # 09:00 UTC = 06:00 America/Sao_Paulo
   workflow_dispatch:
     inputs:
       lookback_hours:
         description: "Janela de coleta em horas"
         required: false
         default: "18"
+      force:
+        description: "Rodar mesmo que já exista run de hoje"
+        type: boolean
+        default: false
+
+  schedule:
+    # REDE DE SEGURANÇA, não o horário de entrega.
+    #
+    # 11:00 UTC (08:00 BRT), duas horas depois do gatilho da Vercel, para
+    # separar os papéis por horário: no plano Hobby o cron da Vercel dispara
+    # DENTRO da hora (09:00-09:59 UTC), então 11:00 dá margem. Se a Vercel
+    # entregou, este run encontra o arquivo de hoje e o guard abaixo o encerra
+    # em ~15s de runner. Se a Vercel falhou, este é quem salva o dia.
+    - cron: "0 11 * * *"
 
 permissions:
   contents: write # necessário para commitar os JSONs de data/
 
+# Sem isto, o gatilho da Vercel e o `schedule` podem subir juntos e os dois
+# passarem pelo guard antes de qualquer um commitar — dois runs no mesmo dia.
+# Com a fila serializada, o segundo faz checkout depois do commit do primeiro
+# e o guard funciona. cancel-in-progress: false porque matar o pipeline no
+# meio deixa artigo coletado e não processado.
 concurrency:
   group: daily-news
   cancel-in-progress: false
@@ -35,19 +58,41 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Já rodou hoje?
+        id: guard
+        # Guard de idempotência: enxerga o data/runs/ inteiro do checkout, o
+        # que o dashboard não consegue (a listagem dele é limitada). É esta a
+        # checagem que protege os dados; a da rota só evita subir runner.
+        run: |
+          hoje=$(date +%Y-%m-%d)   # TZ=America/Sao_Paulo no env do job
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "force pedido no dispatch: rodando mesmo assim."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          elif ls data/runs/"$hoje"_*.json >/dev/null 2>&1; then
+            echo "Já existe run de $hoje ($(ls data/runs/"$hoje"_*.json)) — encerrando."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Nenhum run de $hoje ainda: seguindo."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Python 3.12
+        if: steps.guard.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
 
       - name: Instalar dependências
+        if: steps.guard.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: Testes (mock, sem custo de API)
+        if: steps.guard.outputs.skip != 'true'
         run: pytest
 
       - name: Rodar pipeline
+        if: steps.guard.outputs.skip != 'true'
         env:
           LLM_PROVIDER: ${{ secrets.LLM_PROVIDER || 'openai' }}
           LLM_FALLBACK_PROVIDER: ${{ secrets.LLM_FALLBACK_PROVIDER || '' }}
@@ -56,11 +101,15 @@ jobs:
           OPENAI_REASONING_EFFORT: ${{ secrets.OPENAI_REASONING_EFFORT || 'minimal' }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL || 'claude-haiku-4-5' }}
-          NEWS_LOOKBACK_HOURS: ${{ github.event.inputs.lookback_hours || '18' }}
+          # 26h quando vem do cron da Vercel (a rota manda o input). O default
+          # 18h fica só para dispatch manual: com run 1x/dia, 18h deixa um vão
+          # de 6h por dia entre uma janela e a seguinte.
+          NEWS_LOOKBACK_HOURS: ${{ github.event.inputs.lookback_hours || '26' }}
           PIPELINE_MODE: live
         run: python -m src.pipeline
 
       - name: Commitar resultados (data/)
+        if: steps.guard.outputs.skip != 'true'
         # identidade pessoal do dono: o auto-deploy da Vercel (git integration)
         # bloqueia commits de autores que não são membros do time (TEAM_ACCESS_REQUIRED)
         run: |

@@ -86,8 +86,49 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     integration para auto-deploy por push. Supabase segue como fase 2 — quando
     entrar, vira uma terceira fonte em `web/src/lib/sources/`.
 
+12. **2026-09-02 — Gatilho do run diário sai do cron do GitHub e vai para o
+    cron da Vercel.** Em 02/09 o run das 09:00 UTC não foi criado: sem erro,
+    sem fila, sem registro — workflow `active`, cron intacto, repo público (e
+    portanto com minutos ilimitados). O `schedule:` do Actions é best-effort.
+    Outro projeto do Pedro com o mesmo desenho tem 4 meses de medição do
+    mesmo sintoma: atraso de 24 a 740 min na CRIAÇÃO do run, piores nas
+    segundas, com o job sempre terminando em 12-16 min — é prioridade de fila,
+    não código. Lá a saída foi um agendador dentro do banco; aqui, como este
+    projeto deliberadamente não tem banco, o gatilho é
+    o cron da Vercel (`web/vercel.json`) chamando `/api/cron/run`, que faz
+    `workflow_dispatch`. Evento vindo da API entra na mesma fila de um `push`
+    e sobe em segundos. O executor não muda de lugar: o pipeline continua no
+    Actions, que é onde há Python e permissão de commitar em `data/`.
+    - Autenticação: `CRON_SECRET` nas env vars da Vercel (ela manda
+      `Authorization: Bearer $CRON_SECRET` nas chamadas de cron). Sem o
+      segredo a rota responde 401 e não dispara nada — endpoint aberto aqui
+      gastaria crédito de API e commitaria no repo a cada visita de robô.
+    - O `schedule:` do GitHub fica como REDE DE SEGURANÇA às 11:00 UTC (08:00
+      BRT), duas horas depois, porque no plano Hobby o cron da Vercel dispara
+      dentro da hora, não no minuto.
+    - Guard de idempotência no workflow: se `data/runs/<hoje>_*.json` já
+      existe, o job encerra em ~15s de runner. Input `force: true` ignora o
+      guard. O `concurrency` que já existia é o que faz o guard funcionar
+      quando os dois gatilhos sobem juntos (o segundo faz checkout depois do
+      commit do primeiro).
+    - Janela do cron = 26h, não as 18h de antes: com run 1x/dia, 18h deixava
+      um vão de 6h POR DIA (o run das 09:00 cobre desde as 15:00 do dia
+      anterior, e o run anterior parou às 09:00 — ninguém olhava 09:00-15:00).
+      Custo praticamente igual: o clustering é local e as chamadas ao LLM são
+      limitadas por config, não pelo volume coletado (medido em 02/09 com 24h:
+      1.783 artigos, 22 chamadas, US$ 0,069).
+
 ## Pendências / dívidas conhecidas
 
+- [ ] **`CRON_SECRET` ainda não está nas env vars da Vercel** — enquanto não
+  estiver, `/api/cron/run` responde 401 e quem entrega o run é a rede de
+  segurança do GitHub às 11:00 UTC. Criar em Settings > Environment Variables
+  (valor: hex aleatório de 32 bytes), targets production/preview/development.
+- [ ] **Confirmar que o `GITHUB_TOKEN` da Vercel tem `Actions: read and
+  write`** — ele foi criado para o Contents API (ler runs, commitar reviews).
+  Se for fine-grained sem a permissão de Actions, o dispatch volta 403. Teste
+  barato: `GET /api/cron/run?force=1` com o Bearer — o guard do workflow
+  encerra o run em ~15s, então o teste prova o caminho inteiro sem gastar API.
 - [x] ~~OPENAI_API_KEY no `.env` local~~ — configurada em 2026-08-30.
 - [ ] **Secret `OPENAI_API_KEY` no GitHub Actions ainda falta** — sem ele o cron
       diário (06:00 BRT) falha. `gh secret set OPENAI_API_KEY --repo pedro-schuetze-artica/news-engine`.
