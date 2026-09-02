@@ -383,6 +383,29 @@ function Footer({ spec, cta }: { spec: SlideSpec; cta: boolean }) {
   );
 }
 
+/**
+ * O bloco de texto ocupa DE FATO a faixa escolhida pela análise de contraste.
+ * Antes o texto ficava sempre no centro enquanto o escurecimento ia para
+ * topo/base — a sombra parecia deslocada da tipografia.
+ */
+const PLACEMENT_JUSTIFY: Record<TextPlacement, string> = {
+  TOP: "flex-start",
+  CENTER: "center",
+  BOTTOM: "flex-end",
+};
+
+const ALIGN_ITEMS: Record<string, string> = {
+  left: "flex-start",
+  center: "center",
+  right: "flex-end",
+};
+
+const TEXT_ALIGN: Record<string, "left" | "center" | "right"> = {
+  left: "left",
+  center: "center",
+  right: "right",
+};
+
 function coverHeadlineSize(text: string): number {
   if (text.length <= 28) return 104;
   if (text.length <= 48) return 88;
@@ -414,10 +437,14 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
         <div
           style={{
             display: "flex",
+            flexGrow: 1,
             flexDirection: "column",
-            alignItems: "center",
-            gap: 30,
             width: "100%",
+            justifyContent: PLACEMENT_JUSTIFY[spec.placement] ?? "center",
+            alignItems: ALIGN_ITEMS[spec.align] ?? "center",
+            paddingTop: spec.placement === "TOP" ? 30 : 0,
+            paddingBottom: spec.placement === "BOTTOM" ? 40 : 0,
+            gap: 30,
           }}
         >
           <div
@@ -428,7 +455,7 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
               fontSize: coverHeadlineSize(spec.headline),
               color: "#FFFFFF",
               textTransform: "uppercase",
-              textAlign: "center",
+              textAlign: TEXT_ALIGN[spec.align] ?? "center",
               lineHeight: 1.04,
               textShadow: "0 4px 24px rgba(0,0,0,0.98), 0 0 60px rgba(0,0,0,0.85)",
             }}
@@ -483,10 +510,14 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
         <div
           style={{
             display: "flex",
+            flexGrow: 1,
             flexDirection: "column",
-            alignItems: "center",
-            gap: 34,
             width: "100%",
+            justifyContent: PLACEMENT_JUSTIFY[spec.placement] ?? "center",
+            alignItems: ALIGN_ITEMS[spec.align] ?? "center",
+            paddingTop: spec.placement === "TOP" ? 26 : 0,
+            paddingBottom: spec.placement === "BOTTOM" ? 34 : 0,
+            gap: 34,
           }}
         >
           {spec.headline && (
