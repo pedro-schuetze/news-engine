@@ -23,6 +23,12 @@ export default function ComposeForm({
   const [links, setLinks] = useState("");
   const [instruction, setInstruction] = useState("");
   const [vertical, setVertical] = useState("");
+  // formato do post — defaults = comportamento padrão dos prompts
+  const [slideCount, setSlideCount] = useState(5);
+  const [slideLength, setSlideLength] = useState("");
+  const [captionDepth, setCaptionDepth] = useState("");
+  const [audience, setAudience] = useState("");
+  const [emojis, setEmojis] = useState(false);
   const [busy, setBusy] = useState<"compose" | "discard" | null>(null);
   const [result, setResult] = useState<ComposeResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -44,6 +50,13 @@ export default function ComposeForm({
           urls,
           instruction: instruction.trim() || undefined,
           vertical: vertical || undefined,
+          format: {
+            slideCount,
+            slideLength: slideLength || undefined,
+            captionDepth: captionDepth || undefined,
+            audience: audience || undefined,
+            emojis: emojis || undefined,
+          },
         }),
       });
       const raw = await res.text();
@@ -121,6 +134,59 @@ export default function ComposeForm({
           placeholder="direcionamento opcional (ex.: foca no impacto para o consumidor)"
           className="min-w-64 flex-1 rounded-full border border-line bg-panel px-3.5 py-1.5 text-[13px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none"
         />
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2">
+        <select
+          value={slideCount}
+          onChange={(e) => setSlideCount(Number(e.target.value))}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-[12.5px] text-ink-2"
+        >
+          {[3, 4, 5, 6, 7].map((n) => (
+            <option key={n} value={n}>
+              {n} slides{n === 5 ? " (padrão)" : ""}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={slideLength}
+          onChange={(e) => setSlideLength(e.target.value)}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-[12.5px] text-ink-2"
+        >
+          <option value="">texto por slide: padrão</option>
+          <option value="curto">texto por slide: mais curto</option>
+          <option value="detalhado">texto por slide: mais detalhado</option>
+        </select>
+
+        <select
+          value={captionDepth}
+          onChange={(e) => setCaptionDepth(e.target.value)}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-[12.5px] text-ink-2"
+        >
+          <option value="">legenda: padrão (~140 palavras)</option>
+          <option value="curta">legenda: curta (50-80)</option>
+          <option value="aprofundada">legenda: aprofundada (200-260)</option>
+        </select>
+
+        <select
+          value={audience}
+          onChange={(e) => setAudience(e.target.value)}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-[12.5px] text-ink-2"
+        >
+          <option value="">leitor: explicar do zero</option>
+          <option value="acompanha">leitor: já acompanha o assunto</option>
+        </select>
+
+        <label className="flex cursor-pointer items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 text-[12.5px] text-ink-2">
+          <input
+            type="checkbox"
+            checked={emojis}
+            onChange={(e) => setEmojis(e.target.checked)}
+            className="h-3.5 w-3.5 accent-brand"
+          />
+          emojis na legenda
+        </label>
       </div>
 
       <div className="flex flex-wrap items-center gap-2 border-t border-line pt-3">

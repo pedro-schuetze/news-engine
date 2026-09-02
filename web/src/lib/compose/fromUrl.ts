@@ -8,7 +8,7 @@
  * e um resumo — sem trazer uma dependência de parsing para o projeto.
  */
 
-import { generateDraft, type SourceLine } from "./draft";
+import { generateDraft, type ComposeFormat, type SourceLine } from "./draft";
 import type { PipelineRun, Story } from "../types";
 
 const FETCH_TIMEOUT_MS = 15_000;
@@ -134,6 +134,7 @@ export async function composeFromUrls(opts: {
   urls: string[];
   instruction?: string;
   vertical?: string;
+  format?: ComposeFormat;
 }): Promise<{ run: PipelineRun; runFile: string; story: Story; problems: string[] }> {
   const problems: string[] = [];
   const articles: ExtractedArticle[] = [];
@@ -166,6 +167,7 @@ export async function composeFromUrls(opts: {
     sources,
     instruction: opts.instruction,
     chooseVertical: !opts.vertical,
+    format: opts.format,
   });
 
   const now = new Date().toISOString();

@@ -25,6 +25,58 @@ const SYSTEM =
   "Responda SEMPRE somente com JSON válido (um único objeto), sem markdown, " +
   "sem comentários e sem texto fora do JSON.";
 
+/**
+ * Formato pedido pelo editor no "Gerar post". Tudo opcional: ausente = o
+ * comportamento padrão dos prompts/*.md. As diretrizes viram um bloco de
+ * prioridade no prompt — os .md continuam sendo a única fonte das regras de
+ * escrita; aqui só se ajustam LIMITES (nº de slides, tamanhos, profundidade).
+ */
+export interface ComposeFormat {
+  slideCount?: number; // 3-7 (DraftOutput/parseDraft validam a faixa)
+  slideLength?: "curto" | "detalhado";
+  captionDepth?: "curta" | "aprofundada";
+  audience?: "acompanha"; // default implícito: explicar do zero
+  emojis?: boolean; // permite emojis NA LEGENDA (override consciente do humanize.md)
+}
+
+export function formatBlock(f: ComposeFormat | undefined): string {
+  if (!f) return "";
+  const lines: string[] = [];
+  if (f.slideCount) {
+    lines.push(
+      `- O carrossel deve ter EXATAMENTE ${f.slideCount} slides (slide 1 = HOOK; o último fecha a história).`,
+    );
+  }
+  if (f.slideLength === "curto") {
+    lines.push(
+      "- Textos enxutos: body do slide 1 com até 15 palavras; slides seguintes com body de até 22 palavras. Frases gramaticalmente completas mesmo assim.",
+    );
+  } else if (f.slideLength === "detalhado") {
+    lines.push(
+      "- Textos mais densos: o body dos slides internos pode chegar a 55 palavras (2 a 3 frases), sem encher linguiça — mais fatos, não mais adjetivos.",
+    );
+  }
+  if (f.captionDepth === "curta") {
+    lines.push("- Legenda curta: 50 a 80 palavras, direto ao fato principal e um fecho concreto.");
+  } else if (f.captionDepth === "aprofundada") {
+    lines.push(
+      "- Legenda aprofundada: 200 a 260 palavras, com contexto/histórico, números e as fontes citadas nominalmente; parágrafos curtos.",
+    );
+  }
+  if (f.audience === "acompanha") {
+    lines.push(
+      "- Escreva para quem JÁ acompanha o assunto: vá direto ao desdobramento novo, sem recapitular o básico nem definir nomes conhecidos.",
+    );
+  }
+  if (f.emojis) {
+    lines.push(
+      '- O editor LIBEROU emojis na legenda: use com moderação (2 a 5, onde reforçam o sentido). Slides continuam sem emoji. Esta permissão prevalece sobre a regra geral "sem emoji".',
+    );
+  }
+  if (lines.length === 0) return "";
+  return ["", "FORMATO PEDIDO PELO EDITOR (prevalece sobre os limites padrão acima):", ...lines].join("\n");
+}
+
 export interface SourceLine {
   domain: string;
   title: string;
@@ -95,7 +147,12 @@ async function callOpenAI(user: string): Promise<{ raw: string; usage: { input: 
   };
 }
 
-function parseDraft(raw: string, storyId: string, fallbackTitle: string): { draft: EditorialDraft; vertical?: string } {
+function parseDraft(
+  raw: string,
+  storyId: string,
+  fallbackTitle: string,
+  expectedSlides?: number,
+): { draft: EditorialDraft; vertical?: string } {
   const start = Math.min(...[raw.indexOf("{"), raw.indexOf("[")].filter((i) => i >= 0));
   const parsed = JSON.parse(raw.slice(Number.isFinite(start) ? start : 0)) as RawDraft;
   const slides = (parsed.slides ?? []).map((s, i) => ({
@@ -107,6 +164,9 @@ function parseDraft(raw: string, storyId: string, fallbackTitle: string): { draf
     image_source_type: (s.image_source_type ?? "AGENCY_PHOTO").toUpperCase(),
   }));
   if (slides.length < 3) throw new Error(`o modelo devolveu ${slides.length} slides (mínimo 3)`);
+  if (expectedSlides && slides.length !== expectedSlides) {
+    throw new Error(`o editor pediu ${expectedSlides} slides e vieram ${slides.length}`);
+  }
 
   // guarda contra manchete truncada (visto em produção em 2026-09-02: veio só
   // "EUA prometem"); o throw aciona a 2ª tentativa com a mensagem de erro
@@ -188,6 +248,7 @@ export async function generateDraft(opts: {
   instruction?: string;
   chooseVertical?: boolean;
   currentDraft?: EditorialDraft | null;
+  format?: ComposeFormat;
 }): Promise<DraftResult> {
   const rules = await rulesBlock(opts.vertical);
   const verticals = await loadVerticalConfigs();
@@ -212,7 +273,7 @@ export async function generateDraft(opts: {
   const user = `PURPOSE: draft
 TITLE: ${opts.title}
 
-Escreva o pacote editorial de UM post de Instagram (carrossel de 5 slides).
+Escreva o pacote editorial de UM post de Instagram (carrossel de ${opts.format?.slideCount ?? 5} slides).
 ${verticalTask}
 
 ACONTECIMENTO: ${opts.title}
@@ -222,7 +283,7 @@ ${opts.verificationSummary ? `VERIFICAÇÃO: ${opts.verificationSummary}` : ""}
 FONTES DISPONÍVEIS (única base factual permitida):
 ${sourcesBlock(opts.sources)}
 
-${rules}
+${rules}${formatBlock(opts.format)}
 ${adjust}
 
 FORMATO DE SAÍDA (JSON estrito):
@@ -236,7 +297,7 @@ FORMATO DE SAÍDA (JSON estrito):
         : `${user}\n\nATENÇÃO: a resposta anterior era inválida (${String(lastError).slice(0, 200)}). Responda SOMENTE com JSON válido no formato pedido.`,
     );
     try {
-      const { draft, vertical } = parseDraft(raw, opts.storyId, opts.title);
+      const { draft, vertical } = parseDraft(raw, opts.storyId, opts.title, opts.format?.slideCount);
       const chosen =
         vertical && verticals.some((v) => v.id === vertical) ? vertical : opts.vertical;
       return { draft, vertical: chosen, usage };

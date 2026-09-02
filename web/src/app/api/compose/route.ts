@@ -1,12 +1,15 @@
 /**
- * POST /api/compose  { urls: string[], instruction?, vertical? }
- * Gera um post a partir de link(s) e salva como run manual.
+ * POST /api/compose  { urls: string[], instruction?, vertical?, format? }
+ * Gera um post a partir de link(s) e salva como run manual. `format` ajusta
+ * limites (nº de slides, tamanho dos textos, profundidade da legenda...);
+ * campos fora da whitelist são ignorados em silêncio.
  *
  * DELETE /api/compose?run=manual_....json
  * Descarta o run manual (o editor recusou o resultado).
  */
 
 import { NextResponse } from "next/server";
+import type { ComposeFormat } from "@/lib/compose/draft";
 import { composeFromUrls } from "@/lib/compose/fromUrl";
 import { deleteManualRun, persistRun } from "@/lib/compose/persistRun";
 import { loadVerticalConfigs } from "@/lib/data";
@@ -15,7 +18,12 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 export async function POST(request: Request) {
-  let body: { urls?: unknown; instruction?: string; vertical?: string };
+  let body: {
+    urls?: unknown;
+    instruction?: string;
+    vertical?: string;
+    format?: Record<string, unknown>;
+  };
   try {
     body = (await request.json()) as typeof body;
   } catch {
@@ -35,11 +43,23 @@ export async function POST(request: Request) {
     if (!known.some((v) => v.id === vertical)) vertical = "";
   }
 
+  // whitelist do formato: só entra o que a UI oferece, com faixas seguras
+  const f = body.format ?? {};
+  const slideCount = Number(f.slideCount);
+  const format: ComposeFormat = {
+    slideCount: Number.isInteger(slideCount) && slideCount >= 3 && slideCount <= 7 && slideCount !== 5 ? slideCount : undefined,
+    slideLength: f.slideLength === "curto" || f.slideLength === "detalhado" ? f.slideLength : undefined,
+    captionDepth: f.captionDepth === "curta" || f.captionDepth === "aprofundada" ? f.captionDepth : undefined,
+    audience: f.audience === "acompanha" ? "acompanha" : undefined,
+    emojis: f.emojis === true ? true : undefined,
+  };
+
   try {
     const { run, runFile, story, problems } = await composeFromUrls({
       urls,
       instruction: (body.instruction ?? "").trim() || undefined,
       vertical: vertical || undefined,
+      format,
     });
     await persistRun(run, runFile, `compose: post manual ${story.story_id}`);
     return NextResponse.json({

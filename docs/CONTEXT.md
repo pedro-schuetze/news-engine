@@ -150,6 +150,12 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] ~~CRON_SECRET nas env vars da Vercel~~ — criada pelo Pedro em
+  2026-09-02 e validada (rota autenticou e respondeu "skipped: já existe run
+  de hoje"). **Restava o GITHUB_TOKEN sem `Actions: Read and write`** (o
+  dispatch de teste voltou 403 nomeado) — Pedro precisa ajustar o token
+  fine-grained no GitHub; até lá o gatilho pontual falha e quem entrega é a
+  rede de segurança das 11:00 UTC.
 - [x] ~~Writer: 2 defeitos do run de 2026-09-02~~ — guards implementados em
   2026-09-02: (1) validador `_headline_completa` no `DraftOutput` (modelo de
   SAÍDA do LLM: roda dentro do retry do `LLMClient.generate` e a mensagem
@@ -255,6 +261,18 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
    selecionadas em runs anteriores — repetição cai de ranking por design.
 
 ### Curto prazo (2-6 semanas)
+
+- [x] **"Gerar post" com formato configurável (2026-09-02):** nº de slides
+  (3-7), tamanho dos textos por slide (curto/padrão/detalhado), profundidade
+  da legenda (curta/padrão/aprofundada), leitor (explicar do zero vs já
+  acompanha) e emojis na legenda (override consciente do humanize.md). O
+  bloco "FORMATO PEDIDO PELO EDITOR" entra no prompt com prioridade sobre os
+  limites padrão; whitelist/clamp na rota; parseDraft valida a contagem
+  pedida (o throw aciona a 2ª tentativa). Renderer/export/imagens/briefing já
+  eram N-agnósticos (iteram draft.slides). Validado end-to-end com link real:
+  4 slides exatos, bodies 10-19 palavras, 3 emojis; legenda veio 156 palavras
+  com pedido de 200-260 porque a fonte única era rasa — o modelo parou em vez
+  de inventar (comportamento desejado; profundidade real exige mais links).
 
 - **Verticais novas no backlog (pedido do Pedro, 2026-09-02): COMIDA e
   ESPORTES.** Adicionar vertical = 1 bloco em `config/verticals.yaml`
