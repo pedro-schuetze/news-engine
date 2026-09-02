@@ -191,6 +191,34 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     histórico, a aprovação passa (guarda de fluxo, não segurança). Validado
     local: 409 sem imagens; busca banco-only 11s, "missing" correto.
 
+16. **2026-09-02 — Pool de candidatas + seletor de imagem por slide.**
+    Escolha do Pedro entre 4 desenhos: "pool + score de código + escolha
+    manual" (sem juiz de IA — custo/latência/ponto de falha extra para
+    decidir o que ele já revisa; plugável depois se o score se mostrar
+    insuficiente). Como funciona:
+    - Toda imagem obtida (busca no banco OU upload do ChatGPT) vira
+      CANDIDATA em `story.media_pool`, arquivo em
+      `data/media/<story>/pool/<id>.<ext>` (id do banco = hash da URL:
+      buscar de novo não duplica). `slide_media` continua sendo a SELEÇÃO —
+      renderer/export/Prontos não conhecem o pool.
+    - Score de pré-seleção (0-100, só código): relevância 40% (posição na
+      busca; upload = 85 fixo), espaço para texto 35% (nova `bandScore` da
+      análise de contraste), nitidez 25% (variância do Laplaciano).
+    - Banco: auto-preenche APENAS slides vazios, melhor score primeiro, sem
+      repetir foto no post. Upload: entra no pool e preenche vazios NA ORDEM
+      enviada (fluxo ChatGPT); slide já escolhido nunca é sobrescrito.
+    - Trocar imagem = `POST /api/media/<story>/select` (só JSONs mudam;
+      nenhum byte regravado). Thumbs por
+      `GET /api/media/<story>/candidate/<id>?w=240` (downscale on the fly,
+      ~23KB, cache immutable; caminho SEMPRE resolvido pelo pool — sem path
+      traversal).
+    - UI: `SlidePicker` no card do post (miniaturas por slide, badge
+      banco/gpt + score, tooltip com a decomposição do score).
+    - Validado local: banco→pool (7 candidatas, auto-fill 5/5 por score, 7s),
+      select persistindo, thumb 23KB, upload sem sobrescrever escolha.
+      Post sem foto relevante no banco → 404 com orientação (caso
+      FMI/Senegal: título específico demais para Wikimedia/Openverse).
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~CRON_SECRET nas env vars da Vercel~~ — criada pelo Pedro em

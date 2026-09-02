@@ -984,12 +984,216 @@
             ],
             "created_at": "2026-09-02T14:23:12.629742Z"
           },
-          "slide_media": [],
+          "slide_media": [
+            {
+              "asset_id": "d3fdebbc-s1",
+              "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
+              "slide_number": 1,
+              "type": "image",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b4369a96171.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Shawn Miller/Library of Congress · CC0 · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Shawn Miller/Library of Congress · CC0 · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "left",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "d3fdebbc-s2",
+              "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b3399a531ba.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "U.S. State Department · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "U.S. State Department · Public domain · Wikimedia"
+              },
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "d3fdebbc-s3",
+              "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
+              "slide_number": 3,
+              "type": "image",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/beb90ede84a.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Mass Communications Specialist Chad J. M · Public domain · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Mass Communications Specialist Chad J. M · Public domain · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "left",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "d3fdebbc-s4",
+              "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
+              "slide_number": 4,
+              "type": "image",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/bacf0584f9e.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Raph_PH · CC BY 2.0 · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Raph_PH · CC BY 2.0 · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "right",
+              "prompt": "",
+              "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "d3fdebbc-s5",
+              "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
+              "slide_number": 5,
+              "type": "image",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b31f88a3493.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": null,
+              "height": null,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Raph_PH · CC BY 2.0 · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Raph_PH · CC BY 2.0 · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "right",
+              "prompt": "",
+              "estimated_cost_usd": null
+            }
+          ],
           "article_count": 35,
           "earliest_published_at": "2026-08-31T19:04:00Z",
           "latest_published_at": "2026-09-02T14:00:56Z",
           "selection_rank": 5,
-          "created_at": "2026-09-02T14:22:06.924664Z"
+          "created_at": "2026-09-02T14:22:06.924664Z",
+          "media_pool": [
+            {
+              "id": "b3399a531ba",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b3399a531ba.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "U.S. State Department · Public domain · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "score": 74,
+              "score_notes": "relevância 100 · texto 38 · nitidez 84",
+              "added_at": "2026-09-02T18:47:20.340Z"
+            },
+            {
+              "id": "b4369a96171",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b4369a96171.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Shawn Miller/Library of Congress · CC0 · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "left",
+              "score": 80,
+              "score_notes": "relevância 88 · texto 61 · nitidez 95",
+              "added_at": "2026-09-02T18:47:21.762Z"
+            },
+            {
+              "id": "b0220ec0785",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b0220ec0785.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "U.S. State Department · Public domain · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "score": 64,
+              "score_notes": "relevância 76 · texto 37 · nitidez 84",
+              "added_at": "2026-09-02T18:47:22.349Z"
+            },
+            {
+              "id": "b31f88a3493",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b31f88a3493.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Raph_PH · CC BY 2.0 · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "right",
+              "score": 61,
+              "score_notes": "relevância 52 · texto 54 · nitidez 86",
+              "added_at": "2026-09-02T18:47:24.015Z"
+            },
+            {
+              "id": "bacf0584f9e",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/bacf0584f9e.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Raph_PH · CC BY 2.0 · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "right",
+              "score": 63,
+              "score_notes": "relevância 40 · texto 71 · nitidez 87",
+              "added_at": "2026-09-02T18:47:23.248Z"
+            },
+            {
+              "id": "beb90ede84a",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/beb90ede84a.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Mass Communications Specialist Chad J. M · Public domain · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "left",
+              "score": 57,
+              "score_notes": "relevância 40 · texto 65 · nitidez 71",
+              "added_at": "2026-09-02T18:47:24.471Z"
+            },
+            {
+              "id": "b934d2a93bb",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b934d2a93bb.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Georges Biard · CC BY-SA 3.0 · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "score": 57,
+              "score_notes": "relevância 40 · texto 59 · nitidez 81",
+              "added_at": "2026-09-02T18:47:22.646Z"
+            }
+          ]
         }
       ]
     },

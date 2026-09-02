@@ -114,6 +114,25 @@ export interface MediaAsset {
   estimated_cost_usd: number | null;
 }
 
+/**
+ * Candidata de imagem no pool do post (banco ou upload). A SELEÇÃO por slide
+ * continua sendo slide_media — o renderer não conhece o pool.
+ */
+export interface MediaCandidate {
+  id: string;
+  local_path: string;
+  origin: "bank" | "upload";
+  source: string; // wikimedia | openverse | ai (ChatGPT)
+  mime_type: string;
+  credit: string;
+  text_placement: "TOP" | "CENTER" | "BOTTOM";
+  text_align: "left" | "center" | "right";
+  /** pré-seleção por código: relevância + espaço para texto + nitidez (0-100) */
+  score: number;
+  score_notes: string;
+  added_at: string;
+}
+
 export interface Story {
   story_id: string;
   run_id: string;
@@ -135,6 +154,7 @@ export interface Story {
   verification: Verification;
   draft: EditorialDraft | null;
   slide_media?: MediaAsset[];
+  media_pool?: MediaCandidate[];
   article_count: number;
   earliest_published_at: string | null;
   latest_published_at: string | null;

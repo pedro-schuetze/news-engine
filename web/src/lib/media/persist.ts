@@ -1,104 +1,132 @@
 /**
- * Persistência das imagens geradas sob demanda.
+ * Persistência de mídia do post: pool de candidatas + seleção por slide.
  *
- * dev (fs):     escreve em ../data/media/<story>/slide_N.jpg e atualiza o JSON
- *               do run no disco.
- * produção:     um único commit no repositório (Git Trees API) com as imagens
- *               e o JSON atualizado — 5 PUTs separados gerariam 5 commits.
+ * Modelo (2026-09-02): toda imagem obtida (busca no banco ou upload do
+ * ChatGPT) vira uma CANDIDATA em story.media_pool, com arquivo em
+ * data/media/<story>/pool/<id>.<ext>. A seleção do editor (ou a pré-seleção
+ * por score) vira story.slide_media — o único lugar que renderer, export e
+ * Prontos conhecem. Trocar a imagem de um slide = apontar slide_media para
+ * outra candidata; nenhum byte novo é gravado.
+ *
+ * dev (fs):  arquivos em ../data/media/... e JSONs do run no disco.
+ * produção:  um único commit (Git Trees API) com arquivos + JSONs.
  */
 
 import { DATA_MODE, findRunFile } from "../data";
-import type { MediaAsset, PipelineRun } from "../types";
-import type { GeneratedAsset } from "./generate";
+import type { MediaAsset, MediaCandidate, PipelineRun, Story } from "../types";
 
-export interface PersistResult {
-  assets: MediaAsset[];
-  where: "fs" | "github";
+export interface PoolFile {
+  candidate: MediaCandidate;
+  bytes: Buffer;
 }
 
-function assetFor(
+// ── modelo ───────────────────────────────────────────────────────────
+
+export function poolPath(storyId: string, id: string, mime: string): string {
+  const ext = mime === "image/png" ? "png" : mime === "image/webp" ? "webp" : "jpg";
+  return `data/media/${storyId}/pool/${id}.${ext}`;
+}
+
+export function findStory(run: PipelineRun, storyId: string): Story | null {
+  for (const vr of Object.values(run.verticals)) {
+    for (const s of vr.stories) if (s.story_id === storyId) return s;
+  }
+  return null;
+}
+
+/** Candidata → asset de slide (o formato que o renderer consome). */
+export function assetFromCandidate(
   storyId: string,
-  draftId: string | null,
-  gen: GeneratedAsset,
-  relPath: string,
+  slideNumber: number,
+  c: MediaCandidate,
 ): MediaAsset {
   return {
-    asset_id: `${storyId.slice(0, 8)}-s${gen.slide_number}`,
+    asset_id: `${storyId.slice(0, 8)}-s${slideNumber}`,
     story_id: storyId,
-    slide_number: gen.slide_number,
+    slide_number: slideNumber,
     type: "image",
-    local_path: relPath,
+    local_path: c.local_path,
     remote_url: null,
-    mime_type: gen.mime_type,
+    mime_type: c.mime_type,
     width: null,
     height: null,
     provenance: {
-      source_type: gen.source === "ai" ? "GENERATED" : "LICENSED",
-      source_name: gen.source,
-      license: gen.source === "ai" ? "gerada por IA para uso editorial próprio" : gen.credit,
+      source_type: c.origin === "upload" ? "GENERATED" : "LICENSED",
+      source_name: c.source,
+      license: c.origin === "upload" ? "gerada por IA para uso editorial próprio" : c.credit,
       attribution_required: true,
-      attribution_text: gen.credit,
+      attribution_text: c.credit,
     },
-    text_placement: gen.text_placement,
-    text_align: gen.text_align,
-    prompt: gen.prompt,
-    estimated_cost_usd: gen.estimated_cost_usd,
+    text_placement: c.text_placement,
+    text_align: c.text_align,
+    prompt: "",
+    estimated_cost_usd: null,
   };
 }
 
-function relPathFor(storyId: string, gen: GeneratedAsset): string {
-  const ext = gen.mime_type === "image/png" ? "png" : "jpg";
-  return `data/media/${storyId}/slide_${gen.slide_number}.${ext}`;
+/** Acrescenta candidatas ao pool da story (dedupe por id). */
+export function applyPool(story: Story, candidates: MediaCandidate[]): MediaCandidate[] {
+  const pool = story.media_pool ?? [];
+  const known = new Set(pool.map((c) => c.id));
+  const fresh = candidates.filter((c) => !known.has(c.id));
+  story.media_pool = [...pool, ...fresh];
+  return fresh;
 }
 
-/** Atualiza a story dentro do run com os assets novos. */
-export function applyAssets(run: PipelineRun, storyId: string, assets: MediaAsset[]): boolean {
-  for (const vr of Object.values(run.verticals)) {
-    for (const story of vr.stories) {
-      if (story.story_id === storyId) {
-        story.slide_media = assets;
-        return true;
-      }
-    }
-  }
-  return false;
+/** Define a imagem de UM slide a partir de uma candidata do pool. */
+export function applySelection(story: Story, slideNumber: number, c: MediaCandidate): void {
+  const media = (story.slide_media ?? []).filter((m) => m.slide_number !== slideNumber);
+  media.push(assetFromCandidate(story.story_id, slideNumber, c));
+  media.sort((a, b) => a.slide_number - b.slide_number);
+  story.slide_media = media;
 }
 
 /**
- * Onde o JSON do run precisa ser gravado: sempre o latest.json E o arquivo do
- * histórico daquele run — as páginas Prontos e Histórico leem data/runs/.
+ * Pré-seleção: preenche APENAS slides sem imagem, melhor score primeiro,
+ * sem repetir candidata dentro do post. Nunca mexe em escolha já feita.
  */
+export function autoFillEmptySlides(story: Story): number[] {
+  const slides = story.draft?.slides ?? [];
+  const pool = story.media_pool ?? [];
+  const usedPaths = new Set((story.slide_media ?? []).map((m) => m.local_path));
+  const covered = new Set((story.slide_media ?? []).map((m) => m.slide_number));
+  const free = pool
+    .filter((c) => !usedPaths.has(c.local_path))
+    .sort((a, b) => b.score - a.score);
+  const filled: number[] = [];
+  for (const slide of slides) {
+    const n = slide.slide_number;
+    if (covered.has(n)) continue;
+    const next = free.shift();
+    if (!next) break;
+    applySelection(story, n, next);
+    filled.push(n);
+  }
+  return filled;
+}
+
+// ── gravação (fs/github) ─────────────────────────────────────────────
+
 async function runTargets(runId: string, runFile: string): Promise<string[]> {
   const targets = ["data/latest.json"];
-  const historyFile =
-    runFile && runFile !== "latest" ? runFile : await findRunFile(runId);
+  const historyFile = runFile && runFile !== "latest" ? runFile : await findRunFile(runId);
   if (historyFile) targets.push(`data/runs/${historyFile}`);
   return targets;
 }
 
-// ── filesystem (dev) ─────────────────────────────────────────────────
-
-async function persistFs(
-  storyId: string,
-  draftId: string | null,
-  generated: GeneratedAsset[],
+async function writeFs(
+  files: { rel: string; bytes: Buffer }[],
   run: PipelineRun,
   runFile: string,
-): Promise<PersistResult> {
+): Promise<"fs"> {
   const fs = await import("node:fs/promises");
   const path = await import("node:path");
   const repoRoot = path.resolve(process.cwd(), "..");
-
-  const assets: MediaAsset[] = [];
-  for (const gen of generated) {
-    const rel = relPathFor(storyId, gen);
-    const abs = path.join(repoRoot, rel);
+  for (const f of files) {
+    const abs = path.join(repoRoot, f.rel);
     await fs.mkdir(path.dirname(abs), { recursive: true });
-    await fs.writeFile(abs, gen.bytes);
-    assets.push(assetFor(storyId, draftId, gen, rel));
+    await fs.writeFile(abs, f.bytes);
   }
-
-  applyAssets(run, storyId, assets);
   const payload = JSON.stringify(run, null, 2);
   for (const rel of await runTargets(run.run_id, runFile)) {
     try {
@@ -107,10 +135,8 @@ async function persistFs(
       /* arquivo do histórico pode não existir; latest é o que importa */
     }
   }
-  return { assets, where: "fs" };
+  return "fs";
 }
-
-// ── GitHub (produção): commit único via Trees API ─────────────────────
 
 const API = "https://api.github.com";
 const REPO = (process.env.NEWS_GITHUB_REPO ?? "pedro-schuetze/news-engine").trim();
@@ -126,50 +152,41 @@ function ghHeaders(): Record<string, string> {
 }
 
 async function gh<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${API}${path}`, {
-    ...init,
-    headers: ghHeaders(),
-    cache: "no-store",
-  });
+  const res = await fetch(`${API}${path}`, { ...init, headers: ghHeaders(), cache: "no-store" });
   if (!res.ok) {
     throw new Error(`GitHub API ${res.status} em ${path}: ${(await res.text()).slice(0, 160)}`);
   }
   return (await res.json()) as T;
 }
 
-async function persistGithub(
-  storyId: string,
-  draftId: string | null,
-  generated: GeneratedAsset[],
+async function writeGithub(
+  files: { rel: string; bytes: Buffer }[],
   run: PipelineRun,
   runFile: string,
-): Promise<PersistResult> {
+  message: string,
+): Promise<"github"> {
   if (!(process.env.GITHUB_TOKEN ?? "").trim()) {
-    throw new Error("GITHUB_TOKEN ausente: não é possível gravar as imagens em produção");
+    throw new Error("GITHUB_TOKEN ausente: não é possível gravar mídia em produção");
   }
-
-  const assets = generated.map((gen) => assetFor(storyId, draftId, gen, relPathFor(storyId, gen)));
-  applyAssets(run, storyId, assets);
   const runJson = JSON.stringify(run, null, 2);
-
-  // 1) blobs das imagens + JSONs
-  const files: { path: string; sha: string }[] = [];
-  for (const [i, gen] of generated.entries()) {
+  const entries: { path: string; sha: string }[] = [];
+  for (const f of files) {
     const blob = await gh<{ sha: string }>(`/repos/${REPO}/git/blobs`, {
       method: "POST",
-      body: JSON.stringify({ content: gen.bytes.toString("base64"), encoding: "base64" }),
+      body: JSON.stringify({ content: f.bytes.toString("base64"), encoding: "base64" }),
     });
-    files.push({ path: assets[i].local_path, sha: blob.sha });
+    entries.push({ path: f.rel, sha: blob.sha });
   }
   for (const target of await runTargets(run.run_id, runFile)) {
     const blob = await gh<{ sha: string }>(`/repos/${REPO}/git/blobs`, {
       method: "POST",
-      body: JSON.stringify({ content: Buffer.from(runJson, "utf-8").toString("base64"), encoding: "base64" }),
+      body: JSON.stringify({
+        content: Buffer.from(runJson, "utf-8").toString("base64"),
+        encoding: "base64",
+      }),
     });
-    files.push({ path: target, sha: blob.sha });
+    entries.push({ path: target, sha: blob.sha });
   }
-
-  // 2) árvore sobre o commit atual, 3) commit, 4) move a branch
   const ref = await gh<{ object: { sha: string } }>(`/repos/${REPO}/git/ref/heads/${BRANCH}`);
   const baseSha = ref.object.sha;
   const baseCommit = await gh<{ tree: { sha: string } }>(`/repos/${REPO}/git/commits/${baseSha}`);
@@ -177,33 +194,32 @@ async function persistGithub(
     method: "POST",
     body: JSON.stringify({
       base_tree: baseCommit.tree.sha,
-      tree: files.map((f) => ({ path: f.path, mode: "100644", type: "blob", sha: f.sha })),
+      tree: entries.map((f) => ({ path: f.path, mode: "100644", type: "blob", sha: f.sha })),
     }),
   });
   const commit = await gh<{ sha: string }>(`/repos/${REPO}/git/commits`, {
     method: "POST",
-    body: JSON.stringify({
-      message: `media: ${generated.length} imagens para ${storyId.slice(0, 8)}`,
-      tree: tree.sha,
-      parents: [baseSha],
-    }),
+    body: JSON.stringify({ message, tree: tree.sha, parents: [baseSha] }),
   });
   await gh(`/repos/${REPO}/git/refs/heads/${BRANCH}`, {
     method: "PATCH",
     body: JSON.stringify({ sha: commit.sha }),
   });
-
-  return { assets, where: "github" };
+  return "github";
 }
 
-export async function persistAssets(
-  storyId: string,
-  draftId: string | null,
-  generated: GeneratedAsset[],
+/**
+ * Grava candidatas novas (bytes + JSONs do run já mutado pelo chamador).
+ * `poolFiles` pode ser vazio (ex.: seleção manual — só JSONs mudam).
+ */
+export async function persistMedia(
+  poolFiles: PoolFile[],
   run: PipelineRun,
   runFile: string,
-): Promise<PersistResult> {
+  message: string,
+): Promise<"fs" | "github"> {
+  const files = poolFiles.map((p) => ({ rel: p.candidate.local_path, bytes: p.bytes }));
   return DATA_MODE === "github"
-    ? persistGithub(storyId, draftId, generated, run, runFile)
-    : persistFs(storyId, draftId, generated, run, runFile);
+    ? writeGithub(files, run, runFile, message)
+    : writeFs(files, run, runFile);
 }

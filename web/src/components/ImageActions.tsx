@@ -6,7 +6,9 @@ import { prepareForUpload } from "@/lib/media/clientImage";
 
 interface ApiResult {
   slides: number;
-  from_bank?: number;
+  pool?: number;
+  new_candidates?: number;
+  filled?: number[];
   missing?: number[];
   seconds?: number;
   problems?: string[];
@@ -186,9 +188,11 @@ export default function ImageActions({
         {result && busy === null && (
           <span className="text-brand-ink">
             {result.slides} de {slideCount} slides com imagem
+            {result.new_candidates !== undefined && ` · ${result.new_candidates} candidatas novas`}
+            {result.pool !== undefined && ` · pool: ${result.pool}`}
             {result.seconds !== undefined && ` · ${result.seconds}s`}
             {result.missing?.length
-              ? ` · sem foto no banco: slide ${result.missing.join(", ")} — complete pelo ChatGPT`
+              ? ` · sem imagem: slide ${result.missing.join(", ")} — complete pelo ChatGPT`
               : ""}
           </span>
         )}

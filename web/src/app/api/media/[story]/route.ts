@@ -1,16 +1,15 @@
 /**
  * POST /api/media/{story_id}?run={file|latest}
- * Busca as imagens do post no banco (uma foto distinta por slide) e
- * persiste. É o que o botão "buscar fotos no banco" do dashboard chama.
- * Slides sem foto relevante ficam sem imagem: o editor completa subindo as
- * imagens do ChatGPT (a geração por IA via API foi removida em 2026-09-02).
+ * Busca fotos no banco (Wikimedia/Openverse), grava TODAS como candidatas no
+ * pool do post e pré-seleciona (por score) apenas os slides ainda sem imagem.
+ * A geração por IA via API foi removida em 2026-09-02; o que o banco não
+ * cobrir, o editor completa subindo as imagens do ChatGPT.
  */
 
 import { NextResponse } from "next/server";
 import { loadRun } from "@/lib/data";
-import { generateStoryImages } from "@/lib/media/generate";
-import { persistAssets } from "@/lib/media/persist";
-import type { Story } from "@/lib/types";
+import { bankCandidates } from "@/lib/media/generate";
+import { applyPool, autoFillEmptySlides, findStory, persistMedia } from "@/lib/media/persist";
 
 export const dynamic = "force-dynamic";
 // busca + download do banco; folga para redes lentas
@@ -31,12 +30,7 @@ export async function POST(
   if (!run) {
     return NextResponse.json({ error: "run não encontrado" }, { status: 404 });
   }
-  let story: Story | null = null;
-  for (const vr of Object.values(run.verticals)) {
-    for (const s of vr.stories) {
-      if (s.story_id === storyId) story = s;
-    }
-  }
+  const story = findStory(run, storyId);
   if (!story) {
     return NextResponse.json({ error: "story não encontrada neste run" }, { status: 404 });
   }
@@ -45,12 +39,8 @@ export async function POST(
   }
 
   const started = Date.now();
-  const generated = await generateStoryImages(story);
-  const covered = new Set(generated.map((g) => g.slide_number));
-  const missing = story.draft.slides
-    .map((s) => s.slide_number)
-    .filter((n) => !covered.has(n));
-  if (generated.length === 0) {
+  const found = await bankCandidates(story);
+  if (found.length === 0 && !(story.media_pool?.length ?? 0)) {
     return NextResponse.json(
       {
         error:
@@ -61,18 +51,28 @@ export async function POST(
   }
 
   try {
-    const { assets, where } = await persistAssets(
-      storyId,
-      story.draft.draft_id ?? null,
-      generated,
+    const fresh = applyPool(story, found.map((f) => f.candidate));
+    const freshIds = new Set(fresh.map((c) => c.id));
+    const filled = autoFillEmptySlides(story);
+    const where = await persistMedia(
+      found.filter((f) => freshIds.has(f.candidate.id)),
       run,
       runFile,
+      `media: ${fresh.length} candidatas do banco para ${storyId.slice(0, 8)}`,
     );
+
+    const covered = new Set((story.slide_media ?? []).map((m) => m.slide_number));
+    const missing = story.draft.slides
+      .map((s) => s.slide_number)
+      .filter((n) => !covered.has(n));
+
     return NextResponse.json({
       ok: true,
-      slides: assets.length,
-      from_bank: assets.length,
+      pool: story.media_pool?.length ?? 0,
+      new_candidates: fresh.length,
+      filled,
       missing,
+      slides: covered.size,
       seconds: Math.round((Date.now() - started) / 1000),
       persisted_to: where,
     });

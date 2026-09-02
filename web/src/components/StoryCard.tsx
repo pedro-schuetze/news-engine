@@ -4,6 +4,7 @@ import { CONTENT_TYPE_LABEL, REVIEW_UI, VERIFICATION_UI, verticalStyle } from "@
 import CopyButton from "./CopyButton";
 import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
+import SlidePicker from "./SlidePicker";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
 
@@ -211,6 +212,22 @@ export default function StoryCard({
                 briefing={buildChatGptBriefing(story)}
               />
             </div>
+            {(story.media_pool?.length ?? 0) > 0 && (
+              <div className="mt-3 border-t border-line pt-3">
+                <SlidePicker
+                  storyId={story.story_id}
+                  runFile={runFile}
+                  slides={draft.slides.map((s) => ({
+                    n: s.slide_number,
+                    label: s.headline || s.role,
+                  }))}
+                  pool={story.media_pool ?? []}
+                  selectedPaths={Object.fromEntries(
+                    (story.slide_media ?? []).map((m) => [m.slide_number, m.local_path]),
+                  )}
+                />
+              </div>
+            )}
           </details>
         )}
 

@@ -297,6 +297,10 @@ class Story(BaseModel):
     # clica em "gerar imagens" no dashboard (decisão de 2026-09-01: o run
     # automático produz só texto, para não gastar imagem em post rejeitado)
     slide_media: list["MediaAsset"] = Field(default_factory=list)
+    # pool de candidatas de imagem (banco/upload) mantido pelo dashboard; o
+    # pipeline não escreve aqui — o campo existe para a releitura de runs
+    # validar sem descartar o que o dashboard gravou
+    media_pool: list[dict[str, Any]] = Field(default_factory=list)
     article_count: int = 0
     earliest_published_at: Optional[datetime] = None
     latest_published_at: Optional[datetime] = None

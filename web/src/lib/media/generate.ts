@@ -12,27 +12,17 @@
  * fundo gráfico na prévia).
  */
 
+import { createHash } from "node:crypto";
 import jpeg from "jpeg-js";
 import { searchBankImages } from "../images";
+import { poolPath, type PoolFile } from "./persist";
 import type { Story } from "../types";
 
 export type TextPlacement = "TOP" | "CENTER" | "BOTTOM";
 
-export interface GeneratedAsset {
-  slide_number: number;
-  bytes: Buffer;
-  mime_type: string;
-  credit: string;
-  source: "wikimedia" | "openverse" | "ai";
-  text_placement: TextPlacement;
-  text_align: "left" | "center" | "right";
-  prompt: string;
-  estimated_cost_usd: number | null;
-}
-
 export function analyzePlacement(
   jpegBytes: Buffer,
-): { placement: TextPlacement; align: "left" | "center" | "right" } {
+): { placement: TextPlacement; align: "left" | "center" | "right"; bandScore: number } {
   try {
     const img = jpeg.decode(jpegBytes, { useTArray: true, formatAsRGBA: true });
     const { width, height, data } = img;
@@ -81,10 +71,71 @@ export function analyzePlacement(
     );
     // só desloca quando o ganho é claro; senão mantém centralizado
     const align = cols[best] < cols.center - 12 ? best : "center";
-    return { placement, align };
+    // qualidade da melhor faixa (0-100): quanto mais escura e uniforme, mais
+    // espaço limpo para a tipografia — vira parte do score da candidata
+    const bandScore = Math.max(0, Math.min(100, Math.round(100 - (bands[placement] / 255) * 100)));
+    return { placement, align, bandScore };
   } catch {
-    return { placement: "BOTTOM", align: "center" };
+    return { placement: "BOTTOM", align: "center", bandScore: 50 };
   }
+}
+
+/**
+ * Nitidez aproximada (0-100): variância do Laplaciano na região central.
+ * Barato e suficiente para separar foto tremida/borrada de foto limpa —
+ * NÃO mede relevância nem estética.
+ */
+export function sharpnessScore(jpegBytes: Buffer): number {
+  try {
+    const img = jpeg.decode(jpegBytes, { useTArray: true, formatAsRGBA: true });
+    const { width, height, data } = img;
+    const x0 = Math.floor(width * 0.2);
+    const x1 = Math.floor(width * 0.8);
+    const y0 = Math.floor(height * 0.2);
+    const y1 = Math.floor(height * 0.8);
+    const lum = (x: number, y: number) => {
+      const i = (y * width + x) * 4;
+      return 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+    };
+    let sum = 0;
+    let sumSq = 0;
+    let n = 0;
+    for (let y = y0 + 2; y < y1 - 2; y += 3) {
+      for (let x = x0 + 2; x < x1 - 2; x += 3) {
+        const lap = 4 * lum(x, y) - lum(x - 2, y) - lum(x + 2, y) - lum(x, y - 2) - lum(x, y + 2);
+        sum += lap;
+        sumSq += lap * lap;
+        n++;
+      }
+    }
+    if (n === 0) return 50;
+    const variance = Math.max(0, sumSq / n - (sum / n) ** 2);
+    // variância típica: ~30 (muito borrada) a ~5000+ (bem nítida); escala log
+    return Math.max(0, Math.min(100, Math.round((Math.log10(variance + 1) / 3.7) * 100)));
+  } catch {
+    return 50;
+  }
+}
+
+/**
+ * Score de pré-seleção de uma candidata (0-100), só com código:
+ *   relevância 40% (posição na busca do banco; upload = 85, o editor gerou
+ *   a imagem especificamente para o post) + espaço para texto 35% + nitidez 25%.
+ * É pré-seleção, não veredito: o editor troca com um clique no picker.
+ */
+export function scoreCandidate(opts: {
+  origin: "bank" | "upload";
+  bankRank?: number;
+  bandScore: number;
+  sharpness: number;
+}): { score: number; notes: string } {
+  const relevance =
+    opts.origin === "upload" ? 85 : Math.max(40, 100 - (opts.bankRank ?? 0) * 12);
+  const score = Math.round(relevance * 0.4 + opts.bandScore * 0.35 + opts.sharpness * 0.25);
+  return {
+    score,
+    notes: `relevância ${relevance} · texto ${opts.bandScore} · nitidez ${opts.sharpness}`,
+  };
 }
 
 async function fetchBytes(url: string): Promise<Buffer | null> {
@@ -104,37 +155,57 @@ async function fetchBytes(url: string): Promise<Buffer | null> {
 }
 
 /**
- * Busca as imagens do post no banco (uma foto distinta por slide) e devolve
- * o que encontrou. Slides sem correspondente relevante ficam de fora — o
- * editor completa pelo upload (ChatGPT).
+ * Busca fotos no banco e devolve CANDIDATAS prontas para o pool (bytes +
+ * metadados + score). O id é o hash da URL de origem: buscar de novo não
+ * duplica candidata já conhecida.
  */
-export async function generateStoryImages(story: Story): Promise<GeneratedAsset[]> {
+export async function bankCandidates(story: Story): Promise<PoolFile[]> {
   const slides = story.draft?.slides ?? [];
   if (slides.length === 0) return [];
 
-  // uma busca para todo o post: as fotos relevantes são distribuídas, uma
-  // por slide, sem repetir (foi assim que o post do Tupac ficou bom)
-  const banked = await searchBankImages(story.title, slides.length);
+  // pede mais que o número de slides: o excedente vira opção no seletor
+  const banked = await searchBankImages(story.title, Math.min(slides.length + 3, 8));
 
-  const jobs = slides.map(async (slide, i): Promise<GeneratedAsset | null> => {
-    const fromBank = banked[i];
-    if (!fromBank) return null;
-    const bytes = await fetchBytes(fromBank.url);
+  const jobs = banked.map(async (img, rank): Promise<PoolFile | null> => {
+    const bytes = await fetchBytes(img.url);
     if (!bytes) return null;
-    const { placement, align } = analyzePlacement(bytes);
+    const mime = img.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg";
+    const isJpeg = mime === "image/jpeg";
+    const { placement, align, bandScore } = isJpeg
+      ? analyzePlacement(bytes)
+      : { placement: "BOTTOM" as const, align: "center" as const, bandScore: 50 };
+    const sharp = isJpeg ? sharpnessScore(bytes) : 50;
+    const { score, notes } = scoreCandidate({
+      origin: "bank",
+      bankRank: rank,
+      bandScore,
+      sharpness: sharp,
+    });
+    const id = `b${createHash("sha1").update(img.url).digest("hex").slice(0, 10)}`;
     return {
-      slide_number: slide.slide_number || i + 1,
       bytes,
-      mime_type: fromBank.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg",
-      credit: fromBank.credit,
-      source: fromBank.source === "ai" ? "ai" : fromBank.source,
-      text_placement: placement,
-      text_align: align,
-      prompt: "",
-      estimated_cost_usd: null,
+      candidate: {
+        id,
+        local_path: poolPath(story.story_id, id, mime),
+        origin: "bank",
+        source: img.source === "ai" ? "ai" : img.source,
+        mime_type: mime,
+        credit: img.credit,
+        text_placement: placement,
+        text_align: align,
+        score,
+        score_notes: notes,
+        added_at: new Date().toISOString(),
+      },
     };
   });
 
   const results = await Promise.all(jobs);
-  return results.filter((r): r is GeneratedAsset => r !== null);
+  // dedupe por id (a mesma foto pode voltar em posições diferentes)
+  const seen = new Set<string>();
+  return results.filter((r): r is PoolFile => {
+    if (!r || seen.has(r.candidate.id)) return false;
+    seen.add(r.candidate.id);
+    return true;
+  });
 }
