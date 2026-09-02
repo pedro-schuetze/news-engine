@@ -1,0 +1,147 @@
+{
+  "run_id": "manual-mtjcc70j-393",
+  "mode": "manual",
+  "started_at": "2026-09-02T00:11:59.198Z",
+  "finished_at": "2026-09-02T00:11:59.198Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 1,
+    "articles_by_collector": {
+      "manual": 1
+    },
+    "articles_after_dedupe": 1,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2325,
+    "estimated_output_tokens": 3559,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "manual-mtjcc70j-393",
+          "run_id": "manual-mtjcc70j-393",
+          "cluster_id": "manual-mtjcc70j-393",
+          "vertical": "politics",
+          "title": "Vorcaro diz a Moraes que tem",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "post criado manualmente a partir de link",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "post manual: sem score de trend/editorial"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 1,
+            "independent_source_count": 1,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "manual-mtjcc70j-393-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/politica/noticia/2026/09/01/vorcaro-diz-a-moraes-que-tem-divida-de-vida-com-ministro-e-agradece-por-tudo-aponta-pf.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-01T14:16:22.791-03:00",
+              "source_type": "media",
+              "authority_score": 50
+            },
+            "supporting_sources": [],
+            "contradictions_found": [],
+            "verification_notes": "Post manual a partir de 1 link(s) informado(s) pelo editor."
+          },
+          "draft": {
+            "draft_id": "manual-m-mtjcd1lq",
+            "story_id": "manual-mtjcc70j-393",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Vorcaro diz a Moraes que tem",
+            "instagram_headline": "Relatório da PF mostra conversa de Vorcaro com Moraes",
+            "short_summary": "Relatório da Polícia Federal reproduz mensagem do celular do banqueiro Vorcaro em que ele agradece ao ministro Alexandre de Moraes e diz ter 'dívida de vida' após encontro marcado na casa do ministro. A divulgação faz parte da investigação conduzida pela PF.",
+            "why_it_matters": "A troca de mensagens envolve um investigado e um ministro do STF, o que levanta questões sobre a quebra de sigilo e sobre possíveis vínculos entre autoridades e investigados. O caso pode gerar desdobramentos em investigações e em esfera institucional.",
+            "key_facts": [
+              "Segundo o relatório da Polícia Federal, a conversa foi encontrada no celular do banqueiro.",
+              "No diálogo, Vorcaro agradece a Alexandre de Moraes e diz ter 'dívida de vida'.",
+              "A troca teria ocorrido depois de um encontro marcado na casa do ministro.",
+              "O conteúdo está registrado no relatório que integra a investigação da PF."
+            ],
+            "caption": "Relatório da Polícia Federal reproduz diálogo de Vorcaro com Alexandre de Moraes.\n\nO relatório da PF, citado pelo g1, traz mensagens encontradas no celular do banqueiro Antonio Vorcaro. Na conversa, Vorcaro agradece ao ministro do STF Alexandre de Moraes e afirma ter \"dívida de vida\" após encontro marcado na casa do ministro. O material integra a investigação em curso pela Polícia Federal.\n\nA divulgação do diálogo coloca dois pontos centrais: a origem das mensagens, que foram obtidas a partir de dados do celular, e a presença de um encontro presencial entre as partes, mencionada no relatório. Segundo a reportagem do g1, a PF reproduz o conteúdo em seu relatório, mas o artigo não detalha decisões judiciais ou administrativas tomadas a partir desse trecho.\n\nAinda não há informações públicas sobre desdobramentos formais resultantes desse trecho específico. O relatório da PF pode ser usado em procedimentos internos ou repassado para autoridades competentes, conforme as regras processuais. Fique atento aos próximos informes oficiais para saber se haverá pedido de investigação complementar ou tomada de providências disciplinares.\n\nSiga para acompanhar as atualizações.",
+            "hashtags": [
+              "#Vorcaro",
+              "#AlexandreDeMoraes",
+              "#PolíciaFederal",
+              "#politica"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Relatório da PF mostra conversa de Vorcaro com Moraes",
+                "body": "Segundo o **relatório da Polícia Federal**, o banqueiro agradece a Alexandre de Moraes e diz ter 'dívida de vida' depois de encontro.",
+                "image_direction": "Retrato do ministro Alexandre de Moraes em evento público, com foco no rosto; em sobreposição sutil, uma mão segurando um celular com tela desfocada mostrando mensagens, para indicar a origem do diálogo.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "CONTEXTO",
+                "body": "A Polícia Federal obteve conversas do celular do banqueiro durante investigação. O relatório reproduce a troca que, segundo o documento, ocorreu após encontro marcado na casa do ministro.",
+                "image_direction": "Foto de arquivo de um escritório da Polícia Federal com pastas e computador, imagem neutra que represente investigação oficial.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "OS FATOS",
+                "body": "O relatório da PF reproduz mensagem em que Vorcaro agradece a Moraes e diz **'dívida de vida'**; o documento menciona **encontro na casa** do ministro como contexto.",
+                "image_direction": "Close de páginas de um relatório oficial parcialmente desfocado em cima de uma mesa, com destaque para trechos sublinhados (sem revelar dados pessoais sensíveis).",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "POR QUE IMPORTA",
+                "body": "A divulgação levanta dúvidas sobre a **quebra do sigilo** e sobre a natureza da **relação com o ministro**, temas relevantes para a independência institucional e para a investigação em curso.",
+                "image_direction": "Ilustração conceitual mostrando duas silhuetas conversando, uma com ícone de edifício público (para representar ministro) e outra com ícone de cifrão (para representar banqueiro), em tons sóbrios.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "PRÓXIMOS PASSOS",
+                "body": "O material faz parte da investigação da PF e pode ser analisado e encaminhado às autoridades competentes. A reportagem do g1 é a fonte primária desta divulgação.",
+                "image_direction": "Foto de um corredor institucional vazio, com portas fechadas e iluminação neutra, simbolizando etapas processuais e possíveis desdobramentos oficiais.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-02T00:11:59.198Z"
+          },
+          "slide_media": [],
+          "article_count": 1,
+          "earliest_published_at": "2026-09-01T14:16:22.791-03:00",
+          "latest_published_at": "2026-09-01T14:16:22.791-03:00",
+          "selection_rank": 1,
+          "created_at": "2026-09-02T00:11:59.198Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
