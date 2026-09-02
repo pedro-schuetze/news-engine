@@ -1484,7 +1484,7 @@
               "story_id": "f7ff5458-2c70-43e6-a0cc-9d9df9af4091",
               "slide_number": 4,
               "type": "image",
-              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/b9d7130e922.jpg",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/b2919b3a305.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -1492,12 +1492,12 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Toglenn · CC BY-SA 3.0 · Wikimedia",
+                "license": "Shealeah Craighead · Public domain · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Toglenn · CC BY-SA 3.0 · Wikimedia"
+                "attribution_text": "Shealeah Craighead · Public domain · Wikimedia"
               },
-              "text_placement": "TOP",
-              "text_align": "right",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
             },
