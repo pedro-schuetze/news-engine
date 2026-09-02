@@ -1,12 +1,14 @@
 /**
  * Renderer determinístico dos slides (1080x1350) com next/og (satori).
  *
- * Linguagem visual calibrada nas referências do Pedro (2026-09-01):
- * - capa estilo "the bating": foto full-bleed escurecida, manchete gigante
- *   em caixa alta (Archivo Black) + subtítulo de 1 frase;
- * - internos estilo bating/curioso mercado: corpo serifado (Lora) branco,
- *   curto, com **negrito** nos dados-chave;
- * - cor por vertical no kicker/tag (assinatura tipo "the news");
+ * Linguagem visual: identidade GPB (2026-09-02) sobre a estrutura calibrada
+ * em 2026-09-01 nas referências do Pedro:
+ * - marca GPB (serif display, papel da Recoleta -> Fraunces) com sub-brand
+ *   por vertical: WORLD / ENTERTAINMENT / CURIOSITY;
+ * - capa: foto full-bleed escurecida, manchete gigante em serif display;
+ * - corpo em sans (papel da Satoshi -> Jakarta) com **negrito** nos dados;
+ * - acento único Royal Blue #1D4ED8 (a identidade é monolítica; a distinção
+ *   de vertical vem do NOME do sub-brand, não de cor);
  * - crédito de foto sempre visível (licenças CC exigem atribuição).
  *
  * IA não desenha layout: templates são código; o LLM só fornece o texto.
@@ -21,40 +23,48 @@ import type { SlideKind, SlideSpec, TextPlacement } from "./spec";
 export const SLIDE_W = 1080;
 export const SLIDE_H = 1350;
 
+// sub-brands da identidade GPB (a marca é em inglês; o conteúdo segue PT-BR)
 const VERTICAL_UI: Record<string, { label: string; color: string }> = {
-  entertainment: { label: "ENTRETENIMENTO", color: "#FF8A4C" },
-  politics: { label: "MUNDO", color: "#8FB0FF" },
-  facts: { label: "FATOS", color: "#B9A5FF" },
+  entertainment: { label: "ENTERTAINMENT", color: "#1D4ED8" },
+  politics: { label: "WORLD", color: "#1D4ED8" },
+  facts: { label: "CURIOSITY", color: "#1D4ED8" },
 };
 
-const INK_DARK = "#0B0E14";
-const BRAND_GREEN = "#2FA98C";
+const INK_DARK = "#0A0A0A"; // Ink Black
+const IVORY = "#F7F5F1";
+const ROYAL = "#1D4ED8"; // Royal Blue — acento único da marca
 
 let fontsPromise: Promise<{ name: string; data: Buffer; weight: 400 | 700 | 900 }[]> | null = null;
 
 async function loadFonts() {
   if (!fontsPromise) {
     const dir = path.join(process.cwd(), "src", "assets", "fonts");
+    // papéis da identidade: Fraunces ~ Recoleta (display), Jakarta ~ Satoshi (texto)
     fontsPromise = Promise.all([
-      fs.readFile(path.join(dir, "ArchivoBlack.ttf")).then((data) => ({
-        name: "Archivo Black",
+      fs.readFile(path.join(dir, "Fraunces-Bold.ttf")).then((data) => ({
+        name: "Fraunces",
+        data,
+        weight: 700 as const,
+      })),
+      fs.readFile(path.join(dir, "Fraunces-Black.ttf")).then((data) => ({
+        name: "Fraunces",
         data,
         weight: 900 as const,
       })),
-      fs.readFile(path.join(dir, "Lora-Regular.ttf")).then((data) => ({
-        name: "Lora",
+      fs.readFile(path.join(dir, "Jakarta-Medium.ttf")).then((data) => ({
+        name: "Jakarta",
         data,
         weight: 400 as const,
       })),
-      fs.readFile(path.join(dir, "Lora-Bold.ttf")).then((data) => ({
-        name: "Lora",
+      fs.readFile(path.join(dir, "Jakarta-Bold.ttf")).then((data) => ({
+        name: "Jakarta",
         data,
         weight: 700 as const,
       })),
-      fs.readFile(path.join(dir, "PlexMono-SemiBold.ttf")).then((data) => ({
-        name: "Plex Mono",
+      fs.readFile(path.join(dir, "Jakarta-ExtraBold.ttf")).then((data) => ({
+        name: "Jakarta",
         data,
-        weight: 700 as const,
+        weight: 900 as const,
       })),
     ]);
   }
@@ -120,7 +130,7 @@ function RichText({
         <span
           key={i}
           style={{
-            fontFamily: "Lora",
+            fontFamily: "Jakarta",
             fontWeight: w.bold ? 700 : 400,
             fontSize: size,
             color: "#FFFFFF",
@@ -295,32 +305,38 @@ function Scrim({
   );
 }
 
+/** Lockup GPB da capa: monograma serif + sub-brand com pontos royal. */
 function Brand({ color, label }: { color: string; label: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
       <span
         style={{
-          fontFamily: "Plex Mono",
-          fontSize: 30,
+          fontFamily: "Fraunces",
+          fontSize: 58,
           fontWeight: 700,
-          color: "#FFFFFF",
-          letterSpacing: 2,
-          textShadow: "0 1px 8px rgba(0,0,0,0.5)",
+          color: IVORY,
+          letterSpacing: 1,
+          lineHeight: 1,
+          textShadow: "0 2px 14px rgba(0,0,0,0.6)",
         }}
       >
-        NEWS·ENGINE
+        GPB
       </span>
-      <span
-        style={{
-          fontFamily: "Plex Mono",
-          fontSize: 21,
-          fontWeight: 700,
-          color,
-          letterSpacing: 5,
-        }}
-      >
-        {label}
-      </span>
+      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <span style={{ display: "flex", width: 5, height: 5, borderRadius: 3, backgroundColor: color }} />
+        <span
+          style={{
+            fontFamily: "Jakarta",
+            fontSize: 20,
+            fontWeight: 900,
+            color: "rgba(247,245,241,0.92)",
+            letterSpacing: 7,
+          }}
+        >
+          {label}
+        </span>
+        <span style={{ display: "flex", width: 5, height: 5, borderRadius: 3, backgroundColor: color }} />
+      </div>
     </div>
   );
 }
@@ -356,11 +372,11 @@ function Footer({ spec, cta }: { spec: SlideSpec; cta: boolean }) {
       {cta && (
         <span
           style={{
-            fontFamily: "Plex Mono",
+            fontFamily: "Jakarta",
             fontSize: 23,
-            fontWeight: 700,
-            color: "rgba(255,255,255,0.92)",
-            letterSpacing: 3,
+            fontWeight: 900,
+            color: "rgba(247,245,241,0.94)",
+            letterSpacing: 4,
           }}
         >
           {"ARRASTE PARA O LADO >>"}
@@ -369,10 +385,10 @@ function Footer({ spec, cta }: { spec: SlideSpec; cta: boolean }) {
       {spec.credit && (
         <span
           style={{
-            fontFamily: "Plex Mono",
+            fontFamily: "Jakarta",
             fontSize: 15,
             fontWeight: 700,
-            color: "rgba(255,255,255,0.5)",
+            color: "rgba(247,245,241,0.55)",
             letterSpacing: 1,
           }}
         >
@@ -450,13 +466,12 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
           <div
             style={{
               display: "flex",
-              fontFamily: "Archivo Black",
+              fontFamily: "Fraunces",
               fontWeight: 900,
               fontSize: coverHeadlineSize(spec.headline),
-              color: "#FFFFFF",
-              textTransform: "uppercase",
+              color: IVORY,
               textAlign: TEXT_ALIGN[spec.align] ?? "center",
-              lineHeight: 1.04,
+              lineHeight: 1.06,
               textShadow: "0 4px 24px rgba(0,0,0,0.98), 0 0 60px rgba(0,0,0,0.85)",
             }}
           >
@@ -496,17 +511,31 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
           padding: "52px 72px 46px",
         }}
       >
-        <span
-          style={{
-            fontFamily: "Plex Mono",
-            fontSize: 24,
-            fontWeight: 700,
-            color: "rgba(255,255,255,0.85)",
-            letterSpacing: 2,
-          }}
-        >
-          NEWS·ENGINE
-        </span>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
+          <span
+            style={{
+              fontFamily: "Fraunces",
+              fontSize: 34,
+              fontWeight: 700,
+              color: IVORY,
+              lineHeight: 1,
+              textShadow: "0 1px 10px rgba(0,0,0,0.55)",
+            }}
+          >
+            GPB
+          </span>
+          <span
+            style={{
+              fontFamily: "Jakarta",
+              fontSize: 17,
+              fontWeight: 900,
+              color: "rgba(247,245,241,0.85)",
+              letterSpacing: 5,
+            }}
+          >
+            {ui.label}
+          </span>
+        </div>
         <div
           style={{
             display: "flex",
@@ -521,29 +550,39 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
           }}
         >
           {spec.headline && (
-            <span
+            <div
               style={{
-                fontFamily: "Plex Mono",
-                fontSize: 25,
-                fontWeight: 700,
-                color: ui.color,
-                letterSpacing: 4,
-                textTransform: "uppercase",
-                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: ALIGN_ITEMS[spec.align] ?? "center",
+                gap: 12,
               }}
             >
-              {plainText(spec.headline)}
-            </span>
+              <span style={{ display: "flex", width: 44, height: 6, borderRadius: 3, backgroundColor: ROYAL }} />
+              <span
+                style={{
+                  fontFamily: "Jakarta",
+                  fontSize: 25,
+                  fontWeight: 900,
+                  color: "rgba(247,245,241,0.95)",
+                  letterSpacing: 5,
+                  textTransform: "uppercase",
+                  textAlign: TEXT_ALIGN[spec.align] ?? "center",
+                }}
+              >
+                {plainText(spec.headline)}
+              </span>
+            </div>
           )}
           <RichText text={spec.body} size={44} align={spec.align} />
           {isFinal && (
             <div
               style={{
                 display: "flex",
-                backgroundColor: BRAND_GREEN,
-                color: "#FFFFFF",
-                fontFamily: "Plex Mono",
-                fontWeight: 700,
+                backgroundColor: ROYAL,
+                color: IVORY,
+                fontFamily: "Jakarta",
+                fontWeight: 900,
                 fontSize: 27,
                 letterSpacing: 3,
                 padding: "20px 42px",

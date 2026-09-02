@@ -1,34 +1,37 @@
 @import "tailwindcss";
 
 /*
- * Design system — inspirado em column.com (paleta/grade de hairlines/mono
- * labels) com a suavidade de cantos do runey.app. Tema claro único.
+ * Design system — identidade GPB (2026-09-02): Ink Black / Ivory / Silver
+ * Gray / Deep Navy / Royal Blue; serif display (papel da Recoleta) + sans
+ * limpa (papel da Satoshi). Hairlines e microlabels mono continuam como
+ * assinatura utilitária do dashboard. Tema claro único.
  */
 @theme {
-  --color-paper: #f7f7f5; /* fundo da página */
+  --color-paper: #f7f5f1; /* Ivory — fundo da página */
   --color-panel: #ffffff; /* cards/painéis */
-  --color-panel-2: #f1f1ef; /* chips, hover, zebra */
-  --color-line: #e3e4e8; /* hairlines (assinatura Column) */
-  --color-ink: #12161e; /* texto primário */
-  --color-ink-2: #5d616b; /* texto secundário */
-  --color-ink-3: #9a9da6; /* metadados/placeholders */
-  --color-navy: #111a4a; /* títulos display */
-  --color-brand: #167e6c; /* verde primário (ações/aprovado) */
-  --color-brand-ink: #0f5c4f;
-  --color-brand-soft: #e6f2ef;
-  --color-mint: #44b48b;
-  --color-ent: #ec652b; /* vertical: entretenimento */
-  --color-ent-soft: #fdeee4;
-  --color-pol: #1e4199; /* vertical: política */
-  --color-pol-soft: #e8edf9;
-  --color-fact: #7a5af8; /* vertical: fatos */
-  --color-fact-soft: #efeafe;
+  --color-panel-2: #efede8; /* chips, hover, zebra (ivory escurecida) */
+  --color-line: #d6dadc; /* Silver Gray — hairlines */
+  --color-ink: #0a0a0a; /* Ink Black — texto primário */
+  --color-ink-2: #4a4e57; /* texto secundário */
+  --color-ink-3: #8f949c; /* metadados/placeholders */
+  --color-navy: #0f2240; /* Deep Navy — títulos display */
+  --color-brand: #1d4ed8; /* Royal Blue — ações/marca */
+  --color-brand-ink: #1638a8;
+  --color-brand-soft: #e7edfb;
+  --color-ok: #157f5a; /* status funcional: aprovado/verificado */
+  --color-ent: #0f2240; /* GPB ENTERTAINMENT — deep navy */
+  --color-ent-soft: #e9edf3;
+  --color-pol: #1d4ed8; /* GPB WORLD — royal blue */
+  --color-pol-soft: #e7edfb;
+  --color-fact: #64748b; /* GPB CURIOSITY — slate */
+  --color-fact-soft: #eef1f5;
   --color-warn: #9a6a10;
   --color-warn-soft: #faf1dd;
   --color-danger: #b42318;
   --color-danger-soft: #fbeae8;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 

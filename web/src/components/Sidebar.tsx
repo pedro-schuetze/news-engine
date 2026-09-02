@@ -79,10 +79,13 @@ export default function Sidebar() {
     <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-line bg-panel md:flex">
       <div className="border-b border-line px-5 py-5">
         <Link href="/" className="block">
-          <span className="font-mono text-[13px] font-semibold tracking-[0.06em] text-navy">
-            NEWS·ENGINE
+          {/* lockup GPB: serif display + tagline reduzida a NEWS (decisão 2026-09-02) */}
+          <span className="font-serif text-[30px] font-bold leading-none tracking-tight text-ink">
+            GPB
           </span>
-          <span className="mt-1 block text-[11px] text-ink-3">redação automatizada</span>
+          <span className="mt-1.5 block font-mono text-[10px] font-semibold tracking-[0.34em] text-ink-2">
+            NEWS<span className="text-brand">.</span>
+          </span>
         </Link>
       </div>
 

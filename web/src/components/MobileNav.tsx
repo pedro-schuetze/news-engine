@@ -17,8 +17,11 @@ export default function MobileNav() {
   return (
     <div className="sticky top-0 z-20 border-b border-line bg-panel px-4 py-3 md:hidden">
       <div className="flex items-center justify-between">
-        <span className="font-mono text-[12px] font-semibold tracking-[0.06em] text-navy">
-          NEWS·ENGINE
+        <span className="flex items-baseline gap-2">
+          <span className="font-serif text-[20px] font-bold leading-none text-ink">GPB</span>
+          <span className="font-mono text-[9px] font-semibold tracking-[0.3em] text-ink-2">
+            NEWS<span className="text-brand">.</span>
+          </span>
         </span>
         <nav className="flex gap-1">
           {ITEMS.map((item) => {

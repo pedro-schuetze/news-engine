@@ -219,6 +219,32 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       Post sem foto relevante no banco → 404 com orientação (caso
       FMI/Senegal: título específico demais para Wikimedia/Openverse).
 
+17. **2026-09-02 — Identidade visual GPB aplicada (site + slides).** Pedro
+    forneceu o brand board (GPB Media): paleta Ink Black #0A0A0A / Ivory
+    #F7F5F1 / Silver Gray #D6DADC / Deep Navy #0F2240 / Royal Blue #1D4ED8;
+    Recoleta (display) + Satoshi (texto); sub-brands GPB WORLD /
+    ENTERTAINMENT / CURIOSITY — que mapeiam 1:1 nas verticais
+    (politics/entertainment/facts). Tagline reduzida a "NEWS." (pedido dele:
+    tirar "perspective/impact").
+    - **Fontes substitutas** (Recoleta é comercial; Satoshi não está no
+      Google Fonts): Fraunces no papel da Recoleta, Plus Jakarta Sans no da
+      Satoshi. Se o Pedro comprar a Recoleta um dia, é next/font/local no
+      layout + trocar 2 TTFs em web/src/assets/fonts/.
+    - Site: tokens novos em globals.css (paper=ivory, brand=royal), Fraunces
+      no lockup GPB da sidebar/mobile, Jakarta como sans padrão; verde saiu
+      da marca e ficou só como status funcional (--color-ok). Verticais no
+      dashboard em tons da paleta (WORLD=royal, ENTERTAINMENT=navy,
+      CURIOSITY=slate).
+    - Slides: lockup GPB (Fraunces) + sub-brand com pontos royal na capa;
+      "GPB WORLD/..." no topo dos internos; manchete da capa em Fraunces
+      Black SENTENCE CASE (saiu o caps de Archivo Black); corpo em Jakarta
+      (saiu Lora); kicker com barra royal; pílula final royal (saiu o verde);
+      acento único #1D4ED8 — a distinção de vertical vem do NOME do
+      sub-brand. TTFs antigos removidos; novos são estáticos baixados do
+      Google Fonts (satori não lê variable font).
+    - Slides antigos re-renderizam no visual novo automaticamente (o render
+      é on-the-fly); exports antigos (ZIPs baixados) obviamente não mudam.
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~Prompt do ChatGPT gerava colagem com sombra embutida~~ — corrigido em
