@@ -15,6 +15,11 @@ import { openaiKey } from "../images";
 import type { EditorialDraft, Story } from "../types";
 
 const MODEL = (process.env.OPENAI_MODEL ?? "gpt-5-mini").trim();
+// Posts manuais (gerar de link / pedir ajustes) usam um modelo melhor por
+// padrão: é 1 chamada iniciada por humano, volume baixíssimo, e aqui o texto
+// é o produto inteiro. O run automático (15 posts/dia) continua no MODEL.
+// Escolhido por A/B real em 2026-09-02 (ver docs/CONTEXT.md).
+const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5.6-sol";
 const REASONING = (process.env.OPENAI_REASONING_EFFORT ?? "").trim();
 
 const SYSTEM =
@@ -88,6 +93,8 @@ export interface DraftResult {
   draft: EditorialDraft;
   vertical: string;
   usage: { input: number; output: number };
+  /** modelo que a API declarou ter usado (rastreabilidade do texto) */
+  model: string;
 }
 
 interface RawDraft {
@@ -109,12 +116,14 @@ interface RawDraft {
   }[];
 }
 
-async function callOpenAI(user: string): Promise<{ raw: string; usage: { input: number; output: number } }> {
+async function callOpenAI(
+  user: string,
+): Promise<{ raw: string; usage: { input: number; output: number }; model: string }> {
   const key = openaiKey();
   if (!key) throw new Error("OPENAI_API_KEY não configurada");
 
   const body: Record<string, unknown> = {
-    model: MODEL,
+    model: COMPOSE_MODEL,
     messages: [
       { role: "system", content: SYSTEM },
       { role: "user", content: user },
@@ -137,6 +146,7 @@ async function callOpenAI(user: string): Promise<{ raw: string; usage: { input: 
   const json = (await res.json()) as {
     choices?: { message?: { content?: string } }[];
     usage?: { prompt_tokens?: number; completion_tokens?: number };
+    model?: string;
   };
   return {
     raw: json.choices?.[0]?.message?.content ?? "",
@@ -144,6 +154,7 @@ async function callOpenAI(user: string): Promise<{ raw: string; usage: { input: 
       input: json.usage?.prompt_tokens ?? 0,
       output: json.usage?.completion_tokens ?? 0,
     },
+    model: json.model ?? COMPOSE_MODEL,
   };
 }
 
@@ -291,7 +302,7 @@ FORMATO DE SAÍDA (JSON estrito):
 
   let lastError: unknown = null;
   for (let attempt = 1; attempt <= 2; attempt++) {
-    const { raw, usage } = await callOpenAI(
+    const { raw, usage, model } = await callOpenAI(
       attempt === 1
         ? user
         : `${user}\n\nATENÇÃO: a resposta anterior era inválida (${String(lastError).slice(0, 200)}). Responda SOMENTE com JSON válido no formato pedido.`,
@@ -300,7 +311,7 @@ FORMATO DE SAÍDA (JSON estrito):
       const { draft, vertical } = parseDraft(raw, opts.storyId, opts.title, opts.format?.slideCount);
       const chosen =
         vertical && verticals.some((v) => v.id === vertical) ? vertical : opts.vertical;
-      return { draft, vertical: chosen, usage };
+      return { draft, vertical: chosen, usage, model };
     } catch (e) {
       lastError = e;
     }

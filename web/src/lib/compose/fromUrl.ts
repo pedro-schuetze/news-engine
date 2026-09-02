@@ -160,7 +160,7 @@ export async function composeFromUrls(opts: {
     published: a.publishedAt,
   }));
 
-  const { draft, vertical, usage } = await generateDraft({
+  const { draft, vertical, usage, model } = await generateDraft({
     storyId,
     title: articles[0].title,
     vertical: opts.vertical || "facts",
@@ -187,7 +187,7 @@ export async function composeFromUrls(opts: {
     editorial_reason: "post criado manualmente a partir de link",
     red_flags: [],
     final_score: 0,
-    final_score_notes: ["post manual: sem score de trend/editorial"],
+    final_score_notes: ["post manual: sem score de trend/editorial", `modelo: ${model}`],
     classification: null,
     verification: {
       status: articles.length >= 2 ? "VERIFIED" : "PARTIALLY_VERIFIED",

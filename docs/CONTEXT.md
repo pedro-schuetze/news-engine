@@ -148,6 +148,32 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - Moods visuais (illustrator.py, images.ts, generate.ts) trocados de
       urnas/tribunas para mesa de cúpula/bandeiras/mapa-múndi.
 
+14. **2026-09-02 — Posts manuais escritos pelo gpt-5.6-sol; automático segue
+    no gpt-5-mini.** Pedido do Pedro ("modelo melhor na geração individual"),
+    que liberou gpt-5.6-terra e gpt-5.6-sol na key. Decidido por A/B real:
+    mesmo link (Guardian, acordo EUA-Venezuela), mesma vertical, formato
+    padrão, um post por modelo.
+    - mini (US$ 0,25/2,00 por Mtok): US$ 0,010/post, 128s (4.886 tokens de
+      output — reasoning pesado), texto com repetições ("segundo o Guardian"
+      em 4 slides, fatos duplicados), why_it_matters vazio e expressão
+      mantida em inglês.
+    - terra (US$ 2/12): US$ 0,027/post, 30s, zero AI-tells, caption com
+      distinção exemplar fato/alegação, admite o que a fonte não informa.
+    - sol (US$ 5/30): US$ 0,070/post, 39s, melhor headline ("Secretário dos
+      EUA defende..." — cargo no título, leitor não precisa conhecer o
+      sobrenome), leitura mais fina da fonte (notou a ausência de resposta
+      venezuelana; "caracterização de críticos, não fato estabelecido").
+    Sol venceu: no volume manual (poucos posts/dia, revisados um a um) os
+    US$ 0,04 extras por post não importam e a finura poupa "pedir ajustes".
+    Implementação: `COMPOSE_MODEL` em `web/src/lib/compose/draft.ts`, default
+    `gpt-5.6-sol`, override por env `OPENAI_COMPOSE_MODEL`; vale para gerar
+    de link E pedir ajustes. O modelo usado fica gravado no run
+    (`final_score_notes: "modelo: ..."`) para rastreabilidade.
+    Ideia anotada, não executada: gpt-5.6-luna (US$ 0,20/1,20) é MAIS BARATO
+    que o gpt-5-mini e de família mais nova — candidato a substituir o mini
+    no pipeline automático depois de um A/B próprio (atenção: benchmark
+    aponta luna fraco em long-context).
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~CRON_SECRET nas env vars da Vercel~~ — criada pelo Pedro em
