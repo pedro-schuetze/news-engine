@@ -1219,7 +1219,7 @@
                 "attribution_required": true,
                 "attribution_text": "Shawn Miller/Library of Congress · CC0 · Wikimedia"
               },
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -1251,7 +1251,7 @@
               "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
               "slide_number": 3,
               "type": "image",
-              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/beb90ede84a.jpg",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b0220ec0785.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -1259,11 +1259,11 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Mass Communications Specialist Chad J. M · Public domain · Wikimedia",
+                "license": "U.S. State Department · Public domain · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Mass Communications Specialist Chad J. M · Public domain · Wikimedia"
+                "attribution_text": "U.S. State Department · Public domain · Wikimedia"
               },
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -1285,8 +1285,8 @@
                 "attribution_required": true,
                 "attribution_text": "Raph_PH · CC BY 2.0 · Wikimedia"
               },
-              "text_placement": "TOP",
-              "text_align": "right",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null
             },
@@ -1295,7 +1295,7 @@
               "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
               "slide_number": 5,
               "type": "image",
-              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b31f88a3493.jpg",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/ba2b5a07249.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -1303,12 +1303,12 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Raph_PH · CC BY 2.0 · Wikimedia",
+                "license": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Raph_PH · CC BY 2.0 · Wikimedia"
+                "attribution_text": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia"
               },
-              "text_placement": "TOP",
-              "text_align": "right",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
             }
@@ -1330,7 +1330,7 @@
               "text_align": "left",
               "score": 74,
               "score_notes": "relevância 100 · texto 38 · nitidez 84",
-              "added_at": "2026-09-02T18:47:20.340Z"
+              "added_at": "2026-09-02T21:06:50.225Z"
             },
             {
               "id": "b4369a96171",
@@ -1339,11 +1339,11 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "Shawn Miller/Library of Congress · CC0 · Wikimedia",
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
-              "score": 80,
-              "score_notes": "relevância 88 · texto 61 · nitidez 95",
-              "added_at": "2026-09-02T18:47:21.762Z"
+              "score": 79,
+              "score_notes": "relevância 88 · texto 56 · nitidez 95",
+              "added_at": "2026-09-02T21:06:51.368Z"
             },
             {
               "id": "b0220ec0785",
@@ -1356,7 +1356,7 @@
               "text_align": "left",
               "score": 64,
               "score_notes": "relevância 76 · texto 37 · nitidez 84",
-              "added_at": "2026-09-02T18:47:22.349Z"
+              "added_at": "2026-09-02T21:06:50.423Z"
             },
             {
               "id": "b31f88a3493",
@@ -1365,11 +1365,11 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "Raph_PH · CC BY 2.0 · Wikimedia",
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "right",
-              "score": 61,
-              "score_notes": "relevância 52 · texto 54 · nitidez 86",
-              "added_at": "2026-09-02T18:47:24.015Z"
+              "score": 52,
+              "score_notes": "relevância 52 · texto 29 · nitidez 86",
+              "added_at": "2026-09-02T21:06:53.202Z"
             },
             {
               "id": "bacf0584f9e",
@@ -1378,11 +1378,11 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "Raph_PH · CC BY 2.0 · Wikimedia",
-              "text_placement": "TOP",
-              "text_align": "right",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
               "score": 63,
               "score_notes": "relevância 40 · texto 71 · nitidez 87",
-              "added_at": "2026-09-02T18:47:23.248Z"
+              "added_at": "2026-09-02T21:06:52.168Z"
             },
             {
               "id": "beb90ede84a",
@@ -1391,24 +1391,24 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "Mass Communications Specialist Chad J. M · Public domain · Wikimedia",
-              "text_placement": "TOP",
-              "text_align": "left",
-              "score": 57,
-              "score_notes": "relevância 40 · texto 65 · nitidez 71",
-              "added_at": "2026-09-02T18:47:24.471Z"
+              "text_placement": "CENTER",
+              "text_align": "center",
+              "score": 54,
+              "score_notes": "relevância 40 · texto 59 · nitidez 71",
+              "added_at": "2026-09-02T21:06:54.224Z"
             },
             {
-              "id": "b934d2a93bb",
-              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b934d2a93bb.jpg",
+              "id": "ba2b5a07249",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/ba2b5a07249.jpg",
               "origin": "bank",
               "source": "wikimedia",
               "mime_type": "image/jpeg",
-              "credit": "Georges Biard · CC BY-SA 3.0 · Wikimedia",
+              "credit": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia",
               "text_placement": "BOTTOM",
-              "text_align": "right",
+              "text_align": "left",
               "score": 57,
-              "score_notes": "relevância 40 · texto 59 · nitidez 81",
-              "added_at": "2026-09-02T18:47:22.646Z"
+              "score_notes": "relevância 40 · texto 47 · nitidez 100",
+              "added_at": "2026-09-02T21:06:55.530Z"
             }
           ]
         }

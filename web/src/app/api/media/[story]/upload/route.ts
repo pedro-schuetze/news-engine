@@ -10,7 +10,7 @@
 
 import { NextResponse } from "next/server";
 import { loadRun } from "@/lib/data";
-import { analyzePlacement, scoreCandidate, sharpnessScore } from "@/lib/media/generate";
+import { analyzePlacementSmart, scoreCandidate, sharpnessScore } from "@/lib/media/generate";
 import {
   applyPool,
   applySelection,
@@ -75,7 +75,7 @@ export async function POST(
     // análise neutra (jpeg-js só decodifica JPEG)
     const isJpeg = file.type === "image/jpeg";
     const { placement, align, bandScore } = isJpeg
-      ? analyzePlacement(bytes)
+      ? await analyzePlacementSmart(bytes)
       : { placement: "BOTTOM" as const, align: "center" as const, bandScore: 50 };
     const sharp = isJpeg ? sharpnessScore(bytes) : 50;
     const { score, notes } = scoreCandidate({

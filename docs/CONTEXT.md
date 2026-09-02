@@ -245,6 +245,23 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - Slides antigos re-renderizam no visual novo automaticamente (o render
       é on-the-fly); exports antigos (ZIPs baixados) obviamente não mudam.
 
+18. **2026-09-02 — Detecção de rosto como VETO no posicionamento do texto.**
+    Feedback do Pedro sobre caso real: a capa do post do Lionel Richie cobriu
+    o rosto dele — a análise de contraste escolhe a faixa mais ESCURA, e num
+    palco o rosto está justamente na área escura. Contraste não sabe o que é
+    rosto. Solução em código puro (sem API, custo zero): port do runtime do
+    picojs (MIT, Nenad Markus) em `web/src/lib/media/faces.ts` + cascata
+    oficial `facefinder` (239KB, rostos FRONTAIS) em
+    `web/src/assets/models/`. `analyzePlacementSmart` roda contraste +
+    detecção; faixa com >20% de rosto recebe penalidade que estoura qualquer
+    vantagem de escuridão (o mesmo na coluna, para o alinhamento). Perfil e
+    rosto muito pequeno escapam — o fallback é a regra de contraste de
+    sempre; nunca lança. Validado no caso real: a mesma foto que era TOP/left
+    (texto sobre o rosto) virou BOTTOM/left com o rosto inteiro livre;
+    detecção de 7 fotos em ~8s no fluxo de candidatura.
+    Ideia anotada, não feita: usar a caixa do rosto também no FRAMING
+    (recorte/zoom por slide hoje é fixo e pode cortar rosto na borda).
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~Prompt do ChatGPT gerava colagem com sombra embutida~~ — corrigido em

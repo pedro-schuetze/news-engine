@@ -14,14 +14,21 @@
 
 import { createHash } from "node:crypto";
 import jpeg from "jpeg-js";
+import { detectFaces, faceCoverageGrid } from "./faces";
 import { searchBankImages } from "../images";
 import { poolPath, type PoolFile } from "./persist";
 import type { Story } from "../types";
 
 export type TextPlacement = "TOP" | "CENTER" | "BOTTOM";
 
+const BAND_INDEX: Record<TextPlacement, number> = { TOP: 0, CENTER: 1, BOTTOM: 2 };
+const COL_INDEX: Record<"left" | "center" | "right", number> = { left: 0, center: 1, right: 2 };
+// rosto coberto >20% ja dispara o veto; 500 estoura qualquer vantagem de escuridao
+const FACE_PENALTY = 500;
+
 export function analyzePlacement(
   jpegBytes: Buffer,
+  faceGrid?: number[][],
 ): { placement: TextPlacement; align: "left" | "center" | "right"; bandScore: number } {
   try {
     const img = jpeg.decode(jpegBytes, { useTArray: true, formatAsRGBA: true });
@@ -49,10 +56,16 @@ export function analyzePlacement(
     };
 
     const third = Math.floor(height / 3);
+    const faceRow = (p: TextPlacement) =>
+      faceGrid ? Math.max(...faceGrid[BAND_INDEX[p]]) : 0;
+    const facePen = (p: TextPlacement) =>
+      faceRow(p) > 0.2 ? FACE_PENALTY * faceRow(p) : 0;
+    // veto de rosto: a faixa mais escura perde se tiver rosto (caso real de
+    // 2026-09-02: a manchete cobriu o rosto do Lionel Richie num palco escuro)
     const bands: Record<TextPlacement, number> = {
-      TOP: stats(0, 0, width, third),
-      CENTER: stats(0, third, width, 2 * third),
-      BOTTOM: stats(0, 2 * third, width, height),
+      TOP: stats(0, 0, width, third) + facePen("TOP"),
+      CENTER: stats(0, third, width, 2 * third) + facePen("CENTER"),
+      BOTTOM: stats(0, 2 * third, width, height) + facePen("BOTTOM"),
     };
     const placement = (Object.keys(bands) as TextPlacement[]).reduce((a, b) =>
       bands[a] <= bands[b] ? a : b,
@@ -61,10 +74,12 @@ export function analyzePlacement(
     const yTop = placement === "TOP" ? 0 : placement === "CENTER" ? third : 2 * third;
     const yBottom = yTop + third;
     const w3 = Math.floor(width / 3);
+    const faceCell = (col: "left" | "center" | "right") =>
+      faceGrid && faceGrid[BAND_INDEX[placement]][COL_INDEX[col]] > 0.15 ? FACE_PENALTY : 0;
     const cols = {
-      left: stats(0, yTop, w3, yBottom),
-      center: stats(w3, yTop, 2 * w3, yBottom),
-      right: stats(2 * w3, yTop, width, yBottom),
+      left: stats(0, yTop, w3, yBottom) + faceCell("left"),
+      center: stats(w3, yTop, 2 * w3, yBottom) + faceCell("center"),
+      right: stats(2 * w3, yTop, width, yBottom) + faceCell("right"),
     };
     const best = (Object.keys(cols) as ("left" | "center" | "right")[]).reduce((a, b) =>
       cols[a] <= cols[b] ? a : b,
@@ -72,12 +87,38 @@ export function analyzePlacement(
     // só desloca quando o ganho é claro; senão mantém centralizado
     const align = cols[best] < cols.center - 12 ? best : "center";
     // qualidade da melhor faixa (0-100): quanto mais escura e uniforme, mais
-    // espaço limpo para a tipografia — vira parte do score da candidata
-    const bandScore = Math.max(0, Math.min(100, Math.round(100 - (bands[placement] / 255) * 100)));
+    // espaço limpo para a tipografia — descontando a penalidade de rosto, que
+    // e veto de POSICAO, nao medida de luz
+    const raw = Math.max(0, Math.min(255, bands[placement] - facePen(placement)));
+    const bandScore = Math.max(0, Math.min(100, Math.round(100 - (raw / 255) * 100)));
     return { placement, align, bandScore };
   } catch {
     return { placement: "BOTTOM", align: "center", bandScore: 50 };
   }
+}
+
+/**
+ * Analise completa: contraste + DETECCAO DE ROSTO como veto de posicao.
+ * Se a deteccao falhar (formato nao-JPEG, erro no modelo), cai na analise de
+ * contraste pura — nunca lanca.
+ */
+export async function analyzePlacementSmart(jpegBytes: Buffer): Promise<{
+  placement: TextPlacement;
+  align: "left" | "center" | "right";
+  bandScore: number;
+  faces: number;
+}> {
+  let grid: number[][] | undefined;
+  let faces = 0;
+  try {
+    const img = jpeg.decode(jpegBytes, { useTArray: true, formatAsRGBA: true });
+    const found = await detectFaces(img.data, img.width, img.height);
+    faces = found.length;
+    if (found.length > 0) grid = faceCoverageGrid(found);
+  } catch {
+    /* sem rostos detectaveis: segue so o contraste */
+  }
+  return { ...analyzePlacement(jpegBytes, grid), faces };
 }
 
 /**
@@ -172,7 +213,7 @@ export async function bankCandidates(story: Story): Promise<PoolFile[]> {
     const mime = img.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg";
     const isJpeg = mime === "image/jpeg";
     const { placement, align, bandScore } = isJpeg
-      ? analyzePlacement(bytes)
+      ? await analyzePlacementSmart(bytes)
       : { placement: "BOTTOM" as const, align: "center" as const, bandScore: 50 };
     const sharp = isJpeg ? sharpnessScore(bytes) : 50;
     const { score, notes } = scoreCandidate({
