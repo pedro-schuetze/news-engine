@@ -22,4 +22,4 @@ cd web && npm run dev                       # dashboard em http://localhost:3000
 - Fórmulas de score são explícitas e testadas (`src/processing/ranking.py`);
   o LLM nunca decide ranking sozinho.
 - Rodar `pytest` antes de commitar mudanças no pipeline.
-- POLITICS tem regras mais duras (verificação/atribuição) — não flexibilizar sem o Pedro.
+- POLITICS (vertical **Mundo**: política e economia internacionais desde 2026-09-02; o id interno segue `politics`) tem regras mais duras (verificação/atribuição) — não flexibilizar sem o Pedro.

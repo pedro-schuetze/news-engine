@@ -11,7 +11,7 @@ import type { Story } from "../types";
 
 const VERTICAL_LABEL: Record<string, string> = {
   entertainment: "Entretenimento",
-  politics: "Política",
+  politics: "Mundo",
   facts: "Fatos",
 };
 

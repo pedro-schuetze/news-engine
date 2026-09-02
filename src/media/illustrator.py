@@ -36,9 +36,9 @@ log = logging.getLogger("news_engine.media")
 # clima visual por vertical — o prompt descreve a CENA, nunca pessoas
 VERTICAL_MOOD: dict[str, str] = {
     "politics": (
-        "sober photojournalistic still life about institutions and democracy: "
-        "empty debate stage, ballot boxes, marble columns, official documents, "
-        "microphones on an empty table; muted blues and deep neutrals"
+        "sober photojournalistic still life about global affairs and diplomacy: "
+        "summit table with national flags, world map, globe, empty assembly "
+        "hall, official documents, microphones; muted blues and deep neutrals"
     ),
     "entertainment": (
         "cinematic pop-culture atmosphere: stage lights over an empty venue, film "

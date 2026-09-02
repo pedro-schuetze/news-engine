@@ -231,7 +231,7 @@ const AI_QUALITY = (process.env.OPENAI_IMAGE_QUALITY ?? "medium").trim();
 export function buildIllustrationPrompt(title: string, vertical: string): string {
   const mood: Record<string, string> = {
     politics:
-      "sober photojournalistic still life about institutions and democracy: empty debate stage, ballot boxes, marble columns, official documents; muted blues and deep neutrals",
+      "sober photojournalistic still life about global affairs and diplomacy: summit table with national flags, world map, globe, official documents; muted blues and deep neutrals",
     entertainment:
       "cinematic pop-culture atmosphere: stage lights, film reels, concert haze, bold saturated color, dramatic contrast",
     facts:

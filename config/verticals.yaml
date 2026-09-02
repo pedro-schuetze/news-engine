@@ -51,56 +51,77 @@ verticals:
     extra_rules:
       - Se for rumor ou alegação, isso PRECISA estar explícito no texto (content_type RUMOR/CLAIM e atribuição clara).
 
-  # ── POLITICS ───────────────────────────────────────────────────────
+  # ── POLITICS (Mundo) ───────────────────────────────────────────────
+  # 2026-09-02: o escopo desta vertical trocou de política BRASILEIRA
+  # (eleições 2026) para política e economia INTERNACIONAIS. O id interno
+  # continua "politics" de propósito: runs antigos, reviews e as regras de
+  # verificação/pesos em ranking.yaml referenciam o id, e a exigência de
+  # rigor (confiabilidade > viralidade) vale igual para geopolítica.
   - id: politics
-    display_name: Política
+    display_name: Mundo
     description: >-
-      Política BRASILEIRA, com atenção especial às eleições de 2026:
-      candidatos, pesquisas eleitorais, debates, campanhas, decisões do
-      TSE/TREs, alianças e apoios, Congresso, Executivo, STF, legislação
-      eleitoral, movimentos de partidos e fatos com impacto eleitoral.
-      Política internacional só entra se tiver impacto direto no Brasil.
+      Política e economia INTERNACIONAIS: geopolítica e diplomacia (cúpulas,
+      alianças, tratados, sanções), guerras e negociações de paz, eleições e
+      referendos em outros países, organismos multilaterais (ONU, FMI, Banco
+      Mundial, Otan, União Europeia, Brics), indicadores macroeconômicos de
+      países relevantes (PIB, inflação, dívida, acordos com o FMI) e
+      episódios insólitos envolvendo chefes de Estado e governos. Brasil
+      entra apenas como ator no palco externo (cúpulas, acordos, disputas
+      comerciais); política doméstica brasileira NÃO pertence a esta
+      vertical.
     tone: >-
-      Neutro, claro e factual — sem opinião, sem torcida, com atribuição
-      rigorosa de quem disse o quê.
+      Contextual e didático — geopolítica e economia global explicadas para
+      quem não acompanha o noticiário internacional; neutro, sem torcida por
+      país ou líder, com atribuição rigorosa de quem disse o quê.
     google_news_queries:
-      - { query: "eleições 2026", hl: pt-BR, gl: BR }
-      - { query: "pesquisa eleitoral presidente", hl: pt-BR, gl: BR }
-      - { query: "TSE", hl: pt-BR, gl: BR }
-      - { query: "candidato presidência 2026", hl: pt-BR, gl: BR }
-      - { query: "Congresso Nacional votação", hl: pt-BR, gl: BR }
-      - { query: "governo federal decisão", hl: pt-BR, gl: BR }
-      - { query: "STF julgamento político", hl: pt-BR, gl: BR }
-      - { query: "partido campanha eleitoral", hl: pt-BR, gl: BR }
+      - { query: "world leaders summit", hl: en-US, gl: US }
+      - { query: "election OR referendum result", hl: en-GB, gl: GB }
+      - { query: "sanctions OR tariffs OR trade deal", hl: en-US, gl: US }
+      - { query: 'IMF OR "World Bank" agreement', hl: en-US, gl: US }
+      - { query: "NATO OR United Nations OR European Union", hl: en-GB, gl: GB }
+      - { query: "GDP growth OR inflation economy", hl: en-US, gl: US }
+      - { query: "ceasefire OR peace talks", hl: en-US, gl: US }
+      - { query: "política internacional cúpula", hl: pt-BR, gl: BR }
+      - { query: "FMI OR ONU OR Otan acordo", hl: pt-BR, gl: BR }
+      - { query: "eleições OR referendo país", hl: pt-BR, gl: BR }
     gdelt_queries:
-      - { query: "(eleicoes OR TSE OR eleitoral OR Congresso)", sourcelang: por, sourcecountry: BR }
+      - { query: '(summit OR referendum OR sanctions OR treaty OR ceasefire OR IMF OR NATO)', sourcelang: eng }
     editorial_criteria:
-      - { name: political_importance, description: "peso institucional/político do acontecimento" }
+      - { name: geopolitical_importance, description: "peso do acontecimento na ordem global (alianças, conflitos, eleições, crises)" }
+      - { name: global_impact, description: "alcance do impacto — quantos países, mercados e pessoas afeta" }
       - { name: source_quality, description: "qualidade e independência das fontes que sustentam o fato" }
-      - { name: public_relevance, description: "impacto prático na vida do cidadão" }
-      - { name: election_relevance, description: "relevância direta para as eleições de 2026" }
-      - { name: verification_strength, description: "solidez da verificação (fonte primária/oficial, múltiplas fontes)" }
-      - { name: institutional_relevance, description: "envolvimento de instituições (TSE, Congresso, STF, Executivo)" }
+      - { name: verification_strength, description: "solidez da verificação (comunicado/resultado oficial, múltiplas agências independentes)" }
+      - { name: explainability, description: "dá para entregar o contexto necessário em 5 slides sem distorcer" }
+      - { name: shareability, description: "potencial de compartilhamento/salvamento no Instagram" }
     guidance:
       value:
-        - fatos com fonte oficial/primária (TSE, TREs, Congresso, Diário Oficial, decisões judiciais)
-        - pesquisas eleitorais de institutos registrados, com metadados (instituto, margem, amostra)
-        - acontecimentos com impacto eleitoral concreto em 2026
+        - "decisões e resultados oficiais: referendos e eleições apurados, acordos assinados, comunicados de cúpula, votações em organismos multilaterais"
+        - números macroeconômicos com fonte primária e período de referência (institutos nacionais de estatística, FMI, Banco Mundial, bancos centrais)
+        - realinhamentos geopolíticos (alianças novas, blocos, sanções) explicados para leigo — por que isso importa
+        - histórias insólitas ou humanas envolvendo chefes de Estado, desde que verificadas (alto compartilhamento)
       avoid:
-        - pura opinião ou coluna tratada como fato
-        - declaração de político apresentada como fato independente
-        - especulação eleitoral sem base factual
-        - pauta de brigas de bastidores sem consequência institucional
+        - comunicação estatal ou propaganda de um dos lados tratada como fato neutro
+        - análise ou opinião de colunista apresentada como acontecimento
+        - especulação sobre resultado de negociação ou eleição sem base factual
+        - sensacionalismo de guerra; número de vítimas sem atribuição de fonte
+        - pauta doméstica de outro país sem relevância além das próprias fronteiras
     official_domains:
-      - jus.br      # TSE, TREs, STF, tribunais
-      - gov.br      # Executivo, Diário Oficial, IBGE
-      - leg.br      # Câmara, Senado, assembleias
+      - un.org
+      - imf.org
+      - worldbank.org
+      - europa.eu
+      - nato.int
+      - wto.org
+      - oecd.org
     extra_rules:
       - Distinguir sempre FACT, CLAIM, OPINION, POLL e OFFICIAL_DECISION no content_type.
-      - "Pesquisa eleitoral: preservar instituto, contratante, período de campo, amostra, margem de erro e registro no TSE quando disponíveis; NUNCA transformar pesquisa em previsão de resultado."
-      - "Declaração de candidato/político é alegação: escrever 'Fulano afirmou que...', nunca como fato."
+      - "Declaração de líder ou governo é alegação atribuída: 'Putin afirmou que...', nunca fato independente — e isso vale para TODOS os lados de um conflito."
+      - "Número econômico sempre com fonte e período de referência (ex.: 'dívida de 132% do PIB ao fim de 2024, segundo o FMI')."
+      - "Conflitos armados: baixas e números de vítimas sempre atribuídos ('segundo o governo X', 'segundo a ONU'); tom sóbrio, sem espetacularizar."
+      - "Eleições e referendos estrangeiros: percentual oficial com estágio da apuração; boca de urna não é resultado."
+      - Nomes de países, instituições e cargos em PT-BR (Islândia, Otan, FMI, premiê britânico).
       - Confiabilidade pesa MAIS que viralidade nesta vertical.
-      - "Direção visual: para pessoas reais, usar apenas AGENCY_PHOTO/PRESS_ASSET; NUNCA sugerir imagem gerada por IA retratando político real."
+      - "Direção visual: para pessoas reais, usar apenas AGENCY_PHOTO/PRESS_ASSET; NUNCA sugerir imagem gerada por IA retratando líder real."
 
   # ── FACTS ──────────────────────────────────────────────────────────
   - id: facts

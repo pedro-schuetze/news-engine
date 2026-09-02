@@ -42,7 +42,7 @@ export interface GeneratedAsset {
 
 const VERTICAL_MOOD: Record<string, string> = {
   politics:
-    "sober photojournalistic still life about institutions and democracy; muted blues and deep neutrals",
+    "sober photojournalistic still life about global affairs and diplomacy; muted blues and deep neutrals",
   entertainment:
     "cinematic pop-culture atmosphere: stage lights, film reels, concert haze; saturated color, dramatic contrast",
   facts:

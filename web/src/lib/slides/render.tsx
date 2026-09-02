@@ -23,7 +23,7 @@ export const SLIDE_H = 1350;
 
 const VERTICAL_UI: Record<string, { label: string; color: string }> = {
   entertainment: { label: "ENTRETENIMENTO", color: "#FF8A4C" },
-  politics: { label: "POLÍTICA", color: "#8FB0FF" },
+  politics: { label: "MUNDO", color: "#8FB0FF" },
   facts: { label: "FATOS", color: "#B9A5FF" },
 };
 

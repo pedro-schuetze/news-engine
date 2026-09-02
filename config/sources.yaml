@@ -53,7 +53,7 @@ sources:
     authority_score: 78
     language: pt
     country: BR
-    enabled: true
+    enabled: false  # 2026-09-02: vertical de política BR saiu (politics agora é Mundo); religar só se ela voltar
 
   - source_name: Agência Câmara
     url: https://www.camara.leg.br/noticias/rss
@@ -74,6 +74,49 @@ sources:
     country: BR
     vertical_hint: politics
     enabled: false   # TODO: confirmar URL exata do feed antes de ligar
+
+  # ── Mundo (política e economia internacionais) ───────────────────
+  # Feeds testados em 2026-09-02 (200 OK com itens). category: politics
+  # mapeia para a vertical Mundo via hint do router.
+  - source_name: BBC World News
+    url: https://feeds.bbci.co.uk/news/world/rss.xml
+    domain: bbc.com
+    category: politics
+    authority_score: 88
+    language: en
+    country: GB
+    vertical_hint: politics
+    enabled: true
+
+  - source_name: The Guardian World
+    url: https://www.theguardian.com/world/rss
+    domain: theguardian.com
+    category: politics
+    authority_score: 85
+    language: en
+    country: GB
+    vertical_hint: politics
+    enabled: true
+
+  - source_name: Al Jazeera English
+    url: https://www.aljazeera.com/xml/rss/all.xml
+    domain: aljazeera.com
+    category: politics
+    authority_score: 78
+    language: en
+    country: QA
+    vertical_hint: politics
+    enabled: true
+
+  - source_name: DW Brasil
+    url: https://rss.dw.com/rdf/rss-br-all
+    domain: dw.com
+    category: politics
+    authority_score: 80
+    language: pt
+    country: DE
+    vertical_hint: politics
+    enabled: true
 
   # ── Entretenimento ───────────────────────────────────────────────
   - source_name: Variety
@@ -229,6 +272,22 @@ domain_authority:
   planalto.gov.br: 95
   gov.br: 92
   ibge.gov.br: 92
+  # organismos multilaterais
+  un.org: 95
+  imf.org: 95
+  worldbank.org: 95
+  europa.eu: 92
+  nato.int: 92
+  wto.org: 92
+  oecd.org: 92
+  # imprensa internacional (Mundo)
+  aljazeera.com: 78
+  dw.com: 80
+  france24.com: 75
+  economist.com: 85
+  lemonde.fr: 80
+  elpais.com: 78
+  politico.eu: 72
   # institutos de pesquisa
   quaest.com.br: 75
   ipec-inteligencia.com.br: 75

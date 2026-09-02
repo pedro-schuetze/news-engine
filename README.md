@@ -2,7 +2,7 @@
 
 Redação automatizada de notícias: coleta diária da internet, identificação dos
 assuntos mais relevantes, classificação em verticais editoriais
-(**Entretenimento**, **Política**, **Fatos Interessantes**), seleção de 3-5
+(**Entretenimento**, **Mundo**, **Fatos Interessantes**), seleção de 3-5
 stories por vertical e geração de drafts de Instagram (headline, caption e
 carrossel com direção visual por slide) — tudo para revisão humana em um
 dashboard local antes de qualquer publicação.

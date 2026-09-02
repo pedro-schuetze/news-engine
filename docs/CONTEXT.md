@@ -118,8 +118,45 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       limitadas por config, não pelo volume coletado (medido em 02/09 com 24h:
       1.783 artigos, 22 chamadas, US$ 0,069).
 
+13. **2026-09-02 — Vertical POLITICS troca de escopo: política BR → Mundo
+    (política e economia internacionais).** Pedido do Pedro, com exemplos do
+    que deve entrar: aliança Paquistão/Arábia Saudita/Turquia, PIB da Índia
+    (+7,8%), referendo da Islândia sobre a UE, acordo Senegal-FMI, cúpula de
+    Xangai (Putin-Trump-Xi), trote no premiê britânico. Repare: 2 dos 6
+    exemplos são ECONOMIA global — o escopo é "mundo", não só política. Nome
+    de exibição: **Mundo** (escolha do Pedro entre Mundo/Internacional/
+    Geopolítica).
+    - O **id interno continua `politics`**, de propósito: runs antigos,
+      reviews, cores do dashboard e as regras de `ranking.yaml`
+      (verification_per_vertical, blend 30/70 trend/editorial) referenciam o
+      id, e o rigor de verificação/atribuição vale igual para geopolítica.
+      Custo aceito: runs antigos de política BR aparecem no histórico sob o
+      rótulo novo "Mundo" (cosmético).
+    - Política doméstica brasileira ficou SEM canal (eleições 2026 inclusive)
+      — decisão consciente do Pedro; se voltar, é criar vertical nova no
+      YAML e religar Poder360/Câmara/Senado em sources.yaml.
+    - Brasil entra só como ator externo (cúpulas, acordos, disputas
+      comerciais).
+    - Fontes novas (testadas 200 OK em 2026-09-02): BBC World, Guardian
+      World, Al Jazeera EN, DW Brasil (PT). Poder360 desligado.
+      domain_authority ganhou multilaterais (ONU/FMI/BM/UE/Otan/OMC/OCDE) e
+      imprensa internacional.
+    - Regras novas da vertical: número econômico sempre com fonte e período;
+      baixas de guerra sempre atribuídas (lados divergem); percentual de
+      referendo/eleição com estágio de apuração; nomes de países/instituições
+      em PT-BR; segue proibido IA retratando líder real.
+    - Moods visuais (illustrator.py, images.ts, generate.ts) trocados de
+      urnas/tribunas para mesa de cúpula/bandeiras/mapa-múndi.
+
 ## Pendências / dívidas conhecidas
 
+- [ ] **Writer: 2 defeitos observados no run de validação de 2026-09-02**
+  (corrigidos à mão nesse run): (1) `instagram_headline` veio truncada ("EUA
+  prometem"); candidato a guard = tamanho mínimo na validação do draft, MAS
+  atenção: validação nova em `models.py` pode quebrar a releitura de runs
+  antigos — verificar antes. (2) modelo escreveu "ex-presidente Trump"
+  (conhecimento interno desatualizado, não estava nas fontes); candidato a
+  regra nos prompts = "cargos/estados atuais só conforme as fontes".
 - [ ] **`CRON_SECRET` ainda não está nas env vars da Vercel** — enquanto não
   estiver, `/api/cron/run` responde 401 e quem entrega o run é a rede de
   segurança do GitHub às 11:00 UTC. Criar em Settings > Environment Variables
@@ -218,6 +255,14 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
    selecionadas em runs anteriores — repetição cai de ranking por design.
 
 ### Curto prazo (2-6 semanas)
+
+- **Verticais novas no backlog (pedido do Pedro, 2026-09-02): COMIDA e
+  ESPORTES.** Adicionar vertical = 1 bloco em `config/verticals.yaml`
+  (id, display_name, description, tone, queries, critérios, guidance,
+  extra_rules) + fontes em `sources.yaml` + cor/label em
+  `web/src/lib/slides/render.tsx`, `ui.ts`, `briefing.ts` e mood em
+  `illustrator.py`/`images.ts`/`generate.ts`. Atenção: MIN/MAX_STORIES_PER_VERTICAL
+  multiplica o custo por vertical (~+US$ 0,02-0,03/run cada).
 - Calibração de ranking com o approval rate acumulado (meta: >70% por vertical).
 - Ligar/expandir fontes RSS (confirmar feeds oficiais Câmara/Senado; adicionar
   fontes de entretenimento BR melhores que fofoca).
