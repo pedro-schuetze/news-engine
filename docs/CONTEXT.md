@@ -262,6 +262,20 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     Ideia anotada, não feita: usar a caixa do rosto também no FRAMING
     (recorte/zoom por slide hoje é fixo e pode cortar rosto na borda).
 
+19. **2026-09-02 — Grid topo/meio/base sob cada slide: override manual do
+    posicionamento do texto.** Proposta do Pedro ("continua com as sugestões,
+    mas se eu quiser alterar, clico no grid"): a análise automática (contraste
+    + veto de rosto) segue sendo a sugestão; a palavra final é um clique na
+    revisão. `POST /api/media/<story>/placement` grava o override no
+    slide_media do slide E na candidata do pool (a escolha "gruda" na foto:
+    re-selecionar a mesma imagem depois preserva o ajuste; trocar para OUTRA
+    imagem usa a análise daquela imagem). Só JSONs mudam. UI:
+    `PlacementPicker` (▔/▬/▁) sob cada preview de slide com imagem; o preview
+    re-renderiza na hora. Validado local: override 200 aplicado nos dois
+    lugares, slide sem imagem responde 400 com orientação, 10 pickers no DOM
+    com ativo correto. A rota já aceita `align` opcional se um dia o grid
+    virar 3x3.
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~Prompt do ChatGPT gerava colagem com sombra embutida~~ — corrigido em

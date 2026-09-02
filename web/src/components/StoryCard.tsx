@@ -5,6 +5,7 @@ import CopyButton from "./CopyButton";
 import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
 import SlidePicker from "./SlidePicker";
+import PlacementPicker from "./PlacementPicker";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
 
@@ -186,17 +187,31 @@ export default function StoryCard({
               {!hasImages && " — sem imagens ainda"}
             </summary>
             <div className="mt-2 grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-5">
-              {draft.slides.map((s) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={s.slide_number}
-                  src={`/api/slide/${story.story_id}/${s.slide_number}?run=${encodeURIComponent(runFile)}`}
-                  alt={`Slide ${s.slide_number}`}
-                  loading="lazy"
-                  className="w-full rounded-lg border border-line bg-panel-2"
-                  style={{ aspectRatio: "1080 / 1350" }}
-                />
-              ))}
+              {draft.slides.map((s) => {
+                const media = (story.slide_media ?? []).find(
+                  (m) => m.slide_number === s.slide_number,
+                );
+                return (
+                  <div key={s.slide_number} className="flex flex-col">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/api/slide/${story.story_id}/${s.slide_number}?run=${encodeURIComponent(runFile)}`}
+                      alt={`Slide ${s.slide_number}`}
+                      loading="lazy"
+                      className="w-full rounded-lg border border-line bg-panel-2"
+                      style={{ aspectRatio: "1080 / 1350" }}
+                    />
+                    {media && (
+                      <PlacementPicker
+                        storyId={story.story_id}
+                        runFile={runFile}
+                        slideNumber={s.slide_number}
+                        current={media.text_placement}
+                      />
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
               <p className="font-mono text-[11px] text-ink-3">
