@@ -1657,20 +1657,20 @@
               "story_id": "f7ff5458-2c70-43e6-a0cc-9d9df9af4091",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/b0970b6bb16.jpg",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-2.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "The White House from Washington, DC · Public domain · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "The White House from Washington, DC · Public domain · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "BOTTOM",
-              "text_align": "left",
+              "text_placement": "CENTER",
+              "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null
             },
