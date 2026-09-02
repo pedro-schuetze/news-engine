@@ -1,0 +1,185 @@
+{
+  "run_id": "manual-mtk6aoku-731",
+  "mode": "manual",
+  "started_at": "2026-09-02T14:10:32.823Z",
+  "finished_at": "2026-09-02T14:10:32.823Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "manual": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2771,
+    "estimated_output_tokens": 3171,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "manual-mtk6aoku-731",
+          "run_id": "manual-mtk6aoku-731",
+          "cluster_id": "manual-mtk6aoku-731",
+          "vertical": "facts",
+          "title": "Arábia Saudita, Turquia e Paquistão fazem primeiro encontro da nova aliança militar do mundo | G1",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "post criado manualmente a partir de link",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "post manual: sem score de trend/editorial"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 5,
+            "independent_source_count": 5,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "manual-mtk6aoku-731-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/jornal-nacional/noticia/2026/08/31/arabia-saudita-turquia-e-paquistao-fazem-primeiro-encontro-da-nova-alianca-militar-do-mundo.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-08-31T21:26:59.270-03:00",
+              "source_type": "media",
+              "authority_score": 50
+            },
+            "supporting_sources": [
+              {
+                "article_id": "manual-mtk6aoku-731-1",
+                "name": "oliberal.com",
+                "url": "https://www.oliberal.com/mundo/paquistao-arabia-saudita-e-turquia-tomam-primeiras-decisoes-conjuntas-apos-acordo-de-meca-1.1163323",
+                "source_domain": "oliberal.com",
+                "published_at": "2026-08-31T18:42:47-03:00",
+                "source_type": "media",
+                "authority_score": 50
+              },
+              {
+                "article_id": "manual-mtk6aoku-731-2",
+                "name": "aljazeera.com",
+                "url": "https://www.aljazeera.com/news/2026/8/31/pakistan-saudi-arabia-turkiye-meet-whats-next-for-their-defence-pact",
+                "source_domain": "aljazeera.com",
+                "published_at": null,
+                "source_type": "media",
+                "authority_score": 50
+              },
+              {
+                "article_id": "manual-mtk6aoku-731-3",
+                "name": "thedailystar.net",
+                "url": "https://www.thedailystar.net/slow-reads/geopolitical-insights/news/the-mecca-pact-deterrence-israel-and-the-new-gulf-security-equation-4259536",
+                "source_domain": "thedailystar.net",
+                "published_at": null,
+                "source_type": "media",
+                "authority_score": 50
+              },
+              {
+                "article_id": "manual-mtk6aoku-731-4",
+                "name": "newarab.com",
+                "url": "https://www.newarab.com/news/saudi-arabia-turkey-pakistan-advance-steps-mecca-pact",
+                "source_domain": "newarab.com",
+                "published_at": null,
+                "source_type": "media",
+                "authority_score": 50
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "Post manual a partir de 5 link(s) informado(s) pelo editor."
+          },
+          "draft": {
+            "draft_id": "manual-m-mtk6bfuf",
+            "story_id": "manual-mtk6aoku-731",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Arábia Saudita, Turquia e Paquistão fazem primeiro encontro da nova aliança militar do mundo | G1",
+            "instagram_headline": "Países fazem primeiro encontro da nova aliança militar",
+            "short_summary": "Arábia Saudita, Turquia e Paquistão realizaram o primeiro encontro formal da nova aliança militar. Os países divulgaram um comunicado conjunto e citaram preocupações com o Irã e com ações militares de Israel.",
+            "why_it_matters": "A aliança pode alterar o equilíbrio de poder no Oriente Médio e no Sul da Ásia, além de testar cooperações entre aliados dos Estados Unidos. A expansão ou institucionalização do acordo pode ter impacto em crises regionais.",
+            "key_facts": [
+              "Os três países fizeram o primeiro encontro formal da aliança militar.",
+              "Eles são de maioria muçulmana sunita e são aliados dos Estados Unidos.",
+              "O encontro incluiu um comunicado conjunto sobre cooperação em defesa.",
+              "Citaram preocupações com o Irã e com ações militares de Israel.",
+              "Há intenção de institucionalizar a cooperação e avaliar possíveis novos membros."
+            ],
+            "caption": "Primeiro encontro formal da chamada \"aliança de Meca\" reúne Arábia Saudita, Turquia e Paquistão.\n\nOs três países divulgaram um comunicado conjunto sobre cooperação em defesa e medidas de dissuasão, segundo o G1. O texto oficial enfatizou a busca por \"paz e estabilidade sustentáveis\", conforme comunicado do Ministério das Relações Exteriores do Paquistão citado pela imprensa.\n\nO grupo é formado por países de maioria muçulmana sunita que mantêm laços com os Estados Unidos e agora tentam coordenar respostas a ameaças regionais, incluindo preocupações com o Irã e críticas às ações militares de Israel. Analistas citados pela Al Jazeera apontam que o pacto será testado na prática quando surgirem crises e que pode atrair outros países aliados.\n\nNão há cronograma público para a institucionalização do acordo nem lista oficial de medidas militares conjuntas. Os comunicados falam em fortalecer dissuasão e em passos para formalizar a cooperação. Acompanhe os desdobramentos e decisões oficiais. Siga para acompanhar.",
+            "hashtags": [
+              "#OrienteMédio",
+              "#SegurançaInternacional",
+              "#AliançaMilitar",
+              "#facts"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Arábia Saudita, Turquia e Paquistão se reúnem",
+                "body": "O primeiro encontro formal da nova aliança militar aconteceu hoje, segundo o G1; **primeiro encontro formal** marca início de cooperação mais visível.",
+                "image_direction": "Foto lateral ampla mostrando delegações dos três países sentadas à mesa em sala de conferência, com placas de país visíveis e microfones; clima formal, iluminação neutra.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Contexto",
+                "body": "Os três países são de maioria muçulmana sunita e aliados dos Estados Unidos. Eles compartilharam preocupações com o Irã e com ações militares de Israel, segundo o G1.",
+                "image_direction": "Mapa simplificado da região do Oriente Médio e Sul da Ásia destacando Arábia Saudita, Turquia e Paquistão com linhas que conectam os três países; estilo claro e informativo.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Fatos principais",
+                "body": "Os países divulgaram um comunicado conjunto sobre cooperação em defesa e dissuasão. Eles disseram trabalhar por paz e estabilidade e avaliaram passos para **institucionalizar** a aliança.",
+                "image_direction": "Imagem focalizada em um documento oficial sobre a mesa com canetas e tablet; ao fundo, silhueta de autoridades conversando, transmitindo a ideia de comunicado conjunto.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "A aliança pode influenciar o balanço de poder regional e a resposta a crises envolvendo Irã e confrontos com Israel. Pode também abrir espaço para que outros países se aproximem.",
+                "image_direction": "Ilustração conceitual mostrando setas que partem dos três países para um mapa regional, sugerindo influência e alianças; visual limpo, cores sóbrias.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "Os governos falaram em passos para institucionalizar a cooperação e avaliar possíveis novos membros, mas não divulgaram cronograma. Haverá acompanhamento das decisões oficiais e dos próximos encontros.",
+                "image_direction": "Foto conceitual de reunião de ministros vista de cima, com pastas e calendários na mesa, sugerindo planejamento e próximos passos; imagem realista e formal.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-02T14:10:32.823Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-08-31T21:26:59.270-03:00",
+          "latest_published_at": "2026-08-31T21:26:59.270-03:00",
+          "selection_rank": 1,
+          "created_at": "2026-09-02T14:10:32.823Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
