@@ -4,6 +4,7 @@ import { fmtLocal } from "@/lib/format";
 import { verticalStyle } from "@/lib/ui";
 import CopyButton from "./CopyButton";
 import ExportButton from "./ExportButton";
+import { slideVersion } from "@/lib/slides/version";
 
 /**
  * Card do feed interno: o post como ele vai sair, com as imagens grandes, a
@@ -25,7 +26,7 @@ export default function ReadyPostCard({
   const hasImages = (story.slide_media?.length ?? 0) > 0;
   const captionFull = `${draft.caption}\n\n${draft.hashtags.join(" ")}`;
   const slideUrl = (n: number) =>
-    `/api/slide/${story.story_id}/${n}?run=${encodeURIComponent(runFile)}`;
+    `/api/slide/${story.story_id}/${n}?run=${encodeURIComponent(runFile)}&v=${slideVersion(story, n)}`;
 
   return (
     <article className="overflow-hidden rounded-2xl border border-line bg-panel">

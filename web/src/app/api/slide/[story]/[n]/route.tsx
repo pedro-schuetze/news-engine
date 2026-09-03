@@ -45,6 +45,14 @@ export async function GET(
 
   const image = await renderSlide(specs[n - 1]);
   // runs são imutáveis; o CDN da Vercel pode segurar por 10min sem risco
-  image.headers.set("Cache-Control", "public, s-maxage=600, stale-while-revalidate=3600");
+  // URL com ?v= (hash do conteúdo) pode viver para sempre no browser e no
+  // CDN — o v muda quando o slide muda. Sem v, mantém o cache curto antigo.
+  const versioned = new URL(request.url).searchParams.has("v");
+  image.headers.set(
+    "Cache-Control",
+    versioned
+      ? "public, max-age=31536000, s-maxage=31536000, immutable"
+      : "public, s-maxage=600, stale-while-revalidate=3600",
+  );
   return image;
 }

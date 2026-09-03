@@ -5,6 +5,7 @@ import CopyButton from "./CopyButton";
 import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
 import PostMedia from "./PostMedia";
+import { slideVersion } from "@/lib/slides/version";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
 
@@ -204,6 +205,9 @@ export default function StoryCard({
                       { path: m?.local_path ?? null, placement: m?.text_placement ?? "CENTER" },
                     ];
                   }),
+                )}
+                initialVersions={Object.fromEntries(
+                  draft.slides.map((s) => [s.slide_number, slideVersion(story, s.slide_number)]),
                 )}
               />
             </div>

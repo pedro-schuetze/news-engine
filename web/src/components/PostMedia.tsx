@@ -34,6 +34,7 @@ export default function PostMedia({
   slides,
   pool,
   initialSelection,
+  initialVersions,
 }: {
   storyId: string;
   runFile: string;
@@ -41,9 +42,11 @@ export default function PostMedia({
   pool: MediaCandidate[];
   /** slide_number -> { path da imagem escolhida, placement atual } */
   initialSelection: Record<number, SlideSel>;
+  /** ?v= por slide calculado no servidor (cache immutable no browser) */
+  initialVersions: Record<number, string>;
 }) {
   const [sel, setSel] = useState<Record<number, SlideSel>>(initialSelection);
-  const [ver, setVer] = useState<Record<number, number>>({});
+  const [ver, setVer] = useState<Record<number, string | number>>(initialVersions);
   const [busySlide, setBusySlide] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 

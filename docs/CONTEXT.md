@@ -304,6 +304,15 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] ~~Prontos levava ~20s para carregar~~ — 2026-09-02 fase 1: os slides
+  renderizados agora têm URL versionada por conteúdo (`?v=` = hash de draft +
+  imagem + placement + foco + DESIGN_VERSION em `slides/version.ts`) e a rota
+  responde `immutable` — o NAVEGADOR guarda cada slide para sempre
+  (sobrevive aos deploys, que zeram o edge da Vercel); só o que muda é
+  re-baixado. Fase 2 em andamento: Cloudflare R2 para `data/media/`
+  (gravação sem commit, leitura via CDN). Fase 3 anotada: slides
+  pré-renderizados no R2 na aprovação (mataria a primeira visita e o export
+  de 125s).
 - [x] ~~Revisão de mídia "travava" (reclamação do Pedro)~~ — 2026-09-02:
   cada clique (trocar imagem/posição) fazia `router.refresh()`, re-renderizando
   a página inteira e re-buscando TODOS os previews satori (1-3s cada).
