@@ -322,6 +322,22 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação
+  em produção cravou: render_ms = 25-30s (satori) era ~95% do clique; load/
+  specs/put somam <1,5s. Mudanças: (1) buildSlideSpecs ganhou `only` + carga
+  de mídia paralela; (2) select/placement respondem NA HORA e rodam render +
+  commit no after(); (3) /api/slide?waitless=1 responde "pronto?/404" sem
+  nunca renderizar; o PostMedia polla a cada 2s e troca o preview sozinho
+  (badge "renderizando…", pending POR SLIDE — os demais ficam livres);
+  (4) functionDefaultMemoryType=standard no projeto (máx do Hobby; memory
+  3009 no vercel.json fazia a Vercel REJEITAR o push em silêncio — limite
+  2048); (5) ignoreCommand: commits só de data/ não geram mais deploy (cada
+  clique disparava um build e invalidava o edge). Medido pós-deploy: POST
+  0,4-1,2s; render novo pronto em ~28s (satori é o piso); render já existente
+  (mesma versão) pronto em ~2s.
+  **Próxima alavanca se os ~28s incomodarem:** preview em resolução menor
+  (540x675 renderiza ~4-6x mais rápido; o 1080 full ficaria para export/
+  publicação) — anotado, não feito.
 - [x] **Fase 3 (2026-09-03): slides pré-renderizados no R2.** O PNG de cada
   slide é artefato imutável em `renders/<story>/<n>-<v>.png` (v =
   slideVersion). A rota /api/slide faz read-through (serve o PNG pronto do
