@@ -14,10 +14,20 @@ import * as ghSource from "./sources/github";
 import type { PipelineRun, Review, RunListItem, Story } from "./types";
 
 // trim: valores de env criados via CLI no Windows podem carregar "\r"
+// Decisão 2026-09-03 (Pedro): estado (runs/reviews/learned) fica no GitHub —
+// versionado e auditável, "como um projeto normal". O Cloudflare R2 guarda
+// APENAS mídia e renders (ver media/storage.ts). Um modo "estado no R2"
+// chegou a ser implementado e foi revertido: com o commit rodando após a
+// resposta (after) ele não ganhava latência que justificasse perder o git.
 export const DATA_MODE: "fs" | "github" =
   (process.env.NEWS_DATA_SOURCE ?? "fs").trim().toLowerCase() === "github" ? "github" : "fs";
 
 const src = DATA_MODE === "github" ? ghSource : fsSource;
+
+/** fonte ativa — para quem grava fora desta fachada (persistRun etc.) */
+export function dataSource() {
+  return src;
+}
 
 /** Dica de diagnóstico para estados vazios (ex.: token faltando em produção). */
 export function dataHint(): string | null {

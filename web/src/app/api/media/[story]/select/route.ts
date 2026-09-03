@@ -10,6 +10,7 @@ import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
 import { applySelection, findStory, persistMedia } from "@/lib/media/persist";
 import { prerenderSlides } from "@/lib/slides/prerender";
+import { slideVersion } from "@/lib/slides/version";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -55,18 +56,30 @@ export async function POST(
 
   try {
     applySelection(story, slideNumber, candidate);
-    after(() => prerenderSlides(story, [slideNumber]));
-    const where = await persistMedia(
-      [],
-      run,
-      runFile,
-      `media: slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${candidateId}`,
-    );
+    // ordem invertida (2026-09-03): o front só precisa do RENDER novo para
+    // atualizar o preview — então renderizamos antes de responder e deixamos
+    // o commit (2-4s de GitHub API) para depois da resposta. O clique cai de
+    // ~4-6s + render ao vivo para ~2-3s + hit no bucket.
+    await prerenderSlides(story, [slideNumber]);
+    const v = slideVersion(story, slideNumber);
+    after(async () => {
+      try {
+        await persistMedia(
+          [],
+          run,
+          runFile,
+          `media: slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${candidateId}`,
+        );
+      } catch (e) {
+        console.error(`[select] persistência falhou: ${String(e).slice(0, 200)}`);
+      }
+    });
     return NextResponse.json({
       ok: true,
       slide_number: slideNumber,
       candidate_id: candidateId,
-      persisted_to: where,
+      v,
+      persist: "async",
     });
   } catch (e) {
     return NextResponse.json({ error: String(e).slice(0, 300) }, { status: 500 });

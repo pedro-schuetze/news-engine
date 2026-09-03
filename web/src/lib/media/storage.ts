@@ -65,7 +65,7 @@ export async function r2Put(key: string, bytes: Buffer, contentType: string): Pr
   }
 }
 
-/** Leitura direta (para análise/thumbs); via URL pública, com fallback assinado. */
+/** Leitura para MÍDIA (chaves imutáveis): URL pública/CDN, fallback assinado. */
 export async function r2Get(key: string): Promise<Buffer | null> {
   try {
     const pub = await fetch(r2PublicUrl(key), { cache: "no-store" });

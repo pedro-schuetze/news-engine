@@ -17,6 +17,7 @@ import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
 import { findStory, persistMedia } from "@/lib/media/persist";
 import { prerenderSlides } from "@/lib/slides/prerender";
+import { slideVersion } from "@/lib/slides/version";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -79,19 +80,28 @@ export async function POST(
   }
 
   try {
-    after(() => prerenderSlides(story, [slideNumber]));
-    const where = await persistMedia(
-      [],
-      run,
-      runFile,
-      `media: texto do slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${placement}`,
-    );
+    // render antes da resposta; commit depois (ver select/route.ts)
+    await prerenderSlides(story, [slideNumber]);
+    const v = slideVersion(story, slideNumber);
+    after(async () => {
+      try {
+        await persistMedia(
+          [],
+          run,
+          runFile,
+          `media: texto do slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${placement}`,
+        );
+      } catch (e) {
+        console.error(`[placement] persistência falhou: ${String(e).slice(0, 200)}`);
+      }
+    });
     return NextResponse.json({
       ok: true,
       slide_number: slideNumber,
       placement: asset.text_placement,
       align: asset.text_align,
-      persisted_to: where,
+      v,
+      persist: "async",
     });
   } catch (e) {
     return NextResponse.json({ error: String(e).slice(0, 300) }, { status: 500 });

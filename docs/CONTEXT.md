@@ -302,6 +302,24 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       run_id do latest (persist.ts e compose/persistRun.ts); o latest de
       produção foi restaurado para o run de 02/09.
 
+21. **2026-09-03 — Divisão definitiva de responsabilidades (decisão do
+    Pedro): GitHub = estado; Cloudflare R2 = mídia e renders.** Runs, reviews,
+    learned e docs continuam como commits — versionados, auditáveis, "como um
+    projeto normal". O R2 guarda os binários (pool de fotos) e os PNGs
+    pré-renderizados dos slides. Um modo "estado no R2" chegou a ser
+    implementado e foi REVERTIDO no mesmo dia: com o commit rodando após a
+    resposta (`after()`), ele não ganhava latência que justificasse perder o
+    versionamento (e trazia complexidade real: latest dinâmico, mescla
+    GitHub→R2, cache do edge servindo estado velho).
+    - O que fica do trabalho de performance nos cliques: as rotas
+      select/placement RENDERIZAM antes de responder e devolvem o `v` de
+      conteúdo (o front usava um timestamp que nunca achava o render no
+      bucket — bug corrigido); o commit do estado roda depois da resposta,
+      fora do caminho percebido. Clique em produção ≈ tempo de 1 satori
+      (~2-4s) com spinner no slide; preview seguinte = hit no R2.
+    - Latências de teste em dev não são representativas (satori de dev
+      compila/roda 5-10x mais lento que produção).
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Fase 3 (2026-09-03): slides pré-renderizados no R2.** O PNG de cada

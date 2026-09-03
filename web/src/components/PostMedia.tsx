@@ -53,26 +53,28 @@ export default function PostMedia({
   const runQs = `run=${encodeURIComponent(runFile)}`;
   const ordered = [...pool].sort((a, b) => b.score - a.score);
 
-  function bump(n: number) {
-    setVer((v) => ({ ...v, [n]: Date.now() }));
+  function bump(n: number, v?: string) {
+    // o v vindo do servidor é a chave do render já pronto no bucket; o
+    // timestamp é só fallback (forçaria um render ao vivo)
+    setVer((prev) => ({ ...prev, [n]: v ?? Date.now() }));
   }
 
-  async function post(url: string, body: unknown): Promise<boolean> {
+  async function post(url: string, body: unknown): Promise<{ ok: boolean; v?: string }> {
     try {
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      const b = (await res.json().catch(() => ({}))) as { error?: string; v?: string };
       if (!res.ok) {
-        const b = (await res.json().catch(() => ({}))) as { error?: string };
         setError(b.error ?? `falha (HTTP ${res.status})`);
-        return false;
+        return { ok: false };
       }
-      return true;
+      return { ok: true, v: b.v };
     } catch (e) {
       setError(String(e).slice(0, 160));
-      return false;
+      return { ok: false };
     }
   }
 
@@ -83,11 +85,11 @@ export default function PostMedia({
     setError(null);
     // otimista: highlight e placement mudam já
     setSel((s) => ({ ...s, [n]: { path: c.local_path, placement: c.text_placement } }));
-    const ok = await post(`/api/media/${storyId}/select?${runQs}`, {
+    const r = await post(`/api/media/${storyId}/select?${runQs}`, {
       slide_number: n,
       candidate_id: c.id,
     });
-    if (ok) bump(n);
+    if (r.ok) bump(n, r.v);
     else setSel((s) => ({ ...s, [n]: prev }));
     setBusySlide(null);
   }
@@ -98,11 +100,11 @@ export default function PostMedia({
     setBusySlide(n);
     setError(null);
     setSel((s) => ({ ...s, [n]: { ...s[n], placement } }));
-    const ok = await post(`/api/media/${storyId}/placement?${runQs}`, {
+    const r = await post(`/api/media/${storyId}/placement?${runQs}`, {
       slide_number: n,
       placement,
     });
-    if (ok) bump(n);
+    if (r.ok) bump(n, r.v);
     else setSel((s) => ({ ...s, [n]: prev }));
     setBusySlide(null);
   }

@@ -7,9 +7,7 @@
  * (Prontos e Histórico leem data/runs/, não o latest).
  */
 
-import { DATA_MODE, findRunFile, loadRun } from "../data";
-import * as fsSource from "../sources/fs";
-import * as ghSource from "../sources/github";
+import { DATA_MODE, dataSource, findRunFile, loadRun } from "../data";
 import type { PipelineRun } from "../types";
 
 export async function persistRun(
@@ -21,7 +19,7 @@ export async function persistRun(
   const isManual = runFile.startsWith("manual_");
   const targets: string[] = [];
 
-  // latest só é alvo quando o run editado É o latest (mesmo bug do persistMedia)
+  // latest só é alvo quando o run editado É o latest
   if (!isManual) {
     if (runFile === "latest") {
       targets.push("data/latest.json");
@@ -33,7 +31,7 @@ export async function persistRun(
   const historyFile = runFile && runFile !== "latest" ? runFile : await findRunFile(run.run_id);
   if (historyFile) targets.push(`data/runs/${historyFile}`);
 
-  const src = DATA_MODE === "github" ? ghSource : fsSource;
+  const src = dataSource();
   for (const target of targets) {
     await src.writeTextFile(target, payload, message);
   }
@@ -45,6 +43,5 @@ export async function deleteManualRun(runFile: string): Promise<void> {
   if (!/^manual_[\w.-]+\.json$/.test(runFile)) {
     throw new Error("só runs manuais podem ser descartados");
   }
-  const src = DATA_MODE === "github" ? ghSource : fsSource;
-  await src.deleteFile(`data/runs/${runFile}`, `discard: ${runFile}`);
+  await dataSource().deleteFile(`data/runs/${runFile}`, `discard: ${runFile}`);
 }
