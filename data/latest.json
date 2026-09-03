@@ -530,21 +530,21 @@
               "story_id": "26b2c1bf-190c-4ed0-9af6-ba9cb6d95448",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/slide_1.jpg",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b16c455bb0f.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Curtis Hilbun · CC BY 3.0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+                "attribution_text": "Curtis Hilbun · CC BY 3.0 · Wikimedia"
               },
               "text_placement": "BOTTOM",
               "text_align": "left",
-              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
+              "prompt": "",
               "estimated_cost_usd": null
             },
             {
