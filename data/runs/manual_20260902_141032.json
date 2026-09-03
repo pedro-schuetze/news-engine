@@ -202,7 +202,7 @@
               "story_id": "manual-mtk6aoku-731",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/manual-mtk6aoku-731/pool/umtkyvooi-2.jpg",
+              "local_path": "data/media/manual-mtk6aoku-731/pool/umtkyvooi-4.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -214,12 +214,12 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "BOTTOM",
-              "text_align": "center",
+              "text_placement": "TOP",
+              "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.5,
-              "focus_y": 0.25
+              "focus_x": 0.53,
+              "focus_y": 0.32
             },
             {
               "asset_id": "manual-m-s3",
