@@ -1263,31 +1263,7 @@
               "story_id": "d04cad5d-97cf-42bf-a85f-9fc5c9fc3859",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/d04cad5d-97cf-42bf-a85f-9fc5c9fc3859/pool/umtlscl97-1.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 960,
-              "height": 1440,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "right",
-              "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.45,
-              "focus_y": 0.4
-            },
-            {
-              "asset_id": "d04cad5d-s2",
-              "story_id": "d04cad5d-97cf-42bf-a85f-9fc5c9fc3859",
-              "slide_number": 2,
-              "type": "image",
-              "local_path": "data/media/d04cad5d-97cf-42bf-a85f-9fc5c9fc3859/pool/umtlsyjpl-3.jpg",
+              "local_path": "data/media/d04cad5d-97cf-42bf-a85f-9fc5c9fc3859/pool/umtlsyjpl-4.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -1303,8 +1279,32 @@
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.58,
-              "focus_y": 0.61
+              "focus_x": 0.57,
+              "focus_y": 0.57
+            },
+            {
+              "asset_id": "d04cad5d-s2",
+              "story_id": "d04cad5d-97cf-42bf-a85f-9fc5c9fc3859",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/d04cad5d-97cf-42bf-a85f-9fc5c9fc3859/pool/umtlscl97-2.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 960,
+              "height": 1440,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.6,
+              "focus_y": 0.67
             },
             {
               "asset_id": "d04cad5d-s3",
