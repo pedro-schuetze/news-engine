@@ -286,7 +286,7 @@
                 "attribution_required": true,
                 "attribution_text": "Shawn Miller/Library of Congress · CC0 · Wikimedia"
               },
-              "text_placement": "BOTTOM",
+              "text_placement": "CENTER",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -634,6 +634,112 @@
               "text_align": "right",
               "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
               "estimated_cost_usd": null
+            }
+          ],
+          "media_pool": [
+            {
+              "id": "b16c455bb0f",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b16c455bb0f.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Curtis Hilbun · CC BY 3.0 · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
+              "score": 94,
+              "score_notes": "relevância 100 · texto 86 · nitidez 96",
+              "added_at": "2026-09-03T01:43:44.252Z"
+            },
+            {
+              "id": "b397938f7e0",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b397938f7e0.png",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/png",
+              "credit": "Dolly Parton · Public domain · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 65,
+              "score_notes": "relevância 88 · texto 50 · nitidez 50",
+              "added_at": "2026-09-03T01:43:41.193Z"
+            },
+            {
+              "id": "bd7c1bc4134",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/bd7c1bc4134.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Mel Melcon, Los Angeles Times · CC BY 4.0 · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 82,
+              "score_notes": "relevância 76 · texto 84 · nitidez 89",
+              "added_at": "2026-09-03T01:43:44.392Z"
+            },
+            {
+              "id": "b3c4fe097f7",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b3c4fe097f7.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Peabody Awards · CC BY-SA 3.0 · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 70,
+              "score_notes": "relevância 64 · texto 55 · nitidez 100",
+              "added_at": "2026-09-03T01:43:45.006Z"
+            },
+            {
+              "id": "bb43a896e0f",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/bb43a896e0f.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "United States Congress · Public domain · Wikimedia",
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "score": 62,
+              "score_notes": "relevância 52 · texto 56 · nitidez 88",
+              "added_at": "2026-09-03T01:43:44.842Z"
+            },
+            {
+              "id": "b2c8915d382",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b2c8915d382.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "RCA Records · Public domain · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "left",
+              "score": 54,
+              "score_notes": "relevância 40 · texto 44 · nitidez 91",
+              "added_at": "2026-09-03T01:43:44.679Z"
+            },
+            {
+              "id": "b41f40591b5",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b41f40591b5.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Moeller Talent, Inc. Nashville · Public domain · Wikimedia",
+              "text_placement": "CENTER",
+              "text_align": "center",
+              "score": 52,
+              "score_notes": "relevância 40 · texto 38 · nitidez 90",
+              "added_at": "2026-09-03T01:43:44.928Z"
+            },
+            {
+              "id": "bb806634c65",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/bb806634c65.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "DominusVobiscum · CC BY 2.0 · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "left",
+              "score": 67,
+              "score_notes": "relevância 40 · texto 75 · nitidez 100",
+              "added_at": "2026-09-03T01:43:44.796Z"
             }
           ]
         },
