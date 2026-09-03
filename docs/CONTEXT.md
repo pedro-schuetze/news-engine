@@ -278,6 +278,15 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] ~~Revisão de mídia "travava" (reclamação do Pedro)~~ — 2026-09-02:
+  cada clique (trocar imagem/posição) fazia `router.refresh()`, re-renderizando
+  a página inteira e re-buscando TODOS os previews satori (1-3s cada).
+  `PostMedia.tsx` unifica previews + seleção + posição com estado local
+  otimista: o highlight muda na hora e, confirmado o POST, só o preview do
+  slide afetado recarrega (`?v=` cache-buster). Provado no browser: zero
+  reload da página, 1 único img re-buscado. SlidePicker/PlacementPicker
+  standalone removidos (fundidos). Busca no banco e upload continuam com
+  refresh global (mudam pool inteiro; acontecem 1x por post).
 - [x] ~~Logo GPB em texto (aproximação)~~ — 2026-09-02: Pedro entregou os
   PNGs oficiais (principal com NEWS + monograma). Processados com Pillow em
   `web/public/brand/`: originais otimizados, variantes ivory p/ foto

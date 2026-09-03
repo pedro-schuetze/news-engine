@@ -4,8 +4,7 @@ import { CONTENT_TYPE_LABEL, REVIEW_UI, VERIFICATION_UI, verticalStyle } from "@
 import CopyButton from "./CopyButton";
 import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
-import SlidePicker from "./SlidePicker";
-import PlacementPicker from "./PlacementPicker";
+import PostMedia from "./PostMedia";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
 
@@ -186,32 +185,27 @@ export default function StoryCard({
               Post renderizado ({draft.slides.length} slides)
               {!hasImages && " — sem imagens ainda"}
             </summary>
-            <div className="mt-2 grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-5">
-              {draft.slides.map((s) => {
-                const media = (story.slide_media ?? []).find(
-                  (m) => m.slide_number === s.slide_number,
-                );
-                return (
-                  <div key={s.slide_number} className="flex flex-col">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/api/slide/${story.story_id}/${s.slide_number}?run=${encodeURIComponent(runFile)}`}
-                      alt={`Slide ${s.slide_number}`}
-                      loading="lazy"
-                      className="w-full rounded-lg border border-line bg-panel-2"
-                      style={{ aspectRatio: "1080 / 1350" }}
-                    />
-                    {media && (
-                      <PlacementPicker
-                        storyId={story.story_id}
-                        runFile={runFile}
-                        slideNumber={s.slide_number}
-                        current={media.text_placement}
-                      />
-                    )}
-                  </div>
-                );
-              })}
+            <div className="mt-2">
+              <PostMedia
+                storyId={story.story_id}
+                runFile={runFile}
+                slides={draft.slides.map((s) => ({
+                  n: s.slide_number,
+                  label: s.headline || s.role,
+                }))}
+                pool={story.media_pool ?? []}
+                initialSelection={Object.fromEntries(
+                  draft.slides.map((s) => {
+                    const m = (story.slide_media ?? []).find(
+                      (x) => x.slide_number === s.slide_number,
+                    );
+                    return [
+                      s.slide_number,
+                      { path: m?.local_path ?? null, placement: m?.text_placement ?? "CENTER" },
+                    ];
+                  }),
+                )}
+              />
             </div>
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
               <p className="font-mono text-[11px] text-ink-3">
@@ -227,22 +221,6 @@ export default function StoryCard({
                 briefing={buildChatGptBriefing(story)}
               />
             </div>
-            {(story.media_pool?.length ?? 0) > 0 && (
-              <div className="mt-3 border-t border-line pt-3">
-                <SlidePicker
-                  storyId={story.story_id}
-                  runFile={runFile}
-                  slides={draft.slides.map((s) => ({
-                    n: s.slide_number,
-                    label: s.headline || s.role,
-                  }))}
-                  pool={story.media_pool ?? []}
-                  selectedPaths={Object.fromEntries(
-                    (story.slide_media ?? []).map((m) => [m.slide_number, m.local_path]),
-                  )}
-                />
-              </div>
-            )}
           </details>
         )}
 
