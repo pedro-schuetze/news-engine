@@ -56,14 +56,12 @@ export async function POST(
 
   try {
     applySelection(story, slideNumber, candidate);
-    // ordem invertida (2026-09-03): o front só precisa do RENDER novo para
-    // atualizar o preview — então renderizamos antes de responder e deixamos
-    // o commit (2-4s de GitHub API) para depois da resposta. O clique cai de
-    // ~4-6s + render ao vivo para ~2-3s + hit no bucket.
-    await prerenderSlides(story, [slideNumber]);
+    // resposta imediata; render + commit no after (o dashboard polla
+    // ?waitless= ate o PNG novo existir e troca o preview sozinho)
     const v = slideVersion(story, slideNumber);
     after(async () => {
       try {
+        await prerenderSlides(story, [slideNumber]);
         await persistMedia(
           [],
           run,
@@ -71,7 +69,7 @@ export async function POST(
           `media: slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${candidateId}`,
         );
       } catch (e) {
-        console.error(`[select] persistência falhou: ${String(e).slice(0, 200)}`);
+        console.error(`[select] pós-processo falhou: ${String(e).slice(0, 200)}`);
       }
     });
     return NextResponse.json({
@@ -80,6 +78,7 @@ export async function POST(
       candidate_id: candidateId,
       v,
       persist: "async",
+      render: "async",
     });
   } catch (e) {
     return NextResponse.json({ error: String(e).slice(0, 300) }, { status: 500 });

@@ -82,11 +82,13 @@ export async function POST(
   }
 
   try {
-    // render antes da resposta; commit depois (ver select/route.ts)
-    const timings = await prerenderSlides(story, [slideNumber]);
+    // resposta IMEDIATA: o render (25-30s de satori em producao, medido em
+    // 2026-09-03) roda no after; o dashboard polla ?waitless= ate o PNG
+    // existir no bucket e so entao troca o preview. O commit tambem e async.
     const v = slideVersion(story, slideNumber);
     after(async () => {
       try {
+        await prerenderSlides(story, [slideNumber]);
         await persistMedia(
           [],
           run,
@@ -94,7 +96,7 @@ export async function POST(
           `media: texto do slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${placement}`,
         );
       } catch (e) {
-        console.error(`[placement] persistência falhou: ${String(e).slice(0, 200)}`);
+        console.error(`[placement] pós-processo falhou: ${String(e).slice(0, 200)}`);
       }
     });
     return NextResponse.json({
@@ -104,7 +106,8 @@ export async function POST(
       align: asset.text_align,
       v,
       persist: "async",
-      t: { load_ms: loadMs, ...timings, total_ms: Date.now() - tStart },
+      render: "async",
+      t: { load_ms: loadMs, total_ms: Date.now() - tStart },
     });
   } catch (e) {
     return NextResponse.json({ error: String(e).slice(0, 300) }, { status: 500 });

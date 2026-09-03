@@ -37,6 +37,7 @@ export async function GET(
   const IMMUTABLE = "public, max-age=31536000, s-maxage=31536000, immutable";
 
   // read-through: com URL versionada, o PNG pronto vem do R2 sem satori
+  const waitless = new URL(request.url).searchParams.has("waitless");
   if (v && Number.isFinite(n) && n >= 1) {
     const ready = await getPrerendered(storyId, n, v);
     if (ready) {
@@ -47,6 +48,14 @@ export async function GET(
           "x-slide-source": "r2",
         },
       });
+    }
+    // waitless: o POLL do dashboard pergunta "ja esta pronto?" — miss responde
+    // 404 na hora, NUNCA renderiza (o render esta rodando no after da edicao)
+    if (waitless) {
+      return NextResponse.json(
+        { ready: false },
+        { status: 404, headers: { "Cache-Control": "no-store" } },
+      );
     }
   }
 
