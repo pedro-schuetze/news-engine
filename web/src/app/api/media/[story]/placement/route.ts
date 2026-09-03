@@ -29,6 +29,7 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ story: string }> },
 ) {
+  const tStart = Date.now();
   const { story: storyId } = await params;
   const runFile = new URL(request.url).searchParams.get("run") ?? "latest";
   if (!/^[\w-]+$/.test(storyId)) {
@@ -55,6 +56,7 @@ export async function POST(
   }
 
   const run = await loadRun(runFile);
+  const loadMs = Date.now() - tStart;
   if (!run) return NextResponse.json({ error: "run não encontrado" }, { status: 404 });
   const story = findStory(run, storyId);
   if (!story?.draft?.slides?.length) {
@@ -81,7 +83,7 @@ export async function POST(
 
   try {
     // render antes da resposta; commit depois (ver select/route.ts)
-    await prerenderSlides(story, [slideNumber]);
+    const timings = await prerenderSlides(story, [slideNumber]);
     const v = slideVersion(story, slideNumber);
     after(async () => {
       try {
@@ -102,6 +104,7 @@ export async function POST(
       align: asset.text_align,
       v,
       persist: "async",
+      t: { load_ms: loadMs, ...timings, total_ms: Date.now() - tStart },
     });
   } catch (e) {
     return NextResponse.json({ error: String(e).slice(0, 300) }, { status: 500 });

@@ -50,21 +50,32 @@ export async function putPrerendered(
  * Renderiza e grava no R2 os slides indicados (ou todos). Pensada para rodar
  * em `after()` nas rotas de edição: nunca lança, só loga.
  */
-export async function prerenderSlides(story: Story, slideNumbers?: number[]): Promise<void> {
-  if (!r2Enabled()) return;
+export async function prerenderSlides(
+  story: Story,
+  slideNumbers?: number[],
+): Promise<Record<string, number>> {
+  const t: Record<string, number> = {};
+  if (!r2Enabled()) return t;
   try {
-    const specs = await buildSlideSpecs(story);
+    let t0 = Date.now();
+    const specs = await buildSlideSpecs(story, slideNumbers);
+    t.specs_ms = Date.now() - t0;
     const wanted = slideNumbers?.length ? new Set(slideNumbers) : null;
+    t0 = Date.now();
     await Promise.all(
       specs.map(async (spec) => {
         if (wanted && !wanted.has(spec.pageIndex)) return;
         const v = slideVersion(story, spec.pageIndex);
         const image = await renderSlide(spec);
         const png = Buffer.from(await image.arrayBuffer());
+        t.render_ms = Date.now() - t0;
+        const tp = Date.now();
         await putPrerendered(story.story_id, spec.pageIndex, v, png);
+        t.put_ms = Date.now() - tp;
       }),
     );
   } catch (e) {
     console.warn(`[prerender] ${story.story_id}: ${String(e).slice(0, 160)}`);
   }
+  return t;
 }

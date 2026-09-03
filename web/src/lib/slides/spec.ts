@@ -29,10 +29,16 @@ export interface SlideSpec {
   imageSize: { w: number; h: number } | null;
 }
 
-export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
+/**
+ * `only`: numeros de slide cujas IMAGENS devem ser carregadas (os demais specs
+ * saem com image null). O prerender de UM slide nao precisa baixar as fotos
+ * dos outros quatro — era ~metade do tempo do clique em producao.
+ */
+export async function buildSlideSpecs(story: Story, only?: number[]): Promise<SlideSpec[]> {
   const draft = story.draft;
   const slides = draft?.slides ?? [];
   const count = Math.max(slides.length, 1);
+  const wanted = only?.length ? new Set(only) : null;
 
   // Imagens ficam prontas quando o Pedro clica em "gerar imagens" (uma por
   // slide, cenas diferentes). Sem elas, o slide usa o fundo gráfico da marca —
@@ -76,14 +82,35 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
     };
   }
 
+  // pre-carrega as midias em PARALELO (era sequencial: 5 x latencia do R2)
+  await Promise.all(
+    Array.from({ length: count }, (_, i) => {
+      const n = slides[i]?.slide_number || i + 1;
+      if (wanted && !wanted.has(n)) return null;
+      const asset = bySlide.get(n);
+      if (!asset?.local_path) return null;
+      const rel = asset.local_path.split("\\").join("/");
+      if (mediaCache.has(rel)) return null;
+      return loadMedia(rel).then((d) => void mediaCache.set(rel, d));
+    }),
+  );
+
   const specs: SlideSpec[] = [];
   for (let i = 0; i < count; i++) {
     const slide = slides[i];
     const isFirst = i === 0;
     const isLast = i === count - 1;
-    const { image, placement, align, focus, imageSize } = await imageFor(
-      slide?.slide_number || i + 1,
-    );
+    const n = slide?.slide_number || i + 1;
+    const skipImage = wanted !== null && !wanted.has(n);
+    const { image, placement, align, focus, imageSize } = skipImage
+      ? {
+          image: null,
+          placement: "BOTTOM" as TextPlacement,
+          align: "center" as const,
+          focus: null,
+          imageSize: null,
+        }
+      : await imageFor(n);
     specs.push({
       kind: isFirst ? "cover" : isLast ? "final" : "body",
       vertical: story.vertical,
