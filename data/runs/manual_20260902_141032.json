@@ -274,7 +274,7 @@
               "story_id": "manual-mtk6aoku-731",
               "slide_number": 5,
               "type": "image",
-              "local_path": "data/media/manual-mtk6aoku-731/pool/umtkyvooi-5.jpg",
+              "local_path": "data/media/manual-mtk6aoku-731/pool/umtkyvooi-2.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -290,8 +290,8 @@
               "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.49,
-              "focus_y": 0.38
+              "focus_x": 0.5,
+              "focus_y": 0.25
             }
           ],
           "article_count": 5,
