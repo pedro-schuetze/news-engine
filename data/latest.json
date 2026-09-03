@@ -1910,7 +1910,7 @@
               "story_id": "f7ff5458-2c70-43e6-a0cc-9d9df9af4091",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-2.jpg",
+              "local_path": "data/media/f7ff5458-2c70-43e6-a0cc-9d9df9af4091/pool/umtkmbgus-4.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -1922,8 +1922,8 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "CENTER",
-              "text_align": "center",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
             },
