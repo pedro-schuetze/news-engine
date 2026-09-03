@@ -2297,7 +2297,7 @@
               "story_id": "66f8a916-d637-436d-8ae0-d7c1604f0a3d",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/66f8a916-d637-436d-8ae0-d7c1604f0a3d/pool/umtlju0a1-1.jpg",
+              "local_path": "data/media/66f8a916-d637-436d-8ae0-d7c1604f0a3d/pool/umtljupc3-5.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -2310,11 +2310,11 @@
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
               "text_placement": "BOTTOM",
-              "text_align": "left",
+              "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.57,
-              "focus_y": 0.62
+              "focus_x": 0.51,
+              "focus_y": 0.73
             },
             {
               "asset_id": "66f8a916-s2",
@@ -2333,7 +2333,7 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
@@ -2381,7 +2381,7 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null,
@@ -2455,7 +2455,7 @@
               "source": "ai",
               "mime_type": "image/jpeg",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "right",
               "score": 81,
               "score_notes": "relevância 85 · texto 65 · nitidez 95",
@@ -2472,7 +2472,7 @@
               "source": "ai",
               "mime_type": "image/jpeg",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "left",
               "score": 75,
               "score_notes": "relevância 85 · texto 58 · nitidez 81",
