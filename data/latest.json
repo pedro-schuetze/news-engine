@@ -1500,7 +1500,31 @@
               "story_id": "70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7/pool/umtlnipkb-4.jpg",
+              "local_path": "data/media/70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7/pool/umtlnipkb-2.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 960,
+              "height": 1440,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "CENTER",
+              "text_align": "left",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.53,
+              "focus_y": 0.44
+            },
+            {
+              "asset_id": "70e6cd57-s3",
+              "story_id": "70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7",
+              "slide_number": 3,
+              "type": "image",
+              "local_path": "data/media/70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7/pool/umtlnipkb-1.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -1516,32 +1540,8 @@
               "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.53,
-              "focus_y": 0.49
-            },
-            {
-              "asset_id": "70e6cd57-s3",
-              "story_id": "70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7",
-              "slide_number": 3,
-              "type": "image",
-              "local_path": "data/media/70e6cd57-6ba9-46f1-bf4d-0ed64b4304e7/pool/umtlnipkb-3.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 960,
-              "height": 1440,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "left",
-              "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.44,
-              "focus_y": 0.41
+              "focus_x": 0.45,
+              "focus_y": 0.59
             },
             {
               "asset_id": "70e6cd57-s4",
