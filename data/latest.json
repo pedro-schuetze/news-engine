@@ -234,7 +234,7 @@
               "story_id": "a1130c13-838f-4ece-90ab-c6965ae22dc4",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/a1130c13-838f-4ece-90ab-c6965ae22dc4/pool/b44509ed4c4.jpg",
+              "local_path": "data/media/a1130c13-838f-4ece-90ab-c6965ae22dc4/pool/bee8ac16a36.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -247,7 +247,7 @@
                 "attribution_text": "NBC Television · Public domain · Wikimedia"
               },
               "text_placement": "BOTTOM",
-              "text_align": "right",
+              "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null
             },
