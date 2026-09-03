@@ -3453,6 +3453,30 @@
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
+            },
+            {
+              "asset_id": "8e97da25-s2",
+              "story_id": "8e97da25-6c09-46bb-8942-74d004b33641",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/8e97da25-6c09-46bb-8942-74d004b33641/pool/b7346724bd6.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1024,
+              "height": 576,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "openverse",
+                "license": "Historiska · BY-SA · sketchfab",
+                "attribution_required": true,
+                "attribution_text": "Historiska · BY-SA · sketchfab"
+              },
+              "text_placement": "TOP",
+              "text_align": "left",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.48,
+              "focus_y": 0.51
             }
           ],
           "article_count": 8,
@@ -3460,7 +3484,25 @@
           "latest_published_at": "2026-09-02T12:22:00Z",
           "selection_rank": 2,
           "created_at": "2026-09-02T14:25:10.999128Z",
-          "media_pool": []
+          "media_pool": [
+            {
+              "id": "b7346724bd6",
+              "local_path": "data/media/8e97da25-6c09-46bb-8942-74d004b33641/pool/b7346724bd6.jpg",
+              "origin": "bank",
+              "source": "openverse",
+              "mime_type": "image/jpeg",
+              "credit": "Historiska · BY-SA · sketchfab",
+              "text_placement": "TOP",
+              "text_align": "left",
+              "score": 77,
+              "score_notes": "relevância 100 · texto 59 · nitidez 65",
+              "added_at": "2026-09-03T03:16:47.337Z",
+              "focus_x": 0.48,
+              "focus_y": 0.51,
+              "width": 1024,
+              "height": 576
+            }
+          ]
         },
         {
           "story_id": "07ca1b4c-2ac7-4303-b7c5-c648bbc43839",
