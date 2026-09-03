@@ -1516,7 +1516,7 @@
                 "attribution_required": true,
                 "attribution_text": "U.S. State Department · Public domain · Wikimedia"
               },
-              "text_placement": "TOP",
+              "text_placement": "CENTER",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -1605,7 +1605,7 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "U.S. State Department · Public domain · Wikimedia",
-              "text_placement": "TOP",
+              "text_placement": "CENTER",
               "text_align": "left",
               "score": 64,
               "score_notes": "relevância 76 · texto 37 · nitidez 84",
