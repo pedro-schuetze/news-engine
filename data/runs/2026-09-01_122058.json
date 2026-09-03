@@ -586,7 +586,7 @@
                 "attribution_required": true,
                 "attribution_text": "DominusVobiscum · CC BY 2.0 · Wikimedia"
               },
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -735,7 +735,7 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "DominusVobiscum · CC BY 2.0 · Wikimedia",
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "score": 67,
               "score_notes": "relevância 40 · texto 75 · nitidez 100",
