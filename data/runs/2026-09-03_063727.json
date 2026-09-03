@@ -2381,7 +2381,7 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null,
@@ -2472,7 +2472,7 @@
               "source": "ai",
               "mime_type": "image/jpeg",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "left",
               "score": 75,
               "score_notes": "relevância 85 · texto 58 · nitidez 81",
