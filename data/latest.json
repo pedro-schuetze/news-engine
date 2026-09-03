@@ -1548,7 +1548,7 @@
               "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
               "slide_number": 5,
               "type": "image",
-              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/ba2b5a07249.jpg",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b31f88a3493.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -1556,12 +1556,12 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia",
+                "license": "Raph_PH · CC BY 2.0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia"
+                "attribution_text": "Raph_PH · CC BY 2.0 · Wikimedia"
               },
               "text_placement": "BOTTOM",
-              "text_align": "left",
+              "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null
             }
