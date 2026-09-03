@@ -618,21 +618,21 @@
               "story_id": "26b2c1bf-190c-4ed0-9af6-ba9cb6d95448",
               "slide_number": 5,
               "type": "image",
-              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/slide_5.jpg",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b2c8915d382.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "RCA Records · Public domain · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+                "attribution_text": "RCA Records · Public domain · Wikimedia"
               },
               "text_placement": "TOP",
-              "text_align": "right",
-              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
+              "text_align": "left",
+              "prompt": "",
               "estimated_cost_usd": null
             }
           ],
