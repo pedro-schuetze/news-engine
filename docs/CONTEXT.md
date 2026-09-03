@@ -320,6 +320,28 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - Latências de teste em dev não são representativas (satori de dev
       compila/roda 5-10x mais lento que produção).
 
+22. **2026-09-03 — Writer do run automático no gpt-5.6-sol (modelo por
+    papel).** Pergunta do Pedro sobre "o modelo dos prompts de imagem": as
+    image_directions saem NA MESMA chamada que escreve o post — então o
+    writer é quem manda. Manuais/ajustes já usavam sol; agora o run diário
+    também: `openai_writer_model` (default gpt-5.6-sol, override por env) e
+    um segundo LLMClient só para o write_draft — router e classificação
+    seguem no gpt-5-mini. O ledger de calls é compartilhado (contabilidade
+    do run intacta) e a PRICE_TABLE ganhou a família 5.6.
+    **Custo MEDIDO: US$ 1,32/run (~US$ 40/mês)** — acima da estimativa dita
+    ao Pedro (US$ 26/mês): os drafts do sol produzem ~2,5k tokens de saída,
+    não 1,5k. Corrigido no relato. Se pesar: `OPENAI_WRITER_MODEL=
+    gpt-5.6-terra` derruba para ~US$ 13/mês sem mexer em código.
+    - Validado com run real: classification x4 e editorial_score x3 no mini,
+      draft x15 no sol; direções de imagem visivelmente mais cinematográficas
+      e conformes às regras (ex.: "mesa de negociação vazia, sem retratar
+      pessoas reais" na vertical Mundo).
+    - Obs.: as envs MIN/MAX_STORIES inline não pegaram na validação (o .env
+      local vence env vars por design da decisão de 2026-08-31) — o run saiu
+      completo (15 posts, que viraram o latest da tarde, texto sol).
+    - Registro do dia: o cron da Vercel entregou o run diário às 06:37 BRT —
+      o gatilho pontual está operacional (token corrigido pelo Pedro).
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação

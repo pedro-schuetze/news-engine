@@ -222,8 +222,14 @@ class LLMClient:
         return round(total, 4) if any_known else None
 
 
-def build_llm_client(settings: Settings, *, mock: bool = False) -> LLMClient:
-    """Monta o LLMClient a partir das Settings (ou o mock, sem custo)."""
+def build_llm_client(
+    settings: Settings, *, mock: bool = False, openai_model: str | None = None
+) -> LLMClient:
+    """Monta o LLMClient a partir das Settings (ou o mock, sem custo).
+
+    `openai_model` troca só o modelo OpenAI (ex.: o writer usa um modelo
+    melhor que o do router); o resto da configuração é a mesma.
+    """
     if mock:
         from src.llm.mock_provider import MockProvider
 
@@ -249,7 +255,7 @@ def build_llm_client(settings: Settings, *, mock: bool = False) -> LLMClient:
 
             return OpenAIProvider(
                 api_key=settings.openai_api_key,
-                model=settings.openai_model,
+                model=openai_model or settings.openai_model,
                 reasoning_effort=settings.openai_reasoning_effort,
             )
         raise LLMError(f"provider LLM desconhecido: '{name}' (use anthropic ou openai)")

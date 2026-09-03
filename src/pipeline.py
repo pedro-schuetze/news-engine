@@ -103,6 +103,7 @@ def _process_vertical(
     ranking_cfg: RankingConfig,
     authority_map: dict[str, int],
     llm: LLMClient,
+    writer_llm: LLMClient,
     errors: list[str],
     candidates_debug: list[CandidateDebug],
     notes: list[str],
@@ -222,7 +223,9 @@ def _process_vertical(
     # drafts só para as selecionadas (qualidade > volume; 1 chamada por story)
     for story in selected:
         try:
-            story.draft = write_draft(story, cluster_by_story[story.story_id], vertical, llm)
+            story.draft = write_draft(
+                story, cluster_by_story[story.story_id], vertical, writer_llm
+            )
         except (LLMValidationError, LLMError) as e:
             msg = f"draft falhou para '{story.title}' ({vid}): {e}"
             errors.append(msg)
@@ -268,6 +271,15 @@ def run_pipeline(
     repo = repository or JsonNewsRepository(settings.data_dir, settings.timezone)
     storage = LocalMediaStorage(f"{settings.data_dir}/media")
     llm = build_llm_client(settings, mock=is_mock)
+    # writer com modelo próprio (texto é o produto); no mock é o mesmo client
+    writer_llm = (
+        llm
+        if is_mock or settings.openai_writer_model == settings.openai_model
+        else build_llm_client(settings, openai_model=settings.openai_writer_model)
+    )
+    # mesma lista de calls: a contabilidade do run (chamadas/tokens/custo)
+    # enxerga o writer sem mudar nada no fechamento dos stats
+    writer_llm.calls = llm.calls
 
     run = PipelineRun(mode=mode, started_at=now, lookback_hours=settings.news_lookback_hours)
     errors: list[str] = []
@@ -350,6 +362,7 @@ def run_pipeline(
             ranking_cfg=ranking_cfg,
             authority_map=authority_map,
             llm=llm,
+            writer_llm=writer_llm,
             errors=errors,
             candidates_debug=candidates_debug,
             notes=notes,
