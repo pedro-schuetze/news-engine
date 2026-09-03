@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/pngjs": "^6.0.5",
+    "aws4fetch": "^1.0.20",
     "jpeg-js": "^0.4.4",
     "next": "^15.3.2",
     "pngjs": "^7.0.0",

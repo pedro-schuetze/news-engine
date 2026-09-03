@@ -208,8 +208,19 @@ export async function loadRankingConfig(): Promise<Record<string, unknown> | nul
   }
 }
 
-/** Imagem pré-gerada pelo pipeline (data/media/...), como data URL. */
+/** Imagem de mídia (data/media/...), como data URL. Com R2 configurado, a
+ * leitura vem do bucket (CDN) — o repo deixa de servir binário. Fallback
+ * para a fonte antiga cobre arquivos ainda não migrados. */
 export async function loadMedia(relPath: string): Promise<string | null> {
+  const { r2Enabled, r2Get } = await import("./media/storage");
+  if (r2Enabled()) {
+    const bytes = await r2Get(relPath);
+    if (bytes) {
+      const ext = relPath.toLowerCase().split(".").pop();
+      const mime = ext === "png" ? "image/png" : ext === "webp" ? "image/webp" : "image/jpeg";
+      return `data:${mime};base64,${bytes.toString("base64")}`;
+    }
+  }
   return src.readMediaFile(relPath);
 }
 

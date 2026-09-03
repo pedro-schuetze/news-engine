@@ -13,6 +13,7 @@
  */
 
 import { DATA_MODE, findRunFile, loadRun } from "../data";
+import { r2Enabled, r2Put } from "./storage";
 import type { MediaAsset, MediaCandidate, PipelineRun, Story } from "../types";
 
 export interface PoolFile {
@@ -229,9 +230,20 @@ export async function persistMedia(
   run: PipelineRun,
   runFile: string,
   message: string,
-): Promise<"fs" | "github"> {
-  const files = poolFiles.map((p) => ({ rel: p.candidate.local_path, bytes: p.bytes }));
-  return DATA_MODE === "github"
-    ? writeGithub(files, run, runFile, message)
-    : writeFs(files, run, runFile);
+): Promise<"fs" | "github" | "r2+github" | "r2+fs"> {
+  let files = poolFiles.map((p) => ({ rel: p.candidate.local_path, bytes: p.bytes }));
+  let viaR2 = false;
+  if (r2Enabled() && files.length > 0) {
+    // binários no R2 (PUT ~200ms cada, em paralelo); o repo recebe só JSONs
+    await Promise.all(
+      poolFiles.map((p) => r2Put(p.candidate.local_path, p.bytes, p.candidate.mime_type)),
+    );
+    files = [];
+    viaR2 = true;
+  }
+  const where =
+    DATA_MODE === "github"
+      ? await writeGithub(files, run, runFile, message)
+      : await writeFs(files, run, runFile);
+  return viaR2 ? (`r2+${where}` as "r2+github" | "r2+fs") : where;
 }

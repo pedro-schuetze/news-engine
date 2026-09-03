@@ -304,6 +304,18 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [ ] **R2 (fase 2) pronto no código, aguardando credenciais do Pedro.**
+  Adapter em `web/src/lib/media/storage.ts` (aws4fetch, SigV4): com
+  R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_PUBLIC_URL nas envs,
+  os binários de mídia vão para o bucket (PUT ~200ms) e o commit leva SÓ os
+  JSONs; leitura via URL pública (CDN) com fallback para o repo (arquivos não
+  migrados). Sem as envs, comportamento idêntico ao atual. Migração dos
+  binários existentes: `node web/scripts/migrate-media-r2.mjs`. Decisão do
+  Pedro: conta Cloudflare PESSOAL separada (padrão de isolamento por token,
+  como a Vercel) — ele vai criar bucket `news-engine-media` + r2.dev público
+  + R2 API Token e colar as envs no web/.env.local; aí: migrar, configurar
+  envs na Vercel, validar e apontar também os <img> de candidatas direto
+  para o CDN. Fase 3 (pré-render dos slides no R2 na aprovação) na fila.
 - [x] ~~Prontos levava ~20s para carregar~~ — 2026-09-02 fase 1: os slides
   renderizados agora têm URL versionada por conteúdo (`?v=` = hash de draft +
   imagem + placement + foco + DESIGN_VERSION em `slides/version.ts`) e a rota
