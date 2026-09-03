@@ -304,7 +304,14 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
-- [ ] **R2 (fase 2) pronto no código, aguardando credenciais do Pedro.**
+- [x] **R2 (fase 2) LIGADO em 2026-09-02.** Bucket `news-engine-media` na
+  conta Cloudflare PESSOAL (Pedroschuetze@hotmail.com), r2.dev público.
+  58 arquivos (17,4MB) migrados de data/media/; envs R2_* no web/.env.local
+  (o Pedro colou o API token no campo do account id — resolvido via
+  GET /accounts e guardado como CLOUDFLARE_API_TOKEN) e na Vercel
+  (production/preview/development). A partir do deploy seguinte: gravação de
+  imagem = PUT S3 (~200ms, commit só de JSONs) e leitura = CDN. Binários
+  antigos permanecem no repo como fallback/histórico (não apagados).
   Adapter em `web/src/lib/media/storage.ts` (aws4fetch, SigV4): com
   R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_PUBLIC_URL nas envs,
   os binários de mídia vão para o bucket (PUT ~200ms) e o commit leva SÓ os
