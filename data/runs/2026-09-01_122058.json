@@ -552,21 +552,21 @@
               "story_id": "26b2c1bf-190c-4ed0-9af6-ba9cb6d95448",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/slide_2.jpg",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/bd7c1bc4134.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
               "height": null,
               "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Mel Melcon, Los Angeles Times · CC BY 4.0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+                "attribution_text": "Mel Melcon, Los Angeles Times · CC BY 4.0 · Wikimedia"
               },
-              "text_placement": "TOP",
-              "text_align": "left",
-              "prompt": "gerada no ChatGPT com a skill news-engine-carousel",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "prompt": "",
               "estimated_cost_usd": null
             },
             {
