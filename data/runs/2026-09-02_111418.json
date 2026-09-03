@@ -1482,7 +1482,7 @@
               "story_id": "d3fdebbc-718f-4656-a496-03a22ac2d5b4",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/b3399a531ba.jpg",
+              "local_path": "data/media/d3fdebbc-718f-4656-a496-03a22ac2d5b4/pool/ba2b5a07249.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -1490,9 +1490,9 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "U.S. State Department · Public domain · Wikimedia",
+                "license": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "U.S. State Department · Public domain · Wikimedia"
+                "attribution_text": "Penni Gladstone, Los Angeles Times · CC BY 4.0 · Wikimedia"
               },
               "text_placement": "BOTTOM",
               "text_align": "left",
