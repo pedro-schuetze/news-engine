@@ -182,6 +182,13 @@ function parseDraft(
   // guarda contra manchete truncada (visto em produção em 2026-09-02: veio só
   // "EUA prometem"); o throw aciona a 2ª tentativa com a mensagem de erro
   const headline = (parsed.instagram_headline ?? "").trim();
+  // e contra CTA impossível (2026-09-03: "Assista ao trailer..." — o post é
+  // imagem estática, não reproduz mídia)
+  if (/\b(assista|assistam|ouça|ouçam|escute|escutem|clique|cliquem|acesse|acessem|baixe|baixem)\b/i.test(headline)) {
+    throw new Error(
+      `manchete promete ação que o post não entrega: "${headline}" — noticie o fato em vez de mandar assistir/ouvir/clicar`,
+    );
+  }
   if (headline && (headline.length < 18 || headline.split(/\s+/).length < 3)) {
     throw new Error(
       `instagram_headline incompleta ou truncada: "${headline}" — escreva a manchete inteira (3+ palavras)`,

@@ -538,6 +538,26 @@ class DraftOutput(BaseModel):
 
     @field_validator("instagram_headline")
     @classmethod
+    def _headline_sem_cta_impossivel(cls, v: str) -> str:
+        # O post é imagem estática: manchete não pode mandar assistir/ouvir/
+        # clicar (caso real 2026-09-03: "Assista ao trailer da série de
+        # Harry Potter"). Roda no retry do generate — o modelo se corrige.
+        import re
+
+        if re.search(
+            r"\b(assista|assistam|ouça|ouçam|escute|escutem|clique|cliquem|acesse|acessem|baixe|baixem)\b",
+            v,
+            re.IGNORECASE,
+        ):
+            raise ValueError(
+                f"manchete promete ação que o post não entrega: {v!r} — o post é "
+                "imagem estática; noticie o fato (ex.: 'X ganha primeiro trailer') "
+                "em vez de mandar assistir/ouvir/clicar"
+            )
+        return v
+
+    @field_validator("instagram_headline")
+    @classmethod
     def _headline_completa(cls, v: str) -> str:
         # Guarda contra truncamento visto em produção (2026-09-02: a manchete
         # veio só "EUA prometem"). Roda dentro do retry do LLMClient.generate,

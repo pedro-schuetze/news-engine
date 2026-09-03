@@ -7,7 +7,8 @@ Estrutura do carrossel (5 slides, nesta ordem de roles):
 
 O TEXTO É IMPRESSO NA PRÓPRIA IMAGEM — a maioria das pessoas não abre a
 legenda. Ele precisa ser curto e legível em tela pequena, MAS continua sendo
-português inteiro.
+português inteiro. E o post NÃO reproduz mídia: nunca chame para "assistir",
+"ouvir" ou "clicar" — descreva o que o vídeo/trailer/música mostra.
 
 PORTUGUÊS COMPLETO, SEMPRE (vale para headline e body de todos os slides):
 - Use artigos, preposições e verbos de ligação: "A missão foca em...",

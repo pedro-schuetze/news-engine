@@ -51,6 +51,19 @@ class TestDraftOutput:
             DraftOutput(slides=self._slides(2))
         assert len(DraftOutput(slides=self._slides(5)).slides) == 5
 
+    def test_headline_com_cta_impossivel_rejeitada(self):
+        # caso real de produção (2026-09-03): post estático não reproduz vídeo
+        with pytest.raises(ValidationError):
+            DraftOutput(
+                slides=self._slides(5),
+                instagram_headline="Assista ao trailer da série de Harry Potter",
+            )
+        ok = DraftOutput(
+            slides=self._slides(5),
+            instagram_headline="Série de Harry Potter ganha o primeiro trailer",
+        )
+        assert "trailer" in ok.instagram_headline
+
     def test_headline_truncada_rejeitada(self):
         # caso real de produção (2026-09-02): a manchete veio só "EUA prometem"
         with pytest.raises(ValidationError):

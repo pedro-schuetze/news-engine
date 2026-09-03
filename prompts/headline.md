@@ -10,6 +10,12 @@ COMO ESCREVER A MANCHETE (instagram_headline e headline do slide 1):
   os artigos.
 - Não use dois-pontos para simular manchete de jornal ("Eleições 2026: o que
   muda").
+- NUNCA prometa uma ação que o post não entrega. O post é IMAGEM ESTÁTICA:
+  não dá para assistir, ouvir, clicar nem abrir nada nele.
+  Errado: "Assista ao trailer da série de Harry Potter".
+  Certo:  "Série de Harry Potter ganha o primeiro trailer".
+  Se a notícia é um vídeo/trailer/clipe/música, NOTICIE o fato e descreva nos
+  slides o que ele mostra — não mande o leitor assistir.
 - Os rótulos dos slides 2 a 5 podem ser curtos e sem artigo ("O QUE MUDA",
   "PRÓXIMOS PASSOS"): são etiquetas, não frases. A regra de frase completa vale
   para o corpo do slide e para a manchete.
