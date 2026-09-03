@@ -352,7 +352,7 @@
                 "attribution_required": true,
                 "attribution_text": "Raph_PH · CC BY 2.0 · Wikimedia"
               },
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null
