@@ -608,7 +608,7 @@
                 "attribution_required": true,
                 "attribution_text": "Moeller Talent, Inc. Nashville · Public domain · Wikimedia"
               },
-              "text_placement": "CENTER",
+              "text_placement": "BOTTOM",
               "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null
@@ -722,7 +722,7 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "Moeller Talent, Inc. Nashville · Public domain · Wikimedia",
-              "text_placement": "CENTER",
+              "text_placement": "BOTTOM",
               "text_align": "center",
               "score": 52,
               "score_notes": "relevância 40 · texto 38 · nitidez 90",
