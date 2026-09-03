@@ -3461,24 +3461,24 @@
               "story_id": "8e97da25-6c09-46bb-8942-74d004b33641",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/8e97da25-6c09-46bb-8942-74d004b33641/pool/b7346724bd6.jpg",
+              "local_path": "data/media/8e97da25-6c09-46bb-8942-74d004b33641/pool/umtkykpva-2.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": 1024,
-              "height": 576,
+              "width": 960,
+              "height": 1440,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "openverse",
-                "license": "Historiska · BY-SA · sketchfab",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "Historiska · BY-SA · sketchfab"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "TOP",
+              "text_placement": "CENTER",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null,
               "focus_x": 0.48,
-              "focus_y": 0.51
+              "focus_y": 0.48
             },
             {
               "asset_id": "8e97da25-s3",
