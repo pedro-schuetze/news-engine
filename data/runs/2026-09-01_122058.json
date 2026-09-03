@@ -630,7 +630,7 @@
                 "attribution_required": true,
                 "attribution_text": "RCA Records · Public domain · Wikimedia"
               },
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -709,7 +709,7 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "RCA Records · Public domain · Wikimedia",
-              "text_placement": "TOP",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "score": 54,
               "score_notes": "relevância 40 · texto 44 · nitidez 91",
