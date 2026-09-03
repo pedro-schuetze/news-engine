@@ -866,22 +866,24 @@
               "story_id": "844eebba-7615-4dbf-8194-dc23188dd02e",
               "slide_number": 3,
               "type": "image",
-              "local_path": "data/media/844eebba-7615-4dbf-8194-dc23188dd02e/pool/bf183164d7a.png",
+              "local_path": "data/media/844eebba-7615-4dbf-8194-dc23188dd02e/pool/b4322b57716.jpg",
               "remote_url": null,
-              "mime_type": "image/png",
-              "width": null,
-              "height": null,
+              "mime_type": "image/jpeg",
+              "width": 1280,
+              "height": 1946,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Malévolalliig vi ou · CC BY-SA 4.0 · Wikimedia",
+                "license": "Prefeitura de Olinda from Brasil · CC BY 2.0 · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Malévolalliig vi ou · CC BY-SA 4.0 · Wikimedia"
+                "attribution_text": "Prefeitura de Olinda from Brasil · CC BY 2.0 · Wikimedia"
               },
               "text_placement": "BOTTOM",
               "text_align": "center",
               "prompt": "",
-              "estimated_cost_usd": null
+              "estimated_cost_usd": null,
+              "focus_x": 0.48,
+              "focus_y": 0.6
             },
             {
               "asset_id": "844eebba-s4",
