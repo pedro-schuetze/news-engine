@@ -1966,7 +1966,7 @@
                 "attribution_required": true,
                 "attribution_text": "Shealeah Craighead · Public domain · Wikimedia"
               },
-              "text_placement": "CENTER",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null
@@ -2059,7 +2059,7 @@
               "source": "wikimedia",
               "mime_type": "image/jpeg",
               "credit": "Shealeah Craighead · Public domain · Wikimedia",
-              "text_placement": "CENTER",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "score": 65,
               "score_notes": "relevância 52 · texto 54 · nitidez 100",
