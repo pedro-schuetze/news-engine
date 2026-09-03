@@ -79,13 +79,9 @@ export default function Sidebar() {
     <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-line bg-panel md:flex">
       <div className="border-b border-line px-5 py-5">
         <Link href="/" className="block">
-          {/* lockup GPB: serif display + tagline reduzida a NEWS (decisão 2026-09-02) */}
-          <span className="font-serif text-[30px] font-bold leading-none tracking-tight text-ink">
-            GPB
-          </span>
-          <span className="mt-1.5 block font-mono text-[10px] font-semibold tracking-[0.34em] text-ink-2">
-            NEWS<span className="text-brand">.</span>
-          </span>
+          {/* logo oficial (PNG do Pedro, 2026-09-02) — o arquivo já traz o NEWS */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/gpb-news.png" alt="GPB News" width={150} height={67} />
         </Link>
       </div>
 

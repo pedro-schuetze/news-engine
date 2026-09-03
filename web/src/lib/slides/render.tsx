@@ -35,6 +35,17 @@ const IVORY = "#F7F5F1";
 const ROYAL = "#1D4ED8"; // Royal Blue — acento único da marca
 
 let fontsPromise: Promise<{ name: string; data: Buffer; weight: 400 | 700 | 900 }[]> | null = null;
+let brandPromise: Promise<string> | null = null;
+
+/** Wordmark GPB oficial (variante ivory p/ foto), como data URL. */
+async function loadBrandMark(): Promise<string> {
+  if (!brandPromise) {
+    brandPromise = fs
+      .readFile(path.join(process.cwd(), "public", "brand", "gpb-wordmark-light.png"))
+      .then((b) => "data:image/png;base64," + b.toString("base64"));
+  }
+  return brandPromise;
+}
 
 async function loadFonts() {
   if (!fontsPromise) {
@@ -305,23 +316,12 @@ function Scrim({
   );
 }
 
-/** Lockup GPB da capa: monograma serif + sub-brand com pontos royal. */
-function Brand({ color, label }: { color: string; label: string }) {
+/** Lockup da capa: wordmark GPB oficial (PNG) + sub-brand com pontos royal. */
+function Brand({ color, label, mark }: { color: string; label: string; mark: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-      <span
-        style={{
-          fontFamily: "Fraunces",
-          fontSize: 58,
-          fontWeight: 700,
-          color: IVORY,
-          letterSpacing: 1,
-          lineHeight: 1,
-          textShadow: "0 2px 14px rgba(0,0,0,0.6)",
-        }}
-      >
-        GPB
-      </span>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+      {/* 700x248 -> 240x85 */}
+      <img src={mark} width={240} height={85} />
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         <span style={{ display: "flex", width: 5, height: 5, borderRadius: 3, backgroundColor: color }} />
         <span
@@ -429,7 +429,15 @@ function coverHeadlineSize(text: string): number {
   return 62;
 }
 
-function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | null }) {
+function CoverSlide({
+  spec,
+  imageData,
+  mark,
+}: {
+  spec: SlideSpec;
+  imageData: string | null;
+  mark: string;
+}) {
   const ui = VERTICAL_UI[spec.vertical] ?? { label: spec.vertical.toUpperCase(), color: "#FFD666" };
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
@@ -449,7 +457,7 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
           padding: "56px 64px 48px",
         }}
       >
-        <Brand color={ui.color} label={ui.label} />
+        <Brand color={ui.color} label={ui.label} mark={mark} />
         <div
           style={{
             display: "flex",
@@ -490,7 +498,15 @@ function CoverSlide({ spec, imageData }: { spec: SlideSpec; imageData: string | 
   );
 }
 
-function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | null }) {
+function BodySlide({
+  spec,
+  imageData,
+  mark,
+}: {
+  spec: SlideSpec;
+  imageData: string | null;
+  mark: string;
+}) {
   const ui = VERTICAL_UI[spec.vertical] ?? { label: spec.vertical.toUpperCase(), color: "#FFD666" };
   const isFinal = spec.kind === "final";
   return (
@@ -511,19 +527,9 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
           padding: "52px 72px 46px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
-          <span
-            style={{
-              fontFamily: "Fraunces",
-              fontSize: 34,
-              fontWeight: 700,
-              color: IVORY,
-              lineHeight: 1,
-              textShadow: "0 1px 10px rgba(0,0,0,0.55)",
-            }}
-          >
-            GPB
-          </span>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          {/* wordmark oficial 700x248 -> 118x42 */}
+          <img src={mark} width={118} height={42} />
           <span
             style={{
               fontFamily: "Jakarta",
@@ -601,13 +607,13 @@ function BodySlide({ spec, imageData }: { spec: SlideSpec; imageData: string | n
 }
 
 export async function renderSlide(spec: SlideSpec): Promise<ImageResponse> {
-  const fonts = await loadFonts();
+  const [fonts, mark] = await Promise.all([loadFonts(), loadBrandMark()]);
   const imageData = spec.image ? await toDataUrl(spec.image.url) : null;
   const element =
     spec.kind === "cover" ? (
-      <CoverSlide spec={spec} imageData={imageData} />
+      <CoverSlide spec={spec} imageData={imageData} mark={mark} />
     ) : (
-      <BodySlide spec={spec} imageData={imageData} />
+      <BodySlide spec={spec} imageData={imageData} mark={mark} />
     );
   return new ImageResponse(element, {
     width: SLIDE_W,

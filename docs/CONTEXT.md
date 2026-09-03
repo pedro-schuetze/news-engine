@@ -278,6 +278,15 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] ~~Logo GPB em texto (aproximação)~~ — 2026-09-02: Pedro entregou os
+  PNGs oficiais (principal com NEWS + monograma). Processados com Pillow em
+  `web/public/brand/`: originais otimizados, variantes ivory p/ foto
+  (neutros→ivory, barrinha azul preservada), `gpb-wordmark[-light]` (corte
+  automático do bloco NEWS pela linha vazia do alpha) e favicon
+  (`web/src/app/icon.png`, servido automático pelo Next). Aplicado: sidebar e
+  mobile (principal), capa dos slides (wordmark-light 240px + sub-brand) e
+  topo dos internos (wordmark-light 118px + label). O renderer embute o PNG
+  como data URL com cache de módulo (mesmo padrão das fontes).
 - [x] ~~Prompt do ChatGPT gerava colagem com sombra embutida~~ — corrigido em
   2026-09-02 (briefing.ts + SKILL.md v1.1.0): o prompt PEDIA "um terço do
   quadro escuro", e o gerador pintava vinheta artificial que somava com o
