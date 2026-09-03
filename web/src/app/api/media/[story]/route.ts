@@ -6,10 +6,11 @@
  * cobrir, o editor completa subindo as imagens do ChatGPT.
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
 import { bankCandidates } from "@/lib/media/generate";
 import { applyPool, autoFillEmptySlides, findStory, persistMedia } from "@/lib/media/persist";
+import { prerenderSlides } from "@/lib/slides/prerender";
 
 export const dynamic = "force-dynamic";
 // busca + download do banco; folga para redes lentas
@@ -66,6 +67,7 @@ export async function POST(
       .map((s) => s.slide_number)
       .filter((n) => !covered.has(n));
 
+    if (filled.length) after(() => prerenderSlides(story, filled));
     return NextResponse.json({
       ok: true,
       pool: story.media_pool?.length ?? 0,

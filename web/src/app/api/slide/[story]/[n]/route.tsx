@@ -6,8 +6,9 @@
  * (a Graph API aceita URLs públicas de imagem — estas).
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
+import { getPrerendered, putPrerendered } from "@/lib/slides/prerender";
 import { buildSlideSpecs } from "@/lib/slides/spec";
 import { renderSlide } from "@/lib/slides/render";
 import type { Story } from "@/lib/types";
@@ -31,6 +32,24 @@ export async function GET(
   const { story: storyId, n: nRaw } = await params;
   const runFile = new URL(request.url).searchParams.get("run") ?? "latest";
 
+  const n = Number.parseInt(nRaw, 10);
+  const v = new URL(request.url).searchParams.get("v");
+  const IMMUTABLE = "public, max-age=31536000, s-maxage=31536000, immutable";
+
+  // read-through: com URL versionada, o PNG pronto vem do R2 sem satori
+  if (v && Number.isFinite(n) && n >= 1) {
+    const ready = await getPrerendered(storyId, n, v);
+    if (ready) {
+      return new NextResponse(new Uint8Array(ready), {
+        headers: {
+          "Content-Type": "image/png",
+          "Cache-Control": IMMUTABLE,
+          "x-slide-source": "r2",
+        },
+      });
+    }
+  }
+
   const run = await loadRun(runFile);
   const story = findStory(run, storyId) ?? findStory(await loadRun("latest"), storyId);
   if (!story) {
@@ -38,21 +57,20 @@ export async function GET(
   }
 
   const specs = await buildSlideSpecs(story);
-  const n = Number.parseInt(nRaw, 10);
   if (!Number.isFinite(n) || n < 1 || n > specs.length) {
     return NextResponse.json({ error: `slide fora do intervalo 1..${specs.length}` }, { status: 404 });
   }
 
   const image = await renderSlide(specs[n - 1]);
-  // runs são imutáveis; o CDN da Vercel pode segurar por 10min sem risco
-  // URL com ?v= (hash do conteúdo) pode viver para sempre no browser e no
-  // CDN — o v muda quando o slide muda. Sem v, mantém o cache curto antigo.
-  const versioned = new URL(request.url).searchParams.has("v");
-  image.headers.set(
-    "Cache-Control",
-    versioned
-      ? "public, max-age=31536000, s-maxage=31536000, immutable"
-      : "public, s-maxage=600, stale-while-revalidate=3600",
-  );
-  return image;
+  const png = Buffer.from(await image.arrayBuffer());
+  // write-through: a próxima visita desta versão sai do bucket
+  if (v) after(() => putPrerendered(storyId, n, v, png));
+  return new NextResponse(new Uint8Array(png), {
+    headers: {
+      "Content-Type": "image/png",
+      // sem ?v= mantém o cache curto antigo (URLs não versionadas)
+      "Cache-Control": v ? IMMUTABLE : "public, s-maxage=600, stale-while-revalidate=3600",
+      "x-slide-source": "live",
+    },
+  });
 }

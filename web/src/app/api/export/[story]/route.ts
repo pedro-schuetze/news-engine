@@ -8,7 +8,9 @@
 import { NextResponse } from "next/server";
 import { loadRun } from "@/lib/data";
 import { buildZip, pngToJpeg, slugify, type ZipEntry } from "@/lib/export/pack";
+import { getPrerendered, putPrerendered } from "@/lib/slides/prerender";
 import { renderSlide } from "@/lib/slides/render";
+import { slideVersion } from "@/lib/slides/version";
 import { buildSlideSpecs } from "@/lib/slides/spec";
 import type { Story } from "@/lib/types";
 
@@ -40,8 +42,14 @@ export async function GET(
   // minutos (cada render custa segundos e a conversão PNG->JPEG também)
   const entries: ZipEntry[] = await Promise.all(
     specs.map(async (spec) => {
-      const image = await renderSlide(spec);
-      const png = Buffer.from(await image.arrayBuffer());
+      // reusa o PNG pré-renderizado do R2 (fase 3); só renderiza o que faltar
+      const v = slideVersion(story, spec.pageIndex);
+      let png = await getPrerendered(story.story_id, spec.pageIndex, v);
+      if (!png) {
+        const image = await renderSlide(spec);
+        png = Buffer.from(await image.arrayBuffer());
+        await putPrerendered(story.story_id, spec.pageIndex, v, png);
+      }
       return {
         name: `slide_${String(spec.pageIndex).padStart(2, "0")}.jpg`,
         data: pngToJpeg(png),

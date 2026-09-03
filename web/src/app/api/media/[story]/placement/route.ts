@@ -13,9 +13,10 @@
  * a sua). Só JSONs mudam; nenhum byte de imagem é regravado.
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
 import { findStory, persistMedia } from "@/lib/media/persist";
+import { prerenderSlides } from "@/lib/slides/prerender";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -78,6 +79,7 @@ export async function POST(
   }
 
   try {
+    after(() => prerenderSlides(story, [slideNumber]));
     const where = await persistMedia(
       [],
       run,

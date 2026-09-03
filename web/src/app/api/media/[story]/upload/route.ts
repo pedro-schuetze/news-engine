@@ -8,7 +8,7 @@
  * tem imagem escolhida NÃO é sobrescrito — a troca é feita no seletor.
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
 import { analyzePlacementSmart, scoreCandidate, sharpnessScore } from "@/lib/media/generate";
 import {
@@ -19,6 +19,7 @@ import {
   poolPath,
   type PoolFile,
 } from "@/lib/media/persist";
+import { prerenderSlides } from "@/lib/slides/prerender";
 import type { MediaCandidate } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -140,6 +141,7 @@ export async function POST(
       .map((s) => s.slide_number)
       .filter((n) => !nowCovered.has(n));
 
+    if (filled.length) after(() => prerenderSlides(story, filled));
     return NextResponse.json({
       ok: true,
       pool: story.media_pool?.length ?? 0,

@@ -304,6 +304,17 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
 
 ## Pendências / dívidas conhecidas
 
+- [x] **Fase 3 (2026-09-03): slides pré-renderizados no R2.** O PNG de cada
+  slide é artefato imutável em `renders/<story>/<n>-<v>.png` (v =
+  slideVersion). A rota /api/slide faz read-through (serve o PNG pronto do
+  bucket, sem satori; header `x-slide-source: r2|live`) e write-through (miss
+  renderiza e grava via `after()`); as rotas de edição (select, placement,
+  upload, banco) pré-aquecem os slides afetados depois da resposta; o export
+  reusa os PNGs prontos e só renderiza o que faltar. Medido em dev: 2º GET da
+  mesma versão = r2 em 1,4s; export 103s frio → 5,3s quente (20x). Sem R2
+  configurado, tudo se comporta como antes. Artefatos de versões velhas ficam
+  órfãos no bucket — anotar lifecycle rule (idade > 30d no prefixo renders/)
+  se o storage crescer.
 - [x] **R2 (fase 2) LIGADO em 2026-09-02.** Bucket `news-engine-media` na
   conta Cloudflare PESSOAL (Pedroschuetze@hotmail.com), r2.dev público.
   58 arquivos (17,4MB) migrados de data/media/; envs R2_* no web/.env.local

@@ -6,9 +6,10 @@
  * é gravado — só os JSONs do run mudam.
  */
 
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
 import { applySelection, findStory, persistMedia } from "@/lib/media/persist";
+import { prerenderSlides } from "@/lib/slides/prerender";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -54,6 +55,7 @@ export async function POST(
 
   try {
     applySelection(story, slideNumber, candidate);
+    after(() => prerenderSlides(story, [slideNumber]));
     const where = await persistMedia(
       [],
       run,
