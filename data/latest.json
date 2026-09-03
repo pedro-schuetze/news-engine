@@ -818,11 +818,11 @@
               "story_id": "844eebba-7615-4dbf-8194-dc23188dd02e",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/844eebba-7615-4dbf-8194-dc23188dd02e/pool/b402805074c.jpg",
+              "local_path": "data/media/844eebba-7615-4dbf-8194-dc23188dd02e/pool/b6c30ecec4d.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 1280,
-              "height": 863,
+              "height": 1904,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
@@ -830,12 +830,12 @@
                 "attribution_required": true,
                 "attribution_text": "Prefeitura de Olinda from Brasil · CC BY 2.0 · Wikimedia"
               },
-              "text_placement": "CENTER",
-              "text_align": "center",
+              "text_placement": "BOTTOM",
+              "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.55,
-              "focus_y": 0.3
+              "focus_x": 0.54,
+              "focus_y": 0.65
             },
             {
               "asset_id": "844eebba-s2",
