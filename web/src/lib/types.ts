@@ -112,6 +112,8 @@ export interface MediaAsset {
   text_align: "left" | "center" | "right";
   prompt: string;
   estimated_cost_usd: number | null;
+  focus_x?: number;
+  focus_y?: number;
 }
 
 /**
@@ -131,6 +133,11 @@ export interface MediaCandidate {
   score: number;
   score_notes: string;
   added_at: string;
+  /** ponto focal do conteúdo (0-1): rostos ou saliência — guia o corte 4:5 */
+  focus_x?: number;
+  focus_y?: number;
+  width?: number;
+  height?: number;
 }
 
 export interface Story {

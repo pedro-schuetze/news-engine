@@ -533,8 +533,8 @@
               "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b16c455bb0f.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": null,
-              "height": null,
+              "width": 1280,
+              "height": 1883,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
@@ -545,7 +545,9 @@
               "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
-              "estimated_cost_usd": null
+              "estimated_cost_usd": null,
+              "focus_x": 0.44,
+              "focus_y": 0.26
             },
             {
               "asset_id": "26b2c1bf-s2",
@@ -555,8 +557,8 @@
               "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/bd7c1bc4134.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": null,
-              "height": null,
+              "width": 1280,
+              "height": 1613,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
@@ -567,7 +569,9 @@
               "text_placement": "BOTTOM",
               "text_align": "center",
               "prompt": "",
-              "estimated_cost_usd": null
+              "estimated_cost_usd": null,
+              "focus_x": 0.57,
+              "focus_y": 0.19
             },
             {
               "asset_id": "26b2c1bf-s3",
@@ -577,8 +581,8 @@
               "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/bb806634c65.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": null,
-              "height": null,
+              "width": 982,
+              "height": 960,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
@@ -589,7 +593,9 @@
               "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
-              "estimated_cost_usd": null
+              "estimated_cost_usd": null,
+              "focus_x": 0.49,
+              "focus_y": 0.53
             },
             {
               "asset_id": "26b2c1bf-s4",
@@ -599,8 +605,8 @@
               "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b41f40591b5.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": null,
-              "height": null,
+              "width": 1093,
+              "height": 1312,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
@@ -611,7 +617,9 @@
               "text_placement": "BOTTOM",
               "text_align": "center",
               "prompt": "",
-              "estimated_cost_usd": null
+              "estimated_cost_usd": null,
+              "focus_x": 0.48,
+              "focus_y": 0.21
             },
             {
               "asset_id": "26b2c1bf-s5",
@@ -621,8 +629,8 @@
               "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b2c8915d382.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": null,
-              "height": null,
+              "width": 1280,
+              "height": 1598,
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
@@ -633,7 +641,9 @@
               "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
-              "estimated_cost_usd": null
+              "estimated_cost_usd": null,
+              "focus_x": 0.49,
+              "focus_y": 0.53
             }
           ],
           "media_pool": [
@@ -648,7 +658,11 @@
               "text_align": "left",
               "score": 94,
               "score_notes": "relevância 100 · texto 86 · nitidez 96",
-              "added_at": "2026-09-03T01:43:44.252Z"
+              "added_at": "2026-09-03T01:43:44.252Z",
+              "focus_x": 0.44,
+              "focus_y": 0.26,
+              "width": 1280,
+              "height": 1883
             },
             {
               "id": "b397938f7e0",
@@ -674,7 +688,11 @@
               "text_align": "center",
               "score": 82,
               "score_notes": "relevância 76 · texto 84 · nitidez 89",
-              "added_at": "2026-09-03T01:43:44.392Z"
+              "added_at": "2026-09-03T01:43:44.392Z",
+              "focus_x": 0.57,
+              "focus_y": 0.19,
+              "width": 1280,
+              "height": 1613
             },
             {
               "id": "b3c4fe097f7",
@@ -687,7 +705,11 @@
               "text_align": "center",
               "score": 70,
               "score_notes": "relevância 64 · texto 55 · nitidez 100",
-              "added_at": "2026-09-03T01:43:45.006Z"
+              "added_at": "2026-09-03T01:43:45.006Z",
+              "focus_x": 0.47,
+              "focus_y": 0.27,
+              "width": 604,
+              "height": 861
             },
             {
               "id": "bb43a896e0f",
@@ -700,7 +722,11 @@
               "text_align": "right",
               "score": 62,
               "score_notes": "relevância 52 · texto 56 · nitidez 88",
-              "added_at": "2026-09-03T01:43:44.842Z"
+              "added_at": "2026-09-03T01:43:44.842Z",
+              "focus_x": 0.31,
+              "focus_y": 0.49,
+              "width": 640,
+              "height": 428
             },
             {
               "id": "b2c8915d382",
@@ -713,7 +739,11 @@
               "text_align": "left",
               "score": 54,
               "score_notes": "relevância 40 · texto 44 · nitidez 91",
-              "added_at": "2026-09-03T01:43:44.679Z"
+              "added_at": "2026-09-03T01:43:44.679Z",
+              "focus_x": 0.49,
+              "focus_y": 0.53,
+              "width": 1280,
+              "height": 1598
             },
             {
               "id": "b41f40591b5",
@@ -726,7 +756,11 @@
               "text_align": "center",
               "score": 52,
               "score_notes": "relevância 40 · texto 38 · nitidez 90",
-              "added_at": "2026-09-03T01:43:44.928Z"
+              "added_at": "2026-09-03T01:43:44.928Z",
+              "focus_x": 0.48,
+              "focus_y": 0.21,
+              "width": 1093,
+              "height": 1312
             },
             {
               "id": "bb806634c65",
@@ -739,7 +773,11 @@
               "text_align": "left",
               "score": 67,
               "score_notes": "relevância 40 · texto 75 · nitidez 100",
-              "added_at": "2026-09-03T01:43:44.796Z"
+              "added_at": "2026-09-03T01:43:44.796Z",
+              "focus_x": 0.49,
+              "focus_y": 0.53,
+              "width": 982,
+              "height": 960
             }
           ]
         },

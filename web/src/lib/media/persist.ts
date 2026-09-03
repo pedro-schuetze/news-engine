@@ -12,7 +12,7 @@
  * produção:  um único commit (Git Trees API) com arquivos + JSONs.
  */
 
-import { DATA_MODE, findRunFile } from "../data";
+import { DATA_MODE, findRunFile, loadRun } from "../data";
 import type { MediaAsset, MediaCandidate, PipelineRun, Story } from "../types";
 
 export interface PoolFile {
@@ -48,8 +48,8 @@ export function assetFromCandidate(
     local_path: c.local_path,
     remote_url: null,
     mime_type: c.mime_type,
-    width: null,
-    height: null,
+    width: c.width ?? null,
+    height: c.height ?? null,
     provenance: {
       source_type: c.origin === "upload" ? "GENERATED" : "LICENSED",
       source_name: c.source,
@@ -61,6 +61,8 @@ export function assetFromCandidate(
     text_align: c.text_align,
     prompt: "",
     estimated_cost_usd: null,
+    focus_x: c.focus_x,
+    focus_y: c.focus_y,
   };
 }
 
@@ -108,7 +110,17 @@ export function autoFillEmptySlides(story: Story): number[] {
 // ── gravação (fs/github) ─────────────────────────────────────────────
 
 async function runTargets(runId: string, runFile: string): Promise<string[]> {
-  const targets = ["data/latest.json"];
+  // BUG corrigido em 2026-09-02: escrever SEMPRE em latest.json fazia uma
+  // edição num run do HISTÓRICO sobrescrever o latest com o run antigo (o
+  // dashboard "hoje" passou a mostrar ontem). O latest só é alvo quando o
+  // run editado É o latest.
+  const targets: string[] = [];
+  if (runFile === "latest") {
+    targets.push("data/latest.json");
+  } else {
+    const latest = await loadRun("latest");
+    if (latest?.run_id === runId) targets.push("data/latest.json");
+  }
   const historyFile = runFile && runFile !== "latest" ? runFile : await findRunFile(runId);
   if (historyFile) targets.push(`data/runs/${historyFile}`);
   return targets;

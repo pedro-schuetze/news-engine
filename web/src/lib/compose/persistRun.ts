@@ -7,7 +7,7 @@
  * (Prontos e Histórico leem data/runs/, não o latest).
  */
 
-import { DATA_MODE, findRunFile } from "../data";
+import { DATA_MODE, findRunFile, loadRun } from "../data";
 import * as fsSource from "../sources/fs";
 import * as ghSource from "../sources/github";
 import type { PipelineRun } from "../types";
@@ -21,7 +21,15 @@ export async function persistRun(
   const isManual = runFile.startsWith("manual_");
   const targets: string[] = [];
 
-  if (!isManual) targets.push("data/latest.json");
+  // latest só é alvo quando o run editado É o latest (mesmo bug do persistMedia)
+  if (!isManual) {
+    if (runFile === "latest") {
+      targets.push("data/latest.json");
+    } else {
+      const latest = await loadRun("latest");
+      if (latest?.run_id === run.run_id) targets.push("data/latest.json");
+    }
+  }
   const historyFile = runFile && runFile !== "latest" ? runFile : await findRunFile(run.run_id);
   if (historyFile) targets.push(`data/runs/${historyFile}`);
 

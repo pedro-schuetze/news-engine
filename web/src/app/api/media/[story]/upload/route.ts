@@ -74,9 +74,10 @@ export async function POST(
     // o cliente converte para JPEG antes do envio; PNG/WebP cru entra com
     // análise neutra (jpeg-js só decodifica JPEG)
     const isJpeg = file.type === "image/jpeg";
-    const { placement, align, bandScore } = isJpeg
-      ? await analyzePlacementSmart(bytes)
-      : { placement: "BOTTOM" as const, align: "center" as const, bandScore: 50 };
+    const smart = isJpeg ? await analyzePlacementSmart(bytes) : null;
+    const placement = smart?.placement ?? ("BOTTOM" as const);
+    const align = smart?.align ?? ("center" as const);
+    const bandScore = smart?.bandScore ?? 50;
     const sharp = isJpeg ? sharpnessScore(bytes) : 50;
     const { score, notes } = scoreCandidate({
       origin: "upload",
@@ -96,6 +97,10 @@ export async function POST(
       score,
       score_notes: notes,
       added_at: new Date().toISOString(),
+      focus_x: smart?.focusX,
+      focus_y: smart?.focusY,
+      width: smart?.width || undefined,
+      height: smart?.height || undefined,
     };
     poolFiles.push({ candidate, bytes });
   }

@@ -24,6 +24,9 @@ export interface SlideSpec {
   /** onde o texto tem mais contraste nesta imagem (análise do pipeline) */
   placement: TextPlacement;
   align: "left" | "center" | "right";
+  /** corte por conteúdo: ponto focal e dimensões reais da imagem */
+  focus: { x: number; y: number } | null;
+  imageSize: { w: number; h: number } | null;
 }
 
 export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
@@ -44,15 +47,18 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
     image: SourcedImage | null;
     placement: TextPlacement;
     align: "left" | "center" | "right";
+    focus: { x: number; y: number } | null;
+    imageSize: { w: number; h: number } | null;
   }> {
     const asset = bySlide.get(slideNumber);
-    if (!asset) return { image: null, placement: "BOTTOM", align: "center" };
+    if (!asset)
+      return { image: null, placement: "BOTTOM", align: "center", focus: null, imageSize: null };
     const rel = asset.local_path.split("\\").join("/");
     if (!mediaCache.has(rel)) mediaCache.set(rel, await loadMedia(rel));
     const dataUrl = mediaCache.get(rel) ?? null;
     if (!dataUrl) {
       console.warn(`[slides] imagem do slide ${slideNumber} não encontrada: ${rel}`);
-      return { image: null, placement: "BOTTOM", align: "center" };
+      return { image: null, placement: "BOTTOM", align: "center", focus: null, imageSize: null };
     }
     return {
       image: {
@@ -62,6 +68,11 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
       },
       placement: asset.text_placement ?? "BOTTOM",
       align: asset.text_align ?? "center",
+      focus:
+        typeof asset.focus_x === "number" && typeof asset.focus_y === "number"
+          ? { x: asset.focus_x, y: asset.focus_y }
+          : null,
+      imageSize: asset.width && asset.height ? { w: asset.width, h: asset.height } : null,
     };
   }
 
@@ -70,7 +81,9 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
     const slide = slides[i];
     const isFirst = i === 0;
     const isLast = i === count - 1;
-    const { image, placement, align } = await imageFor(slide?.slide_number || i + 1);
+    const { image, placement, align, focus, imageSize } = await imageFor(
+      slide?.slide_number || i + 1,
+    );
     specs.push({
       kind: isFirst ? "cover" : isLast ? "final" : "body",
       vertical: story.vertical,
@@ -84,6 +97,8 @@ export async function buildSlideSpecs(story: Story): Promise<SlideSpec[]> {
       credit: image ? `FOTO: ${image.credit}` : "",
       placement,
       align,
+      focus,
+      imageSize,
     });
   }
   return specs;

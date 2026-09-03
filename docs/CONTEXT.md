@@ -276,6 +276,32 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     com ativo correto. A rota já aceita `align` opcional se um dia o grid
     virar 3x3.
 
+20. **2026-09-02 — Corte por conteúdo (fim do "auto cut" que amputava
+    fotos) + fix do latest sobrescrito.** Reclamação do Pedro com print:
+    estrela do Walk of Fame e casal cortados ao meio nos slides.
+    - Causa 1: FRAMINGS com zoom fixo 1.16-1.42 por posição do carrossel —
+      resquício da era "1 imagem por post" (obsoleta). Causa 2: o upload
+      cortava no NAVEGADOR (cover 1080x1350 centralizado) — os pixels
+      perdidos nem chegavam ao servidor.
+    - Fix: a análise (que já decodifica e detecta rostos) agora calcula o
+      PONTO FOCAL (rostos → centro ponderado; sem rosto → centroide de
+      energia de bordas em grade 6x6) + dimensões reais, gravados na
+      candidata e no asset (`focus_x/focus_y/width/height`; espelho no
+      models.py). O renderer faz cover exato (zoom 1.0) centrado no foco;
+      FRAMINGS vira fallback para assets antigos. `prepareForUpload` só
+      REDIMENSIONA (max 1440px, nunca corta) — o recorte 4:5 virou decisão
+      única do renderer, guiada pelo foco.
+    - Validado no caso do print (post da Dolly, run de ontem): casal inteiro
+      no quadro, retrato com rosto enquadrado. Pool antigo sem focus cai no
+      fallback (nada quebra).
+    - **BUG descoberto e corrigido no caminho:** `runTargets` escrevia
+      data/latest.json SEMPRE — editar um post de um run do HISTÓRICO
+      sobrescrevia o latest com o run antigo (aconteceu em produção: o
+      "hoje" passou a mostrar o run de 01/09 depois que o Pedro trabalhou o
+      post da Dolly). Agora o latest só é alvo quando run_id editado ==
+      run_id do latest (persist.ts e compose/persistRun.ts); o latest de
+      produção foi restaurado para o run de 02/09.
+
 ## Pendências / dívidas conhecidas
 
 - [x] ~~Revisão de mídia "travava" (reclamação do Pedro)~~ — 2026-09-02:

@@ -5,10 +5,10 @@
  * limite de corpo da requisição (o servidor respondia "Request Entity Too
  * Large" em texto puro, o que aparecia como erro de JSON no dashboard).
  *
- * Aqui cada arquivo é redesenhado no tamanho exato do slide (1080x1350, corte
- * "cover" centralizado) e salvo como JPEG. Isso corta o payload para ~200KB
- * por imagem e ainda garante o formato que a análise de contraste do servidor
- * sabe ler.
+ * Aqui cada arquivo é REDIMENSIONADO (nunca cortado — 2026-09-02: o corte
+ * cego no cliente amputava elementos importantes; agora o recorte 4:5 é do
+ * renderer, guiado pelo ponto focal que a análise calcula) e salvo como JPEG.
+ * Payload cai para ~200-400KB e o servidor recebe a imagem INTEIRA.
  */
 
 export const SLIDE_W = 1080;
@@ -23,18 +23,16 @@ export interface PreparedImage {
 export async function prepareForUpload(file: File, quality = 0.86): Promise<PreparedImage> {
   const bitmap = await createImageBitmap(file);
   try {
+    // só reduz (nunca amplia nem corta): cabe em 1440px no maior lado
+    const MAX_SIDE = 1440;
+    const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
     const canvas = document.createElement("canvas");
-    canvas.width = SLIDE_W;
-    canvas.height = SLIDE_H;
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("canvas indisponível neste navegador");
-
-    // corte "cover": preenche o quadro sem distorcer, centralizado
-    const scale = Math.max(SLIDE_W / bitmap.width, SLIDE_H / bitmap.height);
-    const drawW = bitmap.width * scale;
-    const drawH = bitmap.height * scale;
     ctx.imageSmoothingQuality = "high";
-    ctx.drawImage(bitmap, (SLIDE_W - drawW) / 2, (SLIDE_H - drawH) / 2, drawW, drawH);
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
 
     const blob = await new Promise<Blob | null>((resolve) =>
       canvas.toBlob(resolve, "image/jpeg", quality),

@@ -209,15 +209,57 @@ function Background({
   imageData,
   color,
   pageIndex,
+  focus,
+  imageSize,
 }: {
   imageData: string | null;
   color: string;
   pageIndex: number;
+  focus: { x: number; y: number } | null;
+  imageSize: { w: number; h: number } | null;
 }) {
   if (!imageData) return <GraphicBackground color={color} />;
+  // Corte por CONTEUDO (2026-09-02): com foco + dimensoes conhecidas, o
+  // cover e exato — zoom 1.0 e o recorte centrado no assunto (rostos ou
+  // saliencia), nunca mais estrela/casal amputados pelo zoom decorativo.
+  // FRAMINGS fica so como fallback para assets antigos sem essa analise.
+  let w: number;
+  let h: number;
+  let left: number;
+  let top: number;
+  if (focus && imageSize) {
+    const scale = Math.max(SLIDE_W / imageSize.w, SLIDE_H / imageSize.h);
+    w = Math.round(imageSize.w * scale);
+    h = Math.round(imageSize.h * scale);
+    left = Math.round(Math.min(0, Math.max(-(w - SLIDE_W), -(w * focus.x - SLIDE_W / 2))));
+    top = Math.round(Math.min(0, Math.max(-(h - SLIDE_H), -(h * focus.y - SLIDE_H / 2))));
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          overflow: "hidden",
+          backgroundColor: INK_DARK,
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageData}
+          alt=""
+          width={w}
+          height={h}
+          style={{ position: "absolute", left, top, width: w, height: h }}
+        />
+      </div>
+    );
+  }
   const f = FRAMINGS[(pageIndex - 1) % FRAMINGS.length];
-  const w = Math.round(SLIDE_W * f.zoom);
-  const h = Math.round(SLIDE_H * f.zoom);
+  w = Math.round(SLIDE_W * f.zoom);
+  h = Math.round(SLIDE_H * f.zoom);
   return (
     <div
       style={{
@@ -441,7 +483,13 @@ function CoverSlide({
   const ui = VERTICAL_UI[spec.vertical] ?? { label: spec.vertical.toUpperCase(), color: "#FFD666" };
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
-      <Background imageData={imageData} color={ui.color} pageIndex={spec.pageIndex} />
+      <Background
+        imageData={imageData}
+        color={ui.color}
+        pageIndex={spec.pageIndex}
+        focus={spec.focus}
+        imageSize={spec.imageSize}
+      />
       <Scrim kind="cover" hasPhoto={Boolean(imageData)} placement={spec.placement} />
       <div
         style={{
@@ -511,7 +559,13 @@ function BodySlide({
   const isFinal = spec.kind === "final";
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative" }}>
-      <Background imageData={imageData} color={ui.color} pageIndex={spec.pageIndex} />
+      <Background
+        imageData={imageData}
+        color={ui.color}
+        pageIndex={spec.pageIndex}
+        focus={spec.focus}
+        imageSize={spec.imageSize}
+      />
       <Scrim kind={spec.kind} hasPhoto={Boolean(imageData)} placement={spec.placement} />
       <div
         style={{

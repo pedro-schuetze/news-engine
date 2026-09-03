@@ -338,6 +338,9 @@ class TextPlacement(str, Enum):
 
 
 class MediaAsset(BaseModel):
+    # focus_x/focus_y (0-1) são escritos pelo dashboard (corte por conteúdo)
+    focus_x: Optional[float] = None
+    focus_y: Optional[float] = None
     asset_id: str = Field(default_factory=new_id)
     story_id: str = ""
     draft_id: Optional[str] = None

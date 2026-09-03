@@ -107,18 +107,98 @@ export async function analyzePlacementSmart(jpegBytes: Buffer): Promise<{
   align: "left" | "center" | "right";
   bandScore: number;
   faces: number;
+  /** ponto focal do CONTEUDO (0-1): rostos > saliencia > centro. Guia o
+   * corte 4:5 do renderer, para nao amputar o assunto da foto. */
+  focusX: number;
+  focusY: number;
+  width: number;
+  height: number;
 }> {
   let grid: number[][] | undefined;
   let faces = 0;
+  let focusX = 0.5;
+  let focusY = 0.45;
+  let width = 0;
+  let height = 0;
   try {
     const img = jpeg.decode(jpegBytes, { useTArray: true, formatAsRGBA: true });
+    width = img.width;
+    height = img.height;
     const found = await detectFaces(img.data, img.width, img.height);
     faces = found.length;
-    if (found.length > 0) grid = faceCoverageGrid(found);
+    if (found.length > 0) {
+      grid = faceCoverageGrid(found);
+      // centro ponderado dos rostos (peso = confianca x area)
+      let sw = 0;
+      let sx = 0;
+      let sy = 0;
+      for (const f of found) {
+        const wgt = f.q * f.r * f.r;
+        sw += wgt;
+        sx += f.cx * wgt;
+        sy += f.cy * wgt;
+      }
+      focusX = sx / sw;
+      focusY = sy / sw;
+    } else {
+      const e = energyFocus(img.data, img.width, img.height);
+      focusX = e.x;
+      focusY = e.y;
+    }
   } catch {
-    /* sem rostos detectaveis: segue so o contraste */
+    /* sem decode: segue so o contraste, foco central */
   }
-  return { ...analyzePlacement(jpegBytes, grid), faces };
+  const clamp = (v: number) => Math.min(0.85, Math.max(0.15, v));
+  return {
+    ...analyzePlacement(jpegBytes, grid),
+    faces,
+    focusX: Math.round(clamp(focusX) * 100) / 100,
+    focusY: Math.round(clamp(focusY) * 100) / 100,
+    width,
+    height,
+  };
+}
+
+/**
+ * Saliencia barata para foto sem rosto: centroide da energia de bordas
+ * (Laplaciano) em grade 6x6. Um monumento, um produto ou um mapa "puxam" o
+ * corte para si; ceu liso e fundo desfocado nao contam.
+ */
+function energyFocus(
+  rgba: Uint8Array,
+  width: number,
+  height: number,
+): { x: number; y: number } {
+  const lum = (x: number, y: number) => {
+    const i = (y * width + x) * 4;
+    return 0.299 * rgba[i] + 0.587 * rgba[i + 1] + 0.114 * rgba[i + 2];
+  };
+  const G = 6;
+  const cellEnergy: number[][] = Array.from({ length: G }, () => Array(G).fill(0));
+  const step = Math.max(3, Math.floor(Math.min(width, height) / 180));
+  for (let y = step * 2; y < height - step * 2; y += step) {
+    for (let x = step * 2; x < width - step * 2; x += step) {
+      const lap = Math.abs(
+        4 * lum(x, y) - lum(x - step, y) - lum(x + step, y) - lum(x, y - step) - lum(x, y + step),
+      );
+      cellEnergy[Math.min(G - 1, Math.floor((y / height) * G))][
+        Math.min(G - 1, Math.floor((x / width) * G))
+      ] += lap;
+    }
+  }
+  let sw = 0;
+  let sx = 0;
+  let sy = 0;
+  for (let gy = 0; gy < G; gy++) {
+    for (let gx = 0; gx < G; gx++) {
+      const w = cellEnergy[gy][gx] ** 2; // quadratico: o pico domina
+      sw += w;
+      sx += ((gx + 0.5) / G) * w;
+      sy += ((gy + 0.5) / G) * w;
+    }
+  }
+  if (sw === 0) return { x: 0.5, y: 0.45 };
+  return { x: sx / sw, y: sy / sw };
 }
 
 /**
@@ -212,9 +292,10 @@ export async function bankCandidates(story: Story): Promise<PoolFile[]> {
     if (!bytes) return null;
     const mime = img.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg";
     const isJpeg = mime === "image/jpeg";
-    const { placement, align, bandScore } = isJpeg
-      ? await analyzePlacementSmart(bytes)
-      : { placement: "BOTTOM" as const, align: "center" as const, bandScore: 50 };
+    const smart = isJpeg ? await analyzePlacementSmart(bytes) : null;
+    const placement = smart?.placement ?? ("BOTTOM" as const);
+    const align = smart?.align ?? ("center" as const);
+    const bandScore = smart?.bandScore ?? 50;
     const sharp = isJpeg ? sharpnessScore(bytes) : 50;
     const { score, notes } = scoreCandidate({
       origin: "bank",
@@ -237,6 +318,10 @@ export async function bankCandidates(story: Story): Promise<PoolFile[]> {
         score,
         score_notes: notes,
         added_at: new Date().toISOString(),
+        focus_x: smart?.focusX,
+        focus_y: smart?.focusY,
+        width: smart?.width || undefined,
+        height: smart?.height || undefined,
       },
     };
   });
