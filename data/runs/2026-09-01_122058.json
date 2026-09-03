@@ -596,7 +596,7 @@
               "story_id": "26b2c1bf-190c-4ed0-9af6-ba9cb6d95448",
               "slide_number": 4,
               "type": "image",
-              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b3c4fe097f7.jpg",
+              "local_path": "data/media/26b2c1bf-190c-4ed0-9af6-ba9cb6d95448/pool/b41f40591b5.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": null,
@@ -604,11 +604,11 @@
               "provenance": {
                 "source_type": "LICENSED",
                 "source_name": "wikimedia",
-                "license": "Peabody Awards · CC BY-SA 3.0 · Wikimedia",
+                "license": "Moeller Talent, Inc. Nashville · Public domain · Wikimedia",
                 "attribution_required": true,
-                "attribution_text": "Peabody Awards · CC BY-SA 3.0 · Wikimedia"
+                "attribution_text": "Moeller Talent, Inc. Nashville · Public domain · Wikimedia"
               },
-              "text_placement": "BOTTOM",
+              "text_placement": "CENTER",
               "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null
