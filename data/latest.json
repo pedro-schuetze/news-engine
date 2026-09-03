@@ -2321,7 +2321,7 @@
               "story_id": "66f8a916-d637-436d-8ae0-d7c1604f0a3d",
               "slide_number": 2,
               "type": "image",
-              "local_path": "data/media/66f8a916-d637-436d-8ae0-d7c1604f0a3d/pool/umtlju0a1-2.jpg",
+              "local_path": "data/media/66f8a916-d637-436d-8ae0-d7c1604f0a3d/pool/umtlju0a1-3.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -2334,11 +2334,11 @@
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
               "text_placement": "BOTTOM",
-              "text_align": "left",
+              "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.45,
-              "focus_y": 0.68
+              "focus_x": 0.52,
+              "focus_y": 0.66
             },
             {
               "asset_id": "66f8a916-s3",
