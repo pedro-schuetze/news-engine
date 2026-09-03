@@ -8,7 +8,8 @@
   ],
   "functions": {
     "src/app/api/**": {
-      "memory": 3009
+      "memory": 2048
     }
-  }
+  },
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- ':(top)web' ':(top)config' ':(top)prompts'"
 }
