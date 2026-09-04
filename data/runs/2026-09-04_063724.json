@@ -1756,19 +1756,70 @@
             "verification_notes": "3 domínio(s) independente(s), 4 matéria(s); fonte oficial: não; autoridade máx.: 88. LLM: Fontes de grande credibilidade (BBC, The Guardian) citam fala do presidente e resposta de ministros britânicos — verificados por múltiplos veículos."
           },
           "draft": {
-            "draft_id": "60e7cd80-966a-47ea-9813-47fc15373f9d",
+            "draft_id": "da415090-mtnae9x3",
             "story_id": "da415090-005e-4b14-9861-21bb7cf444a5",
             "channel": "instagram_carousel",
             "language": "pt-BR",
-            "original_story_title": "",
-            "instagram_headline": "Milei ameaça sancionar petroleiras e reafirma reivindicação pelas Malvinas",
-            "short_summary": "O presidente argentino Javier Milei afirmou que as \"ventos de mudança\" favorecem a reivindicação da Argentina sobre as Ilhas Malvinas e ameaçou aplicar sanções contra empresas de petróleo que operam na região. Declarações geraram resposta do Reino Unido, que reiterou que as ilhas permanecem sob soberania britânica.",
-            "why_it_matters": "",
-            "key_facts": [],
-            "caption": "",
-            "hashtags": [],
-            "slides": [],
-            "created_at": "2026-09-04T09:41:49.774015Z"
+            "original_story_title": "Argentine leader threatens to sanction oil firms and reiterates Falklands claim",
+            "instagram_headline": "Líder argentino ameaça sancionar empresas petrolíferas",
+            "short_summary": "O líder argentino ameaçou sancionar empresas petrolíferas e reiterou a reivindicação do país sobre as Ilhas Falkland/Malvinas. Os títulos das fontes fornecidas não detalham as empresas envolvidas nem eventuais medidas formais.",
+            "why_it_matters": "A declaração associa uma disputa territorial a possíveis consequências para o setor petrolífero. A ameaça, porém, não equivale a uma sanção já aplicada.",
+            "key_facts": [
+              "O líder argentino ameaçou sancionar empresas petrolíferas.",
+              "A mesma declaração reiterou a reivindicação argentina sobre as Ilhas Falkland/Malvinas.",
+              "BBC, Guardian e Al Jazeera noticiaram o acontecimento em 4 de setembro de 2026.",
+              "Os títulos fornecidos não identificam as empresas nem informam prazos para possíveis sanções."
+            ],
+            "caption": "A ameaça argentina acrescenta pressão política sobre empresas do setor petrolífero.\n\nPublicações da BBC, do Guardian e da Al Jazeera, divulgadas em 4 de setembro de 2026, relatam que o líder argentino falou em sancionar companhias de petróleo. Na mesma manifestação, ele retomou a reivindicação argentina sobre as Ilhas Falkland/Malvinas. Essa posição deve ser apresentada como uma alegação oficial do país, e não como um fato territorial independente.\n\nTambém é importante separar ameaça de decisão. O material fornecido não informa se houve decreto, resolução administrativa ou outro instrumento que coloque as possíveis penalidades em vigor. Os títulos disponíveis tampouco identificam quais empresas poderiam ser atingidas, quais atividades motivariam a medida ou qual órgão argentino conduziria o processo.\n\nA declaração aproxima a disputa de soberania dos interesses econômicos ligados ao petróleo. No entanto, ainda não é possível determinar o alcance jurídico ou financeiro da ameaça com base nas informações disponíveis. Os próximos dados relevantes serão a publicação de um ato formal, a lista de companhias envolvidas e a eventual resposta das empresas citadas. Siga para acompanhar as atualizações.",
+            "hashtags": [
+              "#IlhasMalvinas",
+              "#Argentina",
+              "#Petróleo",
+              "#PolíticaInternacional"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Líder argentino ameaça sancionar empresas petrolíferas",
+                "body": "O líder também reiterou a **reivindicação argentina** sobre as Ilhas Falkland/Malvinas.",
+                "image_direction": "Foto de agência atual do líder argentino em um ato oficial, com enquadramento médio, expressão neutra e crédito claramente identificado como imagem de arquivo.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "A DECLARAÇÃO",
+                "body": "Na mesma fala, o líder apresentou **duas mensagens**: ameaçou empresas petrolíferas e voltou a reivindicar a soberania argentina sobre as ilhas.",
+                "image_direction": "Ilustração editorial sóbria com as Ilhas Falkland/Malvinas identificadas em um mapa, sem bandeiras sobrepostas nem elementos de propaganda.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O QUE SE SABE",
+                "body": "A medida anunciada foi uma **ameaça de sanção**. Os títulos fornecidos não identificam as empresas nem descrevem penalidades, prazos ou atos formais.",
+                "image_direction": "Foto de agência de uma plataforma petrolífera em plano aberto, sem logotipos e sem associar a estrutura a uma empresa específica.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "POR QUE IMPORTA",
+                "body": "A declaração liga a disputa territorial ao setor petrolífero. Sem um ato formal informado, ela não deve ser tratada como **sanção já aplicada**.",
+                "image_direction": "Ilustração editorial neutra que combine um documento oficial e a silhueta de uma plataforma de petróleo, sem representar uma medida como concluída.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O QUE FALTA",
+                "body": "Ainda é preciso saber se haverá um **ato formal**, quais empresas seriam atingidas e quais seriam os **prazos** das possíveis sanções.",
+                "image_direction": "Ilustração de uma lista de verificação com campos para ato oficial, empresas e prazos, em composição limpa e institucional.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-04T18:28:02.103Z"
           },
           "slide_media": [],
           "media_pool": [],
