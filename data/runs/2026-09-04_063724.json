@@ -2613,19 +2613,71 @@
             "verification_notes": "15 domínio(s) independente(s), 15 matéria(s); fonte oficial: não; autoridade máx.: 80. LLM: Cobertura por Smithsonian e veículos locais; há relatos de autoridades locais e da concessionária do lago, mas pode faltar estudo científico formal publicado."
           },
           "draft": {
-            "draft_id": "10e756b0-3f16-464b-bf18-ce9dc14b535f",
+            "draft_id": "1945548a-mtn6wpks",
             "story_id": "1945548a-a62c-4cbd-9719-d5d89fe2d877",
             "channel": "instagram_carousel",
             "language": "pt-BR",
-            "original_story_title": "",
-            "instagram_headline": "Ilha misteriosa surge, some e reaparece em lago do Canadá",
-            "short_summary": "Uma ilha flutuante apareceu em um reservatório bem mapeado na Colúmbia Britânica, desapareceu e voltou a emergir, segundo reportagem do Smithsonian. Moradores e funcionários da concessionária que administra o lago estão intrigados; fenômenos semelhantes já foram registrados em outros lugares.",
-            "why_it_matters": "",
-            "key_facts": [],
-            "caption": "",
-            "hashtags": [],
-            "slides": [],
-            "created_at": "2026-09-04T09:42:19.451207Z"
+            "original_story_title": "A Lake in Canada Got a Mysterious New Island. Then, It Disappeared and Now It's Back",
+            "instagram_headline": "Uma ilha misteriosa reapareceu em um lago do Canadá",
+            "short_summary": "Uma formação descrita como ilha surgiu em um lago canadense, desapareceu e voltou a ficar visível. As informações fornecidas não identificam o lago nem explicam a causa da mudança.",
+            "why_it_matters": "O caso chama atenção pela transformação incomum. Sem medições ou uma análise técnica disponível, porém, não é possível determinar a origem e a estabilidade da formação.",
+            "key_facts": [
+              "O caso ocorreu em um lago do Canadá.",
+              "A formação foi descrita como uma nova ilha.",
+              "Ela apareceu, desapareceu e voltou a ficar visível.",
+              "A pauta foi marcada como verificada por 15 fontes independentes.",
+              "Os dados fornecidos não incluem uma explicação científica para o fenômeno."
+            ],
+            "caption": "Uma ilha apareceu, sumiu e voltou em um lago do Canadá.\n\nOs registros disponíveis mostram que o caso ganhou cobertura internacional em 3 de setembro de 2026. Entre os nove veículos identificados estão a Smithsonian Magazine, a emissora canadense 650 CKOM, a NBC Boston, a CNBC e cinco publicações brasileiras. As matérias foram registradas em um intervalo de pouco mais de seis horas.\n\nApesar da repercussão, os dados fornecidos para este post não informam o nome do lago, as dimensões da formação ou quanto tempo ela permaneceu visível em cada etapa. Também não há detalhes sobre a composição da ilha, medições no local ou uma instituição científica responsável por investigar o fenômeno. Por isso, qualquer explicação sobre a causa seria especulativa.\n\nA pauta foi classificada como verificada por 15 fontes independentes, mas uma cobertura ampla não substitui uma análise técnica. Até que novos dados sejam divulgados, o fato confirmado é a sequência relatada: a formação surgiu, deixou de ser vista e reapareceu. Siga para acompanhar novas informações.",
+            "hashtags": [
+              "#IlhaMisteriosa",
+              "#LagosDoCanada",
+              "#Geografia",
+              "#Fatos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Uma ilha misteriosa reapareceu em um lago do Canadá",
+                "body": "O caso foi noticiado por veículos canadenses, brasileiros e americanos em **3 de setembro de 2026**.",
+                "image_direction": "Ilustração editorial de um lago cercado por vegetação, com uma pequena formação no centro e o contorno do Canadá ao fundo. Identificar visualmente que o local exato não foi informado.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O QUE SE SABE",
+                "body": "As fontes descrevem **um lago no Canadá**, mas os dados fornecidos não identificam o local nem o tamanho da formação.",
+                "image_direction": "Ilustração cartográfica do Canadá com vários lagos representados, sem marcar uma localização específica. Usar um ponto de interrogação discreto sobre a área do mapa.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "A SEQUÊNCIA",
+                "body": "A formação foi descrita como uma nova ilha. Ela **apareceu, desapareceu e reapareceu** no lago.",
+                "image_direction": "Ilustração editorial em três quadros do mesmo lago: primeiro com a formação visível, depois sem ela e, por fim, com a formação novamente visível. Indicar que é uma representação.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "A QUESTÃO CENTRAL",
+                "body": "Sem medições ou uma análise técnica, ainda não é possível saber **o que causou a mudança** nem se a formação é estável.",
+                "image_direction": "Ilustração em corte de um lago com a formação na superfície e elementos abaixo da água deixados propositalmente indefinidos, sem sugerir uma causa específica.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O ESTADO ATUAL",
+                "body": "Nos relatos mais recentes, a ilha **está visível novamente**. As fontes disponíveis não informam se ela permanecerá no lago.",
+                "image_direction": "Ilustração ampla de um lago canadense genérico com uma pequena formação visível no centro. O clima deve ser documental e sóbrio, sem elementos fantásticos.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-04T16:50:23.740Z"
           },
           "slide_media": [],
           "media_pool": [],
