@@ -384,6 +384,26 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       (sol, 2,5k in / 2,3k out, ~45s). Custo diário ≈ 0,03 + 0,08 × posts
       trabalhados.
 
+25. **2026-09-03 — Editor de mídia 100% local ("repense a mecânica" do
+    Pedro: "do jeito que está NÃO É UTILIZÁVEL").** Insight dele que destravou
+    o desenho: na edição só se escolhe FOTO e POSIÇÃO — o texto não muda.
+    Logo o preview não precisa do satori: `SlidePreview.tsx` é uma RÉPLICA
+    HTML/CSS do slide (mesmas fontes via next/font, mesmos gradientes de
+    scrim, mesmos px, escalado por container query `100cqw/1080`), e clicar
+    em foto/posição atualiza a tela na hora, sem rede.
+    - Nada é gravado até o SALVAR: barra "Salvar (N)/Descartar" aparece com
+      mudanças pendentes; um único `POST /api/media/[story]/apply` grava
+      tudo (applyFreshAndPersist) e os PNGs oficiais (satori) rodam DEPOIS
+      da resposta, só para export/Prontos.
+    - Rotas select/ e placement/ removidas (o apply as substitui); morreram
+      também o poll waitless na edição e a fila de envios.
+    - Os números que espelham o renderer vivem em SlidePreview.tsx — mudou o
+      visual em render.tsx, atualizar lá (comentário cruzado nos dois).
+    - Medido no browser: clique de posição 48ms, troca de foto 74ms com
+      preview imediato, Salvar 3,2s (uma gravação). Era 10-15s POR CLIQUE.
+    - Imagens do preview vêm do CDN público do R2 (prop publicBase); sem R2,
+      fallback para a rota candidate.
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação

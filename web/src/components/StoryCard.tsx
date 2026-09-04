@@ -6,7 +6,6 @@ import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
 import PostMedia from "./PostMedia";
 import GenerateContentButton from "./GenerateContentButton";
-import { slideVersion } from "@/lib/slides/version";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
 
@@ -19,6 +18,12 @@ function Chip({ className = "", children }: { className?: string; children: Reac
     </span>
   );
 }
+
+const SUB_BRANDS: Record<string, string> = {
+  politics: "WORLD",
+  entertainment: "ENTERTAINMENT",
+  facts: "CURIOSITY",
+};
 
 export default function StoryCard({
   story,
@@ -197,24 +202,39 @@ export default function StoryCard({
               <PostMedia
                 storyId={story.story_id}
                 runFile={runFile}
-                slides={draft.slides.map((s) => ({
+                subBrand={SUB_BRANDS[story.vertical] ?? story.vertical.toUpperCase()}
+                publicBase={(process.env.R2_PUBLIC_URL ?? "").replace(/\/$/, "")}
+                slides={draft.slides.map((s, i) => ({
                   n: s.slide_number,
-                  label: s.headline || s.role,
+                  kind:
+                    i === 0
+                      ? ("cover" as const)
+                      : i === draft.slides.length - 1
+                        ? ("final" as const)
+                        : ("body" as const),
+                  headline:
+                    i === 0 ? draft.instagram_headline || story.title : (s.headline ?? ""),
+                  body: i === 0 ? (s.body ?? draft.short_summary ?? "") : (s.body ?? ""),
+                  pageCount: draft.slides.length,
                 }))}
                 pool={story.media_pool ?? []}
-                initialSelection={Object.fromEntries(
+                initialState={Object.fromEntries(
                   draft.slides.map((s) => {
                     const m = (story.slide_media ?? []).find(
                       (x) => x.slide_number === s.slide_number,
                     );
+                    const cand = (story.media_pool ?? []).find(
+                      (c) => c.local_path === m?.local_path,
+                    );
                     return [
                       s.slide_number,
-                      { path: m?.local_path ?? null, placement: m?.text_placement ?? "CENTER" },
+                      {
+                        candidateId: cand?.id ?? null,
+                        placement: m?.text_placement ?? "BOTTOM",
+                        align: m?.text_align ?? "center",
+                      },
                     ];
                   }),
-                )}
-                initialVersions={Object.fromEntries(
-                  draft.slides.map((s) => [s.slide_number, slideVersion(story, s.slide_number)]),
                 )}
               />
             </div>

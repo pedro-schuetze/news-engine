@@ -1,19 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useState } from "react";
+import SlidePreview, { type Placement, type PreviewSlide } from "./SlidePreview";
 import type { MediaCandidate } from "@/lib/types";
-
-type Placement = "TOP" | "CENTER" | "BOTTOM";
-
-interface SlideInfo {
-  n: number;
-  label: string;
-}
-
-interface SlideSel {
-  path: string | null;
-  placement: Placement;
-}
 
 const PLACEMENTS: { value: Placement; label: string; title: string }[] = [
   { value: "TOP", label: "▔", title: "texto no topo" },
@@ -21,166 +10,139 @@ const PLACEMENTS: { value: Placement; label: string; title: string }[] = [
   { value: "BOTTOM", label: "▁", title: "texto na base" },
 ];
 
+interface SlideState {
+  candidateId: string | null;
+  placement: Placement;
+  align: "left" | "center" | "right";
+}
+
 /**
- * Previews + seleção de imagem + posição do texto.
- *
- * Fluxo (2026-09-03): o clique grava a intenção e volta em ~1s; o RENDER do
- * slide (satori, 20-30s medidos em produção) roda no servidor DEPOIS da
- * resposta. Este componente fica POLLANDO ?waitless= até o PNG novo existir
- * no bucket e só então troca o preview — o slide editado pulsa enquanto isso
- * e os DEMAIS slides continuam livres para editar em paralelo.
+ * Editor de mídia 100% LOCAL (2026-09-03, "repense a mecânica"):
+ * clicar numa foto ou numa posição atualiza o preview NA HORA (réplica HTML —
+ * SlidePreview), sem nenhuma chamada de rede. Nada é gravado até o editor
+ * clicar SALVAR — aí vai tudo numa única gravação, e os PNGs oficiais são
+ * re-renderizados em segundo plano só para export/Prontos.
  */
 export default function PostMedia({
   storyId,
   runFile,
   slides,
   pool,
-  initialSelection,
-  initialVersions,
+  subBrand,
+  publicBase,
+  initialState,
 }: {
   storyId: string;
   runFile: string;
-  slides: SlideInfo[];
+  slides: PreviewSlide[];
   pool: MediaCandidate[];
-  /** slide_number -> { path da imagem escolhida, placement atual } */
-  initialSelection: Record<number, SlideSel>;
-  /** ?v= por slide calculado no servidor (cache immutable no browser) */
-  initialVersions: Record<number, string>;
+  subBrand: string;
+  /** base pública do R2 para as imagens do pool (CDN); "" usa a rota interna */
+  publicBase: string;
+  /** estado salvo: slide_number -> { candidateId, placement, align } */
+  initialState: Record<number, SlideState>;
 }) {
-  const [sel, setSel] = useState<Record<number, SlideSel>>(initialSelection);
-  const [ver, setVer] = useState<Record<number, string | number>>(initialVersions);
-  /** slides com render em andamento no servidor (pulsam; botões travados) */
-  const [pending, setPending] = useState<Record<number, boolean>>({});
+  const [saved, setSaved] = useState<Record<number, SlideState>>(initialState);
+  const [draft, setDraft] = useState<Record<number, SlideState>>(initialState);
+  const [saving, setSaving] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const timers = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
-  // fila de envios: um POST em voo por vez, na ordem dos cliques — evita que
-  // gravações concorrentes no MESMO run se atropelem (lost update)
-  const sendChain = useRef<Promise<unknown>>(Promise.resolve());
 
+  const byId = useMemo(() => new Map(pool.map((c) => [c.id, c])), [pool]);
+  const ordered = useMemo(() => [...pool].sort((a, b) => b.score - a.score), [pool]);
   const runQs = `run=${encodeURIComponent(runFile)}`;
-  const ordered = [...pool].sort((a, b) => b.score - a.score);
 
-  useEffect(() => {
-    const t = timers.current;
-    return () => Object.values(t).forEach(clearTimeout);
-  }, []);
+  const changes = slides
+    .map(({ n }) => {
+      const d = draft[n];
+      const s = saved[n];
+      if (!d) return null;
+      const candChanged = d.candidateId !== s?.candidateId;
+      const placeChanged = d.placement !== s?.placement;
+      if (!candChanged && !placeChanged) return null;
+      return {
+        slide_number: n,
+        ...(candChanged && d.candidateId ? { candidate_id: d.candidateId } : {}),
+        ...(placeChanged ? { placement: d.placement } : {}),
+      };
+    })
+    .filter(Boolean) as { slide_number: number; candidate_id?: string; placement?: string }[];
+  const dirty = changes.length > 0;
 
-  /** polla até o PNG da versão nova existir no bucket, então troca o preview */
-  function watchRender(n: number, v: string) {
-    setPending((p) => ({ ...p, [n]: true }));
-    const started = Date.now();
-    const probe = async () => {
-      try {
-        const res = await fetch(
-          `/api/slide/${storyId}/${n}?${runQs}&v=${v}&waitless=1`,
-          { method: "HEAD", cache: "no-store" },
-        );
-        if (res.ok) {
-          setVer((prev) => ({ ...prev, [n]: v }));
-          setPending((p) => ({ ...p, [n]: false }));
-          return;
-        }
-      } catch {
-        /* rede oscilou: tenta de novo */
-      }
-      if (Date.now() - started > 90_000) {
-        // desiste do poll; troca o src mesmo assim (o GET renderiza ao vivo)
-        setVer((prev) => ({ ...prev, [n]: v }));
-        setPending((p) => ({ ...p, [n]: false }));
-        return;
-      }
-      timers.current[n] = setTimeout(probe, 2000);
-    };
-    timers.current[n] = setTimeout(probe, 2500);
+  function imageUrlFor(c: MediaCandidate | null): string | null {
+    if (!c) return null;
+    if (publicBase) {
+      return `${publicBase}/${c.local_path.split("/").map(encodeURIComponent).join("/")}`;
+    }
+    return `/api/media/${storyId}/candidate/${c.id}?${runQs}`;
   }
 
-  function enqueue<T>(job: () => Promise<T>): Promise<T> {
-    const next = sendChain.current.then(job, job);
-    sendChain.current = next.catch(() => undefined);
-    return next;
+  function pick(n: number, c: MediaCandidate) {
+    setNotice(null);
+    setDraft((d) => ({
+      ...d,
+      [n]: {
+        candidateId: c.id,
+        // a foto nova traz a análise dela (posição sugerida + alinhamento)
+        placement: c.text_placement,
+        align: c.text_align,
+      },
+    }));
   }
 
-  async function post(url: string, body: unknown): Promise<{ ok: boolean; v?: string }> {
+  function place(n: number, placement: Placement) {
+    setNotice(null);
+    setDraft((d) => ({ ...d, [n]: { ...d[n], placement } }));
+  }
+
+  function discard() {
+    setDraft(saved);
+    setError(null);
+    setNotice("alterações descartadas");
+  }
+
+  async function save() {
+    if (!dirty || saving) return;
+    setSaving(true);
+    setError(null);
+    setNotice(null);
     try {
-      const res = await fetch(url, {
+      const res = await fetch(`/api/media/${storyId}/apply?${runQs}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify({ changes }),
       });
-      const b = (await res.json().catch(() => ({}))) as { error?: string; v?: string };
+      const body = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
-        setError(b.error ?? `falha (HTTP ${res.status})`);
-        return { ok: false };
+        setError(body.error ?? `falha ao salvar (HTTP ${res.status})`);
+        return;
       }
-      return { ok: true, v: b.v };
+      setSaved(draft);
+      setNotice("salvo — os arquivos finais são atualizados em segundo plano");
     } catch (e) {
       setError(String(e).slice(0, 160));
-      return { ok: false };
-    }
-  }
-
-  async function pick(n: number, c: MediaCandidate) {
-    if (pending[n] || sel[n]?.path === c.local_path) return;
-    const prev = sel[n];
-    setError(null);
-    setPending((p) => ({ ...p, [n]: true }));
-    setSel((s) => ({ ...s, [n]: { path: c.local_path, placement: c.text_placement } }));
-    const r = await enqueue(() =>
-      post(`/api/media/${storyId}/select?${runQs}`, {
-        slide_number: n,
-        candidate_id: c.id,
-      }),
-    );
-    if (r.ok && r.v) watchRender(n, r.v);
-    else {
-      setSel((s) => ({ ...s, [n]: prev }));
-      setPending((p) => ({ ...p, [n]: false }));
-    }
-  }
-
-  async function place(n: number, placement: Placement) {
-    if (pending[n] || sel[n]?.placement === placement || !sel[n]?.path) return;
-    const prev = sel[n];
-    setError(null);
-    setPending((p) => ({ ...p, [n]: true }));
-    setSel((s) => ({ ...s, [n]: { ...s[n], placement } }));
-    const r = await enqueue(() =>
-      post(`/api/media/${storyId}/placement?${runQs}`, {
-        slide_number: n,
-        placement,
-      }),
-    );
-    if (r.ok && r.v) watchRender(n, r.v);
-    else {
-      setSel((s) => ({ ...s, [n]: prev }));
-      setPending((p) => ({ ...p, [n]: false }));
+    } finally {
+      setSaving(false);
     }
   }
 
   return (
     <div className="space-y-3">
+      {/* previews instantâneos (réplica HTML — nenhum servidor envolvido) */}
       <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-5">
-        {slides.map(({ n }) => (
-          <div key={n} className="flex flex-col">
-            <div className="relative">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`/api/slide/${storyId}/${n}?${runQs}${ver[n] ? `&v=${ver[n]}` : ""}`}
-                alt={`Slide ${n}`}
-                loading="lazy"
-                decoding="async"
-                className={`w-full rounded-lg border border-line bg-panel-2 transition-opacity ${
-                  pending[n] ? "opacity-60" : ""
-                }`}
-                style={{ aspectRatio: "1080 / 1350" }}
+        {slides.map((slide) => {
+          const st = draft[slide.n];
+          const cand = st?.candidateId ? (byId.get(st.candidateId) ?? null) : null;
+          return (
+            <div key={slide.n} className="flex flex-col">
+              <SlidePreview
+                slide={slide}
+                candidate={cand}
+                placement={st?.placement ?? "BOTTOM"}
+                align={st?.align ?? "center"}
+                subBrand={subBrand}
+                imageUrl={imageUrlFor(cand)}
               />
-              {pending[n] && (
-                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink/80 px-3 py-1 font-mono text-[10px] tracking-wide text-white">
-                  renderizando…
-                </span>
-              )}
-            </div>
-            {sel[n]?.path && (
               <div
                 className="flex items-center justify-center gap-1 pt-1"
                 title="posição do texto e da sombra neste slide"
@@ -188,11 +150,10 @@ export default function PostMedia({
                 {PLACEMENTS.map((o) => (
                   <button
                     key={o.value}
-                    onClick={() => place(n, o.value)}
-                    disabled={Boolean(pending[n])}
+                    onClick={() => place(slide.n, o.value)}
                     title={o.title}
                     className={`h-6 w-8 rounded-md border text-[11px] leading-none transition-colors ${
-                      sel[n]?.placement === o.value
+                      st?.placement === o.value
                         ? "border-brand bg-brand-soft text-brand-ink"
                         : "border-line bg-panel text-ink-3 hover:border-ink-3 hover:text-ink"
                     }`}
@@ -201,39 +162,66 @@ export default function PostMedia({
                   </button>
                 ))}
               </div>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
 
+      {/* barra de salvar — só aparece com alterações pendentes */}
+      {(dirty || saving || notice) && (
+        <div className="flex flex-wrap items-center gap-2 rounded-xl border border-brand/40 bg-brand-soft/60 px-3 py-2">
+          {dirty || saving ? (
+            <>
+              <button
+                onClick={save}
+                disabled={saving}
+                className="rounded-full bg-brand px-5 py-1.5 text-[13px] font-medium text-white hover:bg-brand-ink disabled:opacity-60"
+              >
+                {saving ? "salvando…" : `Salvar (${changes.length})`}
+              </button>
+              <button
+                onClick={discard}
+                disabled={saving}
+                className="rounded-full border border-line bg-panel px-4 py-1.5 text-[13px] text-ink-2 hover:text-ink disabled:opacity-60"
+              >
+                Descartar
+              </button>
+              <span className="font-mono text-[11px] text-ink-3">
+                nada é gravado até você salvar
+              </span>
+            </>
+          ) : (
+            <span className="font-mono text-[11px] text-brand-ink">{notice}</span>
+          )}
+        </div>
+      )}
+      {error && <p className="text-[11.5px] text-danger">{error}</p>}
+
+      {/* candidatas por slide */}
       {pool.length > 0 && (
         <div className="space-y-3 border-t border-line pt-3">
           <p className="font-mono text-[10.5px] uppercase tracking-wide text-ink-3">
             escolher imagem por slide · {pool.length} candidatas (banco + uploads) · pré-seleção
             por score
           </p>
-          {slides.map(({ n, label }) => (
-            <div key={n} className="space-y-1">
+          {slides.map((slide) => (
+            <div key={slide.n} className="space-y-1">
               <p className="font-mono text-[10.5px] text-ink-3">
-                slide {n} · {label}
-                {pending[n] && (
-                  <span className="ml-2 text-brand-ink">renderizando…</span>
-                )}
+                slide {slide.n} · {slide.headline || slide.kind}
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {ordered.map((c) => {
-                  const isSelected = sel[n]?.path === c.local_path;
+                  const isSelected = draft[slide.n]?.candidateId === c.id;
                   return (
                     <button
                       key={c.id}
-                      onClick={() => pick(n, c)}
-                      disabled={Boolean(pending[n])}
+                      onClick={() => pick(slide.n, c)}
                       title={`${c.origin === "bank" ? "banco" : "ChatGPT"} · score ${c.score} (${c.score_notes})\n${c.credit}`}
                       className={`relative overflow-hidden rounded-lg border-2 transition-all ${
                         isSelected
                           ? "border-brand ring-2 ring-brand/30"
                           : "border-line opacity-80 hover:border-ink-3 hover:opacity-100"
-                      } ${pending[n] && isSelected ? "animate-pulse" : ""}`}
+                      }`}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -260,7 +248,6 @@ export default function PostMedia({
           ))}
         </div>
       )}
-      {error && <p className="text-[11.5px] text-danger">{error}</p>}
     </div>
   );
 }
