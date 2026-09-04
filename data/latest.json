@@ -996,7 +996,31 @@
               "story_id": "5c60ab06-ee50-4131-8f22-064b1f5d5c11",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn1a3y2-1.jpg",
+              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn18fwj-1.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1080,
+              "height": 1350,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.58,
+              "focus_y": 0.32
+            },
+            {
+              "asset_id": "5c60ab06-s2",
+              "story_id": "5c60ab06-ee50-4131-8f22-064b1f5d5c11",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn19evj-3.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
               "width": 960,
@@ -1012,32 +1036,8 @@
               "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.57,
-              "focus_y": 0.69
-            },
-            {
-              "asset_id": "5c60ab06-s2",
-              "story_id": "5c60ab06-ee50-4131-8f22-064b1f5d5c11",
-              "slide_number": 2,
-              "type": "image",
-              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn18fwj-2.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 1080,
-              "height": 1350,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "left",
-              "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.46,
-              "focus_y": 0.28
+              "focus_x": 0.53,
+              "focus_y": 0.62
             },
             {
               "asset_id": "5c60ab06-s3",
@@ -1068,11 +1068,11 @@
               "story_id": "5c60ab06-ee50-4131-8f22-064b1f5d5c11",
               "slide_number": 4,
               "type": "image",
-              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn18fwj-4.jpg",
+              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn19evj-2.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": 1080,
-              "height": 1350,
+              "width": 960,
+              "height": 1440,
               "provenance": {
                 "source_type": "GENERATED",
                 "source_name": "ai",
@@ -1080,12 +1080,12 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "CENTER",
-              "text_align": "center",
+              "text_placement": "BOTTOM",
+              "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.51,
-              "focus_y": 0.75
+              "focus_x": 0.3,
+              "focus_y": 0.52
             },
             {
               "asset_id": "5c60ab06-s5",
