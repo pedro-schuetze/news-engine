@@ -17,7 +17,9 @@ async function imagesComplete(runId: string, storyId: string): Promise<boolean |
   for (const vr of Object.values(run.verticals)) {
     for (const s of vr.stories) if (s.story_id === storyId) story = s;
   }
-  if (!story?.draft?.slides?.length) return null;
+  if (!story?.draft) return null;
+  // brief sem conteúdo gerado: bloqueia (não é fail-open — o post nem tem slides)
+  if (!story.draft.slides?.length) return false;
   const covered = new Set((story.slide_media ?? []).map((m) => m.slide_number)).size;
   return covered >= story.draft.slides.length;
 }
@@ -57,7 +59,7 @@ export async function POST(request: Request) {
     const complete = await imagesComplete(review.run_id, review.story_id);
     if (complete === false) {
       return NextResponse.json(
-        { error: "post ainda sem uma imagem por slide — busque no banco ou suba pelo ChatGPT antes de aprovar" },
+        { error: "post ainda sem conteúdo/imagens completos — gere o conteúdo e as imagens antes de aprovar" },
         { status: 409 },
       );
     }

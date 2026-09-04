@@ -213,6 +213,48 @@ DRAFT_RULES = f"""REGRAS EDITORIAIS:
 {DRAFT_CAPTION_RULES}"""
 
 
+def build_brief_prompt(
+    vertical: VerticalConfig,
+    title: str,
+    content_type: str,
+    verification_summary: str,
+    sources: list[tuple[str, str, str, str]],
+) -> str:
+    """Prompt BARATO do run automatico: so manchete + resumo, para triagem.
+
+    O pacote completo (slides/direcoes/caption) e gerado sob demanda no
+    dashboard, com modelo melhor (decisao de custo do Pedro, 2026-09-03).
+    """
+    src_lines = "\n".join(
+        f'- {domain} ({published}): "{stitle}"' + (f" — {desc}" if desc else "")
+        for domain, stitle, desc, published in sources
+    )
+    return f"""PURPOSE: brief
+VERTICAL: {vertical.id}
+TITLE: {title}
+
+Escreva SOMENTE a manchete de Instagram e um resumo curto deste acontecimento,
+para o editor decidir se o post completo vale a pena.
+
+ACONTECIMENTO: {title}
+TIPO DE CONTEÚDO: {content_type}
+VERIFICAÇÃO: {verification_summary}
+
+FONTES DISPONÍVEIS (única base factual permitida):
+{src_lines}
+
+{HEADLINE_RULES}
+
+REGRAS DO RESUMO:
+- 2 a 3 frases completas em português natural, fiéis às fontes.
+- Sem opinião, sem clichê de IA, sem prometer ação que um post estático não
+  entrega (assistir/ouvir/clicar).
+- Cargos e situações atuais de pessoas vêm SOMENTE das fontes.
+
+FORMATO DE SAÍDA (JSON estrito):
+{{"instagram_headline": "até ~60 caracteres", "short_summary": "2-3 frases"}}"""
+
+
 def build_draft_prompt(
     vertical: VerticalConfig,
     title: str,

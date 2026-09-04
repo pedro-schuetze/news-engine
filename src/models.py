@@ -519,6 +519,68 @@ class DraftSlideOutput(BaseModel):
     image_source_type: str = "AGENCY_PHOTO"
 
 
+def _validate_headline_no_impossible_cta(v: str) -> str:
+    """O post e imagem estatica: manchete nao pode mandar assistir/ouvir/clicar."""
+    import re
+
+    if re.search(
+        r"\b(assista|assistam|ouça|ouçam|escute|escutem|clique|cliquem|acesse|acessem|baixe|baixem)\b",
+        v,
+        re.IGNORECASE,
+    ):
+        raise ValueError(
+            f"manchete promete ação que o post não entrega: {v!r} — o post é "
+            "imagem estática; noticie o fato (ex.: 'X ganha primeiro trailer') "
+            "em vez de mandar assistir/ouvir/clicar"
+        )
+    return v
+
+
+def _validate_headline_complete(v: str) -> str:
+    """Guarda contra manchete truncada (caso real: 'EUA prometem')."""
+    v = v.strip()
+    if v and (len(v) < 18 or len(v.split()) < 3):
+        raise ValueError(
+            f"instagram_headline incompleta ou truncada: {v!r} — escreva a "
+            "manchete inteira (3+ palavras, frase com sentido completo, até "
+            "~60 caracteres)"
+        )
+    return v
+
+
+class BriefOutput(BaseModel):
+    """Saida do run automatico por post: SO manchete + resumo (triagem).
+
+    Decisao de custo do Pedro (2026-09-03): o pacote completo (slides,
+    direcoes de imagem, caption) e caro e so vale para os posts que ele
+    escolhe trabalhar — vira o botao "Gerar conteudo" no dashboard (gpt-5.6-
+    sol). O brief roda no modelo barato do pipeline.
+    """
+
+    instagram_headline: str = ""
+    short_summary: str = ""
+
+    @field_validator("instagram_headline")
+    @classmethod
+    def _brief_headline_sem_cta(cls, v: str) -> str:
+        return _validate_headline_no_impossible_cta(v)
+
+    @field_validator("instagram_headline")
+    @classmethod
+    def _brief_headline_completa(cls, v: str) -> str:
+        return _validate_headline_complete(v)
+
+    def to_draft(self, story_id: str) -> "EditorialDraft":
+        # draft MAGRO: slides vazios sinalizam "conteudo ainda nao gerado";
+        # o dashboard mostra o botao e o gate de aprovacao bloqueia.
+        return EditorialDraft(
+            story_id=story_id,
+            original_story_title="",
+            instagram_headline=self.instagram_headline.strip(),
+            short_summary=self.short_summary.strip(),
+        )
+
+
 class DraftOutput(BaseModel):
     original_story_title: str = ""
     instagram_headline: str = ""
@@ -539,38 +601,12 @@ class DraftOutput(BaseModel):
     @field_validator("instagram_headline")
     @classmethod
     def _headline_sem_cta_impossivel(cls, v: str) -> str:
-        # O post é imagem estática: manchete não pode mandar assistir/ouvir/
-        # clicar (caso real 2026-09-03: "Assista ao trailer da série de
-        # Harry Potter"). Roda no retry do generate — o modelo se corrige.
-        import re
-
-        if re.search(
-            r"\b(assista|assistam|ouça|ouçam|escute|escutem|clique|cliquem|acesse|acessem|baixe|baixem)\b",
-            v,
-            re.IGNORECASE,
-        ):
-            raise ValueError(
-                f"manchete promete ação que o post não entrega: {v!r} — o post é "
-                "imagem estática; noticie o fato (ex.: 'X ganha primeiro trailer') "
-                "em vez de mandar assistir/ouvir/clicar"
-            )
-        return v
+        return _validate_headline_no_impossible_cta(v)
 
     @field_validator("instagram_headline")
     @classmethod
     def _headline_completa(cls, v: str) -> str:
-        # Guarda contra truncamento visto em produção (2026-09-02: a manchete
-        # veio só "EUA prometem"). Roda dentro do retry do LLMClient.generate,
-        # então a mensagem abaixo volta ao modelo na retentativa. Só valida o
-        # campo quando ele vem na resposta (default vazio não passa por aqui).
-        v = v.strip()
-        if v and (len(v) < 18 or len(v.split()) < 3):
-            raise ValueError(
-                f"instagram_headline incompleta ou truncada: {v!r} — escreva a "
-                "manchete inteira (3+ palavras, frase com sentido completo, até "
-                "~60 caracteres)"
-            )
-        return v
+        return _validate_headline_complete(v)
 
     @field_validator("hashtags", mode="before")
     @classmethod

@@ -362,6 +362,28 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     Posts já aprovados com estado corrompido não são recuperáveis
     automaticamente — reabrir no run e re-ajustar (agora sem perda).
 
+24. **2026-09-03 — Corte de custo do writer: run diário escreve só o BRIEF
+    (manchete+resumo, mini); pacote completo sob demanda no botão "Gerar
+    conteúdo" (sol).** Pedido do Pedro. Supera a decisão 22 (sol no writer do
+    pipeline, US$ 1,32/run): agora o Sol só roda para os posts que ele
+    escolhe trabalhar — mesmo padrão do "gerar imagens" de 2026-09-01
+    descendo um nível.
+    - Pipeline: `write_brief` + `BriefOutput` (mesmos guards de manchete —
+      anti-truncada e anti-"assista" — extraídos em helpers de módulo);
+      draft nasce MAGRO (slides=[]) como sinal de "conteúdo não gerado";
+      `openai_writer_model` removida do config.
+    - Dashboard: `POST /api/generate/[story]` (generateDraft com
+      COMPOSE_MODEL=sol, learned directives e regras compartilhadas; grava
+      recarregando o run fresco — proteção lost-update) +
+      `GenerateContentButton` no card quando slides vazios.
+    - Gates: post só com brief NÃO pode ser aprovado (UI e servidor — o
+      fail-open do gate foi fechado para este caso). Fluxo: Gerar conteúdo →
+      imagens → aprovar.
+    - Medido: run completo de 15 briefs = **US$ 0,033** (era 1,32 com sol
+      full, 0,069 com mini full); gerar conteúdo de 1 post = ~US$ 0,08
+      (sol, 2,5k in / 2,3k out, ~45s). Custo diário ≈ 0,03 + 0,08 × posts
+      trabalhados.
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação

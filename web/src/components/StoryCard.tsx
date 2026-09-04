@@ -5,6 +5,7 @@ import CopyButton from "./CopyButton";
 import AdjustButton from "./AdjustButton";
 import ImageActions from "./ImageActions";
 import PostMedia from "./PostMedia";
+import GenerateContentButton from "./GenerateContentButton";
 import { slideVersion } from "@/lib/slides/version";
 import { buildChatGptBriefing } from "@/lib/media/briefing";
 import ReviewButtons from "./ReviewButtons";
@@ -179,6 +180,12 @@ export default function StoryCard({
             )}
           </div>
         </details>
+
+        {draft && draft.slides.length === 0 && (
+          <div className="border-t border-line pt-3">
+            <GenerateContentButton storyId={story.story_id} runFile={runFile} />
+          </div>
+        )}
 
         {draft && draft.slides.length > 0 && (
           <details className="xp" open={hasImages}>

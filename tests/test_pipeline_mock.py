@@ -41,10 +41,12 @@ def test_full_mock_run(tmp_path):
         assert len(vr.stories) >= 1
         assert len(vr.stories) <= 5
         for story in vr.stories:
+            # o run automático escreve só o BRIEF (manchete+resumo); o pacote
+            # completo é gerado sob demanda no dashboard (decisão 2026-09-03)
             assert story.draft is not None, f"story sem draft: {story.title}"
-            assert len(story.draft.slides) >= 3
-            assert story.draft.caption
-            assert all(s_.image_direction for s_ in story.draft.slides)
+            assert story.draft.instagram_headline
+            assert story.draft.short_summary
+            assert story.draft.slides == []
             assert story.verification.primary_source is not None
             assert 0 <= story.final_score <= 100
             assert story.selection_rank >= 1

@@ -32,10 +32,6 @@ class Settings(BaseSettings):
     anthropic_model: str = "claude-haiku-4-5"
     openai_api_key: str = ""
     openai_model: str = "gpt-5-mini"
-    # o WRITER (texto do post + direções de imagem) usa um modelo melhor: o
-    # post é o produto. Router/classificação seguem no openai_model (barato).
-    # Escolha do Pedro em 2026-09-03, após A/B sol/terra/mini nos manuais.
-    openai_writer_model: str = "gpt-5.6-sol"
     openai_reasoning_effort: str = ""
     llm_max_output_tokens: int = 8192
 

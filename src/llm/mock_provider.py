@@ -155,6 +155,8 @@ class MockProvider(LLMProvider):
             payload = self._classification(user)
         elif purpose == "editorial_score":
             payload = self._editorial(user)
+        elif purpose == "brief":
+            payload = self._brief(user)
         elif purpose == "draft":
             payload = self._draft(user)
         else:
@@ -167,6 +169,16 @@ class MockProvider(LLMProvider):
         return LLMResult(text=text, usage=usage, provider=self.name, model=self.model)
 
     # ── purposes ─────────────────────────────────────────────────────
+
+    def _brief(self, user: str) -> dict:
+        title_match = re.search(r"^TITLE: (.+)$", user, re.MULTILINE)
+        title = (title_match.group(1) if title_match else "Acontecimento do dia").strip()
+        short = title if len(title) <= 60 else title[:57].rstrip() + "..."
+        return {
+            "instagram_headline": short,
+            "short_summary": f"[MOCK] Resumo em duas frases sobre: {title}. Contexto essencial para triagem.",
+        }
+
 
     def _classification(self, user: str) -> dict:
         verticals = ["entertainment", "politics", "facts"]
