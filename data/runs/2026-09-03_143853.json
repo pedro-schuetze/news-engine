@@ -3149,6 +3149,23 @@
               "focus_y": 0.57,
               "width": 960,
               "height": 1440
+            },
+            {
+              "id": "umtm8vm3g-1",
+              "local_path": "data/media/58cb606a-1aca-4ebe-80ce-9435a6c032d4/pool/umtm8vm3g-1.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 85,
+              "score_notes": "relevância 85 · texto 99 · nitidez 66",
+              "added_at": "2026-09-04T00:57:46.221Z",
+              "focus_x": 0.47,
+              "focus_y": 0.33,
+              "width": 960,
+              "height": 1440
             }
           ],
           "article_count": 1,
