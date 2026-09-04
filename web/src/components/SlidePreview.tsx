@@ -14,6 +14,7 @@
  * mudou lá, mude aqui (e vice-versa).
  */
 
+import { useLayoutEffect, useRef, useState } from "react";
 import type { MediaCandidate } from "@/lib/types";
 
 export type Placement = "TOP" | "CENTER" | "BOTTOM";
@@ -128,18 +129,37 @@ export default function SlidePreview({
     imgStyle = { position: "absolute", left, top, width: w, height: h };
   }
 
+  // escala medida de verdade: scale() exige número puro — calc(100cqw/1080)
+  // é CSS inválido e o browser o ignorava (bug do primeiro deploy: o slide
+  // 1080px aparecia sem escala, só o canto da foto)
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0);
+  useLayoutEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const update = () => setScale(el.clientWidth / 1080);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    <div style={{ containerType: "inline-size", width: "100%" }}>
-      <div style={{ width: "100%", aspectRatio: "1080 / 1350", overflow: "hidden", borderRadius: 8 }}>
+    <div style={{ width: "100%" }}>
+      <div
+        ref={wrapRef}
+        style={{ width: "100%", aspectRatio: "1080 / 1350", overflow: "hidden", borderRadius: 8 }}
+      >
         <div
           style={{
             width: 1080,
             height: 1350,
-            transform: "scale(calc(100cqw / 1080))",
+            transform: `scale(${scale})`,
             transformOrigin: "top left",
             position: "relative",
             backgroundColor: INK_DARK,
             overflow: "hidden",
+            visibility: scale ? "visible" : "hidden",
           }}
         >
           {imageUrl && (
