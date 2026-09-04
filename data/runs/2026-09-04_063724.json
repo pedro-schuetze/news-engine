@@ -996,11 +996,11 @@
               "story_id": "5c60ab06-ee50-4131-8f22-064b1f5d5c11",
               "slide_number": 1,
               "type": "image",
-              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn18fwj-1.jpg",
+              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn1a3y2-1.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": 1080,
-              "height": 1350,
+              "width": 960,
+              "height": 1440,
               "provenance": {
                 "source_type": "GENERATED",
                 "source_name": "ai",
@@ -1009,11 +1009,11 @@
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
               "text_placement": "BOTTOM",
-              "text_align": "right",
+              "text_align": "center",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.58,
-              "focus_y": 0.32
+              "focus_x": 0.57,
+              "focus_y": 0.69
             },
             {
               "asset_id": "5c60ab06-s2",
@@ -1056,7 +1056,7 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "CENTER",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "prompt": "",
               "estimated_cost_usd": null,
@@ -1080,7 +1080,7 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
@@ -1104,7 +1104,7 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "CENTER",
+              "text_placement": "TOP",
               "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
@@ -1205,7 +1205,7 @@
               "source": "ai",
               "mime_type": "image/jpeg",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "CENTER",
+              "text_placement": "BOTTOM",
               "text_align": "left",
               "score": 72,
               "score_notes": "relevância 85 · texto 54 · nitidez 77",
@@ -1222,7 +1222,7 @@
               "source": "ai",
               "mime_type": "image/jpeg",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "right",
               "score": 54,
               "score_notes": "relevância 85 · texto 19 · nitidez 54",
@@ -1273,7 +1273,7 @@
               "source": "ai",
               "mime_type": "image/jpeg",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "CENTER",
+              "text_placement": "TOP",
               "text_align": "right",
               "score": 56,
               "score_notes": "relevância 85 · texto 13 · nitidez 70",
