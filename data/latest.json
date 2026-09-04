@@ -1429,19 +1429,71 @@
             "verification_notes": "7 domínio(s) independente(s), 7 matéria(s); fonte oficial: não; autoridade máx.: 85. LLM: Fontes de grande porte (The Guardian, CNBC) reportam que há discussão e pressão; governo sul-coreano nega 'revisão' no momento — requer confirmação de decisões parlamentares ou comunicado formal. Conteúdo é alegação/rumor (relatórios da imprensa internacional relataram que Seul estaria buscando aprovação parlamentar; escritório presidencial da Coreia do Sul desacreditou a interpretação) — exige atribuição explícita no texto."
           },
           "draft": {
-            "draft_id": "08285d71-07e4-44d1-87a7-513e1a6b4136",
+            "draft_id": "9fdec1fb-mtnae6fl",
             "story_id": "9fdec1fb-ac78-49a2-bf9b-97bbc8219599",
             "channel": "instagram_carousel",
             "language": "pt-BR",
-            "original_story_title": "",
-            "instagram_headline": "Seul nega planos de enviar forças para o Estreito de Hormuz",
-            "short_summary": "Relatos apontavam que a Coreia do Sul buscava aprovação parlamentar para enviar ativos militares ao Estreito de Hormuz sob pressão dos EUA. O gabinete presidencial sul‑coreano minimizou as informações, dizendo que não há decisão sobre deslocamento, segundo apurações independentes de sete veículos.",
-            "why_it_matters": "",
-            "key_facts": [],
-            "caption": "",
-            "hashtags": [],
-            "slides": [],
-            "created_at": "2026-09-04T09:41:46.591795Z"
+            "original_story_title": "South Korea pushes back on reports it is readying Hormuz deployment amid US pressure",
+            "instagram_headline": "A Coreia do Sul contesta relatos sobre Hormuz",
+            "short_summary": "A Coreia do Sul contestou reportagens que apontavam preparativos para uma mobilização ligada a Hormuz sob pressão dos Estados Unidos. As fontes disponíveis não confirmam uma decisão oficial de envio.",
+            "why_it_matters": "A diferença entre uma preparação atribuída pela imprensa e uma decisão oficial evita que uma alegação contestada seja tratada como fato confirmado.",
+            "key_facts": [
+              "Reportagens associaram um possível envio a Hormuz à pressão dos Estados Unidos.",
+              "Seul contestou a descrição apresentada nessas reportagens.",
+              "A reação sul-coreana foi noticiada por sete fontes independentes.",
+              "As informações disponíveis não confirmam uma ordem oficial de mobilização.",
+              "O formato, o prazo e o alcance de um eventual envio não estão esclarecidos."
+            ],
+            "caption": "Uma pressão diplomática relatada não é uma mobilização confirmada.\n\nEm 4 de setembro de 2026, reportagens afirmaram que a Coreia do Sul estaria preparando um envio ligado a Hormuz em meio à pressão dos Estados Unidos. Seul contestou essa versão. A reação foi noticiada por sete veículos independentes, entre eles The Guardian, CNBC, LatestLY e Kurdistan24.\n\nHá duas camadas diferentes nesta notícia. A primeira é a alegação de que o país estaria pronto para a mobilização. A segunda, verificada pelas fontes, é que a Coreia do Sul se opôs a essa descrição. A contestação confirma que existe uma disputa sobre o relato, mas não permite concluir, sozinha, quais preparativos ocorreram.\n\nAs informações disponíveis não confirmam uma ordem formal, um prazo ou o formato de um eventual envio. Também não detalham como a suposta pressão americana teria sido exercida. Uma mudança no status da notícia dependerá de um comunicado oficial, de documentos verificáveis ou de informações corroboradas de forma independente.\n\nSiga para acompanhar os próximos desdobramentos.",
+            "hashtags": [
+              "#CoreiaDoSul",
+              "#EstreitoDeHormuz",
+              "#Geopolitica",
+              "#PoliticaInternacional"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "A Coreia do Sul contesta relatos sobre Hormuz",
+                "body": "Seul contestou reportagens que associavam um possível envio a Hormuz à **pressão dos Estados Unidos**.",
+                "image_direction": "Mapa editorial mostrando a Coreia do Sul e o estreito de Hormuz, sem setas ou elementos que indiquem uma mobilização confirmada.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "A ALEGAÇÃO",
+                "body": "As reportagens diziam que a Coreia do Sul estaria preparando uma mobilização para Hormuz em razão da **pressão americana**.",
+                "image_direction": "Montagem legível com manchetes dos veículos que publicaram a alegação, identificadas como reportagens e sem imagens de combate.",
+                "image_source_type": "SCREENSHOT"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O QUE SE SABE",
+                "body": "A reação de Seul contra essa versão foi confirmada por **sete fontes independentes**. As informações disponíveis não apontam uma decisão oficial de envio.",
+                "image_direction": "Arte tipográfica neutra separando a contestação confirmada da decisão de envio não confirmada, com cores sóbrias.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "POR QUE IMPORTA",
+                "body": "Uma preparação atribuída por reportagens não equivale a uma **ordem oficial**. Tratar as duas coisas como iguais transforma uma alegação contestada em fato.",
+                "image_direction": "Composição didática em dois blocos, um identificado como relato da imprensa e outro como decisão oficial, sem símbolos militares.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "PRÓXIMO PASSO",
+                "body": "A confirmação de uma mobilização exigirá **evidência oficial ou verificável**. Por enquanto, a prontidão para Hormuz continua sendo uma alegação contestada.",
+                "image_direction": "Arte conceitual com um documento ainda sem confirmação e um mapa discreto de Hormuz ao fundo, sem sugerir que houve envio.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-04T18:27:57.585Z"
           },
           "slide_media": [],
           "media_pool": [],
