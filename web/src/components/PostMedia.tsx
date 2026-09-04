@@ -53,6 +53,9 @@ export default function PostMedia({
   const [pending, setPending] = useState<Record<number, boolean>>({});
   const [error, setError] = useState<string | null>(null);
   const timers = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
+  // fila de envios: um POST em voo por vez, na ordem dos cliques — evita que
+  // gravações concorrentes no MESMO run se atropelem (lost update)
+  const sendChain = useRef<Promise<unknown>>(Promise.resolve());
 
   const runQs = `run=${encodeURIComponent(runFile)}`;
   const ordered = [...pool].sort((a, b) => b.score - a.score);
@@ -91,6 +94,12 @@ export default function PostMedia({
     timers.current[n] = setTimeout(probe, 2500);
   }
 
+  function enqueue<T>(job: () => Promise<T>): Promise<T> {
+    const next = sendChain.current.then(job, job);
+    sendChain.current = next.catch(() => undefined);
+    return next;
+  }
+
   async function post(url: string, body: unknown): Promise<{ ok: boolean; v?: string }> {
     try {
       const res = await fetch(url, {
@@ -116,10 +125,12 @@ export default function PostMedia({
     setError(null);
     setPending((p) => ({ ...p, [n]: true }));
     setSel((s) => ({ ...s, [n]: { path: c.local_path, placement: c.text_placement } }));
-    const r = await post(`/api/media/${storyId}/select?${runQs}`, {
-      slide_number: n,
-      candidate_id: c.id,
-    });
+    const r = await enqueue(() =>
+      post(`/api/media/${storyId}/select?${runQs}`, {
+        slide_number: n,
+        candidate_id: c.id,
+      }),
+    );
     if (r.ok && r.v) watchRender(n, r.v);
     else {
       setSel((s) => ({ ...s, [n]: prev }));
@@ -133,10 +144,12 @@ export default function PostMedia({
     setError(null);
     setPending((p) => ({ ...p, [n]: true }));
     setSel((s) => ({ ...s, [n]: { ...s[n], placement } }));
-    const r = await post(`/api/media/${storyId}/placement?${runQs}`, {
-      slide_number: n,
-      placement,
-    });
+    const r = await enqueue(() =>
+      post(`/api/media/${storyId}/placement?${runQs}`, {
+        slide_number: n,
+        placement,
+      }),
+    );
     if (r.ok && r.v) watchRender(n, r.v);
     else {
       setSel((s) => ({ ...s, [n]: prev }));

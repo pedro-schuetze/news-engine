@@ -108,6 +108,27 @@ export function autoFillEmptySlides(story: Story): number[] {
   return filled;
 }
 
+/**
+ * Recarrega o run FRESCO da fonte e re-aplica só a mutação deste clique antes
+ * de gravar. Sem isto, gravações concorrentes despejavam snapshots velhos e
+ * edições anteriores sumiam (bug real: Pedro terminava a revisão, aprovava, e
+ * o Prontos mostrava imagens/posições "cagadas" — 2026-09-03).
+ */
+export async function applyFreshAndPersist(
+  runFile: string,
+  storyId: string,
+  mutate: (story: Story) => boolean,
+  message: string,
+): Promise<void> {
+  const fresh = await loadRun(runFile);
+  const story = fresh ? findStory(fresh, storyId) : null;
+  if (!fresh || !story || !mutate(story)) {
+    console.warn(`[persist] re-apply falhou para ${storyId.slice(0, 8)} (${message})`);
+    return;
+  }
+  await persistMedia([], fresh, runFile, message);
+}
+
 // ── gravação (fs/github) ─────────────────────────────────────────────
 
 async function runTargets(runId: string, runFile: string): Promise<string[]> {

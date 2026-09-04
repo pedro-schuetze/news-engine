@@ -342,6 +342,26 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - Registro do dia: o cron da Vercel entregou o run diário às 06:37 BRT —
       o gatilho pontual está operacional (token corrigido pelo Pedro).
 
+23. **2026-09-03 — BUG lost-update corrigido: edições sumiam/"cagavam" após
+    a revisão (relato do Pedro, aconteceu várias vezes).** Causa: cada clique
+    de select/placement fotografava o run INTEIRO em memória e gravava esse
+    snapshot no after — que, desde o render assíncrono, rodava ~30s depois.
+    Cliques próximos em slides diferentes gravavam snapshots velhos um por
+    cima do outro; a última gravação vencia SEM as edições anteriores.
+    Fix em três partes:
+    - `applyFreshAndPersist` (persist.ts): na hora de gravar, RECARREGA o run
+      fresco da fonte e re-aplica só a mutação daquele clique — snapshots
+      velhos nunca mais são despejados por cima de edições concorrentes;
+    - ordem no after invertida: persistir PRIMEIRO (2-4s), render lento
+      depois — a janela residual de corrida caiu de ~30s para ~2s;
+    - fila de envios no PostMedia (um POST em voo por vez, na ordem dos
+      cliques) — cliques do mesmo editor nunca correm entre si; a UI continua
+      otimista/instantânea.
+    Validado com o cenário real: 2 POSTs paralelos em slides diferentes →
+    AMBAS as mudanças no arquivo final (antes, uma era engolida).
+    Posts já aprovados com estado corrompido não são recuperáveis
+    automaticamente — reabrir no run e re-ajustar (agora sem perda).
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação

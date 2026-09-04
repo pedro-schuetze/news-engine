@@ -15,7 +15,7 @@
 
 import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
-import { findStory, persistMedia } from "@/lib/media/persist";
+import { applyFreshAndPersist, findStory } from "@/lib/media/persist";
 import { prerenderSlides } from "@/lib/slides/prerender";
 import { slideVersion } from "@/lib/slides/version";
 
@@ -88,13 +88,27 @@ export async function POST(
     const v = slideVersion(story, slideNumber);
     after(async () => {
       try {
-        await prerenderSlides(story, [slideNumber]);
-        await persistMedia(
-          [],
-          run,
+        // 1) grava JA, re-aplicando a mudanca sobre o run FRESCO (sem
+        //    despejar snapshot velho por cima de edicoes concorrentes)
+        await applyFreshAndPersist(
           runFile,
+          storyId,
+          (s) => {
+            const a = (s.slide_media ?? []).find((m) => m.slide_number === slideNumber);
+            if (!a) return false;
+            a.text_placement = placement as "TOP" | "CENTER" | "BOTTOM";
+            if (align) a.text_align = align as "left" | "center" | "right";
+            const c = (s.media_pool ?? []).find((x) => x.local_path === a.local_path);
+            if (c) {
+              c.text_placement = a.text_placement;
+              if (align) c.text_align = a.text_align;
+            }
+            return true;
+          },
           `media: texto do slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${placement}`,
         );
+        // 2) so entao o render lento (o poll do dashboard espera por ele)
+        await prerenderSlides(story, [slideNumber]);
       } catch (e) {
         console.error(`[placement] pós-processo falhou: ${String(e).slice(0, 200)}`);
       }

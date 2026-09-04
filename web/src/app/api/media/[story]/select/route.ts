@@ -8,7 +8,7 @@
 
 import { NextResponse, after } from "next/server";
 import { loadRun } from "@/lib/data";
-import { applySelection, findStory, persistMedia } from "@/lib/media/persist";
+import { applyFreshAndPersist, applySelection, findStory } from "@/lib/media/persist";
 import { prerenderSlides } from "@/lib/slides/prerender";
 import { slideVersion } from "@/lib/slides/version";
 
@@ -61,13 +61,19 @@ export async function POST(
     const v = slideVersion(story, slideNumber);
     after(async () => {
       try {
-        await prerenderSlides(story, [slideNumber]);
-        await persistMedia(
-          [],
-          run,
+        // grava JA sobre o run fresco; depois o render lento
+        await applyFreshAndPersist(
           runFile,
+          storyId,
+          (s) => {
+            const c = (s.media_pool ?? []).find((x) => x.id === candidateId);
+            if (!c) return false;
+            applySelection(s, slideNumber, c);
+            return true;
+          },
           `media: slide ${slideNumber} de ${storyId.slice(0, 8)} -> ${candidateId}`,
         );
+        await prerenderSlides(story, [slideNumber]);
       } catch (e) {
         console.error(`[select] pós-processo falhou: ${String(e).slice(0, 200)}`);
       }
