@@ -1282,6 +1282,23 @@
               "focus_y": 0.42,
               "width": 960,
               "height": 1440
+            },
+            {
+              "id": "umtn1a3y2-1",
+              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn1a3y2-1.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 76,
+              "score_notes": "relevância 85 · texto 69 · nitidez 73",
+              "added_at": "2026-09-04T14:12:52.014Z",
+              "focus_x": 0.57,
+              "focus_y": 0.69,
+              "width": 960,
+              "height": 1440
             }
           ],
           "article_count": 24,
