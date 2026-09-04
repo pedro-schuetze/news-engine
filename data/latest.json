@@ -1092,11 +1092,11 @@
               "story_id": "5c60ab06-ee50-4131-8f22-064b1f5d5c11",
               "slide_number": 5,
               "type": "image",
-              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn18fwj-5.jpg",
+              "local_path": "data/media/5c60ab06-ee50-4131-8f22-064b1f5d5c11/pool/umtn19evj-5.jpg",
               "remote_url": null,
               "mime_type": "image/jpeg",
-              "width": 1080,
-              "height": 1350,
+              "width": 960,
+              "height": 1440,
               "provenance": {
                 "source_type": "GENERATED",
                 "source_name": "ai",
@@ -1104,12 +1104,12 @@
                 "attribution_required": true,
                 "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "TOP",
+              "text_placement": "CENTER",
               "text_align": "right",
               "prompt": "",
               "estimated_cost_usd": null,
-              "focus_x": 0.5,
-              "focus_y": 0.29
+              "focus_x": 0.6,
+              "focus_y": 0.42
             }
           ],
           "media_pool": [
