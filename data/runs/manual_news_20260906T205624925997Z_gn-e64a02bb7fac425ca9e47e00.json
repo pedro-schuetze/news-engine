@@ -1,0 +1,185 @@
+{
+  "run_id": "news-20260906T205624925997Z",
+  "mode": "news",
+  "started_at": "2026-09-06T22:12:20.297Z",
+  "finished_at": "2026-09-06T22:12:20.297Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2554,
+    "estimated_output_tokens": 2918,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-e64a02bb7fac425ca9e47e00",
+          "run_id": "news-20260906T205624925997Z",
+          "cluster_id": "gn-e64a02bb7fac425ca9e47e00",
+          "vertical": "facts",
+          "title": "Corrupção, defesa da democracia, combate ao crime: Quaest mostra o que mais pesa na escolha do eleitor",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260906T205624925997Z",
+            "model: gpt-5-mini-2025-08-07"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": true,
+            "primary_source": {
+              "article_id": "news-e64a02bb7fac425ca9e47e00-0",
+              "name": "g1.globo.com",
+              "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQSDE5SDVwYVNmQmowRjVndGpmdzE4VmpadHRpcmJ2SXNTWTJNVXFtVTY4VW00UWFMR0JXOVFUYmloT1N1ZzVrblFnZkNRdF9GTFIzbnVmWC02R1ZEYnFkUDZYM3ducEZqdjhRd2gzQXRTcFVwZm5vRUc5WGVZbXg3akZWWERHSjAwMFFlUzhxNGl2Rko5TlNyczFDbWUzbXcyYl9lNjVJcXBPUmszQlM5eFFjSEUzTGZxN2xyRXR2NDFyY0UtbWhtZm9ROERXOG1QYmtDcnU3b0RhNXpmVklJTUcwaVVlQ2dOUlJHODljaXlySFdOZWNKbV9jM2tlMnpoaDlWSjVPQmRzTTZSbzhXUlBWbFdsZ9IBpAJBVV95cUxQaHJMX0ltbGxHbTVTRUk1NFphampHUFY2ZFBvcXVrV01uWjItUndZTG9maVRLNEFfLWowdExyeUhLREVRc1Q3UmRmZHZRdFk1Rm5JRVRQRTFFanhLSDM1MjhQVkJZZ3poRVRfUjlvbllxSjZtaG5UcHVpNE8tTTFmcnBCTVVPNXpzTjQ5TnUydzZTbGZWZlRTdGtIOWJQMXV2NTlSbVY4SFZwVmwydFdxaUh1X3NIWDZKZ2FCOVVab2FnMVk2WWtMZ3hyeWdPNzBVVnltMWNaSnJ1SURybWpiUXBuclhxY213RU45N1dCZTlWYzRiX3kxSXhHYUxDREtINVB4VU5LV3hQeXdNWDhlQWxFV0F2UkdVTlMydzI4cmV5WTFl?oc=5",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-06T06:49:29Z",
+              "source_type": "Google News",
+              "authority_score": 0
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-e64a02bb7fac425ca9e47e00-1",
+                "name": "O GLOBO",
+                "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNelJVSmFnLXpVdGM0WDE1V1A2Xzg5OE5pUldJU0huXzUwQ2pma3JWSXh3clYzMnVqODJ5TnY1akZUdjhQczZ6WXl0YjQ4dXV3c00td1lqMW43clkyaUszVy1tRXBhZWpqLVVnM09nQ3BCaWNwNUJGbGl6clllTUY2MngwSHMtcUw3LVdEOTdoazdxNXA3SmQwaEtqYWE1UE9Hd1R3?oc=5",
+                "source_domain": "O GLOBO",
+                "published_at": "2026-09-06T06:49:29Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-e64a02bb7fac425ca9e47e00-2",
+                "name": "SBT News",
+                "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNT0N2V0JUMG9rZWstc00zbGVkNE5ER1hwY1lsdDVGd0tOTDRZTE9vWHZwd014a3FZQXJJTUNZSWNxOVJIaW1aY0VWTkJDWVgwNkM1YUZPdkhHcmxFVkl4NmZXcHU1Ukt2bjM2b3ZpbDBVcDFLanBYVG9Jb1U2dEM1Qlg0M0ZuRXAxRFh6N0o0SGZsVDNWQWZ6LWN6aVNnTWZoUWVfNA?oc=5",
+                "source_domain": "SBT News",
+                "published_at": "2026-09-06T06:49:29Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-e64a02bb7fac425ca9e47e00-3",
+                "name": "Diário do Comércio",
+                "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVWpOYko5akdiQkNzVjRKQTFNVUJEeU9jdEJ0aWNoTDZUZENncXZLOTlEc3hDZVlVcGRpb0FjekJmODBwTGNKYjBaT1FtS0ctMXhFQVU3aU9rNTd1aE5TZER3UDkxelVsZHEtRWcxel9oWTktY241Wm0waF8zS1B2XzdjeXhQTEJjUUxZZERQczNfMGV5V3p2LWZmaVJMaVhENU9vb2w2WS1icF85czZpRWVn?oc=5",
+                "source_domain": "Diário do Comércio",
+                "published_at": "2026-09-06T06:49:29Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-e64a02bb7fac425ca9e47e00-4",
+                "name": "bncamazonas.com.br",
+                "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxONkhtWHpiMTQ4S2t0TzFHN2l6aW1FbVhiUUhjQ3RMbGpoR3FUX3NNRFRoVy1nZjg5UHpoZTY4b3BySFNFWDV0eDN4UEtTRVMxeFl6U3VOV2ZFclpQRTZENkxldDJnZ09qdG1yLUxCVmVzNURleXd3ZWJadU03ay1Jdm9NY1FrVExDRjcwd3NjQnJUYUI2SkRVTnNOWXh1d2NUMTNoRnZxcTY?oc=5",
+                "source_domain": "bncamazonas.com.br",
+                "published_at": "2026-09-06T06:49:29Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "Google News listed 5 outlets for this story."
+          },
+          "draft": {
+            "draft_id": "news-e64-mtqdafnt",
+            "story_id": "news-e64a02bb7fac425ca9e47e00",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Corrupção, defesa da democracia, combate ao crime: Quaest mostra o que mais pesa na escolha do eleitor",
+            "instagram_headline": "Pesquisa Quaest mostra prioridades do eleitor",
+            "short_summary": "Pesquisa da Quaest aponta que corrupção, defesa da democracia e combate ao crime são os temas que mais influenciam o voto. Levantamentos ligados mostram também que a propaganda no rádio e na TV tem influência reduzida.",
+            "why_it_matters": "Saber quais temas pesam no voto ajuda a entender como campanhas e mensagens dos candidatos serão construídas nas eleições presidenciais. Também indica por onde partis e comunicadores devem concentrar argumentos.",
+            "key_facts": [
+              "Segundo a Quaest, corrupção, defesa da democracia e combate ao crime aparecem como prioridades que mais influenciam o eleitor.",
+              "O Globo e SBT News noticiam a nova pesquisa presidencial assinada pela Quaest.",
+              "O Diário do Comércio destaca que a pesquisa mostra quantos eleitores já sabem em quem vão votar.",
+              "De acordo com bncamazonas, a propaganda no rádio e na TV influencia o voto para apenas **3%** dos eleitores."
+            ],
+            "caption": "Pesquisa da Quaest confirma quais temas mais pesam no voto.\n\nA nova pesquisa presidencial, noticiada pelo O Globo e pelo SBT News, coloca corrupção, defesa da democracia e combate ao crime entre os principais motivadores da escolha do eleitor. A Quaest é citada como origem dos resultados.\n\nO Diário do Comércio destaca que o levantamento também traz informações sobre quanto do eleitorado já definiu seu voto. As reportagens não detalham aqui o tamanho da amostra ou a margem de erro, informações que costumam aparecer no relatório completo da pesquisa.\n\nUm dado complementar trazido pelo bncamazonas indica que a propaganda no rádio e na TV influencia apenas **3%** dos eleitores. Isso sugere que outros canais e mensagens podem ter peso maior na decisão de voto, mas o impacto real depende de mais levantamentos e da evolução da campanha.\n\nSiga para acompanhar os próximos resultados e a análise das mudanças nas prioridades eleitorais.",
+            "hashtags": [
+              "#Eleições2026",
+              "#Pesquisa",
+              "#Corrupção",
+              "#fatos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Pesquisa da Quaest mostra o que pesa no voto",
+                "body": "Corrupção, defesa da democracia e combate ao crime lideram as prioridades dos eleitores, segundo a Quaest.",
+                "image_direction": "Ilustração minimalista de um eleitor segurando um cartão de votação, com três ícones grandes atrás (cadeado para corrupção, bandeira para democracia, escudo para segurança). Paleta sobre tons de azul e cinza, texto em primeiro plano.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Contexto",
+                "body": "A Quaest é a fonte citada pelas reportagens do O Globo e do SBT News sobre a nova pesquisa presidencial. O levantamento mostra prioridades que influenciam o voto.",
+                "image_direction": "Ilustração de um mapa do Brasil estilizado com pontos de pesquisa e pequenas etiquetas de texto, fundo claro e elementos gráficos de reportagem.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Principais fatos",
+                "body": "A Quaest aponta corrupção, defesa da democracia e segurança como os temas que mais pesam no voto; o Diário do Comércio destaca que a pesquisa mostra quantos já decidiram, e bncamazonas diz **3%** para rádio e TV.",
+                "image_direction": "Ilustração de um gráfico de barras simples com três barras rotuladas (Corrupção, Democracia, Crime) e um selo lateral com **3%** destacado, estilo infográfico limpo.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "Esses temas devem orientar a comunicação de candidatos e partidos nas eleições presidenciais. Conhecer a baixa influência da rádio e da TV ajuda a entender estratégias de alcance.",
+                "image_direction": "Ilustração de um megafone e ícones de redes e conversas ao redor, indicando mensagens e canais diversos, cores sóbrias e foco em comunicação.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Conclusão",
+                "body": "A Quaest dá um mapa das prioridades eleitorais agora; novos levantamentos vão mostrar se essas intenções mudam ao longo da campanha.",
+                "image_direction": "Ilustração de um calendário com algumas datas marcadas e uma lupa sobre uma delas, simbolizando próximos levantamentos e prazos eleitorais.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-06T22:12:20.297Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T06:49:29Z",
+          "latest_published_at": "2026-09-06T06:49:29Z",
+          "selection_rank": 3,
+          "created_at": "2026-09-06T22:12:20.297Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
