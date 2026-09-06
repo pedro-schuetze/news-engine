@@ -1,0 +1,186 @@
+{
+  "run_id": "news-20260906T205624925997Z",
+  "mode": "news",
+  "started_at": "2026-09-06T22:06:41.054Z",
+  "finished_at": "2026-09-06T22:06:41.054Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2577,
+    "estimated_output_tokens": 3529,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-052fa2fa3c4189b6a95af005",
+          "run_id": "news-20260906T205624925997Z",
+          "cluster_id": "gn-052fa2fa3c4189b6a95af005",
+          "vertical": "facts",
+          "title": "Dino questiona “promessa” de encerrar inquéritos em meio a crise no STF",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260906T205624925997Z",
+            "model: gpt-5-mini-2025-08-07"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": true,
+            "primary_source": {
+              "article_id": "news-052fa2fa3c4189b6a95af005-0",
+              "name": "cnnbrasil.com.br",
+              "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNbm1FbGI2azJhVUt3X3lkdzZiSXdoRXNZTFVJYmI0QmZaMDJLSk51bHdPQVVEQWJwcnlQcWFPRWhScGlPWU9hTEdhY0ZBS0dFRUROMlNCcGcyTTh0Q3AzV1JuUE53S2F3S2RzOGNsTFJzYk5oRmNaTVhXT0JzTkExbDNFOUx6ZzF6c0lGLUtXLXFRT1JycUZyeldDbE9SLWF3azlCYmNScWVLVU01?oc=5",
+              "source_domain": "cnnbrasil.com.br",
+              "published_at": "2026-09-06T18:36:16Z",
+              "source_type": "Google News",
+              "authority_score": 0
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-052fa2fa3c4189b6a95af005-1",
+                "name": "G1",
+                "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOMlczcFNHWXBuRDI3UWFQLS1TanpMM3lZbXhOcng1UUtZZnMyTjVVejhMYy1YZDRJX00yZHZpeERrNnJSUjdJZDUyRGdrNFUyaGFRcXpMS2Rjcjhrc2JmV1FxRGZnVkV6N0lvemJwWXNVY3ZfazlUMTZxWVo0dmRZd2xfaEFkdFRJUG1PRDNHbGdMbEc5VnJtZ3NBRW50MVBCekh3a2ZwblNfa2dvVlZIX1JJX2NXZkRqRWVlek5VMHV3MENnLUlKdG9BajZOYjVkWklwY3I1ZHhCanpmZElmeXBUUzVFT2xmVWhCdWRZaGhfeDJONW1Zb9IBhwJBVV95cUxPSVJFUXgwellrTTJmUEhScXlPakNRaWVyTHZGckdvbHNTLUdUWnEtNS1ldmkzWFNUOUNTTmNKUnRaeXhwVmFocGxnR2hOOUVHSURtTzFKYmdXZ2ppeUw1QWotWHFyRm5nalpsNUw1ai1ieFpTMHE2aEhtNWNDbGVRT1ZidVhKZUVadWtLNi1JeUdJLVByUndyVDR6Y0JFQ1EtSTBNU1NEYk9sVGd5TDVKWHdKNXNmVUhKcjJnUGotZ2JRWGtwMUtFRk5WMFBQSGJQYUlrNXJpMFF5Sk9rWWoxRFp1OUlRdHE0dFRUZnVHNWxPOHNFamo5UU1IbDVrVkhDN2VCT2JhVQ?oc=5",
+                "source_domain": "G1",
+                "published_at": "2026-09-06T18:36:16Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-052fa2fa3c4189b6a95af005-2",
+                "name": "VEJA",
+                "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPN2NpS2JOdWZaVHI4YmpvSVRVc2RhNXpqRzgzRm5IemM0WHBleUFwbThtaVdqQVVCdUQwcU9uNHNLTElVT0Q2RDFXeFVvaWhYTFVteHZhUTVCWFpUaml1bWxOOG5OQ2FGeFhWT2VxYWF0TzE2eF9PNXkwVWRrNWN4Y2djV0pQb0ltc1JwOC1YdGxGNXMxZWtHMm1heG9hZjI2bFRLSXhDMHFMZ0s5eUdUaHEwczRJS3RRZnNpV2FKYUotSW8?oc=5",
+                "source_domain": "VEJA",
+                "published_at": "2026-09-06T18:36:16Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-052fa2fa3c4189b6a95af005-3",
+                "name": "Cleber Toledo",
+                "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPTjBpenJ4UzYySUJUNEZhV3NwbG5mMUJFOFkybjJRSzN5UnNYcl9xbTNsS2dCLTRMNUUtSVo2dk5XUEdueWdxRTMtbVBtbXJsbGxCTVRMWDRlTW9LclJQQmJoR2FMRlNHLUlrN3pkZzBfdDY3dThyUUMybTZSN1RIckFxTlA5WG9PLWFDQXFjelZrc3psMHFhaGVUeGNFckRKcFlvTXNn?oc=5",
+                "source_domain": "Cleber Toledo",
+                "published_at": "2026-09-06T18:36:16Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-052fa2fa3c4189b6a95af005-4",
+                "name": "Poder360",
+                "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNcUpNRHhwNUlldy1Db3ZyUC1vV3BBNzA0X2pyVlVYbllTMkxxYXhEYndaMUx2UGY5OG1XSGpuSXcyNy0wVHotLTA1TTAwZE9XTTNvMWFTOWt2V1Vna0ZsNVdFMm02c3lOcXVOQnhMWFhrNVM0XzVYMC1hRXZTak1xVGJ2RDBOR0I1RlhpMW5kZ1pILVdSTExVVnN3RDBJN3UtTUg1LXVUWGVfTWhOZUJ2RzNCSk8?oc=5",
+                "source_domain": "Poder360",
+                "published_at": "2026-09-06T18:36:16Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "Google News listed 5 outlets for this story."
+          },
+          "draft": {
+            "draft_id": "news-052-mtqd35we",
+            "story_id": "news-052fa2fa3c4189b6a95af005",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Dino questiona “promessa” de encerrar inquéritos em meio a crise no STF",
+            "instagram_headline": "Dino questiona promessa de encerrar inquéritos no STF",
+            "short_summary": "Dino publicou mensagem criticando a ideia de encerrar inquéritos durante a crise no STF. Ele afirmou que problemas graves estão sendo misturados com interesses eleitorais, segundo reportagens.",
+            "why_it_matters": "A declaração coloca em destaque o debate sobre investigação e poder judicial. A discussão pode influenciar como o STF lida com inquéritos sensíveis nos próximos dias.",
+            "key_facts": [
+              "Dino publicou crítica à 'promessa' de encerrar inquéritos, segundo CNN e G1.",
+              "Ele afirmou que 'problemas reais e graves estão sendo misturados com interesses eleitorais', segundo G1.",
+              "Poder360 registra que Dino defendeu decisões monocráticas e questionou o fim de inquéritos.",
+              "VEJA apontou uma indireta de Dino ao presidente do STF sobre o 'inquérito das fake news'.",
+              "Colunista Cleber Toledo comentou o debate sobre a toga, a Constituição e limites do poder."
+            ],
+            "caption": "Dino reagiu à ideia de encerrar inquéritos enquanto o STF vive uma crise pública.\n\nDino publicou uma mensagem pública criticando a chamada 'promessa' de arquivar investigações no meio da crise, segundo reportagens da CNN Brasil e do G1. No post, ele disse que \"problemas reais e graves estão sendo misturados com interesses eleitorais\", frase citada pelo G1.\n\nReportagens do Poder360 registram que Dino também defendeu decisões monocráticas em alguns casos e questionou a retirada de inquéritos do trabalho do STF. A VEJA destacou que a mensagem teve um tom indireto ao presidente do STF em relação ao \"inquérito das fake news\". O colunista Cleber Toledo tratou o episódio como parte do debate sobre a toga, a Constituição e os limites do poder.\n\nNão há, nas reportagens citadas, decisão formal do STF para encerrar inquéritos. Os próximos passos dependem de movimentações internas no tribunal e de possíveis manifestações públicas. Siga para acompanhar.",
+            "hashtags": [
+              "#STF",
+              "#FlávioDino",
+              "#inquéritos",
+              "#fatos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Dino questiona promessa de encerrar inquéritos",
+                "body": "Dino publicou crítica à promessa de encerrar inquéritos em meio à crise no STF, segundo reportagens.",
+                "image_direction": "Retrato formal de Flávio Dino em plano médio, expressão séria, fundo neutro e iluminação de notícia; enquadramento centrado para uso como capa do carrossel.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O que aconteceu",
+                "body": "Houve uma crise pública envolvendo decisões no STF e críticas externas. Segundo G1, Dino disse que **\"problemas reais e graves\"** estão sendo misturados com interesses eleitorais.",
+                "image_direction": "Fachada do prédio do STF em plano amplo, dia claro, bandeiras à vista, enquadramento que mostre a escala e o entorno do prédio.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Fatos principais",
+                "body": "Poder360 afirma que Dino defendeu decisões monocráticas e questionou o fim de inquéritos. VEJA registrou uma indireta ao presidente do STF sobre o **\"inquérito das fake news\"**.",
+                "image_direction": "Screenshot estática da postagem pública de Dino (trecho visível do texto citado), com borda discreta e fonte legível; preservar integridade do post.",
+                "image_source_type": "SCREENSHOT"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "Decidir encerrar inquéritos durante uma crise afeta investigações e a percepção pública do Judiciário. O tema toca os **limites do poder** e a atuação de ministros, segundo coluna de Cleber Toledo.",
+                "image_direction": "Ilustração editorial que mostra uma balança da justiça sobre um livro da Constituição, cores sóbrias e estilo gráfico limpo para explicar o conceito.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O que vem agora",
+                "body": "Não há decisão pública de encerrar inquéritos nas reportagens. A discussão deve seguir no STF e na imprensa, e os próximos passos dependem de decisões internas e de eventuais manifestações.",
+                "image_direction": "Composição dividida: meia imagem com Dino em plano médio e meia com a fachada do STF, layout editorial que indica interação entre o ator político e a instituição.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-06T22:06:41.054Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T18:36:16Z",
+          "latest_published_at": "2026-09-06T18:36:16Z",
+          "selection_rank": 2,
+          "created_at": "2026-09-06T22:06:41.054Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
