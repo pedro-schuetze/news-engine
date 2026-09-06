@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:12:45.860Z",
-  "finished_at": "2026-09-06T22:12:45.860Z",
+  "started_at": "2026-09-06T22:12:46.692Z",
+  "finished_at": "2026-09-06T22:12:46.692Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2585,
-    "estimated_output_tokens": 5081,
+    "estimated_output_tokens": 4534,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,80 +106,78 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-aea-mtqdazdw",
+            "draft_id": "news-aea-mtqdb010",
             "story_id": "news-aea039583b5426b727a0be69",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Mendonça libera para plenário do STF caso de mensagens entre Moraes e Vorcaro; decisão cabe a Fachin",
-            "instagram_headline": "Mendonça libera caso de mensagens ao plenário do STF",
-            "short_summary": "Mendonça encaminhou ao plenário do STF um processo relacionado a mensagens entre Moraes e Vorcaro, segundo g1 e Estadão. A decisão sobre o seguimento do caso cabe a Fachin. A PGR abriu investigação e houve mobilizações públicas.",
-            "why_it_matters": "O desfecho pode influenciar como investigações internas são avaliadas e afetar a percepção pública sobre instituições. Há desdobramentos institucionais e políticas que podem se seguir.",
+            "instagram_headline": "Mendonça libera para o plenário do STF",
+            "short_summary": "Mendonça encaminhou ao plenário do STF um processo sobre mensagens entre Moraes e Vorcaro. A decisão de pautar agora cabe ao ministro Fachin.",
+            "why_it_matters": "A decisão pode alterar a pauta do Supremo e provocar repercussões políticas e investigativas; já há investigação da PGR e convocações públicas.",
             "key_facts": [
-              "Mendonça liberou o caso para o plenário do STF, segundo g1.",
-              "O processo se refere a relatório da Polícia Federal que revelou mensagens entre Moraes e Vorcaro, segundo Estadão.",
-              "A decisão sobre o seguimento cabe a Fachin, segundo g1.",
-              "A PGR abriu investigação relacionada ao caso, segundo Jovem Pan.",
-              "Renan Santos convocou um ato contra o STF em São Paulo, segundo UOL.",
-              "Cármen Lúcia afirmou que não se submeterá a pressões, segundo CNN Brasil."
+              "Mendonça liberou o caso para julgamento no plenário do STF (g1; Estadão).",
+              "O processo tem origem em um relatório da Polícia Federal que revelou mensagens entre Moraes e Vorcaro (Estadão).",
+              "A decisão sobre pautar o processo cabe ao ministro Fachin, segundo as reportagens (g1).",
+              "A Procuradoria-Geral da República abriu investigação em resposta a Fachin, segundo Jovem Pan.",
+              "Há convocação de ato em São Paulo relacionada ao episódio, segundo UOL; Cármen Lúcia afirmou que não se submeterá a pressões, segundo CNN Brasil."
             ],
-            "caption": "Mendonça encaminhou ao plenário um processo sobre mensagens envolvendo Moraes e Vorcaro.\n\nA decisão de liberar o caso foi noticiada por g1 e Estadão em 6 de setembro de 2026. O processo decorre de um relatório da Polícia Federal que apontou mensagens entre Moraes e Vorcaro, e agora segue para análise no plenário do STF. Cabe a Fachin decidir sobre o seguimento do processo.\n\nEm paralelo, a Procuradoria-Geral da República abriu investigação relacionada ao episódio, segundo Jovem Pan. Houve também convocação de ato em São Paulo por Renan Santos, segundo UOL. A ministra Cármen Lúcia declarou que não se submeterá a pressões, segundo reportagem da CNN Brasil. Essas movimentações mostram que o caso terá repercussão institucional e pública além do tribunal.\n\nO próximo passo formal é a decisão de Fachin sobre como o processo seguirá no plenário. Vamos acompanhar as definições de pauta e eventuais prazos informados pelas fontes. Siga para acompanhar.",
+            "caption": "Mendonça libera caso das mensagens; Fachin decide se pauta.\n\nO pedido de liberação levou o processo para possível julgamento no plenário do STF. As reportagens do g1 e do Estadão explicam que as mensagens vieram de um relatório da Polícia Federal que envolve Moraes e Vorcaro.\n\nAgora cabe ao ministro Fachin decidir se agenda a votação no plenário. As matérias não registraram uma data para essa decisão. Em resposta ao caso, a PGR abriu investigação para apurar se houve ilegalidade na investigação da PF, segundo Jovem Pan.\n\nO episódio já tem repercussão política e social: o UOL aponta convocação de ato em São Paulo, e a CNN Brasil registrou que a ministra Cármen Lúcia disse que não se submeterá a pressões. As reportagens trazem os passos imediatos, mas não informam prazo para julgamento.\n\nSiga para acompanhar as atualizações e as próximas decisões no STF.",
             "hashtags": [
               "#STF",
               "#Mendonça",
               "#Moraes",
-              "#PolíciaFederal",
-              "#facts"
+              "#fatos"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Mendonça libera caso ao plenário do STF",
-                "body": "Mendonça encaminhou ao plenário do STF processo sobre mensagens entre Moraes e Vorcaro; a decisão cabe a Fachin.",
-                "image_direction": "Foto frontal do edifício do STF em Brasília, com o prédio centralizado e céu neutro; texto sobreposto no terço inferior.",
+                "headline": "Mendonça libera para o plenário do STF",
+                "body": "O processo sobre mensagens envolvendo Moraes e Vorcaro foi liberado; agora Fachin decide se leva a julgamento no plenário.",
+                "image_direction": "Retrato institucional de Mendonça em meio corpo, iluminação neutra, fundo desfocado com elementos do prédio do STF visíveis.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "O contexto",
-                "body": "O caso surgiu a partir de um **relatório da Polícia Federal** que apontou mensagens entre Moraes e Vorcaro, segundo g1 e Estadão.",
-                "image_direction": "Close institucional de um arquivo de papel ou pastas jurídicas sobre uma mesa, iluminação sóbria e foco nos documentos; sem rostos identificáveis.",
+                "headline": "CONTEXTO",
+                "body": "Trata-se de um **relatório da Polícia Federal** que, segundo g1 e Estadão, expôs mensagens entre Moraes e Vorcaro.",
+                "image_direction": "Imagem da fachada do Supremo Tribunal Federal em plano médio, dia claro, sem pessoas em destaque.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Principais fatos",
-                "body": "Mendonça liberou o caso para o plenário. O processo refere-se ao **relatório da PF** que revelou mensagens; Fachin terá a decisão final sobre o seguimento.",
-                "image_direction": "Retrato formal de Mendonça em ambiente institucional (tribunal ou sessão), enquadramento no busto; aparência sóbria e neutra.",
+                "headline": "FATOS",
+                "body": "Mendonça liberou o caso para julgamento no plenário; a **decisão sobre pautar** fica com Fachin, conforme as reportagens.",
+                "image_direction": "Foto de Fachin em ambiente institucional, close de rosto ou meio corpo, expressão neutra, fundo desfocado.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "Por que importa",
-                "body": "O tema toca na legalidade de investigações e na confiança em instituições. **PGR abriu investigação** e houve convocação de ato, segundo Jovem Pan e UOL.",
-                "image_direction": "Imagem de uma pauta de jornal sobre a mesa com manchetes visíveis, sugerindo debate público; cores amplas e foco no título.",
+                "headline": "POR QUE IMPORTA",
+                "body": "A decisão pode alterar a pauta do STF e provocar reações políticas. Já há **investigação da PGR** e convocações de ato, segundo Jovem Pan e UOL.",
+                "image_direction": "Imagem ampla de pessoas em manifestação urbana em São Paulo, foto jornalística que transmita mobilização sem identificar detalhes sensíveis.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "Próximos passos",
-                "body": "Cabe a **Fachin** decidir sobre o seguimento; o caso seguirá para julgamento no plenário, segundo g1 e Estadão.",
-                "image_direction": "Foto de Fachin em sessão ou imagem do plenário do STF vazia, com banco dos ministros visível, transmitindo a ideia de decisão próxima.",
+                "headline": "PRÓXIMOS PASSOS",
+                "body": "Agora Fachin decide se pauta o processo; se pautado, o plenário do STF poderá julgar. As reportagens não informam data definida.",
+                "image_direction": "Foto do plenário do STF vazia ou em foco arquitetônico, mostrando cadeiras e bancada, tom institucional.",
                 "image_source_type": "PRESS_ASSET"
               }
             ],
-            "created_at": "2026-09-06T22:12:45.860Z"
+            "created_at": "2026-09-06T22:12:46.692Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T19:40:27Z",
           "latest_published_at": "2026-09-06T19:40:27Z",
           "selection_rank": 1,
-          "created_at": "2026-09-06T22:12:45.860Z"
+          "created_at": "2026-09-06T22:12:46.692Z"
         }
       ]
     }
