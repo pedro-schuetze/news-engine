@@ -18,8 +18,9 @@ export async function POST(request: Request) {
         const response = await fetch(outlet.url, { signal: AbortSignal.timeout(4500), headers: { "user-agent": "Iris News Engine/1.0" } });
         const html = await response.text();
         const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-        const description = html.match(/<meta[^>]+(?:name|property)=["'](?:description|og:description)["'][^>]+content=["']([^"']+)/i)?.[1]?.trim();
-        return { domain: outlet.domain || outlet.name, title: title || outlet.title, description: description || "", published: item.published_at ?? undefined };
+        const description = html.match(/<meta[^>]+(?:name|property)=["'](?:description|og:description)["'][^>]+content=["']([^"']+)/i)?.[1]?.trim() ?? "";
+        const body = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)).map((m) => m[1].replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim()).filter((p) => p.length > 60).slice(0, 5).join(" ").slice(0, 1800);
+        return { domain: outlet.domain || outlet.name, title: title || outlet.title, description: [description, body].filter(Boolean).join(" ").slice(0, 2200), published: item.published_at ?? undefined };
       } catch { return null; }
     }))).filter(Boolean) as SourceLine[];
     const result = await composeFromNews(snapshot, item, extracted);
