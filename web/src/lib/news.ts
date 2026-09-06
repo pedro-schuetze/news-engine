@@ -5,6 +5,7 @@ export type FrontPageStory = (typeof latest.stories)[number];
 export type FrontPageSnapshot = typeof latest;
 export type NewsStory = FrontPageStory;
 export type NewsSnapshot = FrontPageSnapshot;
+export type SnapshotRun = { id: string; fetched_at: string; stats: { stories: number; new: number; retained: number; departed: number; llm_calls?: number; cost_usd?: number; duration_seconds?: number }; warnings?: string[]; layout?: string };
 
 export function loadLatestNews(): FrontPageSnapshot {
   return latest;
@@ -28,6 +29,11 @@ export async function loadSnapshot(id?: string) {
   if (!id) return readNewsJson<FrontPageSnapshot>("latest.json");
   if (!SNAPSHOT_ID.test(id)) return null;
   return readNewsJson<FrontPageSnapshot>(`archive/${id.slice(0,4)}-${id.slice(4,6)}/${id}.json`);
+}
+export async function loadSnapshotRuns(): Promise<SnapshotRun[]> {
+  const months = await readNewsJson<string[]>("months.json") ?? [];
+  const files = await Promise.all(months.map((month) => readNewsJson<SnapshotRun[]>(`indexes/${month}.json`)));
+  return files.flatMap((runs) => runs ?? []).sort((a, b) => b.fetched_at.localeCompare(a.fetched_at));
 }
 export function sameOrigin(request: Request) {
   const origin = request.headers.get("origin");
