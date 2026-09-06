@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:12:31.568Z",
-  "finished_at": "2026-09-06T22:12:31.568Z",
+  "started_at": "2026-09-06T22:12:33.666Z",
+  "finished_at": "2026-09-06T22:12:33.666Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2585,
-    "estimated_output_tokens": 4287,
+    "estimated_output_tokens": 3942,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,78 +106,79 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-aea-mtqdaocw",
+            "draft_id": "news-aea-mtqdapz6",
             "story_id": "news-aea039583b5426b727a0be69",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Mendonça libera para plenário do STF caso de mensagens entre Moraes e Vorcaro; decisão cabe a Fachin",
-            "instagram_headline": "Mendonça libera caso de mensagens ao plenário do STF",
-            "short_summary": "O ministro liberou para julgamento no plenário do STF o processo sobre mensagens entre Moraes e Vorcaro. A decisão final sobre pauta e andamento agora cabe ao ministro Fachin, segundo g1 e Estadão.",
-            "why_it_matters": "O julgamento no plenário pode definir limites entre investigações da Polícia Federal e a conduta de magistrados. Há também apuração da PGR sobre a legalidade da investigação, segundo Jovem Pan.",
+            "instagram_headline": "Mendonça leva caso ao plenário do STF",
+            "short_summary": "Segundo g1 e Estadão, Mendonça liberou para o plenário do STF o caso sobre mensagens envolvendo Moraes e Vorcaro. A decisão sobre o prosseguimento cabe ao ministro Fachin. A PGR abriu investigação relacionada ao episódio, segundo Jovem Pan.",
+            "why_it_matters": "O julgamento no plenário pode definir como o STF trata investigações que envolvem comunicações entre autoridades. A decisão também pode influenciar apurações em curso e questionamentos sobre legalidade de procedimentos da PF.",
             "key_facts": [
-              "Mendonça liberou para julgamento no plenário do STF o caso sobre mensagens entre Moraes e Vorcaro (g1; Estadão).",
-              "O episódio se baseia em relatório da Polícia Federal que revelou mensagens entre os dois, segundo Estadão.",
-              "A decisão sobre como e quando o plenário julgará cabe ao ministro Fachin, segundo g1.",
-              "A Procuradoria-Geral da República abriu investigação para apurar a legalidade da apuração, segundo Jovem Pan.",
-              "Há mobilização política: UOL informa que Renan Santos convocou ato contra o STF em São Paulo."
+              "Segundo g1 e Estadão, Mendonça liberou o caso ao plenário do STF",
+              "A matéria trata de mensagens entre Moraes e Vorcaro, conforme relatório da PF, segundo Estadão",
+              "A decisão sobre o seguimento cabe ao ministro Fachin, segundo g1",
+              "Segundo Jovem Pan, a PGR abriu investigação relacionada à investigação da PF",
+              "CNN Brasil registrou que a ministra Cármen Lúcia afirmou não se submeter a pressões"
             ],
-            "caption": "Mendonça liberou o caso sobre mensagens entre Moraes e Vorcaro para julgamento no plenário do STF.\n\nA decisão foi remetida por Mendonça ao plenário, e cabe agora ao ministro Fachin pautar o processo, segundo g1 e Estadão. O caso tem origem em um relatório da Polícia Federal que revelou mensagens envolvendo Moraes e Vorcaro, segundo o Estadão.\n\nParalelamente, a Procuradoria-Geral da República abriu uma investigação para apurar se a apuração da PF foi legal, conforme reportagem da Jovem Pan. A situação também provoca reação pública: o UOL informa que Renan Santos convocou ato contra o STF em São Paulo.\n\nA cobertura registra ainda declarações de membros da corte sobre pressões externas. A CNN Brasil noticiou que a ministra Cármen Lúcia afirmou que não se submeterá a pressões, um elemento que mostra a sensibilidade política do caso.\n\nFique atento: agora o percurso processual depende da pauta que Fachin definir. Siga para acompanhar.",
+            "caption": "Mendonça liberou o caso das mensagens para o plenário do STF.\n\nSegundo g1 e Estadão, o pedido de levar ao plenário parte da decisão de Mendonça sobre um relatório da PF que revelou mensagens entre Moraes e Vorcaro. A questão agora depende de uma definição do ministro Fachin.\n\nAlém disso, segundo Jovem Pan, a Procuradoria-Geral da República abriu investigação para apurar se houve irregularidade na investigação da PF. A CNN Brasil registrou reações no STF, com a ministra Cármen Lúcia afirmando que não se submeterá a pressões.\n\nO processo pode avançar para julgamento pelos ministros se Fachin confirmar o envio ao plenário. Não há data pública para a sessão, segundo as reportagens.\n\nSiga para acompanhar as próximas decisões e os desdobramentos.",
             "hashtags": [
               "#STF",
               "#Mendonça",
               "#Moraes",
-              "#facts"
+              "#PF",
+              "#fatos"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Mendonça libera caso de mensagens ao plenário do STF",
-                "body": "O ministro liberou para julgamento no plenário ação sobre mensagens entre Moraes e Vorcaro.",
-                "image_direction": "Foto frontal do edifício do Supremo Tribunal Federal, enquadramento médio, bandeira do Brasil visível; luz do dia, clima institucional e neutro.",
+                "headline": "Mendonça libera caso ao plenário do STF",
+                "body": "Segundo g1, Mendonça liberou o caso das mensagens entre Moraes e Vorcaro para o plenário do STF.",
+                "image_direction": "Foto da fachada do Supremo Tribunal Federal ao entardecer, enquadramento amplo, bandeira em destaque, clima sério e neutro.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "Contexto",
-                "body": "Mendonça enviou o caso ao plenário; **decisão cabe a Fachin**, que terá de pautar o julgamento.",
-                "image_direction": "Foto do ministro Mendonça caminhando em corredor do prédio do STF, plano médio, expressão séria; estilo de fotografia de agência.",
+                "headline": "Contexto do caso",
+                "body": "Segundo Estadão, um **relatório da PF** revelou mensagens entre Moraes e Vorcaro. O relatório motivou a investigação que chegou ao STF.",
+                "image_direction": "Imagem de mãos folheando um relatório em uma mesa, foco no documento e caneta ao lado, iluminação neutra e institucional.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Fatos",
-                "body": "O caso se baseia em **relatório da PF** que revelou mensagens entre Moraes e Vorcaro. Segundo Jovem Pan, **a PGR abriu investigação** sobre a legalidade da apuração.",
-                "image_direction": "Ilustração conceitual: bolhas de conversa sobre células de papel e documentos oficiais, cores sóbrias e elementos gráficos que remetam a investigação e sigilo.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "Principais fatos",
+                "body": "Segundo g1 e Estadão, Mendonça liberou o caso ao plenário; a **decisão final** cabe ao ministro Fachin. Segundo Jovem Pan, a **PGR** abriu investigação relacionada ao episódio.",
+                "image_direction": "Foto do plenário do STF com cadeiras vazias e microfones, enquadramento frontal mostrando a mesa dos ministros, tom documental.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
                 "headline": "Por que importa",
-                "body": "O julgamento no **plenário** pode influenciar limites entre investigação e atuação de ministros. CNN Brasil registrou que Cármen Lúcia disse que **não se submeterá a pressões**.",
-                "image_direction": "Foto da ministra Cármen Lúcia em sessão ou entrevista, plano médio, microfone visível; tom sério e institucional.",
+                "body": "O caso envolve comunicações entre autoridades e questionamentos sobre a **legalidade da investigação**. O resultado pode afetar como tribunais tratam apurações semelhantes.",
+                "image_direction": "Imagem conceitual de um martelo de juiz sobre papéis e um smartphone desfocado ao fundo, iluminação sóbria.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
                 "headline": "Próximos passos",
-                "body": "Agora cabe a **Fachin** pautar o processo; não há data definida. UOL informa que foi convocado um **ato em São Paulo** contra o STF.",
-                "image_direction": "Foto do plenário do STF vazio, tomada ampla que mostre bancos e tribuna, luz interna; imagem que sugira espera pela sessão.",
+                "body": "Segundo g1, a decisão cabe ao ministro Fachin; se ele mantiver, o caso seguirá para julgamento no plenário do STF. Não há data definida ainda.",
+                "image_direction": "Foto de um corredor interno do STF com pessoas em movimento e uma placa indicando a direção do plenário, clima de expectativa institucional.",
                 "image_source_type": "PRESS_ASSET"
               }
             ],
-            "created_at": "2026-09-06T22:12:31.568Z"
+            "created_at": "2026-09-06T22:12:33.666Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T19:40:27Z",
           "latest_published_at": "2026-09-06T19:40:27Z",
           "selection_rank": 1,
-          "created_at": "2026-09-06T22:12:31.568Z"
+          "created_at": "2026-09-06T22:12:33.666Z"
         }
       ]
     }
