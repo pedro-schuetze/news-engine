@@ -37,5 +37,13 @@ export async function loadSnapshotRuns(): Promise<SnapshotRun[]> {
 }
 export function sameOrigin(request: Request) {
   const origin = request.headers.get("origin");
-  return !origin || origin === new URL(request.url).origin;
+  if (!origin) return true;
+  try {
+    const expected = new URL(request.url);
+    const received = new URL(origin);
+    if (received.origin === expected.origin) return true;
+    // Local development commonly switches between these equivalent hosts.
+    const local = (host: string) => host === "localhost" || host === "127.0.0.1";
+    return local(received.hostname) && local(expected.hostname) && received.port === expected.port;
+  } catch { return false; }
 }

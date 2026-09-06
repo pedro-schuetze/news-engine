@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { groupNewsBySection, loadSnapshot, loadSnapshotRuns, type NewsSnapshot } from "@/lib/news";
+import HistoryStoryAction from "@/components/HistoryStoryAction";
 
 export const dynamic = "force-dynamic";
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -18,5 +19,5 @@ export default async function HistoryPage({ searchParams }: { searchParams: Sear
 
 function SnapshotDetail({ snapshot }: { snapshot: NewsSnapshot }) {
   const groups = groupNewsBySection(snapshot.stories);
-  return <section><p className="microlabel">selected snapshot</p><h2 className="mt-1 text-xl font-semibold text-navy">{formatDate(snapshot.fetched_at)}</h2><p className="mt-1 text-xs text-ink-3">{snapshot.stories.length} story groups · {snapshot.edition}</p><div className="mt-4 grid gap-4 md:grid-cols-2">{Object.entries(groups).map(([section, stories]) => <div key={section} className="rounded-xl border border-line bg-panel p-4"><h3 className="mb-3 text-sm font-semibold text-ink">{stories[0]?.section_label ?? section}</h3><ol className="space-y-3">{stories.map((story) => <li key={story.guid} className="flex gap-3 text-sm"><span className="font-mono text-xs text-ink-3">{String(story.rank).padStart(2, "0")}</span><a href={story.url} target="_blank" rel="noreferrer" className="leading-snug text-ink hover:text-brand">{story.title}</a></li>)}</ol></div>)}</div></section>;
+  return <section><p className="microlabel">selected snapshot</p><h2 className="mt-1 text-xl font-semibold text-navy">{formatDate(snapshot.fetched_at)}</h2><p className="mt-1 text-xs text-ink-3">{snapshot.stories.length} story groups · {snapshot.edition}</p><div className="mt-4 grid gap-4 md:grid-cols-2">{Object.entries(groups).map(([section, stories]) => <div key={section} className="rounded-xl border border-line bg-panel p-4"><h3 className="mb-3 text-sm font-semibold text-ink">{stories[0]?.section_label ?? section}</h3><ol className="space-y-3">{stories.map((story) => <li key={story.guid} className="flex gap-3 text-sm"><span className="font-mono text-xs text-ink-3">{String(story.rank).padStart(2, "0")}</span><div className="min-w-0"><a href={story.url} target="_blank" rel="noreferrer" className="leading-snug text-ink hover:text-brand">{story.title}</a><HistoryStoryAction snapshotId={snapshot.id} storyId={story.id} /></div></li>)}</ol></div>)}</div></section>;
 }
