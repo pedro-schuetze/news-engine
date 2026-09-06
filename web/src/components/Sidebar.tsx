@@ -13,7 +13,13 @@ const items = [
 export default function Sidebar() {
   const path = usePathname();
   return <aside className="sidebar">
-    <div className="brand"><span className="brand-mark">N</span><span>NEWSROOM<span className="brand-dot">.</span></span></div>
+    <div className="brand">
+      <a className="brand-mark" href="https://eclecticlight.co/2021/02/23/goddess-of-the-week-iris-the-rainbow/" target="_blank" rel="noreferrer" title="Iris by John Atkinson Grimshaw (1886) — source and credit">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="https://eclecticlight.co/wp-content/uploads/2021/02/grimshawiris.jpg?w=1024" alt="Iris, Greek goddess of the rainbow" />
+      </a>
+      <span>IRIS<span className="brand-dot">.</span></span>
+    </div>
     <p className="sidebar-kicker">Editorial desk</p>
     <nav aria-label="Primary navigation" className="nav-list">{items.map(([label, href, icon]) => {
       const active = href === "/" ? (path === "/" || path === "/hoje") : path.startsWith(href);
