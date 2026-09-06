@@ -142,7 +142,7 @@ export default function StoryCard({
 
       {/* expanders */}
       <div className="mt-4 space-y-1.5 border-t border-line pt-3">
-        <details className="xp">
+        {!hideTechnical && <details className="xp">
           <summary>Fontes ({sourceCount}) e verificação</summary>
           <div className="mt-2 space-y-2 rounded-lg bg-panel-2/60 p-3 text-[13px]">
             {story.verification.primary_source && (
@@ -186,7 +186,7 @@ export default function StoryCard({
               <p className="text-warn">Atribuição: {story.claim_attribution}</p>
             )}
           </div>
-        </details>
+        </details>}
 
         {draft && draft.slides.length === 0 && (
           <div className="border-t border-line pt-3">
@@ -296,7 +296,7 @@ export default function StoryCard({
           </details>
         )}
 
-        <details className="xp">
+        {!hideTechnical && <details className="xp">
           <summary>Racional do engine</summary>
           <div className="mt-2 space-y-2 rounded-lg bg-panel-2/60 p-3 text-[12.5px] text-ink-2">
             {story.classification && (
@@ -329,7 +329,7 @@ export default function StoryCard({
               <p className="text-warn">Red flags: {story.red_flags.join("; ")}</p>
             )}
           </div>
-        </details>
+        </details>}
       </div>
 
       {/* ações */}
