@@ -1,23 +1,141 @@
 import Link from "next/link";
-import { groupNewsBySection, loadSnapshot, loadSnapshotRuns, type NewsSnapshot } from "@/lib/news";
-import HistoryStoryAction from "@/components/HistoryStoryAction";
+import RunsTable from "@/components/RunsTable";
+import StoryRow from "@/components/StoryRow";
+import { listRunSummaries, loadAllStories, loadReviews, loadVerticalNames } from "@/lib/data";
+import type { ReviewStatus } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
+
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
-const formatDate = (value: string) => new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "America/Sao_Paulo" }).format(new Date(value));
 
-export default async function HistoryPage({ searchParams }: { searchParams: SearchParams }) {
-  const params = await searchParams;
-  const selected = typeof params.run === "string" ? params.run : undefined;
-  const [runs, snapshot] = await Promise.all([loadSnapshotRuns(), loadSnapshot(selected)]);
-  return <div className="space-y-8">
-    <header><p className="microlabel">snapshot archive</p><h1 className="mt-1 text-3xl font-semibold tracking-tight text-navy">History</h1><p className="mt-2 max-w-2xl text-sm text-ink-2">Every three-hour front-page collection, preserved so you can see what changed and when.</p></header>
-    <section><div className="mb-3 flex items-center justify-between"><p className="microlabel">collection runs · {runs.length}</p>{snapshot && <Link href="/historico" className="text-xs text-brand hover:underline">Clear selection</Link>}</div><div className="overflow-hidden rounded-xl border border-line bg-panel">{runs.length === 0 ? <p className="p-8 text-center text-sm text-ink-3">No snapshots yet.</p> : runs.map((run) => <Link key={run.id} href={`/historico?run=${run.id}`} className={`flex items-center justify-between gap-4 border-b border-line px-4 py-3 transition-colors last:border-0 hover:bg-panel-2 ${selected === run.id ? "bg-panel-2" : ""}`}><div><p className="text-sm font-medium text-ink">{formatDate(run.fetched_at)}</p><p className="mt-0.5 text-xs text-ink-3">Run {run.id}</p></div><div className="flex gap-4 text-right text-xs text-ink-2"><span><strong className="text-ink">{run.stats.stories}</strong> stories</span><span><strong className="text-ink">{run.stats.new}</strong> new</span><span><strong className="text-ink">{run.stats.retained}</strong> retained</span></div></Link>)}</div></section>
-    {snapshot && <SnapshotDetail snapshot={snapshot} />}
-  </div>;
-}
+const STATUS_FILTERS: { id: string; label: string }[] = [
+  { id: "", label: "Todas" },
+  { id: "APPROVED", label: "Aprovadas" },
+  { id: "REJECTED", label: "Rejeitadas" },
+  { id: "PENDING", label: "Pendentes" },
+];
 
-function SnapshotDetail({ snapshot }: { snapshot: NewsSnapshot }) {
-  const groups = groupNewsBySection(snapshot.stories);
-  return <section><p className="microlabel">selected snapshot</p><h2 className="mt-1 text-xl font-semibold text-navy">{formatDate(snapshot.fetched_at)}</h2><p className="mt-1 text-xs text-ink-3">{snapshot.stories.length} story groups · {snapshot.edition}</p><div className="mt-4 grid gap-4 md:grid-cols-2">{Object.entries(groups).map(([section, stories]) => <div key={section} className="rounded-xl border border-line bg-panel p-4"><h3 className="mb-3 text-sm font-semibold text-ink">{stories[0]?.section_label ?? section}</h3><ol className="space-y-3">{stories.map((story) => <li key={story.guid} className="flex gap-3 text-sm"><span className="font-mono text-xs text-ink-3">{String(story.rank).padStart(2, "0")}</span><div className="min-w-0"><a href={story.url} target="_blank" rel="noreferrer" className="leading-snug text-ink hover:text-brand">{story.title}</a><HistoryStoryAction snapshotId={snapshot.id} storyId={story.id} /></div></li>)}</ol></div>)}</div></section>;
+const MAX_ROWS = 120;
+
+export default async function HistoricoPage({ searchParams }: { searchParams: SearchParams }) {
+  const sp = await searchParams;
+  const status = typeof sp.status === "string" ? sp.status : "";
+  const vertical = typeof sp.vertical === "string" ? sp.vertical : "";
+  const q = typeof sp.q === "string" ? sp.q.trim() : "";
+
+  const [entries, reviews, names, summaries] = await Promise.all([
+    loadAllStories(30),
+    loadReviews(),
+    loadVerticalNames(),
+    listRunSummaries(30),
+  ]);
+
+  const filtered = entries.filter((e) => {
+    const reviewStatus: ReviewStatus = reviews[e.story.story_id]?.review_status ?? "PENDING";
+    if (status && reviewStatus !== status) return false;
+    if (vertical && e.story.vertical !== vertical) return false;
+    if (q) {
+      const haystack = `${e.story.title} ${e.story.draft?.instagram_headline ?? ""} ${
+        e.story.draft?.short_summary ?? ""
+      }`.toLowerCase();
+      if (!haystack.includes(q.toLowerCase())) return false;
+    }
+    return true;
+  });
+
+  const href = (next: { status?: string; vertical?: string; q?: string }) => {
+    const params = new URLSearchParams();
+    const s = next.status ?? status;
+    const v = next.vertical ?? vertical;
+    const query = next.q ?? q;
+    if (s) params.set("status", s);
+    if (v) params.set("vertical", v);
+    if (query) params.set("q", query);
+    const qs = params.toString();
+    return qs ? `/historico?${qs}` : "/historico";
+  };
+
+  const chip = (active: boolean) =>
+    `rounded-full px-3 py-1 text-[12.5px] font-medium transition-colors ${
+      active ? "bg-ink text-white" : "bg-panel text-ink-2 border border-line hover:bg-panel-2"
+    }`;
+
+  return (
+    <div>
+      <header>
+        <p className="microlabel">banco de notícias e runs</p>
+        <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-navy">Histórico</h1>
+      </header>
+
+      {/* runs */}
+      <section className="mt-6">
+        <p className="microlabel mb-2.5">runs ({summaries.length})</p>
+        <RunsTable runs={summaries} names={names} limit={8} />
+      </section>
+
+      {/* banco de stories */}
+      <section className="mt-8">
+        <p className="microlabel mb-2.5">
+          stories ({filtered.length}
+          {filtered.length !== entries.length ? ` de ${entries.length}` : ""})
+        </p>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap gap-1.5">
+            {STATUS_FILTERS.map((f) => (
+              <Link key={f.id} href={href({ status: f.id })} className={chip(status === f.id)}>
+                {f.label}
+              </Link>
+            ))}
+          </div>
+          <span className="mx-1 hidden h-4 w-px bg-line sm:block" />
+          <div className="flex flex-wrap gap-1.5">
+            <Link href={href({ vertical: "" })} className={chip(vertical === "")}>
+              Todas as verticais
+            </Link>
+            {Object.entries(names).map(([vid, name]) => (
+              <Link key={vid} href={href({ vertical: vid })} className={chip(vertical === vid)}>
+                {name}
+              </Link>
+            ))}
+          </div>
+          <form method="get" action="/historico" className="ml-auto flex items-center gap-1.5">
+            {status && <input type="hidden" name="status" value={status} />}
+            {vertical && <input type="hidden" name="vertical" value={vertical} />}
+            <input
+              type="search"
+              name="q"
+              defaultValue={q}
+              placeholder="buscar título ou resumo…"
+              className="w-52 rounded-full border border-line bg-panel px-3.5 py-1.5 text-[12.5px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none"
+            />
+          </form>
+        </div>
+
+        <div className="mt-3 overflow-hidden rounded-xl border border-line bg-panel">
+          {filtered.length === 0 ? (
+            <p className="px-4 py-10 text-center text-[13px] text-ink-3">
+              Nenhuma story com esses filtros.
+            </p>
+          ) : (
+            filtered
+              .slice(0, MAX_ROWS)
+              .map((e) => (
+                <StoryRow
+                  key={`${e.runFile}-${e.story.story_id}`}
+                  entry={e}
+                  review={reviews[e.story.story_id] ?? null}
+                  verticalName={names[e.story.vertical]}
+                />
+              ))
+          )}
+        </div>
+        {filtered.length > MAX_ROWS && (
+          <p className="mt-2 font-mono text-[11.5px] text-ink-3">
+            mostrando {MAX_ROWS} de {filtered.length} — refine os filtros para ver o resto.
+          </p>
+        )}
+      </section>
+    </div>
+  );
 }

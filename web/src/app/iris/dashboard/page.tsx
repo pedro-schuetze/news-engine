@@ -78,7 +78,7 @@ export default async function DashboardPage() {
           <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-navy">Dashboard</h1>
         </div>
         <Link
-          href="/hoje"
+          href="/iris/today"
           className="rounded-full bg-brand px-5 py-2 text-[13.5px] font-medium text-white transition-colors hover:bg-brand-ink"
         >
           Revisar posts de hoje →
@@ -132,7 +132,7 @@ export default async function DashboardPage() {
             return (
               <Link
                 key={vid}
-                href={`/hoje?tab=${vid}`}
+                href={`/iris/today?tab=${vid}`}
                 className="group rounded-xl border border-line bg-panel p-4 transition-colors hover:border-ink-3"
               >
                 <div className="flex items-center justify-between">
@@ -174,7 +174,7 @@ export default async function DashboardPage() {
           <div className="mb-2.5 flex items-baseline justify-between">
             <p className="microlabel">posts aprovados recentes</p>
             <Link
-              href="/prontos"
+              href="/iris/approved"
               className="font-mono text-[11.5px] font-medium text-brand-ink hover:underline"
             >
               ver o feed pronto →
@@ -201,7 +201,7 @@ export default async function DashboardPage() {
           <div className="mb-2.5 flex items-baseline justify-between">
             <p className="microlabel">runs recentes</p>
             <Link
-              href="/historico"
+              href="/iris/history"
               className="font-mono text-[11.5px] font-medium text-brand-ink hover:underline"
             >
               histórico completo →

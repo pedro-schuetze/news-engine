@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 
 const items = [
+  ["GPB app", "/", "▦"], ["IRIS (new)", "/iris", "◒"],
   ["Today", "/", "▦"], ["Manual Mode", "/gerar", "+"],
   ["Approved", "/prontos", "✓"], ["Published", "/published", "●"],
   ["History", "/historico", "↺"], ["Dashboard", "/dashboard", "◫"], ["Settings", "/config", "⚙"],

@@ -16,6 +16,8 @@ export default function ComposeForm({
   currentRun,
 }: {
   currentRun: string;
+  /** Retained for the original GPB route; Iris uses one shared editorial tone. */
+  verticals?: Record<string, string>;
 }) {
   const router = useRouter();
   const [links, setLinks] = useState("");
