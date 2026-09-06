@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:06:47.954Z",
-  "finished_at": "2026-09-06T22:06:47.954Z",
+  "started_at": "2026-09-06T22:06:48.248Z",
+  "finished_at": "2026-09-06T22:06:48.248Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2577,
-    "estimated_output_tokens": 4264,
+    "estimated_output_tokens": 4278,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,79 +106,78 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-052-mtqd3b82",
+            "draft_id": "news-052-mtqd3bg8",
             "story_id": "news-052fa2fa3c4189b6a95af005",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Dino questiona “promessa” de encerrar inquéritos em meio a crise no STF",
-            "instagram_headline": "Dino questiona promessa de encerrar inquéritos",
-            "short_summary": "Flávio Dino criticou a proposta de encerrar inquéritos no meio da crise do STF. Ele afirmou que problemas reais estão sendo misturados com interesses eleitorais e fez referência ao inquérito das fake news.",
-            "why_it_matters": "A proposta de encerrar inquéritos toca em investigações em curso e no papel do Judiciário durante disputas políticas. O posicionamento de Dino alimenta o debate público sobre limites e decisões monocráticas.",
+            "instagram_headline": "Dino questiona promessa de encerrar inquéritos no STF",
+            "short_summary": "Flávio Dino questionou uma suposta promessa de encerrar inquéritos enquanto o STF enfrenta uma crise institucional. Ele também defendeu decisões monocráticas e fez referência ao inquérito das fake news, segundo reportagens.",
+            "why_it_matters": "O caso toca nos limites do poder do STF e na independência das investigações. A mistura com interesses eleitorais pode afetar a confiança pública sobre decisões judiciais.",
             "key_facts": [
-              "Segundo CNN Brasil, Flávio Dino questionou a 'promessa' de encerrar inquéritos.",
-              "G1 registrou que Dino afirmou que **'problemas reais e graves'** estão sendo misturados com interesses eleitorais.",
-              "VEJA relata que Dino fez uma indireta a Edson Fachin sobre o **inquérito das fake news**.",
-              "Poder360 informou que Dino defendeu decisões monocráticas ao comentar o tema.",
-              "As reportagens não registram uma decisão formal que determine o fim dos inquéritos."
+              "Segundo CNN Brasil, Dino questionou a 'promessa' de encerrar inquéritos durante a crise no STF.",
+              "G1 registrou que Dino afirmou que **problemas reais** estão sendo misturados com interesses eleitorais.",
+              "VEJA noticiou uma indireta de Dino ao presidente do STF sobre o **inquérito das fake news**.",
+              "Poder360 informou que Dino defendeu decisões monocráticas e contestou o fim de inquéritos.",
+              "Até as reportagens citadas, não há confirmação pública de que os inquéritos serão encerrados."
             ],
-            "caption": "Dino critica ideia de encerrar inquéritos em meio à crise do STF\n\nFlávio Dino publicou uma mensagem pública questionando a chamada 'promessa' de encerrar inquéritos enquanto o STF enfrenta um momento de tensão. G1 cita a frase de Dino sobre 'problemas reais e graves' sendo misturados com interesses eleitorais. CNN Brasil e VEJA também noticiaram a postagem e o teor das críticas.\n\nVEJA identifica que a mensagem teve uma indireta para Edson Fachin e menciona o inquérito das fake news. Poder360 destacou que Dino apelou à defesa de decisões monocráticas ao comentar o caso. As reportagens, no entanto, não apontam nenhuma decisão institucional que encerre inquéritos até o momento.\n\nO caso importa porque encerrar investigações em curso pode afetar provas, procedimentos e a confiança pública nas instituições. A reação de atores políticos e de magistrados pode definir os próximos passos, que ainda não estão documentados nas fontes.\n\nSiga para acompanhar as atualizações sobre o assunto.",
+            "caption": "Dino questiona suposta promessa de fechar inquéritos no meio da crise do STF\n\nFlávio Dino publicou crítica a uma promessa atribuída a integrantes do Supremo e disse que \"problemas reais e graves estão sendo misturados com interesses eleitorais\", segundo a cobertura do G1. A CNN Brasil noticiou o questionamento sobre encerrar investigações em meio à disputa institucional.\n\nVEJA registrou que a mensagem teve tom de indireta ao presidente do STF sobre o inquérito das fake news. O Poder360 destacou que Dino defendeu decisões monocráticas ao apontar problemas no processo. A coluna de Cleber Toledo, publicada nas mesmas matérias, discute limites da toga e da Constituição diante de crises institucionais.\n\nAs reportagens não indicam que haja decisão formal para encerrar inquéritos. O próximo passo é acompanhar eventuais decisões formais do STF e a repercussão política nas próximas semanas. Siga para acompanhar.",
             "hashtags": [
               "#STF",
               "#FlávioDino",
               "#inquéritos",
-              "#política",
-              "#facts"
+              "#fatos"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Dino questiona promessa de encerrar inquéritos",
-                "body": "Flávio Dino questionou a proposta de encerrar inquéritos durante a crise no STF, em postagem pública reportada pela mídia.",
-                "image_direction": "Retrato claro de Flávio Dino em frente a microfones, enquadramento médio, expressão séria; fundo desfocado que remete a um ambiente institucional.",
+                "headline": "Flávio Dino questiona promessa de encerrar inquéritos",
+                "body": "Ele questionou promessa de encerrar inquéritos em meio à crise no STF, segundo a CNN Brasil.",
+                "image_direction": "Retrato em plano médio de Flávio Dino durante entrevista ou declaração pública, expressão séria, fundo neutro, foco no rosto e no gesto das mãos para transmitir fala.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
                 "headline": "Contexto",
-                "body": "O comentário veio em meio a uma crise no STF. Dino afirmou que **'problemas reais e graves'** estão sendo misturados com interesses eleitorais, segundo G1.",
-                "image_direction": "Imagem do prédio do STF ao entardecer, vista ampla que mostra a fachada e bandeira; clima neutro e formal.",
+                "body": "O STF vive uma crise institucional com disputas internas e pressão pública. Dino disse que **problemas reais** estão sendo misturados com interesses eleitorais, em postagem citada pela G1.",
+                "image_direction": "Fachada do Supremo Tribunal Federal em Brasília, foto frontal que mostre a arquitetura do prédio e o letreiro, clima institucional e neutro.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
                 "headline": "Fatos",
-                "body": "Segundo CNN Brasil e VEJA, Dino questionou a 'promessa' de encerrar inquéritos e fez uma indireta a Edson Fachin sobre o **inquérito das fake news**.",
-                "image_direction": "Montagem limpa com duas imagens lado a lado: foto de Dino e foto de Edson Fachin em plenário; enquadramento médio, tom jornalístico.",
-                "image_source_type": "PRESS_ASSET"
+                "body": "Dino questionou a 'promessa' de encerrar inquéritos e **defendeu decisões monocráticas** em post; ele mencionou o **inquérito das fake news**, segundo VEJA e Poder360.",
+                "image_direction": "Screenshot da publicação de Flávio Dino nas redes sociais mencionada nas reportagens, mostrando trecho legível do texto e data da postagem.",
+                "image_source_type": "SCREENSHOT"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
                 "headline": "Por que importa",
-                "body": "Encerrar inquéritos pode afetar **investigações em curso** e alterar o debate sobre os limites do poder judicial, tema destacado por Dino.",
-                "image_direction": "Imagem conceitual de documentos e fitas de arquivo sobre uma mesa, close parcial que sugere investigação em andamento.",
-                "image_source_type": "ILLUSTRATION"
+                "body": "O questionamento toca nos **limites do poder do STF** e na independência das investigações, tema discutido por Cleber Toledo. A mistura com interesses eleitorais pode afetar a **confiança pública**, segundo G1.",
+                "image_direction": "Foto de sessão do plenário do STF ou imagem simbólica do tribunal em atividade, com clima sério e formal.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
                 "headline": "Próximos passos",
-                "body": "As reportagens não registram decisão formal; a postagem de Dino aumentou o debate público e pode provocar novos despachos ou reações de ministros.",
-                "image_direction": "Foto de uma sala de reunião vazia no tribunal, plano amplo que transmite expectativa por decisões; iluminação neutra.",
-                "image_source_type": "PRESS_ASSET"
+                "body": "A discussão deve seguir em redes e no Judiciário; **não há indicação clara** de encerramento dos inquéritos. É preciso acompanhar as **decisões formais do STF** e a repercussão política.",
+                "image_direction": "Ilustração editorial mostrando documentos jurídicos e um martelo de juiz sobre uma mesa, sugerindo processo e decisão pendente.",
+                "image_source_type": "ILLUSTRATION"
               }
             ],
-            "created_at": "2026-09-06T22:06:47.954Z"
+            "created_at": "2026-09-06T22:06:48.248Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T18:36:16Z",
           "latest_published_at": "2026-09-06T18:36:16Z",
           "selection_rank": 2,
-          "created_at": "2026-09-06T22:06:47.954Z"
+          "created_at": "2026-09-06T22:06:48.248Z"
         }
       ]
     }
