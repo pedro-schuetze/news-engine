@@ -19,7 +19,9 @@ const MODEL = (process.env.OPENAI_MODEL ?? "gpt-5-mini").trim();
 // padrão: é 1 chamada iniciada por humano, volume baixíssimo, e aqui o texto
 // é o produto inteiro. O run automático (15 posts/dia) continua no MODEL.
 // Escolhido por A/B real em 2026-09-02 (ver docs/CONTEXT.md).
-const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5.6-sol";
+// Keep manual generation on the broadly available, lower-cost API model by
+// default. Deployments can still select another model explicitly.
+const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5-mini";
 const REASONING = (process.env.OPENAI_REASONING_EFFORT ?? "").trim();
 
 const SYSTEM =

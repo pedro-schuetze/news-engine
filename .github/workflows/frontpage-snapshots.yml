@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: "Collect even when this two-hour slot already exists"
+        description: "Collect even when this three-hour slot already exists"
         required: false
         type: boolean
         default: false
   schedule:
     # GitHub Actions cron is UTC. The collector itself buckets by UTC time;
     # the dashboard can display the stored ISO timestamp in local time.
-    - cron: "7 */2 * * *"
+    - cron: "7 */3 * * *"
 
 permissions:
   contents: write
@@ -51,7 +51,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/news
           if git diff --cached --quiet; then
-            echo "No new snapshot in this two-hour slot."
+            echo "No new snapshot in this three-hour slot."
           else
             git commit -m "data: Google News snapshot $(date -u +'%Y-%m-%dT%H:%MZ')"
             git pull --rebase origin "${GITHUB_REF_NAME}"
