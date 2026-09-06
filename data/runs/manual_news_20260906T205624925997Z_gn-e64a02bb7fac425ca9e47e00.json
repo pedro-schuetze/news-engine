@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:14:43.806Z",
-  "finished_at": "2026-09-06T22:14:43.806Z",
+  "started_at": "2026-09-06T22:14:44.214Z",
+  "finished_at": "2026-09-06T22:14:44.214Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2554,
-    "estimated_output_tokens": 4134,
+    "estimated_output_tokens": 4399,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,78 +106,78 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-e64-mtqddie6",
+            "draft_id": "news-e64-mtqddipi",
             "story_id": "news-e64a02bb7fac425ca9e47e00",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Corrupção, defesa da democracia, combate ao crime: Quaest mostra o que mais pesa na escolha do eleitor",
-            "instagram_headline": "O que pesa no voto, segundo a pesquisa Quaest",
-            "short_summary": "Pesquisa presidencial da Quaest identifica corrupção, defesa da democracia e combate ao crime como os temas que mais influenciam a escolha dos eleitores. A cobertura também aponta que propaganda no rádio e TV tem influência muito pequena.",
-            "why_it_matters": "Saber quais temas pesam no voto ajuda a entender onde candidatos e campanhas vão concentrar mensagens e recursos. Isso tende a orientar o debate público até as eleições.",
+            "instagram_headline": "Pesquisa Quaest: o que mais pesa no voto",
+            "short_summary": "Segundo a pesquisa da Quaest, corrupção, defesa da democracia e combate ao crime são os temas que mais influenciam a escolha do eleitor. Levantamentos ligados à cobertura também mostram baixo impacto da propaganda tradicional em rádio e TV.",
+            "why_it_matters": "Os temas apontados pela Quaest orientam o debate público e a agenda de campanha. O baixo efeito da propaganda tradicional indica que estratégias de comunicação podem ter que mudar.",
             "key_facts": [
-              "Segundo a Quaest, os temas que mais pesam no voto são corrupção, defesa da democracia e combate ao crime (cobertura: G1, O Globo, SBT News).",
-              "A pesquisa é presidencial e foi divulgada em 6 de setembro de 2026 (G1; O Globo).",
-              "Reportagem do bncamazonas registra que propaganda no rádio e na TV tem influência em apenas **3%** dos eleitores.",
-              "O Diário do Comércio destaca que parte dos brasileiros já sabe em quem vai votar, segundo a cobertura da pesquisa."
+              "A Quaest perguntou quais temas mais influenciam o voto nas próximas eleições presidenciais.",
+              "Corrupção, defesa da democracia e combate ao crime aparecem como as prioridades relatadas pelos eleitores, segundo a Quaest.",
+              "Reportagens do g1, O Globo e SBT News divulgaram os resultados da Quaest em 6 de setembro de 2026.",
+              "Levantamento citado pelo bncamazonas aponta que propaganda em rádio e TV influencia apenas **3%** dos eleitores.",
+              "O Diário do Comércio destacou dados sobre quantos eleitores já sabem em quem vão votar, citando sondagens recentes."
             ],
-            "caption": "Corrupção, democracia e segurança aparecem como prioridades para o eleitor, segundo a Quaest.\n\nA nova pesquisa presidencial da Quaest, divulgada em 6 de setembro de 2026 e repercutida pelo G1 e por O Globo, pergunta quais temas pesam mais na escolha do voto. Os destaques da cobertura são corrupção, defesa da democracia e combate ao crime. Reportagens diferentes também levantam outras informações sobre certeza de voto e canais de influência.\n\nLevantamento citado pelo bncamazonas indica que propaganda no rádio e na TV tem influência para apenas 3% dos eleitores, o que sugere menor efeito desses meios tradicionais em comparação com outros fatores. O Diário do Comércio lembra que uma parcela do eleitorado já tem voto decidido, mas a cobertura não traz, neste resumo, a nota técnica completa da pesquisa.\n\nPara avaliar impacto real na corrida presidencial será preciso ver como candidatos e campanhas respondem a esses temas nas próximas semanas. Consulte a nota técnica da Quaest para detalhes sobre amostra e margem de erro.\n\nSiga para acompanhar desdobramentos das pesquisas e o que muda nas campanhas.",
+            "caption": "Pesquisa Quaest coloca corrupção, democracia e segurança no topo das prioridades do eleitor.\n\nA pesquisa da Quaest, publicada em 6 de setembro de 2026 e divulgada por g1, O Globo e SBT News, perguntou quais temas pesam na escolha presidencial. Os três temas mais citados foram corrupção, defesa da democracia e combate ao crime. São prioridades que aparecem em diversas regiões e grupos, segundo as reportagens.\n\nOutros levantamentos incluídos na cobertura mostram diferenças importantes. O bncamazonas reuniu dados que indicam que propaganda em rádio e TV exerce influência sobre apenas **3%** dos eleitores. O Diário do Comércio trouxe informações sobre quantos brasileiros já dizem saber em quem vão votar, o que ajuda a medir firmes intenções de voto.\n\nEsses resultados servem como referência para acompanhar a campanha e as próximas sondagens. Novas pesquisas vão mostrar se essas prioridades se mantêm ou mudam ao longo das semanas. Siga para acompanhar.",
             "hashtags": [
-              "#Eleições2026",
-              "#PesquisaQuaest",
-              "#Corrupção",
-              "#Democracia",
+              "#eleições2026",
+              "#corrupção",
+              "#combateaocrime",
               "#fatos"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Pesquisa Quaest mostra o que pesa no voto",
-                "body": "A pesquisa aponta que corrupção, defesa da democracia e combate ao crime influenciam a decisão dos eleitores.",
-                "image_direction": "Foto editorial de eleitores em fila para votar em local de votação genérico, vista média, diversidade de idades e máscaras neutras; iluminação natural e foco na ação de votar, sem rostos identificáveis.",
+                "headline": "Pesquisa Quaest mostra prioridades do eleitor",
+                "body": "Corrupção, defesa da democracia e combate ao crime aparecem como os temas que mais influenciam o voto, segundo a pesquisa Quaest.",
+                "image_direction": "Foto de urna eletrônica em mesa de votação, close médio; ambiente de seção eleitoral com luz neutra; nenhuma pessoa identificável em cena.",
                 "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "O CONTEXTO",
-                "body": "É a nova pesquisa presidencial da Quaest, divulgada em 6 de setembro de 2026; a cobertura está no G1 e no O Globo.",
-                "image_direction": "Imagem de um laptop aberto em uma mesa com telas mostrando gráficos e planilhas de pesquisa, vistas parciais das mãos de quem analisa os dados, ambiente de redação ou escritório.",
-                "image_source_type": "AGENCY_PHOTO"
+                "headline": "Contexto",
+                "body": "A Quaest aplicou uma pesquisa presidencial publicada em **6 de setembro de 2026** e perguntou quais temas pesam na escolha do eleitor.",
+                "image_direction": "Fotografia de documentos e gráficos de pesquisa sobre uma mesa, enquadramento próximo mostrando tabelas e anotações, cores sóbrias.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "FATOS PRINCIPAIS",
-                "body": "Segundo a Quaest, os temas que mais pesam no voto são **corrupção, defesa da democracia e combate ao crime**. A propaganda em rádio e TV influencia apenas **3%** dos eleitores, segundo cobertura do bncamazonas.",
-                "image_direction": "Infográfico limpo com três ícones alinhados: símbolo de corrupção (dinheiro), símbolo de democracia (urna ou bandeira) e símbolo de segurança pública (sirene), sobre fundo neutro.",
-                "image_source_type": "AGENCY_PHOTO"
+                "headline": "Principais fatos",
+                "body": "O levantamento aponta corrupção, defesa da democracia e combate ao crime como prioridades. Reportagem citada no bncamazonas indica que propaganda em rádio e TV influencia apenas **3%** dos eleitores.",
+                "image_direction": "Ilustração conceitual com palavras-chave 'corrupção', 'democracia' e 'crime' em tipografia limpa; ao lado, ícone de rádio/TV com destaque visual em '3%'.",
+                "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "POR QUE IMPORTA",
-                "body": "Temas centrais guiam estratégias de campanha e prioridades dos eleitores, segundo a Quaest. A resposta dos candidatos a essas demandas pode afetar intenção de voto.",
-                "image_direction": "Foto de uma equipe de campanha em reunião, quadro branco com anotações e mapas, mãos apontando para gráficos; expressão concentrada, ambiente de planejamento.",
+                "headline": "Por que importa",
+                "body": "Esses temas orientam o que eleitores buscam em candidatos e moldam debates. O baixo efeito da propaganda tradicional indica que outros canais e mensagens pessoais podem ter mais impacto.",
+                "image_direction": "Foto editorial de microfones e mesa vazia de debate, foco nos equipamentos; tom sério e neutro, sem pessoas reconhecíveis.",
                 "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "EM RESUMO",
-                "body": "A pesquisa indica prioridades claras para a disputa presidencial; agora resta observar como campanhas ajustam mensagens e recursos até as eleições.",
-                "image_direction": "Imagem conceitual de um calendário com datas marcadas e uma caneta ao lado, foco na data borrada para representar período eleitoral futuro, estilo editorial.",
+                "headline": "Conclusão",
+                "body": "A pesquisa da **Quaest** oferece um ponto de partida para acompanhar propostas e estratégias até as eleições. Novas sondagens vão mostrar se essas prioridades mudam.",
+                "image_direction": "Imagem de calendário com marcação de datas próximas às eleições, enquadramento próximo em ambiente de trabalho jornalístico.",
                 "image_source_type": "AGENCY_PHOTO"
               }
             ],
-            "created_at": "2026-09-06T22:14:43.806Z"
+            "created_at": "2026-09-06T22:14:44.214Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T06:49:29Z",
           "latest_published_at": "2026-09-06T06:49:29Z",
           "selection_rank": 3,
-          "created_at": "2026-09-06T22:14:43.806Z"
+          "created_at": "2026-09-06T22:14:44.214Z"
         }
       ]
     }
