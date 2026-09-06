@@ -91,70 +91,71 @@
             "verification_notes": "Post manual a partir de 3 link(s) informado(s) pelo editor."
           },
           "draft": {
-            "draft_id": "manual-m-mtqfrjrc",
+            "draft_id": "manual-m-mtqfvo5y",
             "story_id": "manual-mtqfr27x-957",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "German far-right party set for regional election triumph but uncertain of governing",
-            "instagram_headline": "AfD lidera eleição regional na Alemanha, diz AP",
-            "short_summary": "Projeções da AP indicam vitória forte do partido de extrema direita AfD na eleição regional da Saxônia-Anhalt. Ainda não está claro se o partido terá maioria ou conseguirá costurar alianças para formar governo.",
-            "why_it_matters": "Se o AfD alcançar uma coalizão que lhe dê o governo, seria a primeira vez desde 1945 que a extrema direita dirige um Land alemão. O resultado testa a reação dos partidos tradicionais.",
+            "instagram_headline": "Extrema direita lidera eleição regional na Alemanha",
+            "short_summary": "Projeções da AP indicam que o partido Alternativa para a Alemanha (AfD) aparece na frente na eleição regional da Saxônia-Anhalt. Ainda não há confirmação de maioria e a formação de governo depende de negociações entre partidos, segundo AP, Le Monde e DW.",
+            "why_it_matters": "O resultado altera alianças locais e pode influenciar a dinâmica política nacional, já que a queda da CDU complica acordos tradicionais, segundo Le Monde.",
             "key_facts": [
-              "Segundo a AP, o AfD aparece em primeiro lugar nas projeções da eleição regional na Saxônia-Anhalt.",
-              "A AP aponta que não ficou imediatamente claro se o partido terá votos suficientes para formar governo por conta própria.",
-              "Le Monde relata que a queda da CDU complicou a formação de alianças e colocou em debate o futuro do chanceler Friedrich Merz.",
-              "A emissora DW descreve a vitória como marcante e diz que ela pode alterar o equilíbrio político regional, dependendo das negociações."
+              "Projeções da AP colocam o AfD à frente na Saxônia-Anhalt.",
+              "A apuração inicial não garante maioria ao AfD; cadeiras podem mudar o resultado, segundo AP.",
+              "Le Monde registra queda da CDU, o que dificulta formar coalizões tradicionais.",
+              "DW descreve o avanço como um ganho histórico para a extrema direita na região, mas lembra que posse exige acordos entre partidos.",
+              "Próximos passos: confirmação oficial dos resultados e negociações para formar governo, segundo AP e DW."
             ],
-            "caption": "AfD na frente, governo incerto.\n\nProjeções da AP mostram o partido Alternativa para a Alemanha (AfD) em posição de vitória na eleição regional da Saxônia-Anhalt. As apurações iniciais apontam vantagem para o AfD, mas as cifras finais e a distribuição de cadeiras ainda podem mudar o resultado.\n\nSegundo Le Monde, a queda da CDU dificulta a formação de uma coalizão tradicional e coloca em debate o papel do chanceler Friedrich Merz. A DW classifica o resultado como um ganho histórico para a extrema direita na região, mas sublinha que a posse depende de acordos entre partidos.\n\nOs próximos passos são a confirmação dos resultados oficiais e as negociações para formar governo. As fontes AP e Le Monde indicam que essas negociações podem levar horas ou dias e definir se haverá o primeiro governo estadual de extrema direita desde 1945. Siga para acompanhar.",
+            "caption": "AfD aparece em primeiro nas projeções, mas a governabilidade segue em dúvida.\n\nProjeções da AP indicam vantagem do partido Alternativa para a Alemanha (AfD) na eleição regional da Saxônia-Anhalt. As apurações iniciais mostram diferença nas intenções, mas os números finais e a distribuição de cadeiras ainda não foram oficialmente confirmados.\n\nLe Monde destaca que a queda da CDU torna mais difícil a montagem de uma coalizão tradicional e coloca o papel do chanceler Friedrich Merz em debate. A DW classifica o resultado como um ganho histórico para a extrema direita na região, mas ressalta que a posse depende de acordos entre partidos.\n\nOs próximos passos são a confirmação oficial dos resultados e negociações entre as legendas para tentar formar governo; prazos e combinações ainda não estão definidos, segundo AP e DW. Siga para acompanhar as atualizações e as análises sobre possíveis alianças.",
             "hashtags": [
               "#Alemanha",
-              "#SaxoniaAnhalt",
               "#AfD",
+              "#extremadireita",
               "#política"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "AP aponta AfD líder na eleição da Saxônia-Anhalt",
-                "body": "Projeções mostram **vitória forte** do partido de extrema direita, mas não está claro se terá maioria para governar.",
-                "image_direction": "Imagem de rua com apoiadores em um comício do AfD e bandeiras do partido, plano médio, clima tenso, cores frias; foco nas pessoas e na presença do símbolo do partido, sem mostrar rostos identificáveis em close.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "Extrema direita lidera eleição regional na Alemanha?",
+                "body": "Projeções da AP colocam o AfD à frente na Saxônia-Anhalt, mas a capacidade de formar governo segue incerta.",
+                "image_direction": "Foto de fachada de prédio público usado como seção eleitoral na Saxônia-Anhalt, bandeira alemã visível; plano médio com pessoas entrando e saindo, tomada jornalística em luz natural.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "CONTEXTO",
-                "body": "A eleição aconteceu na Saxônia-Anhalt e define cadeiras do parlamento regional. Segundo Le Monde e AP, o AfD lidera, enquanto a **CDU em queda** altera cálculos de coalizão.",
-                "image_direction": "Foto do exterior de um prédio onde ocorrem apurações eleitorais, com pessoas entrando e saída, placas oficiais de votação visíveis; enquadramento amplo, ambiente institucional.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "O contexto",
+                "body": "A eleição é regional, em Saxônia-Anhalt. Projeções da AP mostram avanço do AfD; Le Monde nota queda da CDU que complica alianças tradicionais.",
+                "image_direction": "Imagem aérea ou panorâmica da região de Saxônia-Anhalt com destaque geográfico; estilo informativo e legenda discreta identificando a localidade.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "PRINCIPAIS FATOS",
-                "body": "A AP projeta vantagem clara do AfD. Le Monde informa que o partido **não alcançou maioria absoluta** nas primeiras estimativas e pode precisar de alianças.",
-                "image_direction": "Close de boletim de apuração em tela ou gráfico simples mostrando percentuais provisórios para os principais partidos; visual limpo e legível.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "Principais fatos",
+                "body": "Projeções da AP mostram **AfD à frente**; apuração inicial não garante maioria e a distribuição final de cadeiras pode alterar o resultado, segundo DW e AP.",
+                "image_direction": "Foto de apoiadores do AfD em evento local, plano médio mostrando bandeiras ou símbolos do partido, tom jornalístico sem encenação.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "POR QUE IMPORTA",
-                "body": "Se conseguir apoio, o AfD poderia formar o **primeiro governo estadual** de extrema direita desde 1945. DW destaca o impacto político regional e a pressão sobre partidos tradicionais.",
-                "image_direction": "Imagem conceitual de mapas alemães destacando a Saxônia-Anhalt em cor contrastante, sem rostos, transmitindo significado geográfico e político.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "Por que importa",
+                "body": "O resultado muda o equilíbrio de forças locais e amplia o debate sobre efeitos nacionais, com atenção ao papel do chanceler Friedrich Merz, segundo Le Monde.",
+                "image_direction": "Foto do exterior da sede de um partido tradicional (CDU) ou de bancada parlamentar; plano amplo que sugira impacto institucional.",
+                "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "O QUE VEM",
-                "body": "Apurações oficiais e negociações entre partidos serão os próximos passos. AP e Le Monde dizem que o desfecho pode levar horas ou dias e definirá se o AfD governa.",
-                "image_direction": "Foto de sala de negociação política vazia ou com poucas pessoas consultando documentos, tomada ampla; clima de espera e processo em andamento.",
-                "image_source_type": "PRESS_ASSET"
+                "headline": "E agora",
+                "body": "Próximos passos: confirmação oficial dos resultados e negociações entre partidos para tentar formar governo; prazos e alianças seguem incertos, segundo AP e DW.",
+                "image_direction": "Imagem de uma sala de reuniões parlamentar ou mesa de negociações vazia, tomada ampla que transmita espera institucional.",
+                "image_source_type": "AGENCY_PHOTO"
               }
             ],
-            "created_at": "2026-09-06T23:21:37.992Z"
+            "created_at": "2026-09-06T23:24:50.326Z"
           },
           "slide_media": [],
           "article_count": 3,
