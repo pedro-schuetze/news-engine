@@ -65,7 +65,7 @@ export default function ReadyPostCard({
         <div className="m-1.5 rounded-xl border border-dashed border-line bg-panel-2/50 px-4 py-8 text-center">
           <p className="text-[13px] text-ink-2">No preview image yet.</p>
           <Link
-            href={`/hoje#${story.story_id}`}
+            href={`/gerar?run=${encodeURIComponent(runFile)}#${story.story_id}`}
             className="mt-1 inline-block font-mono text-[11.5px] font-medium text-brand-ink hover:underline"
           >
             Open the post editor →
@@ -80,7 +80,7 @@ export default function ReadyPostCard({
         </h3>
 
         <details className="xp">
-          <summary>Legenda ({draft.caption.split(/\s+/).length} palavras)</summary>
+          <summary>Caption ({draft.caption.split(/\s+/).length} words)</summary>
           <div className="mt-2 rounded-lg bg-panel-2/60 p-3">
             <pre className="font-sans text-[13px] leading-relaxed whitespace-pre-wrap text-ink-2">
               {draft.caption}
@@ -102,7 +102,7 @@ export default function ReadyPostCard({
             href={`/historico/${encodeURIComponent(runFile)}#${story.story_id}`}
             className="rounded-full border border-line bg-panel px-3 py-1 font-mono text-[11px] font-medium text-ink-2 hover:border-ink-3 hover:text-ink"
           >
-            abrir no run
+            Open in editor
           </Link>
         </div>
       </div>
