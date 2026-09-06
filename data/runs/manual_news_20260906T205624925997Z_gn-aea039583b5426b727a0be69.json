@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:12:49.978Z",
-  "finished_at": "2026-09-06T22:12:49.978Z",
+  "started_at": "2026-09-06T22:12:53.156Z",
+  "finished_at": "2026-09-06T22:12:53.156Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2585,
-    "estimated_output_tokens": 5088,
+    "estimated_output_tokens": 5239,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,80 +106,78 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-aea-mtqdb2ka",
+            "draft_id": "news-aea-mtqdb50j",
             "story_id": "news-aea039583b5426b727a0be69",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Mendonça libera para plenário do STF caso de mensagens entre Moraes e Vorcaro; decisão cabe a Fachin",
-            "instagram_headline": "Mendonça leva caso de mensagens ao plenário do STF",
-            "short_summary": "O ministro Mendonça liberou para o plenário do STF um processo sobre mensagens atribuídas a Moraes e Vorcaro, segundo g1 e Estadão. Agora cabe ao ministro Fachin decidir o seguimento; a PGR abriu investigação paralela, segundo Jovem Pan.",
-            "why_it_matters": "A ida ao plenário decide coletivamente se a apuração da PF foi legal. A decisão pode influenciar a validade de provas e passos processuais.",
+            "instagram_headline": "Mendonça libera caso ao plenário do STF",
+            "short_summary": "O ministro André Mendonça liberou a tramitação para o plenário do STF de processo sobre mensagens entre Alexandre de Moraes e o delegado Vorcaro. A decisão final sobre pautar o julgamento cabe ao relator, ministro Edson Fachin.",
+            "why_it_matters": "O encaminhamento ao plenário pode levar a um julgamento público sobre a conduta de autoridades e afetar investigações correlatas. O caso já gerou reação política e apurações da PGR.",
             "key_facts": [
-              "Mendonça liberou o caso para julgamento no plenário, segundo g1 e Estadão.",
-              "O encaminhamento final sobre o julgamento cabe ao ministro Fachin, segundo as mesmas reportagens.",
-              "Um relatório da Polícia Federal revelou as mensagens entre Moraes e Vorcaro, segundo o Estadão.",
-              "A PGR abriu investigação sobre possível ilegalidade da apuração, segundo Jovem Pan.",
-              "A ministra Cármen Lúcia afirmou que não aceitará pressões, segundo CNN Brasil.",
-              "Renan Santos convocou ato contra o STF em São Paulo, segundo UOL."
+              "André Mendonça liberou o caso para o plenário do STF, segundo g1 e Estadão.",
+              "A origem é um relatório da Polícia Federal que revelou mensagens entre Moraes e o delegado Vorcaro, segundo Estadão e g1.",
+              "A decisão sobre pautar o julgamento cabe ao relator, ministro Edson Fachin, conforme g1.",
+              "A Procuradoria-Geral da República abriu investigação em resposta, segundo Jovem Pan.",
+              "Houve convocação de ato em São Paulo e declarações de ministros sobre pressão, segundo UOL e CNN Brasil."
             ],
-            "caption": "Mendonça levou ao plenário do STF o caso das mensagens entre Moraes e Vorcaro.\n\nSegundo o g1 e o Estadão, o ministro Mendonça liberou para julgamento no plenário um processo que trata de um relatório da Polícia Federal com mensagens atribuídas a Moraes e ao delegado Vorcaro. As reportagens descrevem o teor do relatório e o encaminhamento judicial do caso.\n\nAgora cabe ao ministro Fachin decidir sobre o seguimento do processo no plenário, de acordo com g1 e Estadão. Paralelamente, a Procuradoria-Geral da República abriu investigação para apurar se a apuração da PF foi ilegal, segundo a Jovem Pan. Essas etapas são distintas e podem ocorrer em ritmos diferentes.\n\nA cobertura também registra reações institucionais e políticas: a CNN Brasil informou que a ministra Cármen Lúcia disse que não aceitará pressões, e o UOL noticiou a convocação de ato por Renan Santos em São Paulo. Ainda não há prazo público para a decisão de Fachin nem para desdobramentos da investigação da PGR.\n\nSiga para acompanhar.",
+            "caption": "Mendonça envia ao plenário caso sobre mensagens de Moraes.\n\nO ministro André Mendonça liberou a tramitação do processo para o plenário do Supremo, segundo g1 e Estadão. O relator, ministro Edson Fachin, terá a decisão final sobre marcar o julgamento.\n\nO caso parte de um relatório da Polícia Federal que trouxe mensagens entre o ministro Alexandre de Moraes e o delegado Vorcaro, de acordo com Estadão e g1. O conteúdo do relatório motivou apurações e questionamentos sobre a conduta de autoridades.\n\nEm desdobramentos, a Procuradoria-Geral da República abriu investigação, segundo Jovem Pan. Também houve convocação de ato em São Paulo, segundo UOL, e a ministra Cármen Lúcia afirmou que não se submeterá a pressões, segundo CNN Brasil.\n\nAgora cabe a Fachin avaliar se pauta o processo para julgamento no plenário. Siga para acompanhar.",
             "hashtags": [
               "#STF",
-              "#Mendonça",
-              "#Fachin",
+              "#Moraes",
               "#PF",
-              "#facts"
+              "#fatos"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
                 "headline": "Mendonça libera caso ao plenário do STF",
-                "body": "O ministro Mendonça liberou para o plenário do STF o caso sobre mensagens entre Moraes e Vorcaro, segundo o g1 e o Estadão.",
-                "image_direction": "Foto externa do prédio do Supremo Tribunal Federal em dia claro, enquadramento frontal com bandeira do Brasil. No canto inferior, pequenas vinhetas com retratos formais de Mendonça e Fachin (fotos de arquivo). Clima institucional e neutro.",
+                "body": "O ministro André Mendonça liberou para o plenário do STF o caso sobre mensagens entre Alexandre de Moraes e o delegado Vorcaro, segundo g1.",
+                "image_direction": "Foto frontal da fachada do prédio do Supremo Tribunal Federal, enquadramento médio, luz natural e céu neutro; sem pessoas em primeiro plano.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "Contexto breve",
-                "body": "Um **relatório da Polícia Federal** revelou mensagens atribuídas a Moraes e Vorcaro, segundo o Estadão. A discussão é sobre a legalidade das investigações.",
-                "image_direction": "Imagem de arquivo de um distintivo da Polícia Federal e pastas com documentos sobre uma mesa. Plano médio, luz neutra, sem revelar conteúdo de documentos.",
+                "headline": "CONTEXTO",
+                "body": "O caso parte de um **relatório da PF** que revelou mensagens entre Moraes e o delegado Vorcaro, segundo g1 e Estadão.",
+                "image_direction": "Imagem conceitual de documentos impressos com carimbo 'Polícia Federal' visíveis, mesa de madeira e lente focada no papel; sem preencher detalhes pessoais.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Fatos principais",
-                "body": "O ministro **Mendonça** liberou o caso para o plenário; a decisão final cabe ao ministro **Fachin**, segundo o g1 e o Estadão. A PGR abriu investigação sobre a apuração, segundo a Jovem Pan.",
-                "image_direction": "Foto do plenário do STF com cadeiras dos ministros vistas de fora, foco no ambiente de julgamento. Inserção lateral discreta do logo da PGR e do símbolo da Jovem Pan como referência às fontes.",
+                "headline": "PRINCIPAIS FATOS",
+                "body": "Mendonça liberou a tramitação para o plenário. A decisão final sobre pautar cabe ao relator, ministro **Edson Fachin**, segundo g1.",
+                "image_direction": "Composição em grade com retratos oficiais recortados de André Mendonça, Edson Fachin, Alexandre de Moraes e delegado Vorcaro, fundo neutro e tratamento uniforme.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "Por que importa",
-                "body": "A ida ao plenário coloca a questão sob decisão coletiva dos ministros, o que pode definir se a apuração da PF foi legal e afetar a validade de provas.",
-                "image_direction": "Foto conceitual do martelo de juiz sobre mesa com livros de processo ao fundo, iluminação sóbria. Enquadramento próximo para transmitir seriedade judicial.",
+                "headline": "POR QUE IMPORTA",
+                "body": "O caso pode levar a julgamento público sobre conduta de autoridades e já provoca reação política; houve **convocação de ato**, segundo UOL.",
+                "image_direction": "Foto ampla de uma manifestação de rua em São Paulo, tomada à distância para mostrar bandeiras e placas sem focar em rostos identificáveis.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "O que vem agora",
-                "body": "Agora cabe ao ministro Fachin decidir sobre o seguimento do processo no plenário, segundo o g1 e o Estadão. A PGR mantém investigação paralela, segundo a Jovem Pan.",
-                "image_direction": "Retrato oficial do ministro Fachin à direita e escadaria do STF à esquerda, enquadramento que sugere decisão em curso. Tom neutro e documental.",
+                "headline": "PRÓXIMOS PASSOS",
+                "body": "Cabe agora ao relator Edson Fachin decidir se pauta o processo; a PGR abriu investigação e ministros já comentaram publicamente, segundo Jovem Pan e CNN Brasil.",
+                "image_direction": "Foto do plenário do STF com cadeiras e bancada em vista ampla, iluminação interna e microfones visíveis, sem presença de público.",
                 "image_source_type": "PRESS_ASSET"
               }
             ],
-            "created_at": "2026-09-06T22:12:49.978Z"
+            "created_at": "2026-09-06T22:12:53.155Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T19:40:27Z",
           "latest_published_at": "2026-09-06T19:40:27Z",
           "selection_rank": 1,
-          "created_at": "2026-09-06T22:12:49.978Z"
+          "created_at": "2026-09-06T22:12:53.156Z"
         }
       ]
     }
