@@ -171,12 +171,138 @@
             ],
             "created_at": "2026-09-06T22:38:18.396Z"
           },
-          "slide_media": [],
+          "slide_media": [
+            {
+              "asset_id": "news-e64-s1",
+              "story_id": "news-e64a02bb7fac425ca9e47e00",
+              "slide_number": 1,
+              "type": "image",
+              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbb892802bd.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1280,
+              "height": 960,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia"
+              },
+              "text_placement": "TOP",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.49,
+              "focus_y": 0.38
+            },
+            {
+              "asset_id": "news-e64-s2",
+              "story_id": "news-e64a02bb7fac425ca9e47e00",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bcbc627f820.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1280,
+              "height": 825,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia"
+              },
+              "text_placement": "CENTER",
+              "text_align": "center",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.55,
+              "focus_y": 0.35
+            },
+            {
+              "asset_id": "news-e64-s3",
+              "story_id": "news-e64a02bb7fac425ca9e47e00",
+              "slide_number": 3,
+              "type": "image",
+              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbf2dadb420.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1280,
+              "height": 960,
+              "provenance": {
+                "source_type": "LICENSED",
+                "source_name": "wikimedia",
+                "license": "Braswiki · CC BY-SA 3.0 · Wikimedia",
+                "attribution_required": true,
+                "attribution_text": "Braswiki · CC BY-SA 3.0 · Wikimedia"
+              },
+              "text_placement": "CENTER",
+              "text_align": "left",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.45,
+              "focus_y": 0.63
+            }
+          ],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T06:49:29Z",
           "latest_published_at": "2026-09-06T06:49:29Z",
           "selection_rank": 3,
-          "created_at": "2026-09-06T22:38:18.396Z"
+          "created_at": "2026-09-06T22:38:18.396Z",
+          "media_pool": [
+            {
+              "id": "bbb892802bd",
+              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbb892802bd.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
+              "text_placement": "TOP",
+              "text_align": "center",
+              "score": 81,
+              "score_notes": "relevância 100 · texto 46 · nitidez 100",
+              "added_at": "2026-09-06T22:40:10.199Z",
+              "focus_x": 0.49,
+              "focus_y": 0.38,
+              "width": 1280,
+              "height": 960
+            },
+            {
+              "id": "bcbc627f820",
+              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bcbc627f820.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
+              "text_placement": "CENTER",
+              "text_align": "center",
+              "score": 77,
+              "score_notes": "relevância 88 · texto 47 · nitidez 100",
+              "added_at": "2026-09-06T22:40:09.471Z",
+              "focus_x": 0.55,
+              "focus_y": 0.35,
+              "width": 1280,
+              "height": 825
+            },
+            {
+              "id": "bbf2dadb420",
+              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbf2dadb420.jpg",
+              "origin": "bank",
+              "source": "wikimedia",
+              "mime_type": "image/jpeg",
+              "credit": "Braswiki · CC BY-SA 3.0 · Wikimedia",
+              "text_placement": "CENTER",
+              "text_align": "left",
+              "score": 70,
+              "score_notes": "relevância 76 · texto 42 · nitidez 100",
+              "added_at": "2026-09-06T22:40:08.379Z",
+              "focus_x": 0.45,
+              "focus_y": 0.63,
+              "width": 1280,
+              "height": 960
+            }
+          ]
         }
       ]
     }
