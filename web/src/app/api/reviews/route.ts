@@ -24,7 +24,7 @@ async function imagesComplete(runId: string, storyId: string): Promise<boolean |
   return covered >= story.draft.slides.length;
 }
 
-const VALID_STATUS: ReviewStatus[] = ["PENDING", "APPROVED", "REJECTED"];
+const VALID_STATUS: ReviewStatus[] = ["PENDING", "APPROVED", "REJECTED", "PUBLISHED"];
 
 export async function GET() {
   return NextResponse.json(await loadReviews());
