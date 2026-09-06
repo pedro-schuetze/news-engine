@@ -64,7 +64,7 @@ export default function ImageActions({
     setError(null);
     setResult(null);
     try {
-      const res = await fetch(`/api/media/${storyId}?${runQs}`, { method: "POST" });
+      const res = await fetch(`/api/media/${storyId}?${runQs}&mode=ai`, { method: "POST" });
       const { ok, body } = await readResponse(res);
       if (!ok) {
         setError(body.error ?? `falha (HTTP ${res.status})`);
@@ -143,8 +143,8 @@ export default function ImageActions({
           {busy === "api"
             ? "buscando no banco…"
             : hasImages
-              ? "↻ Buscar de novo no banco"
-              : "🔎 Buscar fotos no banco"}
+            ? "↻ Regenerate AI images"
+              : "Generate AI images"}
         </button>
 
         <button
