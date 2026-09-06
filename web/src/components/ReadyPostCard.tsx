@@ -5,6 +5,7 @@ import { verticalStyle } from "@/lib/ui";
 import CopyButton from "./CopyButton";
 import ExportButton from "./ExportButton";
 import PublishButton from "./PublishButton";
+import RemoveApprovedButton from "./RemoveApprovedButton";
 import { slideVersion } from "@/lib/slides/version";
 
 /**
@@ -97,9 +98,12 @@ export default function ReadyPostCard({
             disabled={!hasImages}
           />
           <CopyButton text={captionFull} label="Copy caption" />
-          {!published && <PublishButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />}
+          {!published && <>
+            <PublishButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />
+            <RemoveApprovedButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />
+          </>}
           <Link
-            href={`/historico/${encodeURIComponent(runFile)}#${story.story_id}`}
+            href={`/gerar?run=${encodeURIComponent(runFile)}#${story.story_id}`}
             className="rounded-full border border-line bg-panel px-3 py-1 font-mono text-[11px] font-medium text-ink-2 hover:border-ink-3 hover:text-ink"
           >
             Open in editor
