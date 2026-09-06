@@ -16,8 +16,7 @@ export default async function ProntosPage({ searchParams }: { searchParams: Sear
   const [entries, reviews] = await Promise.all([loadAllStories(30), loadReviews()]);
 
   const approved = entries.filter((e) => reviews[e.story.story_id]?.review_status === "APPROVED");
-  const published = entries.filter((e) => reviews[e.story.story_id]?.review_status === "PUBLISHED");
-  const queue = (title: string, list: typeof entries, empty: string, isPublished = false) => <section className="mt-9"><div className="mb-3 flex items-baseline justify-between"><h2 className="text-[18px] font-semibold text-ink">{title}</h2><span className="font-mono text-[11px] text-ink-3">{list.length} posts</span></div>{list.length === 0 ? <div className="rounded-2xl border border-dashed border-line bg-panel px-6 py-12 text-center text-[13px] text-ink-2">{empty}</div> : <div className="grid gap-5 xl:grid-cols-2">{list.map((e) => <ReadyPostCard key={`${e.runFile}-${e.story.story_id}`} entry={e} verticalName={e.story.vertical} published={isPublished} />)}</div>}</section>;
+  const queue = (list: typeof entries, empty: string) => <section className="mt-7">{list.length === 0 ? <div className="rounded-2xl border border-dashed border-line bg-panel px-6 py-12 text-center text-[13px] text-ink-2">{empty}</div> : <div className="grid gap-4 xl:grid-cols-2">{list.map((e) => <ReadyPostCard key={`${e.runFile}-${e.story.story_id}`} entry={e} verticalName={e.story.vertical} />)}</div>}</section>;
 
   const chip = (active: boolean) =>
     `rounded-full px-3 py-1 text-[12.5px] font-medium transition-colors ${
@@ -34,11 +33,8 @@ export default async function ProntosPage({ searchParams }: { searchParams: Sear
         <Link href="/hoje" className="rounded-full bg-brand px-4 py-2 text-[12px] font-semibold text-white">Back to Today</Link>
       </header>
 
-      {/* Queues are intentionally simple for the first version. */}
-      <div className="mt-5">
-        {queue("Approved", approved, "No approved posts yet. Generate and approve a draft from Today.")}
-        {queue("Published", published, "Nothing published yet. Published posts will remain here for reference.", true)}
-      </div>
+      <p className="mt-2 max-w-xl text-[13px] text-ink-2">Posts approved in the editor appear here. Use <b>Mark published</b> after they go live.</p>
+      {queue(approved, "No approved posts yet. Approve a post from the editor to send it here.")}
     </div>
   );
 }

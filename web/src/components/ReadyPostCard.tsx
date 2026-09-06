@@ -49,39 +49,26 @@ export default function ReadyPostCard({
         </span>
       </div>
 
-      {/* imagens: capa grande + demais em faixa */}
+      {/* Compact preview: the queue is for scanning and decisions, not viewing a full carousel. */}
       {hasImages ? (
-        <div className="grid gap-1.5 p-1.5 sm:grid-cols-[3fr_2fr]">
+        <div className="flex gap-4 border-b border-line px-4 py-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={slideUrl(slides[0]?.slide_number ?? 1)}
             alt="Slide 1"
             loading="lazy"
-            className="w-full rounded-xl bg-panel-2"
-            style={{ aspectRatio: "1080 / 1350" }}
+            className="h-24 w-[76px] shrink-0 rounded-lg object-cover bg-panel-2"
           />
-          <div className="grid grid-cols-2 gap-1.5">
-            {slides.slice(1).map((s) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={s.slide_number}
-                src={slideUrl(s.slide_number)}
-                alt={`Slide ${s.slide_number}`}
-                loading="lazy"
-                className="w-full rounded-lg bg-panel-2"
-                style={{ aspectRatio: "1080 / 1350" }}
-              />
-            ))}
-          </div>
+          <p className="self-center text-[12px] text-ink-2">{slides.length} slides ready for review</p>
         </div>
       ) : (
         <div className="m-1.5 rounded-xl border border-dashed border-line bg-panel-2/50 px-4 py-8 text-center">
-          <p className="text-[13px] text-ink-2">Este post ainda não tem imagens.</p>
+          <p className="text-[13px] text-ink-2">No preview image yet.</p>
           <Link
             href={`/hoje#${story.story_id}`}
             className="mt-1 inline-block font-mono text-[11.5px] font-medium text-brand-ink hover:underline"
           >
-            gerar imagens no card do post →
+            Open the post editor →
           </Link>
         </div>
       )}
@@ -109,7 +96,7 @@ export default function ReadyPostCard({
             slideCount={slides.length}
             disabled={!hasImages}
           />
-          <CopyButton text={captionFull} label="copiar legenda" />
+          <CopyButton text={captionFull} label="Copy caption" />
           {!published && <PublishButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />}
           <Link
             href={`/historico/${encodeURIComponent(runFile)}#${story.story_id}`}
