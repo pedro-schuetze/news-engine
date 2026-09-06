@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { groupNewsBySection, loadSnapshot, loadSnapshotRuns, type NewsSnapshot } from "@/lib/news";
-import HistoryStoryAction from "@/components/HistoryStoryAction";
+import HistoryStoryAction from "@/components/IrisHistoryStoryAction";
 
 export const dynamic = "force-dynamic";
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;

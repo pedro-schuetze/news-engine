@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ReadyPostCard from "@/components/ReadyPostCard";
+import ReadyPostCard from "@/components/IrisReadyPostCard";
 import { loadAllStories, loadReviews } from "@/lib/data";
 
 export const dynamic = "force-dynamic";

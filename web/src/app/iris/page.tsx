@@ -1,4 +1,4 @@
-import TodayPage from "@/components/TodayPage";
+import TodayPage from "@/components/IrisTodayPage";
 import { loadSnapshot } from "@/lib/news";
 
 export const dynamic = "force-dynamic";

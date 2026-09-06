@@ -1,4 +1,4 @@
-import ComposeForm from "@/components/ComposeForm";
+import ComposeForm from "@/components/IrisComposeForm";
 import RunView from "@/components/RunView";
 import { loadReviews, loadRun, loadVerticalNames } from "@/lib/data";
 
