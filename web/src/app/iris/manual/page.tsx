@@ -33,7 +33,7 @@ export default async function GerarPage({ searchParams }: { searchParams: Search
       </header>
 
       <div className="mt-5">
-        <ComposeForm currentRun={runFile} />
+        <ComposeForm currentRun={""} />
       </div>
 
       {run && (

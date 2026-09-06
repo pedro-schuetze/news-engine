@@ -30,11 +30,13 @@ export default function StoryCard({
   review,
   verticalName,
   runFile = "latest",
+  hideTechnical = false,
 }: {
   story: Story;
   review: Review | null;
   verticalName?: string;
   runFile?: string;
+  hideTechnical?: boolean;
 }) {
   const draft = story.draft;
   const reviewStatus = review?.review_status ?? "PENDING";
@@ -83,7 +85,7 @@ export default function StoryCard({
             <p className="mt-1 text-[12.5px] text-ink-3">Story original: {story.title}</p>
           )}
         </div>
-        <div className="shrink-0 text-right">
+        {!hideTechnical && <div className="shrink-0 text-right">
           <div className="text-[28px] leading-none font-semibold tracking-tight text-navy">
             {Math.round(story.final_score)}
           </div>
@@ -91,7 +93,7 @@ export default function StoryCard({
           <div className="mt-1 font-mono text-[11px] text-ink-3">
             T{Math.round(story.trend_score)} · E{story.editorial_score}
           </div>
-        </div>
+        </div>}
       </div>
 
       {/* linha de estado */}
@@ -193,7 +195,7 @@ export default function StoryCard({
         )}
 
         {draft && draft.slides.length > 0 && (
-          <details className="xp" open={hasImages}>
+          <details className="xp" open>
             <summary>
               Post renderizado ({draft.slides.length} slides)
               {!hasImages && " — sem imagens ainda"}

@@ -18,6 +18,7 @@ export default function RunView({
   debug,
   minStories = 3,
   runFile = "latest",
+  iris = false,
 }: {
   run: PipelineRun;
   reviews: Record<string, Review>;
@@ -27,6 +28,7 @@ export default function RunView({
   debug: boolean;
   minStories?: number;
   runFile?: string;
+  iris?: boolean;
 }) {
   const verticalIds = Object.keys(run.verticals);
   const activeTab =
@@ -54,7 +56,7 @@ export default function RunView({
   return (
     <div>
       {/* linha de contexto do run */}
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-line bg-panel px-4 py-3">
+      {!iris && <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-line bg-panel px-4 py-3">
         <span className="font-mono text-[11.5px] text-ink-2">
           funil {fmtInt(s.articles_collected)} → {fmtInt(s.articles_after_dedupe)} →{" "}
           {fmtInt(s.story_clusters)} → <b className="text-ink">{s.stories_selected}</b>
@@ -78,11 +80,11 @@ export default function RunView({
             {debug ? "debug ligado" : "pipeline/debug"}
           </Link>
         </span>
-      </div>
+      </div>}
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <VerticalTabs items={tabs} />
-        {debug && (
+        {debug && !iris && (
           <Link
             href={href("debug", true)}
             className={`rounded-full px-3.5 py-1.5 font-mono text-[12px] font-medium ${
@@ -121,6 +123,7 @@ export default function RunView({
                   review={reviews[story.story_id] ?? null}
                   verticalName={names[story.vertical] ?? story.vertical}
                   runFile={runFile}
+                  hideTechnical={iris}
                 />
               ))}
           </>
