@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:08:35.024Z",
-  "finished_at": "2026-09-06T22:08:35.024Z",
+  "started_at": "2026-09-06T22:08:35.971Z",
+  "finished_at": "2026-09-06T22:08:35.971Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2577,
-    "estimated_output_tokens": 3894,
+    "estimated_output_tokens": 4158,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,27 +106,27 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-052-mtqd5lu8",
+            "draft_id": "news-052-mtqd5mkj",
             "story_id": "news-052fa2fa3c4189b6a95af005",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Dino questiona “promessa” de encerrar inquéritos em meio a crise no STF",
             "instagram_headline": "Dino questiona promessa de encerrar inquéritos no STF",
-            "short_summary": "Flávio Dino publicou críticas à “promessa” de encerrar inquéritos em meio à crise no STF, segundo reportagens da CNN Brasil e do G1. Ele afirmou que problemas graves estariam sendo misturados com interesses eleitorais e fez menção indireta a Edson Fachin, segundo VEJA.",
-            "why_it_matters": "A fala coloca em destaque a tensão entre decisões judiciais e pressão política durante o debate sobre inquéritos sensíveis. O tema pode influenciar como o STF vai tratar investigações em ano eleitoral.",
+            "short_summary": "Flávio Dino criticou a ideia de encerrar inquéritos do STF em uma postagem durante a crise no tribunal. Ele também defendeu decisões monocráticas e fez uma indireta a Edson Fachin, segundo reportagens.",
+            "why_it_matters": "A posição de Dino alimenta o debate público sobre limites de investigação e sobre como o STF justifica decisões em momentos de tensão política.",
             "key_facts": [
-              "Flávio Dino questionou a chamada “promessa” de encerrar inquéritos durante a crise no STF, segundo CNN Brasil e G1.",
-              "Dino afirmou que “problemas reais e graves estão sendo misturados com interesses eleitorais”, conforme o G1.",
-              "VEJA registrou que a mensagem de Dino incluiu uma indireta ao presidente do STF, Edson Fachin, sobre o inquérito das fake news.",
-              "Poder360 informa que Dino defendeu decisões monocráticas e questionou a ideia de encerrar inquéritos no tribunal.",
-              "O texto de Cleber Toledo, publicado como crônica, apresenta comentário sobre limites da toga e diálogo institucional; é opinião, não fato."
+              "Flávio Dino questionou a \"promessa\" de encerrar inquéritos do STF (CNN Brasil, G1).",
+              "Dino afirmou que \"problemas reais e graves estão sendo misturados com interesses eleitorais\" (G1).",
+              "Ele defendeu decisões monocráticas e criticou interpretações do processo, segundo Poder360.",
+              "VEJA registrou uma indireta de Dino ao presidente do STF, Edson Fachin, sobre o inquérito das fake news.",
+              "As reportagens não registram decisão imediata do STF sobre encerrar investigações."
             ],
-            "caption": "Dino questiona a promessa de encerrar inquéritos em meio à crise do STF.\n\nEm postagens repercutidas pela imprensa, Flávio Dino criticou a ideia de encerrar inquéritos como resposta à crise no tribunal. Segundo o G1, ele afirmou que problemas reais estariam sendo misturados com interesses eleitorais; a CNN Brasil cobriu o posicionamento como reação à tensão institucional.\n\nVEJA registrou que a mensagem de Dino trouxe uma indireta ao presidente do STF, Edson Fachin, citando o inquérito das fake news. O Poder360 nota que Dino também defendeu decisões monocráticas em partes de sua argumentação. O texto de Cleber Toledo, publicado como crônica, oferece perspectiva editorial sobre limites do poder judicial; trata-se de análise, não de novo fato.\n\nAs fontes citadas relatam posicionamentos e interpretações; não há indicação nas reportagens de prazos para encerramento de inquéritos. O desfecho dependerá de decisões internas do STF e de futuros pronunciamentos públicos.\n\nSiga para acompanhar.",
+            "caption": "Flávio Dino questionou a \"promessa\" de encerrar inquéritos no STF.\n\nNa postagem citada pela imprensa, Dino criticou a ideia de interromper investigações em meio à crise no tribunal e afirmou que \"problemas reais e graves estão sendo misturados com interesses eleitorais\", segundo o G1. A cobertura da CNN Brasil registrou a mesma crítica em tom político.\n\nPoder360 informou que Dino defendeu decisões monocráticas; a VEJA interpretou trechos como uma indireta ao presidente do STF, Edson Fachin, especialmente em relação ao chamado inquérito das fake news. As matérias mostram leituras diferentes sobre a intenção e o alcance da postagem.\n\nNão houve indicação de decisão institucional imediata nem prazo público para eventual encerramento dos inquéritos, segundo as reportagens consultadas. O debate deve seguir nas próximas semanas, com repercussões políticas e jurídicas.\n\nSiga para acompanhar.",
             "hashtags": [
-              "#STF",
               "#FlavioDino",
+              "#STF",
               "#inquéritos",
-              "#fakenews",
+              "#política",
               "#facts"
             ],
             "slides": [
@@ -134,51 +134,51 @@
                 "slide_number": 1,
                 "role": "HOOK",
                 "headline": "Dino questiona promessa de encerrar inquéritos",
-                "body": "Flávio Dino publicou posição questionando a “promessa” de encerrar inquéritos durante a crise no STF, segundo reportagens.",
-                "image_direction": "Foto de meio corpo de Flávio Dino em ambiente institucional, expressão séria, enquadramento horizontal fechado ao rosto e ombros; fundo neutro e legível em tela pequena.",
+                "body": "Flávio Dino questionou a \"promessa\" de encerrar inquéritos do STF em postagem durante a crise no tribunal.",
+                "image_direction": "Foto em plano médio de Flávio Dino falando ao microfone, expressão séria, cenário neutro de coletiva de imprensa.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "Contexto",
-                "body": "Nos últimos dias o STF vive crise interna. A **promessa** citada era de encerrar inquéritos como resposta a críticas públicas, segundo CNN Brasil e G1.",
-                "image_direction": "Ilustração conceitual do prédio do STF em linhas simples, tons sóbrios, com um balão de fala estilizado para indicar debate público.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "O contexto",
+                "body": "A fala ocorreu enquanto o STF enfrentava críticas públicas e debates sobre procedimentos internos, com menções ao chamado **inquérito das fake news**, segundo CNN Brasil e G1.",
+                "image_direction": "Imagem ampla da fachada do Supremo Tribunal Federal com pessoas em frente e céu nublado, mostrando o prédio como símbolo da crise institucional.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Fatos",
-                "body": "Dino disse que problemas reais estariam sendo misturados com **interesses eleitorais**, segundo o G1. VEJA descreve uma indireta ao presidente Edson Fachin sobre o inquérito das fake news.",
-                "image_direction": "Ilustração com ícones: um documento rotulado 'inquérito', a silhueta do STF e um pequeno perfil com o nome 'Edson Fachin' em texto simples; composição limpa e informativa.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "Principais fatos",
+                "body": "Flávio Dino questionou a \"promessa\" de encerrar inquéritos; ele também defendeu **decisões monocráticas** e fez indireta ao presidente do STF, **Edson Fachin**, segundo CNN, G1, VEJA e Poder360.",
+                "image_direction": "Imagem dividida: à esquerda foto de Flávio Dino falando; à direita fachada do STF, formando um quadro que liga o autor da declaração ao tribunal.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
                 "headline": "Por que importa",
-                "body": "O episódio destaca tensão entre política e decisão judicial em inquéritos sensíveis. Poder360 registra que Dino defendeu **decisões monocráticas**, o que amplia o debate institucional.",
-                "image_direction": "Ilustração mostrando balança da justiça e uma placa escrita 'debate público', cores neutras que transmitem seriedade e clareza visual.",
+                "body": "A cobrança de Dino mostra disputa sobre prerrogativas do STF e influencia o debate público sobre **limites de investigação**.",
+                "image_direction": "Ilustração conceitual de uma balança da justiça em destaque, com tons sóbrios, sugerindo tensão entre poder político e judiciário.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "Conclusão",
-                "body": "As reportagens citam posicionamentos, mas não indicam prazos para encerrar inquéritos. O desenlace dependerá de futuras decisões no próprio STF.",
-                "image_direction": "Ilustração minimalista de um calendário sem datas marcadas ao lado da fachada do STF, sugerindo indefinição sobre próximos passos.",
-                "image_source_type": "ILLUSTRATION"
+                "headline": "Próximos passos",
+                "body": "O STF e líderes políticos seguem em diálogo tenso; não há decisão imediata sobre encerrar investigações e **não há prazo definido** para o desfecho, segundo reportagens.",
+                "image_direction": "Foto de documentos e recortes de jornal sobre uma mesa, indicando acompanhamento jornalístico e ausência de resolução imediata.",
+                "image_source_type": "PRESS_ASSET"
               }
             ],
-            "created_at": "2026-09-06T22:08:35.024Z"
+            "created_at": "2026-09-06T22:08:35.971Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T18:36:16Z",
           "latest_published_at": "2026-09-06T18:36:16Z",
           "selection_rank": 2,
-          "created_at": "2026-09-06T22:08:35.024Z"
+          "created_at": "2026-09-06T22:08:35.971Z"
         }
       ]
     }
