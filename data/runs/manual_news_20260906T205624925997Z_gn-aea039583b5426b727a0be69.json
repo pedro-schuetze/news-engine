@@ -1,0 +1,186 @@
+{
+  "run_id": "news-20260906T205624925997Z",
+  "mode": "news",
+  "started_at": "2026-09-06T22:06:38.453Z",
+  "finished_at": "2026-09-06T22:06:38.453Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2585,
+    "estimated_output_tokens": 3641,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-aea039583b5426b727a0be69",
+          "run_id": "news-20260906T205624925997Z",
+          "cluster_id": "gn-aea039583b5426b727a0be69",
+          "vertical": "facts",
+          "title": "Mendonça libera para plenário do STF caso de mensagens entre Moraes e Vorcaro; decisão cabe a Fachin",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260906T205624925997Z",
+            "model: gpt-5-mini-2025-08-07"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": true,
+            "primary_source": {
+              "article_id": "news-aea039583b5426b727a0be69-0",
+              "name": "g1.globo.com",
+              "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOUk0wOURrQVhVMklRcTN2b09QNzRGam1HWXhUeXJGd3U4WFF1LU1vaGlYWDVWVVRRMi1oNnVNX0dhdWt0N0lfNE0tNnlZZFdfTnNTYUo0cXhQVW05TGVLTlZoOWJfSHN1MG1hMGg2Q2RnWlUtM21BTTZoMWEyd0tzNWUzbFFsekxsV1V4ZWZLekVXTFc2R3o3MWJRT0hySmpmbGZaZWVWS0lMeHljaEFWQk1ycVJEZGxMNnJEZy0yV3kwX2hweGV4ZUdOenXSAdsBQVVfeXFMTklxTW54YnVYR1Jxd0lqZWx3OEQyZ2ttYzJJNW1ZaFN0Y2VjNmozS3VMWXRPaHEyTWlPdnZZR2g4RUpGd2N3cnFmVGMxa3ZGM2ZFUzJMUUpGRlZiUURnYk8tb28wT3U1YVFEWkFXT2oza1oxREVWdVlyODZCb1ZTWko4aXlFM1NnRU9ELWN6SF9Ea3NtTHFwbXpPbzlJUTNmcW5ibTJtN3VOWDR2bHFOaFZ3ZUN6dDJpdVBGM3ppOEY5TzBmcGxSVlpXejk0M2xFZnNCa2dQS0JoUExZ?oc=5",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-06T19:40:27Z",
+              "source_type": "Google News",
+              "authority_score": 0
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-aea039583b5426b727a0be69-1",
+                "name": "Estadão",
+                "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOYklucnpLQjhRbWlsQ2dadjlURTF2TUhCUV9pLXdiRkV2TWpDZGlBNjJwVURmbVlGbWl6TUdJeUgzQi1sanZBYmx2em5hQ3d2Q19ScUp4YUFjS0dLaFZUS3VHbjBhcUh3UV9xdzBDVEZYcXFqT2FsaUVZLXJ6THpJZlExUF9KSWZqOE9UeTMxRXA0NVF1VFRtdUIwS2ZkdmhZeFhxNFo2MGNDTHI4RlhsQklYRmk0SUxSR3drTEdzREs2Q05MR1FSM1FYUTh0ZDdJUkNsYjgzN0FnX01OUEtISThJbHlZaGFUZHo4aVF3Z1M?oc=5",
+                "source_domain": "Estadão",
+                "published_at": "2026-09-06T19:40:27Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-aea039583b5426b727a0be69-2",
+                "name": "UOL Notícias",
+                "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOMFpYU0tFazhuSjJEYXlCWm55ME5Zb2ZIZlJlRVNpWnh4X1pUTmtLbUtkRUllYXVWNDVUTjZ2YVhzQlFPR3FkbzRyaGhCOWV1S3lrNzMybUQ4WHVuWDhlTTN6dTVMcWFtM0VHR2QtVzVPUGVSeS01YVBUbkFhVUktNHIzYmZVa3R3ZGJia3Q3Mk5BVm5pNzd5Um1EcEVMTk5IN1g1Q2o0d3RtYmdYX0YzV3ZOUWhCWnY3Q2xIZjgzNExFWU55WDV6WWhQQ1ZQekRWcDlsRTVaN2djMms?oc=5",
+                "source_domain": "UOL Notícias",
+                "published_at": "2026-09-06T19:40:27Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-aea039583b5426b727a0be69-3",
+                "name": "Jovem Pan",
+                "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOczlGNW9DVlNtR2dDNGY1SHVzanROXzNqUUlxMXR0MGxBaXR0LWlsa3ZnX3EtYm84WllRRGhWS3Z2VVo4ckE2ZElmemV4Tkp4WWgxaW8yUnAzcWdfaW5xdmJ6aEpTQ014RzFDUVhNeDJEcXl5WEFwTlhUZHNkcnBOTkRuenlZdklqamx6NFFNNEMzTGc3UXYxZENNcFotVWs4ZmVQREFwVkFPS3BRWnAwU0xHVG02ZVR4bEZxWFFIaTZ3MjI0RmNTcnA1bTNjdw?oc=5",
+                "source_domain": "Jovem Pan",
+                "published_at": "2026-09-06T19:40:27Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-aea039583b5426b727a0be69-4",
+                "name": "CNN Brasil",
+                "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOX21Nb01NRTFoaXVjaWpMeVBKVVRoTnVGa3EtS3N0cl9wNkFlcDdnQUVub3dDdE9McWhydkxORmd3LVlwcy00dl9Hamd0NnNuRGd2Tm94VVNfS21SYWFWdF9PNjBTcVIxOFpicU05N1ZaSHFnQU5YMExfSHRLeHZiT2pSQ095N1hXYTRuSS04ZFhWeUM4RlZ2TWd3VmlzUXlZOUhTQzlORlIxdnB6dmJkNnpKVlVVLTJ0em0yb3NsYnhFWkhVZ29MT0taSW11dw?oc=5",
+                "source_domain": "CNN Brasil",
+                "published_at": "2026-09-06T19:40:27Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "Google News listed 5 outlets for this story."
+          },
+          "draft": {
+            "draft_id": "news-aea-mtqd33w5",
+            "story_id": "news-aea039583b5426b727a0be69",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Mendonça libera para plenário do STF caso de mensagens entre Moraes e Vorcaro; decisão cabe a Fachin",
+            "instagram_headline": "Mendonça manda caso ao plenário do STF",
+            "short_summary": "O ministro André Mendonça liberou para julgamento no plenário do Supremo um processo sobre mensagens entre Alexandre de Moraes e o delegado Vorcaro. A continuidade do caso agora depende de decisão do ministro Edson Fachin.",
+            "why_it_matters": "A decisão define quem vai decidir sobre a investigação e pode ativar procedimentos internos, como apurações da Procuradoria Geral da República citadas pela imprensa. O desfecho afeta transparência e controle sobre as apurações.",
+            "key_facts": [
+              "Mendonça liberou o caso para julgamento no plenário do STF, segundo o g1.",
+              "O assunto envolve mensagens entre o ministro Alexandre de Moraes e o delegado Vorcaro, segundo relatório da Polícia Federal citado pelo Estadão.",
+              "A decisão sobre o seguimento e eventuais diligências agora cabe ao ministro Edson Fachin.",
+              "A Procuradoria Geral da República abriu investigação sobre a legalidade das apurações, segundo a Jovem Pan."
+            ],
+            "caption": "Mendonça encaminha ao plenário do STF um caso sobre mensagens entre Moraes e Vorcaro.\n\nSegundo o g1 e o Estadão, o ministro André Mendonça liberou o processo para julgamento no plenário do Supremo. A medida não encerra a controvérsia; cabe agora ao ministro Edson Fachin decidir como o caso segue.\n\nO assunto começou com um relatório da Polícia Federal que revelou mensagens envolvendo o ministro Alexandre de Moraes e o delegado Vorcaro, conforme reportagem do Estadão. Em paralelo, segundo a Jovem Pan, a Procuradoria Geral da República abriu investigação para apurar se a investigação da PF foi conduzida dentro da lei.\n\nAinda não há data para votação no plenário. O passo imediato é a decisão de Fachin sobre a tramitação; se ele levar o tema adiante, o caso será incluído na pauta do Supremo. Também permanecem pendentes análises técnicas e eventuais pedidos de vista ou diligências.\n\nSiga para acompanhar.",
+            "hashtags": [
+              "#STF",
+              "#Mendonça",
+              "#Moraes",
+              "#Fachin",
+              "#facts"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Mendonça manda caso ao plenário do STF",
+                "body": "O ministro liberou para julgamento no plenário um caso sobre mensagens entre Moraes e Vorcaro; a decisão final cabe a Fachin.",
+                "image_direction": "Retrato do ministro André Mendonça saindo de um gabinete do STF, enquadramento médio, expressão séria, iluminação natural. Ambiente institucional claramente identificável (mesa, livros, bandeira), sem ação encenada.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Contexto",
+                "body": "Segundo o Estadão, um **relatório da Polícia Federal** revelou mensagens entre o ministro Alexandre de Moraes e o delegado Vorcaro. A divulgação gerou questionamentos e abriu apurações internas.",
+                "image_direction": "Foto de arquivo de um prédio da Polícia Federal, fachada institucional, plano aberto ao entardecer. Tom neutro e informativo, sem pessoas em destaque.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Fatos",
+                "body": "Segundo g1 e Estadão, Mendonça liberou o caso para julgamento no **plenário** do STF. A continuidade do processo agora cabe ao ministro **Fachin**.",
+                "image_direction": "Imagem de plenário do STF vista de arquibancada, cadeiras vazias, foco no centro da corte e na bancada dos ministros, iluminação direta; tom formal.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "A decisão define quem vai decidir sobre a investigação e pode provocar apurações internas. Há também uma **investigação da PGR** sobre a legalidade das investigações, segundo a Jovem Pan.",
+                "image_direction": "Foto de arquivo do prédio da Procuradoria Geral da República, ângulo meio fechado, placa ou logo visível; clima de seriedade institucional.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Próximos passos",
+                "body": "Fachin precisa decidir se o caso segue em tramitação e se será incluído na pauta do plenário. Enquanto isso, a PGR avançará com sua apuração, segundo a Jovem Pan.",
+                "image_direction": "Imagem de close das mãos de um ministro folheando papéis sobre uma mesa de madeira no plenário, sem mostrar rosto reconhecível; foco nos documentos e carimbo oficial.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-06T22:06:38.453Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T19:40:27Z",
+          "latest_published_at": "2026-09-06T19:40:27Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-06T22:06:38.453Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
