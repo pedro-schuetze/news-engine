@@ -19,6 +19,10 @@ export async function persistRun(
   const isManual = runFile.startsWith("manual_");
   const targets: string[] = [];
 
+  // News stories are generated on demand and do not have an existing run to
+  // update. Persist the new run so the editor can load it after redirect.
+  if (isManual && runFile) targets.push(`data/runs/${runFile}`);
+
   // latest só é alvo quando o run editado É o latest
   if (!isManual) {
     if (runFile === "latest") {
@@ -29,7 +33,7 @@ export async function persistRun(
     }
   }
   const historyFile = runFile && runFile !== "latest" ? runFile : await findRunFile(run.run_id);
-  if (historyFile) targets.push(`data/runs/${historyFile}`);
+  if (historyFile && !targets.includes(`data/runs/${historyFile}`)) targets.push(`data/runs/${historyFile}`);
 
   const src = dataSource();
   for (const target of targets) {
