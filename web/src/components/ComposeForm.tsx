@@ -13,16 +13,13 @@ interface ComposeResult {
 }
 
 export default function ComposeForm({
-  verticals,
   currentRun,
 }: {
-  verticals: Record<string, string>;
   currentRun: string;
 }) {
   const router = useRouter();
   const [links, setLinks] = useState("");
   const [instruction, setInstruction] = useState("");
-  const [vertical, setVertical] = useState("");
   const [busy, setBusy] = useState<"compose" | "discard" | null>(null);
   const [result, setResult] = useState<ComposeResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +40,6 @@ export default function ComposeForm({
         body: JSON.stringify({
           urls,
           instruction: instruction.trim() || undefined,
-          vertical: vertical || undefined,
           format: {},
         }),
       });
@@ -55,7 +51,7 @@ export default function ComposeForm({
         body = { error: `${res.status} ${res.statusText}` } as never;
       }
       if (!res.ok) {
-        setError(body.error ?? "falha ao gerar");
+        setError(body.error ?? "Unable to create the post.");
         return;
       }
       setResult(body);
@@ -78,7 +74,7 @@ export default function ComposeForm({
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}) as { error?: string });
-        setError(body.error ?? "falha ao descartar");
+        setError(body.error ?? "Unable to discard the post.");
         return;
       }
       setResult(null);
@@ -102,24 +98,11 @@ export default function ComposeForm({
       />
 
       <div className="flex flex-wrap items-center gap-2">
-        <select
-          value={vertical}
-          onChange={(e) => setVertical(e.target.value)}
-          className="rounded-full border border-line bg-panel px-3.5 py-1.5 text-[13px] text-ink-2"
-        >
-          <option value="">vertical: deixar o modelo decidir</option>
-          {Object.entries(verticals).map(([vid, name]) => (
-            <option key={vid} value={vid}>
-              vertical: {name}
-            </option>
-          ))}
-        </select>
-
         <input
           value={instruction}
           onChange={(e) => setInstruction(e.target.value)}
           maxLength={600}
-          placeholder="direcionamento opcional (ex.: foca no impacto para o consumidor)"
+          placeholder="Optional direction (e.g. focus on the impact for consumers)"
           className="min-w-64 flex-1 rounded-full border border-line bg-panel px-3.5 py-1.5 text-[13px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none"
         />
       </div>
@@ -131,8 +114,8 @@ export default function ComposeForm({
           className="rounded-full bg-brand px-5 py-2 text-[13.5px] font-medium text-white transition-colors hover:bg-brand-ink disabled:opacity-50"
         >
           {busy === "compose"
-            ? "lendo a notícia e escrevendo…"
-            : `✦ Gerar post${urls.length > 1 ? ` (${urls.length} links)` : ""}`}
+            ? "Reading sources and writing…"
+            : `Create post${urls.length > 1 ? ` (${urls.length} links)` : ""}`}
         </button>
 
         {(result?.run_file || currentRun) && (
@@ -141,27 +124,27 @@ export default function ComposeForm({
             disabled={busy !== null}
             className="rounded-full border border-danger/50 bg-panel px-4 py-2 text-[13px] font-medium text-danger transition-colors hover:bg-danger-soft disabled:opacity-50"
           >
-            {busy === "discard" ? "descartando…" : "✕ Descartar este post"}
+            {busy === "discard" ? "Discarding…" : "Discard this post"}
           </button>
         )}
 
         <span className="font-mono text-[11px] text-ink-3">
           {busy === "compose"
-            ? "leva ~20-40s"
+            ? "Usually takes 20–40 seconds"
             : urls.length === 0
-              ? "cole ao menos um link http(s)"
-              : `${urls.length} link(s) reconhecido(s)`}
+              ? "Paste at least one http(s) link"
+              : `${urls.length} link${urls.length === 1 ? "" : "s"} recognized`}
         </span>
       </div>
 
       {result && (
         <p className="font-mono text-[11.5px] text-brand-ink">
-          gerado em {verticals[result.vertical] ?? result.vertical} · {result.sources} fonte(s) ·{" "}
+          Created with the standard tone · {result.sources} source{result.sources === 1 ? "" : "s"} ·{" "}
           {result.headline}
         </p>
       )}
       {result?.problems?.length ? (
-        <p className="text-[11.5px] text-warn">links ignorados: {result.problems.join(" · ")}</p>
+        <p className="text-[11.5px] text-warn">Ignored links: {result.problems.join(" · ")}</p>
       ) : null}
       {error && <p className="text-[12.5px] text-danger">{error}</p>}
     </div>
