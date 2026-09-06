@@ -33,6 +33,7 @@ export const VERIFICATION_UI: Record<VerificationStatus, { label: string; chip: 
 export const REVIEW_UI: Record<ReviewStatus, { label: string; chip: string }> = {
   PENDING: { label: "Pendente", chip: "bg-panel-2 text-ink-2" },
   APPROVED: { label: "Aprovada", chip: "bg-brand-soft text-brand-ink" },
+  PUBLISHED: { label: "Published", chip: "bg-emerald-50 text-emerald-700" },
   REJECTED: { label: "Rejeitada", chip: "bg-danger-soft text-danger" },
 };
 

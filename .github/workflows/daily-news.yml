@@ -25,16 +25,6 @@ on:
         type: boolean
         default: false
 
-  schedule:
-    # REDE DE SEGURANÇA, não o horário de entrega.
-    #
-    # 11:00 UTC (08:00 BRT), duas horas depois do gatilho da Vercel, para
-    # separar os papéis por horário: no plano Hobby o cron da Vercel dispara
-    # DENTRO da hora (09:00-09:59 UTC), então 11:00 dá margem. Se a Vercel
-    # entregou, este run encontra o arquivo de hoje e o guard abaixo o encerra
-    # em ~15s de runner. Se a Vercel falhou, este é quem salva o dia.
-    - cron: "0 11 * * *"
-
 permissions:
   contents: write # necessário para commitar os JSONs de data/
 

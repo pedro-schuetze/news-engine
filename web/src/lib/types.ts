@@ -4,7 +4,7 @@
  */
 
 export type VerificationStatus = "VERIFIED" | "PARTIALLY_VERIFIED" | "UNVERIFIED";
-export type ReviewStatus = "PENDING" | "APPROVED" | "REJECTED";
+export type ReviewStatus = "PENDING" | "APPROVED" | "REJECTED" | "PUBLISHED";
 
 export interface Article {
   article_id: string;

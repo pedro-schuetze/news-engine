@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "crons": [
-    {
-      "path": "/api/cron/run",
-      "schedule": "0 9 * * *"
-    }
-  ],
   "functions": {
     "src/app/api/**": {
       "memory": 2048
