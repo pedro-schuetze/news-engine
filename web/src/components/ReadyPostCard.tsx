@@ -4,6 +4,7 @@ import { fmtLocal } from "@/lib/format";
 import { verticalStyle } from "@/lib/ui";
 import CopyButton from "./CopyButton";
 import ExportButton from "./ExportButton";
+import PublishButton from "./PublishButton";
 import { slideVersion } from "@/lib/slides/version";
 
 /**
@@ -13,9 +14,11 @@ import { slideVersion } from "@/lib/slides/version";
 export default function ReadyPostCard({
   entry,
   verticalName,
+  published = false,
 }: {
   entry: StoryEntry;
   verticalName?: string;
+  published?: boolean;
 }) {
   const { story, runFile } = entry;
   const draft = story.draft;
@@ -39,7 +42,7 @@ export default function ReadyPostCard({
           {verticalName ?? story.vertical}
         </span>
         <span className="rounded-full bg-brand-soft px-2.5 py-[3px] text-[11.5px] font-medium text-brand-ink">
-          ✓ aprovado
+          {published ? "✓ published" : "✓ approved"}
         </span>
         <span className="ml-auto font-mono text-[11px] text-ink-3">
           {fmtLocal(entry.runStartedAt)}
@@ -107,6 +110,7 @@ export default function ReadyPostCard({
             disabled={!hasImages}
           />
           <CopyButton text={captionFull} label="copiar legenda" />
+          {!published && <PublishButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />}
           <Link
             href={`/historico/${encodeURIComponent(runFile)}#${story.story_id}`}
             className="rounded-full border border-line bg-panel px-3 py-1 font-mono text-[11px] font-medium text-ink-2 hover:border-ink-3 hover:text-ink"

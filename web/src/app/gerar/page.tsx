@@ -26,11 +26,11 @@ export default async function GerarPage({ searchParams }: { searchParams: Search
   return (
     <div>
       <header>
-        <p className="microlabel">post a partir de um link</p>
-        <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-navy">Gerar post</h1>
+        <p className="microlabel">manual mode</p>
+        <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-navy">Create a post</h1>
         <p className="mt-2 max-w-2xl text-[13.5px] text-ink-2">
-          Cole o link da notícia (ou vários links sobre o mesmo acontecimento, um por linha). O
-          texto sai no mesmo formato dos posts automáticos e usa as mesmas regras editoriais.
+          Add one or more source links. The post will use the same tone and editorial rules as the
+          automatic pipeline, then open in the editor for your review.
         </p>
       </header>
 
