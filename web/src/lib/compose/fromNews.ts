@@ -11,10 +11,10 @@ function verticalFor(section: string): string {
   return "facts";
 }
 
-export async function composeFromNews(snapshot: NewsSnapshot, item: NewsStory) {
+export async function composeFromNews(snapshot: NewsSnapshot, item: NewsStory, extracted?: SourceLine[]) {
   const storyId = `news-${item.id.slice(3)}`;
   const vertical = verticalFor(item.section);
-  const sources: SourceLine[] = item.outlets.map((outlet) => ({
+  const sources: SourceLine[] = extracted?.length ? extracted : item.outlets.map((outlet) => ({
     domain: outlet.domain || outlet.name,
     title: outlet.title,
     description: "",

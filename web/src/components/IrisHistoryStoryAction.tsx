@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function HistoryStoryAction({ snapshotId, storyId }: { snapshotId: string; storyId: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  async function createPost() {
+  async function createPost() { window.location.href = "/iris/editor?snapshot=" + snapshotId + "&story=" + storyId; return;
     setBusy(true); setError("");
     try {
       const response = await fetch("/api/news/drafts", {
@@ -14,7 +14,7 @@ export default function HistoryStoryAction({ snapshotId, storyId }: { snapshotId
       const body = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(body.error || "Could not create the post.");
       if (body.run_file) window.location.href = `/iris/manual?run=${encodeURIComponent(body.run_file)}`;
-    } catch (e) {
+    } catch (e: any) {
       setError(e instanceof Error ? e.message : "Could not create the post.");
       setBusy(false);
     }
