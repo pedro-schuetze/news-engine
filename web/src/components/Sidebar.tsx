@@ -2,118 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
-const NAV = [
-  {
-    href: "/",
-    label: "Dashboard",
-    icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1" />
-        <rect x="9" y="1.5" width="5.5" height="5.5" rx="1" />
-        <rect x="1.5" y="9" width="5.5" height="5.5" rx="1" />
-        <rect x="9" y="9" width="5.5" height="5.5" rx="1" />
-      </svg>
-    ),
-  },
-  {
-    href: "/hoje",
-    label: "Posts de hoje",
-    icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <rect x="2" y="2.5" width="12" height="11" rx="1.5" />
-        <path d="M2 6h12M5.5 1.5v2M10.5 1.5v2" />
-      </svg>
-    ),
-  },
-  {
-    href: "/gerar",
-    label: "Gerar post",
-    icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <path d="M8 3.5v9M3.5 8h9" />
-        <circle cx="8" cy="8" r="6.2" />
-      </svg>
-    ),
-  },
-  {
-    href: "/prontos",
-    label: "Prontos",
-    icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <rect x="2" y="2" width="5" height="5" rx="1" />
-        <rect x="9" y="2" width="5" height="5" rx="1" />
-        <rect x="2" y="9" width="5" height="5" rx="1" />
-        <path d="M9.5 11.5l1.5 1.5 3-3" />
-      </svg>
-    ),
-  },
-  {
-    href: "/historico",
-    label: "Histórico",
-    icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <circle cx="8" cy="8" r="6" />
-        <path d="M8 4.5V8l2.5 1.5" />
-      </svg>
-    ),
-  },
-  {
-    href: "/config",
-    label: "Configurações",
-    icon: (
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <path d="M3 4.5h10M3 8h10M3 11.5h10" />
-        <circle cx="6" cy="4.5" r="1.4" fill="var(--color-panel)" />
-        <circle cx="10.5" cy="8" r="1.4" fill="var(--color-panel)" />
-        <circle cx="5" cy="11.5" r="1.4" fill="var(--color-panel)" />
-      </svg>
-    ),
-  },
+const items = [
+  ["Today", "/hoje", "▦"], ["Dashboard", "/", "◫"], ["Create post", "/gerar", "+"],
+  ["Ready to publish", "/prontos", "✓"], ["History", "/historico", "↺"], ["Settings", "/config", "⚙"],
 ];
 
 export default function Sidebar() {
-  const pathname = usePathname();
-
-  return (
-    <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-line bg-panel md:flex">
-      <div className="border-b border-line px-5 py-5">
-        <Link href="/" className="block">
-          {/* logo oficial (PNG do Pedro, 2026-09-02) — o arquivo já traz o NEWS */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/gpb-news.png" alt="GPB News" width={150} height={67} />
-        </Link>
-      </div>
-
-      <nav className="flex-1 px-3 py-4">
-        {NAV.map((item) => {
-          const active =
-            item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-2 text-[13.5px] font-medium transition-colors ${
-                active
-                  ? "bg-brand-soft text-brand-ink"
-                  : "text-ink-2 hover:bg-panel-2 hover:text-ink"
-              }`}
-            >
-              <span className={active ? "text-brand" : "text-ink-3"}>{item.icon}</span>
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
-
-      <div className="border-t border-line px-5 py-4">
-        <p className="microlabel">MVP · v0.1</p>
-        <p className="mt-1 text-[11.5px] leading-relaxed text-ink-3">
-          Pipeline diário às 06:00.
-          <br />
-          Reviews alimentam o approval rate.
-        </p>
-      </div>
-    </aside>
-  );
+  const path = usePathname();
+  return <aside className="sidebar">
+    <div className="brand"><span className="brand-mark">N</span><span>NEWSROOM<span className="brand-dot">.</span></span></div>
+    <p className="sidebar-kicker">Editorial desk</p>
+    <nav aria-label="Primary navigation" className="nav-list">{items.map(([label, href, icon]) => {
+      const active = href === "/" ? path === "/" : path.startsWith(href);
+      return <Link key={href} href={href} className={`nav-item ${active ? "active" : ""}`}><span className="nav-icon">{icon}</span>{label}</Link>;
+    })}</nav>
+    <div className="sidebar-bottom"><div className="status"><span /> Pipeline online</div><ThemeToggle /></div>
+  </aside>;
 }
