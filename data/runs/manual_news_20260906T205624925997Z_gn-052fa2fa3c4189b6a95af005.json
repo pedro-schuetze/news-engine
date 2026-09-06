@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:12:58.585Z",
-  "finished_at": "2026-09-06T22:12:58.585Z",
+  "started_at": "2026-09-06T22:35:22.180Z",
+  "finished_at": "2026-09-06T22:35:22.180Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -16,8 +16,8 @@
     "clusters_discarded": 0,
     "stories_selected": 1,
     "llm_calls": 1,
-    "estimated_input_tokens": 2577,
-    "estimated_output_tokens": 6616,
+    "estimated_input_tokens": 2570,
+    "estimated_output_tokens": 3534,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,78 +106,78 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-052-mtqdb97d",
+            "draft_id": "news-052-mtqe41xg",
             "story_id": "news-052fa2fa3c4189b6a95af005",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Dino questiona “promessa” de encerrar inquéritos em meio a crise no STF",
             "instagram_headline": "Dino questiona promessa de encerrar inquéritos",
-            "short_summary": "Flávio Dino publicou críticas à chamada \"promessa\" de encerrar inquéritos durante a crise no STF, segundo CNN Brasil. G1 aponta que ele disse que problemas graves estão sendo misturados com interesses eleitorais; VEJA interpretou a mensagem como indireta a Edson Fachin.",
-            "why_it_matters": "A declaração coloca em debate a linha entre atuação judicial e interesses eleitorais, um tema que afeta a confiança pública na Corte. O desdobrar desse debate pode influenciar como inquéritos políticos serão conduzidos.",
+            "short_summary": "Dino criticou a chamada \"promessa\" de encerrar inquéritos enquanto há uma crise no STF. A fala foi noticiada por veículos nacionais que acompanham os desdobramentos institucionais.",
+            "why_it_matters": "O debate toca a independência das apurações e a confiança do público nas instituições. As decisões próximas podem afetar prazos e transparência de inquéritos em andamento.",
             "key_facts": [
-              "Flávio Dino questionou a \"promessa\" de encerrar inquéritos, segundo CNN Brasil.",
-              "G1 registra que Dino afirmou que \"problemas reais e graves\" estão sendo misturados com interesses eleitorais.",
-              "Poder360 diz que Dino defendeu decisões monocráticas em sua postagem.",
-              "VEJA interpretou a mensagem como uma indireta ao presidente do STF, Edson Fachin, sobre o inquérito das fake news.",
-              "Colunista Cleber Toledo abordou limites da toga e da Constituição no mesmo contexto."
+              "Dino questionou a \"promessa\" de encerrar inquéritos em meio à crise no STF (G1; CNN Brasil).",
+              "Cobertura foi feita por G1, CNN Brasil, VEJA e Poder360, segundo reportagens.",
+              "Até agora não há anúncio formal do STF sobre o encerramento dos inquéritos, conforme veículos noticiosos.",
+              "A declaração ocorre em contexto de tensões institucionais no Supremo, segundo as matérias citadas."
             ],
-            "caption": "Flávio Dino criticou a ideia de encerrar inquéritos em meio à crise no STF.\n\nEm postagem citada pela CNN Brasil, Dino questionou a chamada \"promessa\" de encerrar investigações. O G1 registra que ele afirmou que \"problemas reais e graves estão sendo misturados com interesses eleitorais\", expressão que alimentou o debate público.\n\nSegundo o Poder360, Dino também defendeu decisões monocráticas na mesma mensagem. A VEJA interpretou o tom como uma indireta a Edson Fachin, em referência ao inquérito das fake news. A leitura unificada das matérias mostra diferentes ênfases sobre o alcance da crítica.\n\nO colunista Cleber Toledo tratou dos limites da toga e da Constituição diante dessa crise. As reportagens apontam que a discussão envolve quando decisões individuais são apropriadas e como isso pode afetar garantias processuais.\n\nAs matérias citadas não indicam uma decisão imediata do STF; o desdobrar do tema dependerá de novos atos do tribunal e de reações políticas. Siga para acompanhar.",
+            "caption": "Dino questiona promessa de encerrar inquéritos no meio da crise no STF.\n\nReportagens do G1 e da CNN Brasil registraram a declaração de Dino, que criticou a ideia de encerrar investigações como resposta à crise no Supremo. VEJA e Poder360 também noticiaram o episódio e acompanharam a repercussão.\n\nO tema envolve debate sobre o papel do STF e sobre como apurações em andamento devem ser tratadas em momentos de tensão institucional. As reportagens apontam que não houve anúncio formal do tribunal para arquivar ou encerrar inquéritos; decisões formais dependerão de votos dos ministros e dos trâmites jurídicos dos processos.\n\nNos próximos dias, fontes jornalísticas devem publicar manifestações oficiais e novos desdobramentos. Para entender o impacto será preciso acompanhar decisões do próprio STF e a cobertura de órgãos de imprensa citados. Siga para acompanhar.",
             "hashtags": [
               "#STF",
-              "#FlavioDino",
               "#inquéritos",
-              "#fatos"
+              "#FlávioDino",
+              "#política",
+              "#facts"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
                 "headline": "Dino questiona promessa de encerrar inquéritos",
-                "body": "Flávio Dino questionou a \"promessa\" de encerrar inquéritos em postagem sobre a crise no STF, segundo a CNN Brasil.",
-                "image_direction": "Retrato fechado de Flávio Dino falando, expressão séria, fundo neutro desfocado; enquadramento médio para close, boa luz natural.",
+                "body": "A declaração foi feita em meio à crise no STF e repercutida pela imprensa.",
+                "image_direction": "Retrato de Dino em coletiva de imprensa, enquadramento médio, expressão séria, microfones e gravadores visíveis, fundo neutro institucional.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
                 "headline": "CONTEXTO",
-                "body": "Dino afirmou que **problemas reais e graves** estão sendo misturados com **interesses eleitorais**, segundo G1. O comentário ocorreu na crise do STF e teve indireta ao inquérito das fake news, segundo VEJA.",
-                "image_direction": "Ilustração do prédio do STF estilizado com ícones de redes sociais e uma notificação de postagem ao lado, cores sóbrias.",
-                "image_source_type": "ILLUSTRATION"
+                "body": "Há uma crise em torno do Supremo Tribunal Federal com tensões sobre investigações; a fala de Dino se insere nesse ambiente de debate público.",
+                "image_direction": "Fachada do prédio do Supremo Tribunal Federal, vista frontal, céu claro, pessoas e jornalistas ao fundo em distância.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
                 "headline": "PRINCIPAIS FATOS",
-                "body": "Segundo CNN Brasil e Poder360, Dino questionou **encerrar inquéritos** e defendeu **decisões monocráticas**. VEJA registrou uma indireta a Edson Fachin sobre o inquérito das fake news.",
-                "image_direction": "Screenshot legível da postagem pública atribuída a Flávio Dino, com destaque para trecho citado; enquadramento da tela inteira do post.",
-                "image_source_type": "SCREENSHOT"
+                "body": "Reportagens de **G1** e **CNN Brasil** registraram que Dino questionou a \"promessa\" de encerrar inquéritos; VEJA e Poder360 também noticiaram o caso.",
+                "image_direction": "Colagem discreta de capas de sites de notícias em layout limpo, sem reprodução integral de páginas, com destaque para nomes dos veículos citados.",
+                "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
                 "headline": "POR QUE IMPORTA",
-                "body": "A crítica de Dino coloca em debate a separação entre ação judicial e política eleitoral, segundo G1 e Cleber Toledo. Isso pode influenciar a percepção pública sobre **confiança no STF**.",
-                "image_direction": "Ilustração conceitual: balança da justiça sobre mapa do Brasil, com um calendário e urnas ao fundo; tom explicativo e sóbrio.",
+                "body": "A discussão afeta a **independência** das apurações e a **confiança pública** nas instituições; pode influenciar prazos e transparência nos processos em curso.",
+                "image_direction": "Ilustração conceitual: balança da justiça em primeiro plano desfocada, pessoas conversando ao fundo para sugerir diálogo público e institucional.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "O QUE VEM A SEGUIR",
-                "body": "O desfecho depende de novos atos do STF e de reações políticas. CNN Brasil e G1 registram que o tema seguirá em debate público nas **próximas semanas**.",
-                "image_direction": "Foto da fachada do Supremo Tribunal Federal vista de baixo para cima, céu claro, composição institucional e formal.",
+                "headline": "O QUE VAI ACONTECER",
+                "body": "Não há decisão pública do STF sobre encerrar inquéritos; é preciso acompanhar novas manifestações oficiais e reportagens para saber os próximos passos.",
+                "image_direction": "Imagem de jornalistas trabalhando em redação, telas com notícias abertas ao fundo, clima de acompanhamento em tempo real.",
                 "image_source_type": "PRESS_ASSET"
               }
             ],
-            "created_at": "2026-09-06T22:12:58.585Z"
+            "created_at": "2026-09-06T22:35:22.180Z"
           },
           "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T18:36:16Z",
           "latest_published_at": "2026-09-06T18:36:16Z",
           "selection_rank": 2,
-          "created_at": "2026-09-06T22:12:58.585Z"
+          "created_at": "2026-09-06T22:35:22.180Z"
         }
       ]
     }
