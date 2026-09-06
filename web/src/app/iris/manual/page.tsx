@@ -47,7 +47,7 @@ export default async function GerarPage({ searchParams }: { searchParams: Search
           <RunView
             run={run}
             reviews={reviews}
-            names={names}
+            names={{ ...names, facts: "General", politics: "News", entertainment: "Entertainment" }}
             basePath={`/gerar?run=${encodeURIComponent(runFile)}`}
             tab={tab}
             debug={debug}
