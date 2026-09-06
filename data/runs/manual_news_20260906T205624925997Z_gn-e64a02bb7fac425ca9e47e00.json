@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-06T22:38:18.396Z",
-  "finished_at": "2026-09-06T22:38:18.396Z",
+  "started_at": "2026-09-06T23:32:34.988Z",
+  "finished_at": "2026-09-06T23:32:34.988Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2585,
-    "estimated_output_tokens": 3865,
+    "estimated_output_tokens": 4266,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,23 +106,23 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-e64-mtqe7twc",
+            "draft_id": "news-e64-mtqg5mp8",
             "story_id": "news-e64a02bb7fac425ca9e47e00",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Corrupção, defesa da democracia, combate ao crime: Quaest mostra o que mais pesa na escolha do eleitor",
             "instagram_headline": "Pesquisa Quaest mostra prioridades do eleitor",
-            "short_summary": "Pesquisa da Quaest indica que corrupção, defesa da democracia e combate ao crime lideram as razões para escolher candidatos. O resultado foi noticiado por veículos como G1 e O Globo.",
-            "why_it_matters": "As prioridades apontadas pela pesquisa devem orientar mensagens e propostas de campanhas. Entender o peso desses temas ajuda a prever debates e estratégias eleitorais.",
+            "short_summary": "Pesquisa do instituto Quaest apontou que corrupção, defesa da democracia e combate ao crime são os temas que mais pesam na escolha do eleitor. O levantamento foi noticiado por g1, O Globo e SBT News.",
+            "why_it_matters": "Essas prioridades indicam que integridade institucional e segurança estão no centro das preocupações eleitorais. A ordem dos temas pode influenciar as mensagens e propostas dos candidatos nas campanhas.",
             "key_facts": [
-              "Pesquisa Quaest apontou corrupção, defesa da democracia e combate ao crime como principais temas na escolha do eleitor",
-              "O resultado foi divulgado e noticiado por veículos como G1 e O Globo",
-              "Os temas figuram entre as prioridades que candidatos e partidos tendem a abordar na campanha",
-              "A pesquisa pode alterar o foco de debates, mas o impacto depende da intensidade com que eleitores priorizam cada tema"
+              "Segundo o instituto Quaest, a **corrupção** foi o tema mais citado pelos eleitores.",
+              "Em seguida, vieram a **defesa da democracia** e o combate ao crime, de acordo com a pesquisa.",
+              "A divulgação do levantamento apareceu em veículos como g1, O Globo e SBT News.",
+              "Para interpretar o peso real de cada tema é preciso consultar números, amostra e margem de erro nas matérias."
             ],
-            "caption": "Pesquisa Quaest: corrupção, democracia e crime comandam a preferência do eleitor\n\nA pesquisa da Quaest, noticiada pelo G1 e por O Globo, mostra que corrupção, defesa da democracia e combate ao crime são os temas que mais pesam na hora de escolher candidatos. As reportagens destacam esses três itens como liderança entre as respostas dos eleitores.\n\nEsses resultados tendem a influenciar posições e mensagens de candidatos e partidos, porque campanhas costumam priorizar os assuntos que mobilizam eleitores. Não houve aqui detalhamento sobre amostra e margem de erro; para esses dados, confira a reportagem original citada acima.\n\nO que ainda não se sabe com precisão é a intensidade e a distribuição regional dessas preferências. Pesquisas futuras e o desempenho dos candidatos nas primeiras semanas de campanha vão mostrar se as prioridades se mantêm. Siga para acompanhar desdobramentos e análises.",
+            "caption": "Pesquisa Quaest aponta os temas que mais pesam na escolha do eleitor.\n\nO levantamento, noticiado por g1, O Globo e SBT News, mostrou liderança da **corrupção**, seguida pela **defesa da democracia** e pelo combate ao crime. As reportagens trazem a ordem dos temas; consulte-as para ver porcentagens, amostra e margem de erro.\n\nSe esses temas dominam a agenda dos eleitores, candidatos e partidos tendem a ajustar mensagens, propostas e prioridades de campanha. O impacto eleitoral pode variar por região, faixa etária e perfil de voto, fatores que só aparecem com a análise completa da metodologia.\n\nAcompanhe a cobertura para ver como campanhas e imprensa reagem nas próximas pesquisas e debates. Siga para acompanhar.",
             "hashtags": [
-              "#eleicoes2026",
+              "#eleições2026",
               "#pesquisaQuaest",
               "#corrupção",
               "#facts"
@@ -132,177 +132,51 @@
                 "slide_number": 1,
                 "role": "HOOK",
                 "headline": "Pesquisa Quaest mostra prioridades do eleitor",
-                "body": "Corrupção, defesa da democracia e combate ao crime lideram a escolha do eleitor, segundo pesquisa da Quaest.",
-                "image_direction": "Ilustração limpa com título no topo. Ao centro, três ícones alinhados horizontalmente: uma maleta com cifrões (corrupção), um escudo com um voto (democracia) e uma sirene policial (crime). Fundo neutro e cores contrastantes para os ícones.",
+                "body": "A **corrupção**, a **defesa da democracia** e o crime lideram as preocupações do eleitor, segundo a pesquisa Quaest.",
+                "image_direction": "Ilustração com três ícones alinhados à esquerda: um martelo de juez para democracia, um cofre aberto para corrupção e um escudo policial para crime; fundo claro, texto à direita, estilo infográfico limpo e legível em tela pequena.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 2,
-                "role": "CONTEXT",
-                "headline": "CONTEXTO",
-                "body": "A pesquisa perguntou aos eleitores quais assuntos pesam na hora de votar. As respostas colocaram **corrupção** entre os principais temas.",
-                "image_direction": "Ilustração de formulário de pesquisa estilizado à esquerda e um bloco de notas com marcações à direita. Espaço para um pequeno selo indicando \"Pesquisa\".",
+                "role": "CONTEXTO",
+                "headline": "O CONTEXTO",
+                "body": "A pesquisa do instituto Quaest perguntou eleitores quais temas mais pesam na escolha de voto; o levantamento foi divulgado por g1, O Globo e SBT News.",
+                "image_direction": "Ilustração de um bloco de notas com marcações e uma lupa sobre gráficos simples; pessoas estilizadas ao fundo indicando diversidade de eleitores.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
                 "headline": "PRINCIPAIS FATOS",
-                "body": "A Quaest identificou três temas em destaque: **corrupção**, **defesa da democracia** e combate ao crime; outros assuntos ficaram em segundo plano.",
-                "image_direction": "Gráfico de barras simplificado com três barras maiores representando os temas citados e barras menores atrás para outros temas. Legenda simples abaixo.",
+                "body": "Segundo Quaest, **corrupção** foi o tema mais citado; em seguida vieram **defesa da democracia** e combate ao crime.",
+                "image_direction": "Gráfico de barras estilizado com três barras principais destacadas nas cores neutras, cada barra rotulada com o tema correspondente; layout limpo para leitura em celular.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
                 "headline": "POR QUE IMPORTA",
-                "body": "Esses temas moldam a oferta de **propostas** dos candidatos e influenciam o voto por confiança e segurança; pesquisas assim guiam debates e estratégias.",
-                "image_direction": "Ilustração de um palanque estilizado à esquerda e balões de fala com palavras-chave (corrupção, democracia, crime) à direita, sugerindo mensagem de campanha.",
+                "body": "As prioridades mostram que integridade institucional e segurança são centrais para eleitores. Isso tende a moldar discursos e propostas de campanha.",
+                "image_direction": "Ilustração conceitual de um microfone de campanha apontado para ícones de balança e escudo; tom sério e sóbrio, sem rostos reconhecíveis.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "CONCLUSÃO",
-                "body": "Com o resultado divulgado, partidos e candidatos tendem a ajustar mensagens para responder a essas demandas; o efeito real dependerá da intensidade das prioridades entre eleitores.",
-                "image_direction": "Ilustração de calendário de campanha e setas apontando para ações de comunicação. Tom institucional e cores sóbrias.",
+                "headline": "O QUE VEM AÍ",
+                "body": "Partidos e candidatos devem ajustar mensagens; novas pesquisas e coberturas jornalísticas vão mostrar como isso afeta intenções de voto.",
+                "image_direction": "Ilustração de um calendário parcial e um jornal com a palavra \"próximo\" visível; composição que sugere acompanhamento contínuo da agenda eleitoral.",
                 "image_source_type": "ILLUSTRATION"
               }
             ],
-            "created_at": "2026-09-06T22:38:18.396Z"
+            "created_at": "2026-09-06T23:32:34.988Z"
           },
-          "slide_media": [
-            {
-              "asset_id": "news-e64-s1",
-              "story_id": "news-e64a02bb7fac425ca9e47e00",
-              "slide_number": 1,
-              "type": "image",
-              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbb892802bd.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 1280,
-              "height": 960,
-              "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
-                "attribution_required": true,
-                "attribution_text": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia"
-              },
-              "text_placement": "TOP",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.49,
-              "focus_y": 0.38
-            },
-            {
-              "asset_id": "news-e64-s2",
-              "story_id": "news-e64a02bb7fac425ca9e47e00",
-              "slide_number": 2,
-              "type": "image",
-              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bcbc627f820.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 1280,
-              "height": 825,
-              "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
-                "attribution_required": true,
-                "attribution_text": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia"
-              },
-              "text_placement": "CENTER",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.55,
-              "focus_y": 0.35
-            },
-            {
-              "asset_id": "news-e64-s3",
-              "story_id": "news-e64a02bb7fac425ca9e47e00",
-              "slide_number": 3,
-              "type": "image",
-              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbf2dadb420.jpg",
-              "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 1280,
-              "height": 960,
-              "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "Braswiki · CC BY-SA 3.0 · Wikimedia",
-                "attribution_required": true,
-                "attribution_text": "Braswiki · CC BY-SA 3.0 · Wikimedia"
-              },
-              "text_placement": "CENTER",
-              "text_align": "left",
-              "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.45,
-              "focus_y": 0.63
-            }
-          ],
+          "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T06:49:29Z",
           "latest_published_at": "2026-09-06T06:49:29Z",
           "selection_rank": 3,
-          "created_at": "2026-09-06T22:38:18.396Z",
-          "media_pool": [
-            {
-              "id": "bbb892802bd",
-              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbb892802bd.jpg",
-              "origin": "bank",
-              "source": "wikimedia",
-              "mime_type": "image/jpeg",
-              "credit": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
-              "text_placement": "TOP",
-              "text_align": "center",
-              "score": 81,
-              "score_notes": "relevância 100 · texto 46 · nitidez 100",
-              "added_at": "2026-09-06T22:40:10.199Z",
-              "focus_x": 0.49,
-              "focus_y": 0.38,
-              "width": 1280,
-              "height": 960
-            },
-            {
-              "id": "bcbc627f820",
-              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bcbc627f820.jpg",
-              "origin": "bank",
-              "source": "wikimedia",
-              "mime_type": "image/jpeg",
-              "credit": "Ludwig Müller · CC BY-SA 4.0 · Wikimedia",
-              "text_placement": "CENTER",
-              "text_align": "center",
-              "score": 77,
-              "score_notes": "relevância 88 · texto 47 · nitidez 100",
-              "added_at": "2026-09-06T22:40:09.471Z",
-              "focus_x": 0.55,
-              "focus_y": 0.35,
-              "width": 1280,
-              "height": 825
-            },
-            {
-              "id": "bbf2dadb420",
-              "local_path": "data/media/news-e64a02bb7fac425ca9e47e00/pool/bbf2dadb420.jpg",
-              "origin": "bank",
-              "source": "wikimedia",
-              "mime_type": "image/jpeg",
-              "credit": "Braswiki · CC BY-SA 3.0 · Wikimedia",
-              "text_placement": "CENTER",
-              "text_align": "left",
-              "score": 70,
-              "score_notes": "relevância 76 · texto 42 · nitidez 100",
-              "added_at": "2026-09-06T22:40:08.379Z",
-              "focus_x": 0.45,
-              "focus_y": 0.63,
-              "width": 1280,
-              "height": 960
-            }
-          ]
+          "created_at": "2026-09-06T23:32:34.988Z"
         }
       ]
     }
