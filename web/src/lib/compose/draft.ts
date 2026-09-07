@@ -276,7 +276,7 @@ export async function generateDraft(opts: {
   format?: ComposeFormat;
 }): Promise<DraftResult> {
   const [rules, verticals, overrides] = await Promise.all([
-    rulesBlock(opts.vertical),
+    rulesBlock(opts.chooseVertical ? "" : opts.vertical),
     loadVerticalConfigs(),
     loadPromptOverrides(),
   ]);

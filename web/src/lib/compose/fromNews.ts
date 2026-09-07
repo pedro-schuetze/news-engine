@@ -14,11 +14,11 @@ function verticalFor(section: string): string {
 export async function composeFromNews(snapshot: NewsSnapshot, item: NewsStory, extracted?: SourceLine[], problems: string[] = []) {
   const started = Date.now();
   const storyId = `news-${item.id.slice(3)}-${Date.now().toString(36)}`;
-  const vertical = verticalFor(item.section);
+  const suggestedVertical = verticalFor(item.section);
   const sources = (extracted ?? []).filter(s => s.url && s.description.length >= 700);
   if (!sources.length) throw new Error("Sem matéria lida: geração bloqueada.");
   const readCount = sources.length;
-  const { draft, usage, model } = await generateDraft({ storyId, title: item.title, vertical, sources, verificationSummary: `${readCount} matérias lidas. Leitura automática não equivale a checagem independente. Atribua dados e alegações aos veículos.` });
+  const { draft, usage, model, vertical } = await generateDraft({ storyId, title: item.title, vertical: suggestedVertical, chooseVertical: item.section === "top" || item.section === "unclassified", sources, verificationSummary: `${readCount} matérias lidas. Leitura automática não equivale a checagem independente. Atribua dados e alegações aos veículos.` });
   const now = new Date().toISOString();
   const story: Story = {
     story_id: storyId, run_id: storyId, cluster_id: item.id, vertical,

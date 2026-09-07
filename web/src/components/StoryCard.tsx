@@ -65,10 +65,10 @@ export default function StoryCard({
             <span className="font-mono text-[11px] font-semibold text-ink-3">
               #{story.selection_rank}
             </span>
-            <Chip className={vstyle.chip}>
+            {!hideTechnical && <Chip className={vstyle.chip}>
               <span className={`h-1.5 w-1.5 rounded-full ${vstyle.dot}`} />
               {verticalName ?? story.vertical}
-            </Chip>
+            </Chip>}
             {story.content_type && (
               <Chip className="bg-panel-2 text-ink-2">
                 {CONTENT_TYPE_LABEL[story.content_type] ?? story.content_type}
@@ -82,7 +82,7 @@ export default function StoryCard({
             {headline}
           </h3>
           {headline !== story.title && (
-            <p className="mt-1 text-[12.5px] text-ink-3">Story original: {story.title}</p>
+            <p className="mt-1 text-[12.5px] text-ink-3">Pauta original: {story.title}</p>
           )}
         </div>
         {!hideTechnical && <div className="shrink-0 text-right">

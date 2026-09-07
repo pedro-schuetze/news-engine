@@ -27,7 +27,9 @@ async function state() {
   const branch = process.env.NEWS_GITHUB_BRANCH?.trim() || "main";
   const runs = DATA_MODE === "github" ? (await github(`workflows/${workflow}/runs?branch=${encodeURIComponent(branch)}&per_page=5`)).workflow_runs as { id: number; status: string; conclusion: string | null; html_url: string; created_at: string }[] : [];
   const active = runs.find(r => r.status !== "completed");
-  return { snapshot_id: snapshot?.id, fetched_at: snapshot?.fetched_at, attempt, active: Boolean(active || localJob), run: active || runs[0] || null };
+  const latestRun = active || runs[0];
+  const run = latestRun ? { id: latestRun.id, status: latestRun.status, conclusion: latestRun.conclusion, html_url: latestRun.html_url, created_at: latestRun.created_at } : null;
+  return { snapshot_id: snapshot?.id, fetched_at: snapshot?.fetched_at, attempt, active: Boolean(active || localJob), run };
 }
 
 export async function GET() {
