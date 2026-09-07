@@ -1,0 +1,183 @@
+{
+  "run_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6",
+  "mode": "news",
+  "started_at": "2026-09-07T23:41:14.995Z",
+  "finished_at": "2026-09-07T23:41:14.995Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 6812,
+    "estimated_output_tokens": 3087,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 51,
+    "errors": [
+      "noticias.uol.com.br: noticias.uol.com.br: HTTP 403"
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6",
+          "run_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6",
+          "cluster_id": "gn-df808c9fca4b86dde2cbf219",
+          "vertical": "politics",
+          "title": "Quaest, 1º turno: Lula, 36%; Flávio Bolsonaro, 29%; Cury, 8%; Renan, 3%; Caiado, 3%; Zema, 2%",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260907T233524442362Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-presidente-7-setembro.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-07T21:01:34Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Veja os números da pesquisa estimulada, em que a Quaest mostra aos eleitores entrevistados os nomes dos candidatos. Entre parênteses, o resultado da pesquisa anterior, do dia 2 de setembro. Veja, abaixo, os números do cenário de 1º turno sem Pablo Marçal: Lula (PT): 36% (eram 37% em 2 de setembro) Flávio Bolsonaro (PL): 29% (eram 29%) Augusto Cury (Avante): 8% (eram 10%) Renan Santos (Missão): 3% (eram 3%) Ronaldo Caiado (PSD): 3% (eram 1%) Romeu Zema (Novo): 2% (eram 1%) Samara Martins (UP): 1% (era 1%) Edmilson Costa (PCB): 0 (era zero) Rui Costa Pimenta (PCO): 0 (era zero) Veterinário Wilson Grassi (Democrata): 0 (era zero) Clariana Barão (DC): 0 (era zero) Hertz Dias (PSTU): 0 (era zero) Em branco/nulo/nenhum: 8% (eram 7%) Indecisos: 10% (eram 11%) Correto - Pesquisa Quaest de intenção de voto para presidente no primeiro turno (cenário sem Pablo Marçal) — Foto: g1 Veja, abaixo, os números do cenário de 1º turno com Pablo Marçal: Lula (PT): 36% (eram 37% em 2 de setembro) Flávio Bolsonaro (PL): 29% (eram 30%) Augusto Cury (Avante): 8% (eram 10%) Renan Santos (Missão): 3% (eram 3%) Ronaldo Caiado (PSD): 3% (eram 1%) Romeu Zema (Novo): 2% (eram 1%) Pablo Marçal (PRTB): 1% (eram 1%) Samara Martins (UP): 1% (era zero) Rui Costa Pimenta (PCO): 0 (era zero) Clariana Barão (DC): 0 (era zero) Veterinário Wilson Grassi (Democrata): 0 (era zero) Edmilson Costa (PCB): 0 (era zero) Hertz Dias (PSTU): 0 (era zero) Indecisos: 9% (eram 10%) Branco/nulo/não vai votar: 8% (eram 7%) Pesquisa Quaest de intenção de voto para presidente no primeiro turno (cenário com Pablo Marçal) — Foto: g1 Contratada pela Globo e pelo jornal O Globo, a Quaest entrevistou 2.004 pessoas de 16 anos ou mais em todo o país, entre os dias 3 e 6 de setembro. A margem de erro é de dois pontos percentuais, para mais ou para menos, e o nível de confiança é de 95%. A pesquisa foi registrada no Tribunal Superior Eleitoral (TSE) sob o número BR-01720/2026. Até 3 de outubro, véspera do primeiro turno, o g1, a Globo, a GloboNews, o jornal O Globo e emissoras afiliadas vão publicar 130 pesquisas, com as disputas pelo Senado, pela Presidência da República e pelos governos de todos os estados e do Distrito Federal. Os levantamentos foram encomendados à Quaest e ao Datafolha para informar, rodada a rodada, como está a corrida eleitoral. Grau de decisão do voto Para 71% dos eleitores, a escolha do candidato é definitiva. Outros 29% dizem que ainda podem mudar o voto até o dia da eleição, em 4 de outubro. Lula (80%) e Flávio (78%) são os candidatos com o voto mais consolidado. Entre os eleitores de Cury, 49% consideram a escolha definitiva e 51% podem mudar. 59% dos eleitores de Renan Santos agora admitem trocar de candidato, e 61% dos eleitores de Caiado dizem o mesmo. LEIA TAMBÉM: O que mostra a pesquisa espontânea Na pesquisa espontânea, em que a Quaest não mostra aos eleitores os nomes dos candidatos, a disputa está assim: Lula (PT): 28% (eram 28% em 2 de setembro) Flávio Bolsonaro (PL): 20% (eram 20%) Augusto Cury (Avante): 4% (eram 4%) Outros somados: 5% (eram 4%) Indecisos: 42% (eram 42%) Branco/nulo/não vai votar: 1% (eram 2%) Índice de rejeição dos candidatos A Quaest consultou os eleitores sobre cada um dos candidatos em disputa: se eles conhecem e votariam, se não conhecem ou se conhecem e não votariam. Os candidatos mais rejeitados (maiores índices de \"conhece e não votaria\") são Flávio Bolsonaro, com % e Lula, com %. Veja os números de rejeição: Flávio Bolsonaro: 55% (eram 55% em 2 de setembro) Lula: 53% (eram 53%) Pablo Marçal: 45% (eram 44%) Ronaldo Caiado: 41% (eram 40%) Romeu Zema: 39% (eram 38%) Renan Santos: 29% (eram 28%) Augusto Cury: 26% (eram 25%) Rui Costa Pimenta: 23% (eram 23%) Edmilson Costa: 11% (eram 11%) Samara Martins: 11% (eram 11%) Hertz Dias: 10% (eram 10%) Veterinário Wilson Grassi: 10% (eram 10%) Clariana Barão: 7% (eram 7%) Aprovação e avaliação do governo A pesquisa mostra também a percepção dos eleitores sobre o governo Lula e o desempenho da economia. 50% desaprovam o governo, enquanto 43% aprovam. Os números mostram estabilidade em relação ao levantamento anterior. Pesquisa Quaest avalia aprovação do governo Lula — Foto: g1 Avaliação do governo Lula Negativa: 38% (eram 37% em 2 de setembro) Positiva: 34% (eram 35%) Regular: 25% (eram 25%) Não sabe/não respondeu: 3% (eram 3%) Pesquisa Quaest avaliação do governo Lula — Foto: g1 Avaliação da economia nos últimos 12 meses Piorou: 49% (eram 49% em 2 de setembro) Ficou do mesmo jeito: 29% (eram 29%) Melhorou: 19% (eram 19%) Não sabe/não respondeu: 3% (eram 3%) Lula, Flávio, Cury, Renan, Caiado e Zema — Foto: Globo"
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6-1",
+                "name": "g1.globo.com",
+                "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-2-turno-7-de-setembro.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-09-07T21:01:34Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Pesquisa Quaest divulgada nesta segunda-feira (7), encomendada pela Globo, mostra cinco simulações de 2º turno. Na simulação entre Lula e Flávio, os dois têm 41% das intenções de voto. O presidente oscilou de 42% na pesquisa de 2 de setembro para 41% agora. O senador manteve o percentual. A margem de erro é de dois pontos percentuais para mais ou para menos. Lula também empata tecnicamente com Caiado e Cury. Veja, a seguir, os números das cinco simulações de 2º turno: Lula x Flávio Bolsonaro Lula (PT): 41% (eram 42% no levantamento anterior, em 2 de setembro) Flávio Bolsonaro (PL): 41% (eram 41%) Branco/nulo/não vai votar: 13% (eram 13%) Indecisos: 5% (eram 4%) Pesquisa Quaest de intenção de voto para presidente no segundo turno (cenário Lula x Flávio) — Foto: g1 Lula (PT) e Flávio Bolsonaro (PL) — Foto: Ricardo Stuckert e Vittor Sales Lula x Ronaldo Caiado Lula (PT): 41% (eram 42% em 2 de setembro) Ronaldo Caiado (PSD): 38% (eram 37%) Branco/nulo/não vai votar: 17% (eram 17%) Indecisos: 4% (eram 4%) Pesquisa Quaest para presidência no segundo turno (Cenário Lula x Caiado) — Foto: g1 Lula x Augusto Cury Lula (PT): 39% (eram 40% em 2 de setembro) Augusto Cury (Avante): 35% (eram 34%) Branco/nulo/não vai votar: 21% (eram 21%) Indecisos: 5% (eram 5%) Pesquisa Quaest para presidência no segundo turno (Cenário Lula x Renan Santos) — Foto: g1 Lula x Renan Santos Lula (PT): 42% (eram 43% em 2 de setembro) Renan Santos (Missão): 37% (eram 36%) Branco/nulo/não vai votar: 17% (eram 17%) Indecisos: 4% (eram 4%) Pesquisa Quaest para presidência no segundo turno (Cenário Lula x Renan Santos) — Foto: g1 Lula x Romeu Zema Lula (PT): 44% (eram 44% em 2 de setembro) Romeu Zema (Novo): 33% (eram 33%) Branco/nulo/não vai votar: 19% (eram 19%) Indecisos: 4% (eram 4%) Pesquisa Quaest para presidência no segundo turno (Cenário Lula x Romeu Zema) — Foto: g1 A pesquisa Quaest foi encomendada pela Globo e jornal O Globo e entrevistou 2.004 eleitores entre os dias 03 de setembro a 06 de setembro. O registro no TSE é BR-01720/2026. A margem de erro é de dois pontos e o nível de confiança, de 95%. Rejeição dos candidatos A Quaest também perguntou aos entrevistados quais candidatos eles conhecem e em quem não votariam de jeito nenhum. A rejeição a Lula e a Flávio Bolsonaro permaneceu nos mesmos percentuais da pesquisa de 2 de setembro. Nos demais nomes testados no segundo turno, houve oscilação de um ponto para cima. Veja os números: Lula (PT): 53% (eram 53% em 2 de setembro);Flávio Bolsonaro (PL): 55% (eram 55%);Ronaldo Caiado (PSD): 41% (eram 40%);Augusto Cury (Avante): 26% (eram 25%);Renan Santos (Missão): 29% (eram 28%);Romeu Zema (Novo): 39% (eram 38%). Conhecimento dos candidatos O levantamento também mede o percentual de eleitores que dizem não conhecer cada candidato. Esse dado complementa o de rejeição: quem declara desconhecer um nome fica em uma categoria separada daqueles que afirmam conhecê-lo e não votar nele. Veja os números dos que dizem não conhecer: Lula (PT): 3% (eram 3% em 2 de setembro);Flávio Bolsonaro (PL): 5% (eram 5%);Ronaldo Caiado (PSD): 38% (eram 39%);Augusto Cury (Avante): 52% (eram 54%);Renan Santos (Missão): 56% (eram 58%);Romeu Zema (Novo): 41% (eram 43%). Potencial de voto A pesquisa ainda perguntou se os entrevistados conhecem e poderiam votar em cada candidato. Essa resposta indica uma possibilidade de voto e é diferente da escolha feita nas simulações de segundo turno, nas quais são apresentados dois adversários. Veja os números dos que dizem conhecer e que poderiam votar Lula (PT): 44% (eram 44% em 2 de setembro);Flávio Bolsonaro (PL): 40% (eram 40%);Ronaldo Caiado (PSD): 21% (eram 21%);Augusto Cury (Avante): 22% (eram 21%);Renan Santos (Missão): 15% (eram 14%);Romeu Zema (Novo): 20% (eram 19%)."
+              },
+              {
+                "article_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6-2",
+                "name": "gazetadopovo.com.br",
+                "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-2/",
+                "source_domain": "gazetadopovo.com.br",
+                "published_at": "2026-09-07T21:30:45.000Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "A Quaest divulgou nesta segunda-feira (7) uma nova pesquisa com as intenções de voto para presidente da República nas eleições de 2026 [https://www.gazetadopovo.com.br/eleicoes/2026/]. Pesquisa para presidente da República em 2026 A pesquisa Quaest trouxe um cenário com e outro sem Pablo Marçal (PRTB). Marçal está inelegível e o Tribunal Superior Eleitoral (TSE) tem até 14 de setembro para julgar e homologar ou barrar os registros dos presidenciáveis. Cenário estimulado com Marçal Cenário estimulado sem Marçal Segundo turno para presidente pela Quaest A pesquisa Quaest simulou cinco cenários de segundo turno. Lula x Flávio Bolsonaro Lula x Augusto Cury Lula x Renan Santos Lula x Ronaldo Caiado Lula x Romeu Zema Metodologia: 2.004 entrevistados pela Quaest de 3 a 6 de setembro de 2026. A pesquisa foi contratada pela Editora Globo S/A, Globo Comunicação e Participações S/A, TV Rede Globo/Canais Globo/Globoplay/Eletromidia. Nível de confiança: 95%. Margem de erro: 2 pontos percentuais. Registro no TSE sob o nº BR-01720/2026. Por que a Gazeta do Povo publica pesquisas eleitorais A Gazeta do Povo publica há anos todas as pesquisas de intenção de voto realizadas pelos principais institutos de opinião pública do país. As pesquisas de intenção de voto fazem uma leitura de momento, com base em amostras representativas da população. Métodos de entrevistas, composição e número da amostra e até mesmo a forma como uma pergunta é feita são fatores que podem influenciar no resultado. Por isso é importante ficar atento às informações de metodologias, encontradas no fim das matérias da Gazeta do Povo sobre pesquisas eleitorais. Pesquisas publicadas nas eleições de 2022, por exemplo, apontaram discrepâncias relevantes em relação ao resultado apresentado na urna. Feitos esses apontamentos, a Gazeta do Povo considera que as pesquisas eleitorais, longe de serem uma previsão do resultado das eleições, são uma ferramenta de informação à disposição do leitor, já que os resultados divulgados têm potencial de influenciar decisões de partidos, de lideranças políticas e até mesmo os humores do mercado financeiro."
+              },
+              {
+                "article_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6-3",
+                "name": "estadao.com.br",
+                "url": "https://www.estadao.com.br/politica/eleicoes/quaest-lula-e-flavio-empatam-com-41-no-segundo-turno-cury-vai-de-10-para-8-no-primeiro-turno/",
+                "source_domain": "estadao.com.br",
+                "published_at": "2026-09-07T21:01:34Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Quem paga as campanhas nas Eleições 2026? Entenda os fundos eleitoral e partidárioEntenda de onde vem o dinheiro usado pelos partidos,como os recursos públicos são distribuídos e qual é a diferença entre o Fundo Eleitoral e o Fundo Partidário. Gerando resumoO psiquiatra e candidato à Presidência da República Augusto Cury (Avante) oscilou para baixo, dentro da margem de erro, em relação à última rodada da pesquisa Quaest e agora registra 8% das intenções de voto no primeiro turno, ante 10% na semana passada, segundo levantamento divulgado pelo instituto nesta segunda-feira, 7. O presidente Luiz Inácio Lula da Silva (PT) e o senador Flávio Bolsonaro (PL) continuam à frente dos demais candidatos na primeira etapa da disputa, registrando 36% e 29% das menções, respectivamente. No segundo turno, os dois estão empatados, cada um com 41% das intenções de voto.Com o resultado, Cury interrompe o movimento de alta registrado no início do mês, quando havia avançado oito pontos porcentuais em relação à pesquisa de agosto. Presidenciáveis Luiz Inácio Lula da Silva (PT), Flávio Bolsonaro (PL), Romeu Zema (Novo), Ronaldo Caiado (PSD), Renan Santos (Missão) e Augusto Cury (Avante) Foto: Wilton Junior, Pedro Kirilos, Wilton Junior, Taba Benedicto, Isabella Finholdt, Daniel Teixeira/EstadãoPUBLICIDADEO levantamento da Quaest foi realizado entre quinta-feira, 3, e domingo, 6 de setembro, ou seja, em meio à crise que se instalou no Supremo Tribunal Federal (STF). No primeiro turno da pesquisa divulgada na semana passada, portanto antes dos embates entre os ministros da Corte André Mendonça e Alexandre de Moraes, Lula tinha 37% das intenções de voto, contra 30% de Flávio. Ou seja, ambos oscilaram para baixo, na margem de erro. Já no cenário de segundo turno, o petista aparecia com 42%, ante 41% do bolsonarista. Agora, a diferença entre os dois no segundo turno é inexistente, o que não acontecia desde março, quando ambos também apareciam no mesmo patamar numérico. Os dados do primeiro turno referem-se à simulação que inclui o ex-coach Pablo Marçal (PRTB), que registrou candidatura, mas está inelegível.PublicidadeNa pesquisa divulgada neste feriado de 7 de Setembro, Marçal tem 1% de menções. Renan Santos (Missão) aparece com 3%, enquanto Ronaldo Caiado (PSD) tem 3%, Romeu Zema (Novo), 2%, e Samara Martins (UP), 1%. Os demais nomes não pontuaram. Nesse cenário, os indecisos são 9%, e os votos brancos ou nulos, 8%.A Quaest fez 2.004 entrevistas a domicílio com brasileiros de 16 anos ou mais entre os dias 3 e 6 de setembro. A margem de erro é de dois pontos porcentuais, e o nível de confiança, de 95%. O levantamento está registrado no Tribunal Superior Eleitoral (TSE) sob o protocolo BR-01720/2026.Na pesquisa espontânea, quando o entrevistado não tem acesso a uma lista com os nomes dos candidatos, Lula registra 28% de menções, seguido por Flávio, com 20%, e Cury, com 4%. Outros nomes somam 5%. Os indecisos na espontânea são 42%, e 1% votará branco ou nulo.PublicidadeEm um eventual segundo turno entre Lula e Flávio Bolsonaro, o presidente tem 41% das intenções de voto, e o senador, 41%. Nesse cenário, indecisos representam 5%, enquanto 13% que votarão branco ou nulo ou não irão votar.Flávio é o adversário de Lula com maior porcentual nas simulações de segundo turno da Quaest, mas o presidente também empataria tecnicamente com Ronaldo Caiado e Augusto Cury. Contra Caiado, Lula registra 41% das intenções de voto, ante 38% do ex-governador de Goiás. Cury tem 35%, contra 39% do petista. No cenário com Renan Santos, Lula tem 42% das intenções de voto, ante 37% do candidato do Missão. Já contra Romeu Zema, o presidente registra 44%, enquanto o ex-governador de Minas Gerais tem 33%.PublicidadeLula e Flávio Bolsonaro são os candidatos com maior rejeição entre os nomes testados pela pesquisa. Segundo o levantamento, 55% dos entrevistados conhecem o senador do PL e não votariam nele. Lula aparece com 53% nesse quesito. Os índices configuram empate técnico dentro da margem de erro. Na sequência, Pablo Marçal registra 45% de rejeição, seguido por Ronaldo Caiado, com 41%, Romeu Zema, com 39%, Renan Santos, com 29%, e Augusto Cury, com 26%.Em relação à aprovação do governo, 50% dos brasileiros desaprovam o trabalho de Lula, enquanto 43% aprovam a forma como o petista conduz o governo. Outros 7% não responderam. Na rodada anterior, divulgada na semana passada, Lula tinha 48% de desaprovação e 45% de aprovação. Outros 7% não responderam.Quanto à avaliação de governo, são hoje 38% os que têm uma visão negativa do governo, contra 37% da pesquisa anterior. Por outro lado, 34% dos brasileiros fazem uma avaliação positiva (eram 35% na pesquisa anterior). Continuam sendo 25% os que fazem uma avaliação regular. Os que não sabem ou não responderam continuam sendo 3%.Vale ler tambémMoraes vira principal personagem do 7 de Setembro, mas só urnas vão definir futuro do STF No 7 de setembro, pesquisa mostra que Flávio não avança, Lula é que anda de marcha réMovimento pró-Moraes pode eleger Flávio, em suprema ironia brasileiraPublicidade"
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. noticias.uol.com.br: noticias.uol.com.br: HTTP 403"
+          },
+          "draft": {
+            "draft_id": "news-df8-mtrvwmlu",
+            "story_id": "news-df808c9fca4b86dde2cbf219-mtrvvjh6",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Quaest, 1º turno: Lula, 36%; Flávio Bolsonaro, 29%; Cury, 8%; Renan, 3%; Caiado, 3%; Zema, 2%",
+            "instagram_headline": "Quaest mostra Lula com 36% e Flávio com 29% para presidente",
+            "short_summary": "Lula lidera a pesquisa estimulada de primeiro turno, seguido por Flávio Bolsonaro e Augusto Cury. Em uma eventual disputa direta, Lula e Flávio aparecem com 41% cada.",
+            "why_it_matters": "O levantamento retrata a corrida presidencial no início de setembro, mas 29% dos entrevistados ainda admitem mudar de voto até a eleição.",
+            "key_facts": [
+              "Lula registra 36% no cenário sem Pablo Marçal.",
+              "Flávio Bolsonaro aparece com 29%, e Augusto Cury, com 8%.",
+              "Renan Santos e Ronaldo Caiado têm 3% cada; Romeu Zema tem 2%.",
+              "A margem de erro é de dois pontos percentuais.",
+              "Lula e Flávio têm 41% cada na simulação de segundo turno."
+            ],
+            "caption": "A pesquisa Quaest divulgada em 7 de setembro mostra Lula (PT) com 36% das intenções de voto no primeiro turno, no cenário estimulado sem Pablo Marçal. Flávio Bolsonaro (PL) tem 29%, e Augusto Cury (Avante), 8%.\n\nNa comparação com a rodada de 2 de setembro, Lula oscilou de 37% para 36%, Flávio permaneceu em 29% e Cury passou de 10% para 8%. Ronaldo Caiado foi de 1% para 3%, enquanto Romeu Zema passou de 1% para 2%.\n\nNa pesquisa espontânea, em que os nomes não são apresentados aos entrevistados, Lula marca 28%, Flávio tem 20% e Cury, 4%. Os indecisos chegam a 42%. Flávio e Lula também registram as maiores rejeições: 55% e 53%, respectivamente.\n\nEncomendado pela Globo e pelo jornal O Globo, o levantamento ouviu 2.004 pessoas de 16 anos ou mais entre 3 e 6 de setembro. A margem de erro é de dois pontos percentuais, com 95% de confiança. O registro no TSE é BR-01720/2026.\n\nFontes: g1, Gazeta do Povo e Estadão.",
+            "hashtags": [
+              "#Eleições2026",
+              "#PesquisaEleitoral",
+              "#Quaest",
+              "#PolíticaBrasileira"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Quaest mostra Lula com 36% e Flávio com 29% para presidente",
+                "body": "No cenário estimulado sem Pablo Marçal, o presidente lidera o senador por sete pontos percentuais, segundo levantamento divulgado em 7 de setembro.",
+                "image_direction": "Retratos documentais de Lula e Flávio Bolsonaro em composição dividida, com enquadramento fechado, fundo neutro e iluminação equilibrada.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Cury aparece em terceiro",
+                "body": "Augusto Cury aparece com 8%, seguido por Renan Santos e Ronaldo Caiado, com 3% cada, e Romeu Zema, com 2%. Indecisos são 10%; branco, nulo ou nenhum somam 8%.",
+                "image_direction": "Mosaico equilibrado de fotos documentais de Augusto Cury, Renan Santos, Ronaldo Caiado e Romeu Zema, com recortes uniformes e fundo claro.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Mudanças desde 2 de setembro",
+                "body": "Lula passou de 37% para 36%, Flávio permaneceu em 29% e Cury foi de 10% para 8%. Caiado subiu de 1% para 3%, dentro da margem de erro.",
+                "image_direction": "Infográfico editorial minimalista com barras horizontais comparativas e cores neutras, destacando as variações entre as duas rodadas da pesquisa.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Sete em dez decidiram o voto",
+                "body": "A Quaest aponta que 71% consideram sua escolha definitiva, enquanto 29% ainda podem mudar. O voto é mais consolidado entre os eleitores de Lula, com 80%, e de Flávio, com 78%.",
+                "image_direction": "Ilustração conceitual de eleitores diante de uma urna, com uma pessoa ainda avaliando opções, composição sóbria e luz suave.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Segundo turno tem empate numérico",
+                "body": "Na simulação entre os dois líderes, Lula e Flávio registram 41% cada. Branco, nulo ou não vai votar somam 13%, e 5% dos entrevistados se dizem indecisos.",
+                "image_direction": "Retratos oficiais de Lula e Flávio Bolsonaro posicionados frente a frente, com fundo limpo, composição simétrica e iluminação neutra.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-07T23:41:14.995Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-07T21:01:34Z",
+          "latest_published_at": "2026-09-07T21:01:34Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-07T23:41:14.995Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
