@@ -16,8 +16,19 @@ import { prerenderSlides } from "@/lib/slides/prerender";
 import { buildImagePrompt } from "@/lib/media/prompt";
 
 export const dynamic = "force-dynamic";
-// busca + download do banco; folga para redes lentas
+// A fila de IA pode levar ~3 minutos no Tier 1 (5 imagens/minuto).
 export const maxDuration = 300;
+const IMAGE_RATE_INTERVAL_MS = 40_000;
+const MAX_RATE_LIMIT_RETRIES = 1;
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+function retryDelay(response: Response, attempt: number): number {
+  const retryAfter = Number(response.headers.get("retry-after"));
+  if (Number.isFinite(retryAfter) && retryAfter > 0) return Math.ceil(retryAfter * 1000) + 1_000;
+  // Keep below the 5 image/minute Tier 1 limit even when the API omits Retry-After.
+  return Math.max(60_000, IMAGE_RATE_INTERVAL_MS * (attempt + 1));
+}
 
 export async function POST(
   request: Request,
@@ -91,7 +102,13 @@ async function aiCandidates(story: import("@/lib/types").Story) {
   const slides = story.draft?.slides ?? [];
   const { image: customImagePrompt } = await loadPromptOverrides();
   const generationId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  const results = await Promise.allSettled(slides.map(async (slide) => {
+  const files: import("@/lib/media/persist").PoolFile[] = [];
+  const problems: string[] = [];
+  for (let index = 0; index < slides.length; index++) {
+    const slide = slides[index];
+    // `n: 3` consumes three image slots. Serializing and spacing these requests
+    // prevents five simultaneous slide requests from immediately hitting 429.
+    if (index > 0) await sleep(IMAGE_RATE_INTERVAL_MS);
     const prompt = buildImagePrompt({
       title: story.title,
       vertical: story.vertical,
@@ -107,10 +124,19 @@ async function aiCandidates(story: import("@/lib/types").Story) {
       custom: customImagePrompt,
       carouselContext: slides.map(s => `Slide ${s.slide_number}: ${s.headline}. ${s.body}. Visual: ${s.image_direction}`).join("\n"),
     });
-    const response = await fetch("https://api.openai.com/v1/images/generations", { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-2", prompt, size: "1024x1536", quality: "low", n: 3, output_format: "jpeg" }), signal: AbortSignal.timeout(120000) });
-    if (!response.ok) throw new Error(`OpenAI image API ${response.status}: ${(await response.text()).slice(0, 180)}`);
-    const body = await response.json() as { data?: { b64_json?: string }[] };
-    return (await Promise.all((body.data ?? []).map(async (item, variant) => {
+    let body: { data?: { b64_json?: string }[] } | null = null;
+    for (let attempt = 0; attempt <= MAX_RATE_LIMIT_RETRIES; attempt++) {
+      const response = await fetch("https://api.openai.com/v1/images/generations", { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-2", prompt, size: "1024x1536", quality: "medium", n: 3, output_format: "jpeg" }), signal: AbortSignal.timeout(120000) });
+      if (response.ok) { body = await response.json() as { data?: { b64_json?: string }[] }; break; }
+      const detail = (await response.text()).slice(0, 180);
+      if (response.status !== 429 || attempt === MAX_RATE_LIMIT_RETRIES) {
+        problems.push(`Slide ${slide.slide_number}: OpenAI ${response.status}: ${detail}`);
+        break;
+      }
+      await sleep(retryDelay(response, attempt));
+    }
+    if (!body) continue;
+    const candidates = await Promise.all((body.data ?? []).map(async (item, variant) => {
       const b64 = item.b64_json;
       if (!b64) return null;
       const bytes = Buffer.from(b64, "base64");
@@ -121,7 +147,10 @@ async function aiCandidates(story: import("@/lib/types").Story) {
       const { score, notes } = scoreCandidate({ origin: "upload", bandScore: smart.bandScore, sharpness: sharpnessScore(bytes) });
       const id = `ai${createHash("sha1").update(`${story.story_id}:${generationId}:${slide.slide_number}:${variant}:${prompt}`).digest("hex").slice(0, 12)}`;
       return { bytes, candidate: { id, local_path: poolPath(story.story_id, id, "image/jpeg"), origin: "upload" as const, source: "ai", mime_type: "image/jpeg", credit: "ILUSTRAÇÃO GERADA POR IA", text_placement: smart.placement, text_align: smart.align, score, score_notes: notes, added_at: new Date().toISOString(), focus_x: smart.focusX, focus_y: smart.focusY, width: smart.width || 1024, height: smart.height || 1536, generated_for_slide: slide.slide_number } };
-    }))).filter(Boolean) as { bytes: Buffer; candidate: import("@/lib/types").MediaCandidate }[];
-  }));
-  return { files: results.flatMap(r => r.status === "fulfilled" ? r.value : []), problems: results.flatMap((r, i) => r.status === "rejected" ? [`Slide ${slides[i].slide_number}: ${String(r.reason).slice(0, 200)}`] : []) };
+    }));
+    for (const candidate of candidates) {
+      if (candidate) files.push(candidate as import("@/lib/media/persist").PoolFile);
+    }
+  }
+  return { files, problems };
 }

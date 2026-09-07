@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { prepareForUpload } from "@/lib/media/clientImage";
 
@@ -53,9 +53,18 @@ export default function ImageActions({
   const [result, setResult] = useState<ApiResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [prep, setPrep] = useState<string | null>(null);
+  const [queuedSeconds, setQueuedSeconds] = useState(0);
   const [refreshing, startTransition] = useTransition();
 
   const runQs = `run=${encodeURIComponent(runFile)}`;
+
+  useEffect(() => {
+    if (busy !== "api") return;
+    const started = Date.now();
+    setQueuedSeconds(0);
+    const timer = window.setInterval(() => setQueuedSeconds(Math.floor((Date.now() - started) / 1000)), 1_000);
+    return () => window.clearInterval(timer);
+  }, [busy]);
 
   async function generateViaApi(mode: "ai" | "bank" = "ai") {
     setBusy(mode === "ai" ? "api" : "bank");
@@ -139,7 +148,7 @@ export default function ImageActions({
           }`}
         >
           {busy === "api"
-            ? "gerando opções…"
+            ? "Gerando 3 opções por slide, em fila…"
             : hasImages
           ? "Gerar mais 3 opções por slide"
               : "Gerar imagens com IA"}
@@ -181,7 +190,7 @@ export default function ImageActions({
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px]">
-        {busy === "api" && <span className="text-ink-3">gerando três opções por slide…</span>}
+        {busy === "api" && <span className="text-ink-3">Gerando 3 opções medium por slide em fila · {queuedSeconds}s. Pode levar até 3 minutos por causa do limite da API.</span>}
         {prep && <span className="text-ink-3">{prep}</span>}
         {refreshing && busy === null && <span className="text-ink-3">atualizando prévia…</span>}
         {result && busy === null && (
