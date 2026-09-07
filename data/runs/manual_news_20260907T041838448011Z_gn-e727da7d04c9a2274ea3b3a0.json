@@ -1,0 +1,192 @@
+{
+  "run_id": "news-20260907T041838448011Z",
+  "mode": "news",
+  "started_at": "2026-09-07T15:04:51.474Z",
+  "finished_at": "2026-09-07T15:04:51.474Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2975,
+    "estimated_output_tokens": 2862,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-e727da7d04c9a2274ea3b3a0",
+          "run_id": "news-20260907T041838448011Z",
+          "cluster_id": "gn-e727da7d04c9a2274ea3b3a0",
+          "vertical": "facts",
+          "title": "Irã lança mísseis sobre porta-aviões dos EUA",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260907T041838448011Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-e727da7d04c9a2274ea3b3a0-0",
+              "name": "revistaoeste.com",
+              "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNYVdTdVZpb2JpekhnSnc3by1jS3NyU1VwRmZjUmU0NnJMYmxJSmFpMktubVlOdnZCTUdBRWdYWnFJSUFxMXlNaERMRUxqMS1EcTZFNHQ0SUEyaDNjZEdaYWVteHpNQWVzMUVSTVM1SVJzVzdsYUJSNHhKRGNFVHJwd1ZR?oc=5",
+              "source_domain": "revistaoeste.com",
+              "published_at": "2026-09-06T20:14:53Z",
+              "source_type": "Google News",
+              "authority_score": 0,
+              "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-e727da7d04c9a2274ea3b3a0-1",
+                "name": "G1",
+                "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxOei1LQkVhbV9mUGZQdXBybjBwRXd5VjFfcmFSU0RiNW8wTS1QT2JIWkhZZVBhV0YwajhtODl0T2paMUdaa0c5R21rNkNrb213VU1PRDByRlcwVnhWNmhFX0tsMjhJTV9oeWw4a01BUjJ4aXN6emtyRmljY1ljWFVpbUxjQ3NDb09Oa3phSWVlZjhvSi0wTUxTU0NkbG1JY0xVd29fbG1JdHVoRkRZOFNrOU5YWG1Jd0d4MzBZQXVpT0JBWDZ6TWlEUzc3eFVDeFd6ekNSVXNQMmhBTkRaZHVZM1VnNzdvTE04MmJiSE9SczI0MjBObVHSAYQCQVVfeXFMTjNFWTBGQ2t6azZCQ2hUNG5QdnBLRDZ3Q21Hc291TzBKWkJvcEN2amxkR2w2bTBVOUw1V1ZrSk1nYjZVdzYzakhseGJFYVlRV01ROXd6ZUFTWHRNdkVWX0VIMzdJM1NTOUE5YjVaSjhNUlJXS2xVZjF0QWFVSDJPa1lwaEF0Yk9MZm42UkZ5NjdnU1o0TDJYbHRGUmN0Qkw5bU5hUmExa3dJa2RoTmxGa09wSHNZSzZxX3QwTVB1RFJFZG5LRWZQMzdoMDFfLXc3UThSYUE2OWh3VkQ2VDlJSG16dGc4aEUtRHBzc3B4dzlWSG9UZjg2TDBxQ1dkaWF1N1M2REU?oc=5",
+                "source_domain": "G1",
+                "published_at": "2026-09-06T20:14:53Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-e727da7d04c9a2274ea3b3a0-2",
+                "name": "Jovem Pan",
+                "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPblBKSTFjNFZjOTlVcl9aQ3BGdHl4UVlVUHlFTzBma2JMQnJ3QWNVREF5R09XUTJITzlZTHYteXdRQVJzNGdIQnQxX1l3SWtVblBxWVM1dnc2Y1VMemNPdnpyZ25xSDNQeTRaRnc1RmZqN2JpUDd6X2JFdF9RREVVQUhpdk9EeDc2a05jb05sNkQwbXVKWk15ajBLR1FibXJXdks4VzNlZkVwRkNM?oc=5",
+                "source_domain": "Jovem Pan",
+                "published_at": "2026-09-06T20:14:53Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-e727da7d04c9a2274ea3b3a0-3",
+                "name": "Brasil de Fato",
+                "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUWxpeUVuaXM4Z1dxSmd2a1RsNGk2WWlrU1FPVmJKTmZXNFBKU0wyTHV2aXJNc2FCajhBcFlpdDYyRDB5eTBXQkhOWFI0N1dHNWsxYVVudU5RclpaMzVUeWkwSDd6blM0SFFGMl9vbFh6b2h3NktpZ0xBdDNwNVAwNjA4ZVNOZWFQaDJFbERsUVNXWXVPa3F5NEprWVJVZkdJQ3dOdkJIdnVleFRwOEtPRG84T2t1UllhMkdwTGctZW1RdGJnYW1Lb0szZ2V2dw?oc=5",
+                "source_domain": "Brasil de Fato",
+                "published_at": "2026-09-06T20:14:53Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-e727da7d04c9a2274ea3b3a0-4",
+                "name": "Estado de Minas",
+                "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOXzFWVXA5STZ6ZXFfbTZsZ05iQXZwMTJzTTJvc1hzZS1tSlIwRk1IUG1WTXhYTS1ibTZoZHFpcUFQemcxNlhqR19hRS1wUzMzcXFlRTJFSTFSVkdiY0FFODhObzhpSWg0amxhOFFiZ2h0SEF3eUoyRVRHWXF2eXhTR3lYdGlOMkVUaFA0am1XbEhobzRtVnBqWkt5UkVWMXFMQVpENUtBbmVNV1g3TjlzRHBYOGp3Slk1aklIR0FlNzZJd9IBxwFBVV95cUxPbWw3dGhjTGN1amctVWFlSF9iWS1uTDhmaFBmaHgxeDBfelZneUZsUHNMb05FcWxERmNFTFlneUp1WjAxMUhTQ1NNY3ZnZHRONTV4a0o5NDdNR2VqRHpDZmtzbHVKY1Z5MHZoQVJoNVBjY3NWUUV5MEdBUWxhVVVNLTgxX0F5eEZ1SXNSQkdXbU1RMmJJWEJYb1JuMlVmMzIxQkN4WDh0aW9pT3lIUnRzbU9McDh5bEgyc0dLVnVyV3JzWWQ0LXlF?oc=5",
+                "source_domain": "Estado de Minas",
+                "published_at": "2026-09-06T20:14:53Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "5 de 5 veículos do Google News lidos na geração do post."
+          },
+          "draft": {
+            "draft_id": "news-e72-mtrdgjki",
+            "story_id": "news-e727da7d04c9a2274ea3b3a0",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Irã lança mísseis sobre porta-aviões dos EUA",
+            "instagram_headline": "Irã teria lançado mísseis sobre porta-aviões dos EUA",
+            "short_summary": "O acontecimento fornecido afirma que o Irã lançou mísseis sobre um porta-aviões dos EUA. As fontes disponíveis, porém, não trazem detalhes ou elementos que permitam confirmar o episódio de forma independente.",
+            "why_it_matters": "A falta de informações básicas impede avaliar a dimensão e as consequências do possível lançamento.",
+            "key_facts": [
+              "O acontecimento fornecido cita um lançamento de mísseis pelo Irã.",
+              "O alvo descrito é um porta-aviões dos EUA.",
+              "As cinco entradas disponíveis estão datadas de 6 de setembro de 2026.",
+              "As entradas exibem apenas uma descrição genérica do Google News.",
+              "O material não informa o local, o número de mísseis ou eventuais danos."
+            ],
+            "caption": "A manchete chama a atenção, mas ainda faltam os dados básicos.\n\nAs cinco entradas fornecidas estão datadas de 6 de setembro de 2026 e aparecem com o título \"Google News\". Em vez de reportagens sobre o caso, todas exibem a mesma apresentação genérica do agregador, sobre a reunião de notícias publicadas por fontes de diferentes partes do mundo. Não há texto jornalístico, declaração oficial ou registro visual anexado.\n\nPor isso, o material não informa onde ocorreu o lançamento, quantos mísseis foram usados ou qual porta-aviões estaria envolvido. Também não diz se houve interceptação, impacto, vítimas ou danos. As versões do Irã e dos EUA não aparecem nas informações disponíveis.\n\nO carrossel registra a afirmação contida no acontecimento enviado, mas separa esse enunciado do que ainda precisa ser documentado. Uma atualização responsável exige uma fonte que descreva o caso, identifique a origem da informação e apresente dados verificáveis. Até lá, não é possível determinar a natureza, a dimensão ou o resultado do episódio.\n\nSiga para acompanhar possíveis atualizações.",
+            "hashtags": [
+              "#Irã",
+              "#EstadosUnidos",
+              "#PortaAviões",
+              "#Mísseis",
+              "#Fatos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Irã teria lançado mísseis sobre porta-aviões dos EUA",
+                "body": "O acontecimento foi informado, mas o material fornecido não traz detalhes que permitam **confirmá-lo de forma independente**.",
+                "image_direction": "Arte editorial identificada como ilustração, com um porta-aviões em silhueta e mísseis estilizados, sem representar local ou navio específico.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O QUE FOI DITO",
+                "body": "A descrição disponível afirma que **o Irã lançou mísseis** sobre **um porta-aviões dos EUA**.",
+                "image_direction": "Composição informativa com os nomes Irã e Estados Unidos ligados por uma linha pontilhada a uma silhueta genérica de porta-aviões.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O QUE FALTA",
+                "body": "O material não informa **o local**, o número de mísseis, o navio envolvido ou a existência de danos.",
+                "image_direction": "Lista visual de informações ausentes, com ícones de mapa, míssil, navio e avaliação de danos.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "SEM DIMENSÃO",
+                "body": "Sem esses dados, não é possível determinar **a escala do episódio** nem suas consequências.",
+                "image_direction": "Infográfico conceitual com uma lupa sobre documentos incompletos e campos sem preenchimento, em estilo editorial sóbrio.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "STATUS DA APURAÇÃO",
+                "body": "As entradas exibem apenas uma descrição genérica do Google News. **A confirmação independente** não aparece no material fornecido.",
+                "image_direction": "Tela editorial com cinco registros genéricos e um selo visual de informação ainda não verificada, sem reproduzir páginas reais.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-07T15:04:51.474Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T20:14:53Z",
+          "latest_published_at": "2026-09-06T20:14:53Z",
+          "selection_rank": 6,
+          "created_at": "2026-09-07T15:04:51.474Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
