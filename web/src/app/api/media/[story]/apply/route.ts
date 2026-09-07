@@ -28,7 +28,7 @@ const PLACEMENTS = new Set(["TOP", "CENTER", "BOTTOM"]);
 
 interface Change {
   slide_number: number;
-  candidate_id?: string;
+  candidate_id?: string | null;
   placement?: string;
 }
 
@@ -37,7 +37,12 @@ function applyChanges(story: Story, changes: Change[]): boolean {
   for (const ch of changes) {
     const n = Number(ch.slide_number);
     if (!Number.isInteger(n) || n < 1) continue;
-    if (ch.candidate_id) {
+    if ("candidate_id" in ch) {
+      if (ch.candidate_id === null) {
+        story.slide_media = (story.slide_media ?? []).filter((m) => m.slide_number !== n);
+      }
+    }
+    if (typeof ch.candidate_id === "string" && ch.candidate_id) {
       const c = (story.media_pool ?? []).find((x) => x.id === ch.candidate_id);
       if (!c) continue;
       applySelection(story, n, c);

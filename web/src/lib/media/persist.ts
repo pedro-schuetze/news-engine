@@ -100,7 +100,10 @@ export function autoFillEmptySlides(story: Story): number[] {
   for (const slide of slides) {
     const n = slide.slide_number;
     if (covered.has(n)) continue;
-    const next = free.shift();
+    // Na primeira geração, prefira uma das opções criadas para este slide;
+    // regenerações continuam aditivas e não chegam aqui nos slides ocupados.
+    const preferredIndex = free.findIndex((c) => c.generated_for_slide === n);
+    const next = preferredIndex >= 0 ? free.splice(preferredIndex, 1)[0] : free.shift();
     if (!next) break;
     applySelection(story, n, next);
     filled.push(n);

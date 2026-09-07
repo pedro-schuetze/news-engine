@@ -30,8 +30,8 @@ export async function composeFromNews(snapshot: NewsSnapshot, item: NewsStory, e
     editorial_reason: "Selected by an editor from Google News.", red_flags: [], final_score: 0,
     final_score_notes: [`Google News snapshot ${snapshot.id}`, `model: ${model}`], classification: null,
     verification: { status: sources.length >= 2 ? "VERIFIED" : "PARTIALLY_VERIFIED", supporting_source_count: Math.max(0, sources.length - 1), independent_source_count: sources.length, has_primary_source: true,
-      primary_source: { article_id: `${storyId}-0`, name: sources[0].domain, url: item.outlets[0]?.url || item.url, source_domain: sources[0].domain, published_at: item.published_at, source_type: "Google News", authority_score: 0 },
-      supporting_sources: sources.slice(1).map((source, index) => ({ article_id: `${storyId}-${index + 1}`, name: source.domain, url: item.outlets[index + 1]?.url || item.url, source_domain: source.domain, published_at: item.published_at, source_type: "Google News", authority_score: 0 })), contradictions_found: [], verification_notes: `Google News listed ${sources.length} outlet${sources.length === 1 ? "" : "s"} for this story.` },
+      primary_source: { article_id: `${storyId}-0`, name: sources[0].domain, url: item.outlets[0]?.url || item.url, source_domain: sources[0].domain, published_at: item.published_at, source_type: "Google News", authority_score: 0, excerpt: sources[0].description.slice(0, 4000) },
+      supporting_sources: sources.slice(1).map((source, index) => ({ article_id: `${storyId}-${index + 1}`, name: source.domain, url: item.outlets[index + 1]?.url || item.url, source_domain: source.domain, published_at: item.published_at, source_type: "Google News", authority_score: 0, excerpt: source.description.slice(0, 4000) })), contradictions_found: [], verification_notes: `Google News listed ${sources.length} outlet${sources.length === 1 ? "" : "s"} for this story.` },
     draft, slide_media: [], article_count: sources.length, earliest_published_at: item.published_at,
     latest_published_at: item.published_at, selection_rank: item.rank, created_at: now,
   };

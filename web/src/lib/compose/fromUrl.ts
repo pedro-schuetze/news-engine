@@ -202,6 +202,7 @@ export async function composeFromUrls(opts: {
         published_at: articles[0].publishedAt ?? null,
         source_type: "media",
         authority_score: 50,
+        excerpt: [articles[0].description, articles[0].excerpt].filter(Boolean).join(" ").slice(0, 4000),
       },
       supporting_sources: articles.slice(1).map((a, i) => ({
         article_id: `${storyId}-${i + 1}`,
@@ -211,6 +212,7 @@ export async function composeFromUrls(opts: {
         published_at: a.publishedAt ?? null,
         source_type: "media",
         authority_score: 50,
+        excerpt: [a.description, a.excerpt].filter(Boolean).join(" ").slice(0, 4000),
       })),
       contradictions_found: [],
       verification_notes: `Post manual a partir de ${articles.length} link(s) informado(s) pelo editor.`,

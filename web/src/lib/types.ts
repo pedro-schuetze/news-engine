@@ -53,6 +53,8 @@ export interface SourceRef {
   published_at: string | null;
   source_type: string;
   authority_score: number;
+  /** trecho factual guardado para regenerar o texto sem reler o artigo */
+  excerpt?: string;
 }
 
 export interface Verification {
@@ -138,6 +140,8 @@ export interface MediaCandidate {
   focus_y?: number;
   width?: number;
   height?: number;
+  /** slide cuja direção originou a candidata; ela continua disponível em qualquer slide */
+  generated_for_slide?: number;
 }
 
 export interface Story {

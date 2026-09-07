@@ -15,11 +15,9 @@ interface ApiResult {
 }
 
 /**
- * Duas formas de conseguir as imagens de um post (a geração por IA via API
- * foi removida em 2026-09-02 — "não deu certo e ficou bem ruim"):
- *   1. busca no banco (Wikimedia/Openverse), uma foto distinta por slide;
- *   2. briefing copiado para o ChatGPT (skill news-engine-carousel) e
- *      upload dos arquivos de volta.
+ * Duas formas de conseguir as imagens de um post:
+ *   1. gera três opções por slide com IA, preservando as opções anteriores;
+ *   2. briefing copiado para o ChatGPT e upload dos arquivos de volta.
  */
 /** O runtime pode responder texto puro (413, 504) — não assuma JSON. */
 async function readResponse(res: Response): Promise<{ ok: boolean; body: ApiResult & { error?: string; problems?: string[] } }> {
@@ -141,9 +139,9 @@ export default function ImageActions({
           }`}
         >
           {busy === "api"
-            ? "buscando no banco…"
+            ? "gerando opções…"
             : hasImages
-            ? "↻ Regenerate AI images"
+          ? "Generate 3 more options"
               : "Generate AI images"}
         </button>
 
@@ -182,7 +180,7 @@ export default function ImageActions({
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px]">
-        {busy === "api" && <span className="text-ink-3">leva ~10-20s (sem custo de API)</span>}
+        {busy === "api" && <span className="text-ink-3">gerando três opções por slide…</span>}
         {prep && <span className="text-ink-3">{prep}</span>}
         {refreshing && busy === null && <span className="text-ink-3">atualizando prévia…</span>}
         {result && busy === null && (

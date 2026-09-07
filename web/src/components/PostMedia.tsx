@@ -47,6 +47,8 @@ export default function PostMedia({
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [dragSlide, setDragSlide] = useState<number | null>(null);
+  const [dropSlide, setDropSlide] = useState<number | null>(null);
 
   const byId = useMemo(() => new Map(pool.map((c) => [c.id, c])), [pool]);
   const ordered = useMemo(() => [...pool].sort((a, b) => b.score - a.score), [pool]);
@@ -62,11 +64,11 @@ export default function PostMedia({
       if (!candChanged && !placeChanged) return null;
       return {
         slide_number: n,
-        ...(candChanged && d.candidateId ? { candidate_id: d.candidateId } : {}),
+        ...(candChanged ? { candidate_id: d.candidateId } : {}),
         ...(placeChanged ? { placement: d.placement } : {}),
       };
     })
-    .filter(Boolean) as { slide_number: number; candidate_id?: string; placement?: string }[];
+    .filter(Boolean) as { slide_number: number; candidate_id?: string | null; placement?: string }[];
   const dirty = changes.length > 0;
 
   function imageUrlFor(c: MediaCandidate | null): string | null {
@@ -93,6 +95,22 @@ export default function PostMedia({
   function place(n: number, placement: Placement) {
     setNotice(null);
     setDraft((d) => ({ ...d, [n]: { ...d[n], placement } }));
+  }
+
+  function moveSlide(from: number, to: number) {
+    if (from === to) return;
+    setNotice(null);
+    setDraft((current) => {
+      const source = current[from];
+      if (!source?.candidateId) return current;
+      const target = current[to];
+      const next = { ...current };
+      next[to] = source;
+      next[from] = target?.candidateId
+        ? target
+        : { candidateId: null, placement: "BOTTOM", align: "center" };
+      return next;
+    });
   }
 
   function discard() {
@@ -134,7 +152,28 @@ export default function PostMedia({
           const st = draft[slide.n];
           const cand = st?.candidateId ? (byId.get(st.candidateId) ?? null) : null;
           return (
-            <div key={slide.n} className="flex flex-col">
+            <div
+              key={slide.n}
+              className={`flex flex-col rounded-xl transition ${dropSlide === slide.n ? "ring-2 ring-brand ring-offset-2" : ""}`}
+              draggable={Boolean(st?.candidateId)}
+              onDragStart={() => setDragSlide(slide.n)}
+              onDragOver={(event) => {
+                if (dragSlide !== null && dragSlide !== slide.n) event.preventDefault();
+                setDropSlide(slide.n);
+              }}
+              onDragLeave={() => setDropSlide(null)}
+              onDrop={(event) => {
+                event.preventDefault();
+                if (dragSlide !== null) moveSlide(dragSlide, slide.n);
+                setDragSlide(null);
+                setDropSlide(null);
+              }}
+              onDragEnd={() => {
+                setDragSlide(null);
+                setDropSlide(null);
+              }}
+              title={st?.candidateId ? "Arraste este slide para outro para trocar as imagens" : undefined}
+            >
               <SlidePreview
                 slide={slide}
                 candidate={cand}
@@ -201,8 +240,7 @@ export default function PostMedia({
       {pool.length > 0 && (
         <div className="space-y-3 border-t border-line pt-3">
           <p className="font-mono text-[10.5px] uppercase tracking-wide text-ink-3">
-            escolher imagem por slide · {pool.length} candidatas (banco + uploads) · pré-seleção
-            por score
+            escolher imagem por slide · {pool.length} candidatas · clique ou arraste para trocar
           </p>
           {slides.map((slide) => (
             <div key={slide.n} className="space-y-1">
@@ -210,13 +248,13 @@ export default function PostMedia({
                 slide {slide.n} · {slide.headline || slide.kind}
               </p>
               <div className="flex flex-wrap gap-1.5">
-                {ordered.map((c) => {
+                {ordered.filter((c) => c.generated_for_slide === slide.n || c.generated_for_slide === undefined).map((c) => {
                   const isSelected = draft[slide.n]?.candidateId === c.id;
                   return (
                     <button
                       key={c.id}
                       onClick={() => pick(slide.n, c)}
-                      title={`${c.origin === "bank" ? "banco" : "ChatGPT"} · score ${c.score} (${c.score_notes})\n${c.credit}`}
+                      title={`${c.origin === "bank" ? "banco" : "IA"}${c.generated_for_slide ? ` · gerada para slide ${c.generated_for_slide}` : ""} · score ${c.score} (${c.score_notes})\n${c.credit}`}
                       className={`relative overflow-hidden rounded-lg border-2 transition-all ${
                         isSelected
                           ? "border-brand ring-2 ring-brand/30"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PromptSettings from "@/components/PromptSettings";
 
 const navigation = [
   ["Today", "/iris"], ["Manual Mode", "/iris/manual"], ["Approved", "/iris/approved"],
@@ -14,6 +15,7 @@ export default function IrisLayout({ children }: { children: React.ReactNode }) 
         <span>IRIS</span>
       </Link>
       <nav aria-label="Iris navigation">{navigation.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
+      <PromptSettings />
       <Link className="iris-legacy" href="/">Open GPB app</Link>
     </header>
     <div className="iris-content">{children}</div>

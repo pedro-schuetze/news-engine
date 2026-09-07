@@ -240,6 +240,42 @@ export async function readPromptRule(name: string): Promise<string> {
   return (await src.readTextFile(`prompts/${name}.md`))?.trim() ?? "";
 }
 
+export interface PromptOverrides {
+  /** instruções extras anexadas ao prompt editorial de texto */
+  text: string;
+  /** instruções extras anexadas ao prompt visual de imagem */
+  image: string;
+}
+
+const EMPTY_PROMPT_OVERRIDES: PromptOverrides = { text: "", image: "" };
+
+/** Instruções editáveis pelo usuário, versionadas junto do estado do projeto. */
+export async function loadPromptOverrides(): Promise<PromptOverrides> {
+  const raw = await src.readTextFile("config/prompt_overrides.json");
+  if (!raw) return { ...EMPTY_PROMPT_OVERRIDES };
+  try {
+    const parsed = JSON.parse(raw) as Partial<PromptOverrides>;
+    return {
+      text: typeof parsed.text === "string" ? parsed.text : "",
+      image: typeof parsed.image === "string" ? parsed.image : "",
+    };
+  } catch {
+    return { ...EMPTY_PROMPT_OVERRIDES };
+  }
+}
+
+export async function savePromptOverrides(overrides: PromptOverrides): Promise<void> {
+  const next: PromptOverrides = {
+    text: overrides.text.trim().slice(0, 12000),
+    image: overrides.image.trim().slice(0, 8000),
+  };
+  await src.writeTextFile(
+    "config/prompt_overrides.json",
+    JSON.stringify(next, null, 2) + "\n",
+    "config: atualiza prompts editáveis",
+  );
+}
+
 /**
  * Direcionamentos que o Pedro marcou como "aprender para os próximos posts".
  * Chave "all" vale para todas as verticais; as outras são por vertical.

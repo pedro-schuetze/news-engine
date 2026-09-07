@@ -10,6 +10,11 @@ legenda. Ele precisa ser curto e legível em tela pequena, MAS continua sendo
 português inteiro. E o post NÃO reproduz mídia: nunca chame para "assistir",
 "ouvir" ou "clicar" — descreva o que o vídeo/trailer/música mostra.
 
+PRIORIDADE DO TEXTO: fidelidade ao material fornecido, clareza, português
+natural e legibilidade. O estilo vem depois dessas quatro coisas. Cada slide
+deve desenvolver uma única ideia e acrescentar informação, sem repetir outro
+slide. Se a fonte não trouxer um dado, não invente nem complete por memória.
+
 PORTUGUÊS COMPLETO, SEMPRE (vale para headline e body de todos os slides):
 - Use artigos, preposições e verbos de ligação: "A missão foca em...",
   "O campo de visão maior permite...", "O comissionamento vem primeiro".

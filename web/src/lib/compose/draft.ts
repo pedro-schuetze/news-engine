@@ -10,7 +10,7 @@
  *   - "Pedir ajustes" em qualquer post já existente.
  */
 
-import { loadLearnedDirectives, loadVerticalConfigs, readPromptRule } from "../data";
+import { loadLearnedDirectives, loadPromptOverrides, loadVerticalConfigs, readPromptRule } from "../data";
 import { openaiKey } from "../images";
 import type { EditorialDraft, Story } from "../types";
 
@@ -19,12 +19,12 @@ const MODEL = (process.env.OPENAI_MODEL ?? "gpt-5-mini").trim();
 // padrão: é 1 chamada iniciada por humano, volume baixíssimo, e aqui o texto
 // é o produto inteiro. O run automático (15 posts/dia) continua no MODEL.
 // Escolhido por A/B real em 2026-09-02 (ver docs/CONTEXT.md).
-// Keep manual generation on the broadly available, lower-cost API model by
-// default. Deployments can still select another model explicitly.
-const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5-mini";
+// Keep manual generation on the balanced Terra model by default. Deployments
+// can still select another model explicitly with OPENAI_COMPOSE_MODEL.
+const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5.6-terra";
 const REASONING = (process.env.OPENAI_REASONING_EFFORT ?? "").trim();
 
-const SYSTEM =
+export const TEXT_SYSTEM_PROMPT =
   "Você é o editor-chefe de uma redação digital brasileira que publica notícias " +
   "em contas de Instagram por vertical (entretenimento, política, fatos). " +
   "Você é rigoroso com fatos, distingue fato de alegação/rumor/opinião e escreve " +
@@ -127,7 +127,7 @@ async function callOpenAI(
   const body: Record<string, unknown> = {
     model: COMPOSE_MODEL,
     messages: [
-      { role: "system", content: SYSTEM },
+      { role: "system", content: TEXT_SYSTEM_PROMPT },
       { role: "user", content: user },
     ],
     max_completion_tokens: 8192,
@@ -252,7 +252,7 @@ function sourcesBlock(sources: SourceLine[]): string {
     .map(
       (s) =>
         `- ${s.domain}${s.published ? ` (${s.published})` : ""}: "${s.title}"` +
-        (s.description ? ` — ${s.description.slice(0, 400)}` : ""),
+        (s.description ? ` — ${s.description.slice(0, 1600)}` : ""),
     )
     .join("\n");
 }
@@ -270,8 +270,11 @@ export async function generateDraft(opts: {
   currentDraft?: EditorialDraft | null;
   format?: ComposeFormat;
 }): Promise<DraftResult> {
-  const rules = await rulesBlock(opts.vertical);
-  const verticals = await loadVerticalConfigs();
+  const [rules, verticals, overrides] = await Promise.all([
+    rulesBlock(opts.vertical),
+    loadVerticalConfigs(),
+    loadPromptOverrides(),
+  ]);
 
   const verticalTask = opts.chooseVertical
     ? `Escolha também a vertical mais adequada entre: ${verticals
@@ -303,8 +306,22 @@ ${opts.verificationSummary ? `VERIFICAÇÃO: ${opts.verificationSummary}` : ""}
 FONTES DISPONÍVEIS (única base factual permitida):
 ${sourcesBlock(opts.sources)}
 
+ORDEM DE PRIORIDADE EDITORIAL:
+1. Fidelidade às fontes fornecidas.
+2. Clareza para alguém que não conhece o assunto.
+3. Português brasileiro natural e completo.
+4. Brevidade e legibilidade em tela pequena.
+5. Estilo da vertical.
+
+REGRAS DE FIDELIDADE:
+- Use somente informações presentes nas fontes acima e no acontecimento descrito.
+- Não complete lacunas com conhecimento próprio.
+- Se uma informação não estiver confirmada, omita-a ou atribua claramente a alegação à fonte.
+- Não invente números, nomes, cargos, datas, causas, consequências ou citações.
+
 ${rules}${formatBlock(opts.format)}
 ${adjust}
+${overrides.text.trim() ? `\nINSTRUÇÕES PERSONALIZADAS DO EDITOR (aplicadas por último):\n${overrides.text.trim()}` : ""}
 
 FORMATO DE SAÍDA (JSON estrito):
 {"original_story_title": "...", ${opts.chooseVertical ? '"vertical": "politics|entertainment|facts", ' : ""}"instagram_headline": "até ~60 caracteres", "short_summary": "2-3 frases", "why_it_matters": "1-2 frases", "key_facts": ["3 a 6 fatos curtos"], "caption": "...", "hashtags": ["#..."], "slides": [{"slide_number": 1, "role": "HOOK", "headline": "...", "body": "...", "image_direction": "...", "image_source_type": "AGENCY_PHOTO"}]}`;
@@ -336,7 +353,7 @@ export function sourcesFromStory(story: Story): SourceLine[] {
   return refs.map((r) => ({
     domain: r!.source_domain || r!.name,
     title: r!.name,
-    description: "",
+    description: r!.excerpt ?? "",
     published: r!.published_at ?? undefined,
   }));
 }
