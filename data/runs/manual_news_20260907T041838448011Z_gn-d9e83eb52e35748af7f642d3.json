@@ -1,0 +1,191 @@
+{
+  "run_id": "news-20260907T041838448011Z",
+  "mode": "news",
+  "started_at": "2026-09-07T15:16:31.873Z",
+  "finished_at": "2026-09-07T15:16:31.873Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2969,
+    "estimated_output_tokens": 2401,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-d9e83eb52e35748af7f642d3",
+          "run_id": "news-20260907T041838448011Z",
+          "cluster_id": "gn-d9e83eb52e35748af7f642d3",
+          "vertical": "facts",
+          "title": "AfD vence eleição estadual na Alemanha com votação recorde",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260907T041838448011Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-d9e83eb52e35748af7f642d3-0",
+              "name": "poder360.com.br",
+              "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNT0xDMFNWTzhGUENqN1hvRmc4MmY4VVFSM3BxazR4WXJMdk1VbDFsVUE1TkFpYTdWSnhJV2VyZ2M1RFR1cDBDVFVKTHFveXFZLXFwd1lweEtZSkV2NUc5Nzg1a1pubUJUXzFqQzNONC05aDZBaEMtUXR3YXcxSU1GUHJjWm9BZnhRNlZoQmRyUERUNzZ2UTRiQVB3M0NaQjU3UEFTZWxIMVJMS1U?oc=5",
+              "source_domain": "poder360.com.br",
+              "published_at": "2026-09-06T19:38:01Z",
+              "source_type": "Google News",
+              "authority_score": 0,
+              "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-1",
+                "name": "folha.uol.com.br",
+                "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNb1hCMlZ4MDg1MnNXRkpFcDZaQ3p5cTB3YS1IbUgxTlJsd0ZPVUNhUjUtRjRUeThlUHNTdWwyLUt3SnRsZzMzc0liMzFCZnhhbGxqOEZyTVIzalVVUHhyQ1ZkS0kzZWhwYVdzTTZyREFYWnZLcER0MUtURkg4N01YY0hBMzB4YmxTOTNRNGJ4c281UGxab1E0Z3d1UFlOY2R0OF9KSEZpLVRITHdUMnpVU1ljSk9TU0ZnSGVsNlF3?oc=5",
+                "source_domain": "folha.uol.com.br",
+                "published_at": "2026-09-06T19:38:01Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-2",
+                "name": "O GLOBO",
+                "url": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNcHJZbnhCZmY0VC1MZElhOUxJNDctMklfcDZHUjF1NWtQYkJ0RC1YWnNzWVE5LUdQSFB0S2J3Q1lzRE04Q1ZkNEg1aWFUUnJIeFAyRlF6WGFLYnpweFZrZ3lRS0NzTnF6cjhONzA2STE2MmFNMTRfRmdweG5WMmVwMHctY2MyOVRRZ0txcnNMRHVHOHpkOTR5X3BQZU1meHVXYjdSdXVEdmFaY21YQ3Rua3NEM19jNnFySTNKdmhLRUpYNDZySHEzTzdmRktVcEU0WTZZZ2V2dTVTYXFmVXVjQ2lTOUpRV1hmSW9wNEVSRWtNZXhfb1Rralp1cWRDbDVhdUNoQk5hNzRuMnBUYThZQXFJTVNBSVJ3?oc=5",
+                "source_domain": "O GLOBO",
+                "published_at": "2026-09-06T19:38:01Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-3",
+                "name": "DW.com",
+                "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPRmtBbk5qMW9Rajc1NjBfR1JGUUhRbHdib0hmWDhrQ01UajY0OFMwOF8zWFpXSkE5Q24xZmVqYU5YRlR2X3h6VHNkbm5hNERDWDc3YUttQXFfM2FiYTg0QWhVM0liTHpqcnoyVWxlMU5uYWwyNzBXTmpCaXRjM2hRX1ppMjJ4cUdqQ1NuU2EzOE1CSDJVcFF5ZXE3UlR2NGkzQUtxa1JEcTlGcHZ0WlHSAa4BQVVfeXFMT0VFV1JuazlsQ19ybmdqOGxpNW80MjBrSU1pOTl2b0M1OUh3NWs4MEZ1dUQ1QVZWV0dXTDUtbDJuMnNwWTZDMkhwRkxPUGVEUUd4QWpyNnRESUUyU0k5V3EzRy03T1I1OE1zWkpTYnFxWW9JSUtlLW4zN0NGMFdBTkoySzVXakNDLV94NW9INWpKNkhGV0dqRWVfTHBfOHFCM1lYS21NeXNLbHZmYVRR?oc=5",
+                "source_domain": "DW.com",
+                "published_at": "2026-09-06T19:38:01Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-4",
+                "name": "R7",
+                "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQUjlMUC0wY19DSmJQRU4wX002U0R3OUthVlhFb0F4RVJxd1htRXcxVWRfU1UwYWd0N0VlOGwxS0JnZV9OazJ6RWZMRlBJd2xDOGdZbE5aUkpNZ1dNdzRyM1NsQ2pwYnd4bTJraDhub1c0MHB3RzZ2NFUyTUF3U2hJNGtMSW5Xc2YzcU9KRzZleVNOcFc2UEVnZzdqUl9pWkoxTXFGMEVsS1g1aVgxZENWTWdfakRMTGhNTUpuS0UtVDNkLVZEOHFjem1nMDBiWUE?oc=5",
+                "source_domain": "R7",
+                "published_at": "2026-09-06T19:38:01Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "5 de 5 veículos do Google News lidos na geração do post."
+          },
+          "draft": {
+            "draft_id": "news-d9e-mtrdvk01",
+            "story_id": "news-d9e83eb52e35748af7f642d3",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "AfD vence eleição estadual na Alemanha com votação recorde",
+            "instagram_headline": "A AfD vence disputa estadual alemã com votação recorde",
+            "short_summary": "A AfD venceu uma eleição estadual na Alemanha com uma votação descrita como recorde. O material disponível não informa o estado, o percentual obtido nem a margem da vitória.",
+            "why_it_matters": "A vitória chama atenção pelo recorde atribuído ao resultado. Sem números e critérios, porém, ainda não é possível dimensionar o desempenho.",
+            "key_facts": [
+              "A AfD venceu uma eleição estadual na Alemanha.",
+              "A votação foi descrita como recorde.",
+              "O estado onde ocorreu a eleição não foi informado.",
+              "O percentual e o total de votos não foram divulgados no material disponível.",
+              "A margem da vitória e os próximos passos também não foram detalhados."
+            ],
+            "caption": "A AfD venceu uma eleição estadual alemã, mas faltam dados essenciais para dimensionar o resultado.\n\nO acontecimento informado traz dois pontos objetivos: o partido venceu a disputa e obteve uma votação descrita como recorde. A base disponível, porém, não identifica em qual estado da Alemanha ocorreu a eleição. Também não apresenta o percentual alcançado, o total de votos ou a diferença para os demais concorrentes.\n\nO critério usado para classificar a votação como recorde tampouco foi detalhado. Sem essa referência, não é possível afirmar o que exatamente foi superado nem comparar o desempenho com eleições anteriores. Qualquer número ou explicação adicional iria além das informações fornecidas.\n\nTambém não há detalhes sobre a composição do governo estadual, eventuais negociações políticas ou os próximos passos depois da votação. Esses dados são necessários para explicar os efeitos práticos da vitória. Por fidelidade ao material disponível, este post se limita aos fatos informados e sinaliza claramente as lacunas.\n\nSiga para acompanhar as próximas informações confirmadas.",
+            "hashtags": [
+              "#Alemanha",
+              "#AfD",
+              "#EleiçãoEstadual",
+              "#Fatos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "A AfD vence disputa estadual alemã com votação recorde",
+                "body": "O resultado foi descrito como **recorde**, mas o percentual obtido não foi informado.",
+                "image_direction": "Foto jornalística verificada de um evento da AfD relacionado à eleição, com enquadramento aberto e clima documental, sem sugerir números ausentes.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "A DISPUTA",
+                "body": "A eleição ocorreu no nível **estadual**, e não no nacional. O material disponível não identifica qual estado alemão realizou a votação.",
+                "image_direction": "Mapa público da Alemanha inteira, sem destacar um estado específico, acompanhado de um elemento gráfico discreto de votação.",
+                "image_source_type": "PUBLIC_DOMAIN"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O RESULTADO",
+                "body": "A AfD venceu a disputa. Não foram informados o **percentual**, o total de votos nem a margem sobre os adversários.",
+                "image_direction": "Ilustração editorial de uma cédula e uma urna, sem nomes de adversários, percentuais ou resultados numéricos.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "O RECORDE",
+                "body": "A votação foi classificada como **recorde**. Como o critério não foi detalhado, não é possível dizer exatamente o que superou resultados anteriores.",
+                "image_direction": "Arte tipográfica com a palavra \"recorde\" ao lado de um gráfico sem escala ou números, deixando claro o caráter explicativo.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "O QUE FALTA",
+                "body": "A composição do governo estadual e os **próximos passos** não aparecem no material disponível. Esses detalhes ainda precisam ser confirmados.",
+                "image_direction": "Ilustração limpa de uma lista com campos pendentes para estado, números e próximos passos, sem preencher dados não confirmados.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-07T15:16:31.873Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T19:38:01Z",
+          "latest_published_at": "2026-09-06T19:38:01Z",
+          "selection_rank": 4,
+          "created_at": "2026-09-07T15:16:31.873Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
