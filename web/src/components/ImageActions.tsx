@@ -16,7 +16,7 @@ interface ApiResult {
 
 /**
  * Duas formas de conseguir as imagens de um post:
- *   1. gera três opções por slide com IA, preservando as opções anteriores;
+ *   1. gera uma opção inicial por slide com IA;
  *   2. briefing copiado para o ChatGPT e upload dos arquivos de volta.
  */
 /** O runtime pode responder texto puro (413, 504) — não assuma JSON. */
@@ -138,21 +138,15 @@ export default function ImageActions({
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-2">
-        <button
-          onClick={() => void generateViaApi()}
-          disabled={busy !== null}
-          className={`${pill} ${
-            hasImages
-              ? "border border-line bg-panel text-ink-2 hover:border-ink-3 hover:text-ink"
-              : "bg-ink text-white hover:bg-navy"
-          }`}
-        >
-          {busy === "api"
-            ? "Gerando 3 opções por slide, em fila…"
-            : hasImages
-          ? "Gerar mais 3 opções por slide"
-              : "Gerar imagens com IA"}
-        </button>
+        {!hasImages && (
+          <button
+            onClick={() => void generateViaApi()}
+            disabled={busy !== null}
+            className={`${pill} bg-ink text-white hover:bg-navy`}
+          >
+            {busy === "api" ? "Gerando 1 imagem por slide…" : "Gerar imagens com IA"}
+          </button>
+        )}
 
         <button onClick={() => void generateViaApi("bank")} disabled={busy !== null} className={`${pill} border border-line bg-panel text-ink-2 hover:border-brand`} title="Busca fotos nos bancos; não gera imagens com IA">{busy === "bank" ? "Buscando fotos…" : "Buscar fotos"}</button>
         <button
@@ -190,7 +184,7 @@ export default function ImageActions({
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px]">
-        {busy === "api" && <span className="text-ink-3">Gerando 3 opções medium por slide em fila · {queuedSeconds}s. Pode levar até 3 minutos por causa do limite da API.</span>}
+        {busy === "api" && <span className="text-ink-3">Gerando 1 imagem medium por slide em paralelo · {queuedSeconds}s.</span>}
         {prep && <span className="text-ink-3">{prep}</span>}
         {refreshing && busy === null && <span className="text-ink-3">atualizando prévia…</span>}
         {result && busy === null && (

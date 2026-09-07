@@ -53,6 +53,7 @@ export default function PostMedia({
   const [allOptions, setAllOptions] = useState(false);
   const [dragCandidate, setDragCandidate] = useState<string | null>(null);
   const [dropSlide, setDropSlide] = useState<number | null>(null);
+  const [generatingSlide, setGeneratingSlide] = useState<number | null>(null);
 
   useEffect(() => {
     // Refresh can add candidates: preserve local edits while updating untouched slides.
@@ -163,6 +164,27 @@ export default function PostMedia({
     }
   }
 
+  async function generateOneForSlide(slideNumber: number) {
+    if (generatingSlide !== null) return;
+    setGeneratingSlide(slideNumber);
+    setError(null);
+    setNotice(null);
+    try {
+      const response = await fetch(`/api/media/${storyId}?${runQs}&mode=ai&slide=${slideNumber}`, { method: "POST" });
+      const body = (await response.json().catch(() => ({}))) as { error?: string; new_candidates?: number; problems?: string[] };
+      if (!response.ok) {
+        setError([body.error, ...(body.problems ?? [])].filter(Boolean).join(" · ").slice(0, 220));
+        return;
+      }
+      setNotice(body.new_candidates ? `nova opção adicionada ao slide ${slideNumber}` : `nenhuma opção nova para o slide ${slideNumber}`);
+      router.refresh();
+    } catch (e) {
+      setError(String(e).slice(0, 160));
+    } finally {
+      setGeneratingSlide(null);
+    }
+  }
+
   return (
     <div className="space-y-3">
       {/* previews instantâneos (réplica HTML — nenhum servidor envolvido) */}
@@ -266,9 +288,19 @@ export default function PostMedia({
           <button className="text-xs text-brand-ink" onClick={() => setAllOptions(!allOptions)}>{allOptions ? "Mostrar opções por slide" : "Usar uma imagem de outro slide"}</button>
           {slides.map((slide) => (
             <div key={slide.n} className="space-y-1">
-              <p className="font-mono text-[10.5px] text-ink-3">
-                slide {slide.n} · {slide.headline || slide.kind}
-              </p>
+              <div className="flex items-center justify-between gap-2">
+                <p className="font-mono text-[10.5px] text-ink-3">
+                  slide {slide.n} · {slide.headline || slide.kind}
+                </p>
+                <button
+                  onClick={() => void generateOneForSlide(slide.n)}
+                  disabled={generatingSlide !== null}
+                  className="rounded-full border border-line bg-panel px-2.5 py-1 text-[10.5px] font-medium text-ink-2 hover:border-brand hover:text-brand-ink disabled:opacity-60"
+                  title="Gera uma opção medium adicional somente para este slide"
+                >
+                  {generatingSlide === slide.n ? "Gerando…" : "Gerar +1 imagem"}
+                </button>
+              </div>
               <div className="flex flex-wrap gap-1.5">
                 {ordered.filter((c) => allOptions || c.generated_for_slide === slide.n || c.generated_for_slide === undefined).map((c) => {
                   const isSelected = draft[slide.n]?.candidateId === c.id;

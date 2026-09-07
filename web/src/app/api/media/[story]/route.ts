@@ -16,9 +16,8 @@ import { prerenderSlides } from "@/lib/slides/prerender";
 import { buildImagePrompt } from "@/lib/media/prompt";
 
 export const dynamic = "force-dynamic";
-// A fila de IA pode levar ~3 minutos no Tier 1 (5 imagens/minuto).
+// Uma geração inicial usa até cinco imagens (uma por slide), limite do Tier 1.
 export const maxDuration = 300;
-const IMAGE_RATE_INTERVAL_MS = 40_000;
 const MAX_RATE_LIMIT_RETRIES = 1;
 
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
@@ -27,7 +26,7 @@ function retryDelay(response: Response, attempt: number): number {
   const retryAfter = Number(response.headers.get("retry-after"));
   if (Number.isFinite(retryAfter) && retryAfter > 0) return Math.ceil(retryAfter * 1000) + 1_000;
   // Keep below the 5 image/minute Tier 1 limit even when the API omits Retry-After.
-  return Math.max(60_000, IMAGE_RATE_INTERVAL_MS * (attempt + 1));
+  return Math.max(60_000, 60_000 * (attempt + 1));
 }
 
 export async function POST(
@@ -55,9 +54,14 @@ export async function POST(
   }
 
   const started = Date.now();
-  const ai = new URL(request.url).searchParams.get("mode") === "ai";
+  const url = new URL(request.url);
+  const ai = url.searchParams.get("mode") === "ai";
+  const requestedSlide = Number(url.searchParams.get("slide"));
+  if (url.searchParams.has("slide") && (!Number.isInteger(requestedSlide) || requestedSlide < 1)) {
+    return NextResponse.json({ error: "slide inválido" }, { status: 400 });
+  }
   try {
-    const result = ai ? await aiCandidates(story) : { files: await bankCandidates(story), problems: stockEnabled() ? [] : ["Unsplash/Pexels não configurados. Busca limitada a Wikimedia e Openverse."] };
+    const result = ai ? await aiCandidates(story, url.searchParams.has("slide") ? requestedSlide : undefined) : { files: await bankCandidates(story), problems: stockEnabled() ? [] : ["Unsplash/Pexels não configurados. Busca limitada a Wikimedia e Openverse."] };
     const { files: found, problems } = result;
     if (found.length === 0) return NextResponse.json({ error: ai ? "Nenhuma imagem foi gerada. Tente novamente." : "Nenhuma foto adequada foi encontrada. Tente enviar uma imagem ou gerar com IA.", problems }, { status: 502 });
     // Generation can take minutes. Merge into fresh data to preserve edits made meanwhile.
@@ -96,19 +100,16 @@ export async function POST(
   }
 }
 
-async function aiCandidates(story: import("@/lib/types").Story) {
+async function aiCandidates(story: import("@/lib/types").Story, onlySlide?: number) {
   const key = openaiKey();
   if (!key) throw new Error("OPENAI_API_KEY não configurada");
   const slides = story.draft?.slides ?? [];
   const { image: customImagePrompt } = await loadPromptOverrides();
   const generationId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  const files: import("@/lib/media/persist").PoolFile[] = [];
-  const problems: string[] = [];
-  for (let index = 0; index < slides.length; index++) {
-    const slide = slides[index];
-    // `n: 3` consumes three image slots. Serializing and spacing these requests
-    // prevents five simultaneous slide requests from immediately hitting 429.
-    if (index > 0) await sleep(IMAGE_RATE_INTERVAL_MS);
+  const targets = onlySlide === undefined ? slides : slides.filter((slide) => slide.slide_number === onlySlide);
+  if (!targets.length) throw new Error("slide não encontrado no carrossel");
+  const generated = await Promise.all(targets.map(async (slide) => {
+    const problems: string[] = [];
     const prompt = buildImagePrompt({
       title: story.title,
       vertical: story.vertical,
@@ -126,7 +127,7 @@ async function aiCandidates(story: import("@/lib/types").Story) {
     });
     let body: { data?: { b64_json?: string }[] } | null = null;
     for (let attempt = 0; attempt <= MAX_RATE_LIMIT_RETRIES; attempt++) {
-      const response = await fetch("https://api.openai.com/v1/images/generations", { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-2", prompt, size: "1024x1536", quality: "medium", n: 3, output_format: "jpeg" }), signal: AbortSignal.timeout(120000) });
+      const response = await fetch("https://api.openai.com/v1/images/generations", { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-2", prompt, size: "1024x1536", quality: "medium", n: 1, output_format: "jpeg" }), signal: AbortSignal.timeout(120000) });
       if (response.ok) { body = await response.json() as { data?: { b64_json?: string }[] }; break; }
       const detail = (await response.text()).slice(0, 180);
       if (response.status !== 429 || attempt === MAX_RATE_LIMIT_RETRIES) {
@@ -135,7 +136,7 @@ async function aiCandidates(story: import("@/lib/types").Story) {
       }
       await sleep(retryDelay(response, attempt));
     }
-    if (!body) continue;
+    if (!body) return { files: [], problems };
     const candidates = await Promise.all((body.data ?? []).map(async (item, variant) => {
       const b64 = item.b64_json;
       if (!b64) return null;
@@ -148,9 +149,7 @@ async function aiCandidates(story: import("@/lib/types").Story) {
       const id = `ai${createHash("sha1").update(`${story.story_id}:${generationId}:${slide.slide_number}:${variant}:${prompt}`).digest("hex").slice(0, 12)}`;
       return { bytes, candidate: { id, local_path: poolPath(story.story_id, id, "image/jpeg"), origin: "upload" as const, source: "ai", mime_type: "image/jpeg", credit: "ILUSTRAÇÃO GERADA POR IA", text_placement: smart.placement, text_align: smart.align, score, score_notes: notes, added_at: new Date().toISOString(), focus_x: smart.focusX, focus_y: smart.focusY, width: smart.width || 1024, height: smart.height || 1536, generated_for_slide: slide.slide_number } };
     }));
-    for (const candidate of candidates) {
-      if (candidate) files.push(candidate as import("@/lib/media/persist").PoolFile);
-    }
-  }
-  return { files, problems };
+    return { files: candidates.filter(Boolean) as import("@/lib/media/persist").PoolFile[], problems };
+  }));
+  return { files: generated.flatMap((result) => result.files), problems: generated.flatMap((result) => result.problems) };
 }
