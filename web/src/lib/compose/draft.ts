@@ -14,14 +14,18 @@ import { loadLearnedDirectives, loadPromptOverrides, loadVerticalConfigs, readPr
 import { openaiKey } from "../images";
 import type { EditorialDraft, Story } from "../types";
 
-const MODEL = (process.env.OPENAI_MODEL ?? "gpt-5-mini").trim();
-// Posts manuais (gerar de link / pedir ajustes) usam um modelo melhor por
-// padrão: é 1 chamada iniciada por humano, volume baixíssimo, e aqui o texto
-// é o produto inteiro. O run automático (15 posts/dia) continua no MODEL.
-// Escolhido por A/B real em 2026-09-02 (ver docs/CONTEXT.md).
-// Keep manual generation on the balanced Terra model by default. Deployments
-// can still select another model explicitly with OPENAI_COMPOSE_MODEL.
-const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5.6-terra";
+// DIVISÃO DE MODELOS (confirmada pelo Pedro em 2026-09-07: "mantenha mini +
+// sol"), que só faz sentido porque a geração é em DUAS ETAPAS:
+//   1. triagem automática — 15 posts/dia, só manchete + resumo, escrita pelo
+//      pipeline Python com gpt-5-mini (OPENAI_MODEL no .env da raiz);
+//   2. pacote completo — slides, direções de imagem e legenda, UMA chamada
+//      por post que o Pedro escolheu. Aqui o texto é o produto inteiro e o
+//      volume é baixíssimo, então usa o modelo bom: gpt-5.6-sol, vencedor do
+//      A/B real de 2026-09-02 contra terra e mini (ver docs/CONTEXT.md).
+// Toda porta da etapa 2 passa por aqui: "Gerar conteúdo" (post do run),
+// "Criar post desta pauta" (Iris/Google News), "Gerar de link" e "Pedir
+// ajustes".
+const COMPOSE_MODEL = (process.env.OPENAI_COMPOSE_MODEL ?? "").trim() || "gpt-5.6-sol";
 const REASONING = (process.env.OPENAI_REASONING_EFFORT ?? "").trim();
 
 export const TEXT_SYSTEM_PROMPT =

@@ -428,9 +428,15 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
       Unsplash/Pexels (cena conceitual da image_direction de cada slide,
       nasce com generated_for_slide). Sem UNSPLASH_ACCESS_KEY/PEXELS_API_KEY
       as fontes novas silenciam — Pedro precisa criar as duas chaves.
-    - PENDENTE (Pedro + Bi): COMPOSE_MODEL — o A/B do Pedro escolheu
-      gpt-5.6-sol para geração individual; o default atual no código do Bi
-      é gpt-5.6-terra (e runs recentes saíram com gpt-5-mini). Alinhar.
+    - RESOLVIDO no mesmo dia: COMPOSE_MODEL. O Pedro confirmou o desenho de
+      duas etapas ("mantenha mini + sol"): triagem automática em gpt-5-mini
+      (15 posts, só manchete+resumo) e pacote completo em gpt-5.6-sol (1
+      chamada por post escolhido). O default no código voltou a sol e a env
+      OPENAI_COMPOSE_MODEL=gpt-5.6-sol foi FIXADA na Vercel (production/
+      preview/development) — sem ela, os posts do Iris de 06/09 saíram com
+      gpt-5-mini por herdarem a env do ambiente em que rodaram, inclusive um
+      gerado depois do commit que já pedia terra. A constante MODEL do
+      draft.ts era dead code (o run automático é Python) e foi removida.
     - Citação de fontes com PARCIMÔNIA nos prompts (pedido do Pedro): teto
       1 atribuição/slide e 2/caption; baixas de guerra continuam sempre
       atribuídas.
