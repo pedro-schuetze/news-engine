@@ -1,8 +1,8 @@
 {
   "run_id": "news-20260906T205624925997Z",
   "mode": "news",
-  "started_at": "2026-09-07T00:28:23.621Z",
-  "finished_at": "2026-09-07T00:28:23.621Z",
+  "started_at": "2026-09-07T00:38:33.841Z",
+  "finished_at": "2026-09-07T00:38:33.841Z",
   "lookback_hours": 0,
   "stats": {
     "articles_collected": 5,
@@ -17,7 +17,7 @@
     "stories_selected": 1,
     "llm_calls": 1,
     "estimated_input_tokens": 2557,
-    "estimated_output_tokens": 3986,
+    "estimated_output_tokens": 5071,
     "token_usage_source": "api",
     "estimated_llm_cost_usd": null,
     "duration_seconds": 0,
@@ -106,266 +106,78 @@
             "verification_notes": "Google News listed 5 outlets for this story."
           },
           "draft": {
-            "draft_id": "news-d9e-mtqi5eit",
+            "draft_id": "news-d9e-mtqiihdd",
             "story_id": "news-d9e83eb52e35748af7f642d3",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "AfD tem vitória histórica em eleição regional, aponta boca de urna",
-            "instagram_headline": "Boca de urna indica vitória histórica da AfD na Alemanha",
-            "short_summary": "Bocas de urna divulgadas pela imprensa apontam que o partido AfD liderou uma eleição regional na Alemanha. Os números são estimativas preliminares; os resultados oficiais dependem da apuração.",
-            "why_it_matters": "Uma vitória do AfD pode alterar o equilíbrio de poder no parlamento regional e influenciar negociações de coalizão. O resultado também tende a afetar debates políticos em nível nacional.",
+            "instagram_headline": "Boca de urna aponta vitória do AfD na Alemanha",
+            "short_summary": "Bocas de urna indicam que o partido AfD venceu uma eleição regional na Alemanha. As projeções são provisórias e terão confirmação na apuração oficial, segundo veículos de imprensa.",
+            "why_it_matters": "O resultado pode mudar a composição do parlamento regional e definir quem formará o governo local. Partidos terão de negociar coligações e a apuração oficial pode ajustar percentuais.",
             "key_facts": [
-              "Bocas de urna apontam liderança do AfD na eleição regional",
-              "Estimativas são preliminares, não substituem resultados oficiais",
-              "AfD é um partido de direita ativo na política alemã",
-              "Apuração oficial e confirmação ficam a cargo das autoridades estaduais",
-              "Possível impacto em coalizões e debates nacionais"
+              "Boca de urna indica vitória do AfD em eleição regional na Alemanha.",
+              "Bocas de urna são projeções feitas logo após o fechamento das urnas e não são oficiais.",
+              "Os resultados divulgados inicialmente são provisórios; a apuração confirmará os números finais.",
+              "Uma vitória do AfD pode alterar a composição do parlamento regional e forçar negociações de coligações.",
+              "A notícia foi reportada por veículos como G1, BBC, DW, UOL e CNN Brasil."
             ],
-            "caption": "Bocas de urna apontam vitória do AfD em eleição regional na Alemanha.\n\nAs primeiras estimativas divulgadas pela imprensa, incluindo veículos que cobriram a noite de votação, mostram o AfD à frente. Essas pesquisas de saída são rápidas e servem para dar uma leitura inicial, mas não valem como resultado formal, segundo as emissoras que as divulgaram.\n\nA confirmação depende da contagem oficial feita pelas autoridades eleitorais estaduais. A apuração já começou e pode levar horas ou dias, dependendo do volume de votos e de procedimentos locais. Também podem ocorrer pedidos de revisão ou recontagem, conforme as regras do estado onde a eleição ocorreu.\n\nUma colocação forte do AfD em nível regional pode alterar o equilíbrio parlamentar local e forçar negociações entre partidos tradicionais. Além disso, o desempenho pode reacender debates nacionais sobre políticas públicas. Siga para acompanhar a apuração e as confirmações oficiais.",
+            "caption": "Boca de urna aponta vitória do AfD em eleição regional na Alemanha.\n\nAs projeções iniciais mostraram o AfD na frente, segundo reportagens dos principais veículos. Importante lembrar que boca de urna é uma estimativa feita imediatamente após o fechamento das urnas; não é o resultado oficial.\n\nO que ainda não se sabe com precisão são os percentuais finais e a distribuição exata de cadeiras; esses números dependem da apuração completa. Se confirmada, a posição de liderança do AfD no parlamento regional pode mudar as negociações sobre quem forma o governo local e quais partidos compõem a maioria.\n\nPróximos passos incluem a contagem oficial dos votos, divulgação de resultados certificados pelas autoridades regionais e possíveis declarações formais de partidos sobre coligações ou recursos. Fontes que cobrirem a apuração incluem G1, BBC, DW, UOL e CNN Brasil.\n\nSiga para acompanhar a confirmação dos resultados e os desdobramentos.",
             "hashtags": [
-              "#AfD",
               "#Alemanha",
-              "#EleiçãoRegional",
-              "#facts"
+              "#AfD",
+              "#EleiçõesRegionais",
+              "#fatos"
             ],
             "slides": [
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Boca de urna indica vitória histórica da AfD",
-                "body": "Bocas de urna divulgadas pela imprensa indicam que o partido AfD liderou a eleição regional, segundo levantamento inicial.",
-                "image_direction": "Foto de manifestantes apoiando o AfD em frente a um prédio público, com bandeiras do partido visíveis e bandeira da Alemanha ao fundo; enquadramento médio, clima de noite eleitoral com iluminação de rua.",
+                "headline": "Boca de urna aponta vitória do AfD na Alemanha",
+                "body": "Segundo reportagens, **boca de urna** indica vitória do AfD em eleição regional na Alemanha.",
+                "image_direction": "Foto noturna da sede regional do partido com apoiadores reunidos; bandeiras do AfD visíveis e luzes de telão ao fundo, foco médio que mostre a multidão sem rostos em close extremo.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "O contexto",
-                "body": "A disputa ocorreu na Alemanha e envolveu votação regional. As **bocas de urna** são estimativas preliminares, não resultado oficial.",
-                "image_direction": "Imagem de fila de eleitores entrando em seção de votação; foco em mãos com cédulas e urnas ao fundo, visual neutro e institucional.",
+                "headline": "CONTEXTO",
+                "body": "O **AfD** é um partido de direita na Alemanha. **Boca de urna** são projeções feitas logo após o fechamento das urnas e não substituem o resultado oficial.",
+                "image_direction": "Imagem de uma cabine de votação e uma urna eletrônica/cabine de votação em local de votação na Alemanha, sem pessoas identificáveis no quadro.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Fatos",
-                "body": "As primeiras pesquisas de saída mostram o AfD em **primeiro lugar**; emissoras divulgaram as estimativas ao fim da votação. A apuração oficial ainda não foi concluída.",
-                "image_direction": "Gráfico simples estilo tela de emissora mostrando barras de intenção de voto em cores distintas, sem números específicos, para ilustrar as bocas de urna.",
+                "headline": "PRINCIPAIS FATOS",
+                "body": "As projeções das **bocas de urna** mostram o AfD à frente; os números são provisórios e dependem da apuração oficial.",
+                "image_direction": "Ilustração simples de gráfico de barras indicando um partido líder com etiqueta 'boca de urna', paleta discreta e legenda explicativa curta.",
                 "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "Por que importa",
-                "body": "Uma vitória do AfD pode mudar o **equilíbrio parlamentar** regional e pressionar partidos a negociar novas alianças. Também tende a influenciar debates nacionais sobre políticas públicas.",
-                "image_direction": "Foto de um plenário regional vazio ou com poucos deputados, tomada ampla; atmosfera séria, iluminada, sugerindo política institucional.",
+                "headline": "POR QUE IMPORTA",
+                "body": "A vitória pode mudar a **composição do parlamento regional** e decidir quem vai formar o governo local. Partidos terão de negociar **coligações** para obter maioria.",
+                "image_direction": "Foto do plenário de um parlamento regional alemão (Landtag) com cadeiras e tribunas vazias, mostrando o espaço institucional onde as decisões são tomadas.",
                 "image_source_type": "PRESS_ASSET"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "Próximos passos",
-                "body": "As autoridades eleitorais estaduais devem confirmar os resultados na **contagem oficial**. Eventuais recursos ou recontagens dependem das regras locais e podem levar dias.",
-                "image_direction": "Imagem de funcionários eleitorais em mesa de apuração contando votos, close nas mãos e papeis; cena documental e verificável.",
+                "headline": "PRÓXIMOS PASSOS",
+                "body": "Os **resultados oficiais** saem com a apuração e podem diferir das projeções. Partidos podem contestar ou negociar apoios após a confirmação.",
+                "image_direction": "Foto de mesários ou equipes de apuração contando cédulas em uma mesa, com material de apuração ao fundo e foco no trabalho de contagem.",
                 "image_source_type": "PRESS_ASSET"
               }
             ],
-            "created_at": "2026-09-07T00:28:23.621Z"
+            "created_at": "2026-09-07T00:38:33.841Z"
           },
-          "slide_media": [
-            {
-              "asset_id": "news-d9e-s1",
-              "story_id": "news-d9e83eb52e35748af7f642d3",
-              "slide_number": 1,
-              "type": "image",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/ai5b97f3aa89.png",
-              "remote_url": null,
-              "mime_type": "image/png",
-              "width": 1024,
-              "height": 1536,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "Generated by OpenAI for this post"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null
-            },
-            {
-              "asset_id": "news-d9e-s2",
-              "story_id": "news-d9e83eb52e35748af7f642d3",
-              "slide_number": 2,
-              "type": "image",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/ai3d83023e26.png",
-              "remote_url": null,
-              "mime_type": "image/png",
-              "width": 1024,
-              "height": 1536,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "Generated by OpenAI for this post"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null
-            },
-            {
-              "asset_id": "news-d9e-s3",
-              "story_id": "news-d9e83eb52e35748af7f642d3",
-              "slide_number": 3,
-              "type": "image",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/aif0ee2f27fc.png",
-              "remote_url": null,
-              "mime_type": "image/png",
-              "width": 1024,
-              "height": 1536,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "Generated by OpenAI for this post"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null
-            },
-            {
-              "asset_id": "news-d9e-s4",
-              "story_id": "news-d9e83eb52e35748af7f642d3",
-              "slide_number": 4,
-              "type": "image",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/aiece5de92fe.png",
-              "remote_url": null,
-              "mime_type": "image/png",
-              "width": 1024,
-              "height": 1536,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "Generated by OpenAI for this post"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null
-            },
-            {
-              "asset_id": "news-d9e-s5",
-              "story_id": "news-d9e83eb52e35748af7f642d3",
-              "slide_number": 5,
-              "type": "image",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/aib609d3307f.png",
-              "remote_url": null,
-              "mime_type": "image/png",
-              "width": 1024,
-              "height": 1536,
-              "provenance": {
-                "source_type": "GENERATED",
-                "source_name": "ai",
-                "license": "gerada por IA para uso editorial próprio",
-                "attribution_required": true,
-                "attribution_text": "Generated by OpenAI for this post"
-              },
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "prompt": "",
-              "estimated_cost_usd": null
-            }
-          ],
+          "slide_media": [],
           "article_count": 5,
           "earliest_published_at": "2026-09-06T16:13:13Z",
           "latest_published_at": "2026-09-06T16:13:13Z",
           "selection_rank": 4,
-          "created_at": "2026-09-07T00:28:23.621Z",
-          "media_pool": [
-            {
-              "id": "ai5b97f3aa89",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/ai5b97f3aa89.png",
-              "origin": "upload",
-              "source": "ai",
-              "mime_type": "image/png",
-              "credit": "Generated by OpenAI for this post",
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "score": 85,
-              "score_notes": "AI-generated editorial image",
-              "added_at": "2026-09-07T00:28:45.495Z",
-              "width": 1024,
-              "height": 1536
-            },
-            {
-              "id": "ai3d83023e26",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/ai3d83023e26.png",
-              "origin": "upload",
-              "source": "ai",
-              "mime_type": "image/png",
-              "credit": "Generated by OpenAI for this post",
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "score": 85,
-              "score_notes": "AI-generated editorial image",
-              "added_at": "2026-09-07T00:28:45.887Z",
-              "width": 1024,
-              "height": 1536
-            },
-            {
-              "id": "aif0ee2f27fc",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/aif0ee2f27fc.png",
-              "origin": "upload",
-              "source": "ai",
-              "mime_type": "image/png",
-              "credit": "Generated by OpenAI for this post",
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "score": 85,
-              "score_notes": "AI-generated editorial image",
-              "added_at": "2026-09-07T00:28:44.298Z",
-              "width": 1024,
-              "height": 1536
-            },
-            {
-              "id": "aiece5de92fe",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/aiece5de92fe.png",
-              "origin": "upload",
-              "source": "ai",
-              "mime_type": "image/png",
-              "credit": "Generated by OpenAI for this post",
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "score": 85,
-              "score_notes": "AI-generated editorial image",
-              "added_at": "2026-09-07T00:28:45.542Z",
-              "width": 1024,
-              "height": 1536
-            },
-            {
-              "id": "aib609d3307f",
-              "local_path": "data/media/news-d9e83eb52e35748af7f642d3/pool/aib609d3307f.png",
-              "origin": "upload",
-              "source": "ai",
-              "mime_type": "image/png",
-              "credit": "Generated by OpenAI for this post",
-              "text_placement": "BOTTOM",
-              "text_align": "center",
-              "score": 85,
-              "score_notes": "AI-generated editorial image",
-              "added_at": "2026-09-07T00:28:42.903Z",
-              "width": 1024,
-              "height": 1536
-            }
-          ]
+          "created_at": "2026-09-07T00:38:33.841Z"
         }
       ]
     }
