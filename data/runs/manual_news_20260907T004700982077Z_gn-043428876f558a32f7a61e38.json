@@ -1,0 +1,190 @@
+{
+  "run_id": "news-20260907T004700982077Z",
+  "mode": "news",
+  "started_at": "2026-09-07T02:51:31.403Z",
+  "finished_at": "2026-09-07T02:51:31.403Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2981,
+    "estimated_output_tokens": 2038,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-043428876f558a32f7a61e38",
+          "run_id": "news-20260907T004700982077Z",
+          "cluster_id": "gn-043428876f558a32f7a61e38",
+          "vertical": "facts",
+          "title": "Palmeiras empata com Botafogo e perde a ponta do Brasileiro para o Flamengo",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260907T004700982077Z",
+            "model: gpt-5.6-terra"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-043428876f558a32f7a61e38-0",
+              "name": "cnnbrasil.com.br",
+              "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNV2lTNXFKaERCWGk3Yk4xeUR0Tl84dEd0S0JDcWNwN2s5cGtVSVZLNkJyeGdpM3Q3WmRrWmFRczB2ZHpRNzFSaDV0SEROcFlzemtwbFBiLW5EWmQxbzR0S1VBODd5NWJlTGhNYzdVMlN0RURGTEE0ZFVPckJCNGYzRmdZNTluUVhTLXBhcVU5emJnX0wxeXR3ZktDdzZOR1pGQWhmYUNIa0JyR3Rtb0hJSHJwcEMwYkRJeFQxSGxkUmExekNC?oc=5",
+              "source_domain": "cnnbrasil.com.br",
+              "published_at": "2026-09-06T23:28:35Z",
+              "source_type": "Google News",
+              "authority_score": 0,
+              "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-043428876f558a32f7a61e38-1",
+                "name": "uol.com.br",
+                "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNWWZsdWktUWxLVk1vT1hXbURxdjVfVzVuRXFhUFhsLXZiaUhDVjVOTk1PM29NU3VCTFpwVk81bU94OUhIbUFqam5sdXJBbS0wU2ZGMXA3TjJFOEh0OVBpWnY2aUxNODJaX1VHRU5DWWJHSHNTZ1dWTHZTNHQ2UFJiSTcwSEptWGdldlJqeXlRZ1FTVmRJdlRwR3c1NVlvdTA0elZ0SzdNLU9MaTljeHc?oc=5",
+                "source_domain": "uol.com.br",
+                "published_at": "2026-09-06T23:28:35Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-043428876f558a32f7a61e38-2",
+                "name": "O GLOBO",
+                "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQXzRXbWM5VHc1V0RUUFNYbzJIRnJIbWpzem0yVElMM0hZR241bk5UZzZsd2ZTSGtncGlyQ0FZZi1hQ2hJQ1BUS05HeUU0WjJhMzdLcEJlR0NjSEozaWhQR1YwLXF4WUN6SGJBUHAwRFFzX2N1SWJ2MUNIdmhiaXVBTlRWZXdtUElxaE9lUkx2eEhlbTJBblN1RkdmTmpUTEQ1SFA1TElPR01TWWVaQTdqUDR5bW9RSm1BVDFYTzZvaW9ydXREVWx2RDFRR1ZRRk8yczlmYlprYURieTNlRHZMXw?oc=5",
+                "source_domain": "O GLOBO",
+                "published_at": "2026-09-06T23:28:35Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-043428876f558a32f7a61e38-3",
+                "name": "espn.com.br",
+                "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxOV2ozbHBCUThXaVUtUXlTWWRHX3NaX184UTNzb3FTU3ZxQjZwTHFqOUVSNDc3cHh2SkstQkJ3cnI4TzlVLVBpVU40X3ZNdk9XQndIeWc1dTZLa3NxT1ZSSzFaZkVHYXcta045RlM0V0REUndYOXotUU8tQWdWYUxyOFpqUnA3WEVlRW1xcWZOY2hCNXd0YjJPWlYzU1IwNmw4OGpQdjkyaVFiZmd4cTktWEJOMUhnemN3MkxCVF9MVmMxQjhOUFBjQ2QxVzdiYWY4elotVFBLLUFJb01VMWJmNnBodFhoSGhPcUZxM2tyRDRTOHIycVBLN19IbzlqYVU?oc=5",
+                "source_domain": "espn.com.br",
+                "published_at": "2026-09-06T23:28:35Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              },
+              {
+                "article_id": "news-043428876f558a32f7a61e38-4",
+                "name": "R7",
+                "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOWDkzUTdNZWZHWlZLcTlVWDdRR2dVclhraV9iZm5jNEZDanVNNjdueS1aN0lvd2dqQlhfYk4tUWlkYlEtRWJVRDU5dlpQaTNseWZIR0tlLTFJa0xFdUdoOEZKdzV4bzU4QS1UVm5vc2VFM3hZTzlzemRtNTNoYUZiRTEzd3lkajRKTXZiemNEQm1GZ0RpLTY1dV9qZElvMmdhTkRkZHZTVHBLMGw0Nmp1V08wdnZxZ1BRV1V5VkVMSi15MXk5M21YNW11V2hIYmt1NU1takt1azZpdw?oc=5",
+                "source_domain": "R7",
+                "published_at": "2026-09-06T23:28:35Z",
+                "source_type": "Google News",
+                "authority_score": 0,
+                "excerpt": "Comprehensive up-to-date news coverage, aggregated from sources all over the world by Google News."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "5 de 5 veículos do Google News lidos na geração do post."
+          },
+          "draft": {
+            "draft_id": "news-043-mtqn9gwb",
+            "story_id": "news-043428876f558a32f7a61e38",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Palmeiras empata com Botafogo e perde a ponta do Brasileiro para o Flamengo",
+            "instagram_headline": "O Flamengo assume a ponta após empate do Palmeiras",
+            "short_summary": "O Palmeiras empatou com o Botafogo e deixou a liderança do Campeonato Brasileiro. O Flamengo passou a ocupar a primeira posição.",
+            "why_it_matters": "O resultado mudou quem está no topo da classificação. O empate tirou o Palmeiras da ponta e colocou o Flamengo na liderança.",
+            "key_facts": [
+              "Palmeiras e Botafogo empataram.",
+              "O Palmeiras perdeu a liderança do Brasileiro.",
+              "O Flamengo assumiu a primeira posição."
+            ],
+            "caption": "Um empate mudou o topo do Campeonato Brasileiro.\n\nO Palmeiras enfrentou o Botafogo e saiu de campo com um empate. O resultado foi suficiente para que o Flamengo assumisse a liderança do Brasileiro, enquanto o Palmeiras deixou a primeira posição.\n\nA mudança no topo é o ponto central deste resultado: a disputa pela liderança passou a ter o Flamengo na frente. O empate não permitiu ao Palmeiras permanecer na ponta e teve efeito direto na classificação neste momento.\n\nOs materiais disponíveis não informam o placar, a rodada, a pontuação de cada clube, a diferença entre eles nem os próximos jogos. Esses dados, portanto, não foram incluídos no post. Também não há detalhes sobre gols, escalações ou lances da partida.\n\nO que está confirmado é a sequência: Palmeiras e Botafogo empataram, e o Flamengo passou a liderar o campeonato. Siga para acompanhar novos resultados do Brasileiro.",
+            "hashtags": [
+              "#CampeonatoBrasileiro",
+              "#Palmeiras",
+              "#Botafogo",
+              "#Flamengo",
+              "#Fatos"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "O Flamengo assume a ponta após empate do Palmeiras",
+                "body": "O Palmeiras empatou com o Botafogo e deixou a **liderança** para o Flamengo.",
+                "image_direction": "Arte editorial estática com os nomes Palmeiras, Botafogo e Flamengo, uma tabela simbólica com o Flamengo no topo e indicação visual de mudança de posição. Sem escudos oficiais.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O RESULTADO",
+                "body": "A partida entre Palmeiras e Botafogo terminou em **empate** no Campeonato Brasileiro.",
+                "image_direction": "Ilustração editorial de um placar genérico indicando empate entre Palmeiras e Botafogo, com fundo de estádio abstrato e sem reproduzir um placar numérico.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "A MUDANÇA",
+                "body": "Com o resultado, o Palmeiras deixou a **primeira posição** da classificação.",
+                "image_direction": "Gráfico editorial simples de classificação, com uma seta indicando a saída do Palmeiras do topo. Não exibir números ou posições não informadas.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "POR QUE IMPORTA",
+                "body": "O empate alterou quem ocupa a liderança do Brasileiro: o **Flamengo** passou à frente.",
+                "image_direction": "Arte comparativa com o nome Flamengo em destaque no topo de uma tabela simbólica e os demais nomes abaixo, sem indicar pontos.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "NO TOPO",
+                "body": "O **Flamengo lidera** o Brasileiro após o empate do Palmeiras com o Botafogo.",
+                "image_direction": "Imagem gráfica de encerramento com a frase \"Flamengo lidera\" e uma tabela estilizada ao fundo, em tom informativo e sóbrio.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-07T02:51:31.403Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T23:28:35Z",
+          "latest_published_at": "2026-09-06T23:28:35Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-07T02:51:31.403Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
