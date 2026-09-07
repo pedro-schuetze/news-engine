@@ -1,0 +1,185 @@
+{
+  "run_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9",
+  "mode": "news",
+  "started_at": "2026-09-07T18:42:13.055Z",
+  "finished_at": "2026-09-07T18:42:13.055Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 5741,
+    "estimated_output_tokens": 1779,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 31,
+    "errors": [
+      "CNN Brasil: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9",
+          "run_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9",
+          "cluster_id": "gn-4a9807acc79eb6218865fa5e",
+          "vertical": "politics",
+          "title": "Crise no STF: Fachin aguarda explicações de Moraes e Mendonça",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260907T181843937756Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 4,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/politica/blog/andreia-sadi/post/2026/09/07/caso-master-briga-pelo-controle-da-investigacao-tem-acusacoes-de-cortina-de-fumaca-e-operacao-abafa-no-stf.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-07T07:03:10Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Entre fontes aliadas de André Mendonça, ouvidas pelo blog, o diagnóstico é de que o relatório da Polícia Federal conhecido na segunda-feira (31) seria apenas uma pequena amostra do que ainda pode aparecer. A leitura nesse grupo é de que houve uma tentativa deliberada de criar uma cortina de fumaça em torno do caso Master e de dificultar o avanço das investigações. Do outro lado dessa disputa, aliados de Alexandre de Moraes, Flávio Dino e integrantes da cúpula da PF enxergam a ofensiva de Mendonça como parte de uma disputa que agora alcança diretamente a própria Polícia Federal, Moraes e o PGR, Paulo Gonet. Na PF, há a avaliação de que Mendonça quer investigar o diretor-geral Andrei Rodrigues — o que elevaria ainda mais a temperatura de uma crise que já deixou de ser apenas uma divergência entre ministros. E a avaliação de que novos movimentos de investigações sobre casos nas mãos desse grupo também devem vir à tona. No plenário, sobre o caso específico do relatório do ministro Mendonça, a decisão depende de Edson Fachin. Interlocutores do ministro Mendonça classificam como “protocolar” o envio do caso à presidência do Supremo: a liberação, dizem, ocorreu apenas depois do fim do prazo dado para que fossem prestadas as informações solicitadas por Edson Fachin. Caberá agora ao presidente do STF decidir qual procedimento adotar. E é justamente aí que começa a próxima batalha: o que, exatamente, poderá ser levado ao plenário e em quais condições. Montagem com (esq.): Alexandre de Moraes (ministro do STF), Andrei Rodrigues (diretor-geral da PF), Paulo Gonet (PGR) e André Mendonça (ministro do STF) — Foto: Fotos de: Fabio Rodrigues-Pozzebom e José Cruz da Agência Brasil, e Carlos Moura do STF Ministros ouvidos pelo blog chamam atenção para um ponto jurídico central: em condições normais, uma investigação é aberta quando há pedido da Procuradoria-Geral da República ou quando a PGR endossa uma iniciativa da Polícia Federal, já que o Ministério Público é o titular da ação penal. A discussão sobre o que efetivamente pode ser submetido ao plenário, portanto, está longe de ser apenas política: passa também pelos limites processuais da atuação do Supremo, da PGR e da PF. Hoje, o que tem é um pedido para anular o material cujo sigilo Mendonça derrubou. Enquanto isso, o Planalto observa com preocupação outra consequência da guerra: o impacto eleitoral. Há auxiliares de Lula convencidos de que a exposição permanente de Alexandre de Moraes acaba ajudando Flávio Bolsonaro, porque a oposição associa Moraes diretamente ao presidente. Nesse grupo, existe inclusive a avaliação de que esse efeito eleitoral pode ser mais danoso para Lula do que o desgaste provocado pelo caso Lulinha. É por isso que diferentes lados, mesmo adversários, concordam em um ponto: o que apareceu até agora não encerra a crise. Abre a próxima fase dela. De um lado, Mendonça e seus aliados sustentam que é preciso impedir interferências e garantir o avanço das apurações do Master. De outro, Moraes, Dino e integrantes da PF enxergam movimentos do ministro como uma ofensiva que pode alcançar a própria direção da corporação, Moraes e a PGR. No meio, Fachin terá de decidir como o Supremo institucionalmente vai processar essa guerra, Zanin tenta manter canais com os diferentes grupos e o governo Lula acompanha uma crise que já começa a fazer as contas de 2026. A expectativa nos bastidores é de novos relatórios, novos pedidos, novas decisões e novas revelações. A disputa sobre o Master, que começou como uma investigação financeira, virou uma batalha pelo controle da investigação, pelo funcionamento das instituições e, agora, também pela narrativa eleitoral."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9-1",
+                "name": "www1.folha.uol.com.br",
+                "url": "https://www1.folha.uol.com.br/poder/2026/09/sem-citar-fachin-dino-questiona-promessa-de-fim-de-inquerito-das-fake-news.shtml",
+                "source_domain": "www1.folha.uol.com.br",
+                "published_at": "2026-09-06 14:27:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Dois dias após o presidente do STF (Supremo Tribunal Federal), Edson Fachin, defender a necessidade de encerramento do inquérito das fake news, o ministro Flávio Dino questionou neste domingo (6) a possibilidade de um julgador prometer o fim desse tipo de investigação. Dino fez a manifestação em publicação nas redes sociais, sem citar nominalmente o inquérito aberto em 2019 ou o presidente da corte. No texto, ele cita as críticas à longevidade de inquéritos no Supremo. \"É possível a um julgador, qualquer que seja ele, 'prometer' o final de um inquérito, como se fosse um candidato ou para receber aplausos?\", questionou o ministro, na publicação. \"Eu pessoalmente sou a favor da conclusão dos inquéritos, até porque eles foram feitos para terminar mesmo, mediante a propositura das ações penais ou dos arquivamentos cabíveis\", disse Dino. \"De todo modo, temos aí um interessante debate doutrinário: antes do prazo prescricional, um inquérito deve ser arquivado por motivo de tramitação longa? E quem decide o que é 'tramitação longa'? Opiniões pessoais? Ou critérios legais e regimentais?\", acrescentou. Segundo ele, no debate sobre o Poder Judiciário, \"problemas reais e graves estão sendo misturados com interesses eleitorais e econômicos, objetivos estrangeiros e até ódios pessoais\". O ministro questionou ainda na publicação as críticas às decisões individuais no STF —que chamou de essenciais no nosso sistema jurídico e disse que sem elas a morosidade vai aumentar— e ao julgamento de ações criminais pela corte —\"se tira de lá, tem que colocar em algum lugar\". Na sexta (4), Fachin disse que o fim do inquérito das fake news e a aprovação da sua proposta de código de ética são solução para a crise do Supremo. O posicionamento público foi feito diante da disputa inédita vivida pela corte com pedidos de investigações criminais entre os ministros Alexandre de Moraes e André Mendonça. \"Não haverá precipitação, mas tampouco omissão. A reposta institucional será firme, proporcional e rigorosa. Os acontecimentos recentes demonstram o acerto e a urgência de três metas de nossa gestão: a adoção de um código de ética, o fim do inquérito das fake news e a modernização do sistema de Justiça\", disse Fachin em seu discurso. O inquérito das fake news foi aberto na gestão de Dias Toffoli, há sete anos, quando ele designou Moraes, sem sorteio, para a relatoria da investigação sobre ataques e ameaças ao STF. A investigação acumula controvérsias desde então —por ordens consideradas abusivas, pelo seu formato, abrangência e sua prolongação no tempo. Foi dentro do inquérito das fake news que Moraes fez o pedido de investigação contra Mendonça e demandou um documento interno que a própria Polícia Federal classifica como \"sem valor probatório\" para pedir que a apuração contra o colega de tribunal por abuso de autoridade, improbidade administrativa e crime de responsabilidade. Fachin retirou o pedido de Moraes do inquérito. Ao fazer isso, ele afirmou que a medida foi tomada diante da necessidade de verificação da regularidade e da avaliação das acusações do ato de Moraes. Mendonça é relator dos casos que tratam de suspeitas relacionadas ao Banco Master e a fraudes em benefícios do INSS. Também foi a partir do inquérito das fake news que Moraes determinou busca e apreensão contra o jornalista maranhense Luís Pablo, que já publicou textos contrários a Dino, e ao informante das suas reportagens, Raimundo Cutrim, ex-secretário de Segurança Pública do Maranhão."
+              },
+              {
+                "article_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9-2",
+                "name": "estadao.com.br",
+                "url": "https://www.estadao.com.br/politica/coluna-do-estadao/atos-do-7-de-setembro-viram-termometro-para-decisao-de-fachin-sobre-moraes-e-mendonca/",
+                "source_domain": "estadao.com.br",
+                "published_at": "2026-09-07T07:03:10Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Revelações do caso Master: o silêncio não é uma respostaInvestigar as mensagens do celular de Vorcaro é fundamental para a credibilidade do STF; não se trata de uma futrica ou disputa de poder. Crédito: EstadãoAs manifestações do 7 de Setembro serão um termômetro político para o presidente do Supremo Tribunal Federal (STF), ministro Edson Fachin, definir como conduzir, a partir de agora, o confronto direto entre Alexandre de Moraes e André Mendonça. PUBLICIDADEFachin precisa resolver se dará encaminhamento a um pedido para afastar Moraes da Corte e para investigar o magistrado por suas relações com o ex-banqueiro Daniel Vorcaro. Além disso, o que fará com a acusação de abuso de autoridade que Moraes fez contra Mendonça. Por ora, o presidente do STF só dá sinais de que vai finalmente exigir o encerramento do inquérito das fake news. E nos bastidores do Supremo corre que ele pode tirar de Mendonça a relatoria dos casos Master e INSS. A Corte implodiu na última semana após Mendonça derrubar o sigilo das mensagens entre Moraes e o ex-banqueiro Daniel Vorcaro. Os diálogos expõem suspeitas de que o ministro cometeu crimes como corrupção, advocacia administrativa e exploração de prestígio. Mas, em vez de prestar esclarecimentos sobre o teor das conversas, Moraes usou o inquérito das fake news para acusar o colega de crime de responsabilidade e abuso, baseando-se em um documento apócrifo, sem cabeçalho oficial da Polícia Federal e classificado como relatório interno “sem valor probatório”. PublicidadeA investida de Moraes, enrolado até as cordas nas relações com o ex-banqueiro, ameaça destruir a estrutura do STF prevista pela Constituição brasileira. No entanto, ele agiu dessa forma por saber que conta com uma maioria de aliados no plenário, respaldada por seus fiéis escudeiros indicados pelo presidente Luiz Inácio Lula da Silva — Flávio Dino e Cristiano Zanin —, além de Gilmar Mendes.Mendonça, por sua vez, atua em um grupo minoritário e conta apenas com o apoio de Luiz Fux. Sem força interna suficiente, a aposta de interlocutores de Mendonça é que o engajamento popular do 7 de Setembro sirva de alavanca para pressionar os ministros cujos votos hoje são incógnitas: Cármen Lúcia, Nunes Marques e Dias Toffoli.O presidente do STF, ministro Edson Fachin, vai esperar passar o 7 de setembro para decidir o que fazer sobre as denúncias envolvendo Alexandre de Moraes Foto: Wilton Junior/EstadãoQuando decidiu levantar o sigilo, Mendonça confidenciou a pessoas próximas que adotou a medida para evitar que a sujeira fosse jogada para debaixo do tapete. Enquanto tomava a decisão, segundo apurou a Coluna, Mendonça expressou a interlocutores uma convicção: “Se isso não for de interesse público, o que mais será?”.Inicialmente, os atos de 7 de Setembro, que se consolidaram como referência do bolsonarismo nos últimos anos, estavam sendo organizados como o grande evento de campanha de Flávio Bolsonaro (PL) à Presidência. No momento há dúvidas se ganhará outra dimensão e envolverá eleitores de outras vertentes políticas. Logo após a queda do sigilo das mensagens, Flávio usou as redes sociais para convocar manifestações na Avenida Paulista sob o lema “Fora Lula, Fora Moraes”. Conforme a crise no STF escalou, o movimento incorporou as bandeiras de apoio a André Mendonça e pelo “fim da ditadura do Judiciário”.Vale ler tambémLula tenta mostrar união entre Poderes no 7 de Setembro, mas diretor da PF e AGU nem se cumprimentamComo a Avibrás vai entrar no contrato milionário do Exército com israelenses após venda para JoesleyO mal na origem da crise do STF nasceu do fascínio por heróis togadosPublicidade"
+              },
+              {
+                "article_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9-3",
+                "name": "terra.com.br",
+                "url": "https://www.terra.com.br/noticias/brasil/politica/mendonca-libera-para-julgamento-em-plenario-caso-sobre-mensagens-entre-moraes-e-vorcaro,d9c47723ddab5fd56a5074db9e55e208u5ior1i2.html",
+                "source_domain": "terra.com.br",
+                "published_at": "2026-09-07T07:03:10Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Presidente da Corte, Edson Fachin, ainda não definiu a data do julgamento 7 set 2026 - 07h19 (atualizado às 07h31) Por: Hugo Henud e Daniel Weterman Resumo O ministro André Mendonça liberou para julgamento no Plenário do STF o caso sobre mensagens entre o ministro Alexandre de Moraes e o ex-banqueiro Daniel Vorcaro. A divulgação do relatório gerou atritos na Corte: Moraes reagiu acusando Mendonça de abuso de autoridade por meio do inquérito das fake news, ato criticado pela associação da Abin por falhas metodológicas. O presidente do STF, Edson Fachin, centralizou as apurações em um único procedimento e aguarda manifestações até o dia 21. O ministro André Mendonça, do Supremo Tribunal Federal (STF) Foto: Wilton Junior/Estadão / Estadão O ministro André Mendonça liberou para julgamento no Plenário do Supremo Tribunal Federal (STF) o caso envolvendo o relatório da Polícia Federal que identificou o ministro Alexandre de Moraes como interlocutor do ex-banqueiro Daniel Vorcaro em mensagens encontradas no celular do empresário. A movimentação foi registrada no domingo, 6, mas o presidente da Corte, Edson Fachin, ainda não definiu a data do julgamento.O relatório foi produzido pela PF por determinação de Mendonça e teve o sigilo retirado na última terça-feira após o Estadão revelar mensagens entre Moraes e Vorcaro. O documento reúne mensagens extraídas do celular de Vorcaro e identificou Moraes entre os interlocutores do ex-banqueiro.A divulgação do material abriu uma crise no Supremo.Moraes passou a questionar a forma como a apuração foi conduzida e, em reação, usou o inquérito das fake news para requisitar relatórios de inteligência da PF sobre ministros da Corte, entre eles documentos relativos à atuação de Mendonça.Fachin posteriormente concentrou as duas frentes em procedimento separado sob sua condução e pediu esclarecimentos às autoridades envolvidas.O embate começou na terça-feira, quando Mendonça tornou público o relatório da PF que identificou Moraes como interlocutor de Vorcaro em mensagens encontradas no celular do ex-banqueiro.Parte do conteúdo das conversas já havia sido revelado pelo Estadão. No mesmo dia, Moraes usou o inquérito das fake news para determinar que a PF enviasse ao Supremo relatórios de inteligência com referências a ministros da Corte, entre eles documentos sobre a atuação de Mendonça.No dia 3, Moraes recorreu a esse material para acusar Mendonça de abuso de autoridade e crime de responsabilidade e encaminhou o caso ao presidente do STF, Edson Fachin. Em seguida, Fachin abriu um procedimento separado, sob sua condução, para analisar o relatório divulgado por Mendonça e pediu esclarecimentos às autoridades envolvidas.No dia 4, o presidente da Corte decidiu reunir nesse mesmo processo o pedido de investigação feito por Moraes contra Mendonça e retirou do inquérito das fake news a decisão e os anexos usados pelo ministro. Com isso, os materiais produzidos passaram a tramitar juntos, sob a condução de Fachin.O prazo para que todos se pronunciem termina no dia 21.AbinO relatório usado pelo ministro Moraes, do STF, para pedir uma investigação contra o ministro André Mendonça não seguiu parâmetros metodológicos da atividade de inteligência, segundo nota da Intelis, a União dos Profissionais de Inteligência de Estado da Agência Brasileira de Inteligência (Abin).Com base em um documento de inteligência da PF, Moraes usou o relatório das fake news e acusou Mendonça de improbidade administrativa, abuso de autoridade e crime de responsabilidade.O pedido foi feito após a decisão que expôs os diálogos do banqueiro Vorcaro com Moraes. O relatório interno da PF usado por Moraes não tem \"valor probatório\", como expôs o próprio documento.Segundo a Intelis, \"o conteúdo divulgado na mídia não apresenta características compatíveis com os parâmetros metodológicos estabelecidos pela Doutrina da Atividade de Inteligência, documento público que orienta a produção de conhecimentos no âmbito do Sistema Brasileiro de Inteligência\".A associação pontua que a doutrina estabelece uma Metodologia de Produção do Conhecimento (MPC), com procedimentos rigorosos de coleta, avaliação, análise, validação e difusão das informações, destinados a assegurar objetividade, consistência e impessoalidade ao produto final. \"Não se trata, portanto, de mera reunião de informações, conjecturas ou opiniões\", diz a nota.As informações são do jornal O Estado de S. Paulo."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. CNN Brasil: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-4a9-mtrl82in",
+            "story_id": "news-4a9807acc79eb6218865fa5e-mtrl7ec9",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Crise no STF: Fachin aguarda explicações de Moraes e Mendonça",
+            "instagram_headline": "Fachin aguarda explicações sobre embate entre Moraes e Mendonça",
+            "short_summary": "O presidente do STF, Edson Fachin, reuniu em um único procedimento os materiais relacionados ao confronto entre Alexandre de Moraes e André Mendonça. As autoridades envolvidas têm até 21 de setembro para se manifestar.",
+            "why_it_matters": "A disputa envolve a condução de investigações, os limites de atuação do STF, da Polícia Federal e da Procuradoria-Geral da República e o uso do inquérito das fake news.",
+            "key_facts": [
+              "Mendonça retirou o sigilo de um relatório sobre mensagens entre Moraes e Daniel Vorcaro.",
+              "Moraes acusou Mendonça de abuso de autoridade e crime de responsabilidade.",
+              "Fachin retirou o pedido de Moraes do inquérito das fake news.",
+              "Os materiais passaram a tramitar juntos sob a condução do presidente do STF.",
+              "Mendonça liberou o caso para o plenário, mas o julgamento ainda não tem data.",
+              "O prazo para as manifestações termina em 21 de setembro."
+            ],
+            "caption": "O presidente do STF, Edson Fachin, assumiu a condução dos procedimentos relacionados ao confronto entre Alexandre de Moraes e André Mendonça. Segundo o Terra, Fachin aguarda até 21 de setembro as manifestações das autoridades envolvidas.\n\nA crise começou após Mendonça retirar o sigilo de um relatório da Polícia Federal com mensagens encontradas no celular do ex-banqueiro Daniel Vorcaro. O documento identificou Moraes entre os interlocutores. Em reação, Moraes questionou a condução da apuração e acusou Mendonça de abuso de autoridade e crime de responsabilidade.\n\nFachin retirou o pedido de Moraes do inquérito das fake news e reuniu as duas frentes em um procedimento separado. Mendonça também liberou para o plenário o caso relacionado às mensagens, mas a data do julgamento e o rito a ser adotado ainda dependem da presidência da Corte.\n\nO g1 aponta que a discussão também envolve limites processuais: normalmente, a abertura de uma investigação depende de pedido da Procuradoria-Geral da República ou do aval do órgão a uma iniciativa da Polícia Federal.\n\nFontes: g1, Folha de S.Paulo, Estadão e Terra.",
+            "hashtags": [
+              "#STF",
+              "#EdsonFachin",
+              "#AlexandreDeMoraes",
+              "#AndréMendonça",
+              "#Política"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Fachin aguarda explicações sobre embate entre Moraes e Mendonça",
+                "body": "O presidente do STF concentrou as apurações em um procedimento e pediu manifestações, com prazo até 21 de setembro.",
+                "image_direction": "Foto documental de Edson Fachin no plenário do STF, em enquadramento fechado, com iluminação sóbria e fundo institucional desfocado.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Mensagens deram início à crise",
+                "body": "Mendonça retirou o sigilo de um relatório da Polícia Federal sobre mensagens encontradas no celular do ex-banqueiro Daniel Vorcaro. O documento identificou Moraes entre os interlocutores.",
+                "image_direction": "Fotografia externa do edifício do STF em Brasília, com composição simétrica, céu neutro e luz natural diurna.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Moraes reagiu contra Mendonça",
+                "body": "Moraes questionou a condução da apuração e acusou Mendonça de abuso de autoridade e crime de responsabilidade. O pedido usou um relatório interno da PF classificado no próprio documento como sem valor probatório.",
+                "image_direction": "Díptico editorial feito com fotografias documentais identificadas de Alexandre de Moraes e André Mendonça, ambos em sessões públicas, com enquadramentos equivalentes e fundo discreto.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Fachin centraliza os procedimentos",
+                "body": "O presidente do STF retirou o pedido de Moraes do inquérito das fake news e reuniu os materiais sob sua condução. A decisão sobre o rito a ser adotado agora cabe a Fachin.",
+                "image_direction": "Foto documental de Fachin sentado à mesa da presidência do STF, em plano médio, com elementos do plenário visíveis e luz institucional uniforme.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Plenário ainda não tem data",
+                "body": "Mendonça liberou o caso das mensagens para julgamento, mas Fachin ainda não marcou a sessão. Antes de decidir os próximos passos, o presidente da Corte aguarda as manifestações solicitadas até o dia 21.",
+                "image_direction": "Plano aberto e documental do plenário do STF durante uma sessão, destacando a disposição das cadeiras e a presidência da Corte, com luz ampla e composição horizontal.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-07T18:42:13.055Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-07T07:03:10Z",
+          "latest_published_at": "2026-09-07T07:03:10Z",
+          "selection_rank": 3,
+          "created_at": "2026-09-07T18:42:13.055Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
