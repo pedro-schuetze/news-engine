@@ -44,6 +44,7 @@ test("each image request contains shared carousel context and targets one slide"
   assert.match(prompt, /Slide 1: mapa/);
   assert.match(prompt, /SOMENTE o fundo do slide 2/);
   assert.match(prompt, /Não gere texto/);
-  assert.match(prompt, /NUNCA retrate ou tente se parecer com pessoas citadas/);
+  assert.match(prompt, /REGRA ABSOLUTA: NÃO MOSTRE ROSTOS HUMANOS/);
+  assert.match(prompt, /Nunca retrate ou tente se parecer com pessoas citadas/);
   assert.match(prompt, /NÃO reproduza uma coletiva/);
 });

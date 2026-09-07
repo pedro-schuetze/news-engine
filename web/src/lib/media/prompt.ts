@@ -12,7 +12,8 @@ A imagem será usada como fundo e receberá texto por cima depois. Reserve uma r
 Não gere texto, letras, logotipos, marcas d'água, molduras, vinheta, faixa escura ou degradê.
 Não inclua o logotipo GPB: a marca e a tipografia serão aplicadas pelo sistema depois.
 NÃO reproduza uma coletiva, discurso, debate, reunião, votação ou acontecimento real como se fosse uma fotografia documental. Para fatos reais, prefira lugares, objetos, arquitetura, paisagens, detalhes institucionais ou uma ilustração editorial claramente conceitual.
-NUNCA retrate ou tente se parecer com pessoas citadas na reportagem, autoridades, políticos, artistas, executivos ou qualquer pessoa real identificável. Pessoas genéricas só podem aparecer como figurantes anônimos, sem rosto identificável, sem pose de protagonista e sem sugerir que participaram do fato.
+REGRA ABSOLUTA: NÃO MOSTRE ROSTOS HUMANOS. Não crie retratos, close-ups, pessoas de frente, personagens centrais nem uma única pessoa diante de quadro, púlpito, microfone, plateia ou local de trabalho. Nunca retrate ou tente se parecer com pessoas citadas na reportagem, autoridades, políticos, artistas, executivos ou qualquer pessoa real identificável.
+Quando a presença humana for realmente necessária, use somente pessoas anônimas de costas, em silhueta, muito distantes ou parcialmente fora de quadro; elas não podem ser o assunto da imagem, ter rosto visível, posar como protagonista nem parecer participantes reais do fato. Prefira objetos, documentos, arquitetura, paisagens, detalhes institucionais ou ilustração editorial conceitual.
 Se o acontecimento for uma alegação não confirmada, use uma representação claramente simbólica e não trate a alegação como fato consumado.`;
 
 export function buildImagePrompt(input: {
