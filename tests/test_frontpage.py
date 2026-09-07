@@ -2,6 +2,8 @@ import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from unittest.mock import patch, MagicMock
+from urllib.error import HTTPError
 from src.frontpage import build_snapshot, collect, read_json
 
 
@@ -62,6 +64,36 @@ class FrontpageTests(unittest.TestCase):
         c, _ = build_snapshot(feed(range(34)), self.now + timedelta(hours=4), index, b)
         self.assertTrue(c['stories'][0]['returned'])
         self.assertIsNone(c['stories'][0]['rank_change'])
+
+    def test_three_hour_slot_not_two_hours(self):
+        with tempfile.TemporaryDirectory() as d:
+            start = self.now.replace(hour=12)
+            a = collect(d, feed(range(34)), start)
+            b = collect(d, "invalid", start + timedelta(hours=2))
+            self.assertEqual(a['id'], b['id'])
+            c = collect(d, feed(range(1, 35)), start + timedelta(hours=3))
+            self.assertNotEqual(a['id'], c['id'])
+
+    def test_temporary_503_retries_then_saves_success(self):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = feed(range(34)).encode()
+        error = HTTPError('https://news.google.com/rss', 503, 'Unavailable', {}, None)
+        with tempfile.TemporaryDirectory() as d, patch('src.frontpage.urllib.request.urlopen', side_effect=[error, response]) as fetch, patch('src.frontpage.time.sleep'):
+            result = collect(d, now=self.now)
+            self.assertEqual(fetch.call_count, 2)
+            self.assertEqual(result['stats']['stories'], 34)
+            self.assertTrue(read_json(Path(d) / 'news/status.json')['ok'])
+
+    def test_exhausted_retries_preserve_previous_snapshot(self):
+        with tempfile.TemporaryDirectory() as d:
+            original = collect(d, feed(range(34)), self.now)
+            error = HTTPError('https://news.google.com/rss', 503, 'Unavailable', {}, None)
+            with patch('src.frontpage.urllib.request.urlopen', side_effect=error) as fetch, patch('src.frontpage.time.sleep'):
+                with self.assertRaises(HTTPError):
+                    collect(d, now=self.now + timedelta(hours=3))
+                self.assertEqual(fetch.call_count, 3)
+            self.assertEqual(read_json(Path(d) / 'news/latest.json')['id'], original['id'])
+            self.assertFalse(read_json(Path(d) / 'news/status.json')['ok'])
 
 
 if __name__ == '__main__':

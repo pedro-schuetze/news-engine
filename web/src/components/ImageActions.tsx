@@ -48,7 +48,7 @@ export default function ImageActions({
 }) {
   const router = useRouter();
   const fileInput = useRef<HTMLInputElement>(null);
-  const [busy, setBusy] = useState<"api" | "upload" | null>(null);
+  const [busy, setBusy] = useState<"api" | "bank" | "upload" | null>(null);
   const [copied, setCopied] = useState(false);
   const [result, setResult] = useState<ApiResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -57,12 +57,12 @@ export default function ImageActions({
 
   const runQs = `run=${encodeURIComponent(runFile)}`;
 
-  async function generateViaApi() {
-    setBusy("api");
+  async function generateViaApi(mode: "ai" | "bank" = "ai") {
+    setBusy(mode === "ai" ? "api" : "bank");
     setError(null);
     setResult(null);
     try {
-      const res = await fetch(`/api/media/${storyId}?${runQs}&mode=ai`, { method: "POST" });
+      const res = await fetch(`/api/media/${storyId}?${runQs}&mode=${mode}`, { method: "POST" });
       const { ok, body } = await readResponse(res);
       if (!ok) {
         setError(body.error ?? `falha (HTTP ${res.status})`);
@@ -130,7 +130,7 @@ export default function ImageActions({
     <div className="space-y-2">
       <div className="flex flex-wrap items-center gap-2">
         <button
-          onClick={generateViaApi}
+          onClick={() => void generateViaApi()}
           disabled={busy !== null}
           className={`${pill} ${
             hasImages
@@ -141,10 +141,11 @@ export default function ImageActions({
           {busy === "api"
             ? "gerando opções…"
             : hasImages
-          ? "Generate 3 more options"
-              : "Generate AI images"}
+          ? "Gerar mais 3 opções por slide"
+              : "Gerar imagens com IA"}
         </button>
 
+        <button onClick={() => void generateViaApi("bank")} disabled={busy !== null} className={`${pill} border border-line bg-panel text-ink-2 hover:border-brand`} title="Busca fotos nos bancos; não gera imagens com IA">{busy === "bank" ? "Buscando fotos…" : "Buscar fotos"}</button>
         <button
           onClick={copyBriefing}
           disabled={busy !== null}
@@ -164,7 +165,7 @@ export default function ImageActions({
           className={`${pill} border border-line bg-panel text-ink-2 hover:border-ink-3 hover:text-ink`}
           title={`Selecione as ${slideCount} imagens na ordem dos slides`}
         >
-          {busy === "upload" ? "convertendo e enviando…" : "↑ Subir imagens do ChatGPT"}
+          {busy === "upload" ? "convertendo e enviando…" : "↑ Enviar imagens"}
         </button>
 
         <input
@@ -187,13 +188,14 @@ export default function ImageActions({
           <span className="text-brand-ink">
             {result.slides} de {slideCount} slides com imagem
             {result.new_candidates !== undefined && ` · ${result.new_candidates} candidatas novas`}
-            {result.pool !== undefined && ` · pool: ${result.pool}`}
+            {result.pool !== undefined && ` · opções: ${result.pool}`}
             {result.seconds !== undefined && ` · ${result.seconds}s`}
             {result.missing?.length
               ? ` · sem imagem: slide ${result.missing.join(", ")} — complete pelo ChatGPT`
               : ""}
           </span>
         )}
+        {result?.problems?.length ? <span className="text-warn">{result.problems.join(" · ")}</span> : null}
         {copied && (
           <span className="text-ink-3">
             cole no ChatGPT; depois volte e use &quot;subir imagens&quot; na ordem dos slides

@@ -60,24 +60,24 @@ export default function PromptSettings() {
         type="button"
         onClick={() => void toggle()}
         aria-expanded={open}
-        className="rounded-lg border border-line px-2.5 py-1.5 text-xs font-semibold text-ink-2 hover:bg-slate-50"
+        className="rounded-lg border border-line px-2.5 py-1.5 text-xs font-semibold text-ink-2 hover:bg-panel-2"
       >
         {open ? "Fechar prompts" : "Prompts"}
       </button>
       {open && (
-        <section className="absolute right-0 top-[calc(100%+10px)] z-30 w-[min(92vw,760px)] rounded-2xl border border-line bg-white p-5 text-left shadow-xl">
+        <section className="fixed right-4 top-24 z-50 max-h-[80vh] overflow-y-auto w-[min(92vw,760px)] rounded-2xl border border-line bg-panel p-5 text-left shadow-xl">
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-sm font-bold text-ink">Prompts de geração</p>
               <p className="mt-1 text-xs leading-relaxed text-ink-2">
-                The base prompt stays structured. Your custom instructions are appended and apply to future text and image generations.
+                Consulte as regras atuais e acrescente instruções para as próximas gerações de texto e imagem.
               </p>
             </div>
             <button type="button" onClick={() => setOpen(false)} className="text-lg leading-none text-ink-3 hover:text-ink-2" aria-label="Fechar prompts">×</button>
           </div>
           {config ? (
             <div className="mt-4 space-y-4">
-              <details className="rounded-xl border border-line bg-slate-50 p-3">
+              <details className="rounded-xl border border-line bg-panel-2 p-3">
                 <summary className="cursor-pointer text-xs font-bold uppercase tracking-wider text-ink-2">Prompt base de texto</summary>
                 <pre className="mt-3 max-h-56 overflow-auto whitespace-pre-wrap text-[11px] leading-relaxed text-ink-2">{config.text.system}\n\n{config.text.rules}\n\n{config.text.context}</pre>
               </details>
@@ -85,7 +85,7 @@ export default function PromptSettings() {
                 <span className="text-xs font-bold uppercase tracking-wider text-ink-2">Instruções extras de texto</span>
                 <textarea value={text} onChange={(e) => setText(e.target.value)} rows={5} placeholder="Ex.: mantenha o tom direto e evite adjetivos." className="mt-2 w-full rounded-xl border border-line px-3 py-2 text-sm text-ink outline-none focus:border-brand" />
               </label>
-              <details className="rounded-xl border border-line bg-slate-50 p-3">
+              <details className="rounded-xl border border-line bg-panel-2 p-3">
                 <summary className="cursor-pointer text-xs font-bold uppercase tracking-wider text-ink-2">Prompt base de imagem</summary>
                 <pre className="mt-3 whitespace-pre-wrap text-[11px] leading-relaxed text-ink-2">{config.image.template}\n\n{config.image.context}</pre>
               </details>

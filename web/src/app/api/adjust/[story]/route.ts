@@ -13,6 +13,7 @@
 import { NextResponse } from "next/server";
 import { addLearnedDirective, loadRun } from "@/lib/data";
 import { generateDraft, sourcesFromStory } from "@/lib/compose/draft";
+import { findStory } from "@/lib/media/persist";
 import { persistRun } from "@/lib/compose/persistRun";
 import type { Story } from "@/lib/types";
 
@@ -57,15 +58,19 @@ export async function POST(
       storyId,
       title: story.title,
       vertical: story.vertical,
-      sources: sourcesFromStory(story),
+      sources: await sourcesFromStory(story),
       contentType: story.content_type ?? undefined,
       verificationSummary: `${story.verification.status}; ${story.verification.independent_source_count} fonte(s) independente(s)`,
       instruction,
       currentDraft: story.draft,
     });
 
-    story.draft = draft; // slide_media é preservado de propósito
-    await persistRun(run, runFile, `adjust: ${storyId.slice(0, 8)} — ${instruction.slice(0, 60)}`);
+    const fresh = await loadRun(runFile);
+    const freshStory = fresh ? findStory(fresh, storyId) : null;
+    if (!fresh || !freshStory) throw new Error("Post não encontrado após ajuste.");
+    freshStory.draft = draft;
+    freshStory.verification = story.verification;
+    await persistRun(fresh, runFile, `adjust: ${storyId.slice(0, 8)} — ${instruction.slice(0, 60)}`);
 
     if (body.learn) {
       await addLearnedDirective(story.vertical, instruction);

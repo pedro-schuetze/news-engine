@@ -27,8 +27,8 @@ export default async function ProntosPage({ searchParams }: { searchParams: Sear
     <div>
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="microlabel">publishing queue</p>
-          <h1 className="mt-1 text-[30px] font-semibold tracking-tight text-navy">Prontos para publicar</h1>
+          <p className="microlabel">Prontos para o Instagram</p>
+          <h1 className="mt-1 text-[30px] font-semibold tracking-tight text-navy">Aprovados</h1>
         </div>
         <Link href="/iris/today" className="rounded-full bg-brand px-4 py-2 text-[12px] font-semibold text-white">Voltar para Hoje</Link>
       </header>

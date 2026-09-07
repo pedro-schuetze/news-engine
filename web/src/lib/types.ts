@@ -123,6 +123,7 @@ export interface MediaAsset {
  * continua sendo slide_media — o renderer não conhece o pool.
  */
 export interface MediaCandidate {
+  search_query?: string;
   id: string;
   local_path: string;
   origin: "bank" | "upload";

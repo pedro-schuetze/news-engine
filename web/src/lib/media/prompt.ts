@@ -26,6 +26,7 @@ export function buildImagePrompt(input: {
   body: string;
   imageDirection: string;
   custom: string;
+  carouselContext?: string;
 }): string {
   const base = DEFAULT_IMAGE_PROMPT
     .replaceAll("{{title}}", input.title)
@@ -38,10 +39,11 @@ export function buildImagePrompt(input: {
     .replaceAll("{{headline}}", input.headline || "sem manchete")
     .replaceAll("{{body}}", input.body || "sem texto adicional")
     .replaceAll("{{image_direction}}", input.imageDirection || "cena de apoio editorial");
+  const shared = input.carouselContext ? `\nBRIEFING DO CARROSSEL COMPLETO (mantenha unidade visual, varie cenas):\n${input.carouselContext}\nGere SOMENTE o fundo do slide ${input.slideNumber}, não uma montagem nem o carrossel completo.` : "";
   const claimNote = input.isRumorOrClaim
     ? "\nATENÇÃO: esta notícia é uma alegação não confirmada. Não mostre o fato como comprovado."
     : "";
   return input.custom.trim()
-    ? `${base}${claimNote}\n\nINSTRUÇÕES PERSONALIZADAS DO EDITOR:\n${input.custom.trim()}`
-    : `${base}${claimNote}`;
+    ? `${base}${shared}${claimNote}\n\nINSTRUÇÕES PERSONALIZADAS DO EDITOR:\n${input.custom.trim()}`
+    : `${base}${shared}${claimNote}`;
 }

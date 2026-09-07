@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import SlidePreview, { type Placement, type PreviewSlide } from "./SlidePreview";
 import type { MediaCandidate } from "@/lib/types";
 
@@ -42,13 +43,30 @@ export default function PostMedia({
   /** estado salvo: slide_number -> { candidateId, placement, align } */
   initialState: Record<number, SlideState>;
 }) {
+  const router = useRouter();
   const [saved, setSaved] = useState<Record<number, SlideState>>(initialState);
   const [draft, setDraft] = useState<Record<number, SlideState>>(initialState);
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [dragSlide, setDragSlide] = useState<number | null>(null);
+  const [allOptions, setAllOptions] = useState(false);
+  const [dragCandidate, setDragCandidate] = useState<string | null>(null);
   const [dropSlide, setDropSlide] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Refresh can add candidates: preserve local edits while updating untouched slides.
+    setDraft(current => {
+      const next = { ...current };
+      for (const [key, value] of Object.entries(initialState)) {
+        const n = Number(key);
+        if (JSON.stringify(current[n]) === JSON.stringify(saved[n])) next[n] = value;
+      }
+      return next;
+    });
+    setSaved(initialState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialState]);
 
   const byId = useMemo(() => new Map(pool.map((c) => [c.id, c])), [pool]);
   const ordered = useMemo(() => [...pool].sort((a, b) => b.score - a.score), [pool]);
@@ -60,7 +78,7 @@ export default function PostMedia({
       const s = saved[n];
       if (!d) return null;
       const candChanged = d.candidateId !== s?.candidateId;
-      const placeChanged = d.placement !== s?.placement;
+      const placeChanged = d.placement !== s?.placement || candChanged;
       if (!candChanged && !placeChanged) return null;
       return {
         slide_number: n,
@@ -136,6 +154,7 @@ export default function PostMedia({
         return;
       }
       setSaved(draft);
+      router.refresh();
       setNotice("salvo — os arquivos finais são atualizados em segundo plano");
     } catch (e) {
       setError(String(e).slice(0, 160));
@@ -158,13 +177,15 @@ export default function PostMedia({
               draggable={Boolean(st?.candidateId)}
               onDragStart={() => setDragSlide(slide.n)}
               onDragOver={(event) => {
-                if (dragSlide !== null && dragSlide !== slide.n) event.preventDefault();
+                if (dragCandidate || (dragSlide !== null && dragSlide !== slide.n)) event.preventDefault();
                 setDropSlide(slide.n);
               }}
               onDragLeave={() => setDropSlide(null)}
               onDrop={(event) => {
                 event.preventDefault();
-                if (dragSlide !== null) moveSlide(dragSlide, slide.n);
+                if (dragCandidate) { const c = byId.get(dragCandidate); if (c) pick(slide.n, c); }
+                else if (dragSlide !== null) moveSlide(dragSlide, slide.n);
+                setDragCandidate(null);
                 setDragSlide(null);
                 setDropSlide(null);
               }}
@@ -242,19 +263,23 @@ export default function PostMedia({
           <p className="font-mono text-[10.5px] uppercase tracking-wide text-ink-3">
             escolher imagem por slide · {pool.length} candidatas · clique ou arraste para trocar
           </p>
+          <button className="text-xs text-brand-ink" onClick={() => setAllOptions(!allOptions)}>{allOptions ? "Mostrar opções por slide" : "Usar uma imagem de outro slide"}</button>
           {slides.map((slide) => (
             <div key={slide.n} className="space-y-1">
               <p className="font-mono text-[10.5px] text-ink-3">
                 slide {slide.n} · {slide.headline || slide.kind}
               </p>
               <div className="flex flex-wrap gap-1.5">
-                {ordered.filter((c) => c.generated_for_slide === slide.n || c.generated_for_slide === undefined).map((c) => {
+                {ordered.filter((c) => allOptions || c.generated_for_slide === slide.n || c.generated_for_slide === undefined).map((c) => {
                   const isSelected = draft[slide.n]?.candidateId === c.id;
                   return (
                     <button
                       key={c.id}
+                      draggable
+                      onDragStart={event => { event.stopPropagation(); event.dataTransfer.setData("text/plain", c.id); setDragCandidate(c.id); setDragSlide(null); }}
+                      onDragEnd={() => { setDragCandidate(null); setDropSlide(null); }}
                       onClick={() => pick(slide.n, c)}
-                      title={`${c.origin === "bank" ? "banco" : "IA"}${c.generated_for_slide ? ` · gerada para slide ${c.generated_for_slide}` : ""} · score ${c.score} (${c.score_notes})\n${c.credit}`}
+                      title={`${c.source}${c.generated_for_slide ? ` · slide de origem ${c.generated_for_slide}` : ""}${c.search_query ? ` · busca: ${c.search_query}` : ""}\n${c.credit}\nOrdenação técnica ${c.score}: ${c.score_notes}. Não é checagem factual.`}
                       className={`relative overflow-hidden rounded-lg border-2 transition-all ${
                         isSelected
                           ? "border-brand ring-2 ring-brand/30"
@@ -276,7 +301,7 @@ export default function PostMedia({
                           c.origin === "upload" ? "bg-navy/85 text-white" : "bg-black/60 text-white"
                         }`}
                       >
-                        {c.origin === "upload" ? "gpt" : "banco"} · {c.score}
+                        {c.source === "ai" ? "IA" : c.source}
                       </span>
                     </button>
                   );

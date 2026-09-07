@@ -1,44 +1,15 @@
-Estrutura do carrossel (5 slides, nesta ordem de roles):
-1. HOOK           — manchete forte e honesta que para o scroll (sem clickbait vazio)
-2. CONTEXT        — o contexto mínimo para entender o acontecimento
-3. FACTS          — os fatos principais, direto ao ponto
-4. WHY_IT_MATTERS — por que isso importa / o ângulo mais interessante
-5. CONCLUSION     — desfecho: o que acontece agora / síntese final
+CARROSSEL
+Por padrão, cinco slides com progressão narrativa. Os roles são metadados internos; não imprima seus nomes nem transforme-os em títulos genéricos.
+1. HOOK: acontecimento principal. A manchete e uma frase de apoio entregam a notícia, sem suspense.
+2. CONTEXT: a informação que o leitor precisa para entender o fato. Local, envolvidos e circunstância relevante.
+3. FACTS: resultado, números ou mudança concreta. Acrescente informação à capa.
+4. WHY_IT_MATTERS: consequência sustentada pelas matérias, alcance ou comparação específica. Não invente significado para preencher o slide.
+5. CONCLUSION: desdobramento conhecido, prazo, efeito concreto ou último fato útil. Não recapitule os quatro anteriores nem encerre com uma lista de lacunas.
 
-O TEXTO É IMPRESSO NA PRÓPRIA IMAGEM — a maioria das pessoas não abre a
-legenda. Ele precisa ser curto e legível em tela pequena, MAS continua sendo
-português inteiro. E o post NÃO reproduz mídia: nunca chame para "assistir",
-"ouvir" ou "clicar" — descreva o que o vídeo/trailer/música mostra.
-
-PRIORIDADE DO TEXTO: fidelidade ao material fornecido, clareza, português
-natural e legibilidade. O estilo vem depois dessas quatro coisas. Cada slide
-deve desenvolver uma única ideia e acrescentar informação, sem repetir outro
-slide. Se a fonte não trouxer um dado, não invente nem complete por memória.
-
-PORTUGUÊS COMPLETO, SEMPRE (vale para headline e body de todos os slides):
-- Use artigos, preposições e verbos de ligação: "A missão foca em...",
-  "O campo de visão maior permite...", "O comissionamento vem primeiro".
-- NUNCA escreva em estilo telegrama para economizar espaço.
-  Errado: "Missão foca em matéria escura; equipe inclui pesquisadores".
-  Certo:  "A missão foca na matéria escura e a equipe inclui pesquisadores".
-  Errado: "Campo de visão maior permite mapas em escala inédita".
-  Certo:  "O campo de visão maior permite mapas em escala inédita".
-- Se o texto não couber, corte INFORMAÇÃO (uma ideia a menos), nunca os
-  elementos gramaticais da frase.
-- Evite empilhar orações com ponto e vírgula. Prefira duas frases curtas.
-
-Limites (são teto, não meta; gramática correta vem antes de brevidade):
-- slide 1 (HOOK): headline = a manchete do post, até 9 palavras, com força de
-  capa (pode ser pergunta); body = 1 frase de até 24 palavras.
-- slides 2 a 5: headline = rótulo curto de 2-4 palavras (ex.: "O QUE MUDA");
-  body = até 38 palavras, 1 ou 2 frases, uma ideia só.
-- destaque os dados essenciais com **negrito** no body (ex.: "**34 fontes**",
-  "**margem de 2 pontos**"). Use no máximo 2 destaques por slide.
-- nunca corte a frase no meio; cada slide se sustenta sozinho.
-
-image_direction: descreva objetivamente a imagem ideal do slide (o que mostra,
-enquadramento, clima). A imagem deve ser factualmente possível — nunca sugira
-cena que não aconteceu como se fosse real.
-image_source_type: AGENCY_PHOTO | PRESS_ASSET | AI_GENERATED | ILLUSTRATION |
-SCREENSHOT | PUBLIC_DOMAIN. Use AI_GENERATED apenas para arte conceitual
-claramente ilustrativa — NUNCA para retratar pessoas reais em situações reais.
+A função de cada slide é flexível: priorize a história real em vez de forçar um molde. Cada slide acrescenta um fato ou uma explicação diferente.
+- Slide 1: headline igual à manchete, body de até 24 palavras.
+- Slides internos: título específico de 3 a 8 palavras em caixa normal; body de 25 a 45 palavras, uma ou duas frases completas. Limites são tetos, não metas.
+- Texto simples: não inclua Markdown, asteriscos, etiquetas de sistema ou emojis nos campos headline/body.
+- Nomes, local, percentuais e comparações essenciais devem estar visíveis quando disponíveis nas matérias. Não substitua esses fatos por comentários sobre a qualidade das fontes.
+- image_direction: direção visual objetiva, com assunto, composição e luz, diferente para cada slide. Não peça texto impresso, logotipo, gráficos com dados inventados ou cenas fictícias apresentadas como fotografias do evento.
+- image_source_type: AGENCY_PHOTO | PRESS_ASSET | AI_GENERATED | ILLUSTRATION | SCREENSHOT | PUBLIC_DOMAIN. IA serve para ilustração conceitual; uma foto documental de pessoas ou eventos reais precisa vir de uma fonte identificável.

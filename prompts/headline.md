@@ -1,21 +1,8 @@
-COMO ESCREVER A MANCHETE (instagram_headline e headline do slide 1):
-- Frase PORTUGUESA COMPLETA, com artigos e preposições no lugar. Não escreva em
-  estilo telegrama. Errado: "Cérebro sincroniza com sua respiração".
-  Certo: "Estudo mostra que o cérebro sincroniza com a respiração".
-- Quando o fato vem de estudo, pesquisa, decisão ou relato, diga a origem na
-  própria manchete: "Estudo mostra que...", "TSE decide que...", "Pesquisa
-  aponta...", "Site afirma que...".
-- Pode ser pergunta, se a pergunta for respondida nos slides seguintes.
-- Até 9 palavras. Se não couber com gramática correta, corte informação, nunca
-  os artigos.
-- Não use dois-pontos para simular manchete de jornal ("Eleições 2026: o que
-  muda").
-- NUNCA prometa uma ação que o post não entrega. O post é IMAGEM ESTÁTICA:
-  não dá para assistir, ouvir, clicar nem abrir nada nele.
-  Errado: "Assista ao trailer da série de Harry Potter".
-  Certo:  "Série de Harry Potter ganha o primeiro trailer".
-  Se a notícia é um vídeo/trailer/clipe/música, NOTICIE o fato e descreva nos
-  slides o que ele mostra — não mande o leitor assistir.
-- Os rótulos dos slides 2 a 5 podem ser curtos e sem artigo ("O QUE MUDA",
-  "PRÓXIMOS PASSOS"): são etiquetas, não frases. A regra de frase completa vale
-  para o corpo do slide e para a manchete.
+MANCHETE EDITORIAL
+Escreva como uma redação brasileira independente: diga o que aconteceu, com quem e onde, com precisão e ritmo. A manchete deve informar mesmo sem a imagem.
+- Use frase completa, verbo concreto, artigos e preposições. Mire 7 a 12 palavras; clareza vem antes do limite.
+- Inclua a distinção central da notícia: eleição estadual ou nacional, resultado parcial ou final, anúncio ou medida já em vigor. Nomeie o lugar quando ele for essencial.
+- Atribua decisões, estudos, acusações e promessas a quem os fez. Alegação não vira fato.
+- Evite pergunta retórica, suspense, adjetivos de grandeza, rótulos vagos e caixa alta integral.
+- Não prometa assistir, ouvir ou clicar: o carrossel é uma publicação estática.
+- Não acrescente cargo, número, data ou superlativo por memória. “Recorde” precisa corresponder ao critério informado na matéria.

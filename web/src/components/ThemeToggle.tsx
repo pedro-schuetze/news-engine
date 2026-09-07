@@ -8,8 +8,8 @@ export default function ThemeToggle() {
   function toggle() {
     const next = !dark;
     document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    try { localStorage.setItem("theme", next ? "dark" : "light"); } catch { /* storage unavailable */ }
     setDark(next);
   }
-  return <button type="button" aria-label={dark ? "Use light theme" : "Use dark theme"} onClick={toggle} className="theme-toggle">{dark ? "☼" : "☾"}</button>;
+  return <button type="button" aria-label={dark ? "Ativar tema claro" : "Ativar tema escuro"} onClick={toggle} aria-pressed={dark} className="theme-toggle">{dark ? "☼" : "☾"}</button>;
 }

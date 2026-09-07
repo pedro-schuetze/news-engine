@@ -1,23 +1,7 @@
 import Link from "next/link";
 import PromptSettings from "@/components/PromptSettings";
-
-const navigation = [
-  ["Hoje", "/iris"], ["Criar post", "/iris/manual"], ["Aprovados", "/iris/approved"],
-  ["Publicados", "/iris/published"], ["Histórico", "/iris/history"], ["Painel", "/iris/dashboard"],
-];
-
+import ThemeToggle from "@/components/ThemeToggle";
+import IrisNavigation from "@/components/IrisNavigation";
 export default function IrisLayout({ children }: { children: React.ReactNode }) {
-  return <div className="iris-app">
-    <header className="iris-header">
-      <Link href="/iris" className="iris-brand">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/gpb-mono.png" alt="GPB" />
-        <span>IRIS</span>
-      </Link>
-      <nav aria-label="Navegação">{navigation.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
-      <PromptSettings />
-      <Link className="iris-legacy" href="/dashboard">App antigo</Link>
-    </header>
-    <div className="iris-content">{children}</div>
-  </div>;
+  return <div className="iris-app"><a href="#content" className="iris-skip">Pular para o conteúdo</a><header className="iris-header"><Link href="/iris" className="iris-brand"><span className="iris-mark" aria-hidden="true">i</span><span>iris<span className="iris-brand-note">a sua redação</span></span></Link><IrisNavigation /><div className="iris-tools"><PromptSettings /><ThemeToggle /></div></header><div id="content" className="iris-content">{children}</div><footer className="iris-footer">Iris · Da notícia à publicação, com você no comando.</footer></div>;
 }

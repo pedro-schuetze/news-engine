@@ -14,6 +14,7 @@ import re
 import tempfile
 import time
 import urllib.request
+import urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -180,17 +181,26 @@ def collect(data_dir, xml=None, now=None, force=False):
     now = now or datetime.now(timezone.utc)
     root = Path(data_dir) / "news"
     previous = read_json(root / "latest.json")
-    bucket = int(now.timestamp()) // 7200
+    bucket = int(now.timestamp()) // 10800
     if previous and not force:
-        previous_bucket = int(datetime.fromisoformat(previous["fetched_at"].replace("Z", "+00:00")).timestamp()) // 7200
+        previous_bucket = int(datetime.fromisoformat(previous["fetched_at"].replace("Z", "+00:00")).timestamp()) // 10800
         if previous_bucket == bucket:
             return previous
     started = time.monotonic()
     try:
         if xml is None:
             request = urllib.request.Request(FEED, headers={"User-Agent": "news-engine-frontpage/1.0"})
-            with urllib.request.urlopen(request, timeout=30) as response:
-                xml = response.read(2_000_001)
+            for attempt in range(3):
+                try:
+                    with urllib.request.urlopen(request, timeout=30) as response:
+                        xml = response.read(2_000_001)
+                    break
+                except (urllib.error.URLError, TimeoutError) as error:
+                    if isinstance(error, urllib.error.HTTPError) and error.code not in (429, 500, 502, 503, 504):
+                        raise
+                    if attempt == 2:
+                        raise
+                    time.sleep(2 ** (attempt + 1))
             if len(xml) > 2_000_000:
                 raise ValueError("Feed exceeds expected size")
         snapshot, identities = build_snapshot(xml, now, read_json(root / "identities.json", {}), previous)

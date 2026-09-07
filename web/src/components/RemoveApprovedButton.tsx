@@ -7,15 +7,18 @@ import { useRouter } from "next/navigation";
 export default function RemoveApprovedButton({ storyId, runId, vertical }: { storyId: string; runId: string; vertical: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
   async function remove() {
-    setBusy(true);
+    setBusy(true); setError("");
+    try {
     const response = await fetch("/api/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ story_id: storyId, run_id: runId, vertical, review_status: "REJECTED" }),
     });
-    setBusy(false);
-    if (response.ok) router.refresh();
+    if (!response.ok) { const body = await response.json().catch(() => ({})); throw new Error(body.error || "Não foi possível salvar."); }
+    router.refresh();
+    } catch (e) { setError(e instanceof Error ? e.message : "Falha de conexão. Tente novamente."); } finally { setBusy(false); }
   }
-  return <button onClick={remove} disabled={busy} title="Tira o post dos Aprovados. O rascunho continua no editor." className="rounded-full border border-danger/40 bg-panel px-3 py-1 font-mono text-[11px] font-medium text-danger hover:bg-danger-soft disabled:opacity-50">{busy ? "Removendo…" : "Remover dos Aprovados"}</button>;
+  return <><button onClick={remove} disabled={busy} title="Tira o post dos Aprovados. O rascunho continua no editor." className="rounded-full border border-danger/40 bg-panel px-3 py-1 font-mono text-[11px] font-medium text-danger hover:bg-danger-soft disabled:opacity-50">{busy ? "Removendo…" : "Remover dos Aprovados"}</button>{error && <span role="alert" className="text-xs text-danger">{error}</span>}</>;
 }

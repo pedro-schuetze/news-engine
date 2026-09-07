@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
-import RootShell from "@/components/RootShell";
+
 import "./globals.css";
 
 // papéis da identidade GPB: Fraunces ~ Recoleta (display), Jakarta ~ Satoshi (UI)
@@ -13,15 +13,16 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GPB · News",
-  description: "GPB Media — redação automatizada, revisão editorial diária",
+  title: "Iris · Redação",
+  description: "Sua redação, da pauta à publicação.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} ${jakarta.variable} ${plexMono.variable}`}>
+    <html suppressHydrationWarning lang="pt-BR" className={`${fraunces.variable} ${jakarta.variable} ${plexMono.variable}`}>
       <body className="min-h-screen font-sans">
-<RootShell>{children}</RootShell>
+<script dangerouslySetInnerHTML={{ __html: "try{const t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))}catch(e){}" }} />
+        {children}
       </body>
     </html>
   );

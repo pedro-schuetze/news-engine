@@ -35,11 +35,12 @@ export default function RunView({
     tab === "debug" && debug ? "debug" : verticalIds.includes(tab) ? tab : verticalIds[0];
 
   const href = (t: string, dbg: boolean) => {
-    const params = new URLSearchParams();
+    const [pathname, existing] = basePath.split("?");
+    const params = new URLSearchParams(existing);
     if (t) params.set("tab", t);
     if (dbg) params.set("debug", "1");
     const qs = params.toString();
-    return qs ? `${basePath}?${qs}` : basePath;
+    return qs ? `${pathname}?${qs}` : basePath;
   };
 
   const tabs: TabItem[] = verticalIds.map((vid) => ({
@@ -83,7 +84,7 @@ export default function RunView({
       </div>}
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <VerticalTabs items={tabs} />
+        {(!iris || tabs.length > 1) && <VerticalTabs items={tabs} />}
         {debug && !iris && (
           <Link
             href={href("debug", true)}

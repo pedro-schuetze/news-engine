@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import type { ReviewStatus } from "@/lib/types";
 
 export default function ReviewButtons({
@@ -19,11 +19,15 @@ export default function ReviewButtons({
   canApprove?: boolean;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const [saving, setSaving] = useState(false);
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
   async function setStatus(status: ReviewStatus) {
-    setError(null);
+    if (saving) return;
+    setSaving(true); setError(null);
+    try {
     const res = await fetch("/api/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -34,7 +38,8 @@ export default function ReviewButtons({
       setError(body.error ?? "Falha ao salvar review");
       return;
     }
-    startTransition(() => router.refresh());
+    startTransition(() => { if (status === "APPROVED" && pathname.startsWith("/iris")) router.push("/iris/approved"); else router.refresh(); });
+    } catch { setError("Não foi possível salvar. Tente novamente."); } finally { setSaving(false); }
   }
 
   const base =
@@ -42,7 +47,7 @@ export default function ReviewButtons({
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
-        disabled={pending || (!canApprove && current !== "APPROVED")}
+        disabled={saving || pending || (!canApprove && current !== "APPROVED")}
         onClick={() => setStatus("APPROVED")}
         title={
           !canApprove && current !== "APPROVED"
@@ -63,7 +68,7 @@ export default function ReviewButtons({
         </span>
       )}
       <button
-        disabled={pending}
+        disabled={saving || pending}
         onClick={() => setStatus("REJECTED")}
         className={`${base} ${
           current === "REJECTED"
@@ -74,13 +79,13 @@ export default function ReviewButtons({
         ✕ Rejeitar
       </button>
       <button
-        disabled={pending}
+        disabled={saving || pending}
         onClick={() => setStatus("PENDING")}
         className={`${base} border border-transparent text-ink-3 hover:bg-panel-2 hover:text-ink-2`}
       >
         ↺ Pendente
       </button>
-      {pending && <span className="font-mono text-[11px] text-ink-3">salvando…</span>}
+      {(pending || saving) && <span className="font-mono text-[11px] text-ink-3">salvando…</span>}
       {error && <span className="text-xs text-danger">{error}</span>}
     </div>
   );

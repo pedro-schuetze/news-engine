@@ -47,6 +47,7 @@ export interface SourcedImage {
   /** ping de licença (Unsplash) */
   downloadPing?: string;
   source: string;
+  query?: string;
 }
 
 const FETCH_TIMEOUT_MS = 6000;
@@ -186,6 +187,7 @@ async function searchWikimedia(
       credit: [cleanArtist(meta.Artist?.value ?? ""), stripHtml(meta.LicenseShortName?.value ?? "").slice(0, 24), "Wikimedia"]
         .filter(Boolean)
         .join(" · "),
+      query,
       source: "wikimedia",
     });
     if (out.length >= limit) break;
@@ -211,6 +213,7 @@ async function searchOpenverse(
     out.push({
       url: r.url,
       credit: [r.creator?.slice(0, 40), (r.license ?? "").toUpperCase(), r.source].filter(Boolean).join(" · "),
+      query,
       source: "openverse",
     });
     if (out.length >= limit) break;
@@ -259,7 +262,8 @@ async function searchUnsplash(query: string, limit: number): Promise<SourcedImag
       .map((r) => ({
         url: r.urls!.regular!,
         credit: [r.user?.name?.slice(0, 40), "Unsplash"].filter(Boolean).join(" · "),
-        source: "unsplash" as const,
+        query,
+      source: "unsplash" as const,
         // a licença do Unsplash pede o ping de download quando a foto é usada
         downloadPing: r.links?.download_location,
       }));
@@ -289,7 +293,8 @@ async function searchPexels(query: string, limit: number): Promise<SourcedImage[
       .map((p) => ({
         url: (p.src!.large2x || p.src!.large)!,
         credit: [p.photographer?.slice(0, 40), "Pexels"].filter(Boolean).join(" · "),
-        source: "pexels" as const,
+        query,
+      source: "pexels" as const,
       }));
   } catch {
     return [];
@@ -320,7 +325,8 @@ async function searchOfficial(
     out.push({
       url: r.url,
       credit: [r.creator?.slice(0, 40), (r.license ?? "").toUpperCase(), r.source].filter(Boolean).join(" · "),
-      source: "official",
+      query,
+      source: "openverse",
     });
     if (out.length >= limit) break;
   }

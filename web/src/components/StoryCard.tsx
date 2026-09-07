@@ -103,8 +103,8 @@ export default function StoryCard({
           {verification.label}
         </Chip>
         <Chip className="bg-panel-2 text-ink-2">
-          {story.verification.independent_source_count} fonte
-          {story.verification.independent_source_count === 1 ? "" : "s"} indep.
+          {story.verification.independent_source_count} veículo
+          {story.verification.independent_source_count === 1 ? "" : "s"}
         </Chip>
         <Chip className={reviewUi.chip}>{reviewUi.label}</Chip>
         <span className="ml-auto font-mono text-[11px] text-ink-3">
@@ -142,51 +142,17 @@ export default function StoryCard({
 
       {/* expanders */}
       <div className="mt-4 space-y-1.5 border-t border-line pt-3">
-        {!hideTechnical && <details className="xp">
-          <summary>Fontes ({sourceCount}) e verificação</summary>
-          <div className="mt-2 space-y-2 rounded-lg bg-panel-2/60 p-3 text-[13px]">
-            {story.verification.primary_source && (
-              <p>
-                <span className="microlabel mr-2">primária</span>
-                <a
-                  className="font-medium text-pol hover:underline"
-                  href={story.verification.primary_source.url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {story.verification.primary_source.name}
-                </a>{" "}
-                <span className="text-ink-3">
-                  · {story.verification.primary_source.source_domain} ·{" "}
-                  {story.verification.primary_source.source_type} · aut.{" "}
-                  {story.verification.primary_source.authority_score} ·{" "}
-                  {fmtLocal(story.verification.primary_source.published_at)}
-                </span>
-              </p>
-            )}
-            <ul className="space-y-1">
-              {story.verification.supporting_sources.map((s) => (
-                <li key={s.article_id} className="text-ink-2">
-                  <a className="text-pol hover:underline" href={s.url} target="_blank" rel="noreferrer">
-                    {s.name}
-                  </a>{" "}
-                  <span className="text-ink-3">
-                    · {s.source_domain} · {s.source_type} · aut. {s.authority_score}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-[12.5px] text-ink-3">{story.verification.verification_notes}</p>
-            {story.verification.contradictions_found.length > 0 && (
-              <p className="text-danger">
-                Contradições: {story.verification.contradictions_found.join("; ")}
-              </p>
-            )}
-            {story.claim_attribution && (
-              <p className="text-warn">Atribuição: {story.claim_attribution}</p>
-            )}
+        <details className="xp">
+          <summary>Fontes usadas na escrita ({sourceCount})</summary>
+          <div className="mt-3 space-y-3 rounded-xl bg-panel-2 p-4 text-sm">
+            <p className="text-xs text-ink-2">{story.verification.verification_notes}</p>
+            {[story.verification.primary_source, ...story.verification.supporting_sources].filter(Boolean).map(source => source && <details key={source.article_id}>
+              <summary className="text-brand-ink">{source.name} · ver conteúdo usado</summary>
+              <a href={source.url} target="_blank" rel="noreferrer" className="mt-2 block break-all text-xs text-brand-ink">Abrir matéria original ↗</a>
+              <p className="mt-2 max-h-64 overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed text-ink-2">{source.excerpt || "Este post antigo não guardou o texto da matéria."}</p>
+            </details>)}
           </div>
-        </details>}
+        </details>
 
         {draft && draft.slides.length === 0 && (
           <div className="border-t border-line pt-3">

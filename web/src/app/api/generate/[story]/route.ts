@@ -41,7 +41,7 @@ export async function POST(
       storyId,
       title: story.title,
       vertical: story.vertical,
-      sources: sourcesFromStory(story),
+      sources: await sourcesFromStory(story),
       contentType: story.content_type ?? "FACT",
       verificationSummary: `${story.verification.status}; ${story.verification.independent_source_count} fonte(s) independente(s)`,
     });
@@ -54,6 +54,7 @@ export async function POST(
       return NextResponse.json({ error: "run mudou durante a geração" }, { status: 409 });
     }
     freshStory.draft = draft;
+    freshStory.verification = story.verification;
     await persistRun(fresh, runFile, `content: pacote completo de ${storyId.slice(0, 8)} (${model})`);
 
     return NextResponse.json({

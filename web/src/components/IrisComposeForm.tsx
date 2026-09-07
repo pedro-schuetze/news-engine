@@ -21,6 +21,7 @@ export default function ComposeForm({
 }) {
   const router = useRouter();
   const [links, setLinks] = useState("");
+  const [phase, setPhase] = useState("");
   const [instruction, setInstruction] = useState("");
   const [busy, setBusy] = useState<"compose" | "discard" | null>(null);
   const [result, setResult] = useState<ComposeResult | null>(null);
@@ -33,6 +34,7 @@ export default function ComposeForm({
 
   async function compose() {
     setBusy("compose");
+    setPhase("Lendo as matérias e escrevendo…");
     setError(null);
     setResult(null);
     try {
@@ -57,7 +59,10 @@ export default function ComposeForm({
         return;
       }
       setResult(body);
-      router.push(`/iris/manual?run=${encodeURIComponent(body.run_file)}`);
+      setPhase("Texto salvo. Gerando imagens…");
+      let failed = false;
+      try { const images = await fetch(`/api/media/${body.story_id}?run=${encodeURIComponent(body.run_file)}&mode=ai`, { method: "POST" }); failed = !images.ok; } catch { failed = true; }
+      router.push(`/iris/editor?run=${encodeURIComponent(body.run_file)}${failed ? "&notice=images" : ""}`);
     } catch (e) {
       setError(String(e).slice(0, 200));
     } finally {
@@ -92,6 +97,7 @@ export default function ComposeForm({
   return (
     <div className="space-y-3 rounded-2xl border border-line bg-panel p-4 md:p-5">
       <textarea
+        aria-label="Links das matérias"
         value={links}
         onChange={(e) => setLinks(e.target.value)}
         rows={3}
@@ -101,6 +107,7 @@ export default function ComposeForm({
 
       <div className="flex flex-wrap items-center gap-2">
         <input
+          aria-label="Direção editorial opcional"
           value={instruction}
           onChange={(e) => setInstruction(e.target.value)}
           maxLength={600}
@@ -116,8 +123,8 @@ export default function ComposeForm({
           className="rounded-full bg-brand px-5 py-2 text-[13.5px] font-medium text-white transition-colors hover:bg-brand-ink disabled:opacity-50"
         >
           {busy === "compose"
-            ? "Lendo fontes e escrevendo…"
-            : `Create post${urls.length > 1 ? ` (${urls.length} links)` : ""}`}
+            ? phase
+            : `Criar post${urls.length > 1 ? ` (${urls.length} links)` : ""}`}
         </button>
 
         {(result?.run_file || currentRun) && (
@@ -132,16 +139,16 @@ export default function ComposeForm({
 
         <span className="font-mono text-[11px] text-ink-3">
           {busy === "compose"
-            ? "Costuma levar 20–40 segundos"
+            ? "Aguarde; as imagens são geradas após o texto."
             : urls.length === 0
               ? "Cole pelo menos um link http(s)"
-              : `${urls.length} link${urls.length === 1 ? "" : "s"} recognized`}
+              : `${urls.length} link${urls.length === 1 ? "" : "s"} reconhecido(s)`}
         </span>
       </div>
 
       {result && (
         <p className="font-mono text-[11.5px] text-brand-ink">
-          Created with the standard tone · {result.sources} source{result.sources === 1 ? "" : "s"} ·{" "}
+          Texto criado · {result.sources} fonte{result.sources === 1 ? "" : "s"} ·{" "}
           {result.headline}
         </p>
       )}
