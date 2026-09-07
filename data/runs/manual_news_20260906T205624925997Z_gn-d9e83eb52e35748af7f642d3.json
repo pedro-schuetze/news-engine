@@ -1,0 +1,186 @@
+{
+  "run_id": "news-20260906T205624925997Z",
+  "mode": "news",
+  "started_at": "2026-09-07T00:28:23.621Z",
+  "finished_at": "2026-09-07T00:28:23.621Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 5,
+    "articles_by_collector": {
+      "google-news-front-page": 5
+    },
+    "articles_after_dedupe": 5,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 2557,
+    "estimated_output_tokens": 3986,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 0,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-d9e83eb52e35748af7f642d3",
+          "run_id": "news-20260906T205624925997Z",
+          "cluster_id": "gn-d9e83eb52e35748af7f642d3",
+          "vertical": "facts",
+          "title": "AfD tem vitória histórica em eleição regional, aponta boca de urna",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260906T205624925997Z",
+            "model: gpt-5-mini-2025-08-07"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "VERIFIED",
+            "supporting_source_count": 4,
+            "independent_source_count": 5,
+            "has_primary_source": true,
+            "primary_source": {
+              "article_id": "news-d9e83eb52e35748af7f642d3-0",
+              "name": "cnnbrasil.com.br",
+              "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPQWhkb0pJNWJ0ckpOdjlwbUJ1cVFjcXlReS1hV28wSmZUajN6ZEZTSHVkYXU0WTlFblAzWWFpUTMzUC0wV2FPQ3E1SmFrM24tdkJpRERvbnQ3RTNBZ1pUQWJzY1VGa25Zc0RuSWM1ZDlFa2JnUVFvd3ZVVUpHVFRxU1Nid0VwLWszSEhfZWU1LVZuNEhLODFWZkFyYUZKNUk5TnlqVUhvLTJIVlFxN0Rj?oc=5",
+              "source_domain": "cnnbrasil.com.br",
+              "published_at": "2026-09-06T16:13:13Z",
+              "source_type": "Google News",
+              "authority_score": 0
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-1",
+                "name": "UOL Notícias",
+                "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNWGE2Q0dUYnJHTy1lbTZUNk9kOFhtbTVWU3A1NHJsNFdBX1o0VFpVN3NaNG02YnpWLURxSUEwUGVyOExKV3RvZTFlcXNqZndOX3JFcW5MVGpINGd3d2ZrNThOUi1VRldBUmFSTE00SmRIX05GMlRMSlkxRFNuY2pqVXZyclk5aGZFbDMwR3RVWmRkNnk0VklBTkNOVkRQVFp0QjZKeXRkQWN5VlVCd1pvYk13TE1Sbm1OazZCQ1ZrRTRIaWh5TkdnenhxRzRGOExZU0ZYLUtoYU9mcHppM21VTXVQTEZ3Yi1TdnVnSA?oc=5",
+                "source_domain": "UOL Notícias",
+                "published_at": "2026-09-06T16:13:13Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-2",
+                "name": "dw.com",
+                "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQeWREVjNPOTgxbW05b1BVZzZHeGpoUWQ0dWYydDZSalRUMnp4S2RJM3dPc3kzNTFUOE9zRktWZGJlLUxSQ2NlVnQ0M0ZtS2cyN3JmaElFOVV5b2s4Z19QSVF3WlU1ZmZVQWx5cnpKUC1Ud3lwVFhjekhDZXE2RDJOei1wSllaazZIVG42ODlaZ1E1ekdTTzZ6RzQ0QWpTZGRLXzlxcVpGdWk4RTl5S2xDRjFNbnZjVm14YU0tdnJJN2FMdVhJOUJVZ0Rn0gHKAUFVX3lxTFBNZ1JfLTBLR0lkckkweW5GMFVOWVQ5YmVNakhYUG1hTU90bW05TmRwRUJibEdkODdQcE1vNGEtVThlVVBfZTE3OF9jeTQ0UUc1NjdpeTQxOFAwWDRCVE1HcnR3Z01PWlJ0RUZxTmM3eGIxcnp2SDFodVZHVUEtQXR1YXItVTh2eUhKUERCMmEzRmtJNXZnQ3c2S3dqdU4yYnZ1dDBUYU1SempFUllEVTdGbjZIRFduc2MxYVdKUTdRWWJJbnJjeENHTUE?oc=5",
+                "source_domain": "dw.com",
+                "published_at": "2026-09-06T16:13:13Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-3",
+                "name": "G1",
+                "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNMTBXVnJZeWNhQ2pyYXUxeGpsQ3JfWmd6V2dSdWtOUnRjdjJFRUVyMi1leHRMRV9mVHNlQWdvN3Z2Q2FYRE9CcXN5Q1Q4endfXzJsZUVVWExFeHowYWtIeHBPci1UYU5rLTFWdVM3eUdweWVjZ2VDeXVGaUY1anRucWxTM3FKUdIBlAFBVV95cUxOWldQbk5hWjVnV2s2THBtQXZvX01qTF9NVGFWNEtBWlRSb0tPSjE3elpfUkNiMWUyYk5JTHVWU3FteV93V3VreTJ3QmpWYWxCc2FYRndlUnU2OWttTDVodndwTGxsZkdpM1p3anVXbEFpcUVYZ0IwRHJCMFU1eURYTTh2TUNQZW9fak5vVDVDejVwSXQ1?oc=5",
+                "source_domain": "G1",
+                "published_at": "2026-09-06T16:13:13Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              },
+              {
+                "article_id": "news-d9e83eb52e35748af7f642d3-4",
+                "name": "BBC",
+                "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Ob0toaDVrMDdSQUpwelo0elhPZW91RDI0MmRtYk9UT01Ka2RieFNub1NuZEdsUGFsMjgtSkR3b1FnU0gtV0RhZWZVeUxTSkhlRDlQYTdfSTFRc2pyWUJsZk9n?oc=5",
+                "source_domain": "BBC",
+                "published_at": "2026-09-06T16:13:13Z",
+                "source_type": "Google News",
+                "authority_score": 0
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "Google News listed 5 outlets for this story."
+          },
+          "draft": {
+            "draft_id": "news-d9e-mtqi5eit",
+            "story_id": "news-d9e83eb52e35748af7f642d3",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "AfD tem vitória histórica em eleição regional, aponta boca de urna",
+            "instagram_headline": "Boca de urna indica vitória histórica da AfD na Alemanha",
+            "short_summary": "Bocas de urna divulgadas pela imprensa apontam que o partido AfD liderou uma eleição regional na Alemanha. Os números são estimativas preliminares; os resultados oficiais dependem da apuração.",
+            "why_it_matters": "Uma vitória do AfD pode alterar o equilíbrio de poder no parlamento regional e influenciar negociações de coalizão. O resultado também tende a afetar debates políticos em nível nacional.",
+            "key_facts": [
+              "Bocas de urna apontam liderança do AfD na eleição regional",
+              "Estimativas são preliminares, não substituem resultados oficiais",
+              "AfD é um partido de direita ativo na política alemã",
+              "Apuração oficial e confirmação ficam a cargo das autoridades estaduais",
+              "Possível impacto em coalizões e debates nacionais"
+            ],
+            "caption": "Bocas de urna apontam vitória do AfD em eleição regional na Alemanha.\n\nAs primeiras estimativas divulgadas pela imprensa, incluindo veículos que cobriram a noite de votação, mostram o AfD à frente. Essas pesquisas de saída são rápidas e servem para dar uma leitura inicial, mas não valem como resultado formal, segundo as emissoras que as divulgaram.\n\nA confirmação depende da contagem oficial feita pelas autoridades eleitorais estaduais. A apuração já começou e pode levar horas ou dias, dependendo do volume de votos e de procedimentos locais. Também podem ocorrer pedidos de revisão ou recontagem, conforme as regras do estado onde a eleição ocorreu.\n\nUma colocação forte do AfD em nível regional pode alterar o equilíbrio parlamentar local e forçar negociações entre partidos tradicionais. Além disso, o desempenho pode reacender debates nacionais sobre políticas públicas. Siga para acompanhar a apuração e as confirmações oficiais.",
+            "hashtags": [
+              "#AfD",
+              "#Alemanha",
+              "#EleiçãoRegional",
+              "#facts"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Boca de urna indica vitória histórica da AfD",
+                "body": "Bocas de urna divulgadas pela imprensa indicam que o partido AfD liderou a eleição regional, segundo levantamento inicial.",
+                "image_direction": "Foto de manifestantes apoiando o AfD em frente a um prédio público, com bandeiras do partido visíveis e bandeira da Alemanha ao fundo; enquadramento médio, clima de noite eleitoral com iluminação de rua.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O contexto",
+                "body": "A disputa ocorreu na Alemanha e envolveu votação regional. As **bocas de urna** são estimativas preliminares, não resultado oficial.",
+                "image_direction": "Imagem de fila de eleitores entrando em seção de votação; foco em mãos com cédulas e urnas ao fundo, visual neutro e institucional.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Fatos",
+                "body": "As primeiras pesquisas de saída mostram o AfD em **primeiro lugar**; emissoras divulgaram as estimativas ao fim da votação. A apuração oficial ainda não foi concluída.",
+                "image_direction": "Gráfico simples estilo tela de emissora mostrando barras de intenção de voto em cores distintas, sem números específicos, para ilustrar as bocas de urna.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Por que importa",
+                "body": "Uma vitória do AfD pode mudar o **equilíbrio parlamentar** regional e pressionar partidos a negociar novas alianças. Também tende a influenciar debates nacionais sobre políticas públicas.",
+                "image_direction": "Foto de um plenário regional vazio ou com poucos deputados, tomada ampla; atmosfera séria, iluminada, sugerindo política institucional.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Próximos passos",
+                "body": "As autoridades eleitorais estaduais devem confirmar os resultados na **contagem oficial**. Eventuais recursos ou recontagens dependem das regras locais e podem levar dias.",
+                "image_direction": "Imagem de funcionários eleitorais em mesa de apuração contando votos, close nas mãos e papeis; cena documental e verificável.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-07T00:28:23.621Z"
+          },
+          "slide_media": [],
+          "article_count": 5,
+          "earliest_published_at": "2026-09-06T16:13:13Z",
+          "latest_published_at": "2026-09-06T16:13:13Z",
+          "selection_rank": 4,
+          "created_at": "2026-09-07T00:28:23.621Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
