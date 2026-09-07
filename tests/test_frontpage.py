@@ -34,6 +34,12 @@ class FrontpageTests(unittest.TestCase):
         self.assertEqual(s['layout'], 'unknown')
         self.assertTrue(all(x['section'] == 'unclassified' and x['best_rank'] is None for x in s['stories']))
 
+    def test_five_top_stories_layout_is_still_classified(self):
+        s, _ = build_snapshot(feed(range(33)), self.now)
+        self.assertEqual(s['layout'], 'observed-layout')
+        self.assertEqual([x['section'] for x in s['stories'][:6]], ['top'] * 5 + ['brazil'])
+        self.assertEqual(s['stories'][-1]['section'], 'health')
+
     def test_same_title_different_ids_not_merged(self):
         a, _ = build_snapshot(feed(range(34)), self.now)
         self.assertEqual(len({s['id'] for s in a['stories']}), 34)

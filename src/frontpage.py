@@ -23,10 +23,21 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 FEED = "https://news.google.com/rss?hl=pt-BR&gl=BR&ceid=BR:pt"
-SECTIONS = [("top", "Top stories", 6), ("brazil", "Brazil", 4),
-            ("world", "World", 4), ("business", "Business", 4),
-            ("technology", "Technology", 4), ("entertainment", "Entertainment", 4),
-            ("sports", "Sports", 4), ("health", "Health", 4)]
+# Google varies the number of items in the opening "Top stories" block.
+# The seven following sections have held four slots each in the BR RSS layout.
+TRAILING_SECTIONS = [("brazil", "Brazil", 4), ("world", "World", 4),
+                     ("business", "Business", 4), ("technology", "Technology", 4),
+                     ("entertainment", "Entertainment", 4), ("sports", "Sports", 4),
+                     ("health", "Health", 4)]
+
+
+def layout_slots(item_count):
+    """Return observed front-page slots, accepting 5 or 6 top stories."""
+    top_count = item_count - sum(count for _, _, count in TRAILING_SECTIONS)
+    if top_count not in (5, 6):
+        return None
+    sections = [("top", "Top stories", top_count), *TRAILING_SECTIONS]
+    return [(sid, label, rank) for sid, label, count in sections for rank in range(1, count + 1)]
 
 
 def iso(dt):
@@ -81,8 +92,8 @@ def parse_feed(xml):
     items = root.findall("./channel/item")
     if not items:
         raise ValueError("Google News returned no stories; previous snapshot preserved.")
-    observed_layout = len(items) == 34
-    slots = [(sid, label, rank) for sid, label, count in SECTIONS for rank in range(1, count + 1)]
+    slots = layout_slots(len(items))
+    observed_layout = slots is not None
     out = []
     for i, item in enumerate(items):
         title = (item.findtext("title") or "").strip()
@@ -112,7 +123,7 @@ def parse_feed(xml):
         out.append({"title": title, "url": url, "guid": item.findtext("guid") or key(url),
                     "published_at": published, "section": sid, "section_label": label,
                     "rank": rank, "feed_position": i + 1, "outlets": articles, "aliases": aliases})
-    warnings = ["Sections inferred from the observed 34-item feed layout; Google supplies no section labels."]
+    warnings = ["Sections inferred from the observed Google News RSS layout; Google supplies no section labels."]
     if not observed_layout:
         warnings = [f"Feed layout changed ({len(items)} items). All stories kept as Unclassified; section ranks unavailable."]
     return out, warnings, "observed-layout" if observed_layout else "unknown"
