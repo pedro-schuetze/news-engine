@@ -22,8 +22,18 @@ COMO ESCREVER (soar humano, não gerado por máquina):
 - Evite frases feitas de efeito ("X é a nova moeda de Y", "no fim do dia").
 - Sem emoji. Sem aspas curvas: use aspas retas (").
 - Não repita o mesmo dado em dois slides com sinônimos diferentes.
-- Atribua o que é atribuível ("segundo o TSE", "de acordo com a Folha") em vez de
-  "especialistas afirmam" ou "fontes indicam".
+- ATRIBUIÇÃO COM PARCIMÔNIA (pedido do Pedro, 2026-09-07: estava citando
+  jornal demais). Nomeie a fonte SÓ quando ela muda o sentido da frase:
+  - declaração, alegação, rumor ou versão de uma das partes ("Putin afirmou
+    que...", "segundo o governo israelense");
+  - número ou estudo que sustenta a notícia, na PRIMEIRA vez que aparece
+    ("estudo publicado na Nature", "dados do FMI");
+  - informação contestada, não confirmada ou de fonte única.
+  Fato consensual NÃO precisa de fonte: escreva o fato. Nunca repita o mesmo
+  veículo em mais de um slide e nunca use fórmula vaga de enchimento
+  ("segundo reportagens", "de acordo com veículos", "conforme apurações",
+  "especialistas afirmam"). Teto: UMA atribuição por slide, DUAS na caption
+  inteira. A credibilidade do post vem da verificação, não de repetir nomes.
 - FIDELIDADE ÀS FONTES em cargos e situações atuais: quem é presidente,
   ex-presidente, premiê, ministro, técnico, casado, vivo ou morto vem SOMENTE
   das fontes fornecidas. NUNCA complete com seu conhecimento prévio, que pode

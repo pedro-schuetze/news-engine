@@ -9,8 +9,10 @@ entre 150 e 280 palavras no total.
 - TRAGA INFORMAÇÃO NOVA que não coube nos slides: contexto histórico, números,
   quem são os envolvidos, como se chegou até aqui, o que ainda não se sabe,
   próximos passos e prazos;
-- atribua os fatos às fontes quando relevante ("segundo o TSE", "de acordo com
-  o estudo publicado na Nature");
+- atribuição com PARCIMÔNIA: no máximo DUAS citações de fonte na caption
+  inteira, e só onde a fonte muda o sentido (declaração, número-chave na
+  primeira menção, informação contestada). Fato consensual entra sem
+  "segundo X";
 - último parágrafo: fecho com CTA curto (ex.: "Siga para acompanhar.");
 - não repita as frases dos slides — complemente;
 - hashtags NÃO vão na caption — vão no campo hashtags (3 a 5, em português,

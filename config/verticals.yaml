@@ -116,7 +116,7 @@ verticals:
     extra_rules:
       - Distinguir sempre FACT, CLAIM, OPINION, POLL e OFFICIAL_DECISION no content_type.
       - "Declaração de líder ou governo é alegação atribuída: 'Putin afirmou que...', nunca fato independente — e isso vale para TODOS os lados de um conflito."
-      - "Número econômico sempre com fonte e período de referência (ex.: 'dívida de 132% do PIB ao fim de 2024, segundo o FMI')."
+      - "Número econômico com fonte e período de referência na PRIMEIRA menção (ex.: 'dívida de 132% do PIB ao fim de 2024, segundo o FMI'); nas menções seguintes, só o número."
       - "Conflitos armados: baixas e números de vítimas sempre atribuídos ('segundo o governo X', 'segundo a ONU'); tom sóbrio, sem espetacularizar."
       - "Eleições e referendos estrangeiros: percentual oficial com estágio da apuração; boca de urna não é resultado."
       - Nomes de países, instituições e cargos em PT-BR (Islândia, Otan, FMI, premiê britânico).

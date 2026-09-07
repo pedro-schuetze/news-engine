@@ -25,6 +25,15 @@ on:
         type: boolean
         default: false
 
+  schedule:
+    # REDE DE SEGURANÇA, não o horário de entrega (o gatilho pontual é o cron
+    # da Vercel às 09:00 UTC). 11:00 UTC = 08:00 BRT: se a Vercel entregou, o
+    # guard abaixo encerra este run em ~15s.
+    # RESTAURADO em 2026-09-07: o commit 5a03e1a (snapshots do Google News)
+    # removeu por acidente os DOIS gatilhos — este schedule e o bloco `crons`
+    # do web/vercel.json —, deixando o run diário sem nenhum disparo.
+    - cron: "0 11 * * *"
+
 permissions:
   contents: write # necessário para commitar os JSONs de data/
 
