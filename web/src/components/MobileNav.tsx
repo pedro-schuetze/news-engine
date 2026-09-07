@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const ITEMS = [
-  { href: "/", label: "Dashboard" },
+  { href: "/dashboard", label: "Dashboard" },
   { href: "/hoje", label: "Hoje" },
   { href: "/gerar", label: "Gerar" },
   { href: "/prontos", label: "Prontos" },
@@ -22,7 +22,7 @@ export default function MobileNav() {
         <nav className="flex gap-1">
           {ITEMS.map((item) => {
             const active =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}

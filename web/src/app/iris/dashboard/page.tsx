@@ -75,7 +75,7 @@ export default async function DashboardPage() {
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="microlabel">visão geral</p>
-          <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-navy">Dashboard</h1>
+          <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-navy">Painel</h1>
         </div>
         <Link
           href="/iris/today"
@@ -104,7 +104,7 @@ export default async function DashboardPage() {
           sub={`${fmtInt(run.stats.articles_after_dedupe)} pós-dedupe · ${fmtInt(run.stats.story_clusters)} clusters`}
         />
         <StatBlock
-          label="approval rate (run atual)"
+          label="taxa de aprovação (run atual)"
           value={pct(approved, latestStories.length)}
           sub={`${approved} aprovadas · ${rejected} rejeitadas · ${pending} pendentes`}
           accent

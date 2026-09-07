@@ -12,17 +12,17 @@ export default function HistoryStoryAction({ snapshotId, storyId }: { snapshotId
         body: JSON.stringify({ snapshot_id: snapshotId, story_id: storyId }),
       });
       const body = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(body.error || "Could not create the post.");
+      if (!response.ok) throw new Error(body.error || "Não deu para criar o post.");
       if (body.run_file) window.location.href = `/iris/manual?run=${encodeURIComponent(body.run_file)}`;
     } catch (e: any) {
-      setError(e instanceof Error ? e.message : "Could not create the post.");
+      setError(e instanceof Error ? e.message : "Não deu para criar o post.");
       setBusy(false);
     }
   }
   return <div className="mt-2 flex items-center gap-2">
-    <button type="button" onClick={createPost} disabled={busy} title="Generate a post from this historical story and open it in the editor" className="rounded-md bg-slate-900 px-2.5 py-1.5 text-[11px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-50">
-      {busy ? "Creating…" : "Create post from this story"}
+    <button type="button" onClick={createPost} disabled={busy} title="Gera um post desta pauta antiga e abre no editor" className="rounded-md bg-ink px-2.5 py-1.5 text-[11px] font-semibold text-white hover:bg-brand disabled:opacity-50">
+      {busy ? "Criando…" : "Criar post desta pauta"}
     </button>
-    {error && <span className="text-[11px] text-rose-600">{error}</span>}
+    {error && <span className="text-[11px] text-danger">{error}</span>}
   </div>;
 }

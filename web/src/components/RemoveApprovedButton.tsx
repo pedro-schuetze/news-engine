@@ -17,5 +17,5 @@ export default function RemoveApprovedButton({ storyId, runId, vertical }: { sto
     setBusy(false);
     if (response.ok) router.refresh();
   }
-  return <button onClick={remove} disabled={busy} title="Remove this post from Approved. The draft stays available in the editor." className="rounded-full border border-danger/40 bg-panel px-3 py-1 font-mono text-[11px] font-medium text-danger hover:bg-danger-soft disabled:opacity-50">{busy ? "Removing…" : "Remove from Approved"}</button>;
+  return <button onClick={remove} disabled={busy} title="Tira o post dos Aprovados. O rascunho continua no editor." className="rounded-full border border-danger/40 bg-panel px-3 py-1 font-mono text-[11px] font-medium text-danger hover:bg-danger-soft disabled:opacity-50">{busy ? "Removendo…" : "Remover dos Aprovados"}</button>;
 }

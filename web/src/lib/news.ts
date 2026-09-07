@@ -11,9 +11,12 @@ export function loadLatestNews(): FrontPageSnapshot {
   return latest;
 }
 
+export { sectionLabelPt } from "./sections";
+import { sectionLabelPt } from "./sections";
+
 export function groupNewsBySection(stories: FrontPageStory[]) {
   return stories.reduce<Record<string, FrontPageStory[]>>((groups, story) => {
-    (groups[story.section_label] ??= []).push(story);
+    (groups[sectionLabelPt(story.section_label)] ??= []).push(story);
     return groups;
   }, {});
 }

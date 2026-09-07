@@ -404,6 +404,39 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - Imagens do preview vêm do CDN público do R2 (prop publicBase); sem R2,
       fallback para a rota candidate.
 
+26. **2026-09-07 — Iris é o app principal (integração do trabalho do Bi).**
+    O Bi (amigo do Pedro, colaborador do repo) construiu o Iris: casca nova
+    sobre o MESMO motor (o /iris/editor reusa RunView/StoryCard/PostMedia;
+    composeFromNews desagua no formato run/story padrão) + coleta da capa do
+    Google News BR a cada 3h (src/frontpage.py, zero LLM) + geração de
+    imagem por IA em 3 opções por slide + prompts editáveis pela UI +
+    rastreio de publicados. Decisões do Pedro nesta data:
+    - Iris vira O app: raiz redireciona para /iris; o painel antigo segue
+      idêntico em /dashboard e o resto do app antigo nas rotas de sempre
+      (link "App antigo" no topo do Iris). Identidade GPB aplicada ao Iris
+      (tokens, logo local gpb-mono, PT-BR em todas as telas; seções do
+      Google News traduzidas NA EXIBIÇÃO — lib/sections.ts, client-safe).
+    - IA de imagem VOLTA como candidatas (o veto de 02/09 era contra seleção
+      cega; agora são 3 opções no pool com escolha manual). As candidatas de
+      IA passam pela MESMA análise das demais (jpeg → rosto/contraste/foco/
+      nitidez; antes entravam com BOTTOM e score 85 fixos).
+    - Verificação honesta no fluxo Google News: VERIFIED só com ≥2 artigos
+      DE FATO lidos na extração; has_primary_source false (agregador);
+      a nota diz quantos de quantos foram lidos.
+    - Busca de imagem em TRÊS origens (decisão "stock + oficiais"): banco
+      (fato, por entidade), oficiais (evento, organismos/governos) e stock
+      Unsplash/Pexels (cena conceitual da image_direction de cada slide,
+      nasce com generated_for_slide). Sem UNSPLASH_ACCESS_KEY/PEXELS_API_KEY
+      as fontes novas silenciam — Pedro precisa criar as duas chaves.
+    - PENDENTE (Pedro + Bi): COMPOSE_MODEL — o A/B do Pedro escolheu
+      gpt-5.6-sol para geração individual; o default atual no código do Bi
+      é gpt-5.6-terra (e runs recentes saíram com gpt-5-mini). Alinhar.
+    - Citação de fontes com PARCIMÔNIA nos prompts (pedido do Pedro): teto
+      1 atribuição/slide e 2/caption; baixas de guerra continuam sempre
+      atribuídas.
+    - Gatilhos do run diário RESTAURADOS: o commit 5a03e1a (snapshots)
+      removeu por acidente o cron da Vercel e o schedule de segurança.
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação

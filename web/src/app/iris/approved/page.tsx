@@ -28,13 +28,13 @@ export default async function ProntosPage({ searchParams }: { searchParams: Sear
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="microlabel">publishing queue</p>
-          <h1 className="mt-1 text-[30px] font-semibold tracking-tight text-navy">Ready to publish</h1>
+          <h1 className="mt-1 text-[30px] font-semibold tracking-tight text-navy">Prontos para publicar</h1>
         </div>
-        <Link href="/iris/today" className="rounded-full bg-brand px-4 py-2 text-[12px] font-semibold text-white">Back to Today</Link>
+        <Link href="/iris/today" className="rounded-full bg-brand px-4 py-2 text-[12px] font-semibold text-white">Voltar para Hoje</Link>
       </header>
 
-      <p className="mt-2 max-w-xl text-[13px] text-ink-2">Posts approved in the editor appear here. Use <b>Mark published</b> after they go live.</p>
-      {queue(approved, "No approved posts yet. Approve a post from the editor to send it here.")}
+      <p className="mt-2 max-w-xl text-[13px] text-ink-2">Posts aprovados no editor aparecem aqui. Depois de postar, use <b>Marcar como publicado</b>.</p>
+      {queue(approved, "Nenhum post aprovado ainda. Aprove um post no editor para ele aparecer aqui.")}
     </div>
   );
 }

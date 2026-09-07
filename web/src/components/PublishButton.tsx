@@ -12,5 +12,5 @@ export default function PublishButton({ storyId, runId, vertical }: { storyId: s
     setBusy(false);
     if (response.ok) router.refresh();
   }
-  return <button onClick={markPublished} disabled={busy} className="rounded-full bg-ink px-3 py-1 font-mono text-[11px] font-medium text-white disabled:opacity-50">{busy ? "Saving…" : "Move to Published"}</button>;
+  return <button onClick={markPublished} disabled={busy} className="rounded-full bg-ink px-3 py-1 font-mono text-[11px] font-medium text-white disabled:opacity-50">{busy ? "Salvando…" : "Marcar como publicado"}</button>;
 }

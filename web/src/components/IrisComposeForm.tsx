@@ -53,7 +53,7 @@ export default function ComposeForm({
         body = { error: `${res.status} ${res.statusText}` } as never;
       }
       if (!res.ok) {
-        setError(body.error ?? "Unable to create the post.");
+        setError(body.error ?? "Não deu para criar o post.");
         return;
       }
       setResult(body);
@@ -76,7 +76,7 @@ export default function ComposeForm({
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}) as { error?: string });
-        setError(body.error ?? "Unable to discard the post.");
+        setError(body.error ?? "Não deu para descartar o post.");
         return;
       }
       setResult(null);
@@ -104,7 +104,7 @@ export default function ComposeForm({
           value={instruction}
           onChange={(e) => setInstruction(e.target.value)}
           maxLength={600}
-          placeholder="Optional direction (e.g. focus on the impact for consumers)"
+          placeholder="Direção opcional (ex.: foque no impacto para o consumidor)"
           className="min-w-64 flex-1 rounded-full border border-line bg-panel px-3.5 py-1.5 text-[13px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none"
         />
       </div>
@@ -116,7 +116,7 @@ export default function ComposeForm({
           className="rounded-full bg-brand px-5 py-2 text-[13.5px] font-medium text-white transition-colors hover:bg-brand-ink disabled:opacity-50"
         >
           {busy === "compose"
-            ? "Reading sources and writing…"
+            ? "Lendo fontes e escrevendo…"
             : `Create post${urls.length > 1 ? ` (${urls.length} links)` : ""}`}
         </button>
 
@@ -126,15 +126,15 @@ export default function ComposeForm({
             disabled={busy !== null}
             className="rounded-full border border-danger/50 bg-panel px-4 py-2 text-[13px] font-medium text-danger transition-colors hover:bg-danger-soft disabled:opacity-50"
           >
-            {busy === "discard" ? "Discarding…" : "Discard this post"}
+            {busy === "discard" ? "Descartando…" : "Descartar este post"}
           </button>
         )}
 
         <span className="font-mono text-[11px] text-ink-3">
           {busy === "compose"
-            ? "Usually takes 20–40 seconds"
+            ? "Costuma levar 20–40 segundos"
             : urls.length === 0
-              ? "Paste at least one http(s) link"
+              ? "Cole pelo menos um link http(s)"
               : `${urls.length} link${urls.length === 1 ? "" : "s"} recognized`}
         </span>
       </div>

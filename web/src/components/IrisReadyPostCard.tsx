@@ -43,7 +43,7 @@ export default function ReadyPostCard({
           {verticalName ?? story.vertical}
         </span>
         <span className="rounded-full bg-brand-soft px-2.5 py-[3px] text-[11.5px] font-medium text-brand-ink">
-          {published ? "✓ published" : "✓ approved"}
+          {published ? "✓ publicado" : "✓ aprovado"}
         </span>
         <span className="ml-auto font-mono text-[11px] text-ink-3">
           {fmtLocal(entry.runStartedAt)}
@@ -60,16 +60,16 @@ export default function ReadyPostCard({
             loading="lazy"
             className="h-24 w-[76px] shrink-0 rounded-lg object-cover bg-panel-2"
           />
-          <p className="self-center text-[12px] text-ink-2">{slides.length} slides ready for review</p>
+          <p className="self-center text-[12px] text-ink-2">{slides.length} slides prontos para revisão</p>
         </div>
       ) : (
         <div className="m-1.5 rounded-xl border border-dashed border-line bg-panel-2/50 px-4 py-8 text-center">
-          <p className="text-[13px] text-ink-2">No preview image yet.</p>
+          <p className="text-[13px] text-ink-2">Ainda sem imagem de preview.</p>
           <Link
             href={`/iris/manual?run=${encodeURIComponent(runFile)}#${story.story_id}`}
             className="mt-1 inline-block font-mono text-[11.5px] font-medium text-brand-ink hover:underline"
           >
-            Open the post editor →
+            Abrir no editor →
           </Link>
         </div>
       )}
@@ -81,7 +81,7 @@ export default function ReadyPostCard({
         </h3>
 
         <details className="xp">
-          <summary>Caption ({draft.caption.split(/\s+/).length} words)</summary>
+          <summary>Legenda ({draft.caption.split(/\s+/).length} palavras)</summary>
           <div className="mt-2 rounded-lg bg-panel-2/60 p-3">
             <pre className="font-sans text-[13px] leading-relaxed whitespace-pre-wrap text-ink-2">
               {draft.caption}
@@ -97,7 +97,7 @@ export default function ReadyPostCard({
             slideCount={slides.length}
             disabled={!hasImages}
           />
-          <CopyButton text={captionFull} label="Copy caption" />
+          <CopyButton text={captionFull} label="Copiar legenda" />
           {!published && <>
             <PublishButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />
             <RemoveApprovedButton storyId={story.story_id} runId={story.run_id} vertical={story.vertical} />
@@ -106,7 +106,7 @@ export default function ReadyPostCard({
             href={`/iris/manual?run=${encodeURIComponent(runFile)}#${story.story_id}`}
             className="rounded-full border border-line bg-panel px-3 py-1 font-mono text-[11px] font-medium text-ink-2 hover:border-ink-3 hover:text-ink"
           >
-            Open in editor
+            Abrir no editor
           </Link>
         </div>
       </div>
