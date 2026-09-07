@@ -15,7 +15,7 @@
 import { createHash } from "node:crypto";
 import jpeg from "jpeg-js";
 import { detectFaces, faceCoverageGrid } from "./faces";
-import { searchBankImages } from "../images";
+import { pingUnsplashDownload, searchBankImages, searchConceptImages, searchOfficialImages, type SourcedImage } from "../images";
 import { poolPath, type PoolFile } from "./persist";
 import type { Story } from "../types";
 
@@ -284,12 +284,32 @@ export async function bankCandidates(story: Story): Promise<PoolFile[]> {
   const slides = story.draft?.slides ?? [];
   if (slides.length === 0) return [];
 
-  // pede mais que o número de slides: o excedente vira opção no seletor
-  const banked = await searchBankImages(story.title, Math.min(slides.length + 3, 8));
+  // TRÊS origens em paralelo (decisão 2026-09-07, "stock + oficiais"):
+  //   banco (Wikimedia/Openverse) — a foto do FATO, por entidade do título;
+  //   oficiais (organismos/governos) — a foto do EVENTO, por entidade;
+  //   stock (Unsplash/Pexels)      — a CENA que a direção de imagem do slide
+  //     pede; cada achado nasce com generated_for_slide, então a pré-seleção
+  //     o prefere no slide certo (mesmo modelo das candidatas de IA do Bi).
+  const [banked, official, ...conceptual] = await Promise.all([
+    searchBankImages(story.title, Math.min(slides.length + 3, 8)),
+    searchOfficialImages(story.title, 4),
+    ...slides.map((s) =>
+      s.image_direction ? searchConceptImages(s.image_direction, 2) : Promise.resolve([]),
+    ),
+  ]);
+  const sourced: { img: SourcedImage; rank: number; forSlide?: number }[] = [
+    ...banked.map((img, rank) => ({ img, rank })),
+    ...official.map((img, rank) => ({ img, rank })),
+    ...conceptual.flatMap((list, i) =>
+      list.map((img, rank) => ({ img, rank, forSlide: slides[i].slide_number })),
+    ),
+  ];
 
-  const jobs = banked.map(async (img, rank): Promise<PoolFile | null> => {
+  const jobs = sourced.map(async ({ img, rank, forSlide }): Promise<PoolFile | null> => {
     const bytes = await fetchBytes(img.url);
     if (!bytes) return null;
+    // exigência da licença do Unsplash: avisar quando a foto é baixada/usada
+    if (img.downloadPing) void pingUnsplashDownload(img.downloadPing);
     const mime = img.url.toLowerCase().includes(".png") ? "image/png" : "image/jpeg";
     const isJpeg = mime === "image/jpeg";
     const smart = isJpeg ? await analyzePlacementSmart(bytes) : null;
@@ -322,6 +342,7 @@ export async function bankCandidates(story: Story): Promise<PoolFile[]> {
         focus_y: smart?.focusY,
         width: smart?.width || undefined,
         height: smart?.height || undefined,
+        ...(forSlide ? { generated_for_slide: forSlide } : {}),
       },
     };
   });

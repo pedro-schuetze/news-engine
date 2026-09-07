@@ -44,7 +44,9 @@ function keyFromRootDotEnv(): string {
 export interface SourcedImage {
   url: string; // http(s) ou data: URL (IA)
   credit: string;
-  source: "wikimedia" | "openverse" | "ai";
+  /** ping de licença (Unsplash) */
+  downloadPing?: string;
+  source: string;
 }
 
 const FETCH_TIMEOUT_MS = 6000;
@@ -216,11 +218,165 @@ async function searchOpenverse(
   return out;
 }
 
+// ── stock (cena conceitual) ──────────────────────────────────────────
+//
+// Wikimedia/Openverse são bons para a foto do FATO (a pessoa, o lugar) e
+// péssimos para CENA CONCEITUAL — e é justamente cena que o writer pede
+// ("mesa de negociação vazia com bandeiras"). Daí Unsplash e Pexels: fotos
+// editoriais boas, licença que permite uso comercial, busca por descrição.
+// Aqui NÃO se aplica isRelevant: uma foto de "negotiation table" não tem (e
+// não deveria ter) o nome do país no título.
+
+const UNSPLASH_KEY = (process.env.UNSPLASH_ACCESS_KEY ?? "").trim();
+const PEXELS_KEY = (process.env.PEXELS_API_KEY ?? "").trim();
+
+export function stockEnabled(): boolean {
+  return Boolean(UNSPLASH_KEY || PEXELS_KEY);
+}
+
+async function searchUnsplash(query: string, limit: number): Promise<SourcedImage[]> {
+  if (!UNSPLASH_KEY) return [];
+  try {
+    const res = await fetch(
+      `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}` +
+        `&per_page=${limit}&orientation=portrait&content_filter=high`,
+      {
+        headers: { Authorization: `Client-ID ${UNSPLASH_KEY}` },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+        cache: "no-store",
+      },
+    );
+    if (!res.ok) return [];
+    const data = (await res.json()) as {
+      results?: {
+        urls?: { regular?: string };
+        user?: { name?: string };
+        links?: { download_location?: string };
+      }[];
+    };
+    return (data.results ?? [])
+      .filter((r) => r.urls?.regular)
+      .map((r) => ({
+        url: r.urls!.regular!,
+        credit: [r.user?.name?.slice(0, 40), "Unsplash"].filter(Boolean).join(" · "),
+        source: "unsplash" as const,
+        // a licença do Unsplash pede o ping de download quando a foto é usada
+        downloadPing: r.links?.download_location,
+      }));
+  } catch {
+    return [];
+  }
+}
+
+async function searchPexels(query: string, limit: number): Promise<SourcedImage[]> {
+  if (!PEXELS_KEY) return [];
+  try {
+    const res = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}` +
+        `&per_page=${limit}&orientation=portrait&locale=pt-BR`,
+      {
+        headers: { Authorization: PEXELS_KEY },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+        cache: "no-store",
+      },
+    );
+    if (!res.ok) return [];
+    const data = (await res.json()) as {
+      photos?: { src?: { large?: string; large2x?: string }; photographer?: string }[];
+    };
+    return (data.photos ?? [])
+      .filter((p) => p.src?.large2x || p.src?.large)
+      .map((p) => ({
+        url: (p.src!.large2x || p.src!.large)!,
+        credit: [p.photographer?.slice(0, 40), "Pexels"].filter(Boolean).join(" · "),
+        source: "pexels" as const,
+      }));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Fontes OFICIAIS/institucionais via Openverse restrito (Flickr de governos e
+ * organismos, NASA etc.): é onde vive a foto do acontecimento real com
+ * licença legítima — cúpula, líder em pronunciamento, assinatura de acordo.
+ */
+async function searchOfficial(
+  query: string,
+  entities: string[],
+  limit: number,
+): Promise<SourcedImage[]> {
+  const url =
+    "https://api.openverse.org/v1/images/?" +
+    `q=${encodeURIComponent(query)}&license_type=commercial&source=flickr,nasa,spacex` +
+    `&page_size=${limit + 8}&filter_dead=false`;
+  const data = (await fetchJson(url)) as {
+    results?: { url?: string; title?: string; creator?: string; license?: string; source?: string }[];
+  } | null;
+  const out: SourcedImage[] = [];
+  for (const r of data?.results ?? []) {
+    if (!r.url) continue;
+    if (!isRelevant(r.title ?? "", entities)) continue;
+    out.push({
+      url: r.url,
+      credit: [r.creator?.slice(0, 40), (r.license ?? "").toUpperCase(), r.source].filter(Boolean).join(" · "),
+      source: "official",
+    });
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
+/** Unsplash exige avisar o download quando a foto é efetivamente usada. */
+export async function pingUnsplashDownload(location?: string): Promise<void> {
+  if (!location || !UNSPLASH_KEY) return;
+  try {
+    await fetch(location, {
+      headers: { Authorization: `Client-ID ${UNSPLASH_KEY}` },
+      signal: AbortSignal.timeout(8000),
+      cache: "no-store",
+    });
+  } catch {
+    /* telemetria de licença: falhar aqui não pode quebrar o post */
+  }
+}
+
 // ── orquestração ─────────────────────────────────────────────────────
 
 /** Busca pública no banco (usada pela geração por slide). */
 export async function searchBankImages(title: string, limit: number): Promise<SourcedImage[]> {
   return searchBanks(title, limit);
+}
+
+/**
+ * CENA CONCEITUAL por descrição (Unsplash + Pexels em paralelo). É o
+ * complemento do searchBankImages: banco acha a foto do FATO (entidade);
+ * stock acha a cena que a direção de imagem pede ("mesa de negociação
+ * vazia com bandeiras"). Sem chaves configuradas, devolve [] em silêncio.
+ */
+export async function searchConceptImages(query: string, limit: number): Promise<SourcedImage[]> {
+  const q = query.trim().slice(0, 140);
+  if (!q || !stockEnabled()) return [];
+  const half = Math.max(1, Math.ceil(limit / 2));
+  const [u, p] = await Promise.all([searchUnsplash(q, half), searchPexels(q, half)]);
+  // intercala para não privilegiar um provedor no rank (o rank vira score)
+  const out: SourcedImage[] = [];
+  for (let i = 0; i < half; i++) {
+    if (u[i]) out.push(u[i]);
+    if (p[i]) out.push(p[i]);
+  }
+  return out.slice(0, limit);
+}
+
+/** Foto de EVENTO oficial (organismos/governos no Openverse) por entidades. */
+export async function searchOfficialImages(title: string, limit: number): Promise<SourcedImage[]> {
+  const entities = strongEntities(title);
+  if (entities.length === 0) return [];
+  for (const query of entities.slice(0, 2)) {
+    const found = await searchOfficial(query, entities, limit);
+    if (found.length > 0) return found;
+  }
+  return [];
 }
 
 async function searchBanks(title: string, limit: number): Promise<SourcedImage[]> {
