@@ -21,6 +21,11 @@ export async function composeFromNews(snapshot: NewsSnapshot, item: NewsStory, e
     published: item.published_at ?? undefined,
   }));
   if (!sources.length) sources.push({ domain: "Google News", title: item.title, description: "", published: item.published_at ?? undefined });
+  // Verificação HONESTA (2026-09-07): "lida" é a fonte cujo artigo foi de fato
+  // extraído (description com conteúdo). Google News listar N veículos não é
+  // verificação — VERIFIED exige ≥2 leituras reais; agregador nunca conta
+  // como fonte primária. Regras da vertical Mundo dependem deste rótulo.
+  const readCount = sources.filter((s) => s.description.trim().length >= 80).length;
   const { draft, usage, model } = await generateDraft({ storyId, title: item.title, vertical, sources });
   const now = new Date().toISOString();
   const story: Story = {
@@ -29,9 +34,9 @@ export async function composeFromNews(snapshot: NewsSnapshot, item: NewsStory, e
     trend_score: 0, trend_signals: {}, editorial_score: 0, editorial_sub_scores: {},
     editorial_reason: "Selected by an editor from Google News.", red_flags: [], final_score: 0,
     final_score_notes: [`Google News snapshot ${snapshot.id}`, `model: ${model}`], classification: null,
-    verification: { status: sources.length >= 2 ? "VERIFIED" : "PARTIALLY_VERIFIED", supporting_source_count: Math.max(0, sources.length - 1), independent_source_count: sources.length, has_primary_source: true,
+    verification: { status: readCount >= 2 ? "VERIFIED" : "PARTIALLY_VERIFIED", supporting_source_count: Math.max(0, sources.length - 1), independent_source_count: sources.length, has_primary_source: false,
       primary_source: { article_id: `${storyId}-0`, name: sources[0].domain, url: item.outlets[0]?.url || item.url, source_domain: sources[0].domain, published_at: item.published_at, source_type: "Google News", authority_score: 0, excerpt: sources[0].description.slice(0, 4000) },
-      supporting_sources: sources.slice(1).map((source, index) => ({ article_id: `${storyId}-${index + 1}`, name: source.domain, url: item.outlets[index + 1]?.url || item.url, source_domain: source.domain, published_at: item.published_at, source_type: "Google News", authority_score: 0, excerpt: source.description.slice(0, 4000) })), contradictions_found: [], verification_notes: `Google News listed ${sources.length} outlet${sources.length === 1 ? "" : "s"} for this story.` },
+      supporting_sources: sources.slice(1).map((source, index) => ({ article_id: `${storyId}-${index + 1}`, name: source.domain, url: item.outlets[index + 1]?.url || item.url, source_domain: source.domain, published_at: item.published_at, source_type: "Google News", authority_score: 0, excerpt: source.description.slice(0, 4000) })), contradictions_found: [], verification_notes: `${readCount} de ${sources.length} veículos do Google News lidos na geração do post${readCount < 2 ? " — confirmar os fatos na fonte antes de aprovar" : ""}.` },
     draft, slide_media: [], article_count: sources.length, earliest_published_at: item.published_at,
     latest_published_at: item.published_at, selection_rank: item.rank, created_at: now,
   };
