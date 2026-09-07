@@ -354,6 +354,24 @@
               "width": 1024,
               "height": 1536,
               "generated_for_slide": 5
+            },
+            {
+              "id": "ai20771c1a01ea",
+              "local_path": "data/media/news-70aed4480376590cbad1ab70-mtrm9bdf/pool/ai20771c1a01ea.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 71,
+              "score_notes": "relevância 85 · texto 57 · nitidez 69",
+              "added_at": "2026-09-07T19:15:30.319Z",
+              "focus_x": 0.6,
+              "focus_y": 0.4,
+              "width": 1024,
+              "height": 1536,
+              "generated_for_slide": 1
             }
           ]
         }
