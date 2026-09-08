@@ -94,22 +94,22 @@
             "verification_notes": "3 de 3 matérias lidas nesta geração. Leitura automática não equivale a verificação independente."
           },
           "draft": {
-            "draft_id": "news-c29-mtt08ta9",
+            "draft_id": "news-c29-mtt0f44u",
             "story_id": "news-c29696c448ce55a39f40d6f8-mtszwwfc",
             "channel": "instagram_carousel",
             "language": "pt-BR",
             "original_story_title": "Opinião | Como a AfD atua como um braço da Rússia na Alemanha",
-            "instagram_headline": "Extrema direita vence eleição estadual alemã sob suspeitas de laços russos",
-            "short_summary": "A Alternativa para a Alemanha (AfD) obteve 44% dos votos na Saxônia-Anhalt, elegeu 39 deputados e ficou três cadeiras abaixo da maioria absoluta. O avanço ocorre enquanto integrantes do partido enfrentam investigações e acusações relacionadas à influência russa na Europa.",
-            "why_it_matters": "A vitória pode levar a extrema direita a um governo regional alemão, caso a AfD consiga apoio parlamentar. O resultado também amplia o peso político de uma legenda cujos integrantes mantêm relações públicas com Moscou ou são investigados por suspeitas ligadas à Rússia.",
+            "instagram_headline": "Extrema direita vence eleição estadual alemã sob suspeitas de laços com Moscou",
+            "short_summary": "A Alternativa para a Alemanha (AfD), partido de extrema direita, recebeu 44% dos votos e elegeu 39 deputados na Saxônia-Anhalt. O avanço ocorre enquanto autoridades europeias investigam políticos da legenda por suspeitas relacionadas à influência russa.",
+            "why_it_matters": "A AfD tenta transformar a vitória eleitoral em governo, mas ainda precisa de apoio no Parlamento estadual. Caso consiga, será a primeira legenda de extrema direita a chegar a um Executivo alemão desde 1945.",
             "key_facts": [
-              "A AfD recebeu 44% dos votos na eleição estadual da Saxônia-Anhalt.",
-              "O partido elegeu 39 deputados e precisa de 42 votos para formar maioria absoluta.",
-              "Autoridades tchecas associaram dois políticos da AfD a uma suposta operação russa de influência.",
-              "O Parlamento Europeu retirou a imunidade de Petr Bystron a pedido da Justiça alemã.",
-              "A AfD busca apoio de outra legenda ou de dissidentes para comandar o governo regional."
+              "A AfD recebeu 44% dos votos na eleição estadual de 6 de setembro.",
+              "O partido conquistou 39 cadeiras, três abaixo da maioria absoluta.",
+              "Autoridades tchecas associaram Maximilian Krah e Petr Bystron a uma operação de influência russa.",
+              "A Justiça alemã investiga Bystron por suspeitas que incluem suborno e lavagem de dinheiro.",
+              "A AfD busca apoio de outros partidos ou de deputados dissidentes para governar."
             ],
-            "caption": "A Alternativa para a Alemanha (AfD), partido de extrema direita, venceu a eleição estadual de 6 de setembro na Saxônia-Anhalt. A legenda recebeu 44% dos votos e conquistou 39 cadeiras, três a menos que as 42 necessárias para uma maioria absoluta.\n\nO avanço trouxe novamente ao debate as relações de integrantes da AfD com Moscou. Em 2024, autoridades tchecas afirmaram ter identificado no site Voz da Europa uma operação destinada a financiar políticos e disseminar narrativas favoráveis à Rússia. A investigação associou ao caso Maximilian Krah e Petr Bystron, políticos da legenda alemã.\n\nO Parlamento Europeu retirou posteriormente a imunidade de Bystron a pedido da Justiça alemã. Segundo o documento oficial da instituição, promotores suspeitavam que ele recebeu suborno para discursar e votar em defesa de interesses do governo russo. A ala jovem da AfD também estabeleceu uma aliança com o movimento juvenil do Rússia Unida, partido de Vladimir Putin.\n\nA vitória eleitoral, porém, não entrega automaticamente o governo à AfD. A legenda tenta obter votos da Aliança Sahra Wagenknecht, partido de origem esquerdista e posições socialmente conservadoras, ou de dissidentes das siglas tradicionais, que historicamente rejeitam coalizões com a extrema direita.",
+            "caption": "A Alternativa para a Alemanha (AfD), partido de extrema direita, venceu a eleição estadual de 6 de setembro de 2026 na Saxônia-Anhalt, no leste alemão. A legenda recebeu 44% dos votos e conquistou 39 cadeiras, três a menos que as 42 necessárias para obter maioria absoluta.\n\nO resultado trouxe novamente ao debate as relações de integrantes do partido com Moscou. Em 2024, autoridades tchecas afirmaram ter identificado no site Voz da Europa uma operação russa destinada a financiar políticos e disseminar narrativas favoráveis ao Kremlin. A apuração associou ao caso Maximilian Krah e Petr Bystron, políticos da AfD.\n\nBystron também é investigado pela Justiça alemã por suspeitas de suborno, lavagem de dinheiro, fraude e sonegação. O Parlamento Europeu retirou sua imunidade após receber o pedido dos promotores. Segundo documento da instituição, ele teria recebido dinheiro para discursar e votar em defesa de interesses do governo russo.\n\nAs investigações atingem pessoas e redes específicas e não representam, por si só, uma decisão judicial de que toda a AfD seja comandada pela Rússia. No plano político, a legenda ainda procura aliados para transformar a vitória nas urnas em um governo estadual.",
             "hashtags": [
               "#Alemanha",
               "#AfD",
@@ -121,45 +121,45 @@
               {
                 "slide_number": 1,
                 "role": "HOOK",
-                "headline": "Extrema direita vence eleição estadual alemã sob suspeitas de laços russos",
-                "body": "A AfD obteve 44% dos votos na Saxônia-Anhalt e ficou três cadeiras abaixo da maioria absoluta no Parlamento regional.",
-                "image_direction": "Foto documental de Ulrich Siegmund ao lado dos líderes nacionais da AfD durante o evento eleitoral na Saxônia-Anhalt, com enquadramento aberto e luz ambiente.",
+                "headline": "Extrema direita vence eleição estadual alemã sob suspeitas de laços com Moscou",
+                "body": "A AfD recebeu 44% dos votos. Investigações europeias envolvem integrantes da legenda e redes de influência ligadas à Rússia.",
+                "image_direction": "Foto documental da comemoração eleitoral da AfD na Saxônia-Anhalt, com Ulrich Siegmund e líderes nacionais no palco, em enquadramento amplo e luz do evento.",
                 "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 2,
                 "role": "CONTEXT",
-                "headline": "A maioria ainda está distante",
-                "body": "Alternativa para a Alemanha é o nome completo da AfD. O partido elegeu 39 deputados; as quatro siglas tradicionais somam outros 39, enquanto a Aliança Sahra Wagenknecht ficou com cinco.",
-                "image_direction": "Vista ampla do plenário estadual da Saxônia-Anhalt, com deputados em seus assentos e composição que evidencie a divisão parlamentar.",
+                "headline": "Vitória ainda não garante governo",
+                "body": "A AfD, partido de extrema direita, elegeu 39 deputados. Precisa de 42 para a maioria absoluta e busca apoio para governar o estado do leste alemão.",
+                "image_direction": "Foto externa do Parlamento estadual da Saxônia-Anhalt, com arquitetura institucional em destaque, composição frontal e luz natural diurna.",
                 "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 3,
                 "role": "FACTS",
-                "headline": "Uma investigação sobre influência russa",
-                "body": "Em 2024, autoridades tchecas disseram ter identificado no site Voz da Europa uma operação de influência russa. A investigação associou ao esquema Maximilian Krah e Petr Bystron, dois políticos da AfD.",
-                "image_direction": "Foto institucional de Praga com bandeiras da República Tcheca e da União Europeia em primeiro plano, arquitetura governamental ao fundo e luz natural sóbria.",
-                "image_source_type": "AGENCY_PHOTO"
+                "headline": "Uma operação pró-Rússia",
+                "body": "Em 2024, autoridades tchecas disseram ter identificado no site Voz da Europa uma operação russa para financiar políticos e difundir narrativas favoráveis a Moscou. A apuração associou Maximilian Krah e Petr Bystron ao caso.",
+                "image_direction": "Ilustração editorial sóbria de uma rede de influência atravessando o mapa da Europa, com conexões entre Rússia, República Tcheca e Alemanha, sem retratar pessoas reais.",
+                "image_source_type": "ILLUSTRATION"
               },
               {
                 "slide_number": 4,
                 "role": "WHY_IT_MATTERS",
-                "headline": "Imunidade retirada no Parlamento Europeu",
-                "body": "O Parlamento Europeu retirou a imunidade de Bystron a pedido da Justiça alemã. Segundo o documento oficial, promotores suspeitavam que ele recebeu suborno para defender interesses do governo russo.",
-                "image_direction": "Exterior do Parlamento Europeu, com bandeiras da União Europeia em destaque e o edifício institucional ao fundo, sob iluminação diurna neutra.",
+                "headline": "A investigação sobre Bystron",
+                "body": "A Justiça alemã investiga Petr Bystron por suspeitas de suborno, lavagem de dinheiro, fraude e sonegação. O Parlamento Europeu retirou sua imunidade e afirmou que ele teria recebido dinheiro para defender interesses russos.",
+                "image_direction": "Foto documental de Petr Bystron em ambiente parlamentar europeu, enquadramento médio, expressão neutra e iluminação institucional.",
                 "image_source_type": "AGENCY_PHOTO"
               },
               {
                 "slide_number": 5,
                 "role": "CONCLUSION",
-                "headline": "A vitória não garante o governo",
-                "body": "A AfD precisa chegar a 42 votos e busca apoio da Aliança Sahra Wagenknecht ou de dissidentes dos partidos que tradicionalmente rejeitam coalizões com a extrema direita.",
-                "image_direction": "Plenário da Saxônia-Anhalt durante uma sessão, visto de uma galeria superior, com foco na distribuição dos parlamentares e luz institucional.",
+                "headline": "O governo segue indefinido",
+                "body": "A AfD ficou três cadeiras abaixo da maioria e tenta atrair aliados. Se chegar ao Executivo estadual, será a primeira legenda de extrema direita a governar em qualquer nível na Alemanha desde 1945.",
+                "image_direction": "Foto documental de manifestação contra a AfD em Berlim, com o Portão de Brandemburgo ao fundo, plano aberto e luz natural.",
                 "image_source_type": "AGENCY_PHOTO"
               }
             ],
-            "created_at": "2026-09-08T18:30:28.161Z"
+            "created_at": "2026-09-08T18:35:22.158Z"
           },
           "slide_media": [
             {
