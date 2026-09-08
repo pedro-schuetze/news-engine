@@ -1,0 +1,151 @@
+{
+  "run_id": "news-70aed4480376590cbad1ab70-mtssaz6l",
+  "mode": "news",
+  "started_at": "2026-09-08T14:49:03.260Z",
+  "finished_at": "2026-09-08T14:49:03.260Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 1,
+    "articles_by_collector": {
+      "google-news-front-page": 1
+    },
+    "articles_after_dedupe": 1,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 3927,
+    "estimated_output_tokens": 2634,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 51,
+    "errors": []
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-70aed4480376590cbad1ab70-mtssaz6l",
+          "run_id": "news-70aed4480376590cbad1ab70-mtssaz6l",
+          "cluster_id": "gn-70aed4480376590cbad1ab70",
+          "vertical": "facts",
+          "title": "O matemático que passou 7 anos tentando resolver problema solucionado por amador com IA",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260907T181843937756Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 0,
+            "independent_source_count": 1,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-70aed4480376590cbad1ab70-mtssaz6l-0",
+              "name": "bbc.com",
+              "url": "https://www.bbc.com/portuguese/articles/c4gkd6qp22no",
+              "source_domain": "bbc.com",
+              "published_at": "2026-09-07T14:11:47.038Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Crédito, Cortesia Jared Duker LichtmanLegenda da foto, O matemático Jared Duker Lichtman, da Universidade de Stanford, recebeu a resposta que procurava em um email inesperadoAuthor, Charlotte McDonald e Josh McMinnRole, Programa More or Less, BBC Radio 4Published 7 setembro 2026Tempo de leitura: 6 minHá centenas de anos, matemáticos quebram a cabeça com problemas extremamente difíceis que ninguém conseguia resolver.Eles refletem sobre essas questões, discutem entre si e publicam artigos a respeito. Chegar a uma solução pode ocupar uma vida inteira de trabalho.Mas, no dia 13/4 deste ano, foi a inteligência artificial (IA) que resolveu um problema matemático que até então ninguém havia conseguido solucionar: o problema 1196 de Erdős.Especialistas na área ficaram surpresos e, claro, muito interessados.\"Depois de talvez uma hora lendo e conferindo o resultado bruto produzido pela IA, ficou muito claro para mim que estava correto e que a ideia era muito boa\", afirma o matemático Jared Duker Lichtman, da Universidade Stanford, nos Estados Unidos.Lichtman trabalhava havia sete anos nesse problema, que acabara de ser resolvido por um entusiasta da matemática que inseriu um único prompt (comando enviado ao sistema de IA) em uma ferramenta de IA.Mas em que consiste esse problema? E o que significa para a matemática uma IA ter conseguido resolvê-lo?Se você acha que já sabe onde esta história vai dar, vale lembrar que, no mundo da matemática, as respostas costumam surpreender.Pule Mais lidas e continue lendoMais lidasFim do Mais lidasUm gênio itinerantePule Promoção Agregador de pesquisas e continue lendoFim do Promoção Agregador de pesquisasProblemas matemáticos que continuam sem solução têm uma certa aura de mistério.O mais conhecido talvez seja o último teorema de Fermat, que apareceu em uma anotação manuscrita na margem de uma página de um livro do matemático do século 17 Pierre de Fermat (1601-65).Além do enigma que deixou para a posteridade, Fermat escreveu: \"Tenho uma solução, mas ela é longa demais para caber na margem.\"Até onde se sabe, Fermat levou essa solução para o túmulo.\"Foi preciso esperar vários séculos até que o problema finalmente fosse resolvido, em 1994, e o matemático que conseguiu isso usou áreas da matemática que nem sequer existiam na época de Fermat\", afirma a matemática Katie Steckles.E há muitos outros, com todo tipo de nome curioso: a conjectura de Collatz, a hipótese de Riemann, os problemas de Hilbert e os problemas do milênio...\"Ah, há muitos!\", exclama Steckles. \"E encontramos mais a cada dia. Cada área da matemática tem suas grandes questões\", disse ela ao programa More or Less, da Rádio 4 da BBC.Entre esses desafios está uma enorme coleção conhecida como \"problemas de Erdős\", formulados por uma das figuras mais prolíficas e afáveis da matemática.Crédito, Getty ImagesLegenda da foto, Paul Erdős era um matemático que vivia com quase nada: além de uma mala quase vazia, não tinha bens materiais, que considerava um incômodo O húngaro Paul Erdős (1913–96) foi um gênio extraordinário, não apenas pelas diversas contribuições que deixou para a matemática, mas também pelo modo como viveu.Nunca teve casa nem posses além de uma mala quase vazia. Erdős queria era ser uma espécie de viajante da matemática, indo a qualquer lugar do mundo onde houvesse algo interessante acontecendo e espaço para pensar e trocar ideias.Durante décadas viajando e trabalhando com outros matemáticos, Erdős não apenas formulou mais de 1,2 mil problemas, como também resolveu muitos deles e encontrou demonstrações surpreendentemente simples para teoremas que já eram considerados solucionados.O problemaEm 2023, essa enorme coleção de problemas foi reunida em um site para que matemáticos pudessem ver quais ainda estavam em aberto e compartilhar suas demonstrações.\"A primeira vez que ouvi falar da conjectura de Erdős sobre conjuntos primitivos, eu estava no último ano da faculdade\", lembra Lichtman.\"E fiquei completamente fascinado pelo problema.\"Os problemas de Erdős abordados nesta história envolvem os chamados conjuntos primitivos.Você provavelmente conhece os números primos: números inteiros que só podem ser divididos exatamente por 1 e por eles mesmos. Um conjunto primitivo segue uma lógica parecida: escolhem-se números de modo que nenhum deles possa ser dividido exatamente por outro, embora eles não precisem ser números primos.Por exemplo, 4, 5 e 6 formam um conjunto primitivo: não é possível dividir 4 por 5 ou por 6 e obter um número inteiro. O mesmo vale para 5 e 6.Não é preciso avançar mais na matemática por trás desses problemas de Erdős: daí em diante, tudo fica complexo demais.Voltemos à história.\"No meu tempo livre e à noite, eu continuava pensando nesse problema e não conseguia deixá-lo de lado. Acabei resolvendo depois de quatro anos me recusando a desistir\", conta Lichtman.O problema que levou todos esses anos para resolver era o 164 de Erdős, que mais tarde serviria de base para sua tese de doutorado.Mas esse não era o único que despertava seu interesse. Havia outros problemas de Erdős relacionados a ele, entre os quais o problema 1196.Lichtman também vinha pensando nele durante todo esse período.\"O que acontece se todos os números de um conjunto primitivo forem maiores que X e quisermos entender como sua pontuação pode crescer à medida que X tende ao infinito?\"Ele continuou pensando no assunto e trabalhando no problema por mais três anos.Até que, certa manhã, acordou e encontrou um email em seu computador.Crédito, Getty ImagesLegenda da foto, \"Acho que chegamos a um ponto em que a IA consegue trazer ideias e intuições, como faria um colega de confiança\", afirma LichtmanA mensagem dizia que um entusiasta da matemática havia apresentado o problema ao GPT-5.4 Pro, um modelo de IA, e obtido resultados que, segundo ele, poderiam constituir uma solução.\"Comecei a ler o que ele havia produzido. O resultado parecia muito preliminar e bastante desorganizado\", lembra Lichtman.A demonstração havia sido obtida por Liam Price, britânico de 23 anos sem formação universitária em matemática.\"Usei uma IA da OpenAI para resolver o problema 1196 de Erdős\", contou Price.\"Pensei em um prompt engenhoso, dei a instrução à IA e, depois de cerca de 80 minutos de processamento, ela me apresentou uma solução. Então passei o resultado para outra versão do modelo e disse: 'Aqui está a solução. Você pode conferir e verificar se está correta?'. A resposta foi que, em essência, ela (a IA) não havia encontrado nenhum erro no raciocínio\", acrescentou Price.Lichtman ficou ao mesmo tempo perplexo e feliz.O saberA IA já havia ajudado a resolver outros problemas de Erdős — na verdade, várias dezenas. Mas muitos eram problemas relativamente simples e pouco conhecidos.O problema 1196 era diferente. Além de desafiar matemáticos há décadas, o GPT-5.4 Pro encontrou uma nova forma de abordá-lo, por meio de um método que havia passado despercebido pela literatura matemática durante todo esse tempo. E o método não resolveu apenas o problema 1196, mas também outras questões relacionadas.Lichtman não se incomodou com o fato de um modelo de IA ter chegado à solução antes dele. \"Se outro matemático resolve um problema que interessa a você, não acho que alguém vá perguntar se isso incomoda\", explica.\"Você simplesmente quer saber a resposta e ter acesso a ela, independentemente de como ela foi obtida\", acrescenta.Além disso, a IA precisou de alguém como Lichtman, com conhecimento profundo o bastante de matemática para olhar aquele resultado ainda bruto e perceber que havia ali algo valioso.\"Fiquei imediatamente muito feliz e, na verdade, comecei a trabalhar nesses outros grupos de problemas para ver se conseguia aplicar essa ideia\", conta Lichtman.Logo surgiram outros avanços. Poucas semanas depois, um modelo da OpenAI refutou uma conjectura de Erdős que permanecia sem solução havia quase 80 anos.No dia 1º/8, a empresa anunciou outros dez avanços em problemas matemáticos que estavam em aberto havia muito tempo. Os trabalhos tiveram a participação de matemáticos, que ajudaram a analisar, desenvolver e formalizar os resultados.\"Acho que chegamos a um ponto em que a IA consegue trazer ideias e intuições, como faria um colega de confiança, e às vezes essas ideias realmente dão resultado\", afirma Lichtman.\"Estamos numa fase em que a IA começa a funcionar, de certa forma, como um colaborador com quem podemos trocar ideias e de quem podemos receber comentários.\"*Esta reportagem foi adaptada do programa More or Less, da BBC Radio 4, apresentado por Charlotte McDonald e produzido por Josh McMinn. Você pode ouvi-lo em inglês aqui."
+            },
+            "supporting_sources": [],
+            "contradictions_found": [],
+            "verification_notes": "1 de 1 matérias lidas. Leitura não equivale a verificação independente. "
+          },
+          "draft": {
+            "draft_id": "news-70a-mtssc2l7",
+            "story_id": "news-70aed4480376590cbad1ab70-mtssaz6l",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "O matemático que passou 7 anos tentando resolver problema solucionado por amador com IA",
+            "instagram_headline": "IA soluciona problema que matemático estudava havia sete anos",
+            "short_summary": "Segundo a BBC News Brasil, o britânico Liam Price usou o GPT-5.4 Pro para obter uma solução do problema 1196 de Erdős. O matemático Jared Duker Lichtman, da Universidade Stanford, analisou a demonstração e concluiu que ela estava correta.",
+            "why_it_matters": "A solução apresentou um método que também pode ser aplicado a questões relacionadas. Para Lichtman, o caso mostra que modelos de IA começam a atuar como colaboradores capazes de sugerir ideias matemáticas úteis.",
+            "key_facts": [
+              "O resultado foi obtido em 13 de abril de 2026.",
+              "Liam Price tem 23 anos e não possui formação universitária em matemática.",
+              "O GPT-5.4 Pro processou o problema por cerca de 80 minutos.",
+              "Jared Duker Lichtman estudava a questão havia sete anos.",
+              "A abordagem encontrada também alcança outros problemas relacionados."
+            ],
+            "caption": "Um problema matemático estudado havia décadas recebeu uma solução produzida por inteligência artificial em 13 de abril de 2026. Segundo a BBC News Brasil, o matemático Jared Duker Lichtman levou cerca de uma hora para examinar o resultado e concluiu que a demonstração estava correta.\n\nA tarefa foi apresentada ao GPT-5.4 Pro por Liam Price, britânico de 23 anos sem formação universitária em matemática. Ele disse ter elaborado um único prompt e recebido a resposta após aproximadamente 80 minutos. Em seguida, pediu que outra versão do modelo verificasse o raciocínio.\n\nO problema 1196 integra a coleção de mais de 1,2 mil questões formuladas pelo matemático húngaro Paul Erdős. Ele envolve conjuntos primitivos, formados por números em que nenhum pode ser dividido exatamente por outro do mesmo conjunto.\n\nA abordagem identificada pela IA havia passado despercebida na literatura matemática e também servia para questões relacionadas. Poucas semanas depois, outro modelo da OpenAI refutou uma conjectura de Erdős que permanecia sem solução havia quase 80 anos. Esses trabalhos tiveram a participação de matemáticos na análise e formalização dos resultados.\n\nFontes: BBC News Brasil.",
+            "hashtags": [
+              "#Matemática",
+              "#InteligênciaArtificial",
+              "#Ciência",
+              "#PaulErdos",
+              "#Tecnologia"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "IA soluciona problema que matemático estudava havia sete anos",
+                "body": "Segundo a BBC, Liam Price obteve com o GPT-5.4 Pro uma demonstração do problema 1196 de Erdős.",
+                "image_direction": "Composição conceitual de uma demonstração matemática complexa ao lado de uma interface abstrata de inteligência artificial, com luz fria e fundo limpo.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Um comando e 80 minutos",
+                "body": "Price, um britânico de 23 anos sem formação universitária em matemática, disse ter elaborado um único prompt. O modelo processou a tarefa por cerca de 80 minutos; depois, ele pediu a outra versão que conferisse o raciocínio.",
+                "image_direction": "Jovem diante de um notebook em ambiente doméstico, visto de perfil, com fórmulas em folhas sobre a mesa e iluminação natural, sem reproduzir uma pessoa real específica.",
+                "image_source_type": "AI_GENERATED"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O desafio dos conjuntos primitivos",
+                "body": "O problema trata de conjuntos nos quais nenhum número é divisível exatamente por outro do mesmo grupo. Jared Duker Lichtman, da Universidade Stanford, pensava nessa questão havia sete anos e já resolvera um problema relacionado.",
+                "image_direction": "Página do site que reúne os problemas de Erdős aberta na seção referente ao problema 1196, enquadrada de modo legível e sem alterações editoriais.",
+                "image_source_type": "SCREENSHOT"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Uma abordagem até então inédita",
+                "body": "A resposta chegou bruta e desorganizada. Lichtman afirmou que, após cerca de uma hora de leitura e checagem, percebeu que a demonstração estava correta e usava um método capaz de alcançar questões relacionadas.",
+                "image_direction": "Retrato documental do matemático Jared Duker Lichtman em ambiente universitário, com composição sóbria, luz suave e elementos acadêmicos desfocados ao fundo.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Outros problemas também avançaram",
+                "body": "Segundo a BBC, poucas semanas depois, um modelo da OpenAI refutou outra conjectura de Erdős, aberta havia quase 80 anos. Em 1º de agosto, a empresa anunciou dez avanços desenvolvidos com a participação de matemáticos.",
+                "image_direction": "Ilustração de pesquisadores revisando fórmulas em uma mesa enquanto um sistema computacional organiza diferentes caminhos de demonstração, com cores discretas e composição colaborativa.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-08T14:49:03.260Z"
+          },
+          "slide_media": [],
+          "article_count": 1,
+          "earliest_published_at": "2026-09-07T14:26:50Z",
+          "latest_published_at": "2026-09-07T14:26:50Z",
+          "selection_rank": 5,
+          "created_at": "2026-09-08T14:49:03.260Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
