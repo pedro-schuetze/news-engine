@@ -170,12 +170,99 @@
             ],
             "created_at": "2026-09-08T15:16:17.767Z"
           },
-          "slide_media": [],
+          "slide_media": [
+            {
+              "asset_id": "news-8e3-s1",
+              "story_id": "news-8e31142c9b8e402582435a08-mtst9yhs",
+              "slide_number": 1,
+              "type": "image",
+              "local_path": "data/media/news-8e31142c9b8e402582435a08-mtst9yhs/pool/ai7f726ed24a1e.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1024,
+              "height": 1536,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.44,
+              "focus_y": 0.63
+            },
+            {
+              "asset_id": "news-8e3-s2",
+              "story_id": "news-8e31142c9b8e402582435a08-mtst9yhs",
+              "slide_number": 2,
+              "type": "image",
+              "local_path": "data/media/news-8e31142c9b8e402582435a08-mtst9yhs/pool/aicacbb156c249.jpg",
+              "remote_url": null,
+              "mime_type": "image/jpeg",
+              "width": 1024,
+              "height": 1536,
+              "provenance": {
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
+                "attribution_required": true,
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
+              },
+              "text_placement": "CENTER",
+              "text_align": "right",
+              "prompt": "",
+              "estimated_cost_usd": null,
+              "focus_x": 0.55,
+              "focus_y": 0.62
+            }
+          ],
           "article_count": 4,
           "earliest_published_at": "2026-09-08T12:13:08Z",
           "latest_published_at": "2026-09-08T12:13:08Z",
           "selection_rank": 1,
-          "created_at": "2026-09-08T15:16:17.767Z"
+          "created_at": "2026-09-08T15:16:17.767Z",
+          "media_pool": [
+            {
+              "id": "ai7f726ed24a1e",
+              "local_path": "data/media/news-8e31142c9b8e402582435a08-mtst9yhs/pool/ai7f726ed24a1e.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "score": 78,
+              "score_notes": "relevância 85 · texto 68 · nitidez 80",
+              "added_at": "2026-09-08T15:17:46.777Z",
+              "focus_x": 0.44,
+              "focus_y": 0.63,
+              "width": 1024,
+              "height": 1536,
+              "generated_for_slide": 2
+            },
+            {
+              "id": "aicacbb156c249",
+              "local_path": "data/media/news-8e31142c9b8e402582435a08-mtst9yhs/pool/aicacbb156c249.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "CENTER",
+              "text_align": "right",
+              "score": 70,
+              "score_notes": "relevância 85 · texto 40 · nitidez 88",
+              "added_at": "2026-09-08T15:17:13.011Z",
+              "focus_x": 0.55,
+              "focus_y": 0.62,
+              "width": 1024,
+              "height": 1536,
+              "generated_for_slide": 4
+            }
+          ]
         }
       ]
     }
