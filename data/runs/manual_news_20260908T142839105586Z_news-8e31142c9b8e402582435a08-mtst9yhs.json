@@ -1,0 +1,184 @@
+{
+  "run_id": "news-8e31142c9b8e402582435a08-mtst9yhs",
+  "mode": "news",
+  "started_at": "2026-09-08T15:16:17.767Z",
+  "finished_at": "2026-09-08T15:16:17.767Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 7020,
+    "estimated_output_tokens": 2613,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 54,
+    "errors": [
+      "CNN Brasil: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-8e31142c9b8e402582435a08-mtst9yhs",
+          "run_id": "news-8e31142c9b8e402582435a08-mtst9yhs",
+          "cluster_id": "gn-8e31142c9b8e402582435a08",
+          "vertical": "politics",
+          "title": "Mendonça pede sessão extraordinária sobre afastamento de diretor da PF",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260908T142839105586Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 4,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-8e31142c9b8e402582435a08-mtst9yhs-0",
+              "name": "www1.folha.uol.com.br",
+              "url": "https://www1.folha.uol.com.br/colunas/monicabergamo/2026/09/lula-deve-recorrer-ao-stf-antes-de-cumprir-ordem-de-mendonca-diz-advogado-que-coordena-campanha.shtml",
+              "source_domain": "www1.folha.uol.com.br",
+              "published_at": "2026-09-08 09:48:00",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "O advogado Marco Aurélio de Carvalho, que é o coordenador da campanha de Lula em São Paulo, afirmou à coluna que o governo deve recorrer ao plenário do STF (Supremo Tribunal Federal) antes de cumprir a decisão do ministro André Mendonça de afastar o diretor-geral da PF (Polícia Federal) Andrei Rodrigues do cargo. Um dos amigos e conselheiros mais próximos de Lula, Marco Aurélio afirma que essa deve ser a atitude do presidente, \"dada a gravidade da medida\". Ele é coordenador do grupo Prerrogativas. Afirmou ainda que Lula \"deve se reunir com urgência com o ministro Edson Fachin, presidente do STF. É a própria democracia que está em jogo\". Ele sugere ainda que o presidente Lula \"pode e deve\" convocar o Conselho da República, órgão de consulta e aconselhamento da Presidência da República, para discutir a crise institucional que abala o STF e tem impacto direto nas eleições. \"Eleições , em toda e qualquer Democracia, devem ser disputadas no voto . Não podemos permitir que funções públicas sejam novamente capturadas por interesses políticos e eleitorais\", afirma ele. \"O Brasil está mergulhando em um crise institucional sem precedentes na história do país\", diz ele. \"Poderes e órgãos da República avocando prerrogativas constitucionais que não lhe foram atribuídas. Com base no artigo 89 da Constituição Federal, regulamentado pela lei 8041, o Presidente Lula pode e deve convocar o Conselho da República, que é um órgão de consulta e aconselhamento da Presidência da República\", diz. Mendonça determinou nesta terça-feira (8) o afastamento de Andrei Rodrigues da direção-geral da Polícia Federal. Na mesma decisão, Mendonça também afastou preventivamente o diretor de Inteligência da PF, Leandro Almada. O que motivou o afastamento, segundo a decisão desta terça, foi a produção de um relatório interno da Polícia Federal usado pelo ministro Alexandre de Moraes, do STF, para pedir uma investigação contra o próprio Mendonça por abuso de autoridade, improbidade administrativa e crime de responsabilidade na condução do caso do Banco Master e do INSS (Institutos Nacional do Seguro Social). A decisão desta terça ainda precisa ser julgada pela segunda turma do Supremo, que é composta pelos ministros Luiz Fux (presidente), Gilmar Mendes, Dias Toffoli e Kassio Nunes Marques, além do próprio André Mendonça. Fux convocou uma sessão virtual extraordinária do colegiado. Ele e Nunes Marques anteciparam seus votos, formando maioria de três para manter o afastamento. Gilmar Mendes pediu vista para ter mais tempo para analisar o caso, e por isso o julgamento não será concluído nesta terça (8). Andrei recebeu a notícia da decisão antes de discursar em um evento de início de curso de agentes da Polícia Federal. No auditório da Academia Nacional de Polícia, em Brasília, 735 alunos aguardam sentados há cerca de 40 minutos um representante da chefia da PF se posicionar sobre o ocorrido. Alexandre de Moraes e André Mendonça são os dois pivôs do que se tornou a maior crise institucional da história recente do STF. com DIEGO ALEJANDRO, JULLIA GOUVEIA e KARINA MATIAS LINK PRESENTE: Gostou deste texto? Assinante pode liberar sete acessos gratuitos de qualquer link por dia. Basta clicar no F azul abaixo."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-8e31142c9b8e402582435a08-mtst9yhs-1",
+                "name": "oglobo.globo.com",
+                "url": "https://oglobo.globo.com/politica/noticia/2026/09/08/discurso-sobre-arapongagem-inquerito-das-fake-news-e-aviso-antecipado-os-recados-de-mendonca-a-moraes-na-decisao-que-afastou-o-diretor-geral-da-pf.ghtml",
+                "source_domain": "oglobo.globo.com",
+                "published_at": "2026-09-08T12:13:08Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Nome do colega de corte foi citado nove vezes em despacho do relator que está à frente dos casos Master e INSS 0.5x 1x 1.25x 1.5x 2x 00:00 00:00 Os ministros André Mendonça e Alexandre de Moraes na chegada à sessão plenária do STF nesta tarde (03/09/26) — Foto: Brenno Carvalho O ministro do Supremo Tribunal Federal (STF) André Mendonça usou a decisão de afastamento do diretor-geral da PF, Andrei Rodrigues, para passar recados ao ministro Alexandre de Moraes. Os dois vivem um embate desde que Mendonça tirou o sigilo de um relatório que mostrava mensagens enviadas pelo banqueiro Daniel Vorcaro a Moraes no auge da crise do Banco Master. O nome de Moraes é citado nove vezes na decisão de Mendonça proferida nesta terça-feira. No texto, Mendonça chegou a citar um discurso do próprio colega para ressaltar a \"gravidade da situação\". Segundo o ministro do Supremo, ele foi \"monitorado\" ilegalmente pela PF, que produziu seis relatórios de inteligência \"ilegais\", \"apócrifos\" e \"sem conformidade técnica\". O objetivo dos documentos, conforme Mendonça, seria dar argumentos para inclusão do seu nome no inquérito das Fake News, que está sob relatoria de Moraes há mais de sete anos. Os relatórios foram retirados posteriormente deste inquérito por decisão do presidente do STF, Edson Fachin, e agora tramitam em um procedimento sob relatoria do próprio Fachin. Mendonça abre um intertítulo no despacho com o nome \"Ministro Alexandre de Moraes\", e reproduz o voto do colega em uma outra ação. \"Não é permitido a nenhum órgão bisbilhotar, fichar ou estabelecer classificação de qualquer cidadão e enviá-los para outros órgãos”, afirmou Mendonça na ocasião. “Relatórios de inteligência não podem ser utilizados para punir, mas para orientar ações relacionadas à segurança pública e do Estado”, diz o texto. Mendonça ainda mencionou o julgamento no Supremo que avaliou a constitucionalidade da lei que instituiu a Agência Brasileira de Inteligência (Abin). À frente de casos que miraram o ex-presidente Jair Bolsonaro, Moraes ficou conhecido por votos e discursos críticos ao que ele classificou como \"estrutura paralela\" da Abin para monitorar desafetos do ex-mandatário. \"Portanto, verifica-se do exame da jurisprudência do Tribunal a sua absoluta intransigência com a produção e veiculação desse tipo de expediente, apto a configurar verdadeira arapongagem institucional, em face de todo e qualquer cidadão nacional, aí incluídos os servidores públicos em geral\", escreveu Mendonça. Apesar de não ter tomado nenhuma decisão em relação ao colega, o ministro do STF insinuou que Moraes teve acesso a informações de consumo interno da PF. \"E mais, conforme depreende da própria decisão do Ministro Alexandre de Moraes, previamente, este teria tido 'notícias da existência' desses relatórios. Isso significa que, ademais da produção ilícita dos 'documentos', foi dada ciência das suas existências a outro Ministro para que este subscritor fosse incluído no Inquérito das Fake News\", afirmou Mendonça. Em outra indireta a Moraes, Mendonça citou o caso de afastamento do então governador do Distrito Federal Ibaneis Rocha (MDB) no caso dos atos golpistas de 8 de janeiro. Esta decisão foi tomada por Moraes e confirmada pelo plenário do Supremo, em abril de 2023. Na ocasião, Moraes entendeu que a conduta do governador do DF foi \"dolosamente omissiva\" ao não impedir o quebra-quebra na Praça dos Três Poderes. Outro caso mencionado por Mendonça foi o da ação em que Moraes determinou a quebra de sigilo bancário e fiscal do então ministro do Meio Ambiente, Ricardo Salles, e o afastamento do então presidente do Ibama, Eduardo Bim. A decisão foi proferida em maio de 2021 durante o governo Bolsonaro, quando Mendonça era ministro da Justiça. A investigação em questão tratava de prevaricação e advocacia administrativa em prol de criminosos que exportavam madeira ilegal da Amazônia. O histórico de decisões foi listado por Mendonça para destacar que há \"jurisprudência\" no Supremo para o afastamento de autoridades nomeadas pelo Poder Executivo. \"Portanto, verifica-se que a jurisprudência desta Corte revela orientação coerente: a suspensão cautelar de função pública é constitucionalmente admissível quando fundada em elementos concretos, submetida à proporcionalidade e destinada a neutralizar risco efetivo à persecução penal ou de utilização indevida das prerrogativas funcionais\", conclui o despacho. Mais recente Próxima Lula reúne auxiliares para discutir reação à decisão de Mendonça que afasta diretor-geral da PF Jogo Político Análises de Thiago Prado, editor de Política e Brasil do GLOBO"
+              },
+              {
+                "article_id": "news-8e31142c9b8e402582435a08-mtst9yhs-2",
+                "name": "bbc.com",
+                "url": "https://www.bbc.com/portuguese/articles/c5yw3pvzreeo",
+                "source_domain": "bbc.com",
+                "published_at": "2026-09-08T12:04:48.543Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Crédito, Anadolu via Getty ImagesAuthor, Mariana Schreiber e Julia BraunRole, Da BBC News Brasil em Brasília e LondresPublished 8 setembro 2026, 09:04 -03Atualizado Há 1 horaTempo de leitura: 7 minEm sua decisão, Mendonça determina a abertura imediata de procedimentos investigativos criminais e administrativo-disciplinares contra Rodrigues na Corregedoria da PF.Segundo o ministro, ele e o advogado-geral da União, Jorge Messias, vinham sendo submetidos a um \"monitoramento sistemático\" por parte da inteligência policial que seria ilegal. André Mendonça também pediu, na mesma decisão, o afastamento do diretor de Inteligência Policial da PF, Leandro Almada da Costa.O ministro solicitou a convocação de uma sessão virtual extraordinária da Segunda Turma do STF para referendar a decisão ainda nesta terça-feira.No despacho da última quinta-feira (03/09), Moraes usa relatórios de inteligência da Polícia Federal (PF) que, segundo ele, indicariam irregularidades como improbidade administrativa, abuso de autoridade e crimes de responsabilidade na condução do caso do Banco Master e do INSS (Institutos Nacional do Seguro Social).Pule Mais lidas e continue lendoMais lidasFim do Mais lidasPule Promoção Agregador de pesquisas e continue lendoFim do Promoção Agregador de pesquisasEm sua decisão desta terça, Mendonça afirma que Andrei Rodrigues, como diretor da PF, encaminhou a Moraes ao menos seis \"relatórios de inteligência\" produzidos de forma sigilosa entre 3 e 31 de agosto de 2026.Segundo o ministro, teria havido \"superlativa gravidade e ilicitude na produção dos 'relatórios de inteligência\" publicizados pelo Ministro Alexandre de Moraes\".O magistrado aponta ainda um monitoramento irregular por parte da inteligência policial \"ao menos há mais de 30 dias\".\"Trata-se de monitoramento ilícito de Ministro da Suprema Corte do país, o que por si só revela a gravidade da situação\", diz o magistrado no documento. Mendonça chega a comparar o cenário vivido com o criado pelo escritor George Orwell em sua obra 1984, um romance que retrata uma sociedade sob controle totalitário absoluto, vigilância em massa e manipulação mental.\"De fato, é premente a adoção de medidas voltadas à efetiva salvaguarda das garantias institucionais asseguradas pela Constituição Federal em favor da magistratura, da advocacia-pública e das carreiras policiais, diante das graves e danosas consequências que a manutenção da produção desses \"relatórios\", elaborados de forma reiterada e durante período alongado de tempo dentro da Polícia Federal, representam para o exercício regular de todas essas funções, essenciais à administração da justiça\", escreveu Mendonça na decisão. Outro ponto considerado de extrema gravidade pelo ministro foi o vazamento de informações sigilosas decorrente da publicação dos relatórios da polícia.O material continha detalhes sobre investigações em andamento e pendentes de decisão judicial envolvendo os políticos Antonio Rueda e ACM Neto.Mendonça enfatizou que a divulgação prévia revelou as potenciais medidas cautelares aos alvos, \"frustrando completamente a sua eficácia e prejudicando efetivamente as investigações\".Segundo o magistrado, como diretor-geral da PF, Andrei Rodrigues tinha \"pleno conhecimento\" sobre a produção e o teor dos relatórios e, por isso, deve ser afastado preventivamente do cargo. O magistrado também determinou também a suspensão de qualquer produção ou compartilhamento de relatórios de inteligência voltados a analisar a atuação funcional de magistrados, da advocacia pública ou da atividade de polícia judiciária.Além de Mendonça, o advogado-geral da União (AGU), Jorge Messias, também foi alvo de monitoramento e de \"coleta dirigida\" de informações, segundo a decisão de Mendonça. Os relatórios elucubravam que a atuação de Messias em não recorrer de decisões judiciais nas operações \"Sem Desconto\" e \"Compliance Zero\" visava preservar \"relação política com o relator\".O documento da PF classificava a confiança daquela análise de cenário como \"baixa\", mas justificava que o caso \"autoriza monitoramento e coleta dirigida\".Críticas aos relatórios da PFEm sua decisão, Mendonça também faz duras críticas ao conteúdo dos relatórios produzidos pela PF sobre sua atuação nas operações Compliance Zero (Banco Master) e Sem Desconto (INSS).Segundo o ministro, os documentos continham o que qualificou como \"escancarada realização de juízo correicional\" sobre as decisões jurisdicionais do STF, sobre o mérito técnico da AGU e até mesmo sobre o trabalho investigativo de outros delegados e agentes da própria Polícia Federal.Ele aponta ainda a fragilidade técnica dos relatórios como \"autoevidente\" e ressalta que os relatórios eram apócrifos, não tinham timbre, brasão, assinatura ou numeração, o que os tornava um \"nada jurídico\" que descumpria a Doutrina Nacional de Inteligência de Segurança Pública (DNISP).Mendonça também rejeita a ideia presente nos documentos da PF de que suas decisões nas operações tenham tido motivação política ou pessoal. O magistrado descreve como \"surreal\" e \"abjeta\" a acusação de que a sua conduta e do advogado-geral da União de não acatar solicitações da PF poderia ser explicada pelo fato de possuírem \"matriz religiosa comum\" e terem tido apoio de igrejas evangélicas em suas candidaturas ao STF.\"Tamanha é a surrealidade do 'documento', que avança inclusive em análises sobre juízo discricionário a ser exercido, de modo exclusivo e soberano, até mesmo pelo Presidente da República\", diz ainda Mendonça.Crédito, Getty ImagesLegenda da foto, Decisão foi publicada em meio à escalada de uma crise entre os ministros André Mendonça e Alexandrede Moraes, do STFAs mensagens atribuídas a Vorcaro e MoraesO caso veio à tona na última semana, depois que o ministro André Mendonça, relator do inquérito do Banco Master no STF, retirou o sigilo de um relatório da Polícia Federal que reunia informações sobre as interações entre Vorcaro e Moraes. Os diálogos mostram que o banqueiro cobrava atenção especial aos pagamentos do contrato de R$ 131 milhões firmado entre o Banco Master e o escritório Barci de Moraes, comandado por Viviane Barci de Moraes, mulher do ministro.A partir da análise dos metadados do arquivo do contrato entre o escritório Barci de Moraes e o Master, as investigações apontaram que o documento foi editado pelo ministro do STF.Em nota, o escritório Barci de Moraes confirmou que, diante da abrangência do pedido de contratação de serviços advocatícios feito pelo Banco Master, seu setor de compliance consultou Alexandre de Moraes sobre a eventual existência de impedimentos legais para a celebração do contrato.As mensagens obtidas pela investigação também indicam que Vorcaro teria pedido a Moraes que interferisse em seu favor junto ao diretor da PF, Andrei Rodrigues, e ao procurador-geral da República, Paulo Gonet.Em 15 de novembro de 2025, dois dias antes de sua prisão pela operação Compliance Zero, o banqueiro teria perguntado a Moraes via mensagem de celular: \"Acha que segunda já tenho que estar fora?\"Com base no material, Mendonça pediu a Fachin que levasse ao plenário um pedido de investigação sobre a relação entre o ministro e o ex-controlador do banco, apontando possíveis irregularidades.Já a Procuradoria-Geral da República (PGR), instada por Mendonça a se manifestar, pediu a nulidade da investigação da PF e criticou os procedimentos adotados pelo ministro.A escalada da crise entre os ministrosA tensão entre os dois ministros do STF escalou na quinta-feira (3/9), dois dias depois da manifestação de Mendonça. Em despacho no âmbito do Inquérito das Fake News, do qual é relator, Moraes apresentou relatórios de inteligência da PF que, segundo ele, indicariam que Mendonça teria cometido, \"em tese\", improbidade administrativa, crimes de responsabilidade e abuso de autoridade, além de ter comprometido a \"imparcialidade judicial\" e favorecido \"determinados grupos políticos\" ao atuar como relator de casos envolvendo o escândalo do INSS e o Banco Master.Entre as situações, o despacho acusa Mendonça de ter ordenado \"diligência investigatória policial para a produção ilegal de provas contra o ministro Alexandre de Moraes\".Diante disso, Fachin solicitou formalmente esclarecimentos a Moraes e Mendonça, além do procurador-geral da República, Paulo Gonet, e do diretor-geral da Polícia Federal, Andrei Rodrigues. O presidente do STF deu prazo de cinco dias para que os envolvidos se manifestassem sobre a crise."
+              },
+              {
+                "article_id": "news-8e31142c9b8e402582435a08-mtst9yhs-3",
+                "name": "gazetadopovo.com.br",
+                "url": "https://www.gazetadopovo.com.br/republica/mendonca-afasta-andrei-rodrigues-do-cargo/",
+                "source_domain": "gazetadopovo.com.br",
+                "published_at": "2026-09-08T11:57:41.000Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O ministro do Supremo Tribunal Federal (STF) André Mendonça mandou afastar Andrei Rodrigues dos cargos de delegado e diretor-geral da Polícia Federal (PF). A decisão é desta terça-feira (8) e atende a um pedido do partido Novo, que também pedia a sua prisão. O diretor de Inteligência Policial, Leandro Almada, também foi afastado. A liminar foi submetida no mesmo dia ao referendo pela Segunda Turma. O magistrado determina que a corregedoria da PF investigue e instaure procedimentos administrativo-disciplinares contra ambos, submetendo a ele pedidos de medidas que considerar necessárias. O ministro da Justiça e Segurança Pública, Wellington César Lima e Silva, será intimado para cumprir a ordem. \"A superlativa gravidade e ilicitude na produção dos 'relatórios de inteligência' publicizados pelo Ministro Alexandre de Moraes impõe a adoção de providências imediatas para evitar que as prerrogativas da magistratura, da advocacia pública e da própria atividade policial continuem sendo vilipendiadas\", diz Mendonça. Mendonça critica relatórios da PF usados por Moraes em reação O relator das operações Compliance Zero (caso Master) e Sem Desconto (INSS) faz referência à decisão de Alexandre de Moraes como \"documento\", entre aspas. Ele diz que o texto é \"apócrifo, sem timbre ou qualquer outro símbolo gráfico capaz de lhe empregar o mínimo grau de legitimidade e confiabilidade, inviabilizando qualquer conferência quanto à sua autoria e data de elaboração\". Moraes mandou a PF entregar todos os relatórios de inteligência que citam nomes de ministros. O movimento ocorreu no mesmo dia em que Mendonça levantou o sigilo de um relatório com mensagens enviadas a ele pelo banqueiro Daniel Vorcaro, dono do Banco Master. Em um dos relatórios, há o apontamento de que Mendonça estaria conduzindo irregularmente delações premiadas, interferindo na estrutura administrativa da PF e escolhendo alvos por motivos pessoais ou políticos. Moraes utilizou as análises para, no inquérito das fake news, reagir às revelações contra ele. No fim das contas, o presidente do Supremo, Edson Fachin, retirou o caso do inquérito e abriu um procedimento à parte para lidar com a divergência entre os ministros. Mendonça cita uma nota pública da União dos Profissionais de Inteligência de Estado da Abin (Intelis) e declarações feitas do presidente da Associação de Delegados da Polícia Federal (ADPF), Edvandir Felix de Paiva, contra o uso dos documentos. Para Paiva, o que havia eram \"impressões internas\" que não poderiam \"de maneira algua circular fora da polícia\". \"É a primeira vez que se tem notícia de uma situação como essa. É preciso se apurar inclusive porque um ministro do Supremo Tribunal Federal sabia da produção desses documentos\", defende o delegado, em um dos trechos destacados por Mendonça. Ministro acusa PF de monitorá-lo e a Messias Após citar as manifestações e a \"impropriedade técnica\", Mendonça afirma que poderia ser o caso de ignorar o movimento, se não houvesse indícios de um \"monitoramento sistemático e ilegal\" dele e do advogado-geral da União, Jorge Messias. O ministro defendeu que Messias fosse aprovado para ocupar a cadeira de Luís Roberto Barroso, mas a indicação acabou rejeitada pelo Senado. O monitoramento estaria vigente há pelo menos um mês, e sua utilização por Moraes seria irregular. A relação entre Mendonça e Moraes é citada em um dos relatórios, sob o título \"elementos de contexto sobre a relação entre o Advogado-Geral da União e o relator\". No ponto, é ressaltado o fato de ambos serem evangélicos e terem recebido apoio das igrejas na indicação ao Supremo. Isso teria motivado Messias a não recorrer de uma decisão de Mendonça. Ministro nega tratamento diferenciado a investigados Para o ministro, a corporação estaria se \"enveredando em tentativa de traçar parâmetros comparativos para avaliar os critérios decisórios empregados por Ministro do Supremo Tribunal Federal, no exercício da atividade judicante\" ao comparar decisões contra pessoas de posicionamentos políticos diferentes. As comparações seriam \"extremamente subjetivas e genéricas\" e Moraes teria colocado as investigações em risco ao expô-lo, uma vez que uma nota de rodapé adverte para o sigilo de seu teor. O trecho específico dizia respeito à sugestão de que se separassem petições contra dois alvos: o presidente do União Brasil, Antônio Rueda e o vice-presidente da mesma sigla, ACM Neto. Para criticar a postura de Moraes, Mendonça cita o trecho de um posicionamento do próprio ministro em outro julgamento: \"Não é permitido a nenhum órgão bisbilhotar, fichar ou estabelecer classificação de qualquer cidadão e enviá-los para outros órgãos. Relatórios de inteligência não podem ser utilizados para punir, mas para orientar ações relacionadas à segurança pública e do Estado\"."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. CNN Brasil: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-8e3-mtstb3s7",
+            "story_id": "news-8e31142c9b8e402582435a08-mtst9yhs",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Mendonça pede sessão extraordinária sobre afastamento de diretor da PF",
+            "instagram_headline": "Mendonça afasta diretor-geral da PF e pede sessão extraordinária",
+            "short_summary": "André Mendonça determinou o afastamento preventivo de Andrei Rodrigues e do diretor de Inteligência da PF, Leandro Almada. A Segunda Turma do STF formou maioria para manter a medida, mas o julgamento foi interrompido por um pedido de vista.",
+            "why_it_matters": "A decisão afeta o comando da Polícia Federal em meio a uma disputa entre ministros do STF sobre relatórios de inteligência. O afastamento ainda depende da conclusão do julgamento pela Segunda Turma.",
+            "key_facts": [
+              "Andrei Rodrigues e Leandro Almada foram afastados preventivamente.",
+              "Mendonça mandou abrir apurações criminais e administrativas.",
+              "O ministro alegou ter sido monitorado ilegalmente pela inteligência da PF.",
+              "Três ministros votaram pela manutenção dos afastamentos.",
+              "Gilmar Mendes pediu vista e interrompeu o julgamento."
+            ],
+            "caption": "O ministro André Mendonça, do STF, determinou nesta terça-feira (8) o afastamento preventivo do diretor-geral da Polícia Federal, Andrei Rodrigues, e do diretor de Inteligência Policial, Leandro Almada. Também ordenou a abertura de apurações criminais e administrativo-disciplinares.\n\nMendonça afirmou que ao menos seis relatórios sigilosos da PF monitoraram ilegalmente sua atuação e a do advogado-geral da União, Jorge Messias. Segundo o ministro, os documentos eram apócrifos, tecnicamente irregulares e teriam sido produzidos com o conhecimento de Rodrigues.\n\nAlexandre de Moraes havia usado os relatórios para apontar possíveis irregularidades de Mendonça nos casos Banco Master e INSS. O presidente do STF, Edson Fachin, retirou o material do inquérito das Fake News e abriu um procedimento separado sob sua relatoria.\n\nLuiz Fux convocou uma sessão virtual extraordinária da Segunda Turma. Mendonça, Fux e Nunes Marques formaram maioria para manter os afastamentos, mas Gilmar Mendes pediu vista e interrompeu o julgamento, segundo a Folha.\n\nFontes: Folha de S.Paulo, O Globo, BBC News Brasil e Gazeta do Povo.",
+            "hashtags": [
+              "#STF",
+              "#PolíciaFederal",
+              "#AndréMendonça",
+              "#AndreiRodrigues",
+              "#PolíticaBrasileira"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Mendonça afasta diretor-geral da PF e pede sessão extraordinária",
+                "body": "A decisão também alcança o diretor de Inteligência e determina a abertura de apurações internas e criminais.",
+                "image_direction": "Foto de agência de André Mendonça durante sessão no STF, em plano médio, com o plenário desfocado e iluminação institucional.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "A alegação de monitoramento ilegal",
+                "body": "Mendonça afirmou que ao menos seis relatórios sigilosos da PF monitoraram ilegalmente sua atuação e a do advogado-geral da União, Jorge Messias. Segundo ele, os documentos eram apócrifos e sem conformidade técnica.",
+                "image_direction": "Ilustração conceitual de documentos sem identificação sobre uma mesa, vistos através de uma lente, com tons sóbrios e sem conteúdo legível.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Relatórios chegaram a Moraes",
+                "body": "Alexandre de Moraes usou os documentos para apontar possíveis irregularidades de Mendonça na condução dos casos Banco Master e INSS. Segundo a decisão, Andrei Rodrigues tinha conhecimento da produção dos relatórios.",
+                "image_direction": "Foto de agência de Alexandre de Moraes no STF, em composição lateral, com outros assentos da Corte ao fundo e luz neutra.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "O alcance da ordem",
+                "body": "Além dos afastamentos preventivos, Mendonça ordenou procedimentos na Corregedoria da PF e suspendeu relatórios de inteligência sobre a atuação funcional de magistrados, integrantes da advocacia pública ou da polícia judiciária.",
+                "image_direction": "Foto institucional da sede da Polícia Federal em Brasília, com enquadramento frontal amplo, movimento discreto de servidores e luz diurna.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Julgamento fica sem conclusão",
+                "body": "Luiz Fux convocou a Segunda Turma. Mendonça, Fux e Nunes Marques formaram maioria para manter os afastamentos, mas Gilmar Mendes pediu vista e interrompeu o julgamento nesta terça-feira (8).",
+                "image_direction": "Foto de agência de uma sessão da Segunda Turma do STF, em plano aberto, mostrando a bancada dos ministros sob iluminação uniforme.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-08T15:16:17.767Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-08T12:13:08Z",
+          "latest_published_at": "2026-09-08T12:13:08Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-08T15:16:17.767Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
