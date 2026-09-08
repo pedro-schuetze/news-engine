@@ -1,0 +1,175 @@
+{
+  "run_id": "news-33893b89b0cbcea31a860526-mtsrhzqi",
+  "mode": "news",
+  "started_at": "2026-09-08T14:26:28.550Z",
+  "finished_at": "2026-09-08T14:26:28.550Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 3,
+    "articles_by_collector": {
+      "google-news-front-page": 3
+    },
+    "articles_after_dedupe": 3,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 5405,
+    "estimated_output_tokens": 2211,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 49,
+    "errors": [
+      "CNN Brasil: Endereço privado não permitido.",
+      "UOL Notícias: noticias.uol.com.br: HTTP 403"
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-33893b89b0cbcea31a860526-mtsrhzqi",
+          "run_id": "news-33893b89b0cbcea31a860526-mtsrhzqi",
+          "cluster_id": "gn-33893b89b0cbcea31a860526",
+          "vertical": "politics",
+          "title": "Mendonça determina afastamento preventivo de diretor da PF",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260908T123711642487Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-33893b89b0cbcea31a860526-mtsrhzqi-0",
+              "name": "oglobo.globo.com",
+              "url": "https://oglobo.globo.com/blogs/malu-gaspar/post/2026/09/andre-mendonca-afasta-andrei-rodrigues-da-chefia-da-pf.ghtml",
+              "source_domain": "oglobo.globo.com",
+              "published_at": "2026-09-08T11:53:16Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Ministro do STF diz que 'há mais de 30 dias tem sido monitorado pela Polícia Federal' e submete decisão para análise da Segunda Turma 0.5x 1x 1.25x 1.5x 2x 00:00 00:00 O ministro do Supremo Tribunal Federal (STF) André Mendonça e o diretor-geral da Polícia Federal (PF), Andrei Rodrigues — Foto: Brenno Carvalho/O Globo Em uma escalada da crise que abala o Supremo Tribunal Federal (STF), o ministro André Mendonça determinou nesta terça-feira (8) o afastamento preventivo de Andrei Rodrigues do cargo de diretor-geral da Polícia Federal. Segundo Mendonça, a medida é necessária para que os integrantes da Corte, o advogado-geral da União, Jorge Messias, e os servidores da Polícia Federal “exerçam suas atribuições sem constrangimentos ilegais”. O ministro afirma que há mais de 30 dias tem sido monitorado pela Polícia Federal. Mendonça submeteu a decisão para referendo da Segunda Turma, solicitando ao ministro Luiz Fux, presidente do colegiado, a convocação de sessão virtual extraordinária ainda nesta terça-feira. A Segunda Turma é formada por cinco magistrados: Mendonça, Fux, Gilmar Mendes, Kassio Nunes Marques e Dias Toffoli, que tem se declarado impedido de participar de julgamentos relacionados ao caso Master. A decisão ocorre após o ministro Alexandre de Moraes usar relatórios apócrifos da Polícia Federal para acusar Mendonça de ter cometido os crimes de abuso de autoridade, crime de responsabilidade e improbidade administrativa na condução dos casos Banco Master e INSS, dois esquemas bilionários de corrupção que atingiram lideranças políticas de diferentes matizes políticos. Mendonça também determinou o afastamento do delegado Leandro Almada do cargo de diretor de inteligência policial da Polícia Federal. E determinou a “suspensão da produção, elaboração ou compartilhamento, ainda que interno, de todo e qualquer relatório de inteligência que se destine à análise de atos praticados no exercício das funções constitucionais de prestação jurisdicional, advocacia pública e de polícia judiciária”. “A suspensão cautelar de função pública é constitucionalmente admissível quando fundada em elementos concretos, submetida à proporcionalidade e destinada a neutralizar risco efetivo à persecução penal ou de utilização indevida das prerrogativas funcionais”, escreveu Mendonça. “A restrição temporária ao exercício funcional é significativamente inferior ao dano potencial que poderia decorrer da utilização das prerrogativas inerentes aos respectivos cargos para fins de comprometer a colheita de provas, dificultar a atuação dos órgãos de investigação e persecução, ou interferir em procedimentos administrativos destinados à apuração dos mesmos fatos.” Relatórios usados por Moraes contra Mendonça são apócrifos Conforme informou o blog, os relatórios não têm autoria, não trazem o brasão da República nem a padronização esperada em ofícios dessa natureza conforme a Doutrina Nacional de Inteligência de Segurança Pública – mas não escondem suas intenções. Um dos relatórios apócrifos da Polícia Federal usados por Alexandre de Moraes para reagir ao pedido de investigação feito contra ele por André Mendonça recomenda “monitoramento e coleta dirigida” do próprio ministro e de sua relação com Jorge Messias. A sugestão aparece ao final de uma análise intitulada “postura da Advocacia-Geral da União e o quadro de risco associado” , que traça um cenário dos riscos para a Polícia Federal da relação entre Messias e Mendonça. Embora já inicie dizendo que esse tópico de análise é o de “menor lastro documental” de todo o relatório e o “único de natureza prospectiva” e que não autoriza “afirmação institucional, providência formal ou manifestação externa”, o analista que o escreveu conclui dizendo que “autoriza monitoramento e coleta dirigida”. “Identificam-se robustos indícios da existência não apenas de grave omissão como também de participação e conhecimento da elaboração desses ‘relatórios’, com consequências extremamente danosas, por parte dos atuais ocupantes dos cargos de maior envergadura na estrutura da Polícia Federal no que concerne às suas atividades de inteligência”, afirmou Mendonça. Partido Novo pediu prisão de Andrei Rodrigues A decisão de Mendonça foi tomada na análise de um pedido do partido Novo, que solicitou a adoção de “providências necessárias à preservação da independência, da integridade e da efetividade das investigações em curso”, após um relatório de 200 páginas encontrar menções a Andrei Rodrigues no celular de Vorcaro. O partido solicitou a Mendonça a prisão de Andrei Rodrigues, mas o relator dos casos Master e INSS optou pelo afastamento temporário das funções. Na segunda-feira passada, Mendonça enviou à Procuradoria-Geral da República (PGR) o relatório da PF sobre as mensagens trocadas entre Vorcaro e Alexandre de Moraes. No conteúdo extraído do celular do banqueiro, ele diz ao ministro que precisa da proteção de “Andrei e Paulo”, uma referência ao diretor-geral da PF e ao procurador-geral da República, Paulo Gonet. “Se o Andrei conseguir atrasar pra outra semana, pois tem feriado, o banco não quebra. Tenta chamar ele e sensibilizar isso se achar possível”, escreveu Vorcaro a Moraes uma semana antes da primeira prisão dele, em 17 de novembro de 2025. Um dia antes do pedido para adiar a operação, o banqueiro também fez um desabafo ao ministro do Supremo: “Não conseguimos reverter isso com Paulo ou Andrei? Muita sacanagem isso”, lamentou, segundo a investigação. Em outro trecho, Vorcaro também diz a Moraes que é importante reforçar com Andrei para “não deixar ninguém fazer sacanagem” contra ele. Em 2024, Andrei foi uma das autoridades que estiveram na degustação de uísque e charuto promovida por Vorcaro em Londres, durante um Fórum Jurídico patrocinado pelo Banco Master. Mais recente Próxima Fachin parece não ter força para impedir que pizza preparada por Moraes vá ao forno André Mendonça Gilmar Mendes Jorge Messias Luiz Fux Polícia Federal STF"
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-33893b89b0cbcea31a860526-mtsrhzqi-1",
+                "name": "noticias.r7.com",
+                "url": "https://noticias.r7.com/brasilia/andre-mendonca-determina-afastamento-de-andrei-do-cargo-de-diretor-da-pf-08092026/",
+                "source_domain": "noticias.r7.com",
+                "published_at": "2026-09-08T13:53:19.411Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O ministro do STF (Supremo Tribunal Federal) André Mendonça determinou nesta terça-feira (8) o afastamento de Andrei Rodrigues do cargo de diretor-geral da Polícia Federal. A decisão, tomada a partir de um pedido do partido Novo, ocorre em meio à crise institucional no Supremo e à desconfiança sobre a atuação de Rodrigues nas investigações do caso Master. A medida se dá após a retirada do sigilo de um relatório da Polícia Federal que detalha supostas mensagens trocadas pelo ex-banqueiro Daniel Vorcaro com o ministro Alexandre de Moraes. No conteúdo, Vorcaro pede que haja uma intervenção junto ao diretor-geral da PF, Andrei Rodrigues, e ao procurador-geral da República, Paulo Gonet. Na decisão, Mendonça justifica o afastamento “pela superlativa gravidade e ilicitude na produção de ‘relatórios de inteligência’ pela Polícia Federal”. Os documentos citados pelo relator foram usados pelo ministro Alexandre de Moraes para pedir investigação contra Mendonça e, segundo a PF, não possuem valor probatório. Segundo Mendonça, ele próprio foi monitorado pela inteligência da Polícia Federal por mais de 30 dias, assim como o advogado-geral da União, Jorge Messias. De acordo com o ministro, relatórios produzidos entre 3 e 31 de agosto mostram que os dois foram alvo de um acompanhamento sistemático e de uma “coleta dirigida” de informações. Além de Rodrigues, Mendonça determinou o afastamento preventivo de Leandro Almada da Costa, diretor de Inteligência Policial da PF.O ministro destacou haver indícios de que Rodrigues conhecia e participava da produção dos documentos. Ele também alertou para o risco de interferência nas investigações.Mendonça afirma que existem “robustos indícios” de que houve não apenas omissão, mas também participação e conhecimento da elaboração dos relatórios por integrantes da cúpula da PF.“O afastamento cautelar possui objetivo preciso e juridicamente delimitado: evitar que referidas autoridades possam valer-se das prerrogativas, dos acessos, dos sistemas, das relações institucionais e dos instrumentos inerentes ao cargo para interferir nas investigações em curso”, acrescentou Mendonça.Segundo André Mendonça, a intervenção foi fundamentada em três fatores críticos: “A absurda realização de atividades ilícitas de ‘monitoramento’ e ‘coleta dirigida’ de informações em face de Ministro do Supremo Tribunal Federal e do Advogado-Geral da União não são os únicos aspectos estapafúrdios dos ‘relatórios’ trazidos à lume. Do teor surreal de seu conteúdo verifica-se ainda a escancarada realização de juízo correicional sobre a atividade jurisdicional — exercida por ministro do Supremo Tribunal Federal —, sobre a advocacia pública e sobre a própria atividade policial”, escreveu o ministro.A decisão de André Mendonça foi submetida ao plenário virtual da Segunda Turma do STF na manhã desta terça-feira (8). Embora o julgamento tenha sido interrompido por um pedido de vista do ministro Gilmar Mendes, o colegiado já formou maioria para manter o afastamento. Os ministros Luiz Fux, presidente da Turma, e Nunes Marques anteciparam seus votos e acompanharam o relator. A Segunda Turma é composta por Fux, Gilmar Mendes, Dias Toffoli, Nunes Marques e Mendonça.Fique por dentro das principais notícias do dia no Brasil e no mundo. Siga o canal do R7, o portal de notícias da RECORD, no WhatsApp"
+              },
+              {
+                "article_id": "news-33893b89b0cbcea31a860526-mtsrhzqi-2",
+                "name": "metropoles.com",
+                "url": "https://www.metropoles.com/colunas/mirelle-pinheiro/mendonca-diz-ter-sido-monitorado-pela-pf-por-mais-de-30-dias",
+                "source_domain": "metropoles.com",
+                "published_at": "2026-09-08T09:08:00-03:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O ministro André Mendonça, do Supremo Tribunal Federal (STF), afirmou ter sido alvo de “monitoramento sistemático e ilegal” da Polícia Federal por mais de 30 dias. De acordo com decisão proferida nesta terça-feira (8/9), documentos de inteligência chegaram a registrar autorização para “monitoramento e coleta dirigida” sobre o magistrado e o advogado-geral da União, Jorge Messias.A situação foi apontada por Mendonça como de “superlativa gravidade” e embasou a decisão de afastar preventivamente o diretor-geral da PF, Andrei Augusto Passos Rodrigues, e o diretor de Inteligência Policial da corporação, Leandro Almada da Costa.Além dos afastamentos, o ministro determinou que a Corregedoria da Polícia Federal instaure procedimentos investigatórios de natureza penal e administrativo-disciplinar para apurar os fatos.“Monitoramento e coleta dirigida”Um dos pontos centrais da decisão está no conteúdo dos próprios relatórios analisados pelo ministro. No documento, Mendonça reproduz um trecho no qual a inteligência policial reconhece que a confiança agregada em determinada cadeia de inferências era “baixa” e que, por isso, as conclusões deveriam ser tratadas dessa forma.O documento também indicava, segundo a decisão, que aquele tópico não poderia sustentar “afirmação institucional, providência formal ou manifestação externa”.Apesar das ressalvas, o relatório terminava com indicação destacada por Mendonça: “Autoriza monitoramento e coleta dirigida”. Para o ministro, o conteúdo demonstra que a atuação da inteligência não ficou restrita à elaboração de análises.“À luz desses e dos demais elementos trazidos no ‘documento’ apresentado, evidencia-se a efetiva realização de monitoramento e coleta dirigida sobre a pessoa deste Ministro do Supremo Tribunal Federal e sobre a pessoa do Advogado-Geral da União”, escreveu.Mendonça também identificou no material referências a elementos “ainda não registrados em relatórios anteriores” e à manutenção de avaliações que já haviam sido realizadas anteriormente. Na avaliação do ministro, essas passagens reforçam a existência de acompanhamento continuado.Mais de 30 diasOutro trecho da decisão dimensiona o período em que, segundo Mendonça, o monitoramento teria ocorrido.O ministro afirma que documentos teriam sido recebidos por uma autoridade entre 3 e 31 de agosto de 2026. A partir dessa sequência, concluiu que o acompanhamento já se estendia por mais de um mês.“Ou seja, ao menos há mais de 30 dias este relator tem sido monitorado pela Polícia Federal”, registrou.Na mesma passagem, Mendonça classificou o caso como “monitoramento ilícito de Ministro da Suprema Corte do país” e afirmou que a circunstância, por si só, demonstraria a gravidade da situação.Material foi encaminhado por AndreiA decisão também menciona a circulação dos relatórios dentro do Supremo. Mendonça registra que o ministro Alexandre de Moraes já teria tido “notícias da existência” dos documentos.Segundo Mendonça, o material correspondente foi encaminhado por Andrei Rodrigues, por meio de ofício assinado às 18h45 de 1º de setembro de 2026, para que o próprio Mendonça fosse incluído no Inquérito das Fake News.Ao analisar o conteúdo, Mendonça criticou a construção das conclusões apresentadas nos documentos. Segundo o ministro, havia “ilações extremamente genéricas e abstratas”, formuladas a partir de sucessivos “juízos” inferenciais.Um dos pontos citados envolvia a atuação do advogado-geral da União e decisões tomadas em investigações sob a relatoria de Mendonça – entre as quais, as operações Sem Desconto e Compliance Zero.Conforme reproduzido na decisão, o relatório construiu cadeia de inferências para avaliar por que o advogado-geral da União não teria atendido a um pedido do diretor-geral da PF para recorrer de decisões proferidas nessas investigações. Uma das hipóteses apontadas seria a intenção de preservar “relação política com o relator”.Mendonça questionou tanto a metodologia quanto a legitimidade da produção dessas avaliações.Afastamento da cúpula da PFDiante do que encontrou nos documentos, Mendonça determinou o afastamento preventivo de Andrei Rodrigues dos cargos de delegado e diretor-geral da Polícia Federal.Leandro Almada também foi afastado preventivamente das funções de delegado e diretor de Inteligência Policial da PF.No dispositivo, o ministro afirmou que a medida busca preservar as garantias funcionais da magistratura, especialmente as condições para que ministros do Supremo, o advogado-geral da União e servidores da própria Polícia Federal exerçam suas atribuições sem o que classificou como “constrangimentos ilegais”.Mendonça também mencionou a necessidade de preservar a segurança e a integridade pessoal dos envolvidos e garantir condições para a apuração da produção do material.Corregedoria terá de investigarA decisão abre ainda investigação dentro da própria Polícia Federal.Mendonça ordenou à Corregedoria da corporação a instauração de procedimentos de natureza penal e administrativo-disciplinar para apurar os fatos considerados graves pelo ministro.A Corregedoria também deverá submeter ao relator outras providências que considerar necessárias durante o avanço das apurações.O ministro determinou ainda a suspensão de produção, elaboração, colaboração ou compartilhamento, inclusive internamente, de relatórios de inteligência destinados à análise de atos praticados no exercício de determinadas funções institucionais, nos termos estabelecidos na decisão.Os afastamentos de Andrei Rodrigues e Leandro Almada são preventivos. A medida não representa condenação nem conclusão definitiva sobre eventual responsabilidade dos dois dirigentes. A apuração determinada por Mendonça deverá esclarecer as circunstâncias da produção dos documentos e individualizar eventuais condutas."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "3 de 5 matérias lidas. Leitura não equivale a verificação independente. CNN Brasil: Endereço privado não permitido. · UOL Notícias: noticias.uol.com.br: HTTP 403"
+          },
+          "draft": {
+            "draft_id": "news-338-mtsrj1ae",
+            "story_id": "news-33893b89b0cbcea31a860526-mtsrhzqi",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Mendonça determina afastamento preventivo de diretor da PF",
+            "instagram_headline": "André Mendonça afasta preventivamente diretor-geral da Polícia Federal",
+            "short_summary": "O ministro André Mendonça, do STF, determinou o afastamento preventivo de Andrei Rodrigues da direção-geral da Polícia Federal. A medida também atingiu o diretor de Inteligência Policial, Leandro Almada, e foi submetida à Segunda Turma da Corte.",
+            "why_it_matters": "A decisão retira temporariamente dois integrantes da cúpula da PF e determina a investigação da produção de relatórios de inteligência. Os afastamentos são cautelares e não representam condenação.",
+            "key_facts": [
+              "Andrei Rodrigues foi afastado preventivamente da direção-geral da PF.",
+              "Leandro Almada também foi afastado da direção de Inteligência Policial.",
+              "Mendonça afirma ter sido monitorado pela PF por mais de 30 dias.",
+              "A Corregedoria da PF deverá abrir apurações penais e administrativo-disciplinares.",
+              "A Segunda Turma do STF formou maioria pelo afastamento, segundo o R7."
+            ],
+            "caption": "O ministro André Mendonça, do Supremo Tribunal Federal, determinou nesta terça-feira, 8 de setembro, o afastamento preventivo de Andrei Rodrigues dos cargos de delegado e diretor-geral da Polícia Federal. Leandro Almada, diretor de Inteligência Policial, também foi afastado.\n\nMendonça afirmou que relatórios produzidos pela inteligência da PF revelam um monitoramento sistemático dele e do advogado-geral da União, Jorge Messias, por mais de 30 dias. Segundo o ministro, há indícios de participação ou conhecimento da cúpula da corporação na elaboração dos documentos. As responsabilidades ainda serão apuradas.\n\nA decisão foi tomada durante a análise de um pedido do partido Novo, que chegou a solicitar a prisão de Andrei Rodrigues, segundo O Globo. Mendonça optou pelo afastamento temporário e ordenou à Corregedoria da PF a abertura de procedimentos penais e administrativo-disciplinares. Também suspendeu relatórios de inteligência voltados à análise de atos praticados no exercício de determinadas funções institucionais.\n\nSegundo o R7, a Segunda Turma do STF formou maioria para manter os afastamentos, com votos de Luiz Fux e Nunes Marques acompanhando o relator. O julgamento foi interrompido por um pedido de vista de Gilmar Mendes.\n\nFontes: O Globo, R7 e Metrópoles.",
+            "hashtags": [
+              "#STF",
+              "#PolíciaFederal",
+              "#AndréMendonça",
+              "#AndreiRodrigues",
+              "#Justiça"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "André Mendonça afasta preventivamente diretor-geral da Polícia Federal",
+                "body": "A decisão também afastou Leandro Almada, diretor de Inteligência Policial, e foi submetida à Segunda Turma do STF.",
+                "image_direction": "Foto documental de André Mendonça e Andrei Rodrigues em composição dividida, com enquadramento sóbrio e iluminação institucional.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Ministro relata monitoramento ilegal",
+                "body": "Mendonça afirmou que ele e o advogado-geral da União, Jorge Messias, foram alvo de monitoramento e coleta dirigida de informações pela inteligência da PF por mais de 30 dias.",
+                "image_direction": "Ilustração conceitual de documentos conectados a símbolos de monitoramento e investigação, em tons frios e sem reproduzir pessoas ou fatos como fotografia.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Decisão alcança inteligência da PF",
+                "body": "Além dos afastamentos, Mendonça ordenou que a Corregedoria da PF abra apurações penais e administrativo-disciplinares. Também suspendeu a produção e o compartilhamento dos relatórios de inteligência descritos na decisão.",
+                "image_direction": "Captura aproximada da decisão oficial, destacando visualmente a estrutura do documento sem inserir anotações, títulos ou dados adicionais.",
+                "image_source_type": "SCREENSHOT"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Medida busca proteger a apuração",
+                "body": "Segundo Mendonça, o afastamento evita que os dirigentes usem acessos, sistemas e prerrogativas dos cargos para interferir nas investigações. A medida é preventiva e não representa condenação ou conclusão definitiva sobre responsabilidades.",
+                "image_direction": "Foto documental da sede da Polícia Federal, com fachada em perspectiva ampla, luz natural e presença humana discreta.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Segunda Turma forma maioria",
+                "body": "Segundo o R7, Luiz Fux e Nunes Marques acompanharam Mendonça, formando maioria para manter os afastamentos. O julgamento no plenário virtual foi interrompido por um pedido de vista de Gilmar Mendes.",
+                "image_direction": "Foto documental do edifício do Supremo Tribunal Federal ao entardecer, com composição frontal e iluminação sóbria.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-08T14:26:28.550Z"
+          },
+          "slide_media": [],
+          "article_count": 3,
+          "earliest_published_at": "2026-09-08T11:53:16Z",
+          "latest_published_at": "2026-09-08T11:53:16Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-08T14:26:28.550Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
