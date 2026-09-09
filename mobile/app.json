@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "Iris News",
+    "slug": "iris-news",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pedroschuetze.irisnews",
+      "infoPlist": {
+        "NSPhotoLibraryAddUsageDescription": "O Iris salva os slides do post no seu rolo para você publicar no Instagram.",
+        "NSPhotoLibraryUsageDescription": "O Iris salva os slides do post no seu rolo para você publicar no Instagram.",
+        "LSApplicationQueriesSchemes": [
+          "instagram"
+        ],
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-secure-store",
+      [
+        "expo-media-library",
+        {
+          "savePhotosPermission": "O Iris salva os slides do post no seu rolo para você publicar no Instagram."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#0F2240"
+        }
+      ]
+    ],
+    "scheme": "irisnews",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0F2240"
+    }
+  }
+}
