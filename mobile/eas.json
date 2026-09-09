@@ -1,15 +1,25 @@
 {
-  "cli": { "appVersionSource": "remote" },
+  "cli": {
+    "appVersionSource": "remote"
+  },
   "build": {
     "preview": {
       "distribution": "internal",
-      "ios": { "simulator": false }
+      "ios": {
+        "simulator": false
+      }
     },
     "production": {
       "autoIncrement": true
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "ascApiKeyPath": "./credentials/AuthKey_4BDWKY4NTT.p8",
+        "ascApiKeyId": "4BDWKY4NTT",
+        "ascApiKeyIssuerId": "f46eacd8-5173-4c00-afd4-08695c876266"
+      }
+    }
   }
 }
