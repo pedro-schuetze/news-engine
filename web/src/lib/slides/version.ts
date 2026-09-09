@@ -13,7 +13,7 @@
 import type { Story } from "../types";
 
 // bump manual quando o VISUAL do template muda (renderer/fonts/logo)
-export const DESIGN_VERSION = "iris1";
+export const DESIGN_VERSION = "iris2";
 
 function hash(s: string): string {
   let h = 5381;

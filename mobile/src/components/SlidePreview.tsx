@@ -216,21 +216,21 @@ export default function SlidePreview({
               </View>
             </View>
           ) : (
-            <View style={{ flexDirection: "row", alignItems: "center", gap: 16 }}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 13 }}>
               <Image
-                source={require("../../assets/iris-wordmark-light.png")}
-                style={{ width: 170, height: 36 }}
+                source={require("../../assets/iris-mark-light.png")}
+                style={{ width: 31, height: 35 }}
                 contentFit="contain"
               />
               <Text
                 style={{
                   fontFamily: F.sansBlack,
-                  fontSize: 17,
-                  color: "rgba(247,245,241,0.85)",
+                  fontSize: 19,
+                  color: "rgba(247,245,241,0.92)",
                   letterSpacing: 5,
                 }}
               >
-                {subBrand}
+                {`IRIS ${subBrand}`}
               </Text>
             </View>
           )}

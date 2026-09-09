@@ -35,17 +35,23 @@ const IVORY = "#F7F5F1";
 const ROYAL = "#1D4ED8"; // Royal Blue — acento único da marca
 
 let fontsPromise: Promise<{ name: string; data: Buffer; weight: 400 | 700 | 900 }[]> | null = null;
-let brandPromise: Promise<string> | null = null;
+const brandCache = new Map<string, Promise<string>>();
 
-/** Wordmark IRIS NEWS oficial (variante ivory p/ foto), como data URL. */
-async function loadBrandMark(): Promise<string> {
-  if (!brandPromise) {
-    brandPromise = fs
-      .readFile(path.join(process.cwd(), "public", "brand", "iris-wordmark-light.png"))
+/** Asset de marca (variantes ivory p/ foto), como data URL. */
+function loadBrandAsset(file: string): Promise<string> {
+  let p = brandCache.get(file);
+  if (!p) {
+    p = fs
+      .readFile(path.join(process.cwd(), "public", "brand", file))
       .then((b) => "data:image/png;base64," + b.toString("base64"));
+    brandCache.set(file, p);
   }
-  return brandPromise;
+  return p;
 }
+/** Wordmark IRIS NEWS oficial (capa). */
+const loadBrandMark = () => loadBrandAsset("iris-wordmark-light.png");
+/** Símbolo solto (slides internos: símbolo + "IRIS <SUB>"). */
+const loadBrandSymbol = () => loadBrandAsset("iris-mark-light.png");
 
 async function loadFonts() {
   if (!fontsPromise) {
@@ -549,11 +555,11 @@ function CoverSlide({
 function BodySlide({
   spec,
   imageData,
-  mark,
+  symbol,
 }: {
   spec: SlideSpec;
   imageData: string | null;
-  mark: string;
+  symbol: string;
 }) {
   const ui = VERTICAL_UI[spec.vertical] ?? { label: spec.vertical.toUpperCase(), color: "#FFD666" };
   const isFinal = spec.kind === "final";
@@ -581,19 +587,20 @@ function BodySlide({
           padding: "52px 72px 46px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          {/* wordmark oficial 700x248 -> 118x42 */}
-          <img src={mark} width={170} height={36} />
+        <div style={{ display: "flex", alignItems: "center", gap: 13 }}>
+          {/* selo editorial: símbolo + IRIS <SUB> (bug 2026-09-09: wordmark
+              contém "NEWS" e ao lado do selo lia-se "IRIS NEWS WORLD") */}
+          <img src={symbol} width={31} height={35} />
           <span
             style={{
               fontFamily: "Jakarta",
-              fontSize: 17,
+              fontSize: 19,
               fontWeight: 900,
-              color: "rgba(247,245,241,0.85)",
+              color: "rgba(247,245,241,0.92)",
               letterSpacing: 5,
             }}
           >
-            {ui.label}
+            {`IRIS ${ui.label}`}
           </span>
         </div>
         <div
@@ -661,13 +668,13 @@ function BodySlide({
 }
 
 export async function renderSlide(spec: SlideSpec): Promise<ImageResponse> {
-  const [fonts, mark] = await Promise.all([loadFonts(), loadBrandMark()]);
+  const [fonts, mark, symbol] = await Promise.all([loadFonts(), loadBrandMark(), loadBrandSymbol()]);
   const imageData = spec.image ? await toDataUrl(spec.image.url) : null;
   const element =
     spec.kind === "cover" ? (
       <CoverSlide spec={spec} imageData={imageData} mark={mark} />
     ) : (
-      <BodySlide spec={spec} imageData={imageData} mark={mark} />
+      <BodySlide spec={spec} imageData={imageData} symbol={symbol} />
     );
   return new ImageResponse(element, {
     width: SLIDE_W,

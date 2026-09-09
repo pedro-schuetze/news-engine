@@ -55,6 +55,12 @@
           "resizeMode": "contain",
           "backgroundColor": "#0F2240"
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O Iris usa suas fotos para colocar imagens nos slides do post."
+        }
       ]
     ],
     "scheme": "irisnews",

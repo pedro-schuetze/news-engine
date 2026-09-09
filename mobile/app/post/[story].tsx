@@ -18,10 +18,12 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import * as Haptics from "expo-haptics";
-import { api, type PoolCandidate, type StoryDetail } from "../../src/api";
+import * as ImagePicker from "expo-image-picker";
+import { absoluteUrl, api, uploadImages, type PoolCandidate, type StoryDetail } from "../../src/api";
 import SlidePreview, { type Placement } from "../../src/components/SlidePreview";
 import { sendToInstagram } from "../../src/instagram";
 import { C, F, VERTICAL_LABEL } from "../../src/theme";
+import { TextInput } from "react-native";
 
 interface SlideState {
   candidateId: string | null;
@@ -47,6 +49,8 @@ export default function PostScreen() {
   const [saved, setSaved] = useState<Record<number, SlideState>>({});
   const [draft, setDraft] = useState<Record<number, SlideState>>({});
   const [notice, setNotice] = useState("");
+  const [adjustText, setAdjustText] = useState("");
+  const [showAdjust, setShowAdjust] = useState(false);
 
   const load = useCallback(async () => {
     try {
@@ -74,6 +78,13 @@ export default function PostScreen() {
   useEffect(() => {
     load();
   }, [load]);
+
+  useEffect(() => {
+    if (!detail?.slides?.length) return;
+    detail.slides.forEach((s) => {
+      absoluteUrl(s.render_url).then((u) => fetch(u).catch(() => {}));
+    });
+  }, [detail?.story_id, detail?.slides]);
 
   const byId = useMemo(
     () => new Map((detail?.pool ?? []).map((c) => [c.id, c])),
@@ -145,6 +156,43 @@ export default function PostScreen() {
 
   const fetchPhotos = () =>
     act("media", () => api.fetchMedia(String(storyId), String(run)), () => load());
+
+  const generateArt = () =>
+    act("ai", () => api.generateAI(String(storyId), String(run)), () => load());
+
+  const pickAndUpload = async () => {
+    const res = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: "images",
+      allowsMultipleSelection: true,
+      selectionLimit: 10,
+      quality: 0.92,
+    });
+    if (res.canceled || !res.assets?.length) return;
+    await act(
+      "upload",
+      () =>
+        uploadImages(
+          String(storyId),
+          String(run),
+          res.assets.map((a) => ({ uri: a.uri, mime: a.mimeType === "image/png" ? "image/png" : "image/jpeg" })),
+        ),
+      () => load(),
+    );
+  };
+
+  const askAdjust = () =>
+    act("adjust", () => api.adjust(String(storyId), String(run), adjustText.trim()), () => {
+      setAdjustText("");
+      setShowAdjust(false);
+      load();
+    });
+
+  const archive = () =>
+    act(
+      "archive",
+      () => api.review(String(storyId), detail!.run_id, detail!.vertical, "REJECTED"),
+      () => router.back(),
+    );
 
   const approve = () =>
     act(
@@ -367,8 +415,16 @@ export default function PostScreen() {
         {/* ações */}
         {detail && detail.slides.length > 0 && (
           <View style={{ paddingHorizontal: 18, paddingTop: 14, gap: 10 }}>
-            {detail.pool.length === 0 &&
-              btn("Buscar fotos (banco + stock)", fetchPhotos, { kind: "dark", loading: busy === "media" })}
+            <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
+              {btn("Buscar fotos", fetchPhotos, { kind: "ghost", loading: busy === "media" })}
+              {btn("Subir fotos", pickAndUpload, { kind: "ghost", loading: busy === "upload" })}
+              {btn("Gerar com IA", generateArt, { kind: "ghost", loading: busy === "ai" })}
+            </View>
+            {busy === "ai" && (
+              <Text style={{ fontFamily: F.sans, fontSize: 11.5, color: C.ink3, textAlign: "center" }}>
+                gerando 3 opções por slide — leva 1 a 2 minutos
+              </Text>
+            )}
             {dirty && (
               <View style={{ flexDirection: "row", gap: 8 }}>
                 {btn(`Salvar (${changes.length})`, save, { loading: busy === "save" })}
@@ -390,6 +446,37 @@ export default function PostScreen() {
               <Text style={{ fontFamily: F.sans, fontSize: 11.5, color: C.ink3, textAlign: "center" }}>
                 salve as alterações antes de aprovar
               </Text>
+            )}
+            <View style={{ flexDirection: "row", gap: 8 }}>
+              {btn(showAdjust ? "Fechar ajustes" : "Pedir ajustes no texto", () => setShowAdjust(!showAdjust), { kind: "ghost" })}
+              {btn("Arquivar", archive, { kind: "ghost", loading: busy === "archive" })}
+            </View>
+            {showAdjust && (
+              <View style={{ gap: 8 }}>
+                <TextInput
+                  value={adjustText}
+                  onChangeText={setAdjustText}
+                  placeholder="ex.: manchete mais direta; corte o 2º slide"
+                  placeholderTextColor={C.ink3}
+                  multiline
+                  style={{
+                    backgroundColor: C.panel,
+                    borderWidth: 1,
+                    borderColor: C.line,
+                    borderRadius: 12,
+                    padding: 12,
+                    minHeight: 70,
+                    fontFamily: F.sans,
+                    fontSize: 13.5,
+                    color: C.ink,
+                  }}
+                />
+                {btn("Reescrever com o ajuste (~30s)", askAdjust, {
+                  kind: "dark",
+                  disabled: adjustText.trim().length < 5,
+                  loading: busy === "adjust",
+                })}
+              </View>
             )}
           </View>
         )}

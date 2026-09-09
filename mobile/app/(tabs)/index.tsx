@@ -11,6 +11,7 @@ import {
   RefreshControl,
   ScrollView,
   Text,
+  TextInput,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -140,14 +141,52 @@ export default function TodayScreen() {
   const active = section || sections[0]?.label || "";
   const stories = sections.find((s) => s.label === active)?.stories ?? [];
 
+  // criar post a partir de links (o "manual" do site)
+  const [showCompose, setShowCompose] = useState(false);
+  const [composeLinks, setComposeLinks] = useState("");
+  const [composeBusy, setComposeBusy] = useState(false);
+  const [composeError, setComposeError] = useState("");
+  async function composeFromLinks() {
+    const urls = composeLinks.split(/\s+/).filter((u) => /^https?:\/\//.test(u));
+    if (!urls.length) return;
+    setComposeBusy(true);
+    setComposeError("");
+    try {
+      const r = await api.compose(urls);
+      setShowCompose(false);
+      setComposeLinks("");
+      router.push({ pathname: "/post/[story]", params: { story: r.story_id, run: r.run_file } });
+    } catch (e) {
+      setComposeError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setComposeBusy(false);
+    }
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.paper }} edges={["top"]}>
       <View style={{ paddingHorizontal: 18, paddingTop: 10, paddingBottom: 4, gap: 2 }}>
-        <Image
-          source={require("../../assets/iris-wordmark.png")}
-          style={{ width: 132, height: 28 }}
-          resizeMode="contain"
-        />
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+          <Image
+            source={require("../../assets/iris-wordmark.png")}
+            style={{ width: 132, height: 28 }}
+            resizeMode="contain"
+          />
+          <Pressable
+            onPress={() => setShowCompose((v) => !v)}
+            style={{
+              borderWidth: 1,
+              borderColor: C.line,
+              backgroundColor: C.panel,
+              borderRadius: 999,
+              paddingHorizontal: 12,
+              height: 32,
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.ink2 }}>+ de link</Text>
+          </Pressable>
+        </View>
         <Text style={{ fontFamily: F.sans, fontSize: 12.5, color: C.ink2, marginTop: 6 }}>
           {snapshot
             ? `Capa do Google News · ${new Date(snapshot.fetched_at).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}`
@@ -188,6 +227,38 @@ export default function TodayScreen() {
           </Pressable>
         ))}
       </ScrollView>
+
+      {showCompose && (
+        <View style={{ marginHorizontal: 18, marginBottom: 8, gap: 8, backgroundColor: C.panel, borderWidth: 1, borderColor: C.line, borderRadius: 14, padding: 12 }}>
+          <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.ink2 }}>
+            Cole um ou mais links da mesma notícia
+          </Text>
+          <TextInput
+            value={composeLinks}
+            onChangeText={setComposeLinks}
+            placeholder={"https://g1.globo.com/…"}
+            placeholderTextColor={C.ink3}
+            autoCapitalize="none"
+            autoCorrect={false}
+            multiline
+            style={{ backgroundColor: C.paper, borderWidth: 1, borderColor: C.line, borderRadius: 10, padding: 10, minHeight: 58, fontFamily: F.sans, fontSize: 12.5, color: C.ink }}
+          />
+          <Pressable
+            onPress={composeFromLinks}
+            disabled={composeBusy}
+            style={{ backgroundColor: C.ink, borderRadius: 10, paddingVertical: 11, alignItems: "center", opacity: composeBusy ? 0.6 : 1 }}
+          >
+            {composeBusy ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <Text style={{ fontFamily: F.sansBold, fontSize: 13, color: "#fff" }}>Criar post dos links (~40s)</Text>
+            )}
+          </Pressable>
+          {Boolean(composeError) && (
+            <Text style={{ fontFamily: F.sans, fontSize: 12, color: C.danger }}>{composeError}</Text>
+          )}
+        </View>
+      )}
 
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 18, paddingBottom: 28, gap: 12 }}

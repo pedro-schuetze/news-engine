@@ -207,19 +207,19 @@ export default function SlidePreview({
                 </div>
               </div>
             ) : (
-              <div style={{ display: "flex", alignItems: "center", gap: 16, alignSelf: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 13, alignSelf: "center" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/brand/iris-wordmark-light.png" alt="IRIS NEWS" width={170} height={36} />
+                <img src="/brand/iris-mark-light.png" alt="IRIS" width={31} height={35} />
                 <span
                   style={{
                     fontFamily: "var(--font-jakarta)",
-                    fontSize: 17,
+                    fontSize: 19,
                     fontWeight: 900,
-                    color: "rgba(247,245,241,0.85)",
+                    color: "rgba(247,245,241,0.92)",
                     letterSpacing: 5,
                   }}
                 >
-                  {subBrand}
+                  {`IRIS ${subBrand}`}
                 </span>
               </div>
             )}

@@ -120,6 +120,27 @@ export const api = {
       { method: "POST", write: true, body: "{}" },
     ),
 
+  /** Gera 3 opções de imagem por slide com IA (gpt-image; ~1-2 min). */
+  generateAI: (storyId: string, runFile: string) =>
+    request<{ ok: boolean; pool: number; new_candidates: number }>(
+      `/api/media/${storyId}?run=${encodeURIComponent(runFile)}&mode=ai`,
+      { method: "POST", write: true, body: "{}" },
+    ),
+
+  /** Pedir ajustes no texto do post (reescreve com a instrução). */
+  adjust: (storyId: string, runFile: string, instruction: string) =>
+    request<{ ok: boolean }>(
+      `/api/adjust/${storyId}?run=${encodeURIComponent(runFile)}`,
+      { method: "POST", write: true, body: JSON.stringify({ instruction }) },
+    ),
+
+  /** Criar post a partir de links (o "manual" do site). */
+  compose: (urls: string[], instruction?: string) =>
+    request<{ ok: boolean; story_id: string; run_file: string; headline: string }>(
+      "/api/compose",
+      { method: "POST", write: true, body: JSON.stringify({ urls, instruction: instruction || undefined }) },
+    ),
+
   /** Busca fotos para o pool (banco + oficiais + stock). */
   fetchMedia: (storyId: string, runFile: string) =>
     request<{ ok: boolean; pool: number; new_candidates: number }>(
@@ -145,6 +166,34 @@ export const api = {
       body: JSON.stringify({ story_id: storyId, run_id: runId, vertical, review_status: status }),
     }),
 };
+
+/** Sobe fotos do aparelho como candidatas (campos slide_1..N, multipart). */
+export async function uploadImages(
+  storyId: string,
+  runFile: string,
+  images: { uri: string; mime: string }[],
+): Promise<{ ok: boolean; new_candidates: number; filled: number[] }> {
+  const base = await getBaseUrl();
+  const form = new FormData();
+  images.forEach((img, i) => {
+    const ext = img.mime === "image/png" ? "png" : "jpg";
+    // @ts-expect-error — shape de arquivo do React Native para FormData
+    form.append(`slide_${i + 1}`, { uri: img.uri, name: `slide_${i + 1}.${ext}`, type: img.mime });
+  });
+  const res = await fetch(`${base}/api/media/${storyId}/upload?run=${encodeURIComponent(runFile)}`, {
+    method: "POST",
+    headers: { "x-iris-key": await getAccessKey() },
+    body: form,
+  });
+  const body = (await res.json().catch(() => ({}))) as {
+    ok?: boolean;
+    new_candidates?: number;
+    filled?: number[];
+    error?: string;
+  };
+  if (!res.ok) throw new Error(body.error ?? `HTTP ${res.status}`);
+  return { ok: true, new_candidates: body.new_candidates ?? 0, filled: body.filled ?? [] };
+}
 
 export async function absoluteUrl(pathOrUrl: string): Promise<string> {
   if (/^https?:\/\//.test(pathOrUrl)) return pathOrUrl;
