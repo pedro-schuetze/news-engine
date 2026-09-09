@@ -6,3 +6,4 @@ dist/
 ios/
 android/
 credentials/
+credentials.json
