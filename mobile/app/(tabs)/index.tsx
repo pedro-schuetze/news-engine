@@ -159,8 +159,8 @@ export default function TodayScreen() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ flexGrow: 0 }}
-        contentContainerStyle={{ paddingHorizontal: 18, paddingVertical: 10, gap: 8 }}
+        style={{ flexGrow: 0, height: 56 }}
+        contentContainerStyle={{ paddingHorizontal: 18, gap: 8, alignItems: "center" }}
       >
         {sections.map((s) => (
           <Pressable
@@ -172,7 +172,8 @@ export default function TodayScreen() {
               borderColor: s.label === active ? C.navy : C.line,
               borderRadius: 999,
               paddingHorizontal: 14,
-              paddingVertical: 7,
+              height: 34,
+              justifyContent: "center",
             }}
           >
             <Text

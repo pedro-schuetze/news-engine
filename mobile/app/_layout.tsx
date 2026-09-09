@@ -1,8 +1,10 @@
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import Unlock from "../src/components/Unlock";
+import { getAccessKey } from "../src/store";
 import { C } from "../src/theme";
 
 SplashScreen.preventAutoHideAsync();
@@ -16,10 +18,26 @@ export default function RootLayout() {
     "Jakarta-ExtraBold": require("../assets/fonts/Jakarta-ExtraBold.ttf"),
   });
 
+  // porta de entrada: sem chave salva, o app abre pedindo a senha (uma vez
+  // por aparelho — depois fica no chaveiro e entra direto)
+  const [unlocked, setUnlocked] = useState<boolean | null>(null);
   useEffect(() => {
-    if (loaded) SplashScreen.hideAsync();
-  }, [loaded]);
-  if (!loaded) return null;
+    getAccessKey().then((k) => setUnlocked(Boolean(k)));
+  }, []);
+
+  useEffect(() => {
+    if (loaded && unlocked !== null) SplashScreen.hideAsync();
+  }, [loaded, unlocked]);
+  if (!loaded || unlocked === null) return null;
+
+  if (!unlocked) {
+    return (
+      <>
+        <StatusBar style="dark" />
+        <Unlock onUnlocked={() => setUnlocked(true)} />
+      </>
+    );
+  }
 
   return (
     <>
