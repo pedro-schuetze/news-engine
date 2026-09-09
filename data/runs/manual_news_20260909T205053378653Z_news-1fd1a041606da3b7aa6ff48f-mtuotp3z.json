@@ -1,0 +1,184 @@
+{
+  "run_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z",
+  "mode": "news",
+  "started_at": "2026-09-09T22:46:52.857Z",
+  "finished_at": "2026-09-09T22:46:52.857Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 5991,
+    "estimated_output_tokens": 1578,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 33,
+    "errors": [
+      "UOL Notícias: noticias.uol.com.br: HTTP 403"
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z",
+          "run_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z",
+          "cluster_id": "gn-1fd1a041606da3b7aa6ff48f",
+          "vertical": "politics",
+          "title": "Fachin suspende decisão de Mendonça que afastou Andrei Rodrigues da PF e decisão de Dino que reintegrou diretor",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260909T205053378653Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 4,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/politica/noticia/2026/09/09/fachin-suspende-decisao-de-mendonca-que-afastou-andrei-rodrigues-da-policia-federal.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-09T20:02:15Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Fachin ainda vai decidir sobre a permanência ou não de Andrei Rodrigues no cargo em um procedimento específico da presidência do STF. \"É grave o quadro em que decisões de ministros passam a ser desafiadas horizontalmente, mormente quando pendentes, tanto o julgamento em curso no âmbito da Segunda Turma deste Tribunal, quanto o pedido de suspensão de liminar que se encontra sob apreciação desta Presidência\", escreveu Fachin em uma das decisões. \"Considero necessária a suspensão das decisões ora analisadas, porquanto, para além de qualquer juízo meritório sobre o afastamento ou não de autoridades, o qual será realizado oportunamente, cumpre obstar quadro de conflitos e sobreposições processuais que, por si só, configuram lesão à ordem pública e à integridade deste Tribunal\", continuou Fachin. Moraes e Vorcaro: plenário vai discutir relação Também nesta quarta, Edson Fachin convocou uma sessão do plenário da Corte para discutir na próxima terça-feira (15) o relatório da PF que apontou uma suposta relação entre o ministro Alexandre de Moraes e o ex-banqueiro Daniel Vorcaro. Na sessão, os ministros vão discutir a validade do documento da PF feito a pedido do ministro André Mendonça. O documento sofreu críticas de ministros da Corte. Na avaliação deles, Mendonça pediu para investigar um colega sem autorização do plenário. Os ministros também vão decidir sobre o pedido de nulidade da Procuradoria-Geral da República (PGR) e se deve ser aberta ou arquivada investigação contra Moraes. Edson Fachin, presidente do STF, na abertura do ano judiciário — Foto: Gustavo Moreno/STF A crise no STF A crise no STF envolvendo Mendonça e Moraes começou a partir de decisões nas investigações sobre o Banco Master. Envolveu também o procurador-geral da República, Paulo Gonet, o diretor-geral da Polícia Federal, Andrei Rodrigues, e, posteriormente, o ministro Flávio Dino. Antes da divulgação do relatório que desencadeou a sequência de decisões, já havia divergências entre o gabinete de André Mendonça e a direção da PF sobre o andamento das investigações do caso Master. 🔎 Mendonça é relator de apurações relacionadas ao banco e de um inquérito sobre repasses para a produção de um filme sobre a trajetória do ex-presidente Jair Bolsonaro (PL). Relembre a crise: Mendonça retira sigilo de relatório Em 1º de setembro, André Mendonça retirou o sigilo de um procedimento no qual havia sido incluído um relatório da PF produzido a partir de dados extraídos do celular do ex-banqueiro Daniel Vorcaro, fundador do Banco Master. As mensagens também continham referências a Gonet, e ao diretor-geral da PF, Andrei Rodrigues. Em uma das mensagens, Vorcaro mencionava uma possível atuação junto a Gonet e Andrei. O relatório não indicava que Moraes fosse alvo da investigação. Na decisão que retirou o sigilo, Mendonça afirmou que os novos elementos deveriam ser analisados pelo plenário do STF. Segundo o ministro, caberia ao presidente do tribunal, Edson Fachin, definir a data e o procedimento para a deliberação. PGR pede nulidade da apuração O procurador-geral afirmou que o relator não poderia ordenar o aprofundamento de apurações envolvendo outro ministro do Supremo sem pedido do Ministério Público ou da própria PF. A PGR sustentou que cabe à polícia judiciária realizar investigações na fase pré-processual e ao Ministério Público buscar elementos para uma eventual acusação. Gonet também afirmou que, conforme a Lei Orgânica da Magistratura Nacional, indícios de crime envolvendo um magistrado deveriam ser submetidos ao órgão competente para julgá-lo. No caso de um ministro do Supremo, esse órgão seria o plenário do STF. Depois da manifestação da PGR, Mendonça manteve a indicação de que o relatório deveria ser levado ao plenário. Fachin passou a ser responsável por decidir se o material seria analisado pelos ministros e qual seria o rito da discussão. Relatórios da PF citam Mendonça Em relatórios de inteligência enviados a Alexandre de Moraes, a PF afirmou que André Mendonça determinou que os investigadores identificassem pessoas com foro no STF nos materiais apreendidos com Daniel Vorcaro e entregassem a íntegra das mensagens e interações envolvendo essas autoridades. A corporação afirmou que a determinação foi além da identificação de nomes e representou uma investigação dirigida a pessoas determinadas. Moraes pede investigação de Mendonça Em 3 de setembro, Moraes encaminhou a Fachin um pedido de investigação contra Mendonça. A medida foi tomada no âmbito do inquérito das fake news, relatado por Moraes. Moraes afirmou que havia indícios de improbidade administrativa, abuso de autoridade, crime de responsabilidade e favorecimento a grupos políticos na condução dos casos Master e INSS. Também declarou que Mendonça teria assumido funções próprias das autoridades policiais, prejudicado procedimentos relacionados à cadeia de custódia de provas, conduzido tratativas sobre possíveis acordos de colaboração premiada e direcionado alvos de investigação. No mesmo dia, Fachin determinou que Mendonça, Moraes, Gonet e Andrei Rodrigues prestassem informações em até cinco dias úteis. O presidente do STF pediu esclarecimentos sobre o cumprimento das regras aplicáveis a investigações de autoridades com foro, o uso de credenciais de acesso institucional, a divulgação de informações protegidas por sigilo e as determinações feitas por Mendonça à PF. Fachin centraliza os procedimentos Com a decisão, passaram a ficar sob responsabilidade da Presidência do Supremo tanto o procedimento relacionado ao relatório divulgado por Mendonça quanto o pedido de investigação formulado por Moraes. Fachin passou a ter a atribuição de definir se os casos seriam levados ao plenário e qual seria o procedimento de análise. O próprio documento afirmava que se tratava de um relatório de inteligência de difusão restrita, sem caráter decisório ou valor probatório, e atribuía grau de confiança baixo às avaliações apresentadas. O STF informou posteriormente que os esclarecimentos relacionados aos procedimentos deveriam ser entregues até 21 de setembro. Também foram estabelecidos prazos específicos para manifestações sobre o relatório que continha as mensagens de Daniel Vorcaro. Mendonça libera caso ao plenário Paralelamente, pedidos apresentados pelo Partido Novo passaram a tratar da situação de Andrei Rodrigues. Em 2 de setembro, a legenda havia pedido providências para preservar as investigações e sugerido a análise de um afastamento cautelar do diretor-geral. No dia seguinte, o partido pediu a prisão preventiva de Andrei ou, de forma alternativa, seu afastamento do cargo. Mendonça afasta a direção da PF O ministro também determinou a abertura de procedimentos criminais e administrativos na Corregedoria da PF. A decisão suspendeu a produção e o compartilhamento de relatórios de inteligência destinados a analisar a atuação de magistrados, integrantes da advocacia pública e policiais. Mendonça afirmou que ao menos seis relatórios haviam sido produzidos entre 3 e 31 de agosto e encaminhados a Moraes no inquérito das fake news. Segundo a decisão, os documentos continham informações sobre Mendonça e Jorge Messias. AGU recorre a Fachin O órgão também afirmou que a mudança no comando da Polícia Federal poderia afetar o funcionamento da instituição. No mesmo dia, Fachin se reuniu com o ministro da Justiça, Wellington César Lima e Silva, e com o advogado-geral da União, Jorge Messias. Dino determina a reintegração Dino atendeu a um recurso apresentado pela defesa de Andrei Rodrigues em outro processo que tramitava no STF. O ministro afirmou que o Partido Novo não tinha legitimidade para solicitar medidas cautelares penais, como o afastamento de servidores públicos. Também apontou que a suspensão das atividades de inteligência poderia afetar investigações em andamento. A decisão mencionou apurações sobre o filme “Dark Horse”, relativo à trajetória do ex-presidente Jair Bolsonaro, e outros casos sob responsabilidade do STF. Dino afirmou ainda que a análise das questões envolvendo Mendonça, Moraes e a Polícia Federal já estava centralizada na Presidência da Corte."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z-1",
+                "name": "noticias.stf.jus.br",
+                "url": "https://noticias.stf.jus.br/postsnoticias/nota-a-imprensa-46/",
+                "source_domain": "noticias.stf.jus.br",
+                "published_at": "2026-09-09T20:02:15Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Presidente do STF, ministro Edson Fachin, tomou decisões em três diferentes procedimentos O Presidente do Supremo Tribunal Federal, ministro Edson Fachin, tomou nesta tarde, 9 de setembro de 2026, decisões em três diferentes procedimentos: 1. Processo administrativo SEI 12.146/2026: por meio da Portaria n.º 189, de 9 de setembro de 2026, o Presidente revoga a designação do ministro Alexandre de Moraes para a condução do inquérito instaurado pela Portaria n.º 69, de 14 de março de 2019, baseada no art. 43 do RISTF e no entendimento do Pleno da Corte no julgamento da ADPF 572/DF. A revogação tem efeitos, exclusivamente, a partir da data de 09.09.2026, preservando, assim, os atos regularmente praticados durante o período de vigência da designação, ressalvada eventual apreciação pelas vias processuais próprias. As ações penais conexas ao Inquérito 4781 com denúncia recebida seguirão o rito processual já em curso. Leia a íntegra da decisão. 2. Decisão na Pet 16.704: determina-se a suspensão de duas decisões, uma concernente ao afastamento (proferida pelo ministro André Mendonça em 8 de setembro na Pet 16.662) e outra à reintegração (decisão proferida pelo ministro Flavio Dino na Pet 16.669) de Andrei Augusto Passos Rodrigues ao cargo de Diretor-Geral da Polícia Federal. Ainda no âmbito da Pet 16.704, o ministro Edson Fachin determina o sobrestamento do trâmite da Pet 16.662 (Relator ministro André Mendonça) até nova deliberação. O ministro Edson Fachin determina ainda a suspensão do Procedimento de Controle Externo instaurado pela Procuradoria-Geral da República até posterior deliberação desta Corte. Por fim, fica convocada sessão extraordinária do Plenário, em formato presencial, para a data de 15 de setembro de 2026, às 10h00, para apreciar a Pet 16.662, feito já indicado à pauta pelo Relator. Leia a íntegra da decisão. 3. Decisão na Suspensão de Liminar 1.946 em consonância com despacho proferido na Pet 16.704: defere-se medida em caráter liminar para determinar a suspensão da decisão do ministro André Mendonça na Pet 16.662 até que se aguarde o transcurso do prazo para informações. Intima-se ainda Andrei Augusto Passos Rodrigues para que preste informações em até 48 (quarenta e oito) horas. Isso feito, o Presidente decidirá sobre a permanência ou não do Diretor-Geral da Polícia Federal no procedimento específico referido acima (SL 1946), de competência da Presidência. Leia a íntegra da decisão."
+              },
+              {
+                "article_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z-2",
+                "name": "conjur.com.br",
+                "url": "https://conjur.com.br/2026-set-09/partido-politico-nao-pode-pedir-afastamento-de-diretor-da-pf/",
+                "source_domain": "conjur.com.br",
+                "published_at": "2026-09-09T17:52:06+00:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Um partido político não pode pedir medidas em investigações e ações penais, uma vez que não é parte nos processos e pode interferir indevidamente neles com base em seus interesses, segundo o entendimento de especialistas consultados pela revista eletrônica Consultor Jurídico. Antonio Augusto/STFO ministro Flávio Dino anulou a decisão de Mendonça que afastou diretor da PF Foi justamente em resposta ao pedido de um partido, o Novo, que o ministro André Mendonça, do Supremo Tribunal Federal, determinou o afastamento de Andrei Rodrigues dos cargos de delegado e diretor-geral da Polícia Federal. A ordem foi anulada nesta quarta-feira (9/9) pelo ministro Flávio Dino, também do STF, que apontou ilegitimidade no requerimento de medidas cautelares em investigações criminais ou processos penais. Os constitucionalistas ouvidos pela ConJur dizem ainda não ver a necessidade de reformas constitucionais ou legais para restringir a atuação judicial de partidos políticos em casos penais porque essa medida já é prevista em lei. Ao anular a decisão de Mendonça, Dino apontou a existência de um claro conflito no fato de que o Novo estava interessado na cautelar porque Romeu Zema, candidato da legenda à Presidência da República, tem feito ataques a ministros do STF. Imagem de neutralidade Para os especialistas, partidos vêm atuando irregularmente em investigações e ações penais que envolvem acusados que nada têm a ver com eles. “Hoje em dia, existe uma atuação indevida de associações, partidos políticos e entidades em processos penais. Não é permitido que um partido peça providências, prisão ou afastamento de cargo”, observa Pedro Serrano, professor de Direito Constitucional da Pontifícia Universidade Católica de São Paulo (PUC-SP). “É evidente que partido político não pode pedir o afastamento de uma autoridade simplesmente entrando de contrabando em um inquérito ou investigação”, avalia Lenio Streck, professor de Direito Constitucional da Universidade do Vale do Rio dos Sinos e da Universidade Estácio de Sá. Já Rodrigo Brandão, professor de Direito Constitucional da Universidade do Estado do Rio de Janeiro (Uerj), afirma que o STF deve limitar decisões monocráticas a casos urgentes. “A força do Judiciário reside na imagem de neutralidade que a população tem dele, e quando as competências dos ministros viram armas usadas uns contra os outros, essa guerra fratricida gera prejuízo à imagem do STF e à sua capacidade de zelar pela proteção da democracia.” Vai e vem A decisão monocrática de Mendonça chegou a ser levada a referendo da 2ª Turma do STF na tarde de terça-feira, mas o julgamento foi interrompido por pedido de vista do ministro Gilmar Mendes. Ainda assim, os ministros Luiz Fux e Nunes Marques votaram para confirmá-la, formando maioria. Como mostrou a ConJur, tal decisão poderia ser cassada pelo presidente do STF e levada a referendo do Plenário. O afastamento de Andrei Rodrigues do cargo de diretor-geral da PF levou 11 outros diretores da instituição a divulgar carta manifestando total apoio a ele e colocando seus cargos à disposição. Mais tarde, a Advocacia-Geral da União pediu a Fachin a suspensão da decisão de Mendonça."
+              },
+              {
+                "article_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z-3",
+                "name": "poder360.com.br",
+                "url": "https://www.poder360.com.br/poder-justica/planalto-engana-fachin-e-articula-volta-de-andrei-com-dino/",
+                "source_domain": "poder360.com.br",
+                "published_at": "2026-09-09T14:21:53+00:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O presidente do Supremo Tribunal Federal, Luiz Edson Fachin, foi surpreendido na manhã desta 4ª feira (9.set.2026), com a decisão de Flávio Dino que reintegra Andrei Rodrigues à chefia da Polícia Federal. Fachin passou a 3ª feira (8.set.2026) articulando uma solução para crise do STF que havia se agravado depois de o ministro André Mendonça ter afastado o chefe da PF. O Poder360 apurou que já havia uma articulação paralela de integrantes do governo do presidente Luiz Inácio Lula da Silva (PT) com Dino (indicado pelo petista) na noite da 3ª feira (8.set), para revisar a decisão de Mendonça antes mesmo de uma posição de Fachin. Andrei informou ao Planalto que iria recorrer ao Supremo pedindo uma decisão diretamente a Dino. Nada disso era do conhecimento de Fachin. [shortcode-newsletter] O presidente do Supremo informou para interlocutores que pretendia dar uma solução para o caso a partir de recurso ajuizado pela Advocacia Geral da União, pedindo que fosse revertida a saída de Andrei Rodrigues da PF. A última decisão de Fachin foi dar um prazo de 3 dias para que Mendonça se manifestasse sobre a decisão. Na manhã desta 4ª feira (9.set), pelo menos 4 dos 10 ministros da Corte já questionaram Fachin se ele vai barrar a decisão de Dino, que, em tese, atropelou o procedimento instaurado pelo próprio presidente da Corte. Na opinião desses ministros que procuraram Fachin, houve uma ilegalidade na decisão de Dino, que deveria ter remetido o caso para o comando do Tribunal (pois ali está o recurso da AGU). A avaliação de ministros ouvidos pelo Poder360 é que, caso Fachin não faça nada, Mendonça ficará fragilizado diante da pressão capitaneada pelos ministros Gilmar Mendes, Flávio Dino e Alexandre de Moraes. Esses 3 magistrados desejam retirar a relatoria do caso do Banco Master de Mendonça. Fachin em público demonstra estar tentando uma solução consensual entre os ministros para encaminhar o caso Vorcaro-Moraes para ser decidido em uma sessão do plenário do Supremo. Na prática, entretanto, o presidente do Supremo tem cedido ao que deseja o Palácio do Planalto e o grupo de Gilmar, Dino e Moraes: não fazer nada até depois do período eleitoral, de outubro de 2026. O Poder360 revelou isso na reportagem “Planalto e Supremo negociam preservar Moraes até depois da eleição”, publicada em 6 de setembro de 2026. Fachin ainda não respondeu aos ministros que o procuraram na manhã desta 4ª feira sobre como pretende agir ou se simplesmente não fará nada a respeito da decisão e Dino de reintegrar Andrei ao comando da PF. Na avaliação do grupo mais próximo a Mendonça, como os ministros Nunes Marques, Luiz Fux e Dias Toffoli, o presidente do STF ficará igualmente fragilizado se não reagir à decisão de Dino. Na realidade, ao não tomar nenhuma decisão sobre o despacho de Dino, o presidente do Supremo estará, na prática, assumindo uma posição mais simpática a um dos lados da disputa. Só que estará igualmente reduzindo o seu poder de presidente de um dos Poderes da República: na 3ª feira (8.set) ficou ao largo do que estava sendo esquematizado porque o grupo pró-Alexandre de Moraes e pró-Andrei Rodrigues considerou que Fachin iria acatar o despacho de Dino, ficando inerte como está até o final da manhã desta 4ª feira (9.set)."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. UOL Notícias: noticias.uol.com.br: HTTP 403"
+          },
+          "draft": {
+            "draft_id": "news-1fd-mtuoueux",
+            "story_id": "news-1fd1a041606da3b7aa6ff48f-mtuotp3z",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Fachin suspende decisão de Mendonça que afastou Andrei Rodrigues da PF e decisão de Dino que reintegrou diretor",
+            "instagram_headline": "Fachin suspende decisões de Mendonça e Dino sobre direção da PF",
+            "short_summary": "O presidente do STF interrompeu as decisões conflitantes que afastavam e reintegravam Andrei Rodrigues na direção-geral da Polícia Federal. Fachin ainda decidirá sobre a permanência de Andrei no cargo em um procedimento sob responsabilidade da Presidência da Corte.",
+            "why_it_matters": "A intervenção busca conter a sobreposição de decisões entre ministros do Supremo. O caso também pode afetar o comando e as atividades de inteligência da Polícia Federal.",
+            "key_facts": [
+              "André Mendonça determinou o afastamento de Andrei Rodrigues em 8 de setembro.",
+              "Flávio Dino ordenou a reintegração do diretor-geral da PF no dia seguinte.",
+              "Edson Fachin suspendeu as duas decisões conflitantes.",
+              "Andrei deverá prestar informações ao presidente do STF em até 48 horas.",
+              "O plenário analisará um dos processos em sessão marcada para 15 de setembro."
+            ],
+            "caption": "O presidente do STF, Edson Fachin, suspendeu nesta quarta-feira, 9 de setembro, tanto a decisão de André Mendonça que afastou Andrei Rodrigues da direção-geral da Polícia Federal quanto a ordem de Flávio Dino que determinou sua reintegração.\n\nMendonça havia atendido a pedidos do Partido Novo e também determinado a abertura de procedimentos criminais e administrativos na Corregedoria da PF. Dino, por sua vez, considerou que o partido não tinha legitimidade para solicitar medidas cautelares penais, como o afastamento de um servidor público.\n\nAo intervir, Fachin afirmou que decisões de ministros estavam sendo desafiadas no mesmo nível e que os conflitos e as sobreposições processuais ameaçavam a ordem pública e a integridade do tribunal. O presidente do STF também suspendeu a tramitação do processo relatado por Mendonça e um procedimento de controle externo instaurado pela PGR.\n\nAndrei terá 48 horas para prestar informações. Depois disso, Fachin decidirá sobre sua permanência no cargo em um procedimento específico da Presidência. O plenário do Supremo foi convocado para analisar o caso em 15 de setembro, às 10h.\n\nFontes: STF, g1, Consultor Jurídico e Poder360.",
+            "hashtags": [
+              "#STF",
+              "#PolíciaFederal",
+              "#AndreiRodrigues",
+              "#EdsonFachin",
+              "#Justiça"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Fachin suspende decisões de Mendonça e Dino sobre direção da PF",
+                "body": "O presidente do STF interrompeu tanto o afastamento quanto a reintegração de Andrei Rodrigues e centralizou a análise do caso.",
+                "image_direction": "Foto documental de Edson Fachin no STF, em enquadramento médio, com expressão sóbria e iluminação natural da sala.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Mendonça determinou o afastamento",
+                "body": "André Mendonça afastou Andrei em 8 de setembro, após pedidos do Partido Novo. Também ordenou procedimentos na Corregedoria da PF e suspendeu determinados relatórios de inteligência.",
+                "image_direction": "Foto documental de André Mendonça durante sessão do STF, visto de frente, com bancada e plenário desfocados ao fundo.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Dino ordenou a reintegração",
+                "body": "No dia seguinte, Flávio Dino acolheu um recurso da defesa de Andrei. Ele afirmou que o Novo não tinha legitimidade para pedir cautelares penais e alertou para impactos em investigações.",
+                "image_direction": "Foto documental de Flávio Dino em seu gabinete ou no plenário, em plano lateral, com luz uniforme e ambiente institucional.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Fachin interrompeu o conflito",
+                "body": "Fachin considerou grave a sobreposição de decisões entre ministros. Além de suspender as duas ordens, paralisou o processo relatado por Mendonça e um procedimento de controle externo da PGR.",
+                "image_direction": "Vista externa documental do edifício do Supremo Tribunal Federal, com composição ampla, céu neutro e linhas arquitetônicas em destaque.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Decisão final ainda será tomada",
+                "body": "Andrei deverá prestar informações em até 48 horas, e Fachin decidirá sobre sua permanência. O plenário foi convocado para analisar o processo em 15 de setembro, às 10h.",
+                "image_direction": "Foto documental do plenário do STF preparado para sessão, com cadeiras, bancadas e iluminação institucional, sem encenação de votação.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-09T22:46:52.857Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-09T20:02:15Z",
+          "latest_published_at": "2026-09-09T20:02:15Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-09T22:46:52.857Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
