@@ -458,6 +458,16 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - App iOS decidido (4 respostas do Pedro): Expo/React Native nativo,
       fluxo completo na v1, share sheet do Instagram agora + API depois,
       chave simples. Código em mobile/ no monorepo; TestFlight via EAS.
+    - NO AR (2026-09-09, mesmo dia): build 3 VALID no App Store Connect,
+      app "Iris News" (ascAppId 6810299389, SKU irisnews), grupo interno
+      "Redação" (hasAccessToAllBuilds) com o Pedro como tester. Detalhes da
+      esteira sem Mac: cert de distribuição + provisioning profile criados
+      DIRETO na ASC API (o eas build --non-interactive não cria credenciais)
+      e entregues via credentials.json local — mobile/credentials/ fica
+      FORA do git (chave .p8, p12, senha). Time Apple 2W2TMD6M89. Peer-dep:
+      react fixado em 19.2.8 (o builder EAS recusa a árvore com 19.2.3).
+      Marcelo Lima e Mariana Schuetze existem na conta Apple como DEVELOPER
+      — dá para adicioná-los ao grupo de teste via API quando o Pedro pedir.
 
 ## Pendências / dívidas conhecidas
 

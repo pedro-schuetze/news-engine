@@ -21,7 +21,9 @@
       "ios": {
         "ascApiKeyPath": "./credentials/AuthKey_4BDWKY4NTT.p8",
         "ascApiKeyId": "4BDWKY4NTT",
-        "ascApiKeyIssuerId": "f46eacd8-5173-4c00-afd4-08695c876266"
+        "ascApiKeyIssuerId": "f46eacd8-5173-4c00-afd4-08695c876266",
+        "ascAppId": "6810299389",
+        "appleTeamId": "2W2TMD6M89"
       }
     }
   }
