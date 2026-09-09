@@ -1,9 +1,9 @@
 /**
  * Renderer determinístico dos slides (1080x1350) com next/og (satori).
  *
- * Linguagem visual: identidade GPB (2026-09-02) sobre a estrutura calibrada
+ * Linguagem visual: identidade IRIS NEWS (rebrand 2026-09-09; era GPB) sobre a estrutura calibrada
  * em 2026-09-01 nas referências do Pedro:
- * - marca GPB (serif display, papel da Recoleta -> Fraunces) com sub-brand
+ * - marca IRIS (serif display, papel da Recoleta -> Fraunces) com sub-brand
  *   por vertical: WORLD / ENTERTAINMENT / CURIOSITY;
  * - capa: foto full-bleed escurecida, manchete gigante em serif display;
  * - corpo em sans (papel da Satoshi -> Jakarta) com **negrito** nos dados;
@@ -23,7 +23,7 @@ import type { SlideKind, SlideSpec, TextPlacement } from "./spec";
 export const SLIDE_W = 1080;
 export const SLIDE_H = 1350;
 
-// sub-brands da identidade GPB (a marca é em inglês; o conteúdo segue PT-BR)
+// sub-brands da identidade IRIS (a marca é em inglês; o conteúdo segue PT-BR)
 const VERTICAL_UI: Record<string, { label: string; color: string }> = {
   entertainment: { label: "ENTERTAINMENT", color: "#1D4ED8" },
   politics: { label: "WORLD", color: "#1D4ED8" },
@@ -37,11 +37,11 @@ const ROYAL = "#1D4ED8"; // Royal Blue — acento único da marca
 let fontsPromise: Promise<{ name: string; data: Buffer; weight: 400 | 700 | 900 }[]> | null = null;
 let brandPromise: Promise<string> | null = null;
 
-/** Wordmark GPB oficial (variante ivory p/ foto), como data URL. */
+/** Wordmark IRIS NEWS oficial (variante ivory p/ foto), como data URL. */
 async function loadBrandMark(): Promise<string> {
   if (!brandPromise) {
     brandPromise = fs
-      .readFile(path.join(process.cwd(), "public", "brand", "gpb-wordmark-light.png"))
+      .readFile(path.join(process.cwd(), "public", "brand", "iris-wordmark-light.png"))
       .then((b) => "data:image/png;base64," + b.toString("base64"));
   }
   return brandPromise;
@@ -358,12 +358,12 @@ function Scrim({
   );
 }
 
-/** Lockup da capa: wordmark GPB oficial (PNG) + sub-brand com pontos royal. */
+/** Lockup da capa: wordmark IRIS oficial (PNG) + sub-brand com pontos royal. */
 function Brand({ color, label, mark }: { color: string; label: string; mark: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
       {/* 700x248 -> 240x85 */}
-      <img src={mark} width={240} height={85} />
+      <img src={mark} width={300} height={64} />
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         <span style={{ display: "flex", width: 5, height: 5, borderRadius: 3, backgroundColor: color }} />
         <span
@@ -583,7 +583,7 @@ function BodySlide({
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           {/* wordmark oficial 700x248 -> 118x42 */}
-          <img src={mark} width={118} height={42} />
+          <img src={mark} width={170} height={36} />
           <span
             style={{
               fontFamily: "Jakarta",

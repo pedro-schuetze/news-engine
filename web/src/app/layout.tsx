@@ -3,7 +3,7 @@ import { Fraunces, IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
 
 import "./globals.css";
 
-// papéis da identidade GPB: Fraunces ~ Recoleta (display), Jakarta ~ Satoshi (UI)
+// papéis da identidade IRIS NEWS: Fraunces ~ Recoleta (display), Jakarta ~ Satoshi (UI)
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta" });
 const plexMono = IBM_Plex_Mono({

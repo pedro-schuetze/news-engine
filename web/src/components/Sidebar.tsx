@@ -81,7 +81,7 @@ export default function Sidebar() {
         <Link href="/dashboard" className="block">
           {/* logo oficial (PNG do Pedro, 2026-09-02) — o arquivo já traz o NEWS */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/gpb-news.png" alt="GPB News" width={150} height={67} />
+          <img src="/brand/iris-news.png" alt="Iris News" width={140} height={69} />
         </Link>
       </div>
 

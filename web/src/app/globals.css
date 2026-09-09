@@ -95,7 +95,7 @@ input,textarea,select {background:var(--color-panel);color:var(--color-ink)}
 .iris-app {min-height:100vh;background:var(--color-paper);color:var(--color-ink)}
 .iris-header {display:flex;align-items:center;gap:36px;min-height:96px;padding:18px max(28px,calc((100vw - 1300px)/2));border-bottom:1px solid var(--color-line);background:var(--color-panel)}
 .iris-brand {display:flex;align-items:center;gap:12px;font-family:var(--font-serif);font-size:32px;font-weight:600;line-height:1;color:var(--color-ink);text-decoration:none}
-.iris-mark {display:grid;place-items:center;width:43px;height:48px;border-radius:22px 22px 10px 10px;background:var(--color-brand-soft);color:var(--color-brand-ink);font-size:35px;font-style:italic}
+.iris-mark {width:40px;height:46px;background:currentColor;-webkit-mask:url(/brand/iris-mark.png) center/contain no-repeat;mask:url(/brand/iris-mark.png) center/contain no-repeat;color:var(--color-navy)}
 .iris-brand-note{display:block;font-family:var(--font-sans);font-size:9px;letter-spacing:.11em;font-weight:500;margin-top:6px;color:var(--color-ink-2);white-space:nowrap}
 .iris-header nav {display:flex;gap:4px;align-items:center;flex:1}
 .iris-header nav a {padding:10px 13px;border-radius:8px;font-size:12px;font-weight:600;color:var(--color-ink-2);white-space:nowrap;transition:background .15s}

@@ -18,7 +18,7 @@ export default function MobileNav() {
     <div className="sticky top-0 z-20 border-b border-line bg-panel px-4 py-3 md:hidden">
       <div className="flex items-center justify-between">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/gpb-news.png" alt="GPB News" width={92} height={41} />
+        <img src="/brand/iris-news.png" alt="Iris News" width={88} height={43} />
         <nav className="flex gap-1">
           {ITEMS.map((item) => {
             const active =

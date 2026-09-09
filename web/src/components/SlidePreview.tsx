@@ -189,7 +189,7 @@ export default function SlidePreview({
             {isCover ? (
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/brand/gpb-wordmark-light.png" alt="GPB" width={240} height={85} />
+                <img src="/brand/iris-wordmark-light.png" alt="IRIS NEWS" width={300} height={64} />
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                   <span style={{ width: 5, height: 5, borderRadius: 3, backgroundColor: ROYAL }} />
                   <span
@@ -209,7 +209,7 @@ export default function SlidePreview({
             ) : (
               <div style={{ display: "flex", alignItems: "center", gap: 16, alignSelf: "center" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/brand/gpb-wordmark-light.png" alt="GPB" width={118} height={42} />
+                <img src="/brand/iris-wordmark-light.png" alt="IRIS NEWS" width={170} height={36} />
                 <span
                   style={{
                     fontFamily: "var(--font-jakarta)",
