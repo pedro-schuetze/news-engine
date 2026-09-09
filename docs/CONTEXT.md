@@ -443,6 +443,22 @@ MVP v0.1 implementado de ponta a ponta nesta primeira sessão:
     - Gatilhos do run diário RESTAURADOS: o commit 5a03e1a (snapshots)
       removeu por acidente o cron da Vercel e o schedule de segurança.
 
+27. **2026-09-09 — Rebrand IRIS NEWS + chave de acesso + app iOS.**
+    - A marca virou IRIS NEWS (board + ícone do Pedro; paleta manteve os
+      hex). Assets em web/public/brand/iris-*.png são GERADOS POR CÓDIGO
+      (scratchpad iris_brand2.py da sessão: símbolo extraído do ícone,
+      wordmarks com Fraunces/Jakarta reais) — não recortar mockup de IA.
+      DESIGN_VERSION iris1.
+    - CHAVE DE ACESSO (IRIS_APP_KEY): toda escrita nas /api/* agora exige a
+      chave — site via cookie (página /entrar), app iOS via header
+      x-iris-key. Leitura segue aberta; cron tem CRON_SECRET próprio.
+      Sem a env configurada, tudo liberado (dev). AVISAR O BI: em produção
+      ele precisa entrar UMA vez em /entrar com a chave (está no
+      web/.env.local do Pedro e nas envs da Vercel).
+    - App iOS decidido (4 respostas do Pedro): Expo/React Native nativo,
+      fluxo completo na v1, share sheet do Instagram agora + API depois,
+      chave simples. Código em mobile/ no monorepo; TestFlight via EAS.
+
 ## Pendências / dívidas conhecidas
 
 - [x] **Clique de revisão: 27-32s → 0,4-1,2s (2026-09-03).** Instrumentação
