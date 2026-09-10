@@ -35,6 +35,10 @@ export interface PostListItem {
   has_content: boolean;
   cover_url: string | null;
   created_at: string;
+  /** publicados: slides completos para o feed */
+  slides?: { n: number; url: string }[];
+  /** métricas do Instagram (quando o sync casou o post) */
+  ig?: { likes: number; comments: number; permalink: string };
 }
 
 export interface PoolCandidate {
@@ -157,6 +161,27 @@ export const api = {
     request<{ ok: boolean; saved: number }>(
       `/api/media/${storyId}/apply?run=${encodeURIComponent(runFile)}`,
       { method: "POST", write: true, body: JSON.stringify({ changes }) },
+    ),
+
+  /** Instagram: conexão disponível? */
+  igStatus: () =>
+    request<{ connected: boolean; synced_at: string | null; tracked_posts: number }>(
+      "/api/instagram/status",
+    ),
+
+  /** Instagram: atualizar métricas/vínculos dos publicados. */
+  igSync: () =>
+    request<{ ok: boolean; matched: number }>("/api/instagram/sync", {
+      method: "POST",
+      write: true,
+      body: "{}",
+    }),
+
+  /** Instagram: publicar o carrossel DIRETO na conta conectada. */
+  igPublish: (storyId: string, runFile: string) =>
+    request<{ ok: boolean; permalink: string }>(
+      `/api/instagram/publish/${storyId}?run=${encodeURIComponent(runFile)}`,
+      { method: "POST", write: true, body: "{}" },
     ),
 
   review: (storyId: string, runId: string, vertical: string, status: "APPROVED" | "PUBLISHED" | "REJECTED") =>

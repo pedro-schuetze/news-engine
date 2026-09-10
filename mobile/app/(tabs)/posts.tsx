@@ -102,7 +102,7 @@ export default function PostsScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: C.paper }} edges={["top"]}>
       <View style={{ paddingHorizontal: 18, paddingTop: 12, gap: 10 }}>
         <Text style={{ fontFamily: F.serif, fontSize: 26, color: C.navy }}>Posts</Text>
-        <View style={{ flexDirection: "row", gap: 8 }}>
+        <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
           {(
             [
               ["all", "Todos"],
@@ -133,6 +133,20 @@ export default function PostsScreen() {
               </Text>
             </Pressable>
           ))}
+          {filter === "published" && (
+            <Pressable
+              onPress={() => router.push("/feed")}
+              style={{
+                marginLeft: "auto",
+                backgroundColor: C.ink,
+                borderRadius: 999,
+                paddingHorizontal: 13,
+                paddingVertical: 6,
+              }}
+            >
+              <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: "#fff" }}>▶ Ver feed</Text>
+            </Pressable>
+          )}
         </View>
       </View>
       {!posts && !error && <ActivityIndicator style={{ marginTop: 60 }} color={C.brand} />}

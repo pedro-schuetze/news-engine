@@ -51,6 +51,7 @@ export default function PostScreen() {
   const [notice, setNotice] = useState("");
   const [adjustText, setAdjustText] = useState("");
   const [showAdjust, setShowAdjust] = useState(false);
+  const [igConnected, setIgConnected] = useState(false);
 
   const load = useCallback(async () => {
     try {
@@ -78,6 +79,10 @@ export default function PostScreen() {
   useEffect(() => {
     load();
   }, [load]);
+
+  useEffect(() => {
+    api.igStatus().then((s) => setIgConnected(s.connected)).catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!detail?.slides?.length) return;
@@ -200,6 +205,30 @@ export default function PostScreen() {
       () => api.review(String(storyId), detail!.run_id, detail!.vertical, "APPROVED"),
       () => load(),
     );
+
+  const publishDirect = () => {
+    if (!detail) return;
+    Alert.alert(
+      "Publicar no Instagram?",
+      "O carrossel vai AO AR na conta conectada, com a legenda e hashtags. Não dá para desfazer por aqui.",
+      [
+        { text: "Cancelar", style: "cancel" },
+        {
+          text: "Publicar agora",
+          style: "destructive",
+          onPress: () =>
+            act(
+              "igpublish",
+              () => api.igPublish(String(storyId), String(run)),
+              () => {
+                setNotice("publicado no Instagram ✓");
+                load();
+              },
+            ),
+        },
+      ],
+    );
+  };
 
   const publish = async () => {
     if (!detail) return;
@@ -440,8 +469,20 @@ export default function PostScreen() {
                 approve,
                 { kind: "ok", disabled: !imagesDone || dirty, loading: busy === "approve" },
               )}
-            {detail.status !== "draft" &&
-              btn("Enviar ao Instagram", publish, { kind: "dark", loading: busy === "share" })}
+            {detail.status !== "draft" && (
+              <View style={{ gap: 8 }}>
+                {igConnected &&
+                  detail.status === "approved" &&
+                  btn("Publicar no Instagram (direto)", publishDirect, {
+                    loading: busy === "igpublish",
+                  })}
+                {btn(
+                  igConnected ? "Compartilhar manual (rolo + Instagram)" : "Enviar ao Instagram",
+                  publish,
+                  { kind: "dark", loading: busy === "share" },
+                )}
+              </View>
+            )}
             {dirty && detail.status === "draft" && (
               <Text style={{ fontFamily: F.sans, fontSize: 11.5, color: C.ink3, textAlign: "center" }}>
                 salve as alterações antes de aprovar

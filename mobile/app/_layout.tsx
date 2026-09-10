@@ -50,6 +50,7 @@ export default function RootLayout() {
       >
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="post/[story]" options={{ presentation: "card" }} />
+        <Stack.Screen name="feed" options={{ presentation: "fullScreenModal", animation: "fade" }} />
       </Stack>
     </>
   );
