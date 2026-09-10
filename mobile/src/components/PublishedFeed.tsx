@@ -17,6 +17,7 @@ import {
 } from "react-native";
 
 import { Image } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
 import { absoluteUrl, api, type PostListItem } from "../api";
 import { C, F, VERTICAL_LABEL } from "../theme";
 
@@ -173,41 +174,52 @@ export default function PublishedFeed() {
           decelerationRate="fast"
           getItemLayout={(_, index) => ({ length: pageH, offset: pageH * index, index })}
           renderItem={({ item }) => (
-            <View style={{ height: pageH, width, justifyContent: "center" }}>
-              <SlidePager post={item} width={width} height={pageH - 130} />
-              {/* rodapé do post */}
-              <View style={{ position: "absolute", bottom: 18, left: 16, right: 16, gap: 6 }}>
-                <Text
-                  style={{ fontFamily: F.serifBold, fontSize: 17, lineHeight: 22, color: "#fff" }}
-                  numberOfLines={2}
-                >
-                  {item.title}
-                </Text>
-                <View style={{ flexDirection: "row", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-                  <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: "rgba(255,255,255,0.75)" }}>
-                    {VERTICAL_LABEL[item.vertical] ?? item.vertical} ·{" "}
-                    {new Date(item.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" })}
-                  </Text>
-                  {item.ig && (
-                    <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: "rgba(255,255,255,0.9)" }}>
-                      ♥ {item.ig.likes} · 💬 {item.ig.comments}
-                    </Text>
-                  )}
-                  <Pressable
-                    onPress={() =>
-                      router.push({
-                        pathname: "/post/[story]",
-                        params: { story: item.story_id, run: item.run_file },
-                      })
-                    }
-                    hitSlop={8}
-                  >
-                    <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: "#9DB8FF" }}>
-                      Abrir post ›
-                    </Text>
-                  </Pressable>
-                </View>
+            <View style={{ height: pageH, width }}>
+              {/* imagem ancorada no topo da página (deixa ar para o rodapé) */}
+              <View style={{ marginTop: 52 }}>
+                <SlidePager post={item} width={width} height={pageH - 150} />
               </View>
+              {/* rodapé sobre gradiente — legível em qualquer altura de tela */}
+              <LinearGradient
+                colors={["rgba(5,7,12,0)", "rgba(5,7,12,0.85)", "rgba(5,7,12,0.98)"]}
+                locations={[0, 0.45, 1]}
+                style={{ position: "absolute", bottom: 0, left: 0, right: 0, paddingTop: 56 }}
+              >
+                <View style={{ paddingHorizontal: 18, paddingBottom: 16, gap: 8 }}>
+                  <Text
+                    style={{ fontFamily: F.serifBold, fontSize: 19, lineHeight: 25, color: "#fff" }}
+                    numberOfLines={3}
+                  >
+                    {item.title}
+                  </Text>
+                  <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                    <Text style={{ fontFamily: F.sansBold, fontSize: 12.5, color: "rgba(255,255,255,0.72)" }}>
+                      {VERTICAL_LABEL[item.vertical] ?? item.vertical} ·{" "}
+                      {new Date(item.created_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" })}
+                      {item.ig ? `   ♥ ${item.ig.likes}   💬 ${item.ig.comments}` : ""}
+                    </Text>
+                    <Pressable
+                      onPress={() =>
+                        router.push({
+                          pathname: "/post/[story]",
+                          params: { story: item.story_id, run: item.run_file },
+                        })
+                      }
+                      hitSlop={10}
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.14)",
+                        borderRadius: 999,
+                        paddingHorizontal: 13,
+                        paddingVertical: 7,
+                      }}
+                    >
+                      <Text style={{ fontFamily: F.sansBold, fontSize: 12.5, color: "#fff" }}>
+                        Abrir post ›
+                      </Text>
+                    </Pressable>
+                  </View>
+                </View>
+              </LinearGradient>
             </View>
           )}
         />

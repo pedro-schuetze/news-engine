@@ -130,7 +130,8 @@ export default function TodayScreen() {
 
   const sections = useMemo(() => {
     const out: { label: string; stories: TodayStory[] }[] = [];
-    for (const s of snapshot?.stories ?? []) {
+    // pauta que já virou post sai da capa (evita gerar conteúdo em dobro)
+    for (const s of (snapshot?.stories ?? []).filter((x) => !x.post)) {
       const found = out.find((x) => x.label === s.section_label);
       if (found) found.stories.push(s);
       else out.push({ label: s.section_label, stories: [s] });

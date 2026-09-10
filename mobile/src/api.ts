@@ -16,6 +16,8 @@ export interface TodayStory {
   is_new: boolean;
   rank_change: number | null;
   outlets: { name: string; domain: string }[];
+  /** post já criado desta pauta (se existir, a capa a esconde) */
+  post: { run_file: string; story_id: string } | null;
 }
 
 export interface TodaySnapshot {
@@ -132,6 +134,14 @@ export const api = {
       `/api/media/${storyId}?run=${encodeURIComponent(runFile)}&mode=ai${slide ? `&slide=${slide}` : ""}`,
       { method: "POST", write: true, body: "{}" },
     ),
+
+  /** Edita a manchete do post (capa do carrossel). */
+  setHeadline: (storyId: string, runFile: string, headline: string) =>
+    request<{ ok: boolean; headline: string }>("/api/mobile/headline", {
+      method: "POST",
+      write: true,
+      body: JSON.stringify({ run: runFile, id: storyId, headline }),
+    }),
 
   /** Pedir ajustes no texto do post (reescreve com a instrução). */
   adjust: (storyId: string, runFile: string, instruction: string) =>

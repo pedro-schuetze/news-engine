@@ -4,15 +4,24 @@
  * o app não conhece GitHub nem o formato interno dos snapshots.
  */
 import { NextResponse } from "next/server";
+import { loadAllStories } from "@/lib/data";
 import { loadSnapshot } from "@/lib/news";
 import { sectionLabelPt } from "@/lib/sections";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const snapshot = await loadSnapshot();
+  const [snapshot, entries] = await Promise.all([loadSnapshot(), loadAllStories(20)]);
   if (!snapshot) {
     return NextResponse.json({ error: "nenhuma capa coletada ainda" }, { status: 404 });
+  }
+  // pauta que já virou post não deve reaparecer na capa (risco de gerar em
+  // dobro — pedido do Pedro, 2026-09-10). O vínculo é o cluster_id (gn-...).
+  const created = new Map<string, { run_file: string; story_id: string }>();
+  for (const e of entries) {
+    if (e.story.cluster_id?.startsWith("gn-")) {
+      created.set(e.story.cluster_id, { run_file: e.runFile, story_id: e.story.story_id });
+    }
   }
   return NextResponse.json({
     id: snapshot.id,
@@ -29,6 +38,7 @@ export async function GET() {
       is_new: s.is_new,
       rank_change: s.rank_change,
       outlets: (s.outlets ?? []).slice(0, 4).map((o) => ({ name: o.name, domain: o.domain })),
+      post: created.get(s.id) ?? null,
     })),
   });
 }

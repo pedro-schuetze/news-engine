@@ -53,6 +53,8 @@ export default function PostScreen() {
   const [adjustText, setAdjustText] = useState("");
   const [showAdjust, setShowAdjust] = useState(false);
   const [igConnected, setIgConnected] = useState(false);
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [titleDraft, setTitleDraft] = useState("");
 
   const load = useCallback(async () => {
     try {
@@ -186,6 +188,13 @@ export default function PostScreen() {
     );
   };
 
+  const saveTitle = () =>
+    act("title", () => api.setHeadline(String(storyId), String(run), titleDraft.trim()), () => {
+      setEditingTitle(false);
+      setNotice("manchete atualizada — a capa muda na hora, o PNG final atualiza em segundo plano");
+      load();
+    });
+
   const askAdjust = () =>
     act("adjust", () => api.adjust(String(storyId), String(run), adjustText.trim()), () => {
       setAdjustText("");
@@ -270,7 +279,7 @@ export default function PostScreen() {
   const btn = (
     label: string,
     onPress: () => void,
-    opts: { kind?: "primary" | "dark" | "ghost" | "ok"; disabled?: boolean; loading?: boolean } = {},
+    opts: { kind?: "primary" | "dark" | "ghost" | "ok"; disabled?: boolean; loading?: boolean; half?: boolean } = {},
   ) => {
     const bg =
       opts.kind === "dark" ? C.ink : opts.kind === "ghost" ? C.panel : opts.kind === "ok" ? C.ok : C.brand;
@@ -283,11 +292,12 @@ export default function PostScreen() {
           borderWidth: opts.kind === "ghost" ? 1 : 0,
           borderColor: C.line,
           borderRadius: 12,
-          paddingVertical: 12,
-          paddingHorizontal: 16,
+          height: 44,
+          justifyContent: "center",
+          paddingHorizontal: 14,
           alignItems: "center",
           opacity: opts.disabled ? 0.5 : 1,
-          flexGrow: 1,
+          width: opts.half ? "48.5%" : "100%",
         }}
       >
         {opts.loading ? (
@@ -330,9 +340,60 @@ export default function PostScreen() {
 
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
         <View style={{ paddingHorizontal: 18, gap: 6 }}>
-          <Text style={{ fontFamily: F.serifBold, fontSize: 20, lineHeight: 26, color: C.navy }}>
-            {detail?.headline || detail?.title}
-          </Text>
+          {editingTitle ? (
+            <View style={{ gap: 8 }}>
+              <TextInput
+                value={titleDraft}
+                onChangeText={setTitleDraft}
+                multiline
+                autoFocus
+                maxLength={90}
+                style={{
+                  fontFamily: F.serifBold,
+                  fontSize: 19,
+                  lineHeight: 25,
+                  color: C.navy,
+                  backgroundColor: C.panel,
+                  borderWidth: 1,
+                  borderColor: C.brand,
+                  borderRadius: 12,
+                  padding: 12,
+                }}
+              />
+              <View style={{ flexDirection: "row", gap: 8 }}>
+                <Pressable
+                  onPress={saveTitle}
+                  disabled={titleDraft.trim().length < 8 || busy === "title"}
+                  style={{ backgroundColor: C.brand, borderRadius: 10, paddingVertical: 9, paddingHorizontal: 16, opacity: titleDraft.trim().length < 8 ? 0.5 : 1 }}
+                >
+                  {busy === "title" ? (
+                    <ActivityIndicator size="small" color="#fff" />
+                  ) : (
+                    <Text style={{ fontFamily: F.sansBold, fontSize: 13, color: "#fff" }}>Salvar manchete</Text>
+                  )}
+                </Pressable>
+                <Pressable
+                  onPress={() => setEditingTitle(false)}
+                  style={{ borderWidth: 1, borderColor: C.line, backgroundColor: C.panel, borderRadius: 10, paddingVertical: 9, paddingHorizontal: 16 }}
+                >
+                  <Text style={{ fontFamily: F.sansBold, fontSize: 13, color: C.ink2 }}>Cancelar</Text>
+                </Pressable>
+              </View>
+            </View>
+          ) : (
+            <Pressable
+              onPress={() => {
+                if (!detail) return;
+                setTitleDraft(detail.headline || detail.title);
+                setEditingTitle(true);
+              }}
+            >
+              <Text style={{ fontFamily: F.serifBold, fontSize: 20, lineHeight: 26, color: C.navy }}>
+                {detail?.headline || detail?.title}
+                <Text style={{ fontFamily: F.sans, fontSize: 14, color: C.ink3 }}>  ✎</Text>
+              </Text>
+            </Pressable>
+          )}
           {Boolean(detail?.summary) && (
             <Text style={{ fontFamily: F.sans, fontSize: 13, lineHeight: 19, color: C.ink2 }}>
               {detail?.summary}
@@ -407,6 +468,8 @@ export default function PostScreen() {
                         </Text>
                       </Pressable>
                     ))}
+                  </View>
+                  <View style={{ flexDirection: "row", justifyContent: "center", gap: 8 }}>
                     <Pressable
                       onPress={() => generateArt(slide.slide_number)}
                       disabled={Boolean(busy)}
@@ -415,14 +478,17 @@ export default function PostScreen() {
                         borderWidth: 1,
                         borderColor: C.line,
                         borderRadius: 10,
-                        paddingHorizontal: 12,
-                        paddingVertical: 7,
+                        height: 34,
+                        justifyContent: "center",
+                        paddingHorizontal: 14,
+                        minWidth: 132,
+                        alignItems: "center",
                       }}
                     >
                       {busy === `ai-${slide.slide_number}` ? (
                         <ActivityIndicator size="small" color={C.brand} />
                       ) : (
-                        <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.brandInk }}>✦ IA aqui</Text>
+                        <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.brandInk }}>✦ IA neste slide</Text>
                       )}
                     </Pressable>
                     {Boolean(slide.image_prompt) && (
@@ -437,11 +503,14 @@ export default function PostScreen() {
                           borderWidth: 1,
                           borderColor: C.line,
                           borderRadius: 10,
-                          paddingHorizontal: 12,
-                          paddingVertical: 7,
+                          height: 34,
+                          justifyContent: "center",
+                          paddingHorizontal: 14,
+                          minWidth: 128,
+                          alignItems: "center",
                         }}
                       >
-                        <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.ink2 }}>⧉ prompt</Text>
+                        <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.ink2 }}>⧉ copiar prompt</Text>
                       </Pressable>
                     )}
                   </View>
@@ -482,10 +551,13 @@ export default function PostScreen() {
         {/* ações */}
         {detail && detail.slides.length > 0 && (
           <View style={{ paddingHorizontal: 18, paddingTop: 14, gap: 10 }}>
-            <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
-              {btn("Buscar fotos", fetchPhotos, { kind: "ghost", loading: busy === "media" })}
-              {btn("Subir fotos", pickAndUpload, { kind: "ghost", loading: busy === "upload" })}
-              {btn("Gerar IA (todos)", () => generateArt(), { kind: "ghost", loading: busy === "ai" })}
+            <Text style={{ fontFamily: F.sansBlack, fontSize: 11, color: C.ink3, letterSpacing: 1 }}>
+              FOTOS
+            </Text>
+            <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", rowGap: 8 }}>
+              {btn("Buscar fotos", fetchPhotos, { kind: "ghost", loading: busy === "media", half: true })}
+              {btn("Subir fotos", pickAndUpload, { kind: "ghost", loading: busy === "upload", half: true })}
+              {btn("✦ Gerar IA (todos)", () => generateArt(), { kind: "ghost", loading: busy === "ai", half: true })}
               {btn("⧉ Prompts p/ GPT", async () => {
                 const all = (detail?.slides ?? [])
                   .filter((s) => s.image_prompt)
@@ -494,7 +566,7 @@ export default function PostScreen() {
                 await Clipboard.setStringAsync(all);
                 Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
                 setNotice("prompts de todos os slides copiados — gere no GPT (1 imagem por prompt, arquivos separados) e use Subir fotos");
-              }, { kind: "ghost" })}
+              }, { kind: "ghost", half: true })}
             </View>
             {busy === "ai" && (
               <Text style={{ fontFamily: F.sans, fontSize: 11.5, color: C.ink3, textAlign: "center" }}>
@@ -502,9 +574,9 @@ export default function PostScreen() {
               </Text>
             )}
             {dirty && (
-              <View style={{ flexDirection: "row", gap: 8 }}>
-                {btn(`Salvar (${changes.length})`, save, { loading: busy === "save" })}
-                {btn("Descartar", () => setDraft(saved), { kind: "ghost" })}
+              <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                {btn(`Salvar (${changes.length})`, save, { loading: busy === "save", half: true })}
+                {btn("Descartar", () => setDraft(saved), { kind: "ghost", half: true })}
               </View>
             )}
             {Boolean(notice) && (
@@ -535,9 +607,9 @@ export default function PostScreen() {
                 salve as alterações antes de aprovar
               </Text>
             )}
-            <View style={{ flexDirection: "row", gap: 8 }}>
-              {btn(showAdjust ? "Fechar ajustes" : "Pedir ajustes no texto", () => setShowAdjust(!showAdjust), { kind: "ghost" })}
-              {btn("Arquivar", archive, { kind: "ghost", loading: busy === "archive" })}
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              {btn(showAdjust ? "Fechar ajustes" : "Pedir ajustes no texto", () => setShowAdjust(!showAdjust), { kind: "ghost", half: true })}
+              {btn("Arquivar", archive, { kind: "ghost", loading: busy === "archive", half: true })}
             </View>
             {showAdjust && (
               <View style={{ gap: 8 }}>
