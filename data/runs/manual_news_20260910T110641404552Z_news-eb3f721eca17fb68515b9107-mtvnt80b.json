@@ -1,0 +1,175 @@
+{
+  "run_id": "news-eb3f721eca17fb68515b9107-mtvnt80b",
+  "mode": "news",
+  "started_at": "2026-09-10T15:06:23.279Z",
+  "finished_at": "2026-09-10T15:06:23.279Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 3,
+    "articles_by_collector": {
+      "google-news-front-page": 3
+    },
+    "articles_after_dedupe": 3,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 5289,
+    "estimated_output_tokens": 2653,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 39,
+    "errors": [
+      "noticias.uol.com.br: noticias.uol.com.br: HTTP 403",
+      "VEJA: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-eb3f721eca17fb68515b9107-mtvnt80b",
+          "run_id": "news-eb3f721eca17fb68515b9107-mtvnt80b",
+          "cluster_id": "gn-eb3f721eca17fb68515b9107",
+          "vertical": "politics",
+          "title": "EUA destroem 5 petroleiros iranianos após ataques a navio",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260910T110641404552Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-eb3f721eca17fb68515b9107-mtvnt80b-0",
+              "name": "poder360.com.br",
+              "url": "https://www.poder360.com.br/poder-internacional/eua-destroem-5-petroleiros-iranianos-apos-ataques-a-navio/",
+              "source_domain": "poder360.com.br",
+              "published_at": "2026-09-09T01:22:38+00:00",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "O Centcom (Comando Central dos Estados Unidos) destruiu 5 petroleiros iranianos nesta 3ª feira (8.set.2026), em resposta a ataques da Guarda Revolucionária Islâmica do Irã contra uma embarcação de guerra da Marinha norte-americana nos 2 dias anteriores. Segundo o Comando no X, o Irã disparou mísseis balísticos contra o navio de guerra norte-americano duas vezes no período. A embarcação conseguiu esquivar-se das tentativas de ataque e seguiu patrulhando as águas da região. Nenhum militar norte-americano ficou ferido. [shortcode-newsletter] Os dois países travam batalhas que se arrastam desde 28 de fevereiro de 2026. Apesar de uma trégua anunciada em junho, os ataques continuam. Os confrontos foram retomados na última semana, com foco no estreito de Ormuz.e na costa sul do Irã. Reação Segundo a CNN, depois dos ataques norte-americanos, a Guarda Revolucionária Islâmica afirmou que embarcações em portos do Kuwait e do Bahrein que abrigam norte-americanos se tornarão alvos. A força naval da Guarda emitiu alerta para que todas as tripulações deixassem os navios nesses portos. Escalada no fim de semana A troca de hostilidades entre os países ao longo do fim de semana já havia impactado os mercados. No sábado (5.set), o Centcom afirmou ter atacado 3 petroleiros iranianos, em resposta aos disparos balísticos da Guarda Revolucionária Islâmica contra 2 navios de guerra norte-americanos que patrulhavam as águas regionais. Os petroleiros foram atingidos por vários mísseis dos EUA nas proximidades da Ilha Kharg, no Golfo Pérsico. Em retaliação, o Irã afirmou no domingo (6.set) ter atacado uma embarcação não tripulada dos Estados Unidos que tentava entrar no estreito de Ormuz. O governo iraniano declarou ainda que responderia a eventuais investidas contra seus navios de forma \"mais rápida e dolorosa\". Os militares norte-americanos negaram o episódio e classificaram a declaração de Teerã como \"mentira\". As informações são da agência de notícias Associated Press."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-eb3f721eca17fb68515b9107-mtvnt80b-1",
+                "name": "valor.globo.com",
+                "url": "https://valor.globo.com/mundo/noticia/2026/09/09/ira-cria-novo-cerco-com-grupos-aliados-para-ameacar-parceiros-dos-eua-no-golfo.ghtml",
+                "source_domain": "valor.globo.com",
+                "published_at": "2026-09-09T01:25:47Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Em julho, Arábia Saudita e Estados Unidos bombardearam milícias apoiadas pelo Irã no Iraque depois de responsabilizá-las por ataques com drones contra instalações petrolíferas sauditas que haviam sido reivindicados pelos houthis do Iêmen, outro aliado iraniano. Agora, autoridades da região disseram à Associated Press que os houthis ajudaram as milícias iraquianas a planejar e executar a onda de ataques, que durou dois dias, revelando um novo nível de coordenação. Durante décadas, o Irã fortaleceu grupos armados nas fronteiras de Israel que sofreram grandes perdas nas guerras que se seguiram ao ataque do Hamas de 7 de outubro de 2023 a partir da Faixa de Gaza. Israel enfraqueceu tanto os militantes palestinos quanto o Hezbollah, do Líbano, que havia sido o aliado mais poderoso do Irã. Autoridades e especialistas da região afirmam que Teerã agora está usando as milícias iraquianas e os houthis para ameaçar a Arábia Saudita e outros aliados dos Estados Unidos no Golfo, com o objetivo de elevar os custos da guerra iniciada pelos EUA e por Israel em fevereiro. É uma estratégia arriscada. Uma onda de ataques dos houthis contra instalações petrolíferas sauditas nesta terça-feira ameaçou reacender uma guerra em grande escala com o reino. O Iraque ordenou que as milícias se desarmem até o fim deste mês, embora poderosos grupos apoiados pelo Irã tenham se recusado a fazê-lo. Um novo esforço americano para isolar economicamente o Irã pode provocar uma nova escalada. A participação dos houthis no ataque com drones lançado a partir do Iraque foi confirmada por duas autoridades sauditas, que citaram informações de inteligência, e por uma autoridade de alto escalão da segurança iraquiana. Segundo elas, emissários houthis trabalharam em uma sala de operações comandada por milícias iraquianas. Arábia Saudita e Estados Unidos responderam com ataques aéreos conjuntos que mataram pelo menos 20 combatentes iraquianos, seis assessores iranianos e ao menos uma autoridade houthi. A morte do integrante houthi, que não havia sido divulgada anteriormente, foi confirmada por uma autoridade do grupo e por um membro de uma milícia iraquiana. Uma autoridade militar americana disse que houthis já haviam sido mortos em ataques anteriores no Iraque. Os Estados Unidos estão preocupados com a presença do grupo no país e com sua capacidade de lançar ataques contra outras nações, incluindo a Arábia Saudita, afirmou. Duas autoridades das Forças de Mobilização Popular (PMF), grupo que reúne milícias e integra oficialmente as forças de segurança do Iraque, negaram envolvimento no ataque contra a Arábia Saudita e também negaram que os houthis estivessem operando sob sua estrutura. As PMF incluem poderosas milícias apoiadas pelo Irã que, por vezes, agem de forma independente. Todas as autoridades e o integrante da milícia falaram sob condição de anonimato porque não tinham autorização para falar com a imprensa. Os houthis não responderam a um pedido de comentário. Familiares e amigos carregam o caixão de vítima de um ataque dos houthis ao navio de carga Tihama — Foto: AP/Ali Raza Cooperação cresceu durante a guerra em Gaza A cooperação entre as milícias iraquianas e os houthis, mais bem organizados, aumentou ao longo da guerra em Gaza, quando coordenaram ataques contra Israel, segundo autoridades houthis e da região. No auge da guerra, o líder houthi Abdel-Malek al-Houthi falou sobre uma sala de operações conjunta. Depois que Estados Unidos e Israel atacaram o Irã em 28 de fevereiro, Teerã e seus aliados começaram a atacar países do Golfo para ampliar o conflito e causar prejuízos a grandes produtores de petróleo que abrigam forças americanas. “O Irã tem uma estratégia híbrida na guerra atual. Não estamos lutando em uma única frente e não estamos usando uma única ferramenta”, escreveu nas redes sociais, em junho, Mahdi Mohammadi, assessor do presidente do Parlamento iraniano. “A crescente proeminência dos houthis durante a guerra em Gaza abriu um novo horizonte no Iraque. Muitos grupos de lá passaram a querer apoiar os houthis e, em troca, os houthis começaram a compartilhar sua experiência militar com as milícias iraquianas”, disse Ahmed Nagi, analista sênior para o Iêmen do Crisis Group, centro de estudos internacional. Agora, eles estão “apertando a Arábia Saudita como uma pinça”, disse Nagi. Uma semana antes da onda de ataques com drones, os houthis declararam um bloqueio contra a navegação saudita no Mar Vermelho, ameaçando outra rota comercial crucial em um momento em que as interrupções provocadas pela guerra no Estreito de Ormuz já abalaram a economia mundial. Desde o fim de julho, os houthis realizaram mais de uma dúzia de ataques contra instalações petrolíferas e petroleiros sauditas no Mar Vermelho, segundo o grupo de monitoramento de conflitos Acled. Nesta terça-feira, eles lançaram uma onda de ataques contra instalações petrolíferas e outros alvos no sul da Arábia Saudita, deixando mais de 70 feridos, incluindo mulheres e crianças, segundo autoridades sauditas. O bloqueio houthi obrigou a Arábia Saudita a adotar uma política de trânsito “às escuras”, que inclui desligar os sinais de rastreamento de petroleiros no Mar Vermelho, segundo a Acled. Manifestantes protestam contra ataques dos houthis a embarcações no Estreito de Bab al-Mandab e ao longo da costa do Mar Vermelho — Foto: AP/Abdulnasser Alseddik Exportações de petróleo sauditas estão na mira A Arábia Saudita havia desviado grande parte de seu petróleo para o Mar Vermelho depois que o Irã praticamente fechou o Estreito de Ormuz. Quando os houthis começaram a atacar, o reino passou a enviar mais petróleo para o norte, em direção ao Canal de Suez e ao oleoduto Sumed, no Egito, cujo fluxo aumentou de 650 mil barris por dia em junho para mais de 1,9 milhão em agosto, segundo a empresa de monitoramento marítimo Kpler. No mês passado, os houthis mostraram que também são capazes de atingir essa rota ao atacar com um míssil um petroleiro saudita no norte do Mar Vermelho. Segundo relatos, a embarcação havia partido do porto saudita de Yanbu em direção ao Canal de Suez, a cerca de mil quilômetros do território houthi. Os houthis “estão dispostos a suportar algum sofrimento no curto prazo em troca daquilo que consideram ganhos de longo prazo”, como ampliar seu alcance ao longo da costa do Mar Vermelho, disse Adam Baron, especialista em Iêmen do centro de estudos New America, em Washington. “O trem para a retomada de uma guerra em grande escala já deixou a estação, e não está claro se alguém vai intervir para detê-lo”, afirmou, citando o foco dos Estados Unidos no Irã e a relutância saudita em voltar a intervir no Iêmen. Os rebeldes tomaram a capital do Iêmen, Sanaa, em 2014. No ano seguinte, os sauditas se uniram ao governo do Iêmen reconhecido internacionalmente em uma contraofensiva, provavelmente temendo que o reino acabasse com um grupo semelhante ao Hezbollah em sua fronteira. A guerra civil matou pelo menos 150 mil pessoas, segundo estimativas da ONU, e em alguns momentos levou o Iêmen à beira da fome. Um cessar-fogo que vinha sendo respeitado em grande parte desde 2022 está agora praticamente desfeito. Durante anos, um bloqueio liderado pela Arábia Saudita aumentou a pressão sobre os houthis, ao mesmo tempo que impôs um pesado custo à população das regiões do Iêmen controladas pelos rebeldes. Os houthis frequentemente responderam intensificando as hostilidades, e a retomada dos combates pode permitir que conquistem o controle de áreas ricas em recursos energéticos no leste do Iêmen, disse Elisabeth Kendall, especialista em Iêmen do Girton College, da Universidade de Cambridge. Os houthis, que controlam o norte e o centro do Iêmen, contrabandeiam armas avançadas há anos, contornando o bloqueio e um embargo de armas da ONU. O Irã nega armar os rebeldes, mas armamentos de fabricação iraniana foram encontrados no campo de batalha e em carregamentos interceptados. Imagem de satélite da Planet Labs PBC mostra fumaça saindo da instalação de petróleo da Saudi Aramco na Arábia Saudita após ataques — Foto: Planet Labs PBC via AP Os rebeldes dispõem de uma variedade de mísseis de cruzeiro e balísticos, drones e submarinos não tripulados. Forças apoiadas pela Arábia Saudita no Iêmen estão reagindo em várias frentes, incluindo a crucial cidade portuária de Hodeida e a província de Taiz, ao longo da costa oeste do país. Os houthis atacaram Mokha, o principal porto no Mar Vermelho ainda controlado pelo governo. A Arábia Saudita parece relutante em voltar a atacar diretamente os houthis, mas, se os rebeldes continuarem intensificando suas ações, o reino “terá de agir de forma decisiva de uma vez por todas”, disse Kendall."
+              },
+              {
+                "article_id": "news-eb3f721eca17fb68515b9107-mtvnt80b-2",
+                "name": "estadao.com.br",
+                "url": "https://www.estadao.com.br/em-alta/internacional/ira-sinaliza-prontidao-para-intensificar-o-confronto-diante-da-crescente-pressao-dos-eua/",
+                "source_domain": "estadao.com.br",
+                "published_at": "2026-09-09T01:25:47Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "InternacionalConteúdo PatrocinadoInternacionalSaiba tudoira sinaliza prontidao para intensificar o confronto diante da crescente pressao dos euaBraskem: recuperação extrajudicial acende alerta para acionistas; entenda os riscosbraskem recuperacao extrajudicial acende alerta para acionistas entenda os riscosEconomiaQueda de preços pode triplicar uso de canetas emagrecedoras no Brasil, diz sócio da McKinseyqueda precos uso canetas emagrecedoras brasil socio mckinseymarvels wolverine nao e perfeito mas capta a essencia do personagemmeu negocio e o quadrinho que se exploda quem vai adaptar chico barney mostra sua colecao de hqsoferta de trump de dinheiro facil em troca de vitoria nas urnas e proibitiva para a economia americarevenge dress de lady di vai a leilao saiba o que torna a peca iconicaalem de xuxa angelica vera fischer e outros famosos resgatam fotos dos anos 1980 raiz sem ia npreccopa do brasil 2026 palmeiras e atletico decidem vaga na final contra vasco e gremio fora de casatesouro ipca volta a subir com petroleo acima de us 105 e juros globais pressionadosrussia prende seguranca da embaixada do reino unido por suspeita de espionagem para a ucrania npr"
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "3 de 5 matérias lidas. Leitura não equivale a verificação independente. noticias.uol.com.br: noticias.uol.com.br: HTTP 403 · VEJA: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-eb3-mtvnu2en",
+            "story_id": "news-eb3f721eca17fb68515b9107-mtvnt80b",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "EUA destroem 5 petroleiros iranianos após ataques a navio",
+            "instagram_headline": "Comando dos EUA diz ter destruído cinco petroleiros iranianos",
+            "short_summary": "O Comando Central dos Estados Unidos afirmou ter destruído cinco petroleiros iranianos em 8 de setembro. Segundo o órgão militar, a operação respondeu a dois ataques com mísseis contra um navio de guerra americano, que não foi atingido.",
+            "why_it_matters": "A nova troca de ataques amplia a tensão no Estreito de Ormuz, rota estratégica para o transporte de petróleo. A Guarda Revolucionária iraniana também ameaçou embarcações em portos do Kuwait e do Bahrein.",
+            "key_facts": [
+              "O Centcom anunciou a destruição de cinco petroleiros iranianos em 8 de setembro.",
+              "Segundo o comando americano, o Irã lançou mísseis duas vezes contra um navio dos EUA.",
+              "O Centcom afirmou que a embarcação desviou dos ataques e que nenhum militar ficou ferido.",
+              "EUA e Irã mantêm confrontos desde 28 de fevereiro de 2026, apesar de uma trégua anunciada em junho.",
+              "A Guarda Revolucionária ameaçou embarcações em portos que abrigam americanos no Kuwait e no Bahrein."
+            ],
+            "caption": "O Comando Central dos Estados Unidos, responsável pelas operações militares americanas no Oriente Médio, afirmou ter destruído cinco petroleiros iranianos na terça-feira, 8 de setembro. A ação teria sido uma resposta a dois disparos de mísseis balísticos da Guarda Revolucionária do Irã contra um navio de guerra dos EUA.\n\nDe acordo com o Centcom, a embarcação americana conseguiu desviar dos ataques, continuou patrulhando a região e não teve militares feridos. Não há confirmação independente apresentada pelas matérias sobre a destruição dos petroleiros.\n\nA ofensiva ocorreu após outra rodada de hostilidades. No sábado, o comando americano havia anunciado ataques contra três petroleiros perto da Ilha Kharg. No dia seguinte, o Irã declarou ter atingido uma embarcação não tripulada dos EUA no Estreito de Ormuz, mas os militares americanos negaram o episódio.\n\nApós os novos ataques, a Guarda Revolucionária afirmou que embarcações em portos do Kuwait e do Bahrein que abrigam americanos poderão se tornar alvos. A força também orientou as tripulações a deixar esses navios, segundo relato da CNN.\n\nFontes: Poder360, Valor Econômico e Estadão.",
+            "hashtags": [
+              "#EstadosUnidos",
+              "#Irã",
+              "#GolfoPérsico",
+              "#EstreitoDeOrmuz",
+              "#Geopolítica"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Comando dos EUA diz ter destruído cinco petroleiros iranianos",
+                "body": "O órgão militar atribuiu a ação a uma resposta a dois disparos iranianos contra um navio de guerra americano.",
+                "image_direction": "Foto documental ampla de petroleiros navegando no Golfo Pérsico, com mar em primeiro plano e luz natural sóbria.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Mísseis contra um navio americano",
+                "body": "Segundo o Centcom, a Guarda Revolucionária do Irã lançou mísseis balísticos duas vezes nos dois dias anteriores. O navio desviou dos ataques, continuou patrulhando e não houve militares americanos feridos.",
+                "image_direction": "Imagem oficial de um navio de guerra dos Estados Unidos em patrulha, visto lateralmente em mar aberto e sem tripulantes identificáveis.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Outra rodada no fim de semana",
+                "body": "No sábado, o Centcom já havia anunciado ataques a três petroleiros perto da Ilha Kharg. No domingo, o Irã afirmou ter atingido uma embarcação não tripulada americana, mas os EUA negaram.",
+                "image_direction": "Mapa ilustrado e sóbrio do Golfo Pérsico, destacando apenas a Ilha Kharg e o Estreito de Ormuz, sem representar movimentos militares não confirmados.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Tensão no Estreito de Ormuz",
+                "body": "Apesar de uma trégua anunciada em junho, os ataques prosseguiram. Na última semana, os confrontos voltaram a se concentrar no Estreito de Ormuz, cujas interrupções já abalaram a economia mundial, segundo a Associated Press.",
+                "image_direction": "Foto aérea documental de petroleiros atravessando uma passagem marítima estreita, com composição que evidencie o fluxo de navegação comercial.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Irã ameaça embarcações nos portos",
+                "body": "A Guarda Revolucionária afirmou que navios em portos do Kuwait e do Bahrein que abrigam americanos poderão virar alvos. A força também orientou as tripulações a deixar as embarcações, segundo a CNN.",
+                "image_direction": "Foto documental de porto no Golfo com embarcações militares e comerciais atracadas, enquadramento distante e luz natural, sem foco em pessoas.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-10T15:06:23.279Z"
+          },
+          "slide_media": [],
+          "article_count": 3,
+          "earliest_published_at": "2026-09-09T01:25:47Z",
+          "latest_published_at": "2026-09-09T01:25:47Z",
+          "selection_rank": 2,
+          "created_at": "2026-09-10T15:06:23.279Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
