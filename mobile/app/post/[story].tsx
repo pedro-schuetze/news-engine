@@ -18,6 +18,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import * as Haptics from "expo-haptics";
+import * as Clipboard from "expo-clipboard";
 import * as ImagePicker from "expo-image-picker";
 import { absoluteUrl, api, uploadImages, type PoolCandidate, type StoryDetail } from "../../src/api";
 import SlidePreview, { type Placement } from "../../src/components/SlidePreview";
@@ -162,8 +163,8 @@ export default function PostScreen() {
   const fetchPhotos = () =>
     act("media", () => api.fetchMedia(String(storyId), String(run)), () => load());
 
-  const generateArt = () =>
-    act("ai", () => api.generateAI(String(storyId), String(run)), () => load());
+  const generateArt = (slide?: number) =>
+    act(slide ? `ai-${slide}` : "ai", () => api.generateAI(String(storyId), String(run), slide), () => load());
 
   const pickAndUpload = async () => {
     const res = await ImagePicker.launchImageLibraryAsync({
@@ -380,8 +381,8 @@ export default function PostScreen() {
                     width={slideW}
                     pageCount={detail.page_count}
                   />
-                  {/* posição do texto */}
-                  <View style={{ flexDirection: "row", justifyContent: "center", gap: 8 }}>
+                  {/* posição do texto + IA deste slide */}
+                  <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 8 }}>
                     {PLACEMENTS.map((p) => (
                       <Pressable
                         key={p.value}
@@ -406,6 +407,43 @@ export default function PostScreen() {
                         </Text>
                       </Pressable>
                     ))}
+                    <Pressable
+                      onPress={() => generateArt(slide.slide_number)}
+                      disabled={Boolean(busy)}
+                      style={{
+                        backgroundColor: C.panel,
+                        borderWidth: 1,
+                        borderColor: C.line,
+                        borderRadius: 10,
+                        paddingHorizontal: 12,
+                        paddingVertical: 7,
+                      }}
+                    >
+                      {busy === `ai-${slide.slide_number}` ? (
+                        <ActivityIndicator size="small" color={C.brand} />
+                      ) : (
+                        <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.brandInk }}>✦ IA aqui</Text>
+                      )}
+                    </Pressable>
+                    {Boolean(slide.image_prompt) && (
+                      <Pressable
+                        onPress={async () => {
+                          await Clipboard.setStringAsync(slide.image_prompt!);
+                          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                          setNotice(`prompt do slide ${slide.slide_number} copiado — gere no GPT e use Subir fotos`);
+                        }}
+                        style={{
+                          backgroundColor: C.panel,
+                          borderWidth: 1,
+                          borderColor: C.line,
+                          borderRadius: 10,
+                          paddingHorizontal: 12,
+                          paddingVertical: 7,
+                        }}
+                      >
+                        <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: C.ink2 }}>⧉ prompt</Text>
+                      </Pressable>
+                    )}
                   </View>
                   {/* candidatas */}
                   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6 }}>
@@ -447,7 +485,16 @@ export default function PostScreen() {
             <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
               {btn("Buscar fotos", fetchPhotos, { kind: "ghost", loading: busy === "media" })}
               {btn("Subir fotos", pickAndUpload, { kind: "ghost", loading: busy === "upload" })}
-              {btn("Gerar com IA", generateArt, { kind: "ghost", loading: busy === "ai" })}
+              {btn("Gerar IA (todos)", () => generateArt(), { kind: "ghost", loading: busy === "ai" })}
+              {btn("⧉ Prompts p/ GPT", async () => {
+                const all = (detail?.slides ?? [])
+                  .filter((s) => s.image_prompt)
+                  .map((s) => `── SLIDE ${s.slide_number} ──\n${s.image_prompt}`)
+                  .join("\n\n");
+                await Clipboard.setStringAsync(all);
+                Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                setNotice("prompts de todos os slides copiados — gere no GPT (1 imagem por prompt, arquivos separados) e use Subir fotos");
+              }, { kind: "ghost" })}
             </View>
             {busy === "ai" && (
               <Text style={{ fontFamily: F.sans, fontSize: 11.5, color: C.ink3, textAlign: "center" }}>

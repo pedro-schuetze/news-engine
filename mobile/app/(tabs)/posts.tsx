@@ -12,6 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { absoluteUrl, api, type PostListItem } from "../../src/api";
+import PublishedFeed from "../../src/components/PublishedFeed";
 import { C, F, VERTICAL_LABEL } from "../../src/theme";
 
 const STATUS: Record<string, { label: string; color: string; bg: string }> = {
@@ -76,7 +77,7 @@ export default function PostsScreen() {
   const [posts, setPosts] = useState<PostListItem[] | null>(null);
   const [error, setError] = useState("");
   const [refreshing, setRefreshing] = useState(false);
-  const [filter, setFilter] = useState<"all" | "approved" | "published">("all");
+  const [filter, setFilter] = useState<"feed" | "all" | "approved">("feed");
 
   const load = useCallback(async () => {
     try {
@@ -95,7 +96,7 @@ export default function PostsScreen() {
   );
 
   const shown = (posts ?? []).filter((p) =>
-    filter === "all" ? p.status !== "rejected" : p.status === filter,
+    filter === "all" ? p.status !== "rejected" : p.status === "approved",
   );
 
   return (
@@ -105,9 +106,9 @@ export default function PostsScreen() {
         <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
           {(
             [
+              ["feed", "▶ Feed"],
               ["all", "Todos"],
               ["approved", "Aprovados"],
-              ["published", "Publicados"],
             ] as const
           ).map(([value, label]) => (
             <Pressable
@@ -133,22 +134,14 @@ export default function PostsScreen() {
               </Text>
             </Pressable>
           ))}
-          {filter === "published" && (
-            <Pressable
-              onPress={() => router.push("/feed")}
-              style={{
-                marginLeft: "auto",
-                backgroundColor: C.ink,
-                borderRadius: 999,
-                paddingHorizontal: 13,
-                paddingVertical: 6,
-              }}
-            >
-              <Text style={{ fontFamily: F.sansBold, fontSize: 12, color: "#fff" }}>▶ Ver feed</Text>
-            </Pressable>
-          )}
         </View>
       </View>
+      {filter === "feed" ? (
+        <View style={{ flex: 1, paddingHorizontal: 10, paddingTop: 10, paddingBottom: 6 }}>
+          <PublishedFeed />
+        </View>
+      ) : (
+        <>
       {!posts && !error && <ActivityIndicator style={{ marginTop: 60 }} color={C.brand} />}
       {Boolean(error) && (
         <Text style={{ fontFamily: F.sans, fontSize: 13, color: C.danger, marginTop: 40, textAlign: "center" }}>
@@ -189,6 +182,8 @@ export default function PostsScreen() {
           ) : null
         }
       />
+        </>
+      )}
     </SafeAreaView>
   );
 }

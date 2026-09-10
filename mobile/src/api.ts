@@ -63,6 +63,8 @@ export interface StorySlide {
   headline: string;
   body: string;
   render_url: string;
+  /** prompt pronto para gerar a imagem em um GPT externo */
+  image_prompt?: string;
 }
 
 export interface StoryDetail {
@@ -125,9 +127,9 @@ export const api = {
     ),
 
   /** Gera 3 opções de imagem por slide com IA (gpt-image; ~1-2 min). */
-  generateAI: (storyId: string, runFile: string) =>
+  generateAI: (storyId: string, runFile: string, slide?: number) =>
     request<{ ok: boolean; pool: number; new_candidates: number }>(
-      `/api/media/${storyId}?run=${encodeURIComponent(runFile)}&mode=ai`,
+      `/api/media/${storyId}?run=${encodeURIComponent(runFile)}&mode=ai${slide ? `&slide=${slide}` : ""}`,
       { method: "POST", write: true, body: "{}" },
     ),
 

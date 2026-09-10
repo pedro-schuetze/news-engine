@@ -1,8 +1,9 @@
 /**
- * Feed dos publicados — a visualização "como no Instagram" (pedido do Pedro,
- * 2026-09-10): uma imagem por tela, scroll vertical com paging para o próximo
- * post, swipe horizontal entre os slides do mesmo post. Ordena por Recentes
- * ou, com o Instagram conectado e sincronizado, por Populares (likes).
+ * Feed dos publicados — a visualização "como no Instagram": uma imagem por
+ * tela, paging vertical entre posts, swipe horizontal entre slides. Desde
+ * 2026-09-10 é a PRIMEIRA subaba de Posts (era rota drill-down escondida —
+ * feedback do Pedro). Ordena por Recentes ou, com o Instagram sincronizado,
+ * por Populares (likes).
  */
 import { useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -14,10 +15,10 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+
 import { Image } from "expo-image";
-import { absoluteUrl, api, type PostListItem } from "../src/api";
-import { C, F, VERTICAL_LABEL } from "../src/theme";
+import { absoluteUrl, api, type PostListItem } from "../api";
+import { C, F, VERTICAL_LABEL } from "../theme";
 
 function SlidePager({ post, width, height }: { post: PostListItem; width: number; height: number }) {
   const [urls, setUrls] = useState<string[]>([]);
@@ -72,11 +73,10 @@ function SlidePager({ post, width, height }: { post: PostListItem; width: number
   );
 }
 
-export default function FeedScreen() {
+export default function PublishedFeed() {
   const router = useRouter();
-  const { width, height } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
-  const pageH = height - insets.top;
+  const { width } = useWindowDimensions();
+  const [pageH, setPageH] = useState(0);
 
   const [posts, setPosts] = useState<PostListItem[] | null>(null);
   const [order, setOrder] = useState<"recent" | "popular">("recent");
@@ -105,28 +105,24 @@ export default function FeedScreen() {
   }, [posts, order]);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#05070C" }}>
-      <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
-        {/* topo: fechar + ordenação */}
+    <View
+      style={{ flex: 1, backgroundColor: "#05070C", borderRadius: 18, overflow: "hidden" }}
+      onLayout={(e) => setPageH(e.nativeEvent.layout.height)}
+    >
+      <View style={{ flex: 1 }}>
+        {/* topo: ordenação */}
         <View
           style={{
             position: "absolute",
-            top: insets.top + 8,
+            top: 10,
             left: 0,
             right: 0,
             zIndex: 10,
             flexDirection: "row",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             paddingHorizontal: 14,
           }}
         >
-          <Pressable
-            onPress={() => router.back()}
-            hitSlop={12}
-            style={{ backgroundColor: "rgba(0,0,0,0.45)", borderRadius: 999, paddingHorizontal: 14, paddingVertical: 7 }}
-          >
-            <Text style={{ fontFamily: F.sansBold, fontSize: 13, color: "#fff" }}>✕ Fechar</Text>
-          </Pressable>
           <View style={{ flexDirection: "row", gap: 6 }}>
             {(
               [
@@ -167,6 +163,7 @@ export default function FeedScreen() {
           </Text>
         )}
 
+        {pageH > 0 && (
         <FlatList
           data={ordered}
           keyExtractor={(p) => p.story_id}
@@ -214,7 +211,8 @@ export default function FeedScreen() {
             </View>
           )}
         />
-      </SafeAreaView>
+        )}
+      </View>
     </View>
   );
 }

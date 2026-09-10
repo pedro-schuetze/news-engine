@@ -14,6 +14,8 @@
  */
 import { dataSource, loadRun } from "./data";
 import { findStory } from "./media/persist";
+import { r2Enabled, r2PublicUrl } from "./media/storage";
+import { getPrerendered, prerenderSlides, renderKey } from "./slides/prerender";
 import { slideVersion } from "./slides/version";
 
 const G = "https://graph.instagram.com/v23.0";
@@ -204,10 +206,22 @@ export async function igPublishCarousel(
 
   const caption = `${story.draft.caption}\n\n${(story.draft.hashtags ?? []).join(" ")}`.slice(0, 2200);
 
+  // 0. PNGs prontos e servidos por CDN estático: a Meta baixa cada
+  // image_url com timeout curto — a rota renderizando ao vivo (25-30s)
+  // devolvia erro ao crawler ("Only photo or video can be accepted").
+  await prerenderSlides(story);
+  const slideUrl = async (n: number) => {
+    const v = slideVersion(story, n);
+    if (r2Enabled() && (await getPrerendered(storyId, n, v))) {
+      return r2PublicUrl(renderKey(storyId, n, v));
+    }
+    return `${publicBaseUrl}/api/slide/${storyId}/${n}?run=${encodeURIComponent(runFile)}&v=${v}`;
+  };
+
   // 1. containers dos slides
   const children: string[] = [];
   for (const s of story.draft.slides) {
-    const url = `${publicBaseUrl}/api/slide/${storyId}/${s.slide_number}?run=${encodeURIComponent(runFile)}&v=${slideVersion(story, s.slide_number)}`;
+    const url = await slideUrl(s.slide_number);
     const c = await ig<{ id: string }>(`/${user}/media`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -220,6 +234,21 @@ export async function igPublishCarousel(
     children.push(c.id);
   }
 
+  // 1b. espera os children processarem (publicar antes disso dava
+  // "Media ID is not available")
+  const waitFinished = async (id: string, label: string) => {
+    for (let i = 0; i < 30; i++) {
+      const st = await ig<{ status_code?: string }>(
+        `/${id}?fields=status_code&access_token=${encodeURIComponent(token)}`,
+      );
+      if (st.status_code === "FINISHED") return;
+      if (st.status_code === "ERROR") throw new Error(`container ${label} falhou no processamento`);
+      await new Promise((r) => setTimeout(r, 2000));
+    }
+    throw new Error(`container ${label} não ficou pronto a tempo`);
+  };
+  for (let i = 0; i < children.length; i++) await waitFinished(children[i], `slide ${i + 1}`);
+
   // 2. container do carrossel
   const carousel = await ig<{ id: string }>(`/${user}/media`, {
     method: "POST",
@@ -231,6 +260,8 @@ export async function igPublishCarousel(
       access_token: token,
     }).toString(),
   });
+
+  await waitFinished(carousel.id, "carrossel");
 
   // 3. publicar
   const published = await ig<{ id: string }>(`/${user}/media_publish`, {
