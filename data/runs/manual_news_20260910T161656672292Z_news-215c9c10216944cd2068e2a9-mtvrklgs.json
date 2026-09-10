@@ -1,0 +1,184 @@
+{
+  "run_id": "news-215c9c10216944cd2068e2a9-mtvrklgs",
+  "mode": "news",
+  "started_at": "2026-09-10T16:51:32.995Z",
+  "finished_at": "2026-09-10T16:51:32.995Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 4356,
+    "estimated_output_tokens": 2105,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 33,
+    "errors": [
+      "VEJA: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-215c9c10216944cd2068e2a9-mtvrklgs",
+          "run_id": "news-215c9c10216944cd2068e2a9-mtvrklgs",
+          "cluster_id": "gn-215c9c10216944cd2068e2a9",
+          "vertical": "facts",
+          "title": "Moraes cancela pronunciamento convocado após decisões de Fachin em meio à crise no STF",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260910T161656672292Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-215c9c10216944cd2068e2a9-mtvrklgs-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/politica/noticia/2026/09/10/alexandre-de-moraes-fara-pronunciamento-apos-decisoes-de-fachin-em-meio-a-crise-no-stf.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-10T11:09:54Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "O gabinete do ministro havia informado apenas o horário da manifestação, sem divulgar oficialmente qual seria o tema da fala. Pouco tempo depois, anunciou o cancelamento e disse que seria \"remarcado em data oportuna\". Nos bastidores, interlocutores do Supremo afirmam que a expectativa era que Moraes faria uma defesa da condução do inquérito das fake news e apresentaria considerações gerais sobre as investigações conduzidas no âmbito do procedimento. 🔎 O inquérito das fake news é uma investigação aberta pelo STF em 2019 para apurar a existência de notícias fraudulentas, falsas comunicações de crimes, denúncias caluniosas, ameaças e outros ataques contra o STF, seus ministros e familiares. Fachin suspende decisões de Mendonça e Dino e tira de Moraes relatoria do inquérito das fake news O que levou à crise A sucessão de medidas levou Fachin a centralizar os procedimentos sob responsabilidade da Presidência do Supremo. Alexandre de Moraes em sessão da Primeira Turma do STF — Foto: Victor Piemonte/STF Próximos passos Além das decisões anunciadas nesta quarta (9), Fachin convocou para a próxima terça (15) uma sessão do plenário do STF para discutir os desdobramentos do relatório da Polícia Federal e definir os próximos passos das apurações relacionadas ao caso. O pronunciamento desta quinta seria a primeira manifestação pública de Moraes desde as decisões adotadas pela Presidência do Supremo em meio à crise."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-215c9c10216944cd2068e2a9-mtvrklgs-1",
+                "name": "g1.globo.com",
+                "url": "https://g1.globo.com/politica/noticia/2026/09/10/stf-volta-a-cancelar-sessao-de-julgamentos-prevista-para-esta-quinta.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-09-10T11:09:54Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "É o segundo cancelamento na semana. O presidente do STF, Edson Fachin, convocou uma sessão para a próxima terça (15) para discutir o relatório da PF que apontou uma suposta relação entre o ministro Alexandre de Moraes e Daniel Vorcaro. Presidente do Supremo Tribunal Federal (STF), Edson Fachin. — Foto: Alejandro Zambrana/STF A presidência do Supremo Tribunal Federal (STF) cancelou a sessão de julgamentos prevista para esta quinta-feira (10). É o segundo cancelamento na semana. Eles ocorrem em um momento de forte crise institucional na Corte. \"Tendo presente que a sessão prevista para hoje é extraordinária, assim como extraordinária é a sessão convocada para a próxima terça-feira, comunica-se o cancelamento da sessão de hoje. A sessão de terça-feira será realizada nos termos da convocação já levada a efeito\", diz comunicado da presidência do STF desta quinta. Na sessão desta quinta, os ministros analisariam: trecho do Marco Civil da Internet que exige decisão judicial para acesso a dados de registro de conexão, como o endereço IP; constitucionalidade de uma lei do Amazonas que determina que 10% dos cargos comissionados e 100% dos cargos de confiança do Ministério Público do estado sejam ocupados por servidores efetivos; possibilidade de excluir da base de cálculo da Contribuição ao PIS e da COFINS os valores de créditos presumidos de ICMS concedidos pelos estados e pelo Distrito Federal. Fachin convocou sessão para tratar do caso Moraes Na sessão, os ministros vão discutir a validade do relatório da PF. O documento sofreu críticas de alguns ministros da Corte. Na avaliação deles, Mendonça pediu para investigar um colega sem autorização do plenário. Os ministros também vão decidir sobre o pedido de nulidade da Procuradoria-Geral da República (PGR) e devem definir se será aberta ou arquivada investigação contra Moraes. Veja também Em alta naglobo.comJornalismoNove estados do Centro-Sul devem ter tempestades nesta quinta; PR, SP e MS têm risco de tornadoEsporteRei da Série B? Técnico Paulo Morgado celebra quinto acesso: \"Mais uma marca na carreira\"EntretenimentoQuem Ama Cuida: Pedro procura AdemirEncontre mais assuntos Mais do G1 Há 37 minutos Política Há 1 hora Eleições 2026 em Roraima Há 26 minutos Política Há 2 horas Mato Grosso Há 3 horas São Paulo Há 3 horas Economia Há 5 horas Trabalho e Carreira Há 27 minutos Política Há 4 horas São Paulo"
+              },
+              {
+                "article_id": "news-215c9c10216944cd2068e2a9-mtvrklgs-2",
+                "name": "www1.folha.uol.com.br",
+                "url": "https://www1.folha.uol.com.br/poder/2026/09/moraes-preparou-defesa-publica-mas-adiou-fala-apos-conselho-de-aliados-e-operacao-sobre-dark-horse.shtml",
+                "source_domain": "www1.folha.uol.com.br",
+                "published_at": "2026-09-10 12:52:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O ministro Alexandre de Moraes, do STF (Supremo Tribunal Federal), preparou uma defesa pública a respeito das suspeitas que o colocaram como um dos vértices da crise institucional da corte, mas adiou o pronunciamento após ser aconselhado por magistrados aliados. Os colegas recomendaram que Moraes aproveitasse as atenções voltadas à operação da PF (Polícia Federal) sobre o filme \"Dark Horse\", autorizada pelo ministro Flávio Dino nesta quinta-feira (10), e aguardasse mais um tempo para se manifestar. Moraes leria um texto com explicações a respeito da sua atuação e traria argumentos para rebater o ministro André Mendonça, relator das investigações sobre o Banco Master e seu principal antagonista no STF. Um ministro próximo a Moraes, contudo, ponderou que tudo o que ele eventualmente deixasse sem explicação poderia assombrá-lo até a sessão da próxima terça (15), quando o plenário vai se reunir para discutir a crise pela primeira vez. Também foi considerada a possibilidade de que as falas de Moraes pudessem agravar as tensões com Mendonça e levar o presidente do STF, Edson Fachin, a cancelar a sessão desta quinta-feira, assim como fez na quarta (9). Um ministro defendeu que um pouco de normalidade institucional em meio ao caos poderia vir a calhar, com o julgamento regular dos processos tributários da pauta. No entanto, Fachin acabou de fato cancelando a sessão mais uma vez. De acordo com auxiliares do presidente da corte, ele avaliou que haveria um risco real de a sessão desta quinta ser utilizada para antecipar debates que já estão planejados para ocorrer na próxima terça. Na disposição das cadeiras do plenário, Moraes e Mendonça sentam lado a lado. A assessoria de imprensa do STF informou às 7h40 que Moraes faria um pronunciamento às 11h. Às 8h45, no entanto, um novo comunicado foi divulgado, apontando para o cancelamento da fala, com remarcação \"para data oportuna\". Pressionado a achar uma solução para a crise inédita do STF, Fachin decidiu, entre outras medidas, tirar Moraes da relatoria do inquérito das fake news e proibir Mendonça de avançar em investigações com potencial de atingir integrantes da corte. O presidente do Supremo marcou para a próxima terça-feira (15) uma sessão pública para que os ministros analisem o relatório da PF que apontou Moraes como interlocutor de Daniel Vorcaro, dono do Master, e o pedido de nulidade do documento feito pela PGR (Procuradoria-Geral da República). Os diálogos foram tornados públicos por Mendonça. Moraes contra-atacou, usando o inquérito das fake news para pedir que o colega responda por abuso de autoridade, crime de responsabilidade e improbidade administrativa. O fato de Moraes ter usado um \"relatório de inteligência\" da PF para embasar sua solicitação levou Mendonça à tréplica, determinando o afastamento de Andrei Rodrigues do comando da corporação. Por fim, Dino, que é aliado de Moraes, deu nova decisão reintegrando o diretor-geral ao cargo. Fachin suspendeu as duas decisões sobre o diretor-geral da PF e, na prática, manteve Rodrigues nas funções. O presidente do STF citou \"comandos conflitantes e sobrepostos que geram lesão à ordem pública\". Nesta quinta, Dino autorizou operação da PF contra 29 pessoas que teriam participado de um esquema de desvio de recursos de emendas parlamentares para o filme \"Dark Horse\", que retrata a vida do ex-presidente Jair Bolsonaro. Entre os alvos da operação estão o deputado federal Mario Frias (PL-SP), autor das emendas, e a produtora do filme, Karina Gama. Ambos negam irregularidades na destinação ou na execução dos recursos."
+              },
+              {
+                "article_id": "news-215c9c10216944cd2068e2a9-mtvrklgs-3",
+                "name": "metropoles.com",
+                "url": "https://www.metropoles.com/colunas/igor-gadelha/o-que-moraes-deve-falar-em-pronunciamento-no-stf",
+                "source_domain": "metropoles.com",
+                "published_at": "2026-09-10T08:33:00-03:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O ministro Alexandre de Moraes convocou a imprensa — e logo depois desmarcou — para pronunciamento às 11h desta quinta-feira (10/9) no STF.Segundo aliados, Moraes pretendia apresentar a jornalistas informações que deve prestar ao presidente do STF, Edson Fachin, sobre o caso Master.3 imagensFechar modal.1 de 3Com base em um documento de inteligência da PF, Moraes usou o relatório das Fake News para acusar MendonçaLUIS NOVA/METRÓPOLES@LuisGustavoNova2 de 3O ministro Alexandre de MoraesLUIS NOVA/METRÓPOLES@LuisGustavoNova3 de 3O ministro Alexandre de MoraesLUIS NOVA/METRÓPOLES@LuisGustavoNovaPoucas horas após convocar a imprensa, contudo, o próprio Moraes enviou novo comunicado cancelando o pronunciamento.Na semana passada, o ministro André Mendonça tirou o sigilo de mensagens que expuseram a relação próxima de Moraes com o banqueiro Daniel Vorcaro. Leia também Igor GadelhaLula conversou com Fachin na véspera das decisões do ministro sobre Andrei Igor GadelhaMendonça homologa delação do empresário que fez repasses para Dark Horse Igor GadelhaAlvo da PF, produtora do Dark Horse é pressionada a fazer delação Igor GadelhaCentrão recalibra apostas e passa a ver Flávio como favorito na eleição Com base nas mensagens, Mendonça pediu que o plenário do STF decida se abre ou não investigação formal contra Moraes nesse caso.Na quarta-feira (9/9), Fachin anunciou ter marcado para a próxima terça-feira (15/9) sessão do plenário para analisar o caso de Moraes.Também na quarta, o presidente do STF anunciou ter retirado Moraes da relatoria do Inquérito das Fake News, que se arrasta desde 2019, sem fim."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. VEJA: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-215-mtvrlb0j",
+            "story_id": "news-215c9c10216944cd2068e2a9-mtvrklgs",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Moraes cancela pronunciamento convocado após decisões de Fachin em meio à crise no STF",
+            "instagram_headline": "Moraes cancela pronunciamento após decisões de Fachin no STF",
+            "short_summary": "O gabinete de Alexandre de Moraes anunciou e cancelou, pouco depois, um pronunciamento previsto para esta quinta-feira (10). A fala seria a primeira manifestação pública do ministro após Edson Fachin adotar medidas para conter a crise no STF.",
+            "why_it_matters": "O plenário terá de decidir se valida um relatório da Polícia Federal e se uma investigação contra Moraes será aberta ou arquivada. Fachin também retirou do ministro a relatoria do inquérito das fake news.",
+            "key_facts": [
+              "O tema do pronunciamento não foi divulgado oficialmente.",
+              "O gabinete informou que a fala será remarcada em data oportuna.",
+              "Fachin retirou Moraes da relatoria do inquérito das fake news.",
+              "O STF cancelou pela segunda vez uma sessão de julgamentos na semana.",
+              "O plenário discutirá o caso na terça-feira, 15 de setembro."
+            ],
+            "caption": "O gabinete de Alexandre de Moraes anunciou na manhã desta quinta-feira (10) que o ministro faria um pronunciamento no STF. Pouco mais de uma hora depois, a fala foi cancelada e ficou para uma “data oportuna”. O assunto não havia sido informado oficialmente.\n\nAs versões sobre o conteúdo esperado vieram dos bastidores. Interlocutores ouvidos pelo g1 afirmaram que Moraes faria uma defesa da condução do inquérito das fake news. O Metrópoles relatou que ele pretendia apresentar informações sobre o caso Banco Master, enquanto a Folha informou que o ministro preparou uma defesa pública, mas foi aconselhado por aliados a esperar.\n\nO cancelamento ocorreu após o presidente do STF, Edson Fachin, retirar Moraes da relatoria do inquérito das fake news e suspender decisões conflitantes de André Mendonça e Flávio Dino sobre o comando da Polícia Federal. Fachin também centralizou na Presidência do tribunal os procedimentos ligados à crise.\n\nO STF ainda cancelou sua segunda sessão de julgamentos na semana. Na próxima terça-feira (15), o plenário deverá analisar a validade do relatório da PF, o pedido de nulidade apresentado pela PGR e decidir se uma investigação contra Moraes será aberta ou arquivada.\n\nFontes: g1, Folha de S.Paulo e Metrópoles.",
+            "hashtags": [
+              "#STF",
+              "#AlexandreDeMoraes",
+              "#EdsonFachin",
+              "#SupremoTribunalFederal",
+              "#PolíticaBrasileira"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Moraes cancela pronunciamento após decisões de Fachin no STF",
+                "body": "O gabinete anunciou a fala para esta quinta-feira (10), mas depois informou que ela será remarcada em data oportuna.",
+                "image_direction": "Foto documental de Alexandre de Moraes durante uma sessão do STF, em enquadramento fechado, com luz natural e fundo institucional desfocado.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O tema não foi anunciado",
+                "body": "O gabinete divulgou apenas o horário. Interlocutores ouvidos pelo g1 esperavam uma defesa da condução do inquérito das fake news, aberto pelo STF em 2019.",
+                "image_direction": "Foto documental de Moraes diante de microfones ou conversando com jornalistas nas dependências do STF, em composição lateral e luz ambiente.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Fachin interveio nos procedimentos",
+                "body": "O presidente do STF retirou Moraes da relatoria do inquérito e suspendeu decisões conflitantes de André Mendonça e Flávio Dino sobre o comando da Polícia Federal.",
+                "image_direction": "Foto oficial de Edson Fachin presidindo uma sessão, centralizado na bancada do STF, com composição simétrica e iluminação interna sóbria.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Sessões também foram canceladas",
+                "body": "A Presidência do STF cancelou pela segunda vez na semana uma sessão de julgamentos. Segundo a Folha, auxiliares de Fachin avaliaram que o encontro poderia antecipar o debate sobre a crise.",
+                "image_direction": "Imagem documental do plenário do STF vazio, com as cadeiras e a bancada em plano aberto, linhas simétricas e iluminação institucional.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Plenário discutirá o caso",
+                "body": "Na terça-feira (15), os ministros devem analisar a validade do relatório da PF e o pedido de nulidade da PGR, além de decidir se uma investigação contra Moraes será aberta ou arquivada.",
+                "image_direction": "Foto externa do edifício do STF em Brasília, com o prédio em perspectiva ampla, céu claro e circulação discreta de pessoas no primeiro plano.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-10T16:51:32.995Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-10T11:09:54Z",
+          "latest_published_at": "2026-09-10T11:09:54Z",
+          "selection_rank": 3,
+          "created_at": "2026-09-10T16:51:32.995Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
