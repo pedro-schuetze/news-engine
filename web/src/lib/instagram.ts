@@ -74,8 +74,7 @@ export async function igRefreshToken(): Promise<{ ok: boolean; expires_days?: nu
   }
   await dataSource().writeTextFile(
     TOKEN_PATH,
-    JSON.stringify({ token: body.access_token, refreshed_at: new Date().toISOString() }, null, 2) + "
-",
+    JSON.stringify({ token: body.access_token, refreshed_at: new Date().toISOString() }, null, 2) + "\n",
     "instagram: token renovado",
   );
   tokenCache = { token: body.access_token, at: Date.now() };
