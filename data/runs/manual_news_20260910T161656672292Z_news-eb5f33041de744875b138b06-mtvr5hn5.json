@@ -1,0 +1,176 @@
+{
+  "run_id": "news-eb5f33041de744875b138b06-mtvr5hn5",
+  "mode": "news",
+  "started_at": "2026-09-10T16:39:51.092Z",
+  "finished_at": "2026-09-10T16:39:51.092Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 3,
+    "articles_by_collector": {
+      "google-news-front-page": 3
+    },
+    "articles_after_dedupe": 3,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 3594,
+    "estimated_output_tokens": 2285,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 36,
+    "errors": [
+      "UOL: www.uol.com.br: conteúdo insuficiente ou acesso bloqueado; matéria não lida.",
+      "VEJA: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-eb5f33041de744875b138b06-mtvr5hn5",
+          "run_id": "news-eb5f33041de744875b138b06-mtvr5hn5",
+          "cluster_id": "gn-eb5f33041de744875b138b06",
+          "vertical": "facts",
+          "title": "CBF anuncia estádio da final única da Copa do Brasil 2026",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260910T161656672292Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-eb5f33041de744875b138b06-mtvr5hn5-0",
+              "name": "espn.com.br",
+              "url": "https://www.espn.com.br/futebol/copa-do-brasil/artigo/_/id/17236015/cbf-anuncia-mane-garrincha-estadio-final-unica-copa-brasil-2026",
+              "source_domain": "espn.com.br",
+              "published_at": "2026-09-10T14:25:00Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "playSorteio define mandos de campo das semifinais da Copa do Brasil e anuncia palco da grande final; VEJA (0:33)ESPN.com.br10 de set, 2026, 11:25A CBF (Confederação Brasileira de Futebol) anunciou quinta-feira (10) o estádio que receberá a grande final única da Copa do Brasil.A \"casa\" da decisão será o Mané Garrincha, em Brasília.Em evento realizado na sede da entidade, no Rio de Janeiro, também foi definida a ordem dos jogos das semifinais Atlético-MG x Grêmio e Palmeiras x Vasco da Gama.Veja abaixo os mandos das semifinais:Atlético-MG x GrêmioIDA: Grêmio x Atlético-MG (Arena do Grêmio)VOLTA: Atlético-MG x Grêmio (Arena MRV)Palmeiras x Vasco da GamaIDA: Palmeiras x Vasco (Nubank Parque)VOLTA: Vasco x Palmeiras (Maracanã/São Januário)As semis serão jogadas entre os dias 1º (ida) e 8 (volta) de novembro.Os horários das partidas ainda serão confirmados pela CBF.A decisão está marcada para o dia 6 de dezembro, fechando a temporada nacional."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-eb5f33041de744875b138b06-mtvr5hn5-1",
+                "name": "ge.globo.com",
+                "url": "https://ge.globo.com/futebol/copa-do-brasil/noticia/2026/09/10/semifinais-da-copa-do-brasil-2026-veja-os-mandos-de-campo.ghtml",
+                "source_domain": "ge.globo.com",
+                "published_at": "2026-09-10T14:25:00Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Sorteio realizado pela CBF decide ordem dos confrontos, que serão disputados em novembro Veja o sorteio de mandos de campo das semifinais da Copa do Brasil A CBF definiu os mandos de campo dos jogos da semifinal da Copa do Brasil. Em sorteio realizado na manhã desta quinta-feira (10), na sede da entidade, no Rio de Janeiro, ficou definido que Grêmio e Palmeiras serão os mandantes das partidas de ida. Atlético-MG e Vasco decidem os duelos em casa. Os jogos têm como datas-base os dias 1º e 8 de novembro. Ou seja, daqui a quase dois meses. Depois das semis, haverá menos de um mês até a final única, que será no dia 6 de dezembro, em Brasília. Os dois finalistas da competição garantem vaga na Libertadores de 2027. Esporte Espetacular acompanha clássicos das quartas de final da Copa do Brasil Jogos de ida Grêmio x Atlético-MGPalmeiras x Vasco Jogos de volta Atlético-MG x GrêmioVasco x Palmeiras Troféu da Copa do Brasil: quatro times continuam na disputa — Foto: Rafael Ribeiro/CBF Todos os envolvidos na disputa já conquistaram títulos da Copa do Brasil: Grêmio: 5 (1989, 1994, 1997, 2001 e 2016)Palmeiras: 4 (1998, 2012, 2015 e 2020)Atlético-MG: 2 (2014 e 2021)Vasco: 1 (2011) O caminho dos classificados A Copa do Brasil 2026 começou em fevereiro, com 126 clubes. Sete fases eliminatórias depois, apenas quatro times continuam na disputa. Os quatro disputam a Série A do Campeonato Brasileiro e entraram na quinta fase. Abaixo, veja o caminho das equipes até a semifinal: Palmeiras: eliminou Jacuipense, Fortaleza e SantosVasco: eliminou Paysandu, Fluminense e VitóriaGrêmio: eliminou Confiança, Mirassol e InterAtlético-MG: eliminou Ceará, Juventude e Cruzeiro Sorteio das semifinais da Copa do Brasil — Foto: Andressa Abadde / ge Final única Novidade neste ano, a Copa do Brasil será decidida em apenas um jogo, no dia 6 de dezembro. A CBF anunciou nesta quinta-feira que Brasília será a sede da decisão, na Arena Mané Garrincha. O governo do Distrito Federal enviou um ofício à CBF em agosto para oferecer Brasília como sede da final da Copa do Brasil. A capital federal tem rede hoteleira e acesso mais viável para vias rodoviárias e aéreas. Premiação 5ª fase: R$ 2 milhões;Oitavas de final: R$ 3 milhões;Quartas de final: R$ 4 milhões;Semifinal: R$ 9 milhões;Vice-campeão: R$ 34 milhões;Campeão: R$ 78 milhões."
+              },
+              {
+                "article_id": "news-eb5f33041de744875b138b06-mtvr5hn5-2",
+                "name": "terra.com.br",
+                "url": "https://www.terra.com.br/esportes/futebol/copa-do-brasil/vasco-e-atletico-mg-decidem-vaga-na-final-da-copa-do-brasil-jogando-em-casa,1369703e6ad791bef25db5f8f0e5bbebmasq0azk.html",
+                "source_domain": "terra.com.br",
+                "published_at": "2026-09-10T14:25:00Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Copa do Brasil Decisão do torneio vai acontecer em 6 de dezembro, em Brasília 10 set 2026 - 10h30 (atualizado às 11h36) Por: Redação Terra Vasco e Atlético-MG vão ser os mandantes das semifinais da Copa do Brasil de 2026. A informação foi divulgada nesta quinta-feira, 10, na sede da Confederação Brasileira de Fitebol (CBF), na Barra da Tijuca, no Rio de Janeiro. Está no Tiktok? O Terra Esportes chegou por lá para te manter informado de um jeito diferente e divertido. Siga nosso perfil, curta e compartilhe! Os confrontos já estão definidos: Palmeiras (1º jogo em casa) x Vasco Grêmio (1º jogo em casa) x Atlético-MG As datas-base dos jogos são 1º e 8 de novembro. Os dias exatos ainda serão definidos.A CBF também anunciou oficialmente a escolha do Estádio Mané Garrincha, em Brasília, como sede oficial da decisão da taça nacional. A decisão acontece em 6 de dezembro. Essa é a primeira vez na história que a disputa ocorrerá em jogo único na capital federal. Além dos mandos, a CBF também anunciou os detentores dos direitos da competição para o período entre 2027 e 2030. O Grupo Globo e o Amazon Prime Video renovaram os contratos. Já um terceiro parceiro deverá ser divulgado na semana que vem. Taça Copa do Brasil Foto: Nelson Terme /CBF PremiaçõesDe acordo com o site Jogada10, Palmeiras, Vasco, Grêmio e Atlético-MG receberam R$ 9 milhões pela classificação na semifinal. O vice-campeão da disputa deve faturar a quantia de R$ 34 milhões, enquanto o vencedor da Copa do Brasil leva a bolada de R$ 78 milhões. Como os times chegaram à semiO Verdão chegou à semifinal depois de eliminar o Peixe. O time teve um bom resultado no último dia 26, quando venceu por 3 a 0, e empatou no 0 a 0 na última partida, realizada no dia 2. Já o Vasco venceu o Vitória nas duas partidas, por 1 a 0 e 2 a 0, nas mesmas datas. Enquanto isso, o Grêmio avançou após eliminar o Internacional, por 3 a 1, no jogo de volta. O Atlético-MG entrou para a lista semifinalista ao eliminar o Cruzeiro, por 2 a 1 no segundo confronto. Fonte: Portal Terra"
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "3 de 5 matérias lidas. Leitura não equivale a verificação independente. UOL: www.uol.com.br: conteúdo insuficiente ou acesso bloqueado; matéria não lida. · VEJA: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-eb5-mtvr69f7",
+            "story_id": "news-eb5f33041de744875b138b06-mtvr5hn5",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "CBF anuncia estádio da final única da Copa do Brasil 2026",
+            "instagram_headline": "CBF escolhe Mané Garrincha para final única da Copa do Brasil 2026",
+            "short_summary": "A final da Copa do Brasil de 2026 será disputada em jogo único no Estádio Mané Garrincha, em Brasília. A decisão está marcada para 6 de dezembro.",
+            "why_it_matters": "Além do título, os dois finalistas garantem vaga na Libertadores de 2027, segundo o ge. O campeão receberá R$ 78 milhões, e o vice, R$ 34 milhões.",
+            "key_facts": [
+              "A final será em 6 de dezembro, em Brasília.",
+              "O Mané Garrincha receberá a decisão em jogo único.",
+              "Grêmio enfrenta o Atlético-MG em uma das semifinais.",
+              "Palmeiras disputa a outra vaga contra o Vasco.",
+              "As semifinais têm datas-base em 1º e 8 de novembro.",
+              "Segundo o ge, campeão e vice vão à Libertadores de 2027."
+            ],
+            "caption": "A CBF anunciou o Estádio Mané Garrincha, em Brasília, como sede da final da Copa do Brasil de 2026. A decisão será disputada em jogo único no dia 6 de dezembro e encerrará a temporada nacional.\n\nAntes da final, Grêmio e Palmeiras terão o mando das partidas de ida das semifinais. Atlético-MG e Vasco decidirão os confrontos em casa. Os jogos têm datas-base em 1º e 8 de novembro, mas os horários ainda serão confirmados pela CBF.\n\nOs quatro clubes entraram na competição na quinta fase e já conquistaram o torneio. O Grêmio tem cinco títulos; o Palmeiras, quatro; o Atlético-MG, dois; e o Vasco, um. Segundo o ge, os dois classificados à decisão também garantirão vaga na Libertadores de 2027.\n\nAinda de acordo com o ge, o campeão receberá R$ 78 milhões, enquanto o vice ficará com R$ 34 milhões. O governo do Distrito Federal havia oferecido Brasília como sede da final em agosto.\n\nFontes: ESPN, ge e Terra.",
+            "hashtags": [
+              "#CopaDoBrasil",
+              "#FutebolBrasileiro",
+              "#ManéGarrincha",
+              "#Brasília",
+              "#CBF"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "CBF escolhe Mané Garrincha para final única da Copa do Brasil 2026",
+                "body": "A decisão será disputada em 6 de dezembro, em Brasília, encerrando a temporada nacional.",
+                "image_direction": "Vista ampla e documental do Estádio Mané Garrincha, com a arquitetura externa em destaque e luz natural de fim de tarde.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Decisão terá apenas uma partida",
+                "body": "A edição de 2026 terá, pela primeira vez, a decisão em apenas um jogo. O governo do Distrito Federal ofereceu Brasília como sede em agosto.",
+                "image_direction": "Imagem aérea documental do Mané Garrincha integrado à paisagem urbana de Brasília, em composição horizontal e luz diurna.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Semifinais serão em novembro",
+                "body": "Grêmio recebe o Atlético-MG na ida, e o Palmeiras enfrenta o Vasco em casa. As voltas terão mandos de Atlético-MG e Vasco, com datas-base em 1º e 8 de novembro.",
+                "image_direction": "Troféu da Copa do Brasil em primeiro plano durante evento oficial, com bolas e elementos do sorteio desfocados ao fundo.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Finalistas garantem vaga continental",
+                "body": "Segundo o ge, os dois finalistas garantem vaga na Libertadores de 2027. Grêmio, Palmeiras, Atlético-MG e Vasco já conquistaram ao menos uma edição da Copa do Brasil.",
+                "image_direction": "Composição em quatro quadros com fotografias documentais recentes dos elencos de Grêmio, Palmeiras, Atlético-MG e Vasco em campo.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Premiação chega a R$ 78 milhões",
+                "body": "De acordo com o ge, o campeão receberá R$ 78 milhões, e o vice, R$ 34 milhões. A CBF ainda definirá os horários das semifinais marcadas para novembro.",
+                "image_direction": "Close documental do troféu da Copa do Brasil sob iluminação de evento, com fundo escuro e reflexos metálicos controlados.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-10T16:39:51.092Z"
+          },
+          "slide_media": [],
+          "article_count": 3,
+          "earliest_published_at": "2026-09-10T14:25:00Z",
+          "latest_published_at": "2026-09-10T14:25:00Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-10T16:39:51.092Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
