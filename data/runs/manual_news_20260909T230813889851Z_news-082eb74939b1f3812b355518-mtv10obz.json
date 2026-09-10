@@ -1,0 +1,174 @@
+{
+  "run_id": "news-082eb74939b1f3812b355518-mtv10obz",
+  "mode": "news",
+  "started_at": "2026-09-10T04:28:20.320Z",
+  "finished_at": "2026-09-10T04:28:20.320Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 3,
+    "articles_by_collector": {
+      "google-news-front-page": 3
+    },
+    "articles_after_dedupe": 3,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 4293,
+    "estimated_output_tokens": 2143,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 40,
+    "errors": [
+      "UOL Notícias: noticias.uol.com.br: HTTP 403",
+      "CNN Brasil: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-082eb74939b1f3812b355518-mtv10obz",
+          "run_id": "news-082eb74939b1f3812b355518-mtv10obz",
+          "cluster_id": "gn-082eb74939b1f3812b355518",
+          "vertical": "politics",
+          "title": "Avião de Zelensky quase é atingido por drone a caminho de Oslo, diz premiê da Noruega",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260909T230813889851Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-082eb74939b1f3812b355518-mtv10obz-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/mundo/noticia/2026/09/09/aviao-de-zelensky-quase-e-atingido-por-drone-a-caminho-de-oslo-diz-premie-da-noruega.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-09T17:56:50Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "\"O avião dele quase foi atingido por um drone quando estava decolando da Moldávia\", disse Jonas Gahr Støre. Zelensky havia se deslocado para Oslo para o funeral do rei Harald V, na terça-feira (8). Segundo a Moldávia, a decolagem do avião de Zelensky sofreu um atraso por conta do fechamento do espaço aéreo do país após a identificação de um drone russo. Assim que a queda do drone foi confirmada, a aeronave foi liberada. Zelensky chegou ao Hotel Plaza, no centro de Oslo, por volta das 21h de terça-feira. Apesar do incidente, o ucraniano não cancelou seus compromissos: ele se reuniu com Støre na própria terça e nesta quarta de manhã. \"Perguntei como tinha sido a noite, e ele disse que não foi boa, pois passou o tempo ao telefone recebendo notícias sobre onde os mísseis haviam caído\", declarou Støre à imprensa local. Agora no g1 Zelensky criticou a comunidade internacional nesta quarta por não adotar uma postura mais firme contra a Rússia em relação à intensificação dos bombardeios a áreas civis da Ucrânia. No final de agosto, a Rússia lançou uma semana de ataques noturnos e diurnos contra Kiev, no que foi o bombardeio contínuo mais pesado à capital ucraniana desde o início da invasão em larga escala, em 2022. Os ataques incessantes com mísseis e drones continuaram neste mês e visam minar o moral da população civil, segundo autoridades ucranianas. As sanções econômicas internacionais contra a Rússia e os esforços para isolar Moscou diplomaticamente não impediram a invasão. Zelensky instou os países a intensificarem a pressão. \"Infelizmente, a resposta da comunidade internacional a esses ataques, que ceifam vidas praticamente todos os dias, tem sido insuficiente\", disse ele nas redes sociais. \"Mas é necessária uma resposta: Moscou não deve entrar no inverno [do hemisfério norte] acreditando que pode impunemente promover o terror com mísseis e drones.\" O presidente da Ucrânia, Volodymyr Zelensky, em 9 de setembro de 2026 — Foto: Leonhard Foeger/Reuters As Nações Unidas informaram no mês passado que o aumento dos ataques aéreos russos matou ou feriu mais civis ucranianos em julho do que em qualquer outro mês desde março de 2022, com 437 mortos e mais de 2.600 feridos. Ao todo, mais de 16.800 civis ucranianos foram mortos e mais de 51.000 ficaram feridos desde a invasão russa, segundo a Missão de Monitoramento de Direitos Humanos da ONU na Ucrânia. Moscou sempre nega atacar civis e afirma que seus alvos são instalações de natureza militar. Os EUA renovaram seus esforços para encerrar o conflito, enviando enviados especiais a Kiev e Moscou durante o fim de semana, embora as iniciativas de Washington ainda não tenham gerado progressos substanciais. O secretário de Estado dos EUA, Marco Rubio, declarou na noite de terça-feira que as negociações entre Ucrânia e Rússia foram \"substantivas\", mas que ainda há muito a ser feito."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-082eb74939b1f3812b355518-mtv10obz-1",
+                "name": "estadao.com.br",
+                "url": "https://www.estadao.com.br/internacional/aviao-de-zelenski-quase-e-atingido-por-drone-enquanto-estava-a-caminho-de-oslo-npr/",
+                "source_domain": "estadao.com.br",
+                "published_at": "2026-09-09T17:56:50Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Gerando resumoO avião do presidente da Ucrânia, Volodimir Zelenski, quase foi atingido por um drone enquanto o líder ucraniano estava a caminho de Oslo nesta quarta-feira, 9, para participar do funeral do rei Harald da Noruega. Segundo a agência norueguesa NTB, o primeiro-ministro norueguês Jonas Gahr Store afirmou à emissora pública NRK que o incidente ocorreu durante a decolagem na Moldávia. “Seu avião quase foi atingido por um drone durante a decolagem na Moldávia. Essa é a realidade em que ele vive”, afirmou Store à emissora pública norueguesa NRK. Ainda não há detalhes sobre o incidente.PublicidadePresidente da Ucrânia, Volodmir Zelenski, e sua esposa, Olena Zelenska, desembarcam do avião no aeroporto de Gardermoen, próximo a Oslo, antes de comparecerem ao funeral do rei Harald V da Noruega, em 9 de setembro de 2026, em Oslo. Foto: Frederik Ringnes/NTB/AFPPUBLICIDADESegundo Store, Zelenski passou a noite acompanhando os ataques à Ucrânia. “Perguntei como tinha sido a noite, e ele disse que não tinha sido uma boa noite, pois ficou ao telefone recebendo notícias sobre onde os mísseis haviam atingido”, afirmou o primeiro-ministro norueguês. “É uma situação muito dramática. Isso causa uma forte impressão”, acrescentou. Zelenski não havia se pronunciado sobre o incidente até a publicação da reportagem. Em publicação no X, o presidente ucraniano informou que operações de resgate estão em andamento em várias regiões do país após ataques com drones russos. “Em Sumy, um drone russo atingiu uma área próxima a um shopping center. Até o momento, sabe-se que duas pessoas morreram e outras quatorze ficaram feridas. Um ataque brutal a um prédio residencial de nove andares em Kiev matou uma pessoa e feriu sete, incluindo duas crianças”, afirmou Zelenski em publicação. PublicidadeSegundo o presidente, a Rússia efetuou ataques em grande escala contra Mykolaiv durante a madrugada e ao longo da manhã. “Tragicamente, duas pessoas morreram e outras sete ficaram feridas. Minhas condolências às famílias e aos entes queridos das vítimas”, afirmou.Logo após a chegada na terça-feira, Zelenskyj se reuniu com Store, o ministro das Finanças, Jens Stoltenberg, e o ministro das Relações Exteriores, Espen Barth Eide, no Hotel Plaza, em Oslo, e falou sobre a ajuda militar norueguesa, inclusive o apoio da defesa antiaérea e a assistência civil.Store não quis dar detalhes sobre reunião. “Ainda não chegamos lá. Há empresas do setor que estão colaborando para verificar se é possível fornecer defesa antiaérea à Ucrânia, mas também para encontrar uma solução industrial que permita que eles mesmos construam seus sistemas de defesa antiaérea. Para dizer de forma bem direta, eles têm um buraco no teto”, afirmou o primeiro-ministro à NRK. PublicidadeNesta quarta-feira, Zelenski se somou a outros líderes estrangeiros que assistiram ao funeral do rei Harald, falecido em 28 de agosto aos 89 anos. “Prestamos nossas homenagens ao Rei Harald V. A Ucrânia será sempre grata à Noruega por toda a sua assistência. Esse apoio não vem apenas do governo, mas também da Família Real e de todo o povo norueguês”, afirmou Zelenski em publicação no X. O presidente ucraniano deixou a Noruega após o funeral e se dirigiu para o Canadá./Com informações da AFPPublicidadeVale ler tambémCrescimento da AfD ameaça o governo Merz e próximos capítulos ainda estão por virComo a AfD atua como um braço da Rússia na AlemanhaExtrema direita na Alemanha: isolar, proibir ou deixar governar?"
+              },
+              {
+                "article_id": "news-082eb74939b1f3812b355518-mtv10obz-2",
+                "name": "noticias.r7.com",
+                "url": "https://noticias.r7.com/internacional/aviao-de-zelensky-quase-foi-atingido-por-drone-na-moldavia-revela-premie-da-noruega-09092026/",
+                "source_domain": "noticias.r7.com",
+                "published_at": "2026-09-09T19:50:25.257Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O avião que transportava o presidente ucraniano Volodymyr Zelensky para Oslo, em viagem para participar do funeral do rei da Noruega, “quase foi atingido” por um drone ao decolar da Moldávia na terça-feira (8), disse o primeiro-ministro norueguês, Jonas Gahr Stoere, à emissora pública NRK nesta quarta-feira (9).“O avião dele quase foi atingido por um drone quando estava prestes a decolar da Moldávia. Essa é a realidade que ele está enfrentando”, disse Stoere.Stoere não revelou a fonte da informação nem quão perto o drone chegou.Zelensky participou nesta quarta-feira do funeral do rei Harald 5º da Noruega, caminhando atrás do caixão junto com outros chefes de Estado no centro de Oslo. Ele deixou a Noruega logo após o término do funeral.Stoere havia afirmado em um comunicado na terça-feira que se reuniria com o líder ucraniano naquela noite, com as discussões focadas na defesa aérea da Ucrânia.Zelensky havia dito que também haveria discussões com empresas participantes da iniciativa Freyja para criar um sistema antibalístico europeu durante sua estadia na Noruega.Fique por dentro das principais notícias do dia no Brasil e no mundo. Siga o canal do R7, o portal de notícias da RECORD, no WhatsApp"
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "3 de 5 matérias lidas. Leitura não equivale a verificação independente. UOL Notícias: noticias.uol.com.br: HTTP 403 · CNN Brasil: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-082-mtv11j34",
+            "story_id": "news-082eb74939b1f3812b355518-mtv10obz",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Avião de Zelensky quase é atingido por drone a caminho de Oslo, diz premiê da Noruega",
+            "instagram_headline": "Premiê da Noruega diz que drone quase atingiu avião de Zelensky",
+            "short_summary": "Jonas Gahr Støre afirmou que o avião do presidente ucraniano quase foi atingido durante uma decolagem na Moldávia. Autoridades moldavas fecharam temporariamente o espaço aéreo após identificarem um drone russo.",
+            "why_it_matters": "O episódio ocorreu durante uma viagem em que Zelensky discutiu com autoridades norueguesas o reforço da defesa aérea da Ucrânia. Støre não informou a origem da alegação nem a distância entre o drone e o avião.",
+            "key_facts": [
+              "O incidente teria ocorrido durante a decolagem na Moldávia.",
+              "A Moldávia fechou temporariamente seu espaço aéreo após identificar um drone russo.",
+              "O avião foi liberado depois da confirmação da queda do drone.",
+              "Støre não revelou quão perto o objeto chegou da aeronave.",
+              "Zelensky manteve a agenda na Noruega e discutiu apoio à defesa aérea ucraniana."
+            ],
+            "caption": "O primeiro-ministro da Noruega, Jonas Gahr Støre, afirmou que um drone quase atingiu o avião de Volodymyr Zelensky durante a decolagem na Moldávia. O presidente ucraniano viajava para Oslo, onde participaria do funeral do rei Harald V.\n\nSegundo as autoridades moldavas, o espaço aéreo do país foi fechado após a identificação de um drone russo. A partida de Zelensky sofreu um atraso e só foi autorizada depois que a queda do objeto foi confirmada. Støre não revelou a fonte da informação sobre a proximidade do drone nem a distância entre ele e a aeronave.\n\nZelensky chegou a Oslo na noite de terça-feira, reuniu-se com autoridades norueguesas e manteve seus compromissos. As conversas incluíram a ajuda militar da Noruega, o apoio à defesa antiaérea da Ucrânia e possíveis projetos para ampliar a capacidade ucraniana de produzir seus próprios sistemas.\n\nApós participar do funeral, o presidente ucraniano deixou a Noruega e seguiu para o Canadá.\n\nFontes: g1, Estadão e R7.",
+            "hashtags": [
+              "#Ucrânia",
+              "#Noruega",
+              "#Zelensky",
+              "#PolíticaInternacional"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Premiê da Noruega diz que drone quase atingiu avião de Zelensky",
+                "body": "O incidente teria ocorrido durante a decolagem na Moldávia, quando o presidente ucraniano viajava para Oslo.",
+                "image_direction": "Foto documental de Zelensky desembarcando no aeroporto próximo a Oslo, com a aeronave ao fundo e luz natural discreta.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Espaço aéreo foi fechado",
+                "body": "Segundo a Moldávia, a decolagem atrasou após o país identificar um drone russo e fechar seu espaço aéreo. O avião foi liberado quando a queda do objeto foi confirmada.",
+                "image_direction": "Mapa ilustrado e sóbrio mostrando a Moldávia e a rota até Oslo, com um marcador de interrupção próximo ao ponto de partida.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Proximidade não foi detalhada",
+                "body": "Støre disse que o avião quase foi atingido, mas não revelou a fonte dessa informação nem quão perto o drone chegou da aeronave de Zelensky.",
+                "image_direction": "Ilustração conceitual de uma pista de aeroporto vista de cima, com avião e drone separados, sem simular uma fotografia do incidente.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Defesa aérea entrou na agenda",
+                "body": "Em Oslo, Zelensky reuniu-se com autoridades norueguesas para discutir ajuda militar, apoio à defesa antiaérea e projetos que permitam à Ucrânia produzir seus próprios sistemas de proteção.",
+                "image_direction": "Foto de agência do encontro entre Zelensky e Jonas Gahr Støre em Oslo, em ambiente institucional e enquadramento horizontal fechado.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Agenda foi mantida",
+                "body": "Zelensky participou do funeral do rei Harald V e deixou a Noruega após a cerimônia. Segundo o Estadão, o destino seguinte do presidente foi o Canadá.",
+                "image_direction": "Foto documental do funeral em Oslo, com Zelensky entre as autoridades estrangeiras, composição ampla e iluminação natural.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-10T04:28:20.320Z"
+          },
+          "slide_media": [],
+          "article_count": 3,
+          "earliest_published_at": "2026-09-09T17:56:50Z",
+          "latest_published_at": "2026-09-09T17:56:50Z",
+          "selection_rank": 4,
+          "created_at": "2026-09-10T04:28:20.320Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
