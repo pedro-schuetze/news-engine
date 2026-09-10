@@ -17,6 +17,7 @@ import { findStory } from "./media/persist";
 import { slideVersion } from "./slides/version";
 
 const G = "https://graph.instagram.com/v23.0";
+const TOKEN_PATH = "data/instagram_token.json";
 
 export function igConfigured(): boolean {
   return Boolean(
@@ -24,11 +25,61 @@ export function igConfigured(): boolean {
   );
 }
 
-function creds() {
+let tokenCache: { token: string; at: number } | null = null;
+
+/** Token vigente: o arquivo renovado pelo cron vence a env (semente). */
+async function currentToken(): Promise<string> {
+  if (tokenCache && Date.now() - tokenCache.at < 5 * 60_000) return tokenCache.token;
+  const raw = await dataSource().readTextFile(TOKEN_PATH);
+  let token = (process.env.IG_ACCESS_TOKEN ?? "").trim();
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw) as { token?: string };
+      if (parsed.token) token = parsed.token;
+    } catch {
+      /* arquivo corrompido: segue a env */
+    }
+  }
+  tokenCache = { token, at: Date.now() };
+  return token;
+}
+
+async function creds() {
   return {
     user: (process.env.IG_USER_ID ?? "").trim(),
-    token: (process.env.IG_ACCESS_TOKEN ?? "").trim(),
+    token: await currentToken(),
   };
+}
+
+/**
+ * Renova o token de longa duração (60 dias; renovável após 24h de idade) e
+ * grava em data/instagram_token.json. Chamada pelo cron diário — renovação
+ * frequente é inofensiva e mantém a validade sempre perto do teto.
+ */
+export async function igRefreshToken(): Promise<{ ok: boolean; expires_days?: number; note?: string }> {
+  const token = await currentToken();
+  if (!token) return { ok: false, note: "sem token para renovar" };
+  const res = await fetch(
+    `${G.replace("/v23.0", "")}/refresh_access_token?grant_type=ig_refresh_token&access_token=${encodeURIComponent(token)}`,
+    { cache: "no-store" },
+  );
+  const body = (await res.json().catch(() => ({}))) as {
+    access_token?: string;
+    expires_in?: number;
+    error?: { message?: string };
+  };
+  if (!res.ok || !body.access_token) {
+    // token com menos de 24h não renova — não é erro de verdade
+    return { ok: false, note: body.error?.message?.slice(0, 160) ?? `HTTP ${res.status}` };
+  }
+  await dataSource().writeTextFile(
+    TOKEN_PATH,
+    JSON.stringify({ token: body.access_token, refreshed_at: new Date().toISOString() }, null, 2) + "
+",
+    "instagram: token renovado",
+  );
+  tokenCache = { token: body.access_token, at: Date.now() };
+  return { ok: true, expires_days: Math.round((body.expires_in ?? 0) / 86400) };
 }
 
 async function ig<T>(path: string, init?: RequestInit): Promise<T> {
@@ -54,7 +105,7 @@ export interface IgMedia {
 
 /** Mídias recentes da conta, com métricas. */
 export async function igRecentMedia(limit = 50): Promise<IgMedia[]> {
-  const { user, token } = creds();
+  const { user, token } = await creds();
   const fields = "id,caption,permalink,timestamp,media_type,like_count,comments_count";
   const data = await ig<{ data?: IgMedia[] }>(
     `/${user}/media?fields=${fields}&limit=${limit}&access_token=${encodeURIComponent(token)}`,
@@ -123,7 +174,7 @@ export async function igSync(
   }
   const file: IgSyncFile = {
     synced_at: new Date().toISOString(),
-    account: creds().user,
+    account: (process.env.IG_USER_ID ?? "").trim(),
     posts,
   };
   await dataSource().writeTextFile(
@@ -144,7 +195,7 @@ export async function igPublishCarousel(
   storyId: string,
   publicBaseUrl: string,
 ): Promise<{ media_id: string; permalink: string }> {
-  const { user, token } = creds();
+  const { user, token } = await creds();
   const run = await loadRun(runFile);
   const story = run ? findStory(run, storyId) : null;
   if (!run || !story?.draft?.slides?.length) throw new Error("post não encontrado");
