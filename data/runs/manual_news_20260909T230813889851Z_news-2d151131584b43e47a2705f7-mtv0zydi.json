@@ -1,0 +1,183 @@
+{
+  "run_id": "news-2d151131584b43e47a2705f7-mtv0zydi",
+  "mode": "news",
+  "started_at": "2026-09-10T04:27:55.826Z",
+  "finished_at": "2026-09-10T04:27:55.826Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 6207,
+    "estimated_output_tokens": 2844,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 49,
+    "errors": [
+      "Instituto Humanitas Unisinos - IHU: www.ihu.unisinos.br: página sem estrutura de matéria."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-2d151131584b43e47a2705f7-mtv0zydi",
+          "run_id": "news-2d151131584b43e47a2705f7-mtv0zydi",
+          "cluster_id": "gn-2d151131584b43e47a2705f7",
+          "vertical": "politics",
+          "title": "Pesquisador que deixou OpenAI e Anthropic diz que empresas acreditam no fim da humanidade nesta década",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260909T230813889851Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 4,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-2d151131584b43e47a2705f7-mtv0zydi-0",
+              "name": "www1.folha.uol.com.br",
+              "url": "https://www1.folha.uol.com.br/tec/2026/09/pesquisador-que-deixou-openai-e-anthropic-diz-que-empresas-acreditam-no-fim-da-humanidade-nesta-decada.shtml",
+              "source_domain": "www1.folha.uol.com.br",
+              "published_at": "2026-09-09 10:17:00",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Um pesquisador da Anthropic pediu demissão do laboratório de inteligência artificial e alertou que a corrida desenfreada para desenvolver uma superinteligência capaz de se aprimorar sozinha pode destruir a humanidade até o fim da década. Jacob Coxon, britânico de 27 anos, havia deixado a OpenAI para entrar em sua principal concorrente e afirmou que as duas empresas estão \"apostando\" com o futuro da humanidade. \"As pessoas que desenvolvem IA acreditam sinceramente que ela pode matar todos nós até o fim da década\", comentou Coxon em uma série de publicações no X (antigo Twitter) nas quais anunciou sua demissão da Anthropic. Isto não é uma jogada de marketing...Nenhuma outra atividade humana representa tamanho perigo Coxon é o mais recente funcionário a deixar um dos principais laboratórios de IA dos EUA alegando preocupações com a segurança, o que evidencia a crescente apreensão dos pesquisadores em relação ao poder dos sistemas que estão desenvolvendo. Sua saída ocorre no momento em que a Anthropic, que colocou a segurança da IA como sua principal marca, se prepara para uma IPO (oferta pública inicial de ações), que pode avaliar a empresa em US$ 1 trilhão. Coxon, que trabalhou anteriormente na OpenAI antes de se transferir para a Anthropic, alertou que as pessoas de fora dos laboratórios estavam subestimando o poder da tecnologia. \"Em breve, serão sistemas sobre-humanos, capazes de invadir qualquer coisa, revolucionar qualquer área da noite para o dia e adquirir poder e recursos reais\", declarou. Evan Hubinger, um dos colegas de Coxon na Anthropic, endossou seu alerta. \"Jacob está correto —nós realmente acreditamos, com toda a sinceridade, que a IA pode matar todos os seres humanos\", escreveu no X, acrescentando acreditar que a probabilidade de uma extinção em massa na próxima década é superior a 10%. \"A Anthropic está fazendo o melhor que pode, mas ainda não temos um plano para solucionar o alinhamento da superinteligência e não estamos claramente no caminho para isso\", disse Hubinger, referindo-se ao esforço para garantir que os sistemas de IA se comportem de maneira compatível com as intenções e os valores humanos. Ele lidera a área de ciência do alinhamento na empresa. Mais tarde, Hubinger acrescentou que o \"risco dos modelos atuais é baixo\", mas que estava preocupado com modelos de IA capazes de se aprimorar sozinhos, algo que está \"acontecendo mais rápido do que imaginávamos\". Folha Mercado Receba no seu email o que de mais importante acontece na economia; aberta para não assinantes. Incidentes recentes, como a invasão do site Hugging Face por agentes do ChatGPT, mostraram que esses modelos podem sair do controle humano e que a solução seria desacelerar o desenvolvimento, afirmou Coxon. \"Não sinto que estejamos no caminho para impedir uma corrida global, o que pode exigir medidas custosas, como uma proibição temporária de aprimorar as capacidades dos modelos\", postou. A saída de Coxon foi noticiada primeiro pelo Wall Street Journal. A Anthropic não quis comentar. A OpenAI não respondeu de imediato aos pedidos de comentário. Dario Amodei, presidente-executivo da Anthropic, e outros líderes do setor de IA instaram a indústria a considerar a possibilidade de conter o desenvolvimento, mas deram poucos sinais de que pretendem desacelerar seus próprios esforços. Na semana passada, a Anthropic lançou o Claude Mythos 5.1, apresentado pela empresa como seu modelo mais avançado para ciências da vida e segurança cibernética. Steven Adler, cofundador da organização sem fins lucrativos Guidelight AI Standards e ex-pesquisador de segurança da OpenAI, afirmou que esses alertas vindos de pessoas do setor reforçavam os argumentos em favor de uma pausa nas pesquisas. \"Nenhuma empresa de IA sequer chega perto de ter uma estrutura de segurança adequada ao nível de perigo envolvido em suas pesquisas\", afirmou Adler ao Financial Times. \"Se alguém acredita que isso pode matar todas as pessoas da Terra, como acreditam muitos funcionários dessas empresas, este é um bom momento para descer do trem.\""
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-2d151131584b43e47a2705f7-mtv0zydi-1",
+                "name": "g1.globo.com",
+                "url": "https://g1.globo.com/tecnologia/noticia/2026/09/09/ex-pesquisador-da-openai-e-da-anthropic-acusa-empresas-de-brincar-com-vidas.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-09-09T13:17:00Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Jacob Coxon, um britânico de 27 anos, trabalhou nos últimos três anos com pré-treinamento, a etapa em que os modelos de IA absorvem grandes quantidades de informação, primeiro na OpenAI e depois, neste ano, em sua maior rival, a Anthropic. \"Nenhuma das empresas está agindo de forma responsável. Elas estão correndo diretamente em direção a uma superinteligência capaz de se aprimorar sozinha e estão apostando com nossas vidas\", escreveu Coxon na rede social X. \"As pessoas que estão construindo a IA acreditam sinceramente que ela pode matar todos até o fim da década. Isto não é uma jogada de marketing\", acrescentou Coxon. A saída do pesquisador acontece no momento em que a Anthropic se prepara para abrir capital na Bolsa. Procuradas pela AFP, nenhuma das duas empresas respondeu até o momento. Agora no g1 Contudo, Evan Hubinger, diretor de segurança na Anthropic, deu razão a Coxon no X: \"Nós realmente acreditamos que a IA pode matar seres humanos\". Em caráter pessoal, ele calculou o risco em \"mais de 10%\" dentro da próxima década. Líderes do setor dizem acreditar que a indústria se aproxima do chamado \"autoaperfeiçoamento recursivo\", uma etapa em que sistemas de IA poderiam projetar e treinar a próxima geração de IA com pouca participação humana. Segundo Coxon, nenhuma empresa pode desenvolver de maneira responsável uma IA que supere os humanos sem intervenção governamental ou uma desaceleração coordenada. \"Na Anthropic, eles compreendem bem o que está em jogo, mas estão presos em uma corrida para chegar lá primeiro - acreditam que ninguém mais atuará de forma responsável, então precisam fazer isso eles mesmos, apesar do risco\", afirmou. Em fevereiro, a Anthropic retirou de sua carta de segurança o compromisso de suspender o desenvolvimento de seus modelos caso não conseguisse controlar os riscos. No fim de julho, mais de mil funcionários do setor, incluindo o CEO da Anthropic, Dario Amodei, pediram a Washington que preparasse um mecanismo de freio. No domingo, o diretor científico da OpenAI, Jakub Pachocki, escreveu que \"o momento atual exige extrema cautela\" e coordenação internacional. OpenAI e Anthropic — Foto: Reuters/Dado Ruvic/Illustration"
+              },
+              {
+                "article_id": "news-2d151131584b43e47a2705f7-mtv0zydi-2",
+                "name": "braziljournal.com",
+                "url": "https://braziljournal.com/ai-could-kill-us-all-quem-aperta-o-botao-do-panico/",
+                "source_domain": "braziljournal.com",
+                "published_at": "2026-09-09T16:40:43-03:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Jacob Coxon, um pesquisador de AI, trocou a OpenAI pela Anthropic no início do ano, acreditando que a empresa de Dario Amodei era mais responsável que a de Sam Altman no desenvolvimento de seus modelos. Nove meses depois, ele anunciou no X que está deixando a indústria. Em um texto que foi o assunto do dia no Vale e fora dele, Coxon diz ter chegado à conclusão de que nenhuma das duas empresas está agindo de forma responsável – e que o futuro da humanidade está em jogo. “As pessoas que estão desenvolvendo a AI acreditam sinceramente que ela pode matar todo mundo até o fim desta década,” disse. “Em breve teremos sistemas sobre-humanos capazes de hackear qualquer coisa, revolucionar qualquer área da noite para o dia e adquirir poder e recursos reais. Todos nós testemunhamos o progresso em cada uma dessas áreas, e esse avanço não está desacelerando.” Coxon, que atuava na fase de pré-treinamento (ou assimilação de grandes volumes de informação pelos de modelos de AI), diz que os funcionários de alto escalão das empresas tendem a medir suas palavras em público, mas todos expressam o mesmo medo em conversas privadas. Segundo ele, a Anthropic tem até um canal no Slack para discutir o tema. Entre as milhares de interações que o desabafo recebeu, chamaram a atenção os comentários de Evan Hubinger, o atual chefe de alinhamento – o processo de garantir que uma AI siga valores e regras humanas – da própria Anthropic. Hubinger não só concordou com o ex-colega que a AI pode matar todos nós, como estimou essa possibilidade em mais de 10% para a próxima década. “A Anthropic está se esforçando ao máximo, mas ainda não temos um plano para resolver a questão do alinhamento da superinteligência, nem estamos claramente no caminho certo para isso,” escreveu Hubinger. Segundo ele, o fator mais preocupante é a superinteligência resultante do autoaperfeiçoamento recursivo – quando uma AI melhora sua inteligência ou código de forma autônoma – um processo que está ocorrendo mais rapidamente do que a empresa previa. Também há gente preocupada na OpenAI. “A ideia de avançar a todo custo parece absurda quando se assimila a gravidade do que está em jogo,” Jakub Pachocki, o cientista-chefe da startup, escreveu no blog da empresa no último domingo. “Nenhum laboratório resolveu as questões de alinhamento e monitoramento em grau suficiente para continuar escalando de forma responsável e em velocidade máxima por muito mais tempo.” Os próprios Amodei e Altman têm falado sobre o tema; e as demonstrações de avanço da tecnologia também falam por si só, seja em ocorrências negativas, como no caso do ataque cibernético à Hugging Face, ou positivas, a exemplo da possível resolução de um dos sete Problemas do Milênio por agentes da OpenAI. Mas o que os impede, então, de agir? Para Coxon, a Anthropic está mais preocupada do que a OpenAI com as questões acima, mas a empresa está “presa a uma corrida para ver quem chega lá primeiro”. “Eles acreditam que os concorrentes não vão agir com responsabilidade, então sentem que eles mesmos precisam desenvolver a tecnologia, apesar dos riscos,” disse. O pesquisador disse entender hoje que aceitar jogar esse jogo é uma “aposta arrogante” por parte das empresas e que, caso não haja uma intervenção governamental ou uma desaceleração coordenada, medidas mais drásticas podem ser necessárias no futuro, como uma proibição temporária do aprimoramento das capacidades dos modelos. O problema é que, além da corrida Anthropic versus OpenAI, há também a corrida EUA versus China – e atualmente o risco de ficar para trás em desenvolvimento tecnológico é muito mais palpável do que o risco de extinção humana. “Não podemos pausar porque os chineses não vão pausar,” Scott Bessent, o secretário do Tesouro, disse ontem. “Se eles nos ultrapassarem em AI, então nada mais importa.” Até aqui, apenas a esquerda americana parece interessada em regular o setor, com o Senador Bernie Sanders afirmando que em breve apresentará uma legislação “para proibir a superinteligência e pausar o desenvolvimento da AI”. Steven Adler, o cofundador da organização sem fins lucrativos Guidelight AI Standards e ex-pesquisador de segurança da OpenAI, disse ao Financial Times que estes alertas reforçam os argumentos a favor de uma pausa nas pesquisas. “Nenhuma empresa de AI está sequer perto de adotar a postura de segurança adequada ao nível de perigo que suas pesquisas envolvem”, disse. “Se alguém acredita que isso pode matar todas as pessoas na Terra, como pensam muitos funcionários dessas empresas, este é um bom momento para descer do trem.” Do outro lado da mesa, os entusiastas da aceleração da AI argumentam que a regulação aprovada há três anos na Europa, antes vanguardista em AI, matou o desenvolvimento do setor no continente. Além disso, entendem que por trás de uma ação questionável de uma AI há sempre um prompt, e brincam que a extinção da espécie humana poderia ser evitada com uma simples retirada dos computadores da tomada. Alguns até questionam a cultura da Anthropic, que estaria se tornando uma espécie de culto tecnológico que incentiva os funcionários a falar contra a empresa em público caso isso seja “a coisa certa a se fazer”; ou opinam que Coxon só quis chamar a atenção para subir ao posto de autoridade no tema ou inferir que “fez parte” dos avanços da AI. Bill Gurley, um dos VCs mais importantes do Vale do Silício, foi ao X dizer que aqueles que acreditam nessa visão apocalíptica poderiam ser entrevistados com a técnica “os cinco porquês”, em que a mesma pergunta é repetida cinco vezes para encontrar a raiz de um problema. “O objetivo é aprofundar a análise nos detalhes e nas etapas necessárias para chegar ao desfecho catastrófico previsto,” disse. “Vamos analisar cada uma delas. É um exercício bastante útil. Isso ajudaria a todos nós a pensar com mais clareza e, possivelmente, ajudaria também os alarmistas.” Questionada por um leitor do Brazil Journal, a versão paga do ChatGPT atribui uma chance de 5% ao avanço da AI causar o fim da raça humana até 2050. O mais provável, com 50% de chances segundo o chatbot, é que tenhamos um resultado misto, com “enormes benefícios + desemprego, desigualdade, concentração de poder e crises políticas, mas a humanidade segue no comando.” Ah bom. Matheus Prado"
+              },
+              {
+                "article_id": "news-2d151131584b43e47a2705f7-mtv0zydi-3",
+                "name": "exame.com",
+                "url": "https://exame.com/inteligencia-artificial/por-que-pesquisadores-do-claude-afirmam-que-ha-10-de-chance-de-a-ia-acabar-com-a-humanidade/",
+                "source_domain": "exame.com",
+                "published_at": "2026-09-09T13:17:00Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Durante a madrugada desta quarta-feira, 9, a internet foi pega de surpresa quando um pesquisador da Anthropic, Evan Hubinger, afirmou que a humanidade tem mais de 10% de chance de ser extinta caso os modelos de inteligência artificial (IA) evoluam para uma superinteligência. A publicação foi uma resposta direta à demissão de Jacob Coxon, pesquisador de 27 anos que havia deixado a Anthropic horas antes. Coxon passou os últimos três anos trabalhando com pré-treinamento de modelos de IA — a etapa inicial e mais fundamental na construção de um grande modelo de linguagem —, primeiro na OpenAI, onde contribuiu para o desenvolvimento do GPT-4o, depois na Anthropic. \"Renunciei à Anthropic hoje. Nenhuma das duas empresas está agindo de forma responsável. Elas estão correndo direto para uma superinteligência autoaperfeiçoável e apostando com nossas vidas\", escreveu Coxon no X (antigo Twitter). O que exatamente Hubinger disse? Hubinger lidera a equipe de testes de estresse de alinhamento da Anthropic, criada justamente para tentar provar, de forma adversarial, que as técnicas de segurança da empresa não funcionam. Em vez de desmentir o ex-colega, ele confirmou publicamente a alegação. \"Jacob está correto aqui — nós realmente acreditamos, com sinceridade, que a IA poderia matar todos os humanos! Eu pessoalmente acho que a chance é maior que 10% na próxima década. Acredito que a Anthropic está se esforçando ao máximo, mas ainda não temos um plano para resolver o alinhamento para a superinteligência, e não estamos claramente no caminho para isso\", escreveu. Ele também fez questão de calibrar melhor a preocupação em uma resposta seguinte, separando o problema de hoje do problema de amanhã. \"Como dissemos em nosso mais recente Relatório de Risco, acho que o risco proveniente dos modelos atuais é baixo. O que me preocupa é a superinteligência surgindo de um autoaperfeiçoamento recursivo — que está acontecendo mais rápido do que pensávamos.\" Essa não é a primeira vez que a Anthropic reconhece esse tipo de preocupação — só que, dessa vez, partiu de um funcionário individual, e não de um comunicado corporativo. Em junho deste ano, a própria empresa já havia publicado, em post oficial de blog, uma frase na mesma linha: \"o autoaperfeiçoamento recursivo completo também pode aumentar os riscos de os humanos perderem o controle sobre sistemas de IA. Se os sistemas forem capazes de construir totalmente seus próprios sucessores, as formas como os protegemos, monitoramos e moldamos seu comportamento se tornam muito mais importantes.\" O que é, afinal, a 'superinteligência' de que todo mundo fala O termo se refere a um sistema de IA hipotético capaz de superar o desempenho humano em praticamente qualquer tarefa cognitiva relevante — não apenas em uma habilidade específica, como jogar xadrez ou gerar texto, mas de forma geral e simultânea em ciência, estratégia, persuasão e capacidade de agir no mundo real. O receio de pesquisadores como Coxon e Hubinger não é sobre os modelos de hoje, mas sobre o que acontece quando sistemas de IA passam a ajudar a construir a geração seguinte de si mesmos — um ciclo de aperfeiçoamento que, em teoria, poderia acelerar de forma incontrolável. Nate Soares, presidente do Machine Intelligence Research Institute (MIRI) e coautor do livro \"Se Alguém Construir, Todos Morrem\", vem alertando sobre esse cenário há mais de uma década. Em entrevista à EXAME em julho, Soares — que foi um dos primeiros a cunhar o termo \"alinhamento de IA\", em 2014, e passou dez anos tentando resolver tecnicamente o problema antes de desistir da via técnica em favor de um apelo direto ao público — afirmou que a superinteligência representa um risco qualitativamente diferente de qualquer tecnologia anterior, justamente porque, uma vez construída, a humanidade perderia a capacidade de corrigir o curso caso algo desse errado. Soares resumiu sua posição à EXAME em uma frase que resume o peso do debate reaberto nesta semana pela própria Anthropic. \"Se eu estiver certo, não haverá sobreviventes\", disse."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. Instituto Humanitas Unisinos - IHU: www.ihu.unisinos.br: página sem estrutura de matéria."
+          },
+          "draft": {
+            "draft_id": "news-2d1-mtv1106q",
+            "story_id": "news-2d151131584b43e47a2705f7-mtv0zydi",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Pesquisador que deixou OpenAI e Anthropic diz que empresas acreditam no fim da humanidade nesta década",
+            "instagram_headline": "Ex-pesquisador diz que empresas de IA arriscam o futuro da humanidade",
+            "short_summary": "Jacob Coxon pediu demissão da Anthropic após também ter trabalhado na OpenAI e acusou os laboratórios de avançarem irresponsavelmente rumo a uma superinteligência. Um pesquisador da Anthropic concordou com o alerta, mas afirmou que os modelos atuais apresentam risco baixo.",
+            "why_it_matters": "As declarações ampliam o debate político sobre limites ao desenvolvimento da inteligência artificial e coordenação entre governos. O temor citado envolve sistemas futuros capazes de melhorar a si próprios com pouca participação humana.",
+            "key_facts": [
+              "Jacob Coxon trabalhou com o pré-treinamento de modelos na OpenAI e na Anthropic.",
+              "Ele afirmou que os laboratórios apostam com vidas ao disputar a criação de uma superinteligência.",
+              "Evan Hubinger, pesquisador da Anthropic, estimou pessoalmente em mais de 10% o risco de extinção na próxima década.",
+              "Hubinger disse que o risco dos modelos atuais é baixo e apontou como preocupação sistemas capazes de se aprimorar sozinhos.",
+              "Coxon defendeu intervenção governamental ou uma desaceleração coordenada do desenvolvimento."
+            ],
+            "caption": "Jacob Coxon, pesquisador britânico de 27 anos, deixou a Anthropic após também ter trabalhado na OpenAI. Ele acusou os dois laboratórios de avançarem de forma irresponsável na corrida por sistemas de inteligência artificial mais poderosos e afirmou que profissionais do setor consideram possível uma catástrofe até o fim da década.\n\nO alerta recebeu apoio público de Evan Hubinger, pesquisador da Anthropic que lidera trabalhos de alinhamento, área dedicada a fazer sistemas de IA seguirem objetivos e valores humanos. Em caráter pessoal, Hubinger estimou em mais de 10% a possibilidade de uma extinção em massa na próxima década.\n\nEle também fez uma distinção importante: considera baixo o risco dos modelos disponíveis hoje. Sua preocupação é uma superinteligência hipotética capaz de ajudar a projetar e treinar versões sucessivamente mais avançadas de si própria, processo chamado de autoaperfeiçoamento recursivo.\n\nCoxon defendeu intervenção governamental, coordenação internacional e desaceleração do desenvolvimento. As declarações são posições individuais, não anúncios oficiais das empresas. A Anthropic não comentou, e a OpenAI não havia respondido de imediato aos pedidos de manifestação citados nas reportagens.\n\nFontes: Folha de S.Paulo, g1, Brazil Journal e Exame.",
+            "hashtags": [
+              "#InteligênciaArtificial",
+              "#RegulaçãoDaIA",
+              "#OpenAI",
+              "#Anthropic"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Ex-pesquisador diz que empresas de IA arriscam o futuro da humanidade",
+                "body": "Jacob Coxon deixou a Anthropic e afirmou que a corrida por uma superinteligência pode provocar uma catástrofe até o fim da década.",
+                "image_direction": "Retrato documental de Jacob Coxon em enquadramento fechado, com ambiente profissional neutro e iluminação natural sóbria.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Da OpenAI à Anthropic",
+                "body": "Coxon, britânico de 27 anos, trabalhou por três anos com pré-treinamento, etapa em que modelos absorvem grandes volumes de informação. Ele passou pela OpenAI antes de ingressar na concorrente Anthropic.",
+                "image_direction": "Composição documental com imagens externas das sedes ou escritórios da OpenAI e da Anthropic, divididas de forma equilibrada e sem pessoas em destaque.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Uma estimativa acima de 10%",
+                "body": "Evan Hubinger, pesquisador da Anthropic que trabalha com alinhamento de IA, concordou com Coxon. Ele estimou pessoalmente em mais de 10% o risco de extinção em massa na próxima década.",
+                "image_direction": "Ilustração editorial sóbria com um servidor central, escala percentual abstrata e figuras humanas discretas, usando tons frios e sem estética apocalíptica.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "O temor envolve sistemas futuros",
+                "body": "Hubinger afirmou que o risco dos modelos atuais é baixo. A preocupação está no autoaperfeiçoamento recursivo, quando sistemas de IA poderiam participar da criação de versões mais avançadas com pouca intervenção humana.",
+                "image_direction": "Diagrama conceitual ilustrado de ciclos sucessivos de processamento, com módulos computacionais conectados em espiral e luz técnica azul.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Pressão por uma desaceleração",
+                "body": "Coxon disse que seria necessária uma intervenção governamental ou uma freada coordenada, possivelmente com restrições temporárias. A Anthropic não comentou, e a OpenAI não respondeu de imediato aos pedidos citados nas reportagens.",
+                "image_direction": "Fotografia ampla e sóbria do Capitólio dos Estados Unidos ao amanhecer, com poucos transeuntes e foco na dimensão regulatória do debate.",
+                "image_source_type": "PUBLIC_DOMAIN"
+              }
+            ],
+            "created_at": "2026-09-10T04:27:55.826Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-09T13:17:00Z",
+          "latest_published_at": "2026-09-09T13:17:00Z",
+          "selection_rank": 3,
+          "created_at": "2026-09-10T04:27:55.826Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
