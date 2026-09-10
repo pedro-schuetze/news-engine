@@ -1,0 +1,174 @@
+{
+  "run_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq",
+  "mode": "news",
+  "started_at": "2026-09-10T17:24:20.853Z",
+  "finished_at": "2026-09-10T17:24:20.853Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 3,
+    "articles_by_collector": {
+      "google-news-front-page": 3
+    },
+    "articles_after_dedupe": 3,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 4250,
+    "estimated_output_tokens": 2015,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 36,
+    "errors": [
+      "UOL Economia: economia.uol.com.br: HTTP 403",
+      "VEJA: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "facts": {
+      "vertical": "facts",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq",
+          "run_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq",
+          "cluster_id": "gn-0923d5023b1dc99cc9f9d47f",
+          "vertical": "facts",
+          "title": "Bancários da Caixa iniciam greve nacional por tempo indeterminado",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260910T161656672292Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 2,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq-0",
+              "name": "spbancarios.com.br",
+              "url": "https://spbancarios.com.br/09/2026/caixa-negociacoes-recomecam-e-banco-diz-que-trara-nova-proposta-nesta-quinta-10",
+              "source_domain": "spbancarios.com.br",
+              "published_at": "2026-09-10T11:25:16Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "As negociações entre a Caixa Econômica Federal e o Sindicato, por meio da Comissão Executiva dos Empregados (CEE) do banco, foram retomadas nesta quarta-feira (9), em São Paulo, com a possibilidade de avanços no Acordo Coletivo de Trabalho (ACT) específico dos empregados e empregadas. “O resultado das assembleias realizadas no Brasil inteiro, com mais de 90% de rejeição nas bases sindicais, demonstrou, de forma clara, a insatisfação dos empregados com a proposta apresentada pela Caixa. Isso foi fundamental para forçar o retorno das negociações”, disse a diretora do Sindicato dos Bancários de São Paulo, Osasco e Região e coordenadora da CEE/Caixa, Luiza Hansen. “Mas é importante que os empregados sigam as orientações de seus sindicatos e participem da greve que começa amanhã [quinta-feira 1º] para fortalecer a negociação e pressionar o banco a apresentar uma proposta que atenda as expectativas”, completou. A greve, que se inicia nesta quinta-feira (10), por tempo indeterminado, deve ser mantida até que novas assembleias tomem uma nova decisão. A representação dos empregados, mais uma vez, apontou os problemas que levaram a proposta a ser rejeitada nas assembleias, especialmente em relação ao Saúde Caixa, mas também lembrou da extensa lista de reivindicações apresentada para o banco desde junho. A Caixa não apresentou uma nova proposta, mas se comprometeu a avançar com as negociações e marcou uma nova mesa para esta quinta-feira (10) pela manhã. O banco também lembrou que, com o fim da ultratividade, em decorrência da reforma trabalhista, e a rejeição da proposta nas assembleias, nem a Convenção Coletiva e nem ACT estão vigentes neste momento. A CEE reforça que é fundamental que todos estejam atentos às notícias sobre a negociação que será realizada nesta quinta-feira e lembra que, em estado de greve, as assembleias podem ser convocadas a qualquer momento para apreciação de uma nova proposta. Fique atento ao site e redes sociais do Sindicato para ter sempre informações confiáveis. Sindicato organiza a greve Na noite desta quarta-feira (9), o Sindicato realizou plenárias presenciais organizativas da greve em todas as suas regionais, convidando os trabalhadores a participarem da mobilização. A partir das 7h da manhã desta quinta-feira (10), todas as regionais do Sindicato estarão abertas, com distribuição de materiais para a greve, como faixas cartazes, etc. Confira abaixo o endereço e contato do coordenador responsável por cada regional: Regional CentroRua São Bento, 365, 19° andar. Tel.: 3188-5200Coordenadora: Katia Miranda (11 96333-6348) Regional PaulistaRua Carlos Sampaio, 305. Tel.: 3284-7873Coordenadora: Erica Godoy (11 99741-9399) Regional NorteRua Banco das Palmas, 288 (metrô Santana). Tel.: 2979-7720Coordenador: Susana Malu Cordoba (11 99484-2755) Regional SulRua Professor Oscar Ramos Arantes, 41, Santo Amaro. Tel.: 5102-2795Coordenador: Matheus Pinho (11 94797-0443) Regional LesteRua Almirante Calheiros, 110, Tatuapé. Tel.: 2293-0765Coordenador: Aleksandro do Nascimento (11 98421-5983) Regional OesteRua Carlos Sampaio, 305. Telefone: 3284-7873Coordenadora: Irene Juarez (11 99418-4778) Regional OsascoRua Pres. Castelo Branco, 150, Centro. Tel.: 3682-3060Coordenador: Welington Corrêa (11 99459-9092)"
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq-1",
+                "name": "g1.globo.com",
+                "url": "https://g1.globo.com/ro/rondonia/noticia/2026/09/10/agencias-da-caixa-economica-federal-entram-em-greve-em-ro.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-09-10T11:25:16Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "➡️Das 34 agências do estado, 33 estão fechadas, de acordo com o Sindicato dos Bancários e Trabalhadores do Ramo Financeiro de Rondônia (Seeb-RO). Segundo presidente do Seeb-RO, Ivone Colombo, há mais de dois meses o movimento sindical tenta negociar com o banco melhorias para a categoria, mas o principal motivo para a determinação da greve foi a falta de avanços nas tratativas para a melhoria do plano de saúde do banco. “Os trabalhadores bancários têm muito problemas de saúde, por conta da falta de funcionários, excesso de serviços. Então, eles [funcionário] usam muito o plano. O plano de saúde da Caixa, hoje, não tem condições devido ao alto alto valor cobrado por cada bancário e seus dependentes”, destacou. De acordo com Ivone, a avaliação do sindicato é de que a paralisação poderia ter sido evitada caso houvesse abertura para negociação desse ponto. LEIA TAMBÉM: Sem avanço nas negociações Anteriormente, no dia 20 de agosto, os bancários já haviam realizado uma paralisação de advertência, envolvendo bancos privados e públicos. Como não houve evolução nas tratativas, a categoria da Caixa decidiu paralisar as atividades e entrar em greve. Na última reunião, realizada nesta quarta-feira (9), não ocorreu avanço nas negociações. Um novo encontro com a presidência nacional da Caixa está agendado para a manhã desta quinta-feira (10). A Caixa Econômica Federal informou que mantém o diálogo aberto com as entidades representativas dos empregados e que retomou as negociações com o objetivo de chegar a um entendimento que contemple os interesses das partes. O banco afirmou que os clientes podem utilizar normalmente os canais digitais e remotos, como o App CAIXA, Internet Banking, WhatsApp CAIXA, CAIXA Tem e atendimento telefônico. Também estão disponíveis os caixas eletrônicos, a rede Banco24Horas, as casas lotéricas e os Correspondentes CAIXA Aqui. Agência Caixa em Pimenta Bueno (RO) paralisada pela greve. — Foto: Edson Tavares Funcionários em greve em Ji-Paraná (RO). — Foto: Edson Tavares"
+              },
+              {
+                "article_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq-2",
+                "name": "em.com.br",
+                "url": "https://www.em.com.br/gerais/2026/09/7497669-greve-dos-bancos-em-bh-afeta-pagamentos-veja-direitos-ao-atrasar-contas-no-mes.html",
+                "source_domain": "em.com.br",
+                "published_at": "2026-09-10 00:00:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Agências do Banco do Brasil e da Caixa Econômica Federal em Belo Horizonte e na região metropolitana iniciaram uma greve por tempo indeterminado, deixando as portas fechadas para o atendimento presencial. A paralisação é localizada e não atinge os bancos privados, que funcionam normalmente. O movimento grevista foi aprovado após a rejeição de propostas de acordo coletivo em assembleias no início de setembro, com 93,5% de votos contrários na Caixa e 81% no BB. Segundo o sindicato da categoria, a expectativa de adesão é superior a 70% na Caixa e entre 50% e 60% no Banco do Brasil. O cenário impacta diretamente os clientes e levanta uma dúvida comum: como pagar as contas em dia e evitar multas? Mesmo com o fechamento das agências, os consumidores ainda têm diversas opções para realizar suas transações financeiras e quitar boletos. A orientação é priorizar os canais de autoatendimento, que continuam operando normalmente durante a paralisação dos bancários. Leia Mais Proposta da Fenaban é rejeitada: greve da Caixa e BB começa nesta quinta-feira O fim das agências bancárias? O que muda com a digitalização Dos 'bancões' ao banco digital: a relação com o dinheiro mudou Como pagar contas durante a greve dos bancos? Os bancos são obrigados a manter o funcionamento de serviços essenciais e canais alternativos para os clientes. Portanto, mesmo com a greve, é possível realizar a maioria das operações financeiras sem precisar ir a uma agência. As principais alternativas disponíveis são: Caixas eletrônicos: permitem saques, depósitos, transferências, consultas de saldo e o pagamento de contas com código de barras. Internet banking e aplicativos: pelo computador ou celular, é possível realizar praticamente todas as operações de uma agência, incluindo o pagamento de boletos, tributos e transferências via Pix. Atendimento por telefone: os canais telefônicos dos bancos também podem ser usados para consultas e algumas transações específicas. Correspondentes bancários: casas lotéricas, agências dos Correios e alguns supermercados e estabelecimentos comerciais estão habilitados a receber o pagamento de contas de água, luz, telefone e boletos bancários. Atraso de boletos na greve: posso ser cobrado com juros e multa? O consumidor não pode ser penalizado com juros ou multas se o atraso no pagamento de uma conta ocorrer exclusivamente pela falta de opção de local para quitá-la. A responsabilidade de oferecer meios viáveis para o pagamento é da empresa que emitiu a cobrança. Caso o consumidor não tenha acesso à internet ou a outros meios eletrônicos, e o único local de pagamento disponível seja a agência em greve, a cobrança de encargos por atraso é considerada indevida. A paralisação dos bancários é classificada como um imprevisto que impede o cumprimento da obrigação no prazo estipulado. Como comprovar que a agência estava fechada? Para se resguardar de cobranças indevidas, é fundamental que o consumidor reúna provas de que tentou realizar o pagamento, mas foi impedido pela greve. Algumas medidas simples podem ajudar a comprovar a situação e garantir seus direitos. Veja o que fazer: Registre a tentativa: tire uma foto da agência fechada, de preferência com o comunicado de greve visível. Guarde notícias: salve reportagens de portais de notícias ou jornais que comprovem a paralisação na sua cidade na data de vencimento da conta. Contate o credor: entre em contato com a empresa que emitiu o boleto, antes do vencimento, e solicite uma forma alternativa de pagamento ou a prorrogação do prazo sem custos adicionais. Anote o número de protocolo do atendimento. Se, mesmo assim, houver cobrança de juros e multa, o consumidor deve procurar o Procon de sua cidade para formalizar uma reclamação e exigir a devolução dos valores pagos indevidamente."
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "3 de 5 matérias lidas. Leitura não equivale a verificação independente. UOL Economia: economia.uol.com.br: HTTP 403 · VEJA: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-092-mtvsrhf9",
+            "story_id": "news-0923d5023b1dc99cc9f9d47f-mtvsqpmq",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Bancários da Caixa iniciam greve nacional por tempo indeterminado",
+            "instagram_headline": "Bancários da Caixa iniciam greve nacional por tempo indeterminado",
+            "short_summary": "Empregados da Caixa começaram uma greve nacional nesta quinta-feira (10), após rejeitarem a proposta de acordo coletivo do banco. Saúde Caixa, condições de trabalho e outras reivindicações estão no centro da negociação.",
+            "why_it_matters": "A paralisação pode fechar agências e afetar o atendimento presencial. Aplicativos, caixas eletrônicos, lotéricas e outros canais alternativos continuam disponíveis, segundo a Caixa.",
+            "key_facts": [
+              "A greve começou em 10 de setembro e não tem prazo definido para terminar.",
+              "Segundo o Sindicato dos Bancários de São Paulo, mais de 90% dos participantes das assembleias rejeitaram a proposta da Caixa.",
+              "Representantes dos empregados apontam o Saúde Caixa como um dos principais impasses.",
+              "Em Rondônia, 33 das 34 agências fecharam, segundo o Seeb-RO.",
+              "A Caixa retomou as negociações e marcou uma nova reunião para a manhã desta quinta-feira (10)."
+            ],
+            "caption": "Bancários da Caixa iniciaram uma greve nacional por tempo indeterminado nesta quinta-feira, 10 de setembro. A paralisação foi aprovada depois que assembleias realizadas pelo país rejeitaram a proposta de acordo coletivo apresentada pelo banco.\n\nSegundo o Sindicato dos Bancários de São Paulo, mais de 90% dos participantes votaram contra a proposta. A representação dos empregados cita como principais impasses as condições do Saúde Caixa e uma lista de reivindicações entregue ao banco em junho. Em Rondônia, 33 das 34 agências estavam fechadas, de acordo com o sindicato estadual.\n\nA Caixa afirmou que mantém o diálogo com as entidades representativas. Para os clientes, o banco informou que seguem funcionando o aplicativo, o internet banking, o WhatsApp Caixa, o Caixa Tem, o atendimento telefônico, os caixas eletrônicos, a rede Banco24Horas, as lotéricas e os correspondentes Caixa Aqui.\n\nUma nova rodada de negociação foi marcada para a manhã desta quinta-feira (10). De acordo com o sindicato, a greve deve continuar até que novas assembleias avaliem uma eventual proposta do banco.\n\nFontes: Sindicato dos Bancários de São Paulo, g1 e Estado de Minas.",
+            "hashtags": [
+              "#CaixaEconômica",
+              "#GreveDosBancários",
+              "#Bancários",
+              "#ServiçosBancários"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Bancários da Caixa iniciam greve nacional por tempo indeterminado",
+                "body": "A paralisação começou nesta quinta-feira (10), após assembleias rejeitarem a proposta de acordo coletivo apresentada pelo banco.",
+                "image_direction": "Foto documental de uma agência da Caixa fechada em Rondônia, com portas baixadas e enquadramento frontal, sob luz natural da manhã.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Saúde Caixa está no centro",
+                "body": "Representantes dos empregados apontam o plano de saúde como um dos principais impasses. A categoria também cobra avanços em reivindicações apresentadas ao banco desde junho.",
+                "image_direction": "Ilustração editorial de trabalhadores reunidos ao redor de uma mesa, com documentos e elementos discretos ligados à saúde, em composição sóbria.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Rejeição superou 90%",
+                "body": "Segundo o Sindicato dos Bancários de São Paulo, mais de 90% dos participantes das assembleias rejeitaram a proposta. Em Rondônia, 33 das 34 agências fecharam, de acordo com o Seeb-RO.",
+                "image_direction": "Ilustração de várias fachadas bancárias, com a maioria fechada e uma aberta, vistas em perspectiva e sem números ou textos inseridos.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Canais digitais seguem disponíveis",
+                "body": "O atendimento presencial pode ser afetado, mas a Caixa informou que aplicativos, internet banking, caixas eletrônicos, lotéricas, Banco24Horas e correspondentes Caixa Aqui continuam funcionando.",
+                "image_direction": "Imagem de uma pessoa usando um aplicativo bancário no celular diante de um caixa eletrônico, com foco nas mãos e iluminação clara.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Negociação continua nesta quinta",
+                "body": "A Caixa retomou o diálogo e marcou uma nova reunião para a manhã do dia 10. Segundo o sindicato, a greve continuará até que assembleias decidam sobre uma eventual proposta.",
+                "image_direction": "Ilustração editorial de uma mesa de negociação preparada, com cadeiras dos dois lados e calendário sem texto legível ao fundo.",
+                "image_source_type": "ILLUSTRATION"
+              }
+            ],
+            "created_at": "2026-09-10T17:24:20.853Z"
+          },
+          "slide_media": [],
+          "article_count": 3,
+          "earliest_published_at": "2026-09-10T11:25:16Z",
+          "latest_published_at": "2026-09-10T11:25:16Z",
+          "selection_rank": 1,
+          "created_at": "2026-09-10T17:24:20.853Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
