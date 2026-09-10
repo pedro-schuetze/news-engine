@@ -212,11 +212,17 @@ export async function uploadImages(
 ): Promise<{ ok: boolean; new_candidates: number; filled: number[] }> {
   const base = await getBaseUrl();
   const form = new FormData();
-  images.forEach((img, i) => {
+  // O runtime novo do Expo (WinterCG fetch) exige Blob DE VERDADE — o shape
+  // antigo {uri, name, type} do RN dava "Unsupported FormDataPart
+  // implementation" (bug real do build 8). File de expo-file-system
+  // implementa Blob e resolve.
+  const { File: FsFile } = await import("expo-file-system");
+  for (let i = 0; i < images.length; i++) {
+    const img = images[i];
     const ext = img.mime === "image/png" ? "png" : "jpg";
-    // @ts-expect-error — shape de arquivo do React Native para FormData
-    form.append(`slide_${i + 1}`, { uri: img.uri, name: `slide_${i + 1}.${ext}`, type: img.mime });
-  });
+    const file = new FsFile(img.uri);
+    form.append(`slide_${i + 1}`, file as unknown as Blob, `slide_${i + 1}.${ext}`);
+  }
   const res = await fetch(`${base}/api/media/${storyId}/upload?run=${encodeURIComponent(runFile)}`, {
     method: "POST",
     headers: { "x-iris-key": await getAccessKey() },
