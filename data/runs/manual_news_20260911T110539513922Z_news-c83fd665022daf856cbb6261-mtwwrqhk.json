@@ -467,6 +467,24 @@
               "focus_y": 0.61,
               "width": 375,
               "height": 500
+            },
+            {
+              "id": "aia0dc30ad0c62",
+              "local_path": "data/media/news-c83fd665022daf856cbb6261-mtwwrqhk/pool/aia0dc30ad0c62.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 77,
+              "score_notes": "relevância 85 · texto 63 · nitidez 83",
+              "added_at": "2026-09-11T12:08:25.925Z",
+              "focus_x": 0.49,
+              "focus_y": 0.79,
+              "width": 1024,
+              "height": 1536,
+              "generated_for_slide": 1
             }
           ]
         }
