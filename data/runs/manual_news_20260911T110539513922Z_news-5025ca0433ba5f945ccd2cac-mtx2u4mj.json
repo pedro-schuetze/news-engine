@@ -1,0 +1,185 @@
+{
+  "run_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj",
+  "mode": "news",
+  "started_at": "2026-09-11T14:54:43.074Z",
+  "finished_at": "2026-09-11T14:54:43.074Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 6081,
+    "estimated_output_tokens": 1887,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 37,
+    "errors": [
+      "VEJA: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj",
+          "run_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj",
+          "cluster_id": "gn-5025ca0433ba5f945ccd2cac",
+          "vertical": "politics",
+          "title": "Houthis tomam cidade portuária no Iêmen próxima ao Estreito de Bab el-Mandeb",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260911T110539513922Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 3,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/mundo/noticia/2026/09/10/houthis-tomam-cidade-portuaria-moca-iemen.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-10T09:03:50Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Moca fica no sudoeste do país e tem saída para o Mar Vermelho, e sua tomada em meio à guerra civil entre o grupo terrorista e o governo iemenita faz com que Houthis se aproximem do estratégico estreito marítimo. Navio navega no Estreito de Bab el-Mandeb em abril de 2026. — Foto: Reuters O grupo terrorista Houthi tomou controle nesta quinta-feira (10) de Moca, cidade portuária no sudoeste do Iêmen, segundo o governo iemenita. A tomada da cidade foi confirmada por autoridades diplomáticas e militares do governo do Iêmen às agências de notícias internacionais Reuters e AFP. As forças governamentais teriam recuado para a cidade de Dhubab, mais ao sul, segundo fontes. Moca tem saída para o Mar Vermelho e fica próxima ao Estreito de Bab el-Mandeb, e já foi a cidade portuária mais importante do Iêmen antes de ser superada por Aden e Al-Hudaydah. Essa última também sob o controle dos Houthis, assim como a capital Sanaa. A tomada de Moca representa um avanço dos Houthis rumo a Bab el-Mandeb, um dos estreitos marítimos mais importantes do mundo e que o Irã —principal financiador do grupo iemenita— ameaça fechar em meio à guerra que o país trava contra os Estados Unidos. Atualmente, os Houthis travam uma guerra civil contra as forças governamentais do Iêmen, e esse conflito reaqueceu por conta da guerra do Oriente Médio, que apesar de ser entre EUA, Irã e Israel incitou outros focos de combates pela região. O grupo terrorista iemenita também trava confrontos com a Arábia Saudita desde julho a pedido do Irã. Agora no g1 Iêmen"
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj-1",
+                "name": "g1.globo.com",
+                "url": "https://g1.globo.com/mundo/noticia/2026/09/11/houthis-chegam-ilha-e-cidade-estrategicas-iemen-ficam-proximos-de-controlar-bab-el-mandeb-agencia.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-09-10T09:03:50Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Houthis chegam a cidade e a ilha estratégicas no Iêmen e ficam próximos de controlar acesso ao Mar Vermelho, diz agência Dhubab e Perim, localizadas no sudoeste do país, são vitais para controlar o Estreito de Bab el-Mandeb, estreito marítimo estratégico a nível mundial. Grupo terrorista financiado pelo Irã trava guerra civil com forças do governo iemenita. Navio navega no Estreito de Bab el-Mandeb em abril de 2026. — Foto: Reuters O grupo terrorista Houthi chegou nesta sexta-feira (11) à cidade portuária de Dhubab e à ilha de Perim, ambas no sudoeste do Iêmen e na região do Estreito de Bab el-Mandeb, e ficou mais próximo de controlar o acesso ao Mar Vermelho, segundo a agência de notícias Reuters. A chegada dos Houthis a Dhubab e a Perim foi confirmada por fontes do governo iemenita à Reuters. A movimentação marcou o avanço mais significativo do grupo terrorista iemenita até o momento rumo ao Estreito de Bab el-Mandeb, segundo a agência de notícias. Controlar Dhubab e Perim é vital para controlar o a via marítima, que é uma das mais importantes do mundo por ligar o Mar Vermelho ao Hemisfério Oriental, de acordo com as fontes do governo do Iêmen. Agora no g1 Ainda não estava claro, até a última atualização desta reportagem, se o grupo terrorista iemenita havia tomado o controle das duas localidades. No entanto, o governo do Iêmen afirmou à Reuters que suas forças bateram em retirada de Perim.O mesmo não foi reportado para Dhubab, local para onde as tropas governamentais haviam fugido após a tomada de Moca. Atualmente, os Houthis travam uma guerra civil contra as forças governamentais do Iêmen, e esse conflito reaqueceu nos últimos meses por conta da guerra do Oriente Médio, que apesar de ser entre EUA, Irã e Israel incitou outros focos de combates pela região. Ao menos 46 mil pessoas fugiram no Iêmen em meio à escalada dos combates no país, segundo a ONU. O Irã vem ameaçando ao longo do conflito fechar o Estreito de Bab el-Mandeb —após ter limitado a passagem de navios comerciais pelo Estreito de Ormuz—, e o faria por meio dos Houthis. Apesar dos avanços, o grupo terrorista iemenita disse nesta sexta que o tráfego comercial pela via marítima permanecia seguro e ininterrupto. “A liberdade de navegação e o comércio internacional no Mar Vermelho e em Bab al-Mandab estão seguros e sob controle. (...) Não há motivo para preocupação internacional, pois eles não enfrentam nenhum perigo vindo do lado iemenita”, disse Hazem al-Assad, membro do bureau político Houthi. Os Houthis também travam desde julho confrontos com a Arábia Saudita e realizam um bloqueio marítimo contra o país a pedido do Irã. O governo saudita lançou nesta sexta uma salva de bombardeios contra o aeroporto de Moca, segundo os terroristas iemenitas. Iêmen"
+              },
+              {
+                "article_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj-2",
+                "name": "www1.folha.uol.com.br",
+                "url": "https://www1.folha.uol.com.br/blogs/cafe-na-prensa/2026/09/porto-de-mokha-tomado-por-houthis-foi-berco-do-comercio-global-de-cafe.shtml",
+                "source_domain": "www1.folha.uol.com.br",
+                "published_at": "2026-09-11 06:00:00",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "A tomada de Mokha pelos houthis devolveu ao noticiário um porto cujo nome esteve, por séculos, ligado ao comércio internacional de café. Na quinta-feira (10), os rebeldes pró-Irã tomaram o porto do controle do governo do Iêmen, com o qual travam uma guerra civil desde 2014. Apesar de o cafeeiro ser originário das terras altas da Etiópia, foi no Iêmen que seu cultivo e comércio ganharam escala. A partir do século 15, o país passou a explorar comercialmente o produto. O café consumido em quase todo o mundo, portanto, saía do porto de Mokha durante os séculos 16 e 17. O café embarcado em Mokha navegava pelo Mar Vermelho até o porto de Suez. De lá, em geral, era transportado por caravanas de camelos até os armazéns do Cairo e de Alexandria, no Egito. Devido à preeminência do porto no escoamento do produto para o mundo islâmico e para a Europa, o nome de Mokha passou a identificar no comércio internacional o café iemenita e, mais tarde, diferentes produtos e preparações chamados de \"mocha\" ou \"moka\". Após a ocupação do Iêmen pelos turcos otomanos em 1538, o café de Mokha tornou-se uma das mercadorias e fontes de receita mais valiosas do Império Otomano. Para impedir que outros países cultivassem a planta, os turcos guardavam o monopólio em Mokha o monopólio em Mokha. A fim de evitar a germinação em outras áreas, eles proibiam que qualquer fruto saísse do país sem antes ser fervido ou torrado. Em 1616, os holandeses, que já eram uma potência comercial marítima em ascensão, conseguiram furar o bloqueio e transportaram uma muda de Aden, no sul do Iêmen, para a Holanda. Ao perceber que o cafeeiro se desenvolvia melhor em áreas tropicais, iniciaram o cultivo em suas colônias, incluindo Ceilão (atual Sri Lanka) em 1658 e Java em 1699, dando origem à famosa combinação de grãos conhecida como Mocha-Java. A produção holandesa tomou grandes proporções à medida que a demanda pela bebida crescia e, com isso, passou a dominar o comércio mundial do café. Mais tarde, os franceses também começaram a cultivar o fruto na ilha de Bourbon –atual ilha da Reunião. Era o declínio da centralidade de Mokha. Simbolicamente, no entanto, o local permaneceu associado ao café. Não à toa, em 1933, quando criou a cafeteira italiana que até hoje é usada no mundo inteiro, Alfonso Bialetti decidiu batizá-la de moka. LINK PRESENTE: Gostou deste texto? Assinante pode liberar sete acessos gratuitos de qualquer link por dia. Basta clicar no F azul abaixo."
+              },
+              {
+                "article_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj-3",
+                "name": "estadao.com.br",
+                "url": "https://www.estadao.com.br/internacional/por-que-guerra-iemen-agravou-como-ela-se-relaciona-com-ira-entenda-npr/",
+                "source_domain": "estadao.com.br",
+                "published_at": "2026-09-10T09:03:50Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "Gerando resumoApós quatro anos de impasse, o Iêmen está à beira de uma nova guerra em grande escala, ameaçando ainda mais a estabilidade do Oriente Médio.PUBLICIDADEOs combates estão se intensificando dentro do país empobrecido entre a milícia houthi, apoiada pelo Irã, e as forças do governo iemenita, além de ocorrerem nas fronteiras, entre os houthis e a Arábia Saudita. Analistas dizem que todos os lados têm incentivos para ampliar o conflito.Nesta quinta-feira, os houthis capturaram um porto estratégico no Mar Vermelho, em uma ampla ofensiva terrestre que pode dar ao grupo maior controle sobre uma importante rota marítima.PublicidadeOs houthis querem mais poder e recursosOs houthis são aliados próximos do Irã, mas também são uma facção eminentemente iemenita, com suas próprias motivações. O grupo de combatentes chegou ao poder depois de tomar a capital, Sanaa, em 2014, derrotando o governo iemenita. A Arábia Saudita iniciou uma campanha de bombardeios para tentar restabelecer o governo no poder, e os combates tomaram conta do país.Quando uma trégua foi alcançada, em 2022, os houthis disseram que haviam vencido a guerra e consolidaram seu domínio sobre o norte do Iêmen. Mas não tinham acesso às receitas do petróleo iemenita, e as negociações de paz que poderiam lhes garantir uma parcela desses recursos estagnaram. Desde então, a situação econômica nas áreas sob controle dos houthis piorou, aumentando o descontentamento entre os civis e colocando pressão política sobre o grupo, segundo analistas.PublicidadeRebeldes houthis do Iêmen marcham durante uma campanha de mobilização em Sanaa, no Iêmen, nesta quinta-feira, 10 de setembro de 2026 Foto: AP/STRA milícia tem pouco a perder e muito a ganhar com a escalada dos combates. Ao pressionar a Arábia Saudita, os líderes houthis esperam obter concessões políticas que possam dar ao grupo mais poder. Eles exigiram o fim de todas as restrições a aviões e navios que entram em seu território, incluindo o regime de inspeção da ONU. Também insistiram para que a Arábia Saudita pague indenizações de guerra e se retire completamente do Iêmen, o que significaria o fim do apoio saudita ao governo iemenita.“Os houthis não têm nenhum incentivo para reduzir a escalada”, disse Ibrahim Jalal, pesquisador iemenita e consultor de políticas públicas. Segundo ele, o grupo culpa a Arábia Saudita pelo sofrimento em seu território.Irã quer aumentar a pressão sobre os EUAPara o Irã, os houthis são um aliado particularmente útil porque a milícia controla território ao longo do Mar Vermelho, uma importante rota do comércio global. Desde o início da guerra entre EUA e Irã, em fevereiro, a Arábia Saudita, um dos maiores exportadores de petróleo do mundo, tem enviado grande parte de sua produção aos clientes pelo Mar Vermelho para evitar o Estreito de Ormuz, que o Irã efetivamente bloqueou.PublicidadeEm julho, os houthis declararam um bloqueio à navegação saudita pelo Mar Vermelho, ameaçando essa nova rota e pressionando os preços do petróleo para cima.Interferir na economia global e elevar os preços do gás nos Estados Unidos estão entre as maneiras mais eficazes de o Irã exercer influência sobre Trump, segundo analistas.O Irã aposta que a escalada no Iêmen arrastará os Estados Unidos ainda mais para dentro da guerra regional e “aumentará a pressão sobre o governo Trump”, disse Baraa Shiban, pesquisador sobre Iêmen e Golfo do Royal United Services Institute, organização de pesquisa sediada em Londres.PublicidadeGoverno iemenita vê uma oportunidade de recuperar territórioO governo internacionalmente reconhecido do Iêmen está determinado a repelir os houthis e retomar o controle de todo o país. Mas, durante vários anos, essa perspectiva pareceu estar fora de alcance. O governo depende fortemente da Arábia Saudita para obter apoio financeiro e militar, e os sauditas não queriam outra guerra com os houthis.“Durante muito tempo, foram os sauditas que os mantiveram sob controle, porque estavam priorizando a contenção”, disse Ahmed Nagi, analista sênior sobre o Iêmen no International Crisis Group.Agora, à medida que os houthis intensificam os ataques contra interesses sauditas, autoridades do governo iemenita veem uma oportunidade para uma contraofensiva contra a milícia. Há um ano, as forças do governo eram formadas por uma mistura de facções anti-houthis, com diferentes comandos e motivações. Recentemente, a Arábia Saudita pressionou pela unificação dessas forças e ampliou o apoio militar, segundo analistas.PublicidadeEm julho, os houthis declararam um bloqueio à navegação saudita pelo Mar Vermelho Foto: AP/STRO governo gostaria, idealmente, de recuperar todo o Iêmen, disse Jalal. De forma mais realista, as forças governamentais buscam “enfraquecer significativamente os houthis” e afastá-los dos territórios ao longo da costa do Mar Vermelho do Iêmen, afirmou.As ambições do governo ainda podem ser limitadas porque a Arábia Saudita exerce a palavra final sobre as principais decisões que afetam o Iêmen. Uma grande campanha militar do governo iemenita “não pode acontecer sem coordenar plenamente uma operação com a Arábia Saudita”, disse Shiban.Arábia Saudita acredita que não pode ficar de foraA campanha anterior de bombardeios da Arábia Saudita no Iêmen se transformou em um atoleiro que contribuiu para a morte de centenas de milhares de iemenitas em decorrência da violência, da fome e de doenças. A campanha não alcançou seus objetivos políticos. Também prejudicou a reputação do reino e drenou suas finanças.PublicidadePor isso, autoridades sauditas mudaram de estratégia. Desde 2022, passaram a tentar administrar a relação com os houthis por meio de negociações, na esperança de manter a tranquilidade na fronteira sul do reino e desvincular os interesses da milícia dos interesses do Irã. Um novo conflito colocaria em risco os ambiciosos planos do príncipe herdeiro saudita de transformar o reino em um polo global de negócios e turismo.Mas, cada vez mais, autoridades sauditas parecem acreditar que precisam enfrentar os houthis agora ou arcar com custos ainda maiores no futuro, segundo analistas. A Arábia Saudita sediará a Expo Mundial de 2030 e a Copa do Mundo masculina de futebol de 2034, grandes eventos que exigem um ambiente livre de ataques com drones. Os canais diplomáticos entre a Arábia Saudita e os houthis parecem ter entrado em colapso, e os houthis vêm fazendo exigências que autoridades sauditas consideram excessivas.PublicidadeLeia tambémMilícia pró-Irã no Iêmen toma porto no Mar Vermelho e pode ameaçar outro estreito estratégicoConflitos custosos com Canadá e Irã ameaçam Trump nas eleições de meio de mandatoIrã sinaliza prontidão para intensificar o confronto diante da crescente pressão dos EUA“Os sauditas estão desenvolvendo uma espécie de convicção crescente de que a paz com os houthis é impossível”, disse Farea Al-Muslimi, especialista em Iêmen da Chatham House, instituição de pesquisa sediada em Londres. “Eles tentam comprá-los, tentam bombardeá-los, tentam combatê-los, tentam visitá-los, tentam convidá-los. Nada disso funcionou.”Até onde a Arábia Saudita irá pode depender de os Estados Unidos ou outros aliados sauditas estarem dispostos a apoiar outra guerra contra os houthis.Alguns analistas temem o pior. “Há muita gente empolgada com isso ou que pensa que será uma guerra rápida e curta, mas já ouvi essa mesma linha sobre quase todas as guerras no Iêmen”, disse Al-Muslimi. “Esta será uma guerra sangrenta e horrível.”PublicidadeEste conteúdo foi traduzido com o auxílio de ferramentas de Inteligência Artificial e revisado por nossa equipe editorial. Saiba mais em nossa Política de IA.Vale ler tambémCrescimento da AfD ameaça o governo Merz e próximos capítulos ainda estão por virComo a AfD atua como um braço da Rússia na AlemanhaExtrema direita na Alemanha: isolar, proibir ou deixar governar?"
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. VEJA: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-502-mtx2uwsi",
+            "story_id": "news-5025ca0433ba5f945ccd2cac-mtx2u4mj",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Houthis tomam cidade portuária no Iêmen próxima ao Estreito de Bab el-Mandeb",
+            "instagram_headline": "Governo do Iêmen diz que Houthis tomaram o porto de Moca",
+            "short_summary": "Autoridades do governo iemenita afirmaram que os Houthis tomaram Moca, no sudoeste do país, em 10 de setembro. No dia seguinte, o grupo avançou para outras duas localidades próximas ao Estreito de Bab el-Mandeb, segundo a Reuters.",
+            "why_it_matters": "O avanço aproxima os Houthis de uma rota marítima importante para o comércio global e amplia a escalada da guerra civil no Iêmen. Segundo a ONU, ao menos 46 mil pessoas já fugiram dos combates recentes.",
+            "key_facts": [
+              "Moca é uma cidade portuária no sudoeste do Iêmen, com saída para o Mar Vermelho.",
+              "A tomada foi relatada por autoridades diplomáticas e militares do governo iemenita.",
+              "Os Houthis avançaram depois para Dhubab e para a ilha de Perim, segundo a Reuters.",
+              "Ainda não estava confirmado se o grupo havia assumido o controle de Dhubab e Perim.",
+              "O governo iemenita afirmou que suas forças deixaram Perim.",
+              "Os Houthis disseram que o tráfego comercial em Bab el-Mandeb permanecia seguro e ininterrupto."
+            ],
+            "caption": "Autoridades diplomáticas e militares do governo do Iêmen afirmaram que os Houthis tomaram Moca em 10 de setembro. A cidade portuária fica no sudoeste do país, às margens do Mar Vermelho e perto do Estreito de Bab el-Mandeb.\n\nOs Houthis são um grupo armado apoiado pelo Irã que controla a capital, Sanaa, e grande parte do norte iemenita. O grupo enfrenta as forças do governo desde que tomou a capital, em 2014. Uma trégua alcançada em 2022 reduziu os combates, mas as negociações de paz ficaram paralisadas.\n\nEm 11 de setembro, os Houthis chegaram a Dhubab e à ilha de Perim, segundo a Reuters. As duas localidades são consideradas importantes para o controle do acesso ao Mar Vermelho. Até a última atualização, não estava claro se ambas haviam sido tomadas, embora o governo tenha informado a retirada de suas forças de Perim.\n\nO grupo declarou que a navegação comercial continuava segura e sem interrupções. A escalada, porém, já provocou novos deslocamentos: ao menos 46 mil pessoas fugiram dos combates no Iêmen, segundo a ONU.\n\nFontes: g1, Folha de S.Paulo e Estadão.",
+            "hashtags": [
+              "#Iêmen",
+              "#Houthis",
+              "#MarVermelho",
+              "#OrienteMédio",
+              "#Geopolítica"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Governo do Iêmen diz que Houthis tomaram o porto de Moca",
+                "body": "A cidade fica no sudoeste do país, perto do Estreito de Bab el-Mandeb e com saída para o Mar Vermelho.",
+                "image_direction": "Foto documental ampla do porto de Moca, com embarcações e a faixa costeira sob luz natural, sem inserir elementos não registrados.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Quem disputa o território",
+                "body": "Os Houthis são um grupo armado apoiado pelo Irã. Eles controlam a capital, Sanaa, e enfrentam desde 2014 o governo iemenita, que conta com apoio financeiro e militar da Arábia Saudita.",
+                "image_direction": "Foto de agência mostrando integrantes Houthis em mobilização pública em Sanaa, com enquadramento aberto e identificação documental do local.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "O avanço continuou pela costa",
+                "body": "Em 11 de setembro, os Houthis chegaram a Dhubab e à ilha de Perim, segundo a Reuters. O controle das duas localidades ainda não estava confirmado, mas o governo relatou ter retirado suas forças de Perim.",
+                "image_direction": "Mapa ilustrado e sóbrio do sudoeste do Iêmen, destacando Moca, Dhubab, Perim, o Mar Vermelho e Bab el-Mandeb, sem representar fronteiras de controle não confirmadas.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Uma passagem marítima estratégica",
+                "body": "Dhubab e Perim ficam na região de Bab el-Mandeb. O estreito dá acesso ao Mar Vermelho e integra uma das rotas marítimas mais importantes para o comércio internacional.",
+                "image_direction": "Foto de agência de um navio comercial navegando pelo Estreito de Bab el-Mandeb, em composição horizontal com mar e costa visíveis.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Combates provocam novos deslocamentos",
+                "body": "Ao menos 46 mil pessoas fugiram da escalada no Iêmen, segundo a ONU. Os Houthis afirmaram que o tráfego comercial no Mar Vermelho e em Bab el-Mandeb permanecia seguro e ininterrupto.",
+                "image_direction": "Registro documental de deslocados iemenitas em área de acolhimento, com abordagem respeitosa, luz natural e sem exposição invasiva de crianças.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-11T14:54:43.074Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-10T09:03:50Z",
+          "latest_published_at": "2026-09-10T09:03:50Z",
+          "selection_rank": 3,
+          "created_at": "2026-09-11T14:54:43.074Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
