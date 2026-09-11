@@ -530,6 +530,23 @@
               "width": 1024,
               "height": 1536,
               "generated_for_slide": 1
+            },
+            {
+              "id": "umtx2ui84-1",
+              "local_path": "data/media/news-2d151131584b43e47a2705f7-mtv0zydi/pool/umtx2ui84-1.jpg",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/jpeg",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "right",
+              "score": 82,
+              "score_notes": "relevância 85 · texto 80 · nitidez 80",
+              "added_at": "2026-09-11T14:54:25.160Z",
+              "focus_x": 0.62,
+              "focus_y": 0.67,
+              "width": 900,
+              "height": 1600
             }
           ]
         }
