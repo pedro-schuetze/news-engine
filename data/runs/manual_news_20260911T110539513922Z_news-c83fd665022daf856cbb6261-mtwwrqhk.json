@@ -1,0 +1,150 @@
+{
+  "run_id": "news-c83fd665022daf856cbb6261-mtwwrqhk",
+  "mode": "news",
+  "started_at": "2026-09-11T12:05:06.162Z",
+  "finished_at": "2026-09-11T12:05:06.162Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 1,
+    "articles_by_collector": {
+      "google-news-front-page": 1
+    },
+    "articles_after_dedupe": 1,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 3019,
+    "estimated_output_tokens": 1953,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 49,
+    "errors": []
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-c83fd665022daf856cbb6261-mtwwrqhk",
+          "run_id": "news-c83fd665022daf856cbb6261-mtwwrqhk",
+          "cluster_id": "gn-c83fd665022daf856cbb6261",
+          "vertical": "politics",
+          "title": "Israel explode estrutura do Hezbollah e causa terremoto de 4,1 no Líbano",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260911T110539513922Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 0,
+            "independent_source_count": 1,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-c83fd665022daf856cbb6261-mtwwrqhk-0",
+              "name": "g1.globo.com",
+              "url": "https://g1.globo.com/mundo/noticia/2026/09/10/explosoes-de-israel-para-destruir-estrutura-do-hezbollah-provocam-terremoto-de-magnitude-41-no-libano.ghtml",
+              "source_domain": "g1.globo.com",
+              "published_at": "2026-09-10T19:50:33Z",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Israel explode estrutura do Hezbollah e causa terremoto de 4,1 no Líbano Tremor foi registrado pelo Serviço Geológico dos Estados Unidos nesta quinta-feira (10). Militares israelenses afirmaram que a estrutura subterrânea armazenava armas e explosivos. Um terremoto de magnitude 4,1 foi registrado nesta quinta-feira (10) no Líbano. O tremor ocorreu após Israel demolir uma estrutura subterrânea do Hezbollah. As Forças de Defesa de Israel destruíram túneis na região de Ali al-Taher, no sul do Líbano. Os militares estabeleceram controle operacional sobre a área. A infraestrutura subterrânea destruída tinha mais de 2 quilômetros de extensão. No local, foram achados mísseis, drones iranianos, foguetes e explosivos. A estrutura foi construída ao longo de mais de 2 décadas pelo grupo. Os militares israelenses continuarão atuando no sul do Líbano para eliminar ameaças. Israel explode estrutura do Hezbollah e causa terremoto de 4,1 no Líbano Um terremoto de magnitude 4,1 foi registrado nesta quinta-feira (10) no sul do Líbano após a demolição de uma estrutura subterrânea do Hezbollah por Israel, segundo o Serviço Geológico dos Estados Unidos (USGS). O tremor ocorreu às 15h08, no horário de Brasília. Jornalistas da agência AFP relataram uma grande explosão na região, que provocou tremores. O Exército de Israel divulgou imagens que mostram uma bola de fogo subindo ao céu. Veja abaixo. As Forças de Defesa de Israel afirmaram que destruíram túneis e outras estruturas subterrâneas na região de Ali al-Taher, no sul do Líbano, depois de estabelecerem controle operacional sobre a área, tanto na superfície quanto abaixo dela. Segundo os militares israelenses, a infraestrutura se estendia por mais de dois quilômetros. Dentro dela, foram encontrados foguetes, mísseis e drones de fabricação iraniana, além de metralhadoras, minas e explosivos. Israel disse que a estrutura havia sido construída ao longo de mais de duas décadas e era usada para permitir que integrantes do Hezbollah permanecessem por longos períodos escondidos no subterrâneo e coordenassem operações de combate. Os militares israelenses afirmaram que continuarão atuando na chamada Zona de Segurança, no sul do Líbano, para retirar ameaças e destruir estruturas do Hezbollah. LEIA TAMBÉM Explosões destruíram estrutura subterrânea usada pelo Hezbollah — Foto: Forças de Defesa de Israel VÍDEOS: agora no g1 Agora no g1 Israel Líbano Veja também Em alta naglobo.comJornalismoProdutora de filme sobre Bolsonaro comprou carro SUV com R$ 100 mil em dinheiro vivo e disparou alerta do CoafEsporteEm Imola, Rafael Câmara vai fazer novo teste com a Ferrari de 2025EntretenimentoQuem Ama Cuida: Carol descobre romance de Dora e AndréEncontre mais assuntos Mais do G1 Agora Política Há 1 hora Política Agora Blog da Andréia Sadi Há 8 horas Eleições 2026 no Distrito Federal Há 4 horas O Assunto Há 3 horas São Paulo Há 4 horas Meio Ambiente Há 1 hora Rio Grande do Sul Há 4 horas Pop & Arte"
+            },
+            "supporting_sources": [],
+            "contradictions_found": [],
+            "verification_notes": "1 de 1 matérias lidas. Leitura não equivale a verificação independente. "
+          },
+          "draft": {
+            "draft_id": "news-c83-mtwwss8i",
+            "story_id": "news-c83fd665022daf856cbb6261-mtwwrqhk",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "Israel explode estrutura do Hezbollah e causa terremoto de 4,1 no Líbano",
+            "instagram_headline": "Explosão israelense é seguida por tremor de 4,1 no Líbano",
+            "short_summary": "Um tremor de magnitude 4,1 foi registrado no sul do Líbano após Israel demolir uma estrutura subterrânea do Hezbollah. O Exército israelense afirmou que o local abrigava armas e explosivos.",
+            "why_it_matters": "A força da explosão foi suficiente para produzir um abalo registrado pelo Serviço Geológico dos Estados Unidos. Israel declarou que continuará destruindo estruturas do Hezbollah no sul libanês.",
+            "key_facts": [
+              "O tremor ocorreu nesta quinta-feira (10), no sul do Líbano.",
+              "O Serviço Geológico dos Estados Unidos registrou magnitude 4,1.",
+              "A demolição atingiu túneis na região de Ali al-Taher.",
+              "Segundo Israel, a estrutura tinha mais de dois quilômetros.",
+              "Os militares israelenses alegam ter encontrado armas e explosivos no local."
+            ],
+            "caption": "Um tremor de magnitude 4,1 foi registrado no sul do Líbano nesta quinta-feira (10), depois que Israel demoliu uma estrutura subterrânea atribuída ao Hezbollah. O abalo ocorreu às 15h08, no horário de Brasília, segundo o Serviço Geológico dos Estados Unidos.\n\nA operação aconteceu na região de Ali al-Taher. Jornalistas da agência AFP relataram uma grande explosão acompanhada por tremores, enquanto imagens divulgadas pelo Exército israelense mostraram uma bola de fogo.\n\nOs militares de Israel afirmaram que os túneis se estendiam por mais de dois quilômetros e haviam sido construídos ao longo de duas décadas. Segundo essa versão, o local continha foguetes, mísseis, drones de fabricação iraniana, metralhadoras, minas e explosivos, além de permitir a permanência prolongada de integrantes do Hezbollah no subterrâneo.\n\nIsrael declarou que seguirá atuando na área que chama de Zona de Segurança, no sul do Líbano, para destruir outras estruturas do grupo.\n\nFonte: g1.",
+            "hashtags": [
+              "#Líbano",
+              "#Israel",
+              "#Hezbollah",
+              "#OrienteMédio"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "Explosão israelense é seguida por tremor de 4,1 no Líbano",
+                "body": "O abalo foi registrado após a demolição de uma estrutura subterrânea atribuída ao Hezbollah.",
+                "image_direction": "Imagem oficial da grande explosão no sul do Líbano, com a bola de fogo destacada contra o céu e enquadramento horizontal amplo.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "O abalo ocorreu no sul",
+                "body": "O Serviço Geológico dos Estados Unidos registrou o tremor às 15h08, no horário de Brasília, nesta quinta-feira (10). A explosão ocorreu na região de Ali al-Taher.",
+                "image_direction": "Mapa ilustrado e sóbrio do Líbano, destacando a porção sul do país e a região de Ali al-Taher, sem elementos militares fictícios.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "Túneis tinham mais de dois quilômetros",
+                "body": "Segundo o Exército israelense, a estrutura subterrânea foi construída durante mais de duas décadas. Israel afirmou ter assumido o controle operacional da área antes de destruir os túneis.",
+                "image_direction": "Registro oficial do interior ou da entrada da estrutura subterrânea, com túneis visíveis, iluminação baixa e perspectiva que mostre sua extensão.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "Israel relata armas no local",
+                "body": "Os militares israelenses alegam ter encontrado foguetes, mísseis, drones iranianos, metralhadoras, minas e explosivos. Também dizem que o espaço permitia ao Hezbollah coordenar operações a partir do subterrâneo.",
+                "image_direction": "Imagem oficial dos equipamentos encontrados, organizados em plano aberto e sem aproximar marcas ou inscrições não verificadas.",
+                "image_source_type": "PRESS_ASSET"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "Operações devem continuar na região",
+                "body": "Israel afirmou que continuará atuando na área que chama de Zona de Segurança, no sul libanês, com o objetivo declarado de retirar ameaças e destruir estruturas do Hezbollah.",
+                "image_direction": "Foto documental ampla da paisagem no sul do Líbano, com terreno, estradas e presença militar ao fundo, sob luz natural e sem dramatização.",
+                "image_source_type": "AGENCY_PHOTO"
+              }
+            ],
+            "created_at": "2026-09-11T12:05:06.162Z"
+          },
+          "slide_media": [],
+          "article_count": 1,
+          "earliest_published_at": "2026-09-10T19:50:33Z",
+          "latest_published_at": "2026-09-10T19:50:33Z",
+          "selection_rank": 2,
+          "created_at": "2026-09-11T12:05:06.162Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
