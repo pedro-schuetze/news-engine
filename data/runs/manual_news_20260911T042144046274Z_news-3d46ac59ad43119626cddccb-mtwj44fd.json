@@ -1,0 +1,184 @@
+{
+  "run_id": "news-3d46ac59ad43119626cddccb-mtwj44fd",
+  "mode": "news",
+  "started_at": "2026-09-11T05:42:41.014Z",
+  "finished_at": "2026-09-11T05:42:41.014Z",
+  "lookback_hours": 0,
+  "stats": {
+    "articles_collected": 4,
+    "articles_by_collector": {
+      "google-news-front-page": 4
+    },
+    "articles_after_dedupe": 4,
+    "duplicates_removed": 0,
+    "story_clusters": 1,
+    "clusters_classified": 1,
+    "clusters_discarded": 0,
+    "stories_selected": 1,
+    "llm_calls": 1,
+    "estimated_input_tokens": 5067,
+    "estimated_output_tokens": 2022,
+    "token_usage_source": "api",
+    "estimated_llm_cost_usd": null,
+    "duration_seconds": 40,
+    "errors": [
+      "CNN Brasil: Endereço privado não permitido."
+    ]
+  },
+  "verticals": {
+    "politics": {
+      "vertical": "politics",
+      "insufficient_quality_candidates": false,
+      "candidates_considered": 1,
+      "stories": [
+        {
+          "story_id": "news-3d46ac59ad43119626cddccb-mtwj44fd",
+          "run_id": "news-3d46ac59ad43119626cddccb-mtwj44fd",
+          "cluster_id": "gn-3d46ac59ad43119626cddccb",
+          "vertical": "politics",
+          "title": "The Economist diz que STF se tornou uma ameaça à democracia no Brasil",
+          "content_type": "FACT",
+          "is_rumor_or_claim": false,
+          "claim_attribution": "",
+          "trend_score": 0,
+          "trend_signals": {},
+          "editorial_score": 0,
+          "editorial_sub_scores": {},
+          "editorial_reason": "Selected by an editor from Google News.",
+          "red_flags": [],
+          "final_score": 0,
+          "final_score_notes": [
+            "Google News snapshot 20260911T042144046274Z",
+            "model: gpt-5.6-sol"
+          ],
+          "classification": null,
+          "verification": {
+            "status": "PARTIALLY_VERIFIED",
+            "supporting_source_count": 3,
+            "independent_source_count": 4,
+            "has_primary_source": false,
+            "primary_source": {
+              "article_id": "news-3d46ac59ad43119626cddccb-mtwj44fd-0",
+              "name": "www1.folha.uol.com.br",
+              "url": "https://www1.folha.uol.com.br/poder/2026/09/defensores-da-democracia-se-tornaram-uma-ameaca-diz-the-economist-sobre-stf.shtml",
+              "source_domain": "www1.folha.uol.com.br",
+              "published_at": "2026-09-10 14:45:00",
+              "source_type": "media",
+              "authority_score": 0,
+              "excerpt": "Em um artigo publicado na quinta-feira (10), a revista britânica The Economist afirma que membros do STF (Supremo Tribunal Federal) considerados defensores da democracia após a condenação do ex-presidente Jair Bolsonaro (PL) viraram suas costas para ela. O motivo é um \"feio e crescente escândalo de corrupção\", segundo a publicação. \"Diante de constantes ameaças, inclusive de Donald Trump, os ministros prosseguiram com serenidade na acusação do ex-presidente populista, condenando-o a 27 anos de prisão em setembro de 2025. A maioria dos brasileiros comemorou que a jovem democracia do país tinha sido salva. Agora, com a proximidade das eleições gerais no dia 4 de outubro, os defensores da democracia se tornaram uma ameaça\", diz o texto. A análise também cita a condução da ação penal que condenou Bolsonaro e outros réus por uma tentativa de golpe de Estado. Segundo a revista, Moraes deu decisões questionáveis. Além disso, a The Economist afirma que o ministro censurou contas de bolsonaristas em redes sociais por meio do inquérito das fake news. O sigilo imposto a essa investigação ‎não permite mensurar quantas e quais perfis foram suspensos, cita a revista. Moraes, que acumulou \"os papéis de vítima, promotor e juiz\", teria usado o inquérito para blindar a si e a colegas e perseguir fiscais da Receita Federal e fontes jornalísticas. \"Na época, parcela considerável da sociedade brasileira descartou essas preocupações diante da ameaça maior. Mas agora Moraes está sob escrutínio novamente\", afirma. A revista chama Daniel Vorcaro de \"playboy\" e diz que ele usou o Banco Master para perpetrar um \"esquema Ponzi acoplado a uma operação de tráfico de influência\". Há referência ao criminoso financeiro Charles Ponzi, responsável nos anos 1920 por um rombo de US$ 15 milhões, nos valores da época. Assim como no Master, o esquema consistia em pagar investidores com aportes feitos por outros investidores e não com o rendimento das aplicações. Vorcaro e Moraes tinham uma \"relação preocupante\", revelada a partir do contrato firmado entre o ex-banqueiro e o escritório da esposa do ministro e de mensagens trocadas às vésperas da prisão do dono do Master. O magistrado, segundo a revista, teria ridicularizado a proposta de código de ética patrocinada pelo ministro Edson Fachin, definido como \"íntegro\" presidente do Supremo. A relação entre Moraes e Vorcaro veio à tona em 1º de setembro, quando o ministro André Mendonça retirou o sigilo do relatório da Polícia Federal que apontava o envolvimento do relator da trama golpista. A revista afirma que Moraes \"pode ter razão\" ao acusar o colega de agir sob motivação política e pedir a investigação dele por abuso de autoridade. Mendonça não teria publicado informações sobre outros ministros citados no caso e foi acusado pela PF de interferir na coleta de provas. Além disso, a revista lembra a atuação do ministro no governo Bolsonaro e afirma que ele coordenou um relatório que listava \"inimigos\" do ex-presidente dentro da corporação. O artigo aponta que a atuação do relator do caso Master no STF pode levar à nulidade das provas, o que beneficiaria não só Moraes, mas Flávio Bolsonaro, candidato à Presidência pelo PL. Após negar ter relações com Vorcaro, o filho do ex-presidente foi \"desmascarado\", diz a revista, pela divulgação de áudios em que pede quantias milionárias ao ex-banqueiro. \"Brasileiros estão cansados dos escândalos de corrupção que mancham sua classe política a cada poucos anos. Costumavam confiar em sua Suprema Corte, que enviou dezenas de políticos à cadeia por corrupção. Agora essa confiança está se desintegrando\", conclui. A revista The Economist foi fundada em 1843 e é um dos principais veículos dedicados à cobertura econômica. ‎Em abril do ano passado, a publicação já apontava que Moraes acumulava poder excessivo na corte e cobrava moderação do ministro."
+            },
+            "supporting_sources": [
+              {
+                "article_id": "news-3d46ac59ad43119626cddccb-mtwj44fd-1",
+                "name": "em.com.br",
+                "url": "https://www.em.com.br/politica/platobr/2026/09/7498299-o-que-esperar-afinal-da-sessao-que-pode-definir-o-futuro-de-moraes-no-stf.html",
+                "source_domain": "em.com.br",
+                "published_at": "2026-09-11 00:08:07",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O ineditismo da crise instaurada no STF (Supremo Tribunal Federal) tem levantado questionamentos sobre os ritos regimentais da sessão marcada para terça-feira, 15, e destinada a definir as providências a partir do relatório da Polícia Federal) tornado público por André Mendonça que detalha as relações Alexandre de Moraes com o ex-banqueiro Daniel Vorcaro. A expectativa geral em Brasília é que essa reunião comece a definir o futuro de Moraes. Embora não haja um pedido formal para a abertura de um inquérito, o ministro pode, sim, passar a ser investigado a partir de então. Três hipóteses estão entre as mais prováveis decisões do plenário: 1) decidir pelo arquivamento do documento encaminhado por Mendonça por ilicitude na coleta das provas; 2) enviar o material à (PGR) Procuradoria-Geral da República; e 3) abrir uma apuração para averiguar as suspeitas. Antes de decidir sobre o relatório em si, é possível que os ministros avaliem se o procurador-geral, Paulo Gonet, pode atuar no caso, uma vez que as mensagens também revelam relações dele com Vorcaro. “Diversas associações e órgãos de classe pediram o afastamento do PGR. Esse afastamento, de forma isolada, também pode ocorrer por decisão do plenário, desde que fundamentado no Regimento Interno, em razão de eventual impedimento ou suspeição, explica o advogado Sérgio dos Anjos, professor de Processo Penal. A grande interrogação passa a ser o placar. Hoje, a corte está dividida entre o grupo pró-investigação (o próprio Mendonça, Luiz Fux e, talvez, Kassio Nunes Marques), o pró-Moraes (Gilmar Mendes, Cristiano Zanin, Flávio Dino e Dias Toffoli) e tem duas incógnitas. Como Toffoli não deve votar (recentemente, ele se declarou impedido de atuar no caso Master, em razão de negócios de sua família com o grupo de Vorcaro), Edson Fachin e Cármen Lúcia tendem a definir o resultado. Qualquer decisão do plenário poderá ser contestada imediatamente, com Moraes tendo a prerrogativa de apresentar embargos de declaração ou, no caso de serem validadas as provas, um agravo regimental, o que abriria novas rodadas de discussão em plenário. A sessão está marcada para as 10 horas."
+              },
+              {
+                "article_id": "news-3d46ac59ad43119626cddccb-mtwj44fd-2",
+                "name": "g1.globo.com",
+                "url": "https://g1.globo.com/bom-dia-brasil/noticia/2026/09/10/miriam-leitao-crise-no-stf.ghtml",
+                "source_domain": "g1.globo.com",
+                "published_at": "2026-09-10T18:25:41Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "A comentarista Miriam Leitão avaliou, no Bom Dia Brasil desta quinta-feira (10), a crise no Supremo Tribunal Federal (STF). De acordo com Miriam, as medidas anunciadas pelo presidente da Corte, Edson Fachin, são importantes para tentar reorganizar o tribunal, mas ainda não são suficientes. Veja o comentário completo no vídeo acima. Na quarta-feira (9), Fachin suspendeu decisões dos ministros André Mendonça e Flávio Dino sobre o comando da Polícia Federal (PF), manteve Andrei Rodrigues na direção-geral da corporação e retirou de Alexandre de Moraes a relatoria do inquérito das fake news. Também determinou que eventuais investigações envolvendo ministros do STF passem previamente pela presidência da Corte. Para Miriam, as decisões aconteceram depois de a crise já ter atingido um nível elevado. \"A crise escalou muito antes que ele pudesse fazer, antes que ele fizesse o que ele fez\". Segundo a comentarista, Fachin utilizou os poderes da presidência do STF para tentar reorganizar a situação. \"A presidência do tribunal tem esses poderes. Então ele tomou decisões importantes.\" Apesar de considerar as medidas relevantes, Miriam afirmou que elas não resolvem todos os problemas que envolvem a Corte. \"Essas medidas são importantes, mas não são suficientes.\" Sessão de terça-feira será inédita Outro ponto de tensão é a sessão plenária do STF prevista para terça-feira (15), quando os ministros deverão analisar questões relacionadas à investigação envolvendo Alexandre de Moraes e as mensagens trocadas com Daniel Vorcaro. Para Miriam, a reunião terá caráter inédito por colocar os próprios ministros do Supremo diante da decisão sobre uma possível investigação de um integrante da Corte. \"Importante é pouco, é inédita.\" Pronunciamento de Moraes é cancelado Miriam também comentou a expectativa em torno de um pronunciamento que Alexandre de Moraes havia anunciado para esta quinta-feira. A previsão era que o ministro falasse no fim da manhã, mas a assessoria do STF informou posteriormente que a manifestação havia sido cancelada e seria remarcada. O pronunciamento acabou sendo cancelado em meio à crise. Segundo informações divulgadas nesta quinta-feira, a fala não teria transmissão pública e ocorreria um dia depois de Fachin retirar de Moraes a relatoria do inquérito das fake news. Antes do cancelamento, a expectativa da comentarista era de que Moraes pudesse começar a se explicar sobre as mensagens com Vorcaro e sobre a retirada da relatoria do inquérito das fake news. \"Ele tem que tentar fazer um movimento para reduzir a tensão em relação à reunião de terça-feira, onde ele estará na berlinda.\" Uso de emendas no caso 'Dark Horse' Durante a análise, Miriam também comentou a operação da Polícia Federal que investiga o possível uso irregular de recursos públicos relacionados ao filme Dark Horse, sobre a trajetória do ex-presidente Jair Bolsonaro. A operação, autorizada pelo ministro Flávio Dino, tem entre os alvos o deputado federal Mario Frias (PL-SP). A investigação apura, entre outros pontos, o possível uso indevido de recursos provenientes de emendas parlamentares. Para Miriam, o ponto central está justamente na origem dos recursos. \"Essa é uma ponta importante: dinheiro público diretamente para o financiamento através dessa emenda do deputado Mario Frias.\"A comentarista relacionou os dois episódios ao momento de tensão vivido pelo STF e afirmou que a crise institucional ainda não terminou. Miriam Leitão: crise no STF escalou e medidas de Fachin não são suficientes — Foto: Reprodução/TV Globo"
+              },
+              {
+                "article_id": "news-3d46ac59ad43119626cddccb-mtwj44fd-3",
+                "name": "estadao.com.br",
+                "url": "https://www.estadao.com.br/economia/rogerio-werneck/o-supremo-e-a-reeleicao-nao-houve-tempo-para-que-o-lula-4-fosse-a-tabua-de-salvacao-de-moraes/",
+                "source_domain": "estadao.com.br",
+                "published_at": "2026-09-10T18:25:41Z",
+                "source_type": "media",
+                "authority_score": 0,
+                "excerpt": "O cerne da crise político-institucional que se abateu sobre o País fica mais claro quando o retrospecto do que ocorreu nas últimas semanas, em Brasília, toma como ponto de partida o fatídico jantar de reconciliação de Davi Alcolumbre com Lula da Silva, promovido por Alexandre de Moraes, em 4 de agosto. A 60 dias do primeiro turno, um ministro do Supremo achou apropriado sair do seu caminho para destravar a pauta eleitoreira do governo no Senado.Findo o jantar, cada um dos três comensais tinha razões de sobra para comemorar. Para todos eles, a reeleição de Lula tornara-se fundamental. Vulnerável como está, Alcolumbre bem sabia que, sem Lula no Planalto, teria pouca chance de ser reconduzido à presidência do Senado. André Mendonça (à frente) conflagrou o Supremo ao denunciar Moraes (ao centro) Foto: Antonio Augusto/STFPUBLICIDADEJá Moraes, encalacrado com esqueletos do caso Vorcaro, agarrava-se à fantasia de que, com as reeleições de Lula e Alcolumbre, ainda teria condições resistir ao inevitável assédio que o novo Senado, bem mais à direita do atual, deverá lhe fazer ano que vem.O que se festejava era a promessa de que em 2027 Lula permaneceria no Planalto, Alcolumbre seria reeleito presidente do Congresso em fevereiro e Moraes, não só sobreviveria no cargo, como seria alçado à presidência do Supremo em setembro. Da perspectiva do Supremo Tribunal Federal (STF) ainda haveria um ganho crucial. Reeleito, Lula logo se veria sem apoio parlamentar adequado. Ficaria mais uma vez dependente do Supremo para conseguir governar com minoria no Congresso. O que daria aos aliados do presidente na Corte a ascendência requerida sobre o Planalto para controlar o que mais lhes importa: as nomeações de novos ministros para as quatro vagas do STF que terão de ser preenchidas até o final do próximo mandato presidencial. PublicidadeEsse projeto delirante e megalômano de preservação integral de poder, em que Moraes escaparia ileso, começou a vir abaixo em 1/9, quando o ministro André Mendonça decidiu que era o momento de conflagrar o Supremo com a denúncia do colega.Da noite para o dia, a aposta de Moraes na reeleição converteu-se num fato político radioativo. Especialmente aos olhos de eleitores pendulares de centro, cada vez mais mobilizados com a questão da corrupção, como apontam pesquisas recentes.Às dúvidas sobre o desfecho da disputa presidencial, somaram-se agora às que advêm da descrença na possibilidade que tamanha crise institucional venha a ser superada de forma adequada, em tempo hábil.A alta incerteza com que já se defrontava a economia foi agora amplificada numa proporção que há poucas semanas pareceria inimaginável. Vale ler tambémPrédio mais alto de São Paulo fecha contrato com primeiro inquilino Gafisa busca injeção de capital para terminar obras atrasadas Títulos dos EUA perdem confiança; recompra não enfrenta a raiz do problema fiscal"
+              }
+            ],
+            "contradictions_found": [],
+            "verification_notes": "4 de 5 matérias lidas. Leitura não equivale a verificação independente. CNN Brasil: Endereço privado não permitido."
+          },
+          "draft": {
+            "draft_id": "news-3d4-mtwj4zna",
+            "story_id": "news-3d46ac59ad43119626cddccb-mtwj44fd",
+            "channel": "instagram_carousel",
+            "language": "pt-BR",
+            "original_story_title": "The Economist diz que STF se tornou uma ameaça à democracia no Brasil",
+            "instagram_headline": "The Economist afirma que STF se tornou ameaça à democracia",
+            "short_summary": "A revista britânica criticou a atuação do STF e afirmou que ministros antes vistos como defensores da democracia passaram a ameaçá-la. O artigo concentra as críticas em Alexandre de Moraes e nas suspeitas relacionadas ao ex-banqueiro Daniel Vorcaro.",
+            "why_it_matters": "A crise pode levar o STF a decidir se um de seus próprios ministros deve ser investigado. O episódio também pressiona a confiança na Corte às vésperas das eleições gerais de 4 de outubro.",
+            "key_facts": [
+              "O artigo da The Economist foi publicado em 10 de setembro.",
+              "A revista questionou decisões de Alexandre de Moraes na ação que condenou Jair Bolsonaro e no inquérito das fake news.",
+              "A publicação classificou como preocupante a suposta relação entre Moraes e Daniel Vorcaro.",
+              "O presidente do STF, Edson Fachin, retirou Moraes da relatoria do inquérito das fake news.",
+              "O plenário deve discutir em 15 de setembro as providências sobre o relatório divulgado por André Mendonça."
+            ],
+            "caption": "A The Economist publicou em 10 de setembro uma análise segundo a qual integrantes do STF antes considerados defensores da democracia passaram a representar uma ameaça a ela. A revista relacionou a avaliação à atuação de Alexandre de Moraes e às suspeitas envolvendo o ex-banqueiro Daniel Vorcaro.\n\nSegundo a Folha de S.Paulo, a publicação britânica questionou decisões de Moraes no processo que condenou Jair Bolsonaro a 27 anos de prisão e no inquérito das fake news. Também afirmou que o ministro acumulou papéis incompatíveis e usou a investigação para proteger integrantes da Corte, alegações feitas pela revista.\n\nA crise levou o presidente do STF, Edson Fachin, a retirar Moraes da relatoria do inquérito das fake news. Fachin também determinou que eventuais investigações contra ministros passem previamente pela presidência do tribunal. No G1, Miriam Leitão avaliou que as medidas são importantes, mas insuficientes.\n\nEm 15 de setembro, o plenário deverá discutir o relatório da Polícia Federal divulgado pelo ministro André Mendonça. Entre as possibilidades apontadas pelo Estado de Minas estão arquivar o material, encaminhá-lo à Procuradoria-Geral da República ou abrir uma apuração sobre as suspeitas.\n\nFontes: Folha de S.Paulo, Estado de Minas, G1 e Estadão.",
+            "hashtags": [
+              "#STF",
+              "#AlexandreDeMoraes",
+              "#TheEconomist",
+              "#PolíticaBrasileira",
+              "#BancoMaster"
+            ],
+            "slides": [
+              {
+                "slide_number": 1,
+                "role": "HOOK",
+                "headline": "The Economist afirma que STF se tornou ameaça à democracia",
+                "body": "Revista britânica associa a avaliação à atuação de Alexandre de Moraes e às suspeitas envolvendo Daniel Vorcaro.",
+                "image_direction": "Vista frontal do edifício do STF em Brasília, com a escultura da Justiça em primeiro plano e luz natural sóbria.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 2,
+                "role": "CONTEXT",
+                "headline": "Da defesa à crítica",
+                "body": "A revista lembrou que o STF foi elogiado após condenar Jair Bolsonaro a 27 anos de prisão. Agora, afirma que a atuação da Corte ameaça a democracia antes das eleições de 4 de outubro.",
+                "image_direction": "Registro documental do plenário do STF durante uma sessão, com ministros à bancada em composição ampla e iluminação institucional.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 3,
+                "role": "FACTS",
+                "headline": "As críticas a Moraes",
+                "body": "A The Economist questionou decisões no processo de Bolsonaro e no inquérito das fake news. Segundo a revista, o sigilo da investigação impede saber quantos perfis foram suspensos e quais foram atingidos.",
+                "image_direction": "Ilustração conceitual de um telefone com perfis de redes sociais diante da silhueta de um tribunal, em cores discretas e sem textos.",
+                "image_source_type": "ILLUSTRATION"
+              },
+              {
+                "slide_number": 4,
+                "role": "WHY_IT_MATTERS",
+                "headline": "O foco no caso Vorcaro",
+                "body": "A publicação classificou como preocupante a suposta relação entre Moraes e Daniel Vorcaro, citando o contrato do ex-banqueiro com o escritório da esposa do ministro e mensagens anteriores à prisão de Vorcaro.",
+                "image_direction": "Foto documental de Daniel Vorcaro em ambiente público, enquadramento fechado e fundo neutro, sem montagem ou dramatização.",
+                "image_source_type": "AGENCY_PHOTO"
+              },
+              {
+                "slide_number": 5,
+                "role": "CONCLUSION",
+                "headline": "STF decidirá o próximo passo",
+                "body": "Na sessão de 15 de setembro, o plenário poderá arquivar o relatório divulgado por André Mendonça, enviá-lo à PGR ou abrir uma apuração sobre as suspeitas envolvendo Moraes.",
+                "image_direction": "Plenário do STF preparado para uma sessão, com cadeiras e bancadas em perspectiva, iluminação uniforme e ausência de elementos adicionados.",
+                "image_source_type": "PRESS_ASSET"
+              }
+            ],
+            "created_at": "2026-09-11T05:42:41.014Z"
+          },
+          "slide_media": [],
+          "article_count": 4,
+          "earliest_published_at": "2026-09-10T18:25:41Z",
+          "latest_published_at": "2026-09-10T18:25:41Z",
+          "selection_rank": 6,
+          "created_at": "2026-09-11T05:42:41.014Z"
+        }
+      ]
+    }
+  },
+  "debug": null
+}
