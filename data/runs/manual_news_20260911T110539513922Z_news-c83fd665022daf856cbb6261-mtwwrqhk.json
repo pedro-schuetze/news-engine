@@ -485,6 +485,19 @@
               "width": 1024,
               "height": 1536,
               "generated_for_slide": 1
+            },
+            {
+              "id": "umtwwzva7-1",
+              "local_path": "data/media/news-c83fd665022daf856cbb6261-mtwwrqhk/pool/umtwwzva7-1.png",
+              "origin": "upload",
+              "source": "ai",
+              "mime_type": "image/png",
+              "credit": "ILUSTRAÇÃO GERADA POR IA",
+              "text_placement": "BOTTOM",
+              "text_align": "center",
+              "score": 64,
+              "score_notes": "relevância 85 · texto 50 · nitidez 50",
+              "added_at": "2026-09-11T12:10:36.708Z"
             }
           ]
         }
