@@ -236,24 +236,22 @@
               "story_id": "news-c83fd665022daf856cbb6261-mtwwrqhk",
               "slide_number": 5,
               "type": "image",
-              "local_path": "data/media/news-c83fd665022daf856cbb6261-mtwwrqhk/pool/b6b4c00f9e7.jpg",
+              "local_path": "data/media/news-c83fd665022daf856cbb6261-mtwwrqhk/pool/umtwxar4n-1.png",
               "remote_url": null,
-              "mime_type": "image/jpeg",
-              "width": 1280,
-              "height": 854,
+              "mime_type": "image/png",
+              "width": null,
+              "height": null,
               "provenance": {
-                "source_type": "LICENSED",
-                "source_name": "wikimedia",
-                "license": "Nadim Kobeissi · CC BY-SA 4.0 · Wikimedia",
+                "source_type": "GENERATED",
+                "source_name": "ai",
+                "license": "gerada por IA para uso editorial próprio",
                 "attribution_required": true,
-                "attribution_text": "Nadim Kobeissi · CC BY-SA 4.0 · Wikimedia"
+                "attribution_text": "ILUSTRAÇÃO GERADA POR IA"
               },
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "center",
               "prompt": "",
-              "estimated_cost_usd": null,
-              "focus_x": 0.5,
-              "focus_y": 0.41
+              "estimated_cost_usd": null
             }
           ],
           "article_count": 1,
@@ -504,7 +502,7 @@
               "source": "ai",
               "mime_type": "image/png",
               "credit": "ILUSTRAÇÃO GERADA POR IA",
-              "text_placement": "BOTTOM",
+              "text_placement": "TOP",
               "text_align": "center",
               "score": 64,
               "score_notes": "relevância 85 · texto 50 · nitidez 50",
